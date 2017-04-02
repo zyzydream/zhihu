@@ -1,0 +1,279 @@
+body {
+	color: #222;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	line-height: 1.7;
+	overflow-wrap: break-word;
+}
+
+body, ul, li, p, h1 {
+	margin: 0;
+	padding: 0;
+}
+
+.modal-wrapper {
+	bottom: 0;
+	left: 0;
+	overflow: auto;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 99;
+}
+
+.Guide.modal-dialog {
+	align-self: baseline;
+	background: rgba(255, 255, 255, 0.95) none repeat scroll 0 0;
+	border: 0 none;
+	border-radius: 0;
+	box-shadow: none;
+	color: #444;
+	height: 100%;
+	margin: 0 !important;
+	overflow-x: hidden;
+	position: absolute;
+	width: 100%;
+}
+
+.modal-dialog-title-text {
+	color: #fff;
+	font-size: 15px;
+	font-weight: 700;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.modal-dialog-title-close {
+	background-position: -60px -53px;
+	cursor: pointer;
+	height: 30px;
+	margin-top: -15px;
+	position: absolute;
+	right: 3px;
+	text-indent: -9999px;
+	top: 50%;
+	width: 30px;
+}
+
+.Guide.modal-dialog .modal-dialog-content {
+	margin: 0;
+	padding: 0;
+}
+
+.Guide-Topics {
+	position: relative;
+}
+
+.Guide-header {
+	text-align: center;
+}
+
+.Guide-subtitle {
+	color: #999;
+	font-size: 14px;
+}
+
+.Guide-content {
+	margin: 40px auto 0;
+	color: #444;
+}
+
+.Guide-TopicsHint {
+	color: #999;
+	padding: 40px 0 160px;
+	text-align: center;
+}
+
+.Guide-TopicsFooter {
+	bottom: 0;
+	height: 120px;
+	line-height: 120px;
+	position: fixed;
+	text-align: center;
+	width: 100%;
+}
+
+.GaussianBlur {
+	background-color: rgba(255, 255, 255, 0.96);
+	box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08);
+	color: #444;
+}
+
+.Guide-TopicsSubmit {
+	font-size: 18px;
+	padding: 9px 24px;
+	position: relative;
+}
+
+.Button-flatPrimary {
+	background: #0077d9 none repeat scroll 0 0;
+	border: 0 none;
+	box-shadow: none;
+	color: #fff;
+	text-shadow: none;
+}
+
+.Button {
+	border-radius: 3px;
+	cursor: pointer;
+	display: inline-block;
+	outline: 0 none;
+}
+
+button {
+	line-height: 1.7;
+	padding: 0;
+}
+
+.Guide.modal-dialog {
+	color: #444;
+}
+
+.Guide-TopicsList::before, .Guide-TopicsList::after {
+	content: "";
+	display: table;
+}
+
+.Guide-TopicsList::before, .Guide-TopicsList::after {
+	content: "";
+	display: table;
+}
+
+.Guide-TopicsList::after {
+	clear: both;
+}
+
+.Guide-TopicsList::before, .Guide-TopicsList::after {
+	content: "";
+	display: table;
+}
+
+.Guide-TopicsList::after {
+	clear: both;
+}
+
+.Guide-TopicsList::before, .Guide-TopicsList::after {
+	content: "";
+	display: table;
+}
+
+.Guide-TopicsList {
+	margin: -14px auto 0;
+	max-width: 968px;
+}
+
+.Guide-TopicsItem {
+	border-radius: 8px;
+	cursor: pointer;
+	float: left;
+	list-style: outside none none;
+	margin: 14px 1.44628%;
+	overflow: hidden;
+	width: 16.5289%;
+}
+
+.SquareBlock {
+	position: relative;
+}
+
+.SquareBlock-content {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.Guide-TopicsAvatar {
+	border-radius: 8px;
+	height: 100%;
+	width: 100%;
+}
+
+img {
+	border: 0 none;
+}
+
+.Guide-TopicsMask {
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.32),
+		rgba(0, 0, 0, 0.6));
+	border-radius: 8px;
+	bottom: 0;
+	position: absolute;
+	top: 0;
+	transition: opacity 0.1s ease-in-out 0s;
+	width: 100%;
+}
+
+.Guide-TopicsName {
+	bottom: 7.7px;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 18px;
+	overflow: hidden;
+	overflow-wrap: normal;
+	padding: 0 14px;
+	position: absolute;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.SquareBlock::before {
+	content: "";
+	display: block;
+	padding-top: 100%;
+}
+
+.Guide-TopicsItem:nth-child(5n+1) {
+	margin-left: 2.89256%;
+}
+
+.Guide-TopicsItem {
+	cursor: pointer;
+	list-style: outside none none;
+}
+
+.Guide-TopicsIcon {
+	position: absolute;
+	right: 14px;
+	top: 14px;
+}
+
+.sprite-global-icon-gray-check {
+	background-position: -30px 0;
+	height: 28px;
+	width: 28px;
+}
+
+.sprite-global, [class*="sprite-global-"] {
+	background-repeat: no-repeat;
+}
+
+[class*="sprite-global-icon-"] {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.Guide-TopicsItem.is-checked .Guide-TopicsUnCheckedIcon {
+	display: none;
+}
+
+.sprite-global, [class*="sprite-global-"] {
+	background-image: url("../images/function.png");
+	background-repeat: no-repeat;
+}
+
+[class*="sprite-global-icon-"] {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.Guide-TopicsItem {
+	cursor: pointer;
+}
+
+.sprite-global-icon-green-check {
+	background-position: 0 0;
+	height: 28px;
+	width: 28px;
+}

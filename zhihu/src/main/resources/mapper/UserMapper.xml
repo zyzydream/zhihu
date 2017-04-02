@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
+<mapper namespace="com.yc.zhihu.mapper.UserMapper">
+
+	<select id="listrelated" parameterType="Users" resultType="Essay">
+		SELECT * FROM Topics t,
+		  (SELECT * FROM USERS u,
+		    (SELECT e.* FROM essay e,
+		       (select ids from dynstate PARTITION(GH) WHERE selfid=#{uids})d
+       		 WHERE e.etid=d.ids)e
+		   WHERE u.uids=e.eautid)ue
+		WHERE ue.etid=t.tid
+	</select>
+	
+	<select id="listTopics" parameterType="Users" resultType="Topics">
+	select * from topics t,
+	   (select * from dynstate PARTITION(GH) where selfid=#{uids})d
+	where d.ids=t.tid
+	</select>
+	
+	<!-- 登录 -->
+	<select id="findUsers" parameterType="Users" resultType="Users">
+		select * from users where uemail = #{uemail}
+		<choose>
+			<when test="upassword !=null">
+				and upassword = #{upassword}
+			</when>
+		</choose>
+	</select>
+	
+	<!-- 注册 -->
+	<insert id="AddUsers" parameterType="Users">
+		insert into users(uemail,uname,upassword,usign) values(#{uemail},#{uname},#{upassword},'无') 
+	</insert>
+</mapper>

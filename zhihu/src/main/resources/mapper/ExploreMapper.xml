@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
+<mapper namespace="com.yc.zhihu.mapper.ExploreMapper">
+    <select id="list" parameterType="Users" resultType="Explore">
+       select * from explore e,
+          (select ids from dynstate PARTITION (GH) where selfid='1001')d
+       where e.tid=d.ids
+    </select>
+    
+    <select id="lists" parameterType="string" resultType="Explore">
+       select * from explore where checks=#{s}
+    </select>
+</mapper>

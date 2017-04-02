@@ -1,0 +1,266 @@
+body {
+    color: #222;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+}
+
+.modal-wrapper {
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99;
+}
+
+.Guide.modal-dialog {
+    align-self: baseline;
+    background: rgba(255, 255, 255, 0.95) none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    color: #444;
+    height: 100%;
+    margin: 0 !important;
+    overflow-x: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+
+.modal-dialog {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #888;
+    border-radius: 8px;
+    box-shadow: 0 0 80px 0 rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+    position: absolute;
+    text-align: left;
+    width: 420px;
+    z-index: 99;
+}
+
+
+
+.Guide.modal-dialog .modal-dialog-title {
+    display: none;
+}
+.modal-dialog-title {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #1d7fe2, #0865c2) repeat scroll 0 0;
+    border: 1px solid #0d6eb8;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 1px 1px rgba(0, 0, 0, 0.2);
+    line-height: 14px;
+    margin: -1px -1px 0;
+    padding: 10px 15px;
+    position: relative;
+}
+.Guide.modal-dialog {
+    color: #444;
+}
+.modal-dialog {
+    text-align: left;
+}
+
+
+
+.Guide.modal-dialog .modal-dialog-content {
+    margin: 0;
+    padding: 0;
+}
+.modal-dialog-content {
+    margin: 17px 0;
+    padding: 0 15px;
+}
+.Guide.modal-dialog {
+    color: #444;
+}
+.modal-dialog {
+    text-align: left;
+}
+
+
+.Guide-BioEditor {
+    text-align: center;
+}
+
+.Guide.modal-dialog .Guide-header, .Guide.modal-dialog .Guide-content, .Guide.modal-dialog .Guide-TopicsFooter {
+    animation: 0.3s ease-in 0s normal none 1 running fadeInUp;
+}
+.Guide-header {
+    text-align: center;
+}
+
+
+
+.Guide.modal-dialog .Guide-header, .Guide.modal-dialog .Guide-content, .Guide.modal-dialog .Guide-TopicsFooter {
+    animation: 0.3s ease-in 0s normal none 1 running fadeInUp;
+}
+.Guide-content {
+    margin: 40px auto 0;
+}
+
+
+.Guide-BioEditorForm {
+    height: 40px;
+    margin: auto;
+    max-width: 388px;
+}
+
+.Guide-title {
+    color: #222;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 40px 0 20px;
+}
+h1, h2, h3, h4, h5 {
+    font-size: 14px;
+    font-weight: 700;
+    outline: 0 none;
+}
+body, ul, ol, li, p, h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
+
+
+.Guide-subtitle {
+    color: #999;
+    font-size: 14px;
+}
+
+
+.Guide-BioEditorButton {
+    float: right;
+    height: 100%;
+    line-height: 1;
+    margin-left: 18px;
+}
+.Button-flatPrimary {
+    background: #0077d9 none repeat scroll 0 0;
+    border: 0 none;
+    box-shadow: none;
+    color: #fff;
+    text-shadow: none;
+}
+.Button {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #1d7fe2, #0865c2) repeat scroll 0 0;
+    border: 1px solid #0d6eb8;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 0 rgba(0, 0, 0, 0.2);
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    outline: 0 none;
+    padding: 4px 10px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+button {
+    line-height: 1.7;
+    padding: 0;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+
+
+.Guide-BioEditorInputWrapper {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.Guide-BioEditorInput {
+    font-size: 14px;
+    height: 100%;
+    width: 100%;
+}
+.Input {
+    -moz-appearance: none;
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+    box-sizing: border-box;
+    color: inherit;
+    font-size: 13px;
+    line-height: 15px;
+    outline: 0 none;
+    padding: 8px 10px;
+    width: 100%;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+input::placeholder, textarea::placeholder {
+    color: #999;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+.Guide-BioEditorUsers {
+    font-size: 16px;
+    margin: 63px 0;
+}
+.Guide-BioEditorDescription {
+    color: #666;
+    margin-bottom: 44px;
+}
+
+.Guide-BioEditorItem--first {
+    margin-left: -190px;
+}
+.Guide-BioEditorItem {
+    left: 50%;
+    list-style: outside none none;
+    position: relative;
+    text-align: left;
+}
+
+.Guide-BioEditorAvatar {
+    border-radius: 50%;
+    display: block;
+    float: left;
+    height: 50px;
+    margin-right: 16px;
+    width: 50px;
+}
+img {
+    border: 0 none;
+}
+
+
+.Guide-BioEditorBio {
+    color: #999;
+    font-size: 14px;
+    line-height: 50px;
+}
+.Guide-BioEditorItem--second {
+    margin-left: 36px;
+}
+.Guide-BioEditorItem--third {
+    margin-left: -280px;
+}
+.Guide-BioEditorItem--fourth {
+    margin-left: -34px;
+    margin-top: 9px;
+}
+.Guide-BioEditorItem--fifth {
+    margin-left: -190px;
+    margin-top: 50px;
+}.Guide-BioEditorItem--sixth {
+    margin-left: -34px;
+    margin-top: 32px;
+}
