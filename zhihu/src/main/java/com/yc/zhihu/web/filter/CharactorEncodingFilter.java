@@ -16,7 +16,6 @@ public class CharactorEncodingFilter extends AbstractFilter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("进入utf-8");
 		request.setCharacterEncoding(encoding);
 		response.setCharacterEncoding(encoding);
 		response.setContentType("charset=" + encoding);

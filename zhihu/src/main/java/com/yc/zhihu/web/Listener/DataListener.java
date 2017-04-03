@@ -23,8 +23,8 @@ public class DataListener implements ServletContextListener {
     	String deployName=sce.getServletContext().getContextPath();
 		// 初始化发布的工程发布名可以通过监听DataListener中（如下），也可以通过BaseServlet
     	ServletUtil.DEPLOY_NAME=deployName+"/";
-        sce.getServletContext().setAttribute("NAME", ServletUtil.DEPLOY_NAME);
-        System.out.println(sce.getServletContext().getAttribute("NAME"));
+        sce.getServletContext().setAttribute("zhihuName", ServletUtil.DEPLOY_NAME);
+        System.out.println(sce.getServletContext().getAttribute("zhihuName"));
 
         ServletUtil.UPLOAD_DIR=sce.getServletContext().getRealPath("upload").replace(deployName.substring(1)+File.separator, ""); //文件上传目录
     }
