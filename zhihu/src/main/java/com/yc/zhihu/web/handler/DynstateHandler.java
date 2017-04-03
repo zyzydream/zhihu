@@ -32,7 +32,7 @@ public class DynstateHandler {
 	@RequestMapping(value="/m1",method=RequestMethod.GET)
 	@ResponseBody
 	public Reply Dynstatehuida(Users users){
-		System.out.println("进来了 ====>  users");
+		System.out.println("进来了 ====>  users"+users);
 		return dynstateService.answer(users);
 	}
 	
