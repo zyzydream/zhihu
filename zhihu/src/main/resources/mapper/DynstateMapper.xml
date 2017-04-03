@@ -15,9 +15,39 @@
 
 	</select>
 
+	<resultMap type="Reply" id="ReplyMap">
+		<id column="rid" property="rid"/>
+		<result column="reqid" property="reqid"/>
+		<result column="rkind" property="rkind"/>
+		<result column="rrid" property="rrid"/>
+		<result column="remitid" property="remitid"/>
+		<result column="rreceid" property="rreceid"/>
+		<result column="rcontent" property="rcontent"/>
+		<result column="rtime" property="rtime"/>
+		
+		<collection property="users" ofType="Users">
+			<id column="uids" property="uids"/>
+			<result column="upassword" property="upassword"/>
+			<result column="usign" property="usign"/>
+			<result column="uage" property="uage"/>
+			<result column="ugender" property="ugender"/>
+			<result column="uprofession" property="uprofession"/>
+			<result column="uname" property="uname"/>
+			<result column="upic" property="upic"/>
+			<result column="uemail" property="uemail"/>
+		</collection>
+		<collection property="question" ofType="Question">
+			<id column="qid" property="qid"/>
+			<result column="qautid" property="qautid"/>
+			<result column="qinid" property="qinid"/>
+			<result column="qtitle" property="qtitle"/>
+			<result column="qdetail" property="qdetail"/>
+			<result column="qtime" property="qtime"/>
+		</collection>
+	</resultMap>
 	
 	
-	<select id="listAnswer" parameterType="Users" resultType="Reply">
+	<select id="listAnswer" parameterType="Users" resultMap="ReplyMap">
 		select t.*,q.qtitle from
 		(select r.*,u.uname,u.usign,r.reqid a from REPLY r,users u where remitid=#{uids}
 		and uids=remitid) t,question q
