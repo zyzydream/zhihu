@@ -40,4 +40,11 @@ public class DynstateHandler {
 		return dynstateService.answer(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
+	@RequestMapping(value="/m3",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Reply> Dynstatehuida3(HttpServletRequest request){
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.answer(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
 }
