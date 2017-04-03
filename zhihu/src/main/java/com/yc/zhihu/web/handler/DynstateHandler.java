@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Dynstate;
+import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.AdminService;
 import com.yc.zhihu.service.DynstateService;
@@ -26,6 +27,13 @@ public class DynstateHandler {
 	public List<Users> list(Dynstate dynstate ){
 		System.out.println("进来了 ====>  dynstate");
 		return dynstateService.list(dynstate);
+	}
+	
+	@RequestMapping(value="/m1",method=RequestMethod.GET)
+	@ResponseBody
+	public Reply Dynstatehuida(Users users){
+		System.out.println("进来了 ====>  users"+users);
+		return dynstateService.answer(users);
 	}
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.zhihu.entity.Dynstate;
+import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.mapper.DynstateMapper;
 import com.yc.zhihu.service.DynstateService;
@@ -21,4 +22,8 @@ public class DynstateServiceImpl implements DynstateService {
 		return dynstateMapper.list(dynstate);
 	}
 
+	@Override
+	public Reply answer(Users users) {
+		return dynstateMapper.listAnswer(users);
+	}
 }
