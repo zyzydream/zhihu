@@ -238,7 +238,7 @@
 				</div>
 			</div>
 			<!-- 分享 -->
-			<div class="List-header">
+			<!-- <div class="List-header">
 				<h4 class="List-headerText">
 					<div class="SubTabs">
 						<a class="SubTabs-item is-active" href="/people/rui-you-93/pins/posts">我的文章</a>
@@ -251,7 +251,7 @@
 				<div class="EmptyState-inner">
 					<span>还没有分享</span>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="panel panel-default"
 				style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
