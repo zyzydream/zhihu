@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Users;
 
@@ -14,4 +15,6 @@ public interface DynstateService {
 	List<Reply> answer(Object object);
 	
 	List<Essay> myessay(Object obj);
+	
+	List<Question> myquestion(Object obj);
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.mapper.DynstateMapper;
@@ -31,5 +32,10 @@ public class DynstateServiceImpl implements DynstateService {
 	@Override
 	public List<Essay> myessay(Object obj) {
 		return dynstateMapper.listMyEssay(obj);
+	}
+	
+	@Override
+	public List<Question> myquestion(Object obj) {
+		return dynstateMapper.listMyQuestion(obj);
 	}
 }

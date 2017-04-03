@@ -9,5 +9,6 @@ public interface ExploreService {
 	List<Explore> list(Object attribute);
 
 	List<Explore> lists(String s);
+	
 
 }
