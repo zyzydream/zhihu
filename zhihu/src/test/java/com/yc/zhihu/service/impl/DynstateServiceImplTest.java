@@ -2,6 +2,8 @@ package com.yc.zhihu.service.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class DynstateServiceImplTest {
 	public void testAnswer() {
 		Users users=new Users();
 		users.setUids("1003");
-		Reply r=dynstateService.answer(users);
+		List<Reply> r=dynstateService.answer(users);
 		System.out.println(r);
 		assertNotNull(r);
 	}

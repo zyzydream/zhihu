@@ -183,7 +183,7 @@
 						class="Tabs-link is-active" href="/zhihu/dynstate/m2" >动态</a>
 					</li>
 					<li class="Tabs-item" role="tab" aria-controls="Profile-answers">
-						<a class="Tabs-link" href="/zhihu/page/myself2.jsp"> 回答 <span
+						<a class="Tabs-link" href="/zhihu/dynstate/m3"> 回答 <span
 							class="Tabs-meta">1</span>
 					</a>
 					</li>
@@ -212,12 +212,13 @@
 				<h2 style="padding-left: 10px; padding-top: 10px">我的动态</h2>
 			</div>
 			<span id="myself">
-				<div class="row featurette">
+				<div class="row featurette" style="padding-left: 10px;padding-top: 10px">
 					<div class="col-md-7">
 						<h2 class="featurette-heading" style="font-size: 20px;">
 							<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].ttopic+'</span><br />'+data[i].etitle+'
 						</h2>
 						<h2 class="featurette-heading" style="font-size: 13px;">
+							<img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;
 							'+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"
 								style="font-size: 12px; font-weight: 300;">'+data[i].usign+'</span>
 						</h2>

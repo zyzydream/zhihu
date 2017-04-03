@@ -12,6 +12,6 @@ public interface DynstateMapper {
 
 	List<Users> list(Dynstate dynstate);
 	
-	Reply listAnswer(Users users);
+	List<Reply> listAnswer(Object users);
 
 }

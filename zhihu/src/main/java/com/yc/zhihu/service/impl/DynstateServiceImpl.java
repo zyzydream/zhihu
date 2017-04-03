@@ -23,7 +23,7 @@ public class DynstateServiceImpl implements DynstateService {
 	}
 
 	@Override
-	public Reply answer(Users users) {
+	public List<Reply> answer(Object users) {
 		return dynstateMapper.listAnswer(users);
 	}
 }

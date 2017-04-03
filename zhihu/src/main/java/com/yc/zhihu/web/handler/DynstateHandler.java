@@ -2,6 +2,8 @@ package com.yc.zhihu.web.handler;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,7 @@ import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.AdminService;
 import com.yc.zhihu.service.DynstateService;
+import com.yc.zhihu.util.ServletUtil;
 
 @Controller("dynstateHandler")
 @RequestMapping("/dynstate")
@@ -29,11 +32,12 @@ public class DynstateHandler {
 		return dynstateService.list(dynstate);
 	}
 	
+	
 	@RequestMapping(value="/m1",method=RequestMethod.GET)
 	@ResponseBody
-	public Reply Dynstatehuida(Users users){
-		System.out.println("进来了 ====>  users"+users);
-		return dynstateService.answer(users);
+	public List<Reply> Dynstatehuida(HttpServletRequest request){
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.answer(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
 }
