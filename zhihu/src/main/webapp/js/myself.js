@@ -39,7 +39,7 @@ function Myanswer3(){
 		for(var i=0;i<data.length;i++){
 			myanswers+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
 				+'<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a'
-				+' class="Tabs-link" href="/zhihu/dynstate/m2">动态</a></li>'
+				+' class="Tabs-link" href="/zhihu/dynstate/m1">动态</a></li>'
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link is-active" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">1</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
