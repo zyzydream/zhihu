@@ -7,6 +7,14 @@ public class Dynstate {
 	private String kind;
 	private String ids;
 	private String cfid;
+	private String times;
+	
+	public String getTimes() {
+		return times;
+	}
+	public void setTimes(String times) {
+		this.times = times;
+	}
 	public String getSelfid() {
 		return selfid;
 	}

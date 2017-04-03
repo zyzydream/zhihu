@@ -57,6 +57,7 @@ public class UserHandler {
 	@ResponseBody
 	public List<Explore> listDynstate(HttpServletRequest request){
 		System.out.println("listDynstate ====> "+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		Users user= (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
 		//用来查找有关话题的文章
 		List<Explore> explores= usersService.listrelated(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	    for(Explore explore:explores){
@@ -64,11 +65,12 @@ public class UserHandler {
 	    }
 	    System.out.println("------------------------");
 	    //用来查找有关话题的问题
-	    List<Explore> questions=usersService.listrelatedQ(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	    List<Explore> questions=usersService.listrelatedQ(user);
 	    for(Explore question:questions){
 	    	System.out.println(question);
 	    }
-	    //
+	    //关注的对象的动态
+	    List<Explore> dynstate=usersService.listrelatedD(user);
 	    return null;
 	    
 	}

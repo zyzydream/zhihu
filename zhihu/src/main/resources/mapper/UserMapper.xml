@@ -27,6 +27,40 @@
 	where tre.reqid=q.qid
 	</select>
 	
+	<select id="listrelatedD" parameterType="Users" resultType="Explore">
+	select tre.rid ids, q.qtitle title,tre.rcontent content,tre.rtid tid,tre.ttopic tname,tre.uids uids,tre.usign usign ,tre.uname author,tre.rtime times from QUESTION q,
+       (SELECT * FROM Topics t,
+		  (SELECT * FROM USERS u,
+		    (SELECT r.* FROM reply r,
+		       (select ids from dynstate PARTITION(GH) WHERE selfid=#{uids})d
+       		 WHERE r.rtid=d.ids)r
+		   WHERE u.uids=r.remitid)ue
+		WHERE ue.rtid=t.tid)tre
+	where tre.reqid=q.qid
+	</select>
+	
+	<!-- 查询关注用户24小时之内写的文章 -->
+	<select id="listessay" parameterType="Users" resultType="Explore">
+	    select * from essay e,
+               (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='1001')d
+             where e.eautid=d.aimid AND 24>=to_number( SYSDATE- to_date(e.etime,'yyyymmdd'))*24
+	</select>
+	<!-- 查询关注用户24小时之内提的问题 -->
+	<select id="listquestion" parameterType="Users" resultType="Explore">
+	    select * from question q,
+               (SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
+             where q.qautid=d.aimid and 24>=to_number( SYSDATE- to_date(q.qtime,'yyyymmdd'))*24
+	</select>
+	<!-- 获得当前关注的所有对象24小时内的全部动态  -->
+	<select id="lists" parameterType="Users" resultType="Dynstate">
+	     SELECT * from dynstate d,
+                (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='1001')dd
+         WHERE d.selfid=dd.aimid AND 24>=to_number( SYSDATE- to_date(d.times,'yyyymmdd'))*24
+	</select>
+	<select id="listrelatedTopic" parameterType="Dynstate" resultType="Explore">
+	     select t.tid tid,t.ttopic tname,t.tpic content,#{times} times,#{selfid} uids,u.uname author,'GH' kind from users u,(select * from Topics tt where tt.tid=#{ids}) t where u.uids=#{selfid}
+	</select>
+	
 	<select id="listTopics" parameterType="Users" resultType="Topics">
 	select * from topics t,
 	   (select * from dynstate PARTITION(GH) where selfid=#{uids})d

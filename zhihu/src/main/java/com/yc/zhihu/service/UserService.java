@@ -23,4 +23,6 @@ public interface UserService {
 
 	List<Explore> listrelatedQ(Object user);
 
+	List<Explore> listrelatedD(Users user);
+
 }

@@ -65,8 +65,10 @@ CREATE TABLE topics(
    tpic Varchar2(60)
 );
 select * from topics
+drop table topics
 insert into topics(tid,ttopic)values('10001','编程');
 insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
+select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
 
 /*问题表
     qautid :提问人id
@@ -121,6 +123,7 @@ CREATE TABLE dynstate(
    aimid VARCHAR2(30), --目标id
    kind VARCHAR2(10), --动态种类
    ids VARCHAR2(30), --具体id
+   times VARCHAR2(30),  --时间
    cfid VARCHAR2(30) --收藏夹id
 )
 PARTITION BY LIST(kind)(
@@ -233,7 +236,11 @@ SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE se
 	where tre.reqid=q.qid
       
     --查询有关我关注的人的最新动态
-
+            select * from essay e,
+               (select aimid from dynstate PARTITION(GR) WHERE selfid='1001')d
+            where e.
+	
+	
 --
 
 drop table users;
