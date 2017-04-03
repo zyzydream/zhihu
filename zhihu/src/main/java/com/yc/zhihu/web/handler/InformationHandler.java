@@ -1,6 +1,7 @@
 package com.yc.zhihu.web.handler;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,9 +21,9 @@ public class InformationHandler {
 	@Autowired
 	private InfomationService infomationService;
 	
-	@RequestMapping(value="send",method=RequestMethod.POST)
-	@ResponseBody
-	public int send(Infomation info,HttpServletRequest request) throws UnsupportedEncodingException{
+	@RequestMapping(value="send",method=RequestMethod.GET)
+	//@ResponseBody
+	public String send(Infomation info,HttpServletRequest request) throws UnsupportedEncodingException{
 		String selfname=new String(info.getSelfname().getBytes("iso-8859-1"),"utf-8");
 		String aimname=new String(info.getAimname().getBytes("iso-8859-1"),"utf-8");
 		String infomation=new String(info.getInfo().getBytes("iso-8859-1"),"utf-8");
@@ -30,6 +31,7 @@ public class InformationHandler {
 		infos.setAimname(aimname);
 		infos.setInfo(infomation);
 		infos.setSelfname(selfname);
-		return infomationService.send(infos);
+		infomationService.send(infos);
+		return "/back/back.jsp";
 	}
 }

@@ -176,12 +176,7 @@ function sendemail(name){
 	document.getElementsByName("selfname")[0].value="管理员";
 	document.getElementsByName("aimname")[0].value=name;
 	$("#sendmail").click(function(data){
-		$("#infoForm").submit();//表单提交
-		if(data>0){
-			alert("发送成功");
-		}else{
-			alert("发送失败");
-		}
+		$("#infoForm").submit();//表单提交	
 	});
 }
 

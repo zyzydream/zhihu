@@ -273,7 +273,7 @@
 					<h4 class="modal-title" id="myModalLabel">推荐详情</h4>
 				</div>
 				<div class="modal-body">
-				    <form id="infoForm"  method="post" action="information/send">
+				    <form id="infoForm"  method="get" action="information/send">
 				    <table>
 				       <tr>
 				          <td><label>发件人：</label></td>
