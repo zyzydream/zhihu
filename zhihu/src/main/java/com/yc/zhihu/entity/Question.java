@@ -8,13 +8,16 @@ public class Question {
 	private String qinid;
 	private String qtitle;
 	private String qdetail;
-	private Date qtime;
+	private String qtime;
+	private String sum;
 	
 	public Question() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public Question(String qid, String qautid, String qinid, String qtitle, String qdetail, Date qtime) {
+	
+	
+	
+	public Question(String qid, String qautid, String qinid, String qtitle, String qdetail, String qtime, String sum) {
 		super();
 		this.qid = qid;
 		this.qautid = qautid;
@@ -22,7 +25,34 @@ public class Question {
 		this.qtitle = qtitle;
 		this.qdetail = qdetail;
 		this.qtime = qtime;
+		this.sum = sum;
 	}
+
+
+
+	public String getQtime() {
+		return qtime;
+	}
+
+
+
+	public void setQtime(String qtime) {
+		this.qtime = qtime;
+	}
+
+
+
+	public String getSum() {
+		return sum;
+	}
+
+
+
+	public void setSum(String sum) {
+		this.sum = sum;
+	}
+
+
 
 	public String getQid() {
 		return qid;
@@ -64,19 +94,12 @@ public class Question {
 		this.qdetail = qdetail;
 	}
 
-	public Date getQtime() {
-		return qtime;
-	}
 
-	public void setQtime(Date qtime) {
-		this.qtime = qtime;
-	}
 
 	@Override
 	public String toString() {
 		return "Question [qid=" + qid + ", qautid=" + qautid + ", qinid=" + qinid + ", qtitle=" + qtitle + ", qdetail="
-				+ qdetail + ", qtime=" + qtime + "]";
+				+ qdetail + ", qtime=" + qtime + ", sum=" + sum + "]";
 	}
-	
-	
+
 }

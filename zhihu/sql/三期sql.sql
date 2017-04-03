@@ -56,6 +56,8 @@ CREATE TABLE favorite(
    fname VARCHAR2(30),
    ftime VARCHAR2(30)
 );
+select * from FAVORITE where fcreid='1003';
+insert into FAVORITE(fid,fcreid,fname,ftime) values('1','1003','我的收藏夹','2017-4-3');
 /*话题表
     tstId :子话题id*/
 CREATE TABLE topics(
@@ -84,6 +86,9 @@ CREATE TABLE question(
    qtid  VARCHAR2(30), --话题id
    qtime VARCHAR2(30)
 );
+select * from QUESTION;
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
+
 drop table question
 /*回复表
     reqid :文章或问题id
@@ -107,6 +112,15 @@ CREATE TABLE reply(
 
 select * from REPLY;
 insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('10001','1','Q',null,'1003','1001','java是一门语言','2017-4-3')
+
+select q.qtitle,q.qtime,count(reqid) t from QUESTION q,REPLY r where r.rkind='Q'
+
+select q.*,t.s from question q,
+(select count(reqid) s from REPLY where rkind='Q' and reqid=(select reqid from question where qautid='1003')) t
+where q.qautid='1003';
+ 
+
+
 
 select t.*,q.qtitle from 
 (select r.*,u.uname,u.usign,r.reqid a from REPLY r,users u where remitid=1003 and uids=1003) t,question q
