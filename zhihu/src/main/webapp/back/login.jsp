@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<base href="${NAME}">
+<base href="/zhihu/">
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="css/register-login.css">
 <link rel="shortcut icon" href="images/logohead.png">
