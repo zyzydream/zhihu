@@ -23,6 +23,8 @@ public class ExploreHandler {
 	@Autowired
 	private ExploreService exploreService;
 	
+	
+	//推荐头条
 	@RequestMapping(value="/dynstate",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Explore> list(HttpServletRequest request){
@@ -31,6 +33,7 @@ public class ExploreHandler {
 		return explore;
 	}
 	
+	//后台展示审核
 	@RequestMapping(value="/{check}",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Explore> lists(@PathVariable("check")String check){

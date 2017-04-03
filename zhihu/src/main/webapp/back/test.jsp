@@ -4,11 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="/zhihu/">
 	<meta charset="utf-8"> 
 	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
-	<link rel="stylesheet" href="../bootstrap-3.3.4/dist/css/bootstrap.min.css">
-	<script src="../js/jquery.min.js"></script>
-	<script src="../bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="bootstrap-3.3.4/dist/css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -17,7 +18,7 @@
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 	开始演示模态框
 </button>
-<a data-toggle="modal" href="table.jsp?name=aaa" data-target="#myModal">请点击我</a>
+<button data-toggle="modal" href="back/table.jsp?name=aa" data-target="#myModal">请点击我</button>
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">

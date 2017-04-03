@@ -16,7 +16,8 @@
 <link href="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/dashboard.css" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="easyui/themes/icon.css">
-<link type="text/css" rel="stylesheet" href="easyui/themes/default/easyui.css">
+<link type="text/css" rel="stylesheet"
+	href="easyui/themes/default/easyui.css">
 <link href="css/back.css" rel="stylesheet">
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -61,7 +62,8 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active" onclick="select(this)"><a href="javaScript:void(0)">总动态</a></li>
+					<li class="active" onclick="select(this)"><a
+						href="javaScript:void(0)">总动态</a></li>
 					<li onclick="select(this)"><a href="javaScript:void(0)">用户信息</a></li>
 					<li onclick="select(this)"><a href="javaScript:void(0)">推荐头条</a></li>
 				</ul>
@@ -69,19 +71,19 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<ul class="nav nav-tabs" style="margin-bottom: 10px;" id="nav-tabs">
 					<li role="presentation" class="active"><a href="#">全部</a></li>
-					<li role="presentation" ><a>关注用户</a></li>
-					<li role="presentation" ><a>关注话题</a></li>
-					<li role="presentation" ><a>收藏文章</a></li>
-					<li role="presentation" ><a>收藏话题</a></li>
-					<li role="presentation" ><a>收藏回复</a></li>
-					<li role="presentation" ><a>收藏专栏</a></li>
-				    <li role="presentation" ><a>发表文章</a></li>
-					<li role="presentation" ><a>提出问题</a></li>
-					<li role="presentation" ><a> 回复 </a></li>
+					<li role="presentation"><a>关注用户</a></li>
+					<li role="presentation"><a>关注话题</a></li>
+					<li role="presentation"><a>收藏文章</a></li>
+					<li role="presentation"><a>收藏话题</a></li>
+					<li role="presentation"><a>收藏回复</a></li>
+					<li role="presentation"><a>收藏专栏</a></li>
+					<li role="presentation"><a>发表文章</a></li>
+					<li role="presentation"><a>提出问题</a></li>
+					<li role="presentation"><a> 回复 </a></li>
 				</ul>
 				<div class="table-responsive">
 					<table class="table table-hover" id="table">
-						<thead>
+						<!-- <thead>
 							<tr>
 								<th>#</th>
 								<th>Header</th>
@@ -203,13 +205,101 @@
 								<td>in</td>
 								<td>libero</td>
 							</tr>
-						</tbody>
+						</tbody> -->
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
-		
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">推荐详情</h4>
+				</div>
+				<div class="modal-body">
+					<table class="input_table" width="500px">
+						<tr>
+							<td width="150px">id :</td>
+							<td><label id="ids"></label></td>
+						</tr>
+						<tr>
+							<td>类型 :</td>
+							<td><label id="kind"></label></td>
+						</tr>
+						<tr>
+							<td>文章/问题 :</td>
+							<td><label id="title"></label></td>
+						</tr>
+						<tr>
+							<td>有关话题:</td>
+							<td><label id="tname"></label></td>
+						</tr>
+						<tr>
+							<td>作者/提问人:</td>
+							<td><label id="author"></label></td>
+						</tr>
+						<tr>
+							<td>  时间：</td>
+							<td><label id="time"></label></td>
+						</tr>
+						<tr>
+							<td>内容/最热回复:</td>
+							<td><textarea rows="10" cols="20"  id="content"></textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+	<!-- 发送信息Model -->
+	<div class="modal fade" id="infoModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">推荐详情</h4>
+				</div>
+				<div class="modal-body">
+				    <table>
+				       <tr>
+				          <td><label>收件人：</label></td>
+				          <td><input type="text" disabled="disabled"/></td>
+				          <td></td>
+				       </tr>
+				       <tr>
+				           <td><hr></td>
+				           <td><hr></td>
+				           <td><hr></td>
+				       </tr>
+				       <tr>
+				          <td><label>编辑消息：</label></td>
+				          <td colspan="2"><textarea rows="10" cols="30"></textarea></td>
+				       </tr>
+				    </table>
+				</div>
+				<div class="modal-footer">
+				    <button type="button" class="btn btn-primary">发送</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>

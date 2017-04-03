@@ -16,7 +16,7 @@ function select(self){
     	$.get("explore/y",function(data){
     		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.length;i++){
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].ids+'</td><td>'+data[i].kind+'</td><td>'+data[i].title+'</td><td>'+data[i].content.substr(0,10)+'...</td><td>'+data[i].tname+'</td><td>'+data[i].author+'</td><td>'+data[i].times+'</td><td><a class="btn btn-default" role="button" onclick="showdetail(this)">查看详情</a></td></tr>';
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].ids+'</td><td>'+data[i].kind+'</td><td>'+data[i].title+'</td><td>'+data[i].content.substr(0,10)+'...</td><td>'+data[i].tname+'</td><td>'+data[i].author+'</td><td>'+data[i].times+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data[i].ids+'\',\''+data[i].kind+'\',\''+data[i].title+'\',\''+data[i].content+'\',\''+data[i].tname+'\',\''+data[i].author+'\',\''+data[i].times+'\')">查看详情</a></td></tr>';
     		}
     		info+='</tbody>';
     		document.getElementById("table").innerHTML = info;
@@ -56,7 +56,7 @@ function select(self){
     		//alert(JSON.stringify(data));
     		var info='<thead><tr><th>#</th><th>id</th><th>name</th><th>email</th><th>sign</th><th>profession</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.length;i++){
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].uids+'</td><td>'+data[i].uname+'</td><td>'+data[i].uemail+'</td><td>'+data[i].usign+'...</td><td>'+data[i].profession+'</td><td><a class="btn btn-default" role="button" onclick="sendemail(this)">发送信息</a></td></tr>';
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].uids+'</td><td>'+data[i].uname+'</td><td>'+data[i].uemail+'</td><td>'+data[i].usign+'...</td><td>'+data[i].profession+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#infoModal" onclick="sendemail(this)">发送信息</a></td></tr>';
     		}
     		info+='</tbody>';
     		console.info(info);
@@ -67,7 +67,7 @@ function select(self){
     	$.get("explore/n",function(data){
     		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.length;i++){
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].ids+'</td><td>'+data[i].kind+'</td><td>'+data[i].title+'</td><td>'+data[i].content.substr(0,10)+'...</td><td>'+data[i].tname+'</td><td>'+data[i].author+'</td><td>'+data[i].times+'</td><td><a class="btn btn-default" role="button">查看详情</a></td></tr>';
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].ids+'</td><td>'+data[i].kind+'</td><td>'+data[i].title+'</td><td>'+data[i].content.substr(0,10)+'...</td><td>'+data[i].tname+'</td><td>'+data[i].author+'</td><td>'+data[i].times+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data[i].ids+'\',\''+data[i].kind+'\',\''+data[i].title+'\',\''+data[i].content+'\',\''+data[i].tname+'\',\''+data[i].author+'\',\''+data[i].times+'\')">查看详情</a><a class="btn btn-default" role="button" onclick="ok(\''+data[i].ids+'\',\''+data[i].kind+'\')">审核通过</a></td></tr>';
     		}
     		info+='</tbody>';
     		document.getElementById("table").innerHTML = info;
@@ -142,4 +142,18 @@ function showdetail(self){
 
 function sendemail(self){
 	console.log(self);
+}
+
+function fun(ids,kind,title,content,tname,author,time){
+	document.getElementById("ids").innerHTML=ids;
+	document.getElementById("kind").innerHTML=kind;
+	document.getElementById("title").innerHTML=title;
+	document.getElementById("content").innerHTML=content;
+	document.getElementById("tname").innerHTML=tname;
+	document.getElementById("author").innerHTML=author;
+	document.getElementById("time").innerHTML=time;
+}
+
+function ok(ids,kind){
+	alert('成功！') 
 }
