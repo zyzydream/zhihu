@@ -12,7 +12,6 @@ function select(self){
 	//console.log(thing);
 	var kinds="";
 	if(thing=="推荐头条"||thing=="已审核"){
-    	//console.log(thing+"1");
     	$.get("explore/y",function(data){
     		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.length;i++){
