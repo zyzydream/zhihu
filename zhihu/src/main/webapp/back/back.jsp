@@ -273,10 +273,16 @@
 					<h4 class="modal-title" id="myModalLabel">推荐详情</h4>
 				</div>
 				<div class="modal-body">
+				    <form id="infoForm"  method="post" action="imfomation/send">
 				    <table>
 				       <tr>
+				          <td><label>发件人：</label></td>
+				          <td><input type="text" disabled="disabled" name="selfid" id="selfid"/></td>
+				          <td></td>
+				       </tr>
+				       <tr>
 				          <td><label>收件人：</label></td>
-				          <td><input type="text" disabled="disabled"/></td>
+				          <td><input type="text" disabled="disabled" name="aimid"  id="aimid"/></td>
 				          <td></td>
 				       </tr>
 				       <tr>
@@ -286,12 +292,13 @@
 				       </tr>
 				       <tr>
 				          <td><label>编辑消息：</label></td>
-				          <td colspan="2"><textarea rows="10" cols="30"></textarea></td>
+				          <td colspan="2"><textarea rows="10" cols="30" name="info"></textarea></td>
 				       </tr>
 				    </table>
+				    </form>
 				</div>
 				<div class="modal-footer">
-				    <button type="button" class="btn btn-primary">发送</button>
+				    <button type="button" class="btn btn-primary" id="sendmail">发送</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 				</div>
 			</div>

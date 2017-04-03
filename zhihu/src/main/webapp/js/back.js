@@ -5,14 +5,14 @@ function select(self){
 	for(var i=0;i<p.length;i++){
 		p[i].setAttribute("class","");
 	}
-	console.log(self);
+	//console.log(self);
 	self.setAttribute("class","active");
 	
 	var thing=self.children[0].innerText;
-	console.log(thing);
+	//console.log(thing);
 	var kinds="";
 	if(thing=="推荐头条"||thing=="已审核"){
-    	console.log(thing+"1");
+    	//console.log(thing+"1");
     	$.get("explore/y",function(data){
     		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.length;i++){
@@ -27,8 +27,7 @@ function select(self){
     	},"json")
     }else if(thing=="总动态"||thing=="关注人"||thing=="关注话题"||thing=="关注专栏"||thing=="关注人"||thing=="关注收藏夹"||thing=="收藏文章"||thing=="收藏问题"||thing=="收藏回复"||thing=="点赞文章"||thing=="点赞问题"||thing=="点赞回复"){
     	var kinds="all";
-    	console.log(thing+"2");
-    	if(thing=="关注话题"){
+       	if(thing=="关注话题"){
 			kinds="GH";
 		}else if(thing=="关注专栏"){
 			kinds="GZ";
@@ -51,12 +50,12 @@ function select(self){
 		}
     	dynstate(kinds)
     }else if(thing=="用户信息"){
-    	console.log(thing+"3")
+    	//console.log(thing+"3")
     	$.get("admin/user",function(data){
     		//alert(JSON.stringify(data));
     		var info='<thead><tr><th>#</th><th>id</th><th>name</th><th>email</th><th>sign</th><th>profession</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.length;i++){
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].uids+'</td><td>'+data[i].uname+'</td><td>'+data[i].uemail+'</td><td>'+data[i].usign+'...</td><td>'+data[i].profession+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#infoModal" onclick="sendemail(this)">发送信息</a></td></tr>';
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].uids+'</td><td>'+data[i].uname+'</td><td>'+data[i].uemail+'</td><td>'+data[i].usign+'...</td><td>'+data[i].profession+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#infoModal" onclick="sendemail('+data[i].uname+')">发送信息</a></td></tr>';
     		}
     		info+='</tbody>';
     		console.info(info);
@@ -82,6 +81,29 @@ function select(self){
 function dynstate(kinds){
 	$.get("dynstate/all?kind="+kinds,function(data){
 		//alert(JSON.stringify(data));
+		var all="";
+		var GH="";
+		var GZ="";
+    	var GR="";
+    	var GS="";
+    	var DW="";
+    	var SQ="";
+    	var SW="";
+    	var DQ="";
+    	var DH="";
+    	var SH="";
+    	if(kinds=="all") all="active";
+		if(kinds=="GH") GH="active";
+		if(kinds=="GZ") GZ="active";
+		if(kinds=="GR") GR="active";
+		if(kinds=="GS") GS="active";
+		if(kinds=="DW") DW="active";
+		if(kinds=="SQ") SQ="active";
+		if(kinds=="SW") SW="active";
+		if(kinds=="DQ") DQ="active";
+		if(kinds=="DH") DH="active";
+		if(kinds=="SH") SH="active";
+    	
 		var info='<thead><tr><th>#</th><th>本人id</th><th>目标id</th><th>kind</th><th>具体id</th><th>time</th><th>操作</th></tr></thead><tbody>';
 		for(var i=0;i<data.length;i++){
 			var kind="";
@@ -111,23 +133,22 @@ function dynstate(kinds){
 		info+='</tbody>';
 		document.getElementById("table").innerHTML = info;
 		var infos="";
-		infos+='<li role="presentation" class="active" onclick="select(this)"><a>全部</a></li>';
-		infos+='<li role="presentation" onclick="select(this)"><a>关注人</a></li>';
-		infos+='<li role="presentation" onclick="select(this)"><a>关注话题</a></li>';
-		infos+='<li role="presentation" onclick="select(this)"><a>关注专栏</a></li>';
-		infos+='<li role="presentation" onclick="select(this)"><a>关注收藏夹</a></li>';
-		infos+='<li role="presentation" onclick="select(this)"><a>收藏文章</a></li>';
-		infos+='<li role="presentation" onclick="select(this)"><a>收藏问题</a></li>';
-		infos+='<li role="presentation" onclick="select(this)"><a>收藏回复</a></li>';
-		infos+='<li role="presentation" onclick="select(this)"><a>点赞问题</a></li>';
-		infos+='<li role="presentation" onclick="select(this)"><a>点赞文章</a></li>';
-		infos+='<li role="presentation" onclick="select(this)"><a>点赞回复</a></li>';
+		infos+='<li role="presentation" class="'+all+'" onclick="select(this)"><a>全部</a></li>';
+		infos+='<li role="presentation" class="'+GR+'" onclick="select(this)"><a>关注人</a></li>';
+		infos+='<li role="presentation" class="'+GH+'" onclick="select(this)"><a>关注话题</a></li>';
+		infos+='<li role="presentation" class="'+GZ+'" onclick="select(this)"><a>关注专栏</a></li>';
+		infos+='<li role="presentation" class="'+GS+'" onclick="select(this)"><a>关注收藏夹</a></li>';
+		infos+='<li role="presentation" class="'+SW+'" onclick="select(this)"><a>收藏文章</a></li>';
+		infos+='<li role="presentation" class="'+SQ+'" onclick="select(this)"><a>收藏问题</a></li>';
+		infos+='<li role="presentation" class="'+SH+'" onclick="select(this)"><a>收藏回复</a></li>';
+		infos+='<li role="presentation" class="'+DQ+'" onclick="select(this)"><a>点赞问题</a></li>';
+		infos+='<li role="presentation" class="'+DW+'" onclick="select(this)"><a>点赞文章</a></li>';
+		infos+='<li role="presentation" class="'+DH+'" onclick="select(this)"><a>点赞回复</a></li>';
 	    document.getElementById("nav-tabs").innerHTML = infos;
 	},"json")
 }
 
 function showdetail(self){
-	console.log($("#addDetail"));
 	var change="";
 	change+='<div class="easyui-dialog" title="My Dialog" style="width:400px;height:200px;" data-options="iconCls:\'icon-save\',resizable:true,modal:true"> ';
     change+='<form action="fav" method="post" id="addFavForm"><div class="topTitle">展示用户信息</div><table class="input_table">';
@@ -140,9 +161,6 @@ function showdetail(self){
 	document.getElementById("addDetail").innerHTML=change;
 }
 
-function sendemail(self){
-	console.log(self);
-}
 
 function fun(ids,kind,title,content,tname,author,time){
 	document.getElementById("ids").innerHTML=ids;
@@ -154,6 +172,14 @@ function fun(ids,kind,title,content,tname,author,time){
 	document.getElementById("time").innerHTML=time;
 }
 
+function sendemail(name){
+	document.getElementById("selfid").innerHTML="管理员";
+	document.getElementById("aimid").innerHTML=name;
+	document.getElementById("sendma");
+	//$("#infoForm").submit();//表单提交
+	//alert("发送成功");
+}
+
 function ok(ids,kind){
-	alert('成功！') 
+	alert("提交成功");
 }
