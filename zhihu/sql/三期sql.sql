@@ -134,8 +134,8 @@ create table explore(
 );
 
 create table infomation(
-   selfid VARCHAR2(30), --发件人id
-   aimid VARCHAR2(30), --收件人id
+   selfname VARCHAR2(30), --发件人用户名
+   aimname VARCHAR2(30), --收件人用户名
    times VARCHAR2(30), --时间
    info VARCHAR2(300)  --内容
 );
@@ -190,7 +190,9 @@ INSERT INTO collents(cid,ckind,cwid,cfid)VALUES('1006','e','1004','10102');
 DROP TABLE collent
 SELECT * FROM collents
 
-    
+insert into infomation(selfname,aimname,info) values('1001','1002','我是曾严');
+
+
 SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE selfId='1001'AND kind='s')d WHERE c.c_id=d.idnum)z WHERE e.e_id=z.c_wId
 
 ---查询最新的动态
