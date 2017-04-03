@@ -14,4 +14,8 @@
 			</if>
         
     </select>
+    
+    <select id="listAnswer" parameterType="Strng" resultType="ReplyMap">
+    	select * from 
+    </select>
 </mapper>
