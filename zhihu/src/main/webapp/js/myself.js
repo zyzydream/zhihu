@@ -11,7 +11,7 @@ $.get("dynstate/m1",function(data){
 			+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 			+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">1</span>'
 			+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
-			+' href="/zhihu/page/myself5.jsp"> 收藏 <span class="Tabs-meta">1</span>'
+			+' href="javascript:void(0)" onclick="myfavorite()"> 收藏 <span class="Tabs-meta">1</span>'
 			+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 			+'<a class="Tabs-link" href="/zhihu/page/myself6.jsp">关注</a></li></ul>'
 			+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
@@ -46,7 +46,7 @@ function Myanswer3(){
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">1</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
-				+' href="/zhihu/page/myself5.jsp"> 收藏 <span class="Tabs-meta">1</span>'
+				+' href="javascript:void(0)" onclick="myfavorite()"> 收藏 <span class="Tabs-meta">1</span>'
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="/zhihu/page/myself6.jsp">关注</a></li></ul>'
 				+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
@@ -82,7 +82,7 @@ function My(){
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">1</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
-				+' href="/zhihu/page/myself5.jsp"> 收藏 <span class="Tabs-meta">1</span>'
+				+' href="javascript:void(0)" onclick="myfavorite()"> 收藏 <span class="Tabs-meta">1</span>'
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="/zhihu/page/myself6.jsp">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
@@ -124,13 +124,47 @@ function MyQuestion(){
 			+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 			+' class="Tabs-link is-active" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">1</span>'
 			+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
-			+' href="/zhihu/page/myself5.jsp"> 收藏 <span class="Tabs-meta">1</span>'
+			+' href="javascript:void(0)" onclick="myfavorite()"> 收藏 <span class="Tabs-meta">1</span>'
 			+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 			+'<a class="Tabs-link" href="/zhihu/page/myself6.jsp">关注</a></li></ul>'
 			+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
-			+'<h2 style="padding-left: 10px; padding-top: 10px">我的动态</h2>'
-			+'</div>';
+			+'<h2 style="padding-left: 10px; padding-top: 10px">我的提问</h2>'
+			+'</div><div class="List-item"><div class="ContentItem" data-za-module="QuestionItem"'
+			+'<h2 class="ContentItem-title"><div class="QuestionItem-title">'
+			+'<a href="#" target="_blank">'+data[i].qtitle+'</a></div></h2>'
+			+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'
+			+data[i].qtime+'</span> <span class="ContentItem-statusItem">'+data[i].sum+' 个回答</span></div></div></div>';
 		}
 		document.getElementById("myself").innerHTML = myquestions;
 	},'json');
+}
+
+function myfavorite(){
+	$.get("dynstate/m7",function(data){
+		var myfavorite="";
+		for(var i=0;i<data.length;i++){
+			myfavorite+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
+				+'<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a'
+				+' class="Tabs-link" href="/zhihu/dynstate/m2">动态</a></li>'
+				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
+				+'<span class="Tabs-meta">1</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">2</span>'
+				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
+				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">1</span>'
+				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link is-active"'
+				+' href="javascript:void(0)" onclick="myfavorite()"> 收藏 <span class="Tabs-meta">1</span>'
+				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
+				+'<a class="Tabs-link" href="/zhihu/page/myself6.jsp">关注</a></li></ul>'
+				+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
+				+'<h2 style="padding-left: 10px; padding-top: 10px">我的收藏夹</h2>'
+				+'</div><div class="List-item"><div class="ContentItem" data-za-module="QuestionItem"'
+				+'<h2 class="ContentItem-title"><div class="QuestionItem-title">'
+				+'<a href="#" target="_blank">'+data[i].qtitle+'</a></div></h2>'
+				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'
+				+data[i].qtime+'</span> <span class="ContentItem-statusItem">'+data[i].sum+' 个回答</span></div></div></div>';
+		}
+		
+	},'json');
+	document.getElementById("myself").innerHTML = myfavorite;
 }

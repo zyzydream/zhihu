@@ -56,6 +56,8 @@ CREATE TABLE favorite(
    fname VARCHAR2(30),
    ftime VARCHAR2(30)
 );
+select * from FAVORITE where fcreid='1003';
+insert into FAVORITE(fid,fcreid,fname,ftime) values('1','1003','我的收藏夹','2017-4-3');
 /*话题表
     tstId :子话题id*/
 CREATE TABLE topics(

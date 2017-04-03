@@ -166,103 +166,26 @@
 					</div>
 				</div>
 			</div>
-
-
-			<div class="panel panel-default"
+		
+		<div class="panel panel-default"
 				style="width: 660px; margin-left: 15px;">
 				<div class="panel-body">
 					<span id="myself">
-						<div class="header1">
-							<ul class="Tabs ProfileMain-tabs" role="tablist">
-								<li class="Tabs-item Tabs-item--noMeta" role="tab"
-									aria-controls="Profile-activities"><a
-									class="Tabs-link is-active" href="/zhihu/dynstate/m2">动态</a></li>
-								<li class="Tabs-item" role="tab" aria-controls="Profile-answers">
-									<a class="Tabs-link" href="javascript:void(0)"
-									onclick="Myanswer3()"> 回答 <span class="Tabs-meta">1</span>
-								</a>
-								</li>
-								<li class="Tabs-item" role="tab" aria-controls="Profile-posts">
-									<a class="Tabs-link" href="/zhihu/page/myself3.jsp"> 分享 <span
-										class="Tabs-meta">2</span>
-								</a>
-								</li>
-								<li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a
-									class="Tabs-link" href="/zhihu/page/myself4.jsp"> 提问 <span
-										class="Tabs-meta">1</span>
-								</a></li>
-								<li class="Tabs-item" role="tab"
-									aria-controls="Profile-collections"><a class="Tabs-link"
-									href="/zhihu/page/myself5.jsp"> 收藏 <span class="Tabs-meta">1</span>
-								</a></li>
-								<li class="Tabs-item Tabs-item--noMeta" role="tab"
-									aria-controls="Profile-following"><a class="Tabs-link"
-									href="/zhihu/page/myself6.jsp">关注</a></li>
-							</ul>
-						</div>
-
-						<div class="page-header" style="margin: 0px; width: 640px;">
-							<h2 style="padding-left: 10px; padding-top: 10px">我的动态</h2>
-						</div>
-						<div class="row featurette"
-							style="padding-left: 10px; padding-top: 10px">
-							<div class="col-md-7">
-								<h2 class="featurette-heading" style="font-size: 20px;">
-									<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].ttopic+'</span><br />'+data[i].etitle+'
-								</h2>
-								<h2 class="featurette-heading" style="font-size: 13px;">
-									<img src="/zhihu/images/touxiang.jpg"
-										style="width: 50px; height: 50px">&nbsp;&nbsp;&nbsp;
-									'+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"
-										style="font-size: 12px; font-weight: 300;">'+data[i].usign+'</span>
-								</h2>
-								<p class="lead" style="font-size: 14px;">'+data[i].econtent+'</p>
-								<span> <a href="#"
-									style="font-size: 13px; font-weight: 40">阅览 <span
-										class="badge" style="width: 20px; padding: 0px;">42</span>
-								</a> <a href="#" style="font-size: 13px; font-weight: 40">点赞 <span
-										class="badge" style="width: 20px; padding: 0px;">42</span></a> <a
-									href="#" style="font-size: 13px; font-weight: 40">收藏 <span
-										class="badge" style="width: 20px; padding: 0px;">42</span></a>
-								</span>
-							</div>
-							<div class="col-md-5">
-								<img class="featurette-image img-responsive center-block"
-									data-src="holder.js/500x500/auto"
-									tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto"
-									alt="Generic placeholder image">
-							</div>
-						</div>
-						<hr class="featurette-divider">
+					
 					</span>
 				</div>
-			</div>
-			<!-- 分享 -->
-			<!-- <div class="List-header">
-				<h4 class="List-headerText">
-					<div class="SubTabs">
-						<a class="SubTabs-item is-active" href="/people/rui-you-93/pins/posts">我的文章</a>
-						<a class="SubTabs-item" href="/people/rui-you-93/pins/columns">我的专栏</a>
-					</div>
-				</h4>
-				<div class="List-headerOptions"></div>
-			</div>
-			<div class="EmptyState">
-				<div class="EmptyState-inner">
-					<span>还没有分享</span>
-				</div>
-			</div> -->
-
-			<div class="panel panel-default"
-				style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
-				<div class="panel-body">
-					<ul class="list-inline">
-						<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
-						<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
-					</ul>
-				</div>
+		</div>
+		<div class="panel panel-default"
+			style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
+			<div class="panel-body">
+				<ul class="list-inline">
+					<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
+					<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
+				</ul>
 			</div>
 		</div>
+		
+	</div>
 	</div>
 
 	<script src="js/jquery.min.js"></script>

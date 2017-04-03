@@ -5,6 +5,15 @@ public class Favorite {
 	private String fcreid;
 	private String fname;
 	private String ftime;
+	
+	
+	public Favorite(String fid, String fcreid, String fname, String ftime) {
+		super();
+		this.fid = fid;
+		this.fcreid = fcreid;
+		this.fname = fname;
+		this.ftime = ftime;
+	}
 	public String getFid() {
 		return fid;
 	}

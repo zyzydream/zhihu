@@ -91,4 +91,8 @@
 		(select count(reqid) sum from REPLY where rkind='Q' and reqid=(select reqid from question where qautid=#{uids})) t
 		where q.qautid=#{uids}
 	</select>
+	
+	<select id="listMyFavorite" parameterType="Users" resultType="Favorite">
+		select * from FAVORITE where fcreid=#{uids}
+	</select>
 </mapper>
