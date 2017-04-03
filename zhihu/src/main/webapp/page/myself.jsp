@@ -168,7 +168,8 @@
 			</div>
 
 
-			<div class="panel panel-default" style="width:660px;margin-left: 15px;">
+			<div class="panel panel-default"
+				style="width: 660px; margin-left: 15px;">
 				<div class="panel-body">
 					<span id="myself">
 						<div class="header1">
@@ -236,15 +237,29 @@
 					</span>
 				</div>
 			</div>
-			
-			<div class="panel panel-default" style="width:283px;height:120px; margin-left: 700px; margin-top: -318px">
+			<!-- 分享 -->
+			<div class="List-header">
+				<h4 class="List-headerText">
+					<div class="SubTabs">
+						<a class="SubTabs-item is-active" href="/people/rui-you-93/pins/posts">我的文章</a>
+						<a class="SubTabs-item" href="/people/rui-you-93/pins/columns">我的专栏</a>
+					</div>
+				</h4>
+				<div class="List-headerOptions"></div>
+			</div>
+			<div class="EmptyState">
+				<div class="EmptyState-inner">
+					<span>还没有分享</span>
+				</div>
+			</div>
+
+			<div class="panel panel-default"
+				style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
 				<div class="panel-body">
-				<ul class="list-inline">
-				  <li style="padding-left: 40px;padding-top: 10px;">关注了</li>
-				  <li style="padding-left: 80px;padding-top: 10px;">关注者</li>
-				</ul>
-					<!-- <p class="text-left">关注了</p>
-					<p class="text-right">关注者</p> -->
+					<ul class="list-inline">
+						<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
+						<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
+					</ul>
 				</div>
 			</div>
 		</div>

@@ -36,12 +36,12 @@ CREATE TABLE essay(
    escid VARCHAR2(30),
    etid VARCHAR2(10)
 );
-INSERT INTO essay(eID,eautid,econtent,etime,etitle,etid)VALUES('1001','1001','aaaaaaaa','2017-3-1','计算机','10001');
-INSERT INTO essay(eID,eautid,econtent,etime,etitle,etid)VALUES('1002','1001','ccccc','2017-3-2','java','10002');
-INSERT INTO essay(eID,eautid,econtent,etime,etitle,etid)VALUES('1003','1002','ddddd','2017-3-3','主机','10001');
-INSERT INTO essay(eID,eautid,econtent,etime,etitle,etid)VALUES('1004','1002','bbbbb','2017-3-4','c++','10002');
+INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES('1001','1003','ddddd','2017-3-3','主机','10001');
+
 select * from essay
 drop table essay
+
+select e.*,u.uname,u.usign,u.upic from ESSAY e,USERS u where eautid=1003
 
 /*专栏表*/
 CREATE TABLE scolumn(
