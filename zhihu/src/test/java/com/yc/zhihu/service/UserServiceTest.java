@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 
@@ -26,7 +27,7 @@ public class UserServiceTest {
 	public void testListrelated() {
 		Users user=new Users();
 		user.setUids("1001");
-		List<Essay> dy=userService.listrelated(user);
+		List<Explore> dy=userService.listrelated(user);
 		System.out.println(dy);
 		assertNotNull(dy);
 	}

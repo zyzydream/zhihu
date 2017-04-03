@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.mapper.UserMapper;
@@ -19,7 +20,7 @@ public class UserServiceImpl implements UserService{
 	
 	//列出最新动态
 	@Override
-	public List<Essay> listrelated(Object user) {
+	public List<Explore> listrelated(Object user) {
 		return userMapper.listrelated(user);
 	}
 
@@ -42,6 +43,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean register(Users users) {
 		return  (userMapper.AddUsers(users)>0);
+	}
+
+	@Override
+	public List<Explore> listrelatedQ(Object user) {
+		return userMapper.listrelatedQ(user);
 	}
 
 }

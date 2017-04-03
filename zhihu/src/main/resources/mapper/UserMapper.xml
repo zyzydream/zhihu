@@ -5,14 +5,26 @@
 <!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
 <mapper namespace="com.yc.zhihu.mapper.UserMapper">
 
-	<select id="listrelated" parameterType="Users" resultType="Essay">
-		SELECT * FROM Topics t,
+	<select id="listrelated" parameterType="Users" resultType="Explore">
+		SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitle title,ue.econtent content,ue.etime times FROM Topics t,
 		  (SELECT * FROM USERS u,
-		    (SELECT e.* FROM essay e,
+		    (SELECT * FROM essay e,
 		       (select ids from dynstate PARTITION(GH) WHERE selfid=#{uids})d
        		 WHERE e.etid=d.ids)e
 		   WHERE u.uids=e.eautid)ue
 		WHERE ue.etid=t.tid
+	</select>
+	
+	<select id="listrelatedQ" parameterType="Users" resultType="Explore">
+	select tre.rid ids, q.qtitle title,tre.rcontent content,tre.rtid tid,tre.ttopic tname,tre.uids uids,tre.usign usign ,tre.uname author,tre.rtime times from QUESTION q,
+       (SELECT * FROM Topics t,
+		  (SELECT * FROM USERS u,
+		    (SELECT r.* FROM reply r,
+		       (select ids from dynstate PARTITION(GH) WHERE selfid=#{uids})d
+       		 WHERE r.rtid=d.ids)r
+		   WHERE u.uids=r.remitid)ue
+		WHERE ue.rtid=t.tid)tre
+	where tre.reqid=q.qid
 	</select>
 	
 	<select id="listTopics" parameterType="Users" resultType="Topics">

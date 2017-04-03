@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="images/logohead.png">
-<title>Dashboard Template for Bootstrap</title>
+<title>知乎后台</title>
 <link href="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/dashboard.css" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="easyui/themes/icon.css">
