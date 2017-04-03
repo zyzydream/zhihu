@@ -21,12 +21,8 @@ public class InformationHandler {
 	@RequestMapping(value="send",method=RequestMethod.POST)
 	@ResponseBody
 	public int send(Infomation info) throws UnsupportedEncodingException{
-		System.out.println("infomation进入===>"+info);
-		String selfname=new String(info.getSelfname().getBytes("ISO-8849-1"),"UTF-8");
-		String aimname=new String(info.getAimname().getBytes("ISO-8849-1"),"UTF-8");
-		String infos=new String(info.getInfo().getBytes("ISO-8849-1"),"UTF-8");
+		System.out.println("infomation进入===>"+info.toString());
 		//return infomationService.send(info);
-		System.out.println(selfname+"-"+aimname+"-"+infos);
 		return 0;
 	}
 }
