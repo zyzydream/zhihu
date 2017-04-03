@@ -1,21 +1,22 @@
 package com.yc.zhihu.entity;
 
 public class Infomation {
-	 private String selfid;
-	 private String aimid;
+	 private String selfname;
+	 private String aimname;
 	 private String times;
 	 private String info;
-	public String getSelfid() {
-		return selfid;
+	
+	public String getSelfname() {
+		return selfname;
 	}
-	public void setSelfid(String selfid) {
-		this.selfid = selfid;
+	public void setSelfname(String selfname) {
+		this.selfname = selfname;
 	}
-	public String getAimid() {
-		return aimid;
+	public String getAimname() {
+		return aimname;
 	}
-	public void setAimid(String aimid) {
-		this.aimid = aimid;
+	public void setAimname(String aimname) {
+		this.aimname = aimname;
 	}
 	public String getTimes() {
 		return times;
@@ -29,6 +30,9 @@ public class Infomation {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-	 
-	 
+	@Override
+	public String toString() {
+		return "Infomation [selfname=" + selfname + ", aimname=" + aimname + ", times=" + times + ", info=" + info
+				+ "]";
+	}
 }

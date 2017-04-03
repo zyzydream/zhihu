@@ -56,7 +56,7 @@ function select(self){
     		var info='<thead><tr><th>#</th><th>id</th><th>name</th><th>email</th><th>sign</th><th>profession</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.length;i++){
     			var name=data[i].uname
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].uids+'</td><td>'+data[i].uname+'</td><td>'+data[i].uemail+'</td><td>'+data[i].usign+'...</td><td>'+data[i].profession+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#infoModal" onclick="sendemail('+name+')">发送信息</a></td></tr>';
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].uids+'</td><td>'+data[i].uname+'</td><td>'+data[i].uemail+'</td><td>'+data[i].usign+'...</td><td>'+data[i].profession+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#infoModal" onclick="sendemail(\''+name+'\')">发送信息</a></td></tr>';
     		}
     		info+='</tbody>';
     		//console.info(info);
@@ -173,18 +173,17 @@ function fun(ids,kind,title,content,tname,author,time){
 	document.getElementById("time").innerHTML=time;
 }
 
-function sendemail(){
-	console.log(document.getElementById("aimname"));
+function sendemail(name){
 	document.getElementsByName("selfname")[0].value="管理员";
-	//document.getElementsByName("aimname")[0].value=name;
-//	$("#sendmail").click(function(data){
-//		$("#infoForm").submit();//表单提交
-//		if(data>0){
-//			alert("发送成功");
-//		}else{
-//			alert("发送失败");
-//		}
-//	});
+	document.getElementsByName("aimname")[0].value=name;
+	$("#sendmail").click(function(data){
+		$("#infoForm").submit();//表单提交
+		if(data>0){
+			alert("发送成功");
+		}else{
+			alert("发送失败");
+		}
+	});
 }
 
 function ok(ids,kind){

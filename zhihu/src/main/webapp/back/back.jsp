@@ -273,16 +273,16 @@
 					<h4 class="modal-title" id="myModalLabel">推荐详情</h4>
 				</div>
 				<div class="modal-body">
-				    <form id="infoForm"  method="post" action="infomation/send">
+				    <form id="infoForm"  method="post" action="information/send">
 				    <table>
 				       <tr>
 				          <td><label>发件人：</label></td>
-				          <td><input type="text" disabled="disabled" name="selfname" id="selfname"/></td>
+				          <td><input type="text"  name="selfname" id="selfname"/></td>
 				          <td></td>
 				       </tr>
 				       <tr>
 				          <td><label>收件人：</label></td>
-				          <td><input type="text" disabled="disabled" name="aimname"  id="aimname"/></td>
+				          <td><input type="text" name="aimname"  id="aimname"/></td>
 				          <td></td>
 				       </tr>
 				       <tr>
