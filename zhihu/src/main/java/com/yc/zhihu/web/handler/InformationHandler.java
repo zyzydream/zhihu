@@ -2,6 +2,8 @@ package com.yc.zhihu.web.handler;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +22,14 @@ public class InformationHandler {
 	
 	@RequestMapping(value="send",method=RequestMethod.POST)
 	@ResponseBody
-	public int send(Infomation info) throws UnsupportedEncodingException{
-		System.out.println("infomation进入===>"+info.toString());
-		//return infomationService.send(info);
-		return 0;
+	public int send(Infomation info,HttpServletRequest request) throws UnsupportedEncodingException{
+		String selfname=new String(info.getSelfname().getBytes("iso-8859-1"),"utf-8");
+		String aimname=new String(info.getAimname().getBytes("iso-8859-1"),"utf-8");
+		String infomation=new String(info.getInfo().getBytes("iso-8859-1"),"utf-8");
+		Infomation infos=new Infomation();
+		infos.setAimname(aimname);
+		infos.setInfo(infomation);
+		infos.setSelfname(selfname);
+		return infomationService.send(infos);
 	}
 }
