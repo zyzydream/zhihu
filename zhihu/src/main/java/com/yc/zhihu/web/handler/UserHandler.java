@@ -33,6 +33,7 @@ public class UserHandler {
 			request.setAttribute(ServletUtil.ERROR_MASSAGE, "用户名或密码错误！！！");
 			return "/back/login.jsp";	
 		}else{
+			request.getSession().setAttribute("username", users.getUname());
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
 			return "redirect:/page/homepage.jsp";	
 		}	

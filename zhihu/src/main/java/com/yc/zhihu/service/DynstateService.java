@@ -10,5 +10,5 @@ public interface DynstateService {
 
 	List<Users> list(Dynstate dynstate);
 
-	Reply answer(String id);
+	Reply answer(Users users);
 }

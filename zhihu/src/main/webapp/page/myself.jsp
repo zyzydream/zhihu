@@ -180,7 +180,7 @@
 				<ul class="Tabs ProfileMain-tabs" role="tablist">
 					<li class="Tabs-item Tabs-item--noMeta" role="tab"
 						aria-controls="Profile-activities"><a
-						class="Tabs-link is-active" href="/zhihu/page/myself.jsp">动态</a>
+						class="Tabs-link is-active" href="dynstate/m1">动态</a>
 					</li>
 					<li class="Tabs-item" role="tab" aria-controls="Profile-answers">
 						<a class="Tabs-link" href="/zhihu/page/myself2.jsp"> 回答 <span

@@ -30,7 +30,7 @@
 
 			<div class="top-nav-profile">
 				<a href="" class="zu-top-nav-userinfo "> <span class="name"
-					id="name">{LoginUser.u_name}</span> <img class="Avatar" src=""
+					id="name"><%=request.getSession().getAttribute("username") %></span> <img class="Avatar" src=""
 					alt="" /> <span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>

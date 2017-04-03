@@ -103,9 +103,13 @@ select * from REPLY;
 insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('10001','1','Q',null,'1003','1001','java是一门语言','2017-4-3')
 
 select t.*,q.qtitle from 
-(select r.*,u.uname,u.usign from REPLY r,users u where remitid=1003 and uids=1003) t,question q
-where t.reqid=1;
+(select r.*,u.uname,u.usign,r.reqid a from REPLY r,users u where remitid=1003 and uids=1003) t,question q
+where t.reqid=a;
 
+		select t.*,q.qtitle from
+		(select r.*,u.uname,u.usign,r.reqid a from REPLY r,users u where remitid='1003'
+		and uids=remitid) t,question q
+		where t.reqid=a
 
 /*动态总表*/
 CREATE TABLE dynstate(

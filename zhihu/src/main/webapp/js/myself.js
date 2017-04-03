@@ -1,3 +1,3 @@
-$.get("dynstate/m1",function(data){
-	alert(1);
+$.get("dynstate/m1?uids=1003",function(data){
+	alert(data);
 },'json');

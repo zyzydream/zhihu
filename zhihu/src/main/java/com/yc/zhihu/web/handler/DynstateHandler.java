@@ -31,9 +31,9 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/m1",method=RequestMethod.GET)
 	@ResponseBody
-	public Reply Dynstatehuida(String id){
-		System.out.println("进来了 ====>  id");
-		return dynstateService.answer(id);
+	public Reply Dynstatehuida(Users users){
+		System.out.println("进来了 ====>  users");
+		return dynstateService.answer(users);
 	}
 	
 }

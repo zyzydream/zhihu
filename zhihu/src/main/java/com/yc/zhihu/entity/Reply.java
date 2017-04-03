@@ -11,6 +11,8 @@ public class Reply {
 	private String rreceid;
 	private String rcontent;
 	private String rtime;
+	private Users users;
+	private Question question;
 	
 	
 
@@ -18,11 +20,8 @@ public class Reply {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-
-
 	public Reply(String rid, String reqid, String rkind, String rrid, String remitid, String rreceid, String rcontent,
-			String rtime) {
+			String rtime, Users users, Question question) {
 		super();
 		this.rid = rid;
 		this.reqid = reqid;
@@ -32,7 +31,50 @@ public class Reply {
 		this.rreceid = rreceid;
 		this.rcontent = rcontent;
 		this.rtime = rtime;
+		this.users = users;
+		this.question = question;
 	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+
+
+
+
+
+
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+
+
+
+
+
+
+
+	public Question getQuestion() {
+		return question;
+	}
+
+
+
+
+
+
+
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+
+
+
+
 
 
 
@@ -101,15 +143,17 @@ public class Reply {
 		this.rtime = rtime;
 	}
 
-
-
-
 	@Override
 	public String toString() {
-		return "\nReply [rid=" + rid + ", reqid=" + reqid + ", rkind=" + rkind + ", rrid=" + rrid + ", remitid=" + remitid
-				+ ", rreceid=" + rreceid + ", rcontent=" + rcontent + ", rtime=" + rtime + "]";
+		return "Reply [rid=" + rid + ", reqid=" + reqid + ", rkind=" + rkind + ", rrid=" + rrid + ", remitid=" + remitid
+				+ ", rreceid=" + rreceid + ", rcontent=" + rcontent + ", rtime=" + rtime + ", users=" + users
+				+ ", question=" + question + "]";
 	}
 
+
+
+
+	
 	
 
 	
