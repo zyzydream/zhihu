@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.UserService;
@@ -54,9 +55,22 @@ public class UserHandler {
 	//列出最新动态
 	@RequestMapping(value="/dynstate",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Essay> listDynstate(HttpServletRequest request){
+	public List<Explore> listDynstate(HttpServletRequest request){
 		System.out.println("listDynstate ====> "+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return usersService.listrelated(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		//用来查找有关话题的文章
+		List<Explore> explores= usersService.listrelated(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	    for(Explore explore:explores){
+	    	System.out.println(explore);
+	    }
+	    System.out.println("------------------------");
+	    //用来查找有关话题的问题
+	    List<Explore> questions=usersService.listrelatedQ(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	    for(Explore question:questions){
+	    	System.out.println(question);
+	    }
+	    //
+	    return null;
+	    
 	}
 	
 	//列出新消息

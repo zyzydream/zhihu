@@ -8,11 +8,18 @@ public class Explore {
 	private String content;
 	private String tid;
 	private String tname;
+	private String usign;
 	private String uids;
 	private String author;
 	private String times;
 	private String checks;
 	
+	public String getUsign() {
+		return usign;
+	}
+	public void setUsign(String usign) {
+		this.usign = usign;
+	}
 	public String getTimes() {
 		return times;
 	}

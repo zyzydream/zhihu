@@ -79,8 +79,10 @@ CREATE TABLE question(
    qinid VARCHAR2(60),
    qtitle VARCHAR2(30),
    qdetail VARCHAR2(300),
+   qtid  VARCHAR2(30), --话题id
    qtime VARCHAR2(30)
 );
+drop table question
 /*回复表
     reqid :文章或问题id
     rkind :是文章还是问题
@@ -96,8 +98,11 @@ CREATE TABLE reply(
    remitid VARCHAR2(30),
    rreceid VARCHAR2(30),
    rcontent VARCHAR2(300),
+   rtid VARCHAR2(30),
    rtime VARCHAR2(30)
 );
+  
+
 select * from REPLY;
 insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('10001','1','Q',null,'1003','1001','java是一门语言','2017-4-3')
 
@@ -208,6 +213,7 @@ SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE se
 
 ---查询最新的动态
     ---查询有关话题的问题和文章
+       --文章
      SELECT * FROM Topics t,
 		  (SELECT * FROM USERS u,
 		    (SELECT e.* FROM essay e,
@@ -215,11 +221,20 @@ SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE se
        		 WHERE e.etid=d.ids)e
 		   WHERE u.uids=e.eautid)ue
 		WHERE ue.etid=t.tid
+		--问题
+	select tre.rid ids, q.qtitle title,tre.rcontent content,tre.rtid tid,tre.ttopic tname,tre.uids uids,tre.usign usign ,tre.uname author,tre.rtime times from QUESTION q,
+       (SELECT * FROM Topics t,
+		  (SELECT * FROM USERS u,
+		    (SELECT r.* FROM reply r,
+		       (select ids from dynstate PARTITION(GH) WHERE selfid='1001')d
+       		 WHERE r.rtid=d.ids)r
+		   WHERE u.uids=r.remitid)ue
+		WHERE ue.rtid=t.tid)tre
+	where tre.reqid=q.qid
+      
     --查询有关我关注的人的最新动态
 
 --
-
-
 
 drop table users;
 drop table topics;
