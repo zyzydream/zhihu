@@ -23,7 +23,7 @@ CREATE TABLE admins(
    adid Varchar2(30),
    adname VARCHAR2(15),
    adpassword VARCHAR2(30)
-);07
+);
 /*文章表
       eAutId :作者id
       escId :所属专栏id 默认为null*/
