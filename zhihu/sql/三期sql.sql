@@ -15,7 +15,7 @@ commit;
 select * from USERS where uemail='123' and upassword='a' 
 insert into users(uemail,uname,upassword) values('123','zy','a');
 drop table users;
-select * from USERSE
+select * from USERS
 
 /*管理员信息表*/
 CREATE TABLE admins(
@@ -121,17 +121,6 @@ select q.*,t.s from question q,
 where q.qautid='1003';
  
 
-
-
-select t.*,q.qtitle from 
-(select r.*,u.uname,u.usign,r.reqid a from REPLY r,users u where remitid=1003 and uids=1003) t,question q
-where t.reqid=a;
-
-		select t.*,q.qtitle from
-		(select r.*,u.uname,u.usign,r.reqid a from REPLY r,users u where remitid='1003'
-		and uids=remitid) t,question q
-		where t.reqid=a
-
 /*动态总表*/
 CREATE TABLE dynstate(
    selfid VARCHAR2(30), --本人id
@@ -155,6 +144,19 @@ PARTITION BY LIST(kind)(
 );
 insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
 
+select 
+(select aimid from DYNSTATE where selfid='1003') myattenp,
+(select aimid from DYNSTATE where selfid=(select aimid from DYNSTATE where selfid='1003')) myattenwho
+from dual;
+
+
+select
+(select count(aimid) from dynstate where selfid='1003') myatten,
+(select count(selfid) from DYNSTATE where aimid='1003') attenme,
+(select count(ids) from DYNSTATE where selfid='1003' and kind='GH') myattentop,
+(select count(ids) from DYNSTATE where selfid='1003' and kind='GZ') myattenzhuanlan,
+(select count(ids) from DYNSTATE where selfid='1003' and kind='GS') myattenfav
+from dual;
 
 select f.*,t.sum from FAVORITE f,
 (select count(ids) sum from DYNSTATE where selfid='1003') t
@@ -290,15 +292,13 @@ SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE se
             where e.
 	
 	
---
+
 
 drop table users;
 drop table topics;
 drop table essay;
 drop table dynstate;
-drop table users;
-drop table users;
-drop table users;
+
 
 
 

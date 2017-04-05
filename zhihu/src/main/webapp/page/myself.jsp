@@ -27,12 +27,7 @@
 			data-za-module="TopNavBar"
 			style="width: 1349px; top: 0px; left: 0px;">
 		<div class="AppHeader-inner">
-			<a href="/" aria-label="知乎">知乎 <!-- <a class="navbar-brand" href="#">知乎</a> -->
-				<!-- <svg class="Icon Icon--logo"
-						 aria-hidden="true"
-						style="fill: rgb(15, 136, 235); height: 30px; width: 64px;">
-				</svg> -->
-			</a>
+			<a href="/" aria-label="知乎">知乎</a>
 			<nav class="AppHeader-nav" role="navigation"> <a
 				class="AppHeader-navItem" href="/page/homepage.jsp">首页</a> <a
 				class="AppHeader-navItem" href="/explore">发现</a> <a
@@ -44,8 +39,8 @@
 							<div class="Popover">
 								<div class="SearchBar-input Input-wrapper Input-wrapper--grey">
 									<input id="Popover-21490-83503-toggle" class="Input"
-										type="text" maxlength="100" value="" autocomplete="off"
-										role="combobox" aria-expanded="false" aria-autocomplete="list"
+										type="text" maxlength="100" value="" role="combobox"
+										aria-expanded="false" aria-autocomplete="list"
 										aria-activedescendant="AutoComplete-21488-96386--1"
 										aria-haspopup="true" aria-owns="Popover-21490-83503-content"
 										placeholder="搜索你感兴趣的内容…">
@@ -73,7 +68,7 @@
 						<button id="Popover-21674-74337-toggle"
 							class="Button Messages-icon Button--plain" type="button"
 							aria-haspopup="true" aria-expanded="false"
-							aria-owns="Popover-21674-74337-content"></button>
+							aria-owns="Popover-21674-74337-content">消息</button>
 					</div>
 				</div>
 				<div class="AppHeader-profile">
@@ -95,32 +90,18 @@
 		<div class="container">
 
 			<div id="ProfileHeader" class="ProfileHeader"
-				data-za-module="Unknown" data-za-module-info="{"card":{"content":{"type":"User","token":"rui-you-93"}}}">
+				data-za-module="Unknown">
 				<div class="Card">
 					<div class="ProfileHeader-userCover">
 						<div class="UserCoverEditor">
 							<div class="UserCoverGuide">
 								<div class="UserCoverGuide-inner">
 									<div class="UserCoverGuide-buttonContainer">
-										<button class="Button DynamicColorButton" type="button">
-											上传封面图片</button>
+										<button class="Button DynamicColorButton" type="button"
+											id="changgeimage" onclick="updatePic()">上传封面图片</button>
 									</div>
-									<div class="UserCoverGuide-dialog">
-										<h4 class="UserCoverGuide-dialogHead">上传一张图片，展示在这里</h4>
-										<div class="UserCoverGuide-dialogContent">
-											<p class="UserCoverGuide-dialogDescription">你可以使用自己的摄影作品、你喜欢的照片，或是任何能展现你特质的图片。</p>
-											<a href="https://www.zhihu.com/question/21757507"
-												target="_blank">哪里能找到可免费使用的优质图片？</a>
-										</div>
-									</div>
+
 								</div>
-								<ul class="UserCoverGuide-items">
-									<li class="UserCoverGuide-item" style="background-image: url("https://static.zhihu.com/heifetz/guide-cover-1.4423ce0fcec2132f058c.jpg");"></li>
-									<li class="UserCoverGuide-item" style="background-image: url("https://static.zhihu.com/heifetz/guide-cover-2.4c5018526e42872a056b.jpg");"></li>
-									<li class="UserCoverGuide-item" style="background-image: url("https://static.zhihu.com/heifetz/guide-cover-3.d59ac68c89726deb3a26.jpg");"></li>
-									<li class="UserCoverGuide-item" style="background-image: url("https://static.zhihu.com/heifetz/guide-cover-4.5518ba1a1aeb013b4c5c.jpg");"></li>
-									<li class="UserCoverGuide-item" style="background-image: url("https://static.zhihu.com/heifetz/guide-cover-5.2b2adaebc37bf48bacae.jpg");"></li>
-								</ul>
 							</div>
 							<div class="UserCover UserCover--colorBlock"></div>
 							<input type="file" accept="image/png,image/jpeg"
@@ -151,8 +132,8 @@
 							<div class="ProfileHeader-content">
 								<div class="ProfileHeader-contentHead">
 									<h1 class="ProfileHeader-title">
-										<span class="ProfileHeader-name">睿又</span> <span
-											class="RichText ProfileHeader-headline">IT</span>
+										<span class="ProfileHeader-name"><%=request.getSession().getAttribute("username")%></span>
+										<span class="RichText ProfileHeader-headline"><%=request.getSession().getAttribute("usign")%></span>
 									</h1>
 								</div>
 								<span class="ProfileHeader-tips">暂无个人资料</span>
@@ -167,24 +148,106 @@
 				</div>
 			</div>
 
-			<div class="panel panel-default"
-				style="width: 660px; margin-left: 15px;">
-				<div class="panel-body">
-					<span id="myself"> </span>
+			<div id="zhuyezhuti">
+				<div class="panel panel-default"
+					style="width: 660px; margin-left: 15px;">
+					<div class="panel-body">
+						<span id="myself">
+							<div class="header1">
+								<ul class="Tabs ProfileMain-tabs" role="tablist">
+									<li class="Tabs-item Tabs-item--noMeta" role="tab"
+										aria-controls="Profile-activities"><a
+										class="Tabs-link is-active" href="/zhihu/page/myself.jsp">动态</a></li>
+									<li class="Tabs-item" role="tab"
+										aria-controls="Profile-answers"><a class="Tabs-link"
+										href="javascript:void(0)" onclick="Myanswer3()"> 回答 <span
+											class="Tabs-meta">1</span></a></li>
+									<li class="Tabs-item" role="tab" aria-controls="Profile-posts">
+										<a class="Tabs-link" href="javascript:void(0)" onclick="My()">
+											我的 <span class="Tabs-meta">2</span>
+									</a>
+									</li>
+									<li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a
+										class="Tabs-link" href="javascript:void(0)"
+										onclick="MyQuestion()"> 提问 <span class="Tabs-meta">1</span>
+									</a></li>
+									<li class="Tabs-item" role="tab"
+										aria-controls="Profile-collections"><a class="Tabs-link"
+										href="javascript:void(0)" onclick="myfavorite()"> 收藏 <span
+											class="Tabs-meta">1</span>
+									</a></li>
+									<li class="Tabs-item Tabs-item--noMeta" role="tab"
+										aria-controls="Profile-following"><a class="Tabs-link"
+										href="javascript:void(0)" onclick="MyAttention()">关注</a></li>
+								</ul>
+							</div>
+							
+							
+							<div class="page-header" style="margin: 0px; width: 640px;">
+								<h2 style="padding-left: 10px; padding-top: 10px">我的动态</h2>
+							</div>
+							<div class="row featurette"
+								style="padding-left: 10px; padding-top: 10px">
+								<div class="col-md-7">
+									<h2 class="featurette-heading" style="font-size: 20px;">
+										<span class="text-muted" style="font-size: 13px">回答了问题</span><br />'+data[i].question[i].qtitle+'
+									</h2>
+									<h2 class="featurette-heading" style="font-size: 13px;">
+										<img src="/zhihu/images/touxiang.jpg"
+											style="width: 50px; height: 50px">&nbsp;&nbsp;&nbsp;
+										+data[i].users[i].uname+' &nbsp;&nbsp;&nbsp; <span
+											class="text-muted" style="font-size: 12px; font-weight: 300;">'+data[i].users[i].usign+'</span>
+									</h2>
+									<p class="lead" style="font-size: 14px;">'+data[i].rcontent+'</p>
+									<span> <a href="#"
+										style="font-size: 13px; font-weight: 40">阅览 <span
+											class="badge" style="width: 20px; padding: 0px;">42</span></a> <a
+										href="#" style="font-size: 13px; font-weight: 40">点赞 <span
+											class="badge" style="width: 20px; padding: 0px;">42</span></a> <a
+										href="#" style="font-size: 13px; font-weight: 40">收藏 <span
+											class="badge" style="width: 20px; padding: 0px;">42</span></a></span>
+								</div>
+							</div>
+						</span>
+					</div>
 				</div>
 			</div>
+		</div>
 
-			
-			<div class="panel panel-default"
-				style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
-				<div class="panel-body">
-					<ul class="list-inline">
-						<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
-						<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
-					</ul>
-				</div>
+
+		<div class="totalinfos">
+			<table class="table table-striped"
+				style="width: 300px; text-align: left; float: right; margin-right: 150px; margin-top: -170px">
+				<tr>
+					<td class="info">关注的话题</td>
+					<td class="info"><%=request.getSession().getAttribute("myattentop")%></td>
+				</tr>
+				<tr>
+					<td class="info">关注的专题</td>
+					<td class="info"><%=request.getSession().getAttribute("myattenzhuanti")%></td>
+				</tr>
+				<tr>
+					<td class="info">关注的收藏夹</td>
+					<td class="info"><%=request.getSession().getAttribute("myattenfav")%></td>
+				</tr>
+			</table>
+		</div>
+
+
+		<div class="panel panel-default"
+			style="width: 283px; height: 120px; margin-left: 900px; margin-top: -318px">
+			<div class="panel-body">
+				<ul class="list-inline">
+					<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
+					<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
+				</ul>
+				<ul class="list-inline">
+					<li
+						style="padding-left: 40px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("myatten")%></li>
+					<li
+						style="padding-left: 120px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("attenme")%></li>
+				</ul>
 			</div>
-
 		</div>
 	</div>
 
@@ -194,5 +257,7 @@
 		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
 		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
 	<script type="text/javascript" src="js/myself.js"></script>
+	<script src='js/layer/layer.js' type="text/javascript"></script>
+
 </body>
 </html>

@@ -2,22 +2,28 @@ package com.yc.zhihu.entity;
 
 public class Users {
 
-	 private String uids;
-	 private String upassword;
-	 private String uname;
-	 private String uemail;
-	 private String usign;
-	 private String uprofession;
-	 private String ansum;
-	 private String essum;
-	 private String attsum;
-	 public Users() {
+	private String uids;
+	private String upassword;
+	private String uname;
+	private String uemail;
+	private String usign;
+	private String uprofession;
+	private String ansum;
+	private String essum;
+	private String attsum;
+	private String upic;
+	private String myatten;
+	private String attenme;
+	private String myattentop;
+	private String myattenzhuanlan;
+	private String myattenfav;
+	public Users() {
 		// TODO Auto-generated constructor stub
 	}
-	 
-	 
+
 	public Users(String uids, String upassword, String uname, String uemail, String usign, String uprofession,
-			String ansum, String essum, String attsum) {
+			String ansum, String essum, String attsum, String upic, String myatten, String attenme, String myattentop,
+			String myattenzhuanlan, String myattenfav) {
 		super();
 		this.uids = uids;
 		this.upassword = upassword;
@@ -28,7 +34,90 @@ public class Users {
 		this.ansum = ansum;
 		this.essum = essum;
 		this.attsum = attsum;
+		this.upic = upic;
+		this.myatten = myatten;
+		this.attenme = attenme;
+		this.myattentop = myattentop;
+		this.myattenzhuanlan = myattenzhuanlan;
+		this.myattenfav = myattenfav;
 	}
+
+
+
+
+
+
+	
+	public String getMyattentop() {
+		return myattentop;
+	}
+
+	public void setMyattentop(String myattentop) {
+		this.myattentop = myattentop;
+	}
+
+	public String getMyattenzhuanlan() {
+		return myattenzhuanlan;
+	}
+
+	public void setMyattenzhuanlan(String myattenzhuanlan) {
+		this.myattenzhuanlan = myattenzhuanlan;
+	}
+
+	public String getMyattenfav() {
+		return myattenfav;
+	}
+
+	public void setMyattenfav(String myattenfav) {
+		this.myattenfav = myattenfav;
+	}
+
+	public String getMyatten() {
+		return myatten;
+	}
+
+
+
+
+
+	public void setMyatten(String myatten) {
+		this.myatten = myatten;
+	}
+
+
+
+
+
+	public String getAttenme() {
+		return attenme;
+	}
+
+
+
+
+
+	public void setAttenme(String attenme) {
+		this.attenme = attenme;
+	}
+
+
+
+
+
+	public String getUpic() {
+		return upic;
+	}
+
+
+
+
+
+	public void setUpic(String upic) {
+		this.upic = upic;
+	}
+
+
+
 
 
 	public String getAnsum() {
@@ -86,13 +175,12 @@ public class Users {
 		this.uprofession = uprofession;
 	}
 
-
 	@Override
 	public String toString() {
-		return "\nUsers [uids=" + uids + ", upassword=" + upassword + ", uname=" + uname + ", uemail=" + uemail
+		return "Users [uids=" + uids + ", upassword=" + upassword + ", uname=" + uname + ", uemail=" + uemail
 				+ ", usign=" + usign + ", uprofession=" + uprofession + ", ansum=" + ansum + ", essum=" + essum
-				+ ", attsum=" + attsum + "]";
+				+ ", attsum=" + attsum + ", upic=" + upic + ", myatten=" + myatten + ", attenme=" + attenme
+				+ ", myattentop=" + myattentop + ", myattenzhuanlan=" + myattenzhuanlan + ", myattenfav=" + myattenfav
+				+ "]";
 	}
-	
-	
 }

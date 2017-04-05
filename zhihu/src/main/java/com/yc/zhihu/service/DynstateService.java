@@ -22,4 +22,8 @@ public interface DynstateService {
 	List<Favorite> listFavorite(Object obj);
 	
 	List<Users> listAttention(Object obj);
+	
+	boolean modifyUserPic(Users users);
+	
+	Users total(Object users);
 }

@@ -24,4 +24,10 @@ public interface DynstateMapper {
 	List<Favorite> listMyFavorite(Object users);
 	
 	List<Users> listMyAttention(Object users);
+	
+	int updateUserPic(Users users);
+	
+	Users totalatten(Object users);
+	
+	Dynstate ifAtten(Object users);
 }

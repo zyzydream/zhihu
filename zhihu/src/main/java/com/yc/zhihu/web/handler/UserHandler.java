@@ -16,6 +16,7 @@ import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
+import com.yc.zhihu.service.DynstateService;
 import com.yc.zhihu.service.UserService;
 import com.yc.zhihu.util.ServletUtil;
 
@@ -35,7 +36,7 @@ public class UserHandler {
 			request.setAttribute(ServletUtil.ERROR_MASSAGE, "用户名或密码错误！！！");
 			return "/back/login.jsp";	
 		}else{
-			request.getSession().setAttribute("username", users.getUname());
+			request.getSession().setAttribute("username",users.getUname());
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
 			return "redirect:/page/homepage.jsp";	
 		}	
