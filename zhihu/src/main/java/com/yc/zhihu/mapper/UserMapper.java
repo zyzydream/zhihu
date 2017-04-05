@@ -22,4 +22,6 @@ public interface UserMapper {
 
 	int AddUsers(Users users);
 
+	List<Users> findNewUsers(Users users);
+
 }

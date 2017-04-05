@@ -20,4 +20,6 @@ public interface UserService {
 
 	boolean register(Users users);
 
+	List<Users> listNewUsers(Users users);
+
 }

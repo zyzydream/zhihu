@@ -44,4 +44,9 @@ public class UserServiceImpl implements UserService{
 		return  (userMapper.AddUsers(users)>0);
 	}
 
+	@Override
+	public List<Users> listNewUsers(Users users) {
+		return userMapper.findNewUsers(users);
+	}
+
 }

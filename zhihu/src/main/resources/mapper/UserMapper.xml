@@ -23,12 +23,12 @@
 	
 	<!-- 登录 -->
 	<select id="findUsers" parameterType="Users" resultType="Users">
-		select * from users where uemail = #{uemail}
-		<choose>
-			<when test="upassword !=null">
-				and upassword = #{upassword}
-			</when>
-		</choose>
+		select * from users where uemail = #{uemail} and upassword = #{upassword}
+	</select>
+	
+	<!-- 查找是否存在该用户名或邮箱 -->
+	<select id="findNewUsers" parameterType="Users" resultType="Users">
+		select * from users where uemail =#{uemail} or uname = #{uname}
 	</select>
 	
 	<!-- 注册 -->

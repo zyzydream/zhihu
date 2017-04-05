@@ -40,12 +40,12 @@ public class UserHandler {
 	//用户注册
 	@RequestMapping(value="register" , method= RequestMethod.POST)
 	public String register(Users users , HttpServletRequest request){
-		Users us = usersService.listUsers(users);
+		List<Users> us = usersService.listNewUsers(users);
 		if(us == null){
 			usersService.register(users);
 			return "redirect:/page/work.jsp";
 		}else{
-			request.setAttribute(ServletUtil.ERROR_MASSAGE, "邮箱已被注册！！！");
+			request.setAttribute(ServletUtil.ERROR_MASSAGE, "邮箱或用户名已被注册！！！");
 			return "/back/register.jsp";	
 		}	
 	}

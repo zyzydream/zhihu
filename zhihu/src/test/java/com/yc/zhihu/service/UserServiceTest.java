@@ -1,6 +1,6 @@
 package com.yc.zhihu.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
@@ -36,6 +35,17 @@ public class UserServiceTest {
 		Users user=new Users();
 		user.setUids("1001");
 		List<Topics> dy=userService.listTopics(user);
+		System.out.println(dy);
+		assertNotNull(dy);
+	}
+	
+	
+	@Test
+	public void testListNewUsers(){
+		Users users = new Users();
+		users.setUname("123");
+		users.setUemail("huahu");
+		List<Users> dy=userService.listNewUsers(users);
 		System.out.println(dy);
 		assertNotNull(dy);
 	}
