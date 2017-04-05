@@ -75,6 +75,7 @@ public class UserHandler {
 	    List<Explore> dynstate=usersService.listrelatedD(user);
 	    //如果关注对象没有动态或没有关注的对象，则返回关注的话题有关的文章或问题
 	    if(dynstate!=null){
+	    	dynstate.add(2, all.get(0));
 	    	 return dynstate;
 	    }else{
 	    	return all;

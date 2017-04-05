@@ -6,7 +6,7 @@ console.log(document.getElementById("seflmain"));
 $.get("user/dynstate",function(data){
 	var dynstate="";
 	for(var i=0;i<data.length;i++){
-		alert(data);
+		//alert(data);
 		if(data[i].kind=="W"){
 			dynstate+='<div class="row featurette"><div class="col-md-7">';
 			dynstate+='<h2 class="featurette-heading" style="font-size: 20px;">';
