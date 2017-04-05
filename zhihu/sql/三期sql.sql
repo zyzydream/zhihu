@@ -86,6 +86,7 @@ CREATE TABLE question(
 );
 select * from QUESTION;
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
 
 drop table question
 /*回复表
@@ -149,6 +150,23 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
+insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
+
+
+select f.*,t.sum from FAVORITE f,
+(select count(ids) sum from DYNSTATE where selfid='1003') t
+where fcreid='1003'
+
+select uname,usign,upic,
+(select count(remitid) from reply where remitid=(select d.aimid atten from DYNSTATE d where selfid='1003') ) a,
+(select count(eautid) from ESSAY where eautid=(select d.aimid atten from DYNSTATE d where selfid='1003') ) b,
+(select count(1) from DYNSTATE where aimid=(select d.aimid atten from DYNSTATE d where selfid='1003'))c 
+from dual,users
+where uids=1001;
+
+select * from REPLY where remitid=1001
+select * from users where uids=1001
+
 
 create table explore(
    ids VARCHAR2(30),  --文章或问题id

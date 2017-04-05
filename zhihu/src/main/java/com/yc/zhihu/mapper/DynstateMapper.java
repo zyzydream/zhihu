@@ -22,4 +22,6 @@ public interface DynstateMapper {
 	List<Question> listMyQuestion(Object users);
 	
 	List<Favorite> listMyFavorite(Object users);
+	
+	List<Users> listMyAttention(Object users);
 }

@@ -166,26 +166,26 @@
 					</div>
 				</div>
 			</div>
-		
-		<div class="panel panel-default"
+
+			<div class="panel panel-default"
 				style="width: 660px; margin-left: 15px;">
 				<div class="panel-body">
-					<span id="myself">
-					
-					</span>
+					<span id="myself"> </span>
 				</div>
-		</div>
-		<div class="panel panel-default"
-			style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
-			<div class="panel-body">
-				<ul class="list-inline">
-					<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
-					<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
-				</ul>
 			</div>
+
+			
+			<div class="panel panel-default"
+				style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
+				<div class="panel-body">
+					<ul class="list-inline">
+						<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
+						<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
+					</ul>
+				</div>
+			</div>
+
 		</div>
-		
-	</div>
 	</div>
 
 	<script src="js/jquery.min.js"></script>
