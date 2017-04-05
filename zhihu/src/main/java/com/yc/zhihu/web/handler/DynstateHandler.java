@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Favorite;
 import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Users;
@@ -61,6 +62,20 @@ public class DynstateHandler {
 	public List<Question> DynstateMyQuestion(HttpServletRequest request){
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		return dynstateService.myquestion(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	@RequestMapping(value="/m7",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Favorite> DynstateMyFavorite(HttpServletRequest request){
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.listFavorite(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	@RequestMapping(value="/m8",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Users> DynstateMyAttention(HttpServletRequest request){
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.listAttention(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
 }
