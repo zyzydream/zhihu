@@ -13,7 +13,7 @@ public class Explore {
 	private String author;
 	private String times;
 	private String checks;
-	
+	public Explore() {}
 	public String getUsign() {
 		return usign;
 	}
@@ -84,6 +84,6 @@ public class Explore {
 	public String toString() {
 		return "Explore [ids=" + ids + ", kind=" + kind + ", title=" + title + ", content=" + content + ", tid=" + tid
 				+ ", tname=" + tname + ", uids=" + uids + ", author=" + author + ", times=" + times + ", checks="
-				+ checks + "]";
+				+ checks + "]\n";
 	}	
 }

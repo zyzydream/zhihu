@@ -3,6 +3,7 @@ package com.yc.zhihu.service.impl;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -57,26 +58,30 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<Explore> listrelatedD(Users user) {
-		List<Explore> all=null;
+		List<Explore> all=new ArrayList<Explore>();
 		List<Explore> essays = userMapper.listessay(user);
 		for(Explore essay:essays){
-			essay.setKind("W");
+			essay.setKind("FW");
 			all.add(essay);
 		}
 		List<Explore> questions = userMapper.listquestion(user);
 		for(Explore question:questions){
-			question.setKind("Q");
+			question.setKind("FQ");
 			all.add(question);
 		}
 		List<Dynstate> dynstates=userMapper.lists(user);
 		for(Dynstate dynstate:dynstates){
-			if(dynstate.getKind()=="GH"){
+			//System.out.println(dynstate);
+			if(dynstate.getKind().equals("GH")){
 				Explore as=userMapper.listrelatedTopic(dynstate);
-				all.add(as);
+				if(as!=null){
+					all.add(as);
+					System.out.println(as);
+				}
 			}
 		}
 		int length=all.size();
-		DateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 		Explore [] t=new Explore[length];
 		for(int i=0;i<length;i++){
 			t[i]=all.get(i);
@@ -87,7 +92,10 @@ public class UserServiceImpl implements UserService{
 					Date d1=df.parse(t[i].getTimes());
 					Date d2=df.parse(t[j].getTimes());
 					if(d1.getTime()<d2.getTime()){
+						Explore tt=new Explore();
+						tt=t[i];
 						t[i]=t[j];
+						t[j]=tt;
 					}
 				} catch (ParseException e) {
 					e.printStackTrace();
@@ -96,8 +104,8 @@ public class UserServiceImpl implements UserService{
 		}
 		all.clear();
 	    for(int i=1;i<=length;i++){
-	    	t[i].setKind(i+"");
-	    	all.add(i, t[i-1]);
+	    	t[i-1].setChecks(i+"");
+	    	all.add(t[i-1]);
 	    }
 	    return all;
 	}

@@ -186,15 +186,32 @@ select * from explore e,
 (select ids from dynstate PARTITION (GH) where selfid='1001')d
 where e.tid=d.ids;
 
+	    select e.etid ids,e.eautid uids,e.econtent content,e.etime times,e.etitle title,e.etid tid,ud.uname author from essay e,
+           (select * from users u,
+	         (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='1001')d
+	       where u.uids=d.aimid)ud
+        where e.eautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(e.etime,'yyyy-mm-dd'))*24
+     
+        select * from question
+     
+         select q.qtid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,
+           (select * from users u,
+	         (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='1001')d
+	       where u.uids=d.aimid)ud
+        where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
+
+select t.tid tid,t.ttopic tname,t.tpic content,'2017-09-10' times,'1002' uids,u.uname author,'GH' kind from users u,(select * from Topics tt where tt.tid='10004') t where u.uids='1002' 
+select* from dynstate
+select * from users
 
 --赋值
 INSERT INTO essay(eID,eautid,econtent,etime,etitle)VALUES('1001','1001','aaaaaaaa','2017-3-1','aaa');
 INSERT INTO essay(eID,eautid,econtent,etime,etitle)VALUES('1002','1001','ccccc','2017-3-2','ccc');
 INSERT INTO essay(eID,eautid,econtent,etime,etitle)VALUES('1003','1002','ddddd','2017-3-3','ddd');
 INSERT INTO essay(eID,eautid,econtent,etime,etitle)VALUES('1004','1002','bbbbb','2017-3-4','bbb');
-select * from users
+select * from question
 insert into users(usign) values('无') 
-
+select * from essay
 INSERT INTO  USERS(uids,upassword,USIGN,uname,uemail)VALUES('1001','a','我就是我','zy','1234@qq.com');
 INSERT INTO  USERS(uids,upassword,USIGN,uname,uemail)VALUES('1002','a','你是谁?','zyy','12345@qq.com');
 drop table users
@@ -202,16 +219,16 @@ INSERT INTO favorite(fid,fcreid,fname)VALUES('10101','1001','zz');
 INSERT INTO favorite(fid,fcreid,fname)VALUES('10102','1002','zzz')
 
 
-INSERT INTO dynstate(selfid,kind,aimid)VALUES('1001','GR','1002');
-INSERT INTO dynstate(selfid,kind,aimid)VALUES('1002','GR','1001');
-INSERT INTO dynstate(selfid,kind,ids)VALUES('1001','GH','10001');
-INSERT INTO dynstate(selfid,kind,ids)VALUES('1001','GH','10002');
-INSERT INTO dynstate(selfid,kind,ids)VALUES('1002','GH','10003');
-INSERT INTO dynstate(selfid,kind,ids)VALUES('1002','GH','10004');
+INSERT INTO dynstate(selfid,kind,aimid,times)VALUES('1001','GR','1002','2017-09-15');
+INSERT INTO dynstate(selfid,kind,aimid,times)VALUES('1002','GR','1001','2017-09-14');
+INSERT INTO dynstate(selfid,kind,ids,times)VALUES('1001','GH','10001','2017-09-13');
+INSERT INTO dynstate(selfid,kind,ids,times)VALUES('1001','GH','10002','2017-09-12');
+INSERT INTO dynstate(selfid,kind,ids,times)VALUES('1002','GH','10003','2017-09-11');
+INSERT INTO dynstate(selfid,kind,ids,times)VALUES('1002','GH','10004','2017-09-10');
 INSERT INTO dynstate(selfid,kind,ids)VALUES('1002','B','1006');
 INSERT INTO dynstate(selfid,kind,ids)VALUES('1002','B','1006');
 select * from dynstate
-SELECT * FROM dynstate PARTITION("$");
+
 DROP TABLE dynstate
 INSERT INTO collents(cid,ckind,cwid,cfid)VALUES('1001','e','1001','10101');
 INSERT INTO collents(cid,ckind,cwid,cfid)VALUES('1002','e','1002','10101');
