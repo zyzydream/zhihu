@@ -1,5 +1,6 @@
 package com.yc.zhihu.web.handler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,24 +54,31 @@ public class UserHandler {
 	}
 	
 	//列出最新动态
-	@RequestMapping(value="/dynstate",method=RequestMethod.GET)
+	@RequestMapping(value="dynstate",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Explore> listDynstate(HttpServletRequest request){
 		System.out.println("listDynstate ====> "+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		Users user= (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
 		//用来查找有关话题的文章
+		List<Explore> all =new ArrayList<Explore>();
 		List<Explore> explores= usersService.listrelated(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	    for(Explore explore:explores){
-	    	System.out.println(explore);
+	    	all.add(explore);
 	    }
 	    System.out.println("------------------------");
 	    //用来查找有关话题的问题
-	    List<Explore> questions=usersService.listrelatedQ(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	    List<Explore> questions=usersService.listrelatedQ(user);
 	    for(Explore question:questions){
-	    	System.out.println(question);
+	    	all.add(question);
 	    }
-	    //
-	    return null;
-	    
+	    //关注的对象的动态
+	    List<Explore> dynstate=usersService.listrelatedD(user);
+	    //如果关注对象没有动态或没有关注的对象，则返回关注的话题有关的文章或问题
+	    if(dynstate!=null){
+	    	 return dynstate;
+	    }else{
+	    	return all;
+	    }
 	}
 	
 	//列出新消息
