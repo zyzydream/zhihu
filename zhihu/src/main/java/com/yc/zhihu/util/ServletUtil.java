@@ -12,6 +12,9 @@ public class ServletUtil {
 	public static final String LOGIN_USER="LoginUser";  //登录目标用户
 	public static final String USER_LIST="userList";  //当前登录用户
 	public static final String ERROR_MASSAGE = "errorMsg";
+	public static final String ERROR_EMAIL = "errorEmail";
+	public static final String ERROR_NAME = "errorName";
+	public static final String ERROR_PASSWORD = "errorPassword";
 	public static String UPLOAD_DIR=null;
 	public static String DEPLOY_NAME=null;
 	public static List<Users> alluser;

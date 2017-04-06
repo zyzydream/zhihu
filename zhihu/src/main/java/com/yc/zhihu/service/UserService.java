@@ -3,13 +3,14 @@ package com.yc.zhihu.service;
 import java.util.List;
 
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 
 public interface UserService {
 
 	//列出最新动态
-	List<Essay> listrelated(Object object);
+	List<Explore> listrelated(Object object);
 	
 	//列出新消息
 	List<Essay> listnews(String id);
@@ -20,6 +21,11 @@ public interface UserService {
 
 	boolean register(Users users);
 
-	List<Users> listNewUsers(Users users);
+
+	List<Explore> listrelatedQ(Object user);
+
+	List<Explore> listrelatedD(Users user);
+
+	List<Users> listOneUsers(Users users);
 
 }

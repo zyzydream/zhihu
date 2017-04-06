@@ -1,5 +1,6 @@
 package com.yc.zhihu.web.handler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.UserService;
@@ -33,29 +35,61 @@ public class UserHandler {
 			request.setAttribute(ServletUtil.ERROR_MASSAGE, "用户名或密码错误！！！");
 			return "/back/login.jsp";	
 		}else{
+			request.getSession().setAttribute("username", users.getUname());
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
 			return "redirect:/page/homepage.jsp";	
 		}	
 	}
 	//用户注册
 	@RequestMapping(value="register" , method= RequestMethod.POST)
-	public String register(Users users , HttpServletRequest request){
-		List<Users> us = usersService.listNewUsers(users);
-		if(us == null){
+	@ResponseBody
+	public String register(Users users , HttpServletRequest request, HttpServletResponse response) {
+		List<Users> us = usersService.listOneUsers(users);
+		String a;
+		if(us == null  || us.size()== 0){
 			usersService.register(users);
-			return "redirect:/page/work.jsp";
-		}else{
-			request.setAttribute(ServletUtil.ERROR_MASSAGE, "邮箱或用户名已被注册！！！");
-			return "/back/register.jsp";	
-		}	
+			a="true";
+			System.out.println(a);
+			return a;
+		}else {	
+			if(users.getUemail() == null || users.getUemail() == ""){
+				request.setAttribute(ServletUtil.ERROR_EMAIL, "邮箱已注册！！！");
+			}else if(users.getUname() == null || users.getUname() == ""){
+				request.setAttribute(ServletUtil.ERROR_NAME, "姓名已被注册！！！");
+			}
+			a="false";
+			System.out.println(a);
+			return a;
+		}
+		
 	}
 	
 	//列出最新动态
-	@RequestMapping(value="/dynstate",method=RequestMethod.GET)
+	@RequestMapping(value="dynstate",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Essay> listDynstate(HttpServletRequest request){
+	public List<Explore> listDynstate(HttpServletRequest request){
 		System.out.println("listDynstate ====> "+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return usersService.listrelated(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		Users user= (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		//用来查找有关话题的文章
+		List<Explore> all =new ArrayList<Explore>();
+		List<Explore> explores= usersService.listrelated(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	    for(Explore explore:explores){
+	    	all.add(explore);
+	    }
+	    System.out.println("------------------------");
+	    //用来查找有关话题的问题
+	    List<Explore> questions=usersService.listrelatedQ(user);
+	    for(Explore question:questions){
+	    	all.add(question);
+	    }
+	    //关注的对象的动态
+	    List<Explore> dynstate=usersService.listrelatedD(user);
+	    //如果关注对象没有动态或没有关注的对象，则返回关注的话题有关的文章或问题
+	    if(dynstate!=null){
+	    	 return dynstate;
+	    }else{
+	    	return all;
+	    }
 	}
 	
 	//列出新消息

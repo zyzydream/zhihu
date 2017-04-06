@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="images/logohead.png">
-<title>Dashboard Template for Bootstrap</title>
+<title>知乎后台</title>
 <link href="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/dashboard.css" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="easyui/themes/icon.css">
@@ -273,10 +273,16 @@
 					<h4 class="modal-title" id="myModalLabel">推荐详情</h4>
 				</div>
 				<div class="modal-body">
+				    <form id="infoForm"  method="get" action="information/send">
 				    <table>
 				       <tr>
+				          <td><label>发件人：</label></td>
+				          <td><input type="text"  name="selfname" id="selfname"/></td>
+				          <td></td>
+				       </tr>
+				       <tr>
 				          <td><label>收件人：</label></td>
-				          <td><input type="text" disabled="disabled"/></td>
+				          <td><input type="text" name="aimname"  id="aimname"/></td>
 				          <td></td>
 				       </tr>
 				       <tr>
@@ -286,12 +292,13 @@
 				       </tr>
 				       <tr>
 				          <td><label>编辑消息：</label></td>
-				          <td colspan="2"><textarea rows="10" cols="30"></textarea></td>
+				          <td colspan="2"><textarea rows="10" cols="30" name="info"></textarea></td>
 				       </tr>
 				    </table>
+				    </form>
 				</div>
 				<div class="modal-footer">
-				    <button type="button" class="btn btn-primary">发送</button>
+				    <button type="button" class="btn btn-primary" id="sendmail">发送</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 				</div>
 			</div>
