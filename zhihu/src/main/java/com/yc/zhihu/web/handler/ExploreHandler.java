@@ -22,8 +22,8 @@ public class ExploreHandler {
 
 	@Autowired
 	private ExploreService exploreService;
-	
-	
+
+
 	//推荐头条
 	@RequestMapping(value="/dynstate",method=RequestMethod.GET)
 	@ResponseBody
@@ -32,7 +32,7 @@ public class ExploreHandler {
 		//List<Explore> explores=exploreService.lists();
 		return explore;
 	}
-	
+
 	//后台展示审核
 	@RequestMapping(value="/{check}",method=RequestMethod.GET)
 	@ResponseBody
@@ -40,5 +40,20 @@ public class ExploreHandler {
 		List<Explore> explore= exploreService.lists(check);
 		return explore;
 	}
-	
+
+	@RequestMapping(value="/ok",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Explore> submit(String ids,String kind){
+		exploreService.submit(ids,kind);
+		//List<Explore> explores=exploreService.lists();
+		//return explore;
+		return null;
+	}
+	@RequestMapping(value="/update",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Explore> update(){
+		List<Explore> explores=exploreService.findUpdate();
+		exploreService.update(explores);
+		return explores;
+	}
 }

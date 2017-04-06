@@ -8,6 +8,47 @@ public class Users {
 	 private String uemail;
 	 private String usign;
 	 private String uprofession;
+	 private String ansum;
+	 private String essum;
+	 private String attsum;
+	 public Users() {
+		// TODO Auto-generated constructor stub
+	}
+	 
+	 
+	public Users(String uids, String upassword, String uname, String uemail, String usign, String uprofession,
+			String ansum, String essum, String attsum) {
+		super();
+		this.uids = uids;
+		this.upassword = upassword;
+		this.uname = uname;
+		this.uemail = uemail;
+		this.usign = usign;
+		this.uprofession = uprofession;
+		this.ansum = ansum;
+		this.essum = essum;
+		this.attsum = attsum;
+	}
+
+
+	public String getAnsum() {
+		return ansum;
+	}
+	public void setAnsum(String ansum) {
+		this.ansum = ansum;
+	}
+	public String getEssum() {
+		return essum;
+	}
+	public void setEssum(String essum) {
+		this.essum = essum;
+	}
+	public String getAttsum() {
+		return attsum;
+	}
+	public void setAttsum(String attsum) {
+		this.attsum = attsum;
+	}
 	public String getUids() {
 		return uids;
 	}
@@ -44,10 +85,13 @@ public class Users {
 	public void setUprofession(String uprofession) {
 		this.uprofession = uprofession;
 	}
+
+
 	@Override
 	public String toString() {
-		return "Users [uids=" + uids + ", upassword=" + upassword + ", uname=" + uname + ", uemail=" + uemail + ", usign="
-				+ usign + ", uprofession=" + uprofession + "]";
+		return "\nUsers [uids=" + uids + ", upassword=" + upassword + ", uname=" + uname + ", uemail=" + uemail
+				+ ", usign=" + usign + ", uprofession=" + uprofession + ", ansum=" + ansum + ", essum=" + essum
+				+ ", attsum=" + attsum + "]";
 	}
 	
 	

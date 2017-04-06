@@ -1,5 +1,7 @@
 package com.yc.zhihu.entity;
 
+import java.util.List;
+
 public class Essay {
 
 	 private String eid;
@@ -12,6 +14,33 @@ public class Essay {
 	 private String ttopic;
 	 private String uname;
 	 private String usign;
+	 private List<Users> users;
+	 public Essay() {
+		// TODO Auto-generated constructor stub
+	}
+	 
+	public Essay(String eid, String eautid, String econtent, String etime, String etitle, String escid, String etid,
+			String ttopic, String uname, String usign, List<Users> users) {
+		super();
+		this.eid = eid;
+		this.eautid = eautid;
+		this.econtent = econtent;
+		this.etime = etime;
+		this.etitle = etitle;
+		this.escid = escid;
+		this.etid = etid;
+		this.ttopic = ttopic;
+		this.uname = uname;
+		this.usign = usign;
+		this.users = users;
+	}
+
+	public List<Users> getUsers() {
+		return users;
+	}
+	public void setUsers(List<Users> users) {
+		this.users = users;
+	}
 	public String getTtopic() {
 		return ttopic;
 	}
@@ -73,4 +102,11 @@ public class Essay {
 		this.etid = etid;
 	}
 
+	@Override
+	public String toString() {
+		return "\nEssay [eid=" + eid + ", eautid=" + eautid + ", econtent=" + econtent + ", etime=" + etime + ", etitle="
+				+ etitle + ", escid=" + escid + ", etid=" + etid + ", ttopic=" + ttopic + ", uname=" + uname
+				+ ", usign=" + usign + ", users=" + users + "]";
+	}
+	
 }

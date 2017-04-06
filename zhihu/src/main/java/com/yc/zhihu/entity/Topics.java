@@ -5,6 +5,14 @@ public class Topics {
 	private String tid;
 	private String ttopic;
 	private String tstid;
+	private String tpic;
+	
+	public String getTpic() {
+		return tpic;
+	}
+	public void setTpic(String tpic) {
+		this.tpic = tpic;
+	}
 	public String getTid() {
 		return tid;
 	}

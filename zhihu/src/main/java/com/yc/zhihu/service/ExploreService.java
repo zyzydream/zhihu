@@ -10,4 +10,13 @@ public interface ExploreService {
 
 	List<Explore> lists(String s);
 
+	int submit(String ids, String kind);
+
+	Explore find(String ids,String kind);
+
+	List<Explore> findUpdate();
+
+	void update(List<Explore> explores);
+	
+
 }

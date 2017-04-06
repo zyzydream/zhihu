@@ -7,6 +7,7 @@ public class Dynstate {
 	private String kind;
 	private String ids;
 	private String cfid;
+	private String times;
 	public String getSelfid() {
 		return selfid;
 	}
@@ -37,10 +38,17 @@ public class Dynstate {
 	public void setCfid(String cfid) {
 		this.cfid = cfid;
 	}
+	public String getTimes() {
+		return times;
+	}
+	public void setTimes(String times) {
+		this.times = times;
+	}
 	@Override
 	public String toString() {
 		return "Dynstate [selfid=" + selfid + ", aimid=" + aimid + ", kind=" + kind + ", ids=" + ids + ", cfid=" + cfid
-				+ "]";
+				+ ", times=" + times + "]";
 	}
+	
 	
 }

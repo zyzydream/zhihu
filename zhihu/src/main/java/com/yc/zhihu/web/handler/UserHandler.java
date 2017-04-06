@@ -1,5 +1,6 @@
 package com.yc.zhihu.web.handler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.UserService;
@@ -33,6 +35,7 @@ public class UserHandler {
 			request.setAttribute(ServletUtil.ERROR_MASSAGE, "用户名或密码错误！！！");
 			return "/back/login.jsp";	
 		}else{
+			request.getSession().setAttribute("username", users.getUname());
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
 			return "redirect:/page/homepage.jsp";	
 		}	
@@ -51,11 +54,32 @@ public class UserHandler {
 	}
 	
 	//列出最新动态
-	@RequestMapping(value="/dynstate",method=RequestMethod.GET)
+	@RequestMapping(value="dynstate",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Essay> listDynstate(HttpServletRequest request){
+	public List<Explore> listDynstate(HttpServletRequest request){
 		System.out.println("listDynstate ====> "+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return usersService.listrelated(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		Users user= (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		//用来查找有关话题的文章
+		List<Explore> all =new ArrayList<Explore>();
+		List<Explore> explores= usersService.listrelated(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	    for(Explore explore:explores){
+	    	all.add(explore);
+	    }
+	    System.out.println("------------------------");
+	    //用来查找有关话题的问题
+	    List<Explore> questions=usersService.listrelatedQ(user);
+	    for(Explore question:questions){
+	    	all.add(question);
+	    }
+	    //关注的对象的动态
+	    List<Explore> dynstate=usersService.listrelatedD(user);
+	    //如果关注对象没有动态或没有关注的对象，则返回关注的话题有关的文章或问题
+	    if(dynstate!=null){
+	    	dynstate.add(2, all.get(0));
+	    	 return dynstate;
+	    }else{
+	    	return all;
+	    }
 	}
 	
 	//列出新消息

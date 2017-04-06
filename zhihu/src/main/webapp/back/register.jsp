@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<base href="${NAME}">
+<base href="${zhihuName}">
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="css/register-login.css">
 <link rel="shortcut icon" href="images/logohead.png">
@@ -14,7 +14,7 @@
 	<div id="box"></div>
 	<div class="cent-box register-box">
 		<div class="cent-box-header">
-			<h1 class="main-title hide">千寻</h1>
+			<h1 class="main-title hide">知乎</h1>
 			<h2 class="sub-title">与世界分享你的知识、经验和见解</h2>
 		</div>
 

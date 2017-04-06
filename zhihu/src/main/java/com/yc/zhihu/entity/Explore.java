@@ -8,11 +8,18 @@ public class Explore {
 	private String content;
 	private String tid;
 	private String tname;
+	private String usign;
 	private String uids;
 	private String author;
 	private String times;
 	private String checks;
-	
+	public Explore() {}
+	public String getUsign() {
+		return usign;
+	}
+	public void setUsign(String usign) {
+		this.usign = usign;
+	}
 	public String getTimes() {
 		return times;
 	}
@@ -77,6 +84,6 @@ public class Explore {
 	public String toString() {
 		return "Explore [ids=" + ids + ", kind=" + kind + ", title=" + title + ", content=" + content + ", tid=" + tid
 				+ ", tname=" + tname + ", uids=" + uids + ", author=" + author + ", times=" + times + ", checks="
-				+ checks + "]";
+				+ checks + "]\n";
 	}	
 }
