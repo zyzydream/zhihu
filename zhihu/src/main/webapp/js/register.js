@@ -58,3 +58,13 @@ function close(){
 	$("#yanzhengma").dialog("close", true);
 }
 
+/*$("#code").form({
+	url:"user/code",  
+    success:function(data){	
+    } 
+});
+*/
+
+
+
+

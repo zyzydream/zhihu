@@ -3,6 +3,7 @@ package com.yc.zhihu.web.handler;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Essay;
@@ -17,6 +19,7 @@ import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.UserService;
+import com.yc.zhihu.util.EmailUtil;
 import com.yc.zhihu.util.ServletUtil;
 
 @Controller("userHandler")
@@ -25,6 +28,8 @@ public class UserHandler {
 
 	@Autowired
 	private UserService usersService;
+	
+	private String CODE;
 	
 	@RequestMapping(value="login" , method= RequestMethod.POST)
 	public String Login(Users users , HttpServletRequest request , HttpServletResponse response){		//查询所有主话题
@@ -45,9 +50,16 @@ public class UserHandler {
 	@ResponseBody
 	public String register(Users users , HttpServletRequest request, HttpServletResponse response) {
 		List<Users> us = usersService.listOneUsers(users);
+		EmailUtil em = new EmailUtil();
 		String a;
 		if(us == null  || us.size()== 0){
 			usersService.register(users);
+			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
+			try {
+				 CODE=em.setMail(users.getUemail());
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
 			a="true";
 			System.out.println(a);
 			return a;
@@ -107,6 +119,13 @@ public class UserHandler {
 	public List<Topics> listTopics(HttpServletRequest request){
 		System.out.println("====> listTopics");
 		return usersService.listTopics(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	
+	
+	@RequestMapping(value="/code",method=RequestMethod.POST)
+	public String listCode(String ucode){
+		return "redirect:/page/work.jsp";
 	}
 	
 }

@@ -14,6 +14,7 @@ CREATE TABLE users(
 commit;
 select * from USERS where uemail='123' and upassword='a' 
 insert into users(uemail,uname,upassword) values('123','zy','a');
+delete  users where uemail = "1103743969@qq.com"
 drop table users;
 select * from USERSE
 
