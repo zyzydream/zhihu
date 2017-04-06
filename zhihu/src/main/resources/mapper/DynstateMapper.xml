@@ -88,11 +88,29 @@
 
 	<select id="listMyQuestion" parameterType="Users" resultType="Question">
 		select q.*,t.sum from question q,
-		(select count(reqid) sum from REPLY where rkind='Q' and reqid=(select reqid from question where qautid=#{uids})) t
+		(select count(reqid) sum from REPLY
+		where rkind='Q' and reqid=(select reqid from question where
+		qautid=#{uids})) t
 		where q.qautid=#{uids}
 	</select>
-	
+
 	<select id="listMyFavorite" parameterType="Users" resultType="Favorite">
-		select * from FAVORITE where fcreid=#{uids}
+		select f.*,t.sum from FAVORITE f,
+		(select count(ids) sum from DYNSTATE
+		where selfid=#{uids}) t
+		where fcreid=#{uids}
+	</select>
+
+	<select id="listMyAttention" parameterType="Users" resultType="Users">
+		select uname,usign,upic,
+		(select count(remitid) from reply where remitid=(select d.aimid atten from
+		DYNSTATE d where selfid=#{uids}) ) ansum,
+		(select count(eautid) from ESSAY where eautid=(select d.aimid atten from
+		DYNSTATE d where selfid=#{uids}) ) essum,
+		(select count(1) from DYNSTATE where aimid=(select d.aimid atten from
+		DYNSTATE d where selfid=#{uids})) attsum
+		from dual,users
+		where uids=(select d.aimid atten from
+		DYNSTATE d where selfid=#{uids})
 	</select>
 </mapper>

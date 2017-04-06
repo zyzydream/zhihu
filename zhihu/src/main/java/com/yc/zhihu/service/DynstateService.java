@@ -20,4 +20,6 @@ public interface DynstateService {
 	List<Question> myquestion(Object obj);
 	
 	List<Favorite> listFavorite(Object obj);
+	
+	List<Users> listAttention(Object obj);
 }

@@ -44,4 +44,9 @@ public class DynstateServiceImpl implements DynstateService {
 	public List<Favorite> listFavorite(Object obj) {
 		return dynstateMapper.listMyFavorite(obj);
 	}
+	
+	@Override
+	public List<Users> listAttention(Object obj) {
+		return dynstateMapper.listMyAttention(obj);
+	}
 }

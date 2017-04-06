@@ -36,7 +36,7 @@ CREATE TABLE essay(
    etid VARCHAR2(10)
 );
 INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES('1001','1003','ddddd','2017-3-3','主机','10001');
-
+select * from question
 select * from essay
 drop table essay
 
@@ -88,6 +88,7 @@ CREATE TABLE question(
 );
 select * from QUESTION;
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
 
 drop table question
 /*回复表
@@ -108,7 +109,7 @@ CREATE TABLE reply(
    rtid VARCHAR2(30),
    rtime VARCHAR2(30)
 );
-  
+  select rid from reply where rrid='';
 
 select * from REPLY;
 insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('10001','1','Q',null,'1003','1001','java是一门语言','2017-4-3')
@@ -152,6 +153,29 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
+select * from QUESTION q,
+(select * from reply,
+   (select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids order by count(ids)) 
+ where counts>0 and id=rid and rkind='Q' and rrid='')r
+ where q.qid=r.reqid
+ 
+insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
+
+
+select f.*,t.sum from FAVORITE f,
+(select count(ids) sum from DYNSTATE where selfid='1003') t
+where fcreid='1003'
+
+select uname,usign,upic,
+(select count(remitid) from reply where remitid=(select d.aimid atten from DYNSTATE d where selfid='1003') ) a,
+(select count(eautid) from ESSAY where eautid=(select d.aimid atten from DYNSTATE d where selfid='1003') ) b,
+(select count(1) from DYNSTATE where aimid=(select d.aimid atten from DYNSTATE d where selfid='1003'))c 
+from dual,users
+where uids=1001;
+
+select * from REPLY where remitid=1001
+select * from users where uids=1001
+
 
 create table explore(
    ids VARCHAR2(30),  --文章或问题id
@@ -200,6 +224,27 @@ where e.tid=d.ids;
 	       where u.uids=d.aimid)ud
         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
 
+      select q.qid ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks  from QUESTION q,
+	   (select * from topics t,
+	     (select * from users u,
+	     (select * from reply,
+        	(select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids order by count(ids))
+	      where counts>0 and id=rid and rkind='Q' and rrid='')r
+	      where u.uids=r.remitid)r
+	      where t.tid=r.rtid)rd
+	   where q.qid=rd.reqid
+        
+	   select e.eid ids,'W' kind,e.etitle title,e.econtent content,e.etid tid,t.ttopic tname,e.usign usign,e.uids uids,e.uname author,e.etime times,'n' checks  from topics t,
+	     (select * from users u,
+	       (select * from essay,
+           	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
+	        where counts>0 and id=eid )e
+	      where u.uids=e.eautid)e
+	    where t.tid=e.etid
+	    
+	    select * from explore
+
+	    
 select t.tid tid,t.ttopic tname,t.tpic content,'2017-09-10' times,'1002' uids,u.uname author,'GH' kind from users u,(select * from Topics tt where tt.tid='10004') t where u.uids='1002' 
 select* from dynstate
 select * from users

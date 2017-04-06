@@ -30,7 +30,7 @@
 
 			<div class="top-nav-profile">
 				<a href="" class="zu-top-nav-userinfo "> <span class="name"
-					id="name">{LoginUser.u_name}</span> <img class="Avatar" src=""
+					id="name"><%=request.getSession().getAttribute("username") %></span> <img class="Avatar" src=""
 					alt="" /> <span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
@@ -82,13 +82,11 @@
 			<div id="zg-top-nav" class="zu-top-nav">
 				<ul class="zu-top-nav-ul zg-clear">
 
-					<li class="zu-top-nav-li current" id="zh-top-nav-home"><a
-						class="zu-top-nav-link" href="/zhihu/page/homepage.jsp" id="zh-top-link-home"
-						data-za-c="view_home" data-za-a="visit_home"
-						data-za-l="top_navigation_home">首页</a></li>
+					<li class="zu-top-nav-li" id="zh-top-nav-home"><a
+						class="zu-top-nav-link" href="/zhihu/page/homepage.jsp">首页</a></li>
 
 
-					<li class="zu-top-nav-li " id="zh-top-nav-explore" onclick="find()"><a
+					<li class="zu-top-nav-li current " id="zh-top-nav-explore"><a
 						class="zu-top-nav-link" href="javascript:void(0)">发现</a></li>
 
 					<li class="top-nav-noti zu-top-nav-li "><a
