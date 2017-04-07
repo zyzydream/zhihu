@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +19,6 @@ import com.yc.zhihu.entity.Favorite;
 import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Users;
-import com.yc.zhihu.service.AdminService;
 import com.yc.zhihu.service.DynstateService;
 import com.yc.zhihu.util.ServletUtil;
 
@@ -88,5 +86,16 @@ public class DynstateHandler {
 		return dynstateService.listAttention(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
+
+	@RequestMapping(value="/add",method=RequestMethod.GET)
+	public String add(HttpServletRequest request,Dynstate dynstate){
+		String ids = request.getParameter("tid");
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		String selfid = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUemail();
+		dynstate.setIds(ids);
+		dynstate.setSelfid(selfid);
+		dynstateService.AddGH(dynstate);
+		return "redirect:/page/homepage.jsp";
+	}
 	
 }

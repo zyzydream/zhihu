@@ -25,3 +25,46 @@ $('.imgcode').hover(function() {
 				$(".zt").hide();
 			}
 		})
+		
+		
+
+$("#yanzhengma").dialog({
+	title:'',
+	border:false,
+	closed:true,
+	shadow:true,
+	modal:true,
+	onOpen : function(){
+		$(".panel").css("z-index", "999");
+		$(".window-shadow").css("z-index", "998")
+	}
+});
+
+$("#yanzhengma").dialog("close", true);
+
+$("#register").form({
+	url:"user/register",    
+    success:function(data){	
+    	if(data=="true"){
+    		$("#yanzhengma").dialog("open");
+    	}else{
+    		alert("用户名或邮箱重复！！！！")
+    	}
+    } 
+});
+
+function close(){
+	alert("aa");
+	$("#yanzhengma").dialog("close", true);
+}
+
+/*$("#code").form({
+	url:"user/code",  
+    success:function(data){	
+    } 
+});
+*/
+
+
+
+

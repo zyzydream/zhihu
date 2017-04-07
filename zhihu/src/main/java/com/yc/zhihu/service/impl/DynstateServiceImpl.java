@@ -59,4 +59,14 @@ public class DynstateServiceImpl implements DynstateService {
 	public Users total(Object users) {
 		return dynstateMapper.totalatten(users);
 	}
+
+	@Override
+	public boolean AddGH(Dynstate dynstate) {
+		return dynstateMapper.insertGH(dynstate);
+	}
+
+	@Override
+	public String  listUsers(Object obj) {
+		return dynstateMapper.findUsers(obj);
+	}
 }

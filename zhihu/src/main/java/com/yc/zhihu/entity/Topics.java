@@ -31,5 +31,12 @@ public class Topics {
 	public void setTstid(String tstid) {
 		this.tstid = tstid;
 	}
+	@Override
+	public String toString() {
+		return "\nTopics [tid=" + tid + ", ttopic=" + ttopic + ", tstid=" + tstid + ", tpic=" + tpic + "]";
+	}
+	
+	
+	
 	
 }

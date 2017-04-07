@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<base href="/zhihu/">
+<base href="${zhihuName}">
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="css/work.css">
 <link rel="shortcut icon" href="images/logohead.png">
@@ -24,14 +24,17 @@
 						<p class="Guide-subtitle">简单介绍自己，会为你挑选你可能感兴趣话题</p>
 					</div>
 					<div class="Guide-content">
-						<div class="Guide-BioEditorForm">
-							<button
-								class="Guide-BioEditorButton Button Button-flatPrimary js-submit"><a ref="page/tall.jsp">完成</a></button>
-							<div class="Guide-BioEditorInputWrapper">
-								<input class="Guide-BioEditorInput Input" name="bio"
-									placeholder="比如医生、律师、设计师">
+						<form action="user/profession" method="post">
+							<div class="Guide-BioEditorForm">
+								<button
+									class="Guide-BioEditorButton Button Button-flatPrimary js-submit"
+									type="submit" id="Addusers">完成</button>
+								<div class="Guide-BioEditorInputWrapper">
+									<input class="Guide-BioEditorInput Input" name="uprofession"
+										placeholder="比如医生、律师、设计师" id="uprofession" >
+								</div>
 							</div>
-						</div>
+						</form>
 						<div class="Guide-BioEditorUsers">
 							<p class="Guide-BioEditorDescription">他们是这样介绍自己的</p>
 							<ul>
@@ -40,30 +43,25 @@
 									width="50" height="50"> <span class="Guide-BioEditorBio">系外行星的研究生</span>
 								</li>
 								<li class="Guide-BioEditorItem Guide-BioEditorItem--second">
-									<img class="Guide-BioEditorAvatar"
-									src="images/111.jpg" width="50"
-									height="50"> <span class="Guide-BioEditorBio">Lonely
+									<img class="Guide-BioEditorAvatar" src="images/111.jpg"
+									width="50" height="50"> <span class="Guide-BioEditorBio">Lonely
 										Planet 作者，潜水员</span>
 								</li>
 								<li class="Guide-BioEditorItem Guide-BioEditorItem--third">
-									<img class="Guide-BioEditorAvatar"
-									src="images/112.png"
+									<img class="Guide-BioEditorAvatar" src="images/112.png"
 									width="50" height="50"> <span class="Guide-BioEditorBio">北京大学南亚学系</span>
 								</li>
 								<li class="Guide-BioEditorItem Guide-BioEditorItem--fourth">
-									<img class="Guide-BioEditorAvatar"
-									src="images/113.jpg"
+									<img class="Guide-BioEditorAvatar" src="images/113.jpg"
 									width="50" height="50"> <span class="Guide-BioEditorBio">机械工程师，pegasister</span>
 								</li>
 								<li class="Guide-BioEditorItem Guide-BioEditorItem--fifth">
-									<img class="Guide-BioEditorAvatar"
-									src="images/114.png"
+									<img class="Guide-BioEditorAvatar" src="images/114.png"
 									width="50" height="50"> <span class="Guide-BioEditorBio">钛度科技/电子竞技</span>
 								</li>
 								<li class="Guide-BioEditorItem Guide-BioEditorItem--sixth">
-									<img class="Guide-BioEditorAvatar"
-									src="images/115.jpg" width="50"
-									height="50"> <span class="Guide-BioEditorBio">工科女博士/专业西点师/东京时差党</span>
+									<img class="Guide-BioEditorAvatar" src="images/115.jpg"
+									width="50" height="50"> <span class="Guide-BioEditorBio">工科女博士/专业西点师/东京时差党</span>
 								</li>
 							</ul>
 						</div>

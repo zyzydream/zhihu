@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="css/register-login.css">
 <link rel="shortcut icon" href="images/logohead.png">
+<link type="text/css" rel="stylesheet" href="css/test.css">
 <title>知乎 - 与世界分享你的知识、经验和见解</title>
 </head>
 <body>
@@ -27,38 +28,29 @@
 				</div>
 			</div>
 
-			<div class="login form">
-				<form action="user/register" method="post" id="register">
-					<p>
-						<label style="color: red;">${errorMsg }&nbsp;</label>
-						<c:remove var="errorMsg" scope="session" />
-					</p>
+			<form method="post" id="register" enctype="multipart/form-data">
+				<div class="login form">
 					<div class="group">
-						<div class="group-ipt email">
-							<input type="email" name="uemail" id="uemail" class="ipt"
-								placeholder="邮箱地址" required>
-						</div>
-						<div class="group-ipt user">
+						<div class="group-ipt user" id="User">
 							<input type="text" name="uname" id="uname" class="ipt"
-								placeholder="输入一个用户名" required>
+								placeholder="姓名" required>
+						</div>
+						<div class="group-ipt email" id="Email">
+							<input type="email" name="uemail" id="uemail" class="ipt"
+								placeholder="邮箱地址" required> <label
+								class="group-ipt error"></label>
 						</div>
 						<div class="group-ipt password">
 							<input type="password" name="upassword" id="upassword"
-								class="ipt" placeholder="设置登录密码" required>
-						</div>
-						<div class="group-ipt verify">
-							<input type="text" name="verify" id="verify" class="ipt"
-								placeholder="输入验证码" required> <img src="vcode.jpg"
-								class="imgcode">
+								class="ipt" placeholder="密码（不小于六位数）" required> <label
+								class="group-ipt error" id="emailError"></label>
 						</div>
 					</div>
-
-
 					<div class="button">
 						<button type="submit" class="login-btn register-btn" id="button">注册</button>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
 		</div>
 	</div>
 
@@ -81,11 +73,41 @@
 			target="_blank">出版物经营许可证</a>
 	</div>
 
+	<div class="modal-wrapper" id="yanzhengma">
+		<div class="mutiview-dialog SignFlow register show" tabindex="0"
+			style="" role="dialog" aria-labelledby=":0">
+			<div class="mutiview-dialog-title">
+				<div class="title verification">
+					<h1>验证邮箱</h1>
+					<h2>请输入你收到的 6 位数邮箱验证码</h2>
+				</div>
+				<span class="mutiview-dialog-title-close z-ico-close"
+					onmouseup="close()"></span> <span
+					class="mutiview-dialog-title-back z-ico-left"></span>
+			</div>
+			<div class="mutiview-dialog-content">
+				<div class="view verification">
+					<form method="post" id="code" action="user/code" >
+						<div class="input-wrapper verification-code">
+							<input name="verification_code" aria-label="验证码"
+								placeholder="6 位数验证码" maxlength="6" required type="text" id="addCode">
+							<button class="send-code" type="button">重发验证码</button>
+						</div>
+						<div class="submit-wrapper">
+							<button class="submit blue-button" id="goin" type="submit" >进入知乎</button>
+						</div>
+					</form>
+				</div>
+				<div class="mutiview-dialog-buttons" style="display: none;"></div>
+			</div>
+		</div>
+	</div>
 
-
+	<script type="text/javascript" src="easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
 	<script src='js/particles.js' type="text/javascript"></script>
 	<script src='js/background.js' type="text/javascript"></script>
-	<script src='js/jquery.min.js' type="text/javascript"></script>
 	<script src='js/layer/layer.js' type="text/javascript"></script>
 	<script src='js/register.js' type="text/javascript"></script>
 

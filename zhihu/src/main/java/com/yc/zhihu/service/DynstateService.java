@@ -26,4 +26,8 @@ public interface DynstateService {
 	boolean modifyUserPic(Users users);
 	
 	Users total(Object users);
+
+	boolean AddGH(Dynstate dynstate);
+
+	String listUsers(Object obj);
 }

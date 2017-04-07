@@ -21,8 +21,13 @@ public interface UserService {
 
 	boolean register(Users users);
 
+
 	List<Explore> listrelatedQ(Object user);
 
 	List<Explore> listrelatedD(Users user);
+
+	List<Users> listOneUsers(Users users);
+
+	boolean listprofession(Users users);
 
 }

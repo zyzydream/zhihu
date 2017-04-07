@@ -120,6 +120,7 @@
 		DYNSTATE d where selfid=#{uids})
 	</select>
 
+
 	<select id="totalatten" parameterType="Users" resultType="Users">
 		select
 		(select count(aimid) from dynstate where selfid=#{uids}) myatten,
@@ -132,4 +133,10 @@
 		myattenfav
 		from dual
 	</select>
+	
+	
+	
+	<insert id="insertGH" parameterType="String" >
+		insert into dynstate(selfid,kind,ids,times) values(#{selfid},'GH',#{ids},to_char(sysdate,'yyyy-mm-dd'))
+	</insert>
 </mapper>

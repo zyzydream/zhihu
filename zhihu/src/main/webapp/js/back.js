@@ -1,5 +1,13 @@
 dynstate("all");
 
+$.get("explore/update",function(data){
+	if(data!=null){
+		alert(JSON.stringify(data));
+		var length=data.length;
+		
+	}
+},"json");
+
 function select(self){
 	var p=self.parentNode.children;
 	for(var i=0;i<p.length;i++){
@@ -182,4 +190,7 @@ function sendemail(name){
 
 function ok(ids,kind){
 	alert("提交成功");
+	$.get("explore/ok?ids="+ids+"&&kind="+kind,function(data){
+		alert(data);
+	},"json");
 }
