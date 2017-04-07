@@ -278,6 +278,7 @@
 			</div>
 		</div>
 		
+		
 					<div class="totalinfos">
 						<table class="table table-striped"
 							style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">
