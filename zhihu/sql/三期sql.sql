@@ -75,10 +75,11 @@ CREATE TABLE topics(
 );
 select * from topics
 drop table topics
-insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
+insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,'','images/game.png');
 insert into topics(tid,ttopic,tstId,tpic)values('10002','计算机','10001','images/life.jpg');
+insert into topics(tid,ttopic,tstId,tpic)values('10003','生活' ,'','images/life.jpg');
 select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
-update TOPICS set tstid = '' where tstid=' '
+update TOPICS set tpic = 'images/life.jpg' where tpic='images/life.png'
 /*问题表
     qautid :提问人id
     qinid :受邀人id
