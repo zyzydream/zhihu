@@ -4,15 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
 <mapper namespace="com.yc.zhihu.mapper.DynstateMapper">
-	<select id="list" parameterType="Dynstate" resultType="Dynstate">
-		select * from dynstate
+	<select id="list" parameterType="PaginationBean" resultType="Dynstate">
+  select * from(
+       select inside.* ,rownum rn from(
+       select * from dynstate
 		<if test="kind != 'all'">
-			PARTITION(${kind})
+			PARTITION(${sgin})
 		</if>
 		<if test="kind == 'all'">
 
 		</if>
-
+		) inside where #{pageSize}*#{currPage}>=rownum)where rn>(#{currPage}-1)*#{pageSize}
 	</select>
 
 	<resultMap type="Reply" id="ReplyMap">

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Strings;
 import com.yc.zhihu.mapper.ExploreMapper;
 import com.yc.zhihu.service.ExploreService;
@@ -23,8 +24,29 @@ public class ExploreServiceImpl implements ExploreService{
 	}
 
 	@Override
-	public List<Explore> lists(String s) {
-		return exploreMapper.lists(s);
+	public PaginationBean<Explore> lists(String s,PaginationBean pBean) {
+		String currPage=String.valueOf(pBean.getCurrPage());
+		String pageSize=String.valueOf(pBean.getPageSize());
+		pBean.setSgin(s);
+		int cPage=1;
+		int pSize=10;
+		if(currPage!=null ){
+			cPage=Integer.parseInt(currPage);
+			if(currPage.intern()=="0"){
+				cPage=1;
+			}
+		}
+		if(pageSize!=null){
+			pSize=Integer.parseInt(pageSize);
+		}
+
+		int total=exploreMapper.count(s);
+		int totalPage=total/pSize+(total%pSize==0?0:1);
+		if(cPage==totalPage+1){
+			cPage=totalPage;
+		}
+		List<Explore>us=exploreMapper.lists(pBean);
+		return new PaginationBean<Explore>(cPage,pSize,totalPage,total,us);
 	}
 
 	@Override
@@ -36,9 +58,8 @@ public class ExploreServiceImpl implements ExploreService{
 	}
 	
 	@Override
-	public int submit(String ids, String kind) {
-		
-		return exploreMapper.submit(ids,kind);
+	public int submit(Explore explore) {
+		return exploreMapper.submit(explore);
 	}
 
 	//查找所有满足一定点赞上限的回复和文章
@@ -46,7 +67,7 @@ public class ExploreServiceImpl implements ExploreService{
 	public List<Explore> findUpdate() {	
 		List<Explore> all=new ArrayList<Explore>();
 		List<Explore> essayExplore=exploreMapper.findUpdateE();
-		List<Explore> questionExplore = exploreMapper.findUpdate();
+		List<Explore> questionExplore = exploreMapper.findUpdateW();
 		for(Explore e:essayExplore){
 			if(find(e.getIds(),e.getKind())==null){
 				all.add(e);
