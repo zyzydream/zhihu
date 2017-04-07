@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.service.ExploreService;
 import com.yc.zhihu.util.ServletUtil;
@@ -36,19 +37,17 @@ public class ExploreHandler {
 	//后台展示审核
 	@RequestMapping(value="/{check}",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Explore> lists(@PathVariable("check")String check){
-		List<Explore> explore= exploreService.lists(check);
+	public PaginationBean<Explore> lists(@PathVariable("check")String check,PaginationBean pBean){
+		PaginationBean<Explore> explore= exploreService.lists(check,pBean);
 		return explore;
 	}
 
 	@RequestMapping(value="/ok",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Explore> submit(String ids,String kind){
-		exploreService.submit(ids,kind);
-		//List<Explore> explores=exploreService.lists();
-		//return explore;
-		return null;
+	public int submit(Explore explore){
+		return exploreService.submit(explore);
 	}
+	
 	@RequestMapping(value="/update",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Explore> update(){

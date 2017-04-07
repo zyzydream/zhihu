@@ -23,6 +23,7 @@ public interface UserMapper {
 	Users findUsers(Users users);
 
 	int AddUsers(Users users);
+	List<Users> findNewUsers(Users users);
 
 	//列出最新动态中的问题
 	List<Explore> listrelatedQ(Object user);
@@ -35,5 +36,7 @@ public interface UserMapper {
 	List<Dynstate> lists(Users user);
 
 	Explore listrelatedTopic(Dynstate dynstate);
+
+	boolean AddUsersprofession(Users users);
 
 }

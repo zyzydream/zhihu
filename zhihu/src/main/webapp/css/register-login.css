@@ -139,7 +139,7 @@
 		}
 		.form .group .group-ipt input{
 			padding: 1em .8em;
-    		width: 100%;
+    		width: 70%;
     		box-sizing: border-box;
     		border: 0;
     		border-radius: 0;
@@ -241,4 +241,8 @@
 		.footer a{
 			color: #666;
 			text-decoration: underline;
+		}
+
+		.error{
+			color: #ff0000;
 		}

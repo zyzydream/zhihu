@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.service.TopicService;
@@ -26,4 +27,12 @@ public class TopicHandler {
 	public List<Topics> list(HttpServletRequest request){
 		return topicService.list(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
+	
+	@RequestMapping(value="/all",method=RequestMethod.POST)
+	@ResponseBody
+	public List<Topics> All(){
+		List<Topics> tp = topicService.listAll();
+		return tp;
+	}
+	
 }

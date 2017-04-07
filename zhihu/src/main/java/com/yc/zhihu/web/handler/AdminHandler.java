@@ -26,6 +26,6 @@ public class AdminHandler {
 	@RequestMapping(value="/user",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Users> list(){
-		return adminService.list();
+		return adminService.list().subList(0, 10);
 	}
 }

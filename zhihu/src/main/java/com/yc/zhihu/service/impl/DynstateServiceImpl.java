@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Favorite;
+import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Users;
@@ -21,8 +23,8 @@ public class DynstateServiceImpl implements DynstateService {
 	private DynstateMapper dynstateMapper;
 
 	@Override
-	public List<Users> list(Dynstate dynstate) {
-		return dynstateMapper.list(dynstate);
+	public List<Dynstate> list(PaginationBean<Explore> e) {
+		return dynstateMapper.list(e);
 	}
 
 	@Override
@@ -48,5 +50,25 @@ public class DynstateServiceImpl implements DynstateService {
 	@Override
 	public List<Users> listAttention(Object obj) {
 		return dynstateMapper.listMyAttention(obj);
+	}
+	
+	@Override
+	public boolean modifyUserPic(Users users) {
+		return dynstateMapper.updateUserPic(users)>0;
+	}
+	
+	@Override
+	public Users total(Object users) {
+		return dynstateMapper.totalatten(users);
+	}
+
+	@Override
+	public boolean AddGH(Dynstate dynstate) {
+		return dynstateMapper.insertGH(dynstate);
+	}
+
+	@Override
+	public String  listUsers(Object obj) {
+		return dynstateMapper.findUsers(obj);
 	}
 }

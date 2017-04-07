@@ -13,11 +13,12 @@
 <meta name="author" content="">
 <link rel="icon" href="images/logohead.png">
 <title>知乎后台</title>
+<link type="text/css" rel="stylesheet" href="easyui/themes/icon.css">
+<link type="text/css" rel="stylesheet" href="easyui/themes/default/easyui.css">
+
 <link href="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/dashboard.css" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="easyui/themes/icon.css">
-<link type="text/css" rel="stylesheet"
-	href="easyui/themes/default/easyui.css">
 <link href="css/back.css" rel="stylesheet">
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -25,6 +26,8 @@
 </head>
 
 <body>
+<span id="warn"></span>
+
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -61,10 +64,10 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active" onclick="select(this)"><a
+					<li class="active" onclick="select(this,1,10)"><a
 						href="javaScript:void(0)">总动态</a></li>
-					<li onclick="select(this)"><a href="javaScript:void(0)">用户信息</a></li>
-					<li onclick="select(this)"><a href="javaScript:void(0)">推荐头条</a></li>
+					<li onclick="select(this,1,10)"><a href="javaScript:void(0)">用户信息</a></li>
+					<li onclick="select(this,1,10)"><a href="javaScript:void(0)">推荐头条</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -82,7 +85,7 @@
 				</ul>
 				<div class="table-responsive">
 					<table class="table table-hover" id="table">
-						<!-- <thead>
+						 <thead>
 							<tr>
 								<th>#</th>
 								<th>Header</th>
@@ -204,7 +207,8 @@
 								<td>in</td>
 								<td>libero</td>
 							</tr>
-						</tbody> -->
+							
+						</tbody>
 					</table>
 				</div>
 			</div>
@@ -306,10 +310,10 @@
 		</div>
 		<!-- /.modal -->
 	</div>
+		
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/holder.js"></script>
 	<script src="js/ie10-viewport-bug-workaround.js"></script>

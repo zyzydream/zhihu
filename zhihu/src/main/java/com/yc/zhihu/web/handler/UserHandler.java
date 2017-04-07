@@ -3,6 +3,7 @@ package com.yc.zhihu.web.handler;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +17,9 @@ import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
+import com.yc.zhihu.service.DynstateService;
 import com.yc.zhihu.service.UserService;
+import com.yc.zhihu.util.EmailUtil;
 import com.yc.zhihu.util.ServletUtil;
 
 @Controller("userHandler")
@@ -25,6 +28,8 @@ public class UserHandler {
 
 	@Autowired
 	private UserService usersService;
+	
+	private String CODE;
 	
 	@RequestMapping(value="login" , method= RequestMethod.POST)
 	public String Login(Users users , HttpServletRequest request , HttpServletResponse response){		//查询所有主话题
@@ -35,22 +40,42 @@ public class UserHandler {
 			request.setAttribute(ServletUtil.ERROR_MASSAGE, "用户名或密码错误！！！");
 			return "/back/login.jsp";	
 		}else{
-			request.getSession().setAttribute("username", users.getUname());
+			request.getSession().setAttribute("username",users.getUname());
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
+			System.out.println(ServletUtil.LOGIN_USER);
 			return "redirect:/page/homepage.jsp";	
 		}	
 	}
 	//用户注册
 	@RequestMapping(value="register" , method= RequestMethod.POST)
-	public String register(Users users , HttpServletRequest request){
-		Users us = usersService.listUsers(users);
-		if(us == null){
+	@ResponseBody
+	public String register(Users users , HttpServletRequest request, HttpServletResponse response) {
+		List<Users> us = usersService.listOneUsers(users);
+		EmailUtil em = new EmailUtil();
+		String a;
+		if(us == null  || us.size()== 0){
 			usersService.register(users);
-			return "redirect:/page/work.jsp";
-		}else{
-			request.setAttribute(ServletUtil.ERROR_MASSAGE, "邮箱已被注册！！！");
-			return "/back/register.jsp";	
-		}	
+			users =usersService.listUsers(users);
+			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
+			try {
+				 CODE=em.setMail(users.getUemail());
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
+			a="true";
+			System.out.println(a);
+			return a;
+		}else {	
+			if(users.getUemail() == null || users.getUemail() == ""){
+				request.setAttribute(ServletUtil.ERROR_EMAIL, "邮箱已注册！！！");
+			}else if(users.getUname() == null || users.getUname() == ""){
+				request.setAttribute(ServletUtil.ERROR_NAME, "姓名已被注册！！！");
+			}
+			a="false";
+			System.out.println(a);
+			return a;
+		}
+		
 	}
 	
 	//列出最新动态
@@ -98,4 +123,21 @@ public class UserHandler {
 		return usersService.listTopics(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
+	
+	
+	@RequestMapping(value="/code",method=RequestMethod.POST)
+	public String listCode(String ucode){
+		return "redirect:/page/work.jsp";
+	}
+	
+	
+	
+	//职业添加
+		@RequestMapping(value="profession" , method= RequestMethod.POST)
+		public String profession(Users users , HttpServletRequest request, HttpServletResponse response) {
+			System.out.println("users  ==>"+users);
+			usersService.listprofession(users);
+			return "redirect:/page/talk.jsp";
+		}
+		
 }
