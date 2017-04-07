@@ -30,7 +30,7 @@
 						<p class="Guide-TopicsHint">可以通过搜索和「话题广场」找到更多你想要的话题</p>
 					</div>
 					<div class="Guide-TopicsFooter GaussianBlur">
-							<a ><button
+							<a href="page/homepage.jsp"><button
 									class="Guide-TopicsSubmit Button Button-flatPrimary js-submit"
 									id="addTopics" onclick="add()">进入知乎</button></a>
 						

@@ -9,6 +9,7 @@ CREATE TABLE users(
    upic VARCHAR2(50),
    uemail VARCHAR2(50)
 );
+ 10268 fojff      a         wxwjlnhcxqhwrfoifbqasxmuazhrlnefjvi      管理员         zzz.jpg 18023296374@qq.com
 select * from users
  select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 
 create sequence seq_users start with 10000;
@@ -27,13 +28,9 @@ insert into users(uemail,uname,upassword) values('123','zy','a');
 
 delete  users where uemail = "1103743969@qq.com"
 drop table users;
-<<<<<<< HEAD
 select * from USERS
-=======
 select * from essay
-select * from USERS
-=======
-select * from USERS
+
 
 
 create sequence seq_users
@@ -41,7 +38,6 @@ increment by 1
 start with 1000
 cache 10;
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 /*管理员信息表*/
 CREATE TABLE admins(
@@ -105,31 +101,22 @@ CREATE TABLE topics(
    tstid Varchar2(60),
    tpic Varchar2(60)
 );
-create sequence seq_topics start with 1000;
+create sequence seq_topics start with 1003;
 insert into topics
 select seq_topics.nextval, 
 dbms_random.string('l',dbms_random.value(5, 6)),
 '1',
-'car.png' from dual connect by level <= 15;
+'car.png' from dual connect by level <= 12;
 drop sequence seq_question;
 drop table topics
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 select * from topics
 insert into topics(tid,ttopic)values('10001','编程');
 insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
-=======
 insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
-=======
-insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,'','images/game.png');
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
-insert into topics(tid,ttopic,tstId,tpic)values('10002','计算机','10001','images/life.jpg');
-<<<<<<< HEAD
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
-=======
-insert into topics(tid,ttopic,tstId,tpic)values('10003','生活' ,'','images/life.jpg');
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+insert into topics(tid,ttopic,tstId,tpic)values('1000','编程' ,'','images/game.png');
+insert into topics(tid,ttopic,tstId,tpic)values('1001','计算机','10001','images/life.jpg');
+insert into topics(tid,ttopic,tstId,tpic)values('1002','生活' ,'','images/life.jpg');
 select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
 update TOPICS set tpic = 'images/life.jpg' where tpic='images/life.png'
 /*问题表
@@ -159,12 +146,9 @@ dbms_random.string('l',dbms_random.value(20, 50)),
 select * from question
 
 select * from QUESTION;
-<<<<<<< HEAD
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
-=======
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 drop table question
 /*回复表
     reqid :文章或问题id
@@ -332,6 +316,7 @@ create table infomation(
    times VARCHAR2(30), --时间
    info VARCHAR2(300)  --内容
 );
+ 10268 fojff      a         wxwjlnhcxqhwrfoifbqasxmuazhrlnefjvi      管理员         zzz.jpg 
 insert into explore(title,content,tname,tid,author,times,checks)values('我是知乎吗？','是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是','未知','10001','zy','2017-3-12','y');
 insert into explore(title,content,tname,tid,author,times,checks)values('我是知乎？','是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是','未知','10001','zy','2017-4-1','n');
 insert into explore(title,content,tname,tid,author,times,checks)values('你是谁？','是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是','未知','10001','zy','2017-3-11','y');
@@ -498,3 +483,5 @@ insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','
 
 --gr 2
 insert into users(uids,uemail,uname,upassword) values('1003','365@qq.com','gr','a');
+select * from users where uids='1003'
+ 10269 lhfjnrz    a         kkevobcrqxwebwalhhlqvvozpkke             翻译员         zzz.jpg 18070501074@qq.com
