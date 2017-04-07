@@ -15,7 +15,7 @@ import com.yc.zhihu.entity.RandomCode;
 public class EmailUtil {
 	RandomCode randomCode=new RandomCode();
 	//获取验证码
-	public void setMail(String mail) throws MessagingException{
+	public String setMail(String mail) throws MessagingException{
 		String  myrandomcode=randomCode.showRandom();
 		String  info="欢迎注册...";
 		Properties props = new Properties(); //Properties 属性文件 
@@ -46,5 +46,6 @@ public class EmailUtil {
 		transport.sendMessage(msg, new Address[] {new InternetAddress(mail)});
 		// 关闭连接  
 		transport.close(); 
+		return myrandomcode;
 	}
 }

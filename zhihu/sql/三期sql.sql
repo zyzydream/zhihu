@@ -29,13 +29,15 @@ delete  users where uemail = "1103743969@qq.com"
 drop table users;
 select * from essay
 select * from USERS
+=======
+select * from USERS
+
 
 create sequence seq_users
 increment by 1
 start with 1000
 cache 10;
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 
 /*管理员信息表*/
 CREATE TABLE admins(
@@ -89,8 +91,8 @@ CREATE TABLE favorite(
    fname VARCHAR2(30),
    ftime VARCHAR2(30)
 );
+drop table FAVORITE
 select * from FAVORITE where fcreid='1003';
-insert into FAVORITE(fid,fcreid,fname,ftime) values('1','1003','我的收藏夹','2017-4-3');
 /*话题表
     tstId :子话题id*/
 CREATE TABLE topics(
@@ -145,8 +147,12 @@ dbms_random.string('l',dbms_random.value(20, 50)),
 select * from question
 
 select * from QUESTION;
+<<<<<<< HEAD
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
+=======
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 drop table question
 /*回复表
     reqid :文章或问题id
@@ -188,7 +194,6 @@ drop sequence seq_reply;
   select rid from reply where rrid='';
 
 select * from REPLY;
-insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('10001','1','Q',null,'1003','1001','java是一门语言','2017-4-3')
 
 select q.qtitle,q.qtime,count(reqid) t from QUESTION q,REPLY r where r.rkind='Q'
 
@@ -260,7 +265,6 @@ select * from QUESTION q,
  where counts>0 and id=rid and rkind='Q' and rrid='')r
  where q.qid=r.reqid
  
-insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
 
 select 
 (select aimid from DYNSTATE where selfid='1003') myattenp,
@@ -452,26 +456,29 @@ select q.qid ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopi
 	    update explore set checks='y' where ids='10001' and kind='W'
          select * from EXPLORE where ids='10001' and kind='W'
 --
-=======
 	
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 drop table users;
 drop table topics;
 drop table essay;
 drop table dynstate;
-<<<<<<< HEAD
 drop table question;
 drop table admin;
 drop table reply;
 drop table infomation;
 drop table explore;
-=======
-
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 
+insert into FAVORITE(fid,fcreid,fname,ftime) values('1','1003','我的收藏夹','2017-4-3');
+
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3');
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
+
+INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES('1001','1003','ddddd','2017-3-3','主机','10001');
 
 
+insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('10001','1','Q',null,'1003','1001','java是一门语言','2017-4-3');
 
+
+insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');

@@ -88,7 +88,6 @@
 		</header>
 
 		<div class="container">
-
 			<div id="ProfileHeader" class="ProfileHeader"
 				data-za-module="Unknown">
 				<div class="Card">
@@ -147,7 +146,6 @@
 					</div>
 				</div>
 			</div>
-<<<<<<< HEAD
 
 			<div id="zhuyezhuti">
 				<div class="panel panel-default"
@@ -182,8 +180,8 @@
 										href="javascript:void(0)" onclick="MyAttention()">关注</a></li>
 								</ul>
 							</div>
-							
-							
+
+
 							<div class="page-header" style="margin: 0px; width: 640px;">
 								<h2 style="padding-left: 10px; padding-top: 10px">我的动态</h2>
 							</div>
@@ -211,105 +209,128 @@
 							</div>
 						</span>
 					</div>
-=======
-			
-			<div id="zhuyezhuti">
-			<div class="panel panel-default"
-				style="width: 660px; margin-left: 15px;">
-				<div class="panel-body">
-					<span id="myself"> 
-						<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">
-			<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a
-			 class="Tabs-link is-active" href="/zhihu/page/myself.jsp">动态</a></li>
-			<li class="Tabs-item" role="tab" aria-controls="Profile-answers">
-			<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 
-			<span class="Tabs-meta">1</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">
-			<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">2</span>
-			</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a
-			 class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">1</span>
-			</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"
-			 href="javascript:void(0)" onclick="myfavorite()"> 收藏 <span class="Tabs-meta">1</span>
-			</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">
-			<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>
-			</div><div class="page-header" style="margin: 0px; width: 640px;">
-			<h2 style="padding-left: 10px; padding-top: 10px">我的动态</h2>
-			</div><div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="featurette-heading" style="font-size: 20px;">
-			<span class="text-muted" style="font-size: 13px">回答了问题</span><br />'+data[i].question[i].qtitle+'</h2>
-			<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;
-			+data[i].users[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"
-			style="font-size: 12px; font-weight: 300;">'+data[i].users[i].usign+'</span></h2>
-			<p class="lead" style="font-size: 14px;">'+data[i].rcontent+'</p><span> <a href="#" style="font-size: 13px; font-weight: 40">阅览
-			<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a href="#" style="font-size: 13px; font-weight: 40">点赞 
-			<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a
-			href="#" style="font-size: 13px; font-weight: 40">收藏 <span
-			 class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>
-			
-					</span>
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
+
+					<div id="zhuyezhuti">
+						<div class="panel panel-default"
+							style="width: 660px; margin-left: 15px;">
+							<div class="panel-body">
+								<span id="myself">
+									<div class="header1">
+										<ul class="Tabs ProfileMain-tabs" role="tablist">
+											<li class="Tabs-item Tabs-item--noMeta" role="tab"
+												aria-controls="Profile-activities"><a
+												class="Tabs-link is-active" href="/zhihu/page/myself.jsp">动态</a></li>
+											<li class="Tabs-item" role="tab"
+												aria-controls="Profile-answers"><a class="Tabs-link"
+												href="javascript:void(0)" onclick="Myanswer3()"> 回答 <span
+													class="Tabs-meta">1</span></a></li>
+											<li class="Tabs-item" role="tab"
+												aria-controls="Profile-posts"><a class="Tabs-link"
+												href="javascript:void(0)" onclick="My()"> 我的 <span
+													class="Tabs-meta">2</span>
+											</a></li>
+											<li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a
+												class="Tabs-link" href="javascript:void(0)"
+												onclick="MyQuestion()"> 提问 <span class="Tabs-meta">1</span>
+											</a></li>
+											<li class="Tabs-item" role="tab"
+												aria-controls="Profile-collections"><a
+												class="Tabs-link" href="javascript:void(0)"
+												onclick="myfavorite()"> 收藏 <span class="Tabs-meta">1</span>
+											</a></li>
+											<li class="Tabs-item Tabs-item--noMeta" role="tab"
+												aria-controls="Profile-following"><a class="Tabs-link"
+												href="javascript:void(0)" onclick="MyAttention()">关注</a></li>
+										</ul>
+									</div>
+									<div class="page-header" style="margin: 0px; width: 640px;">
+										<h2 style="padding-left: 10px; padding-top: 10px">我的动态</h2>
+									</div>
+									<div class="row featurette"
+										style="padding-left: 10px; padding-top: 10px">
+										<div class="col-md-7">
+											<h2 class="featurette-heading" style="font-size: 20px;">
+												<span class="text-muted" style="font-size: 13px">回答了问题</span><br />'+data[i].question[i].qtitle+'
+											</h2>
+											<h2 class="featurette-heading" style="font-size: 13px;">
+												<img src="/zhihu/images/touxiang.jpg"
+													style="width: 50px; height: 50px">&nbsp;&nbsp;&nbsp;
+												+data[i].users[i].uname+' &nbsp;&nbsp;&nbsp; <span
+													class="text-muted"
+													style="font-size: 12px; font-weight: 300;">'+data[i].users[i].usign+'</span>
+											</h2>
+											<p class="lead" style="font-size: 14px;">'+data[i].rcontent+'</p>
+											<span> <a href="#"
+												style="font-size: 13px; font-weight: 40">阅览 <span
+													class="badge" style="width: 20px; padding: 0px;">42</span></a>
+												<a href="#" style="font-size: 13px; font-weight: 40">点赞
+													<span class="badge" style="width: 20px; padding: 0px;">42</span>
+											</a> <a href="#" style="font-size: 13px; font-weight: 40">收藏
+													<span class="badge" style="width: 20px; padding: 0px;">42</span>
+											</a></span>
+										</div>
+									</div>
+
+								</span>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+		
+					<div class="totalinfos">
+						<table class="table table-striped"
+							style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">
+							<tr>
+								<td class="info">关注的话题</td>
+								<td class="info"><%=request.getSession().getAttribute("myattentop")%></td>
+							</tr>
+							<tr>
+								<td class="info">关注的专题</td>
+								<td class="info"><%=request.getSession().getAttribute("myattenzhuanti")%></td>
+							</tr>
+							<tr>
+								<td class="info">关注的收藏夹</td>
+								<td class="info"><%=request.getSession().getAttribute("myattenfav")%></td>
+							</tr>
+						</table>
+					</div>
+
+
+					<div class="panel panel-default"
+						style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
+						<div class="panel-body">
+							<ul class="list-inline">
+								<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
+								<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
+							</ul>
+							<ul class="list-inline">
+								<li
+									style="padding-left: 40px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("myatten")%></li>
+								<li
+									style="padding-left: 120px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("attenme")%></li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default"
+						style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
+						<div class="panel-body">
+							<ul class="list-inline">
+								<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
+								<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
+							</ul>
+						</div>
+					</div>
 				</div>
-			</div>
-<<<<<<< HEAD
 		</div>
 
 
-		<div class="totalinfos">
-			<table class="table table-striped"
-				style="width: 300px; text-align: left; float: right; margin-right: 150px; margin-top: -170px">
-				<tr>
-					<td class="info">关注的话题</td>
-					<td class="info"><%=request.getSession().getAttribute("myattentop")%></td>
-				</tr>
-				<tr>
-					<td class="info">关注的专题</td>
-					<td class="info"><%=request.getSession().getAttribute("myattenzhuanti")%></td>
-				</tr>
-				<tr>
-					<td class="info">关注的收藏夹</td>
-					<td class="info"><%=request.getSession().getAttribute("myattenfav")%></td>
-				</tr>
-			</table>
-		</div>
-
-
-		<div class="panel panel-default"
-			style="width: 283px; height: 120px; margin-left: 900px; margin-top: -318px">
-			<div class="panel-body">
-				<ul class="list-inline">
-					<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
-					<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
-				</ul>
-				<ul class="list-inline">
-					<li
-						style="padding-left: 40px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("myatten")%></li>
-					<li
-						style="padding-left: 120px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("attenme")%></li>
-				</ul>
-=======
-			<div class="panel panel-default"
-				style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
-				<div class="panel-body">
-					<ul class="list-inline">
-						<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
-						<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
-					</ul>
-				</div>
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
-			</div>
-<<<<<<< HEAD
-=======
-			</div>
-
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
-		</div>
-	</div>
-
-	<script src="js/jquery.min.js"></script>
-	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
-	<script
-		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
-		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-	<script type="text/javascript" src="js/myself.js"></script>
-	<script src='js/layer/layer.js' type="text/javascript"></script>
-
+		<script src="js/jquery.min.js"></script>
+		<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+		<script
+			src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
+			tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+		<script type="text/javascript" src="js/myself.js"></script>
+		<script src='js/layer/layer.js' type="text/javascript"></script>
 </body>
 </html>

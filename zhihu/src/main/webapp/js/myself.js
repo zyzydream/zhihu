@@ -29,16 +29,13 @@ $.get("dynstate/m1",function(data){
 			+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
 			+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
 			+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
-<<<<<<< HEAD
 			+'</span></div></div>';
-=======
 			+'</span></div></div><div class="panel panel-default"'
 			+' style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
 			+'<div class="panel-body"><ul class="list-inline">'
 			+'<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
 			+'<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
 			+'</ul></div></div>';
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 	}
 
 	document.getElementById("zhuyezhuti").innerHTML = myanswers;
@@ -77,16 +74,13 @@ function Myanswer3(){
 				+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
 				+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
 				+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
-<<<<<<< HEAD
 				+'</span></div></div>';
-=======
 				+'</span></div></div><div class="panel panel-default"'
 				+' style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
 				+'<div class="panel-body"><ul class="list-inline">'
 				+'<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
 				+'<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
 				+'</ul></div></div>';
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 		}
 
 		document.getElementById("zhuyezhuti").innerHTML = myanswers;
@@ -127,16 +121,13 @@ function My(){
 				+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
 				+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
 				+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
-<<<<<<< HEAD
 				+'</span></div></div>';
-=======
 				+'</span></div></div><div class="panel panel-default"'
 				+' style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
 				+'<div class="panel-body"><ul class="list-inline">'
 				+'<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
 				+'<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
 				+'</ul></div></div>';
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 		}
 		document.getElementById("zhuyezhuti").innerHTML = my;
 
@@ -173,16 +164,13 @@ function MyQuestion(){
 			+'<a href="#" target="_blank">'+data[i].qtitle+'</a></div></h2>'
 			+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'
 			+data[i].qtime+'</span> <span class="ContentItem-statusItem">'+data[i].sum+' 个回答</span></div></div></div>'
-<<<<<<< HEAD
 			+'</span></div></div>';
-=======
 			+'</span></div></div><div class="panel panel-default"'
 			+' style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
 			+'<div class="panel-body"><ul class="list-inline">'
 			+'<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
 			+'<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
 			+'</ul></div></div>';
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 		}
 		document.getElementById("zhuyezhuti").innerHTML = myquestions;
 	},'json');
@@ -214,16 +202,13 @@ function myfavorite(){
 				+'<a href="#" target="_blank">'+data[i].fname+'</a></div></h2>'
 				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'
 				+data[i].ftime+'</span> <span class="ContentItem-statusItem">'+data[i].sum+' 条内容</span></div></div></div>'
-<<<<<<< HEAD
 				+'</span></div></div>';
-=======
 				+'</span></div></div><div class="panel panel-default"'
 				+' style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
 				+'<div class="panel-body"><ul class="list-inline">'
 				+'<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
 				+'<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
 				+'</ul></div></div>';
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 		}
 		document.getElementById("zhuyezhuti").innerHTML = favorites;
 	},'json');
@@ -279,7 +264,6 @@ function MyAttention(){
 				+'<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
 				+'<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
 				+'</ul></div></div>';
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 		}
 		document.getElementById("zhuyezhuti").innerHTML = myattention;
 	},'json');	
