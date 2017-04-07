@@ -24,11 +24,6 @@ start with 1000
 cache 10;
 
 
-
-
-
-
-
 /*管理员信息表*/
 CREATE TABLE admins(
    adid Varchar2(30),

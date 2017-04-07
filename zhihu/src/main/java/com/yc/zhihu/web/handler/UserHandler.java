@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Essay;
@@ -55,6 +54,7 @@ public class UserHandler {
 		String a;
 		if(us == null  || us.size()== 0){
 			usersService.register(users);
+			users =usersService.listUsers(users);
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
 			try {
 				 CODE=em.setMail(users.getUemail());
@@ -135,7 +135,7 @@ public class UserHandler {
 		@RequestMapping(value="profession" , method= RequestMethod.POST)
 		public String profession(Users users , HttpServletRequest request, HttpServletResponse response) {
 			System.out.println("users  ==>"+users);
-			boolean a = usersService.listprofession(users);
+			usersService.listprofession(users);
 			return "redirect:/page/talk.jsp";
 		}
 		
