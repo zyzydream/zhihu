@@ -343,3 +343,7 @@ insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('1
 
 
 insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
+
+
+--gr 2
+insert into users(uids,uemail,uname,upassword) values('1003','365@qq.com','gr','a');
