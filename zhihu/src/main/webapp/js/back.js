@@ -1,14 +1,31 @@
-dynstate("all");
+dynstate("all",1,10);
 
 $.get("explore/update",function(data){
-	if(data!=null){
-		alert(JSON.stringify(data));
+	if(data!=0){
 		var length=data.length;
-		
+		alert(length);
+		//alert(JSON.stringify(data));
+		document.getElementById("warn").innerHTML='<div class="alert alert-warning alert-dismissible" role="alert" Style="float:right;width: 1100px;"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>提醒!</strong>有'+data+'待审核的头条</div>';
 	}
 },"json");
 
-function select(self){
+function a(node){
+$('#pp').pagination({
+	onSelectPage:function(pageNumber, pageSize){
+		
+		$(this).pagination('loading');
+		alert('pageNumber:'+pageNumber+',pageSize:'+pageSize);
+		console.log(node);
+		select(node,pageNumber,pageSize);
+		$(this).pagination('loading');
+	}
+});
+}
+
+
+
+
+function select(self,currPage,pageSize){
 	var p=self.parentNode.children;
 	for(var i=0;i<p.length;i++){
 		p[i].setAttribute("class","");
@@ -20,17 +37,20 @@ function select(self){
 	//console.log(thing);
 	var kinds="";
 	if(thing=="推荐头条"||thing=="已审核"){
-    	$.get("explore/y",function(data){
+    	$.get("explore/y?currPage="+currPage+"&&pageSize="+pageSize,function(data){
     		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>操作</th></tr></thead><tbody>';
-    		for(var i=0;i<data.length;i++){
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].ids+'</td><td>'+data[i].kind+'</td><td>'+data[i].title+'</td><td>'+data[i].content.substr(0,10)+'...</td><td>'+data[i].tname+'</td><td>'+data[i].author+'</td><td>'+data[i].times+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data[i].ids+'\',\''+data[i].kind+'\',\''+data[i].title+'\',\''+data[i].content+'\',\''+data[i].tname+'\',\''+data[i].author+'\',\''+data[i].times+'\')">查看详情</a></td></tr>';
+    		for(var i=0;i<data.rows.length;i++){
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].ids+'</td><td>'+data.rows[i].kind+'</td><td>'+data.rows[i].title+'</td><td>'+data.rows[i].content.substr(0,10)+'...</td><td>'+data.rows[i].tname+'</td><td>'+data.rows[i].author+'</td><td>'+data.rows[i].times+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\',\''+data.rows[i].title+'\',\''+data.rows[i].content+'\',\''+data.rows[i].tname+'\',\''+data.rows[i].author+'\',\''+data.rows[i].times+'\')">查看详情</a></td></tr>';
     		}
+    		info+='<tr><td colspan="9"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1033px"></div></td></tr>';
     		info+='</tbody>';
     		document.getElementById("table").innerHTML = info;
     		var infos="";
-    		infos+='<li role="presentation" class="active" onclick="select(this)"><a>已审核</a></li>';
-    		infos+='<li role="presentation" onclick="select(this)"><a>未审核</a></li>'
+    		infos+='<li id="before" role="presentation" class="active" onclick="select(this,1,10)"><a>已审核</a></li>';
+    		infos+='<li id="after" role="presentation" onclick="select(this,1,10)"><a>未审核</a></li>'
     	    document.getElementById("nav-tabs").innerHTML = infos;
+    		var node=document.getElementById("before");
+    		a(node);
     	},"json")
     }else if(thing=="总动态"||thing=="关注人"||thing=="关注话题"||thing=="关注专栏"||thing=="关注人"||thing=="关注收藏夹"||thing=="收藏文章"||thing=="收藏问题"||thing=="收藏回复"||thing=="点赞文章"||thing=="点赞问题"||thing=="点赞回复"){
     	var kinds="all";
@@ -55,7 +75,7 @@ function select(self){
 		}else if(thing=="收藏文章"){
 			kinds="SW";
 		}
-    	dynstate(kinds)
+    	dynstate(kinds,currPage,pageSize)
     }else if(thing=="用户信息"){
     	//console.log(thing+"3")
     	$.get("admin/user",function(data){
@@ -65,29 +85,34 @@ function select(self){
     			var name=data[i].uname
     			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].uids+'</td><td>'+data[i].uname+'</td><td>'+data[i].uemail+'</td><td>'+data[i].usign+'...</td><td>'+data[i].profession+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#infoModal" onclick="sendemail(\''+name+'\')">发送信息</a></td></tr>';
     		}
+    		//info+='<tr><td colspan="9"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1033px"></div></td></tr>';
     		info+='</tbody>';
     		//console.info(info);
     		document.getElementById("table").innerHTML = info;
     		document.getElementById("nav-tabs").innerHTML = "";
        	},"json");
     }else if(thing=="未审核"){
-    	$.get("explore/n",function(data){
+    	$.get("explore/n?currPage="+currPage+"&&pageSize="+pageSize,function(data){
+    		//alert(JSON.stringify(data));
     		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>操作</th></tr></thead><tbody>';
-    		for(var i=0;i<data.length;i++){
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].ids+'</td><td>'+data[i].kind+'</td><td>'+data[i].title+'</td><td>'+data[i].content.substr(0,10)+'...</td><td>'+data[i].tname+'</td><td>'+data[i].author+'</td><td>'+data[i].times+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data[i].ids+'\',\''+data[i].kind+'\',\''+data[i].title+'\',\''+data[i].content+'\',\''+data[i].tname+'\',\''+data[i].author+'\',\''+data[i].times+'\')">查看详情</a><a class="btn btn-default" role="button" onclick="ok(\''+data[i].ids+'\',\''+data[i].kind+'\')">审核通过</a></td></tr>';
+    		for(var i=0;i<data.rows.length;i++){
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].ids+'</td><td>'+data.rows[i].kind+'</td><td>'+data.rows[i].title+'</td><td>'+data.rows[i].content.substr(0,10)+'...</td><td>'+data.rows[i].tname+'</td><td>'+data.rows[i].author+'</td><td>'+data.rows[i].times+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\',\''+data.rows[i].title+'\',\''+data.rows[i].content+'\',\''+data.rows[i].tname+'\',\''+data.rows[i].author+'\',\''+data.rows[i].times+'\')">查看详情</a><a class="btn btn-default" role="button" onclick="ok(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\')">审核通过</a></td></tr>';
     		}
+    		info+='<tr><td colspan="9"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1031px"></div></td></tr>';
     		info+='</tbody>';
     		document.getElementById("table").innerHTML = info;
     		var infos="";
-    		infos+='<li role="presentation" onclick="select(this)"><a>已审核</a></li>';
-    		infos+='<li role="presentation" class="active"  onclick="select(this)"><a>未审核</a></li>'
+    		infos+='<li id="before" role="presentation" onclick="select(this,1,10)"><a>已审核</a></li>';
+    		infos+='<li id="after" role="presentation" class="active"  onclick="select(this,1,10)"><a>未审核</a></li>'
     	    document.getElementById("nav-tabs").innerHTML = infos;
+    		var node=document.getElementById("after");
+    		a(node);
     	},"json");
     }
 }
 
-function dynstate(kinds){
-	$.get("dynstate/all?kind="+kinds,function(data){
+function dynstate(kinds,currPage,pageSize){
+	$.get("dynstate/all?kind="+kinds+"&&currPage="+currPage+"&&pageSize="+pageSize ,function(data){
 		//alert(JSON.stringify(data));
 		var all="";
 		var GH="";
@@ -138,20 +163,21 @@ function dynstate(kinds){
 			}
 			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].selfid+'</td><td>'+data[i].aimid+'</td><td>'+kind+'</td><td>'+data[i].ids+'</td><td>'+"未知"+'</td><td><a class="btn btn-default" role="button">查看详情</a></td></tr>';
 		}
+		info+='<tr><td colspan="9"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1031px"></div></td></tr>';
 		info+='</tbody>';
 		document.getElementById("table").innerHTML = info;
 		var infos="";
-		infos+='<li role="presentation" class="'+all+'" onclick="select(this)"><a>全部</a></li>';
-		infos+='<li role="presentation" class="'+GR+'" onclick="select(this)"><a>关注人</a></li>';
-		infos+='<li role="presentation" class="'+GH+'" onclick="select(this)"><a>关注话题</a></li>';
-		infos+='<li role="presentation" class="'+GZ+'" onclick="select(this)"><a>关注专栏</a></li>';
-		infos+='<li role="presentation" class="'+GS+'" onclick="select(this)"><a>关注收藏夹</a></li>';
-		infos+='<li role="presentation" class="'+SW+'" onclick="select(this)"><a>收藏文章</a></li>';
-		infos+='<li role="presentation" class="'+SQ+'" onclick="select(this)"><a>收藏问题</a></li>';
-		infos+='<li role="presentation" class="'+SH+'" onclick="select(this)"><a>收藏回复</a></li>';
-		infos+='<li role="presentation" class="'+DQ+'" onclick="select(this)"><a>点赞问题</a></li>';
-		infos+='<li role="presentation" class="'+DW+'" onclick="select(this)"><a>点赞文章</a></li>';
-		infos+='<li role="presentation" class="'+DH+'" onclick="select(this)"><a>点赞回复</a></li>';
+		infos+='<li role="presentation" class="'+all+'" onclick="select(this,1,10)"><a>全部</a></li>';
+		infos+='<li role="presentation" class="'+GR+'" onclick="select(this,1,10)"><a>关注人</a></li>';
+		infos+='<li role="presentation" class="'+GH+'" onclick="select(this,1,10)"><a>关注话题</a></li>';
+		infos+='<li role="presentation" class="'+GZ+'" onclick="select(this,1,10)"><a>关注专栏</a></li>';
+		infos+='<li role="presentation" class="'+GS+'" onclick="select(this,1,10)"><a>关注收藏夹</a></li>';
+		infos+='<li role="presentation" class="'+SW+'" onclick="select(this,1,10)"><a>收藏文章</a></li>';
+		infos+='<li role="presentation" class="'+SQ+'" onclick="select(this,1,10)"><a>收藏问题</a></li>';
+		infos+='<li role="presentation" class="'+SH+'" onclick="select(this,1,10)"><a>收藏回复</a></li>';
+		infos+='<li role="presentation" class="'+DQ+'" onclick="select(this,1,10)"><a>点赞问题</a></li>';
+		infos+='<li role="presentation" class="'+DW+'" onclick="select(this,1,10)"><a>点赞文章</a></li>';
+		infos+='<li role="presentation" class="'+DH+'" onclick="select(this,1,10)"><a>点赞回复</a></li>';
 	    document.getElementById("nav-tabs").innerHTML = infos;
 	},"json")
 }
@@ -189,8 +215,16 @@ function sendemail(name){
 }
 
 function ok(ids,kind){
-	alert("提交成功");
+	//alert("提交成功");
 	$.get("explore/ok?ids="+ids+"&&kind="+kind,function(data){
-		alert(data);
+		//alert(data);
+		if(data!=0){
+			alert("申请成功");
+			var node=document.getElementById("after");
+			console.log(node);
+			select(node,1,10);
+		}else{
+			alert("申请失败！！！");
+		}
 	},"json");
 }

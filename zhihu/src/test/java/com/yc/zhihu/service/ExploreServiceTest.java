@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Strings;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,6 +21,16 @@ public class ExploreServiceTest {
     @Autowired
     private ExploreService exploreService;
 	
+    @Test
+	public void testLists(){
+    	PaginationBean<Explore> e=new PaginationBean<Explore>();
+    	e.setCurrPage(1);
+    	e.setPageSize(5);
+    	PaginationBean<Explore> es=exploreService.lists("n", e);
+    	System.out.println(es);
+    	assertNotNull(es);
+    }
+    
 	@Test
 	public void testFind() {
 		exploreService.find("aa","a");
@@ -34,7 +45,8 @@ public class ExploreServiceTest {
 
 	@Test
 	public void testUpdate() {
-		fail("Not yet implemented");
+		List<Explore> es=exploreService.findUpdate();
+		exploreService.update(es.subList(0, 10));
 	}
 
 }

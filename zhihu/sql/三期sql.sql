@@ -2,20 +2,29 @@
     u_profession :用户职业*/
 CREATE TABLE users(
    uids Varchar2(30),
+   uname VARCHAR2(15),
    upassword varchar2(30),
    usign VARCHAR2(50),
-   uage Varchar2(5),
-   ugender VARCHAR2(5),
    uprofession VARCHAR2(20),
-   uname VARCHAR2(15),
    upic VARCHAR2(50),
    uemail VARCHAR2(50)
 );
-commit;
+select * from essay
+
+create sequence seq_users start with 10000;
+insert into users
+select seq_users.nextval, 
+dbms_random.string('l',dbms_random.value(5, 10)),
+'a',
+dbms_random.string('l',dbms_random.value(10, 40)),
+decode(ceil(dbms_random.value(0, 6)), 1, '程序员', 2, '测试员', 3, '分析员', 4, '设计员', 5, '翻译员', '管理员'),
+'zzz.jpg',
+'180'||ceil(dbms_random.value(10000000,99999999))||'@qq.com' from dual connect by level <= 1000;
+select * from users where uids='10999'
+
 select * from USERS where uemail='123' and upassword='a' 
 insert into users(uemail,uname,upassword) values('123','zy','a');
-drop table users;
-select * from USERSE
+
 
 /*管理员信息表*/
 CREATE TABLE admins(
@@ -35,10 +44,23 @@ CREATE TABLE essay(
    escid VARCHAR2(30),
    etid VARCHAR2(10)
 );
+create sequence seq_essay start with 10000;
+insert into essay
+select seq_essay.nextval||'', 
+''||ceil(dbms_random.value(10000,11000)),
+dbms_random.string('l',dbms_random.value(100, 200)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+dbms_random.string('l',dbms_random.value(10, 20)),
+'123',
+''||ceil(dbms_random.value(1000,1015)) from dual connect by level <= 3000;
+select * from essay
+
+drop table essay;
+drop sequence seq_essay;
+
+
 INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES('1001','1003','ddddd','2017-3-3','主机','10001');
 select * from question
-select * from essay
-drop table essay
 
 select e.*,u.uname,u.usign,u.upic from ESSAY e,USERS u where eautid=1003
 
@@ -66,8 +88,16 @@ CREATE TABLE topics(
    tstid Varchar2(60),
    tpic Varchar2(60)
 );
-select * from topics
+create sequence seq_topics start with 1000;
+insert into topics
+select seq_topics.nextval, 
+dbms_random.string('l',dbms_random.value(5, 6)),
+'1',
+'car.png' from dual connect by level <= 15;
+drop sequence seq_question;
 drop table topics
+
+select * from topics
 insert into topics(tid,ttopic)values('10001','编程');
 insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
 select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
@@ -86,10 +116,21 @@ CREATE TABLE question(
    qtid  VARCHAR2(30), --话题id
    qtime VARCHAR2(30)
 );
+create sequence seq_question start with 10000;
+
+insert into question
+select seq_question.nextval, 
+''||ceil(dbms_random.value(10000,11000)),
+''||ceil(dbms_random.value(10000,11000)),
+dbms_random.string('l',dbms_random.value(10, 20)),
+dbms_random.string('l',dbms_random.value(20, 50)),
+''||ceil(dbms_random.value(1000,1015)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 3000;
+select * from question
+
 select * from QUESTION;
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
-
 drop table question
 /*回复表
     reqid :文章或问题id
@@ -109,6 +150,25 @@ CREATE TABLE reply(
    rtid VARCHAR2(30),
    rtime VARCHAR2(30)
 );
+create sequence seq_reply start with 10000;
+
+insert into reply
+select seq_reply.nextval, 
+''||ceil(dbms_random.value(10000,13000)),
+decode(ceil(dbms_random.value(0, 2)), 1, 'W', 'Q'),
+'',
+''||ceil(dbms_random.value(10000,11000)),
+''||ceil(dbms_random.value(10000,11000)),
+dbms_random.string('l',dbms_random.value(55, 200)),
+''||ceil(dbms_random.value(1000,1015)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 3000;
+select * from reply
+
+drop table dynstate;
+drop sequence seq_reply;
+
+
+
   select rid from reply where rrid='';
 
 select * from REPLY;
@@ -153,6 +213,42 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
+--关注人
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,11000)),
+''||ceil(dbms_random.value(10000,11000)),
+'GR',
+'',
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'' from dual connect by level <= 2000;
+--关注话题
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,11000)),
+'',
+'GH',
+''||ceil(dbms_random.value(1000,1015)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'' from dual connect by level <= 3000;
+--点赞文章
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,11000)),
+'',
+'DW',
+''||ceil(dbms_random.value(10000,13000)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'' from dual connect by level <= 6000;
+--点赞回复
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,11000)),
+'',
+'DH',
+''||ceil(dbms_random.value(10000,13000)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'' from dual connect by level <= 6000;
+select * from dynstate PARTITION (GR)
+
+
+
 select * from QUESTION q,
 (select * from reply,
    (select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids order by count(ids)) 
@@ -189,7 +285,13 @@ create table explore(
    times VARCHAR2(30),  --时间
    checks VARCHAR2(2) --是否以核查
 );
+select count(0) from explore where checks='n'
+select e.*,rownum rn from explore e  where checks='n' and rownum>1
+select * from(
+select inside.* ,rownum rn from(
+select * from explore where checks='n' order by 1 desc) inside where rownum<=#{currPage}*#{})where rn>(1-1)*9
 
+drop table explore
 create table infomation(
    selfname VARCHAR2(30), --发件人用户名
    aimname VARCHAR2(30), --收件人用户名
@@ -316,16 +418,31 @@ SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE se
                (select aimid from dynstate PARTITION(GR) WHERE selfid='1001')d
             where e.
 	
-	
+select q.qid ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks  from QUESTION q,
+	     (select * from topics t,
+	       (select * from users u,
+	          (select * from reply,
+        	    (select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids order by count(ids)DESC)
+	          where counts>4 and id=rid and rkind='Q' )r
+	        where u.uids=r.remitid)r
+	      where t.tid=r.rtid)rd
+	   where q.qid=rd.reqid	
+            
+    
+            
+	    update explore set checks='y' where ids='10001' and kind='W'
+         select * from EXPLORE where ids='10001' and kind='W'
 --
 
 drop table users;
 drop table topics;
 drop table essay;
 drop table dynstate;
-drop table users;
-drop table users;
-drop table users;
+drop table question;
+drop table admin;
+drop table reply;
+drop table infomation;
+drop table explore;
 
 
 

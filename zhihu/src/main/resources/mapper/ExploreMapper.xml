@@ -10,31 +10,38 @@
        where e.tid=d.ids
     </select>
     
-    <select id="lists" parameterType="string" resultType="Explore">
-       select * from explore where checks=#{s}
+    <select id="count" parameterType="string" resultType="int">
+         select count(1) from explore where checks=#{s}
+    </select>
+    
+    <select id="lists" parameterType="PaginationBean" resultType="Explore">
+       select * from(
+       select inside.* ,rownum rn from(
+       select * from explore where checks=#{sgin} order by 1 desc) inside where #{pageSize}*#{currPage}>=rownum)where rn>(#{currPage}-1)*#{pageSize}
+
     </select>
     
     <select id="find" parameterType="Strings" resultType="Explore">
         select * from explore where ids=#{ids} and kind=#{kind}
     </select>
     
-    <select id="findUpdate" resultType="Explore" >
+    <select id="findUpdateW" resultType="Explore" >
 	    select q.qid ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks  from QUESTION q,
 	     (select * from topics t,
 	       (select * from users u,
 	          (select * from reply,
-        	    (select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids order by count(ids))
-	          where counts>0 and id=rid and rkind='Q' and rrid='')r
+        	    (select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids order by count(ids)DESC)
+	          where counts>5 and id=rid and rkind='Q' )r
 	        where u.uids=r.remitid)r
 	      where t.tid=r.rtid)rd
-	   where q.qid=rd.reqid
+	   where q.qid=rd.reqid	
     </select>
     <select id="findUpdateE" resultType="Explore">
          select e.eid ids,'W' kind,e.etitle title,e.econtent content,e.etid tid,t.ttopic tname,e.usign usign,e.uids uids,e.uname author,e.etime times,'n' checks  from topics t,
 	     (select * from users u,
 	       (select * from essay,
            	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
-	        where counts>0 and id=eid )e
+	        where counts>5 and id=eid )e
 	      where u.uids=e.eautid)e
 	    where t.tid=e.etid
     </select>
@@ -43,5 +50,9 @@
         insert into explore (ids,kind,title,content,tid,tname,uids,author,times,checks)
         values(#{ids},#{kind},#{title},#{content},#{tid},#{tname},#{uids},#{author},#{times},#{checks})
     </insert>
+    
+    <update id="submit" parameterType="Explore">
+      	    update explore set checks='y' where ids=#{ids} and kind=#{kind}
+    </update>
     
 </mapper>

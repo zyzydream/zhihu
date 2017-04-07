@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Favorite;
+import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Users;
@@ -30,9 +32,14 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/all",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Users> list(Dynstate dynstate ){
-		System.out.println("进来了 ====>  dynstate");
-		return dynstateService.list(dynstate);
+	public List<Users> list(String kind,String currPage,String pageSize ){
+		PaginationBean<Explore> e=new PaginationBean<Explore>();
+		e.setCurrPage(Integer.valueOf(currPage));
+		e.setPageSize(Integer.valueOf(pageSize));
+		Dynstate d=new Dynstate();
+		d.setKind(kind);
+		return null;
+		//return dynstateService.list(dynstate);
 	}
 	
 	
