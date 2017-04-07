@@ -18,6 +18,7 @@ delete  users where uemail = "1103743969@qq.com"
 drop table users;
 select * from USERS
 
+
 create sequence seq_users
 increment by 1
 start with 1000
@@ -42,7 +43,6 @@ CREATE TABLE essay(
    escid VARCHAR2(30),
    etid VARCHAR2(10)
 );
-INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES('1001','1003','ddddd','2017-3-3','主机','10001');
 select * from question
 select * from essay
 drop table essay
@@ -64,7 +64,6 @@ CREATE TABLE favorite(
    ftime VARCHAR2(30)
 );
 select * from FAVORITE where fcreid='1003';
-insert into FAVORITE(fid,fcreid,fname,ftime) values('1','1003','我的收藏夹','2017-4-3');
 /*话题表
     tstId :子话题id*/
 CREATE TABLE topics(
@@ -95,8 +94,6 @@ CREATE TABLE question(
    qtime VARCHAR2(30)
 );
 select * from QUESTION;
-insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
-insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
 
 drop table question
 /*回复表
@@ -120,7 +117,6 @@ CREATE TABLE reply(
   select rid from reply where rrid='';
 
 select * from REPLY;
-insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('10001','1','Q',null,'1003','1001','java是一门语言','2017-4-3')
 
 select q.qtitle,q.qtime,count(reqid) t from QUESTION q,REPLY r where r.rkind='Q'
 
@@ -128,17 +124,6 @@ select q.*,t.s from question q,
 (select count(reqid) s from REPLY where rkind='Q' and reqid=(select reqid from question where qautid='1003')) t
 where q.qautid='1003';
  
-
-
-
-select t.*,q.qtitle from 
-(select r.*,u.uname,u.usign,r.reqid a from REPLY r,users u where remitid=1003 and uids=1003) t,question q
-where t.reqid=a;
-
-		select t.*,q.qtitle from
-		(select r.*,u.uname,u.usign,r.reqid a from REPLY r,users u where remitid='1003'
-		and uids=remitid) t,question q
-		where t.reqid=a
 
 /*动态总表*/
 CREATE TABLE dynstate(
@@ -167,8 +152,20 @@ select * from QUESTION q,
  where counts>0 and id=rid and rkind='Q' and rrid='')r
  where q.qid=r.reqid
  
-insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
 
+select 
+(select aimid from DYNSTATE where selfid='1003') myattenp,
+(select aimid from DYNSTATE where selfid=(select aimid from DYNSTATE where selfid='1003')) myattenwho
+from dual;
+
+
+select
+(select count(aimid) from dynstate where selfid='1003') myatten,
+(select count(selfid) from DYNSTATE where aimid='1003') attenme,
+(select count(ids) from DYNSTATE where selfid='1003' and kind='GH') myattentop,
+(select count(ids) from DYNSTATE where selfid='1003' and kind='GZ') myattenzhuanlan,
+(select count(ids) from DYNSTATE where selfid='1003' and kind='GS') myattenfav
+from dual;
 
 select f.*,t.sum from FAVORITE f,
 (select count(ids) sum from DYNSTATE where selfid='1003') t
@@ -325,17 +322,29 @@ SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE se
             where e.
 	
 	
---
+
 
 drop table users;
 drop table topics;
 drop table essay;
 drop table dynstate;
-drop table users;
-drop table users;
-drop table users;
 
 
 
+--gr
+insert into FAVORITE(fid,fcreid,fname,ftime) values('1','1003','我的收藏夹','2017-4-3');
+
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
+
+INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES('1001','1003','ddddd','2017-3-3','主机','10001');
 
 
+insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('10001','1','Q',null,'1003','1001','java是一门语言','2017-4-3')
+
+
+insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
+
+
+--gr 2
+insert into users(uids,uemail,uname,upassword) values('1003','365@qq.com','gr','a');

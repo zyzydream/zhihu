@@ -1,5 +1,6 @@
 $.get("dynstate/m1",function(data){
 	var myanswers="";
+	var id='<%=Session["myatten"]%>'
 	for(var i=0;i<data.length;i++){
 		myanswers+='<div class="panel panel-default"style="width: 660px; margin-left: 15px;">'
 			+'<div class="panel-body"><span id="myself">' 
@@ -28,12 +29,7 @@ $.get("dynstate/m1",function(data){
 			+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
 			+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
 			+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
-			+'</span></div></div><div class="panel panel-default"'
-			+' style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
-			+'<div class="panel-body"><ul class="list-inline">'
-			+'<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
-			+'<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
-			+'</ul></div></div>';
+			+'</span></div></div>';
 	}
 
 	document.getElementById("zhuyezhuti").innerHTML = myanswers;
@@ -72,6 +68,7 @@ function Myanswer3(){
 				+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
 				+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
 				+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
+				+'</span></div></div>';
 				+'</span></div></div><div class="panel panel-default"'
 				+' style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
 				+'<div class="panel-body"><ul class="list-inline">'
@@ -118,6 +115,7 @@ function My(){
 				+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
 				+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
 				+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
+				+'</span></div></div>';
 				+'</span></div></div><div class="panel panel-default"'
 				+' style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
 				+'<div class="panel-body"><ul class="list-inline">'
@@ -160,6 +158,7 @@ function MyQuestion(){
 			+'<a href="#" target="_blank">'+data[i].qtitle+'</a></div></h2>'
 			+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'
 			+data[i].qtime+'</span> <span class="ContentItem-statusItem">'+data[i].sum+' 个回答</span></div></div></div>'
+			+'</span></div></div>';
 			+'</span></div></div><div class="panel panel-default"'
 			+' style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
 			+'<div class="panel-body"><ul class="list-inline">'
@@ -197,6 +196,7 @@ function myfavorite(){
 				+'<a href="#" target="_blank">'+data[i].fname+'</a></div></h2>'
 				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'
 				+data[i].ftime+'</span> <span class="ContentItem-statusItem">'+data[i].sum+' 条内容</span></div></div></div>'
+				+'</span></div></div>';
 				+'</span></div></div><div class="panel panel-default"'
 				+' style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
 				+'<div class="panel-body"><ul class="list-inline">'
@@ -245,6 +245,9 @@ function MyAttention(){
 				+'<div class="ContentItem-meta"><div><div class="RichText">'+data[i].usign+'</div>'
 				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data[i].ansum+'回答</span>'
 				+'<span class="ContentItem-statusItem">'+data[i].essum+'文章</span><span class="ContentItem-statusItem">'+data[i].attsum+' 关注者</span>'
+				+'</div></div></div></div><div class="ContentItem-extra"><button class="Button FollowButton Button--primary Button--grey" type="button" onclick="touch()">'
+				+'已关注</button></div></div></div></div>'
+				+'</span></div></div>';
 				+'</div></div></div></div><div class="ContentItem-extra"><button class="Button FollowButton Button--primary Button--grey" type="button">'
 				+'已关注</button></div></div></div></div>'
 				+'</span></div></div><div class="panel panel-default"'
@@ -257,3 +260,35 @@ function MyAttention(){
 		document.getElementById("zhuyezhuti").innerHTML = myattention;
 	},'json');	
 }
+
+
+function touch(){
+	$.get("dynstate/touch",function(data){
+		
+	})
+	
+}
+
+$('#changgeimage').hover(function() {
+	layer.tips("上传一张图片，展示在这里", '.DynamicColorButton', {
+		time : 6000,
+		tips : [ 2, "#3c3c3c" ]
+	})
+}, function() {
+	layer.closeAll('tips');
+});
+
+/*function updatePic(){
+	$.get("dynstate/modify",function(data){
+		if(data==""){
+			return ;
+		}
+		
+		if(data.trim() == "true"){
+			$(".UserCoverEditor").datagrid("reload"); //刷新修改数据
+		}
+	})
+}*/
+
+
+

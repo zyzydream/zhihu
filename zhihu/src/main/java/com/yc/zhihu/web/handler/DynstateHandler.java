@@ -1,5 +1,6 @@
 package com.yc.zhihu.web.handler;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
@@ -37,6 +40,13 @@ public class DynstateHandler {
 	@RequestMapping(value="/m1",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Reply> Dynstatehuida(HttpServletRequest request){
+		Users users=new Users();
+		users=dynstateService.total(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		request.getSession().setAttribute("myatten", users.getMyatten());
+		request.getSession().setAttribute("attenme", users.getAttenme());
+		request.getSession().setAttribute("myattentop", users.getMyattentop());
+		request.getSession().setAttribute("myattenzhuanlan", users.getMyattenzhuanlan());
+		request.getSession().setAttribute("myattenfav", users.getMyattenfav());
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		return dynstateService.answer(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
@@ -76,7 +86,8 @@ public class DynstateHandler {
 		return dynstateService.listAttention(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
-	@RequestMapping(value="/add",method=RequestMethod.POST)
+
+	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String add(HttpServletRequest request,Dynstate dynstate){
 		String ids = request.getParameter("tid");
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
