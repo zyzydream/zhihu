@@ -42,6 +42,7 @@ public class UserHandler {
 		}else{
 			request.getSession().setAttribute("username", users.getUname());
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
+			System.out.println(ServletUtil.LOGIN_USER);
 			return "redirect:/page/homepage.jsp";	
 		}	
 	}
@@ -128,4 +129,14 @@ public class UserHandler {
 		return "redirect:/page/work.jsp";
 	}
 	
+	
+	
+	//职业添加
+		@RequestMapping(value="profession" , method= RequestMethod.POST)
+		public String profession(Users users , HttpServletRequest request, HttpServletResponse response) {
+			System.out.println("users  ==>"+users);
+			boolean a = usersService.listprofession(users);
+			return "redirect:/page/talk.jsp";
+		}
+		
 }

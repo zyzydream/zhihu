@@ -72,6 +72,11 @@
 	
 	<!-- 注册 -->
 	<insert id="AddUsers" parameterType="Users">
-		insert into users(uemail,uname,upassword,usign) values(#{uemail},#{uname},#{upassword},'无') 
+		insert into users(uids,uemail,uname,upassword,usign) values(seq_users.nextval,#{uemail},#{uname},#{upassword},'无') 
 	</insert>
+	
+	<!-- 添加职业 -->
+	<update id="AddUsersprofession" parameterType="Users" >
+		update users set uprofession=#{uprofession} where uprofession is null
+	</update>
 </mapper>

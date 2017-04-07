@@ -49,4 +49,14 @@ public class UserServiceTest {
 		System.out.println(dy);
 		assertNotNull(dy);
 	}
+	
+	@Test
+	public void testListprofession(){
+		Users user=new Users();
+		user.setUname("wanghaoen");
+		user.setUprofession("学生");
+		boolean a = userService.listprofession(user);
+		System.out.println(a);
+		assertNotNull(a);
+	}
 }

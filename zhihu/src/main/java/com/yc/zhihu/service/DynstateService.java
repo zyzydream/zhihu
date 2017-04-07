@@ -22,4 +22,8 @@ public interface DynstateService {
 	List<Favorite> listFavorite(Object obj);
 	
 	List<Users> listAttention(Object obj);
+
+	boolean AddGH(Dynstate dynstate);
+
+	String listUsers(Object obj);
 }

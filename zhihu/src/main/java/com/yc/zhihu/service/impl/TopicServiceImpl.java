@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.mapper.TopicsMapper;
-import com.yc.zhihu.mapper.UserMapper;
 import com.yc.zhihu.service.TopicService;
 
 @Service("topicService")
@@ -21,5 +20,12 @@ public class TopicServiceImpl implements TopicService{
 		
 		return topicsMapper.list(user);
 	}
+
+	@Override
+	public List<Topics> listAll() {
+		return topicsMapper.findAll();
+	}
+
+	
 
 }

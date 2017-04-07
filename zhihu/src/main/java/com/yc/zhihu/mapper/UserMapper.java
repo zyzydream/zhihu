@@ -37,4 +37,6 @@ public interface UserMapper {
 
 	Explore listrelatedTopic(Dynstate dynstate);
 
+	boolean AddUsersprofession(Users users);
+
 }

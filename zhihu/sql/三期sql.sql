@@ -16,7 +16,18 @@ select * from USERS where uemail='123' and upassword='a'
 insert into users(uemail,uname,upassword) values('123','zy','a');
 delete  users where uemail = "1103743969@qq.com"
 drop table users;
-select * from USERSE
+select * from USERS
+
+create sequence seq_users
+increment by 1
+start with 1000
+cache 10;
+
+
+
+
+
+
 
 /*管理员信息表*/
 CREATE TABLE admins(
@@ -69,10 +80,10 @@ CREATE TABLE topics(
 );
 select * from topics
 drop table topics
-insert into topics(tid,ttopic)values('10001','编程');
-insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
+insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
+insert into topics(tid,ttopic,tstId,tpic)values('10002','计算机','10001','images/life.jpg');
 select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
-
+update TOPICS set tstid = '' where tstid=' '
 /*问题表
     qautid :提问人id
     qinid :受邀人id
