@@ -23,8 +23,8 @@ $.post("topic/all",function(data){
 
 
 function add(){
-	var id= $(".sprite-global-icon-green-check").attr("id");
-	$.post("dynstate/add?tid="+id,"json");
+		var id= $(".sprite-global-icon-green-check").attr("id");
+		$.post("dynstate/add?tid="+id,"json");
 }
 	
 

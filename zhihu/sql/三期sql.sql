@@ -27,6 +27,9 @@ insert into users(uemail,uname,upassword) values('123','zy','a');
 
 delete  users where uemail = "1103743969@qq.com"
 drop table users;
+<<<<<<< HEAD
+select * from USERS
+=======
 select * from essay
 select * from USERS
 =======
@@ -38,6 +41,7 @@ increment by 1
 start with 1000
 cache 10;
 
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 /*管理员信息表*/
 CREATE TABLE admins(
