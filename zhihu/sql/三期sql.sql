@@ -28,12 +28,14 @@ insert into users(uemail,uname,upassword) values('123','zy','a');
 delete  users where uemail = "1103743969@qq.com"
 drop table users;
 select * from essay
+select * from USERS
 
 create sequence seq_users
 increment by 1
 start with 1000
 cache 10;
 
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 
 /*管理员信息表*/
 CREATE TABLE admins(
@@ -195,17 +197,6 @@ select q.*,t.s from question q,
 where q.qautid='1003';
  
 
-
-
-select t.*,q.qtitle from 
-(select r.*,u.uname,u.usign,r.reqid a from REPLY r,users u where remitid=1003 and uids=1003) t,question q
-where t.reqid=a;
-
-		select t.*,q.qtitle from
-		(select r.*,u.uname,u.usign,r.reqid a from REPLY r,users u where remitid='1003'
-		and uids=remitid) t,question q
-		where t.reqid=a
-
 /*动态总表*/
 CREATE TABLE dynstate(
    selfid VARCHAR2(30), --本人id
@@ -271,6 +262,19 @@ select * from QUESTION q,
  
 insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
 
+select 
+(select aimid from DYNSTATE where selfid='1003') myattenp,
+(select aimid from DYNSTATE where selfid=(select aimid from DYNSTATE where selfid='1003')) myattenwho
+from dual;
+
+
+select
+(select count(aimid) from dynstate where selfid='1003') myatten,
+(select count(selfid) from DYNSTATE where aimid='1003') attenme,
+(select count(ids) from DYNSTATE where selfid='1003' and kind='GH') myattentop,
+(select count(ids) from DYNSTATE where selfid='1003' and kind='GZ') myattenzhuanlan,
+(select count(ids) from DYNSTATE where selfid='1003' and kind='GS') myattenfav
+from dual;
 
 select f.*,t.sum from FAVORITE f,
 (select count(ids) sum from DYNSTATE where selfid='1003') t
@@ -432,6 +436,7 @@ SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE se
                (select aimid from dynstate PARTITION(GR) WHERE selfid='1001')d
             where e.
 	
+<<<<<<< HEAD
 select q.qid ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks  from QUESTION q,
 	     (select * from topics t,
 	       (select * from users u,
@@ -447,16 +452,24 @@ select q.qid ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopi
 	    update explore set checks='y' where ids='10001' and kind='W'
          select * from EXPLORE where ids='10001' and kind='W'
 --
+=======
+	
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 drop table users;
 drop table topics;
 drop table essay;
 drop table dynstate;
+<<<<<<< HEAD
 drop table question;
 drop table admin;
 drop table reply;
 drop table infomation;
 drop table explore;
+=======
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 
 

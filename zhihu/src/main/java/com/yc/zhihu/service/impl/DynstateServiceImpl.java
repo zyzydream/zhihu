@@ -49,6 +49,16 @@ public class DynstateServiceImpl implements DynstateService {
 	public List<Users> listAttention(Object obj) {
 		return dynstateMapper.listMyAttention(obj);
 	}
+	
+	@Override
+	public boolean modifyUserPic(Users users) {
+		return dynstateMapper.updateUserPic(users)>0;
+	}
+	
+	@Override
+	public Users total(Object users) {
+		return dynstateMapper.totalatten(users);
+	}
 
 	@Override
 	public boolean AddGH(Dynstate dynstate) {

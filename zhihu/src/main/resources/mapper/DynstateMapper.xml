@@ -103,15 +103,35 @@
 
 	<select id="listMyAttention" parameterType="Users" resultType="Users">
 		select uname,usign,upic,
-		(select count(remitid) from reply where remitid=(select d.aimid atten from
-		DYNSTATE d where selfid=#{uids}) ) ansum,
-		(select count(eautid) from ESSAY where eautid=(select d.aimid atten from
+		(select count(remitid) from reply where
+		remitid=(select d.aimid atten from
+		DYNSTATE d where selfid=#{uids}) )
+		ansum,
+		(select count(eautid) from ESSAY where eautid=(select d.aimid
+		atten from
 		DYNSTATE d where selfid=#{uids}) ) essum,
-		(select count(1) from DYNSTATE where aimid=(select d.aimid atten from
-		DYNSTATE d where selfid=#{uids})) attsum
+		(select count(1)
+		from DYNSTATE where aimid=(select d.aimid atten from
+		DYNSTATE d where
+		selfid=#{uids})) attsum
 		from dual,users
-		where uids=(select d.aimid atten from
+		where uids=(select d.aimid atten
+		from
 		DYNSTATE d where selfid=#{uids})
+	</select>
+
+
+	<select id="totalatten" parameterType="Users" resultType="Users">
+		select
+		(select count(aimid) from dynstate where selfid=#{uids}) myatten,
+		(select count(selfid) from DYNSTATE where aimid=#{uids}) attenme,
+		(select count(ids) from DYNSTATE where selfid=#{uids} and kind='GH')
+		myattentop,
+		(select count(ids) from DYNSTATE where selfid=#{uids} and kind='GZ')
+		myattenzhuanlan,
+		(select count(ids) from DYNSTATE where selfid=#{uids} and kind='GS')
+		myattenfav
+		from dual
 	</select>
 	
 	
