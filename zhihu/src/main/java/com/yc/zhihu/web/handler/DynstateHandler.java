@@ -76,11 +76,11 @@ public class DynstateHandler {
 		return dynstateService.listAttention(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String add(HttpServletRequest request,Dynstate dynstate){
 		String ids = request.getParameter("tid");
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		String selfid = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUemail();
+		String selfid = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids();
 		dynstate.setIds(ids);
 		dynstate.setSelfid(selfid);
 		dynstateService.AddGH(dynstate);
