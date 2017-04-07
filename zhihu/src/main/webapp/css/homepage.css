@@ -1874,7 +1874,7 @@ html.no-touchevents .tab-navs .tab-nav > a:hover {
     vertical-align: middle;
 }
 .sprite-global, [class*="sprite-global-"] {
-    background-image: url("/static/revved/img/global/sprites.auto.2bb79a7e.png");
+    background-image: url("../images/function.png");
     background-repeat: no-repeat;
 }
 .sprite-global-icon-checked {
@@ -4643,7 +4643,7 @@ html.touchevents .feed-item .ignore.suggested-ignore {
     vertical-align: middle;
 }
 .sprite-home, [class*="sprite-home-"] {
-    background-image: url("/static/revved/img/home/sprites.auto.fb3fda39.png");
+    background-image: url("../images/icon.png");
     background-repeat: no-repeat;
 }
 .sprite-home-answer-off {
@@ -8257,7 +8257,7 @@ body.zhi {
 }
 }
 .zu-top-link-logo {
-    background-image: url("/static/revved/img/sticky_header/new_logo.ede2316d.png");
+    background-image: url("../images/zhihu.png");
     background-position: 0 8px;
     background-repeat: no-repeat;
     color: #fff;

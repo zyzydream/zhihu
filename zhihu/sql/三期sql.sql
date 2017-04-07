@@ -15,7 +15,7 @@ commit;
 select * from USERS where uemail='123' and upassword='a' 
 insert into users(uemail,uname,upassword) values('123','zy','a');
 drop table users;
-select * from USERSE
+select * from USERS
 
 /*管理员信息表*/
 CREATE TABLE admins(
