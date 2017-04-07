@@ -33,14 +33,12 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/all",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Users> list(String kind,String currPage,String pageSize ){
+	public List<Dynstate> list(String kind,String currPage,String pageSize ){
 		PaginationBean<Explore> e=new PaginationBean<Explore>();
 		e.setCurrPage(Integer.valueOf(currPage));
 		e.setPageSize(Integer.valueOf(pageSize));
-		Dynstate d=new Dynstate();
-		d.setKind(kind);
-		return null;
-		//return dynstateService.list(dynstate);
+		e.setSgin(kind);
+		return dynstateService.list(e);
 	}
 	
 	

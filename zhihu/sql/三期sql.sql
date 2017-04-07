@@ -9,8 +9,8 @@ CREATE TABLE users(
    upic VARCHAR2(50),
    uemail VARCHAR2(50)
 );
-select * from essay
-
+select * from users
+ select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 
 create sequence seq_users start with 10000;
 insert into users
 select seq_users.nextval, 

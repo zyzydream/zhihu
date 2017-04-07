@@ -5,7 +5,7 @@ $.get("explore/update",function(data){
 		var length=data.length;
 		alert(length);
 		//alert(JSON.stringify(data));
-		document.getElementById("warn").innerHTML='<div class="alert alert-warning alert-dismissible" role="alert" Style="float:right;width: 1100px;"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>提醒!</strong>有'+data+'待审核的头条</div>';
+		document.getElementById("warn").innerHTML='<div class="alert alert-warning alert-dismissible" role="alert" Style="float:right;width: 1100px;"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>提醒!</strong>有'+length+'待审核的头条</div>';
 	}
 },"json");
 
