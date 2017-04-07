@@ -87,7 +87,7 @@ public class DynstateHandler {
 	}
 	
 
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String add(HttpServletRequest request,Dynstate dynstate){
 		String ids = request.getParameter("tid");
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
