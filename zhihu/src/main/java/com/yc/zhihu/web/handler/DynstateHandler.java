@@ -96,7 +96,7 @@ public class DynstateHandler {
 	public String add(HttpServletRequest request,Dynstate dynstate){
 		String ids = request.getParameter("tid");
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		String selfid = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUemail();
+		String selfid = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids();
 		dynstate.setIds(ids);
 		dynstate.setSelfid(selfid);
 		dynstateService.AddGH(dynstate);

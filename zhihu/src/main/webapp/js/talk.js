@@ -24,11 +24,9 @@ $.post("topic/all",function(data){
 
 function add(){
 	var id= $(".sprite-global-icon-green-check").attr("id");
-	//$.post("dynstate/add?tid="+id,"json");
-	$.ajax({
-		url:"dynstate/add?tid="+id,
-		async: false,
-	});
+	$.post("dynstate/add?tid="+id,"json");
 }
+	
+
 
 

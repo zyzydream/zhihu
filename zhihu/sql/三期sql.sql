@@ -110,16 +110,24 @@ dbms_random.string('l',dbms_random.value(5, 6)),
 drop sequence seq_question;
 drop table topics
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 select * from topics
 insert into topics(tid,ttopic)values('10001','编程');
 insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
 =======
 insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
+=======
+insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,'','images/game.png');
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 insert into topics(tid,ttopic,tstId,tpic)values('10002','计算机','10001','images/life.jpg');
+<<<<<<< HEAD
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+=======
+insert into topics(tid,ttopic,tstId,tpic)values('10003','生活' ,'','images/life.jpg');
 >>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
-update TOPICS set tstid = '' where tstid=' '
+update TOPICS set tpic = 'images/life.jpg' where tpic='images/life.png'
 /*问题表
     qautid :提问人id
     qinid :受邀人id
@@ -482,3 +490,7 @@ insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('1
 
 
 insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
+
+
+--gr 2
+insert into users(uids,uemail,uname,upassword) values('1003','365@qq.com','gr','a');
