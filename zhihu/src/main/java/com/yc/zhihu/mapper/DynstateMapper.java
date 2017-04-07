@@ -24,4 +24,8 @@ public interface DynstateMapper {
 	List<Favorite> listMyFavorite(Object users);
 	
 	List<Users> listMyAttention(Object users);
+
+	boolean insertGH(Dynstate dynstate);
+
+	String findUsers(Object users);
 }

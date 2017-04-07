@@ -24,154 +24,15 @@
 						<p class="Guide-subtitle">我们将根据你关注的话题定制首页推荐内容</p>
 					</div>
 					<div class="Guide-content">
-						<ul class="Guide-TopicsList">
-							<li class="Guide-TopicsItem SquareBlock" data-id="253">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/game.jpg">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">游戏</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check"
-										id="game" onclick="changeColor('game')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="215">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/law.jpg">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">法律</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="law" onclick="changeColor('law')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="1027">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar"
-										src="images/natural science.png">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">自然科学</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="naturalscience" onclick="changeColor('naturalscience')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="445">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/design.png">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">设计</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="design" onclick="changeColor('design')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="1740">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/business.png">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">商业</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="business" onclick="changeColor('business')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="1538">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/sports.png">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">体育</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="sports" onclick="changeColor('sports')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="307">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/life.jpg">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">生活</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="life" onclick="changeColor('life')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="3324">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/economics.png">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">经济学</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="economics" onclick="changeColor('economics')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="99">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/internet.png">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">互联网</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="internet" onclick="changeColor('internet')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="113">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/read.png">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">阅读</div>
-
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="read" onclick="changeColor('read')"></span>
-								</div>
-
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="13908">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar"
-										src="images/Comic and Animation.jpg">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">动漫</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="Animation" onclick="changeColor('Animation')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="570">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/car.png">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">汽车</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="car" onclick="changeColor('car')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="1761">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/mode of life.jpg">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">生活方式</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="modeofLife" onclick="changeColor('modeofLife')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="988">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/education.png">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">教育</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="education" onclick="changeColor('education')"></span>
-								</div>
-							</li>
-							<li class="Guide-TopicsItem SquareBlock" data-id="388">
-								<div class="SquareBlock-content">
-									<img class="Guide-TopicsAvatar" src="images/shoot.png">
-									<div class="Guide-TopicsMask"></div>
-									<div class="Guide-TopicsName">摄影</div>
-									<span
-										class="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-gray-check" id="shoot" onclick="changeColor('shoot')"></span>
-								</div>
-							</li>
+						<ul class="Guide-TopicsList" id="userTopics">
+							<!-- 从数据库读取数据 -->
 						</ul>
 						<p class="Guide-TopicsHint">可以通过搜索和「话题广场」找到更多你想要的话题</p>
 					</div>
 					<div class="Guide-TopicsFooter GaussianBlur">
 						<button
-							class="Guide-TopicsSubmit Button Button-flatPrimary js-submit">
-							进入知乎</button>
+							class="Guide-TopicsSubmit Button Button-flatPrimary js-submit"
+							id="addTopics" onclick="add()">进入知乎</button>
 					</div>
 				</div>
 			</div>
@@ -181,7 +42,9 @@
 
 	<script src='js/particles.js' type="text/javascript"></script>
 	<script src='js/background.js' type="text/javascript"></script>
-	<script src='js/jquery.min.js' type="text/javascript"></script>
+	<script type="text/javascript" src="easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
 	<script src='js/layer/layer.js' type="text/javascript"></script>
 	<script src='js/talk.js' type="text/javascript"></script>
 </body>

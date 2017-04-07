@@ -113,4 +113,10 @@
 		where uids=(select d.aimid atten from
 		DYNSTATE d where selfid=#{uids})
 	</select>
+	
+	
+	
+	<insert id="insertGH" parameterType="String" >
+		insert into dynstate(selfid,kind,ids,times) values(#{selfid},'GH',#{ids},to_char(sysdate,'yyyy-mm-dd'))
+	</insert>
 </mapper>

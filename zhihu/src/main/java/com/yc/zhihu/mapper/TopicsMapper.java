@@ -8,4 +8,7 @@ public interface TopicsMapper {
 
 	List<Topics> list(Object user);
 
+	List<Topics> findAll();
+
+	
 }

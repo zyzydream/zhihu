@@ -3,6 +3,7 @@ package com.yc.zhihu.web.handler;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,6 +18,7 @@ import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.UserService;
+import com.yc.zhihu.util.EmailUtil;
 import com.yc.zhihu.util.ServletUtil;
 
 @Controller("userHandler")
@@ -25,6 +27,8 @@ public class UserHandler {
 
 	@Autowired
 	private UserService usersService;
+	
+	private String CODE;
 	
 	@RequestMapping(value="login" , method= RequestMethod.POST)
 	public String Login(Users users , HttpServletRequest request , HttpServletResponse response){		//查询所有主话题
@@ -37,6 +41,7 @@ public class UserHandler {
 		}else{
 			request.getSession().setAttribute("username", users.getUname());
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
+			System.out.println(ServletUtil.LOGIN_USER);
 			return "redirect:/page/homepage.jsp";	
 		}	
 	}
@@ -45,9 +50,17 @@ public class UserHandler {
 	@ResponseBody
 	public String register(Users users , HttpServletRequest request, HttpServletResponse response) {
 		List<Users> us = usersService.listOneUsers(users);
+		EmailUtil em = new EmailUtil();
 		String a;
 		if(us == null  || us.size()== 0){
 			usersService.register(users);
+			users =usersService.listUsers(users);
+			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
+			try {
+				 CODE=em.setMail(users.getUemail());
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
 			a="true";
 			System.out.println(a);
 			return a;
@@ -109,4 +122,21 @@ public class UserHandler {
 		return usersService.listTopics(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
+	
+	
+	@RequestMapping(value="/code",method=RequestMethod.POST)
+	public String listCode(String ucode){
+		return "redirect:/page/work.jsp";
+	}
+	
+	
+	
+	//职业添加
+		@RequestMapping(value="profession" , method= RequestMethod.POST)
+		public String profession(Users users , HttpServletRequest request, HttpServletResponse response) {
+			System.out.println("users  ==>"+users);
+			usersService.listprofession(users);
+			return "redirect:/page/talk.jsp";
+		}
+		
 }

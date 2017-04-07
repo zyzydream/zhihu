@@ -8,4 +8,8 @@ public interface TopicService {
 
 	public List<Topics> list(Object user);
 
+	public List<Topics> listAll();
+
+	
+
 }

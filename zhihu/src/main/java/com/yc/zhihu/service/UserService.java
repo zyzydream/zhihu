@@ -28,4 +28,6 @@ public interface UserService {
 
 	List<Users> listOneUsers(Users users);
 
+	boolean listprofession(Users users);
+
 }

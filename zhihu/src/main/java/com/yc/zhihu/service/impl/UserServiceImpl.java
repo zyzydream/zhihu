@@ -114,4 +114,9 @@ public class UserServiceImpl implements UserService{
 	public List<Users> listOneUsers(Users users) {
 		return userMapper.findNewUsers(users);
 	}
+
+	@Override
+	public boolean listprofession(Users users) {
+		return userMapper.AddUsersprofession(users);
+	}
 }
