@@ -8,13 +8,13 @@
   select * from(
        select inside.* ,rownum rn from(
        select * from dynstate
-		<if test="kind != 'all'">
+		<if test="sgin != 'all'">
 			PARTITION(${sgin})
 		</if>
-		<if test="kind == 'all'">
+		<if test="sgin == 'all'">
 
 		</if>
-		) inside where #{pageSize}*#{currPage}>=rownum)where rn>(#{currPage}-1)*#{pageSize}
+		) inside where ${pageSize}*${currPage}>=rownum)where rn>(${currPage}-1)*${pageSize}
 	</select>
 
 	<resultMap type="Reply" id="ReplyMap">

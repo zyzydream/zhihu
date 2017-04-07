@@ -112,7 +112,7 @@ function select(self,currPage,pageSize){
 }
 
 function dynstate(kinds,currPage,pageSize){
-	$.get("dynstate/all?kind="+kinds+"&&currPage="+currPage+"&&pageSize="+pageSize ,function(data){
+	$.get("dynstate/all?sgin="+kinds+"&&currPage="+currPage+"&&pageSize="+pageSize ,function(data){
 		//alert(JSON.stringify(data));
 		var all="";
 		var GH="";
