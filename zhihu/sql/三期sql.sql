@@ -1,5 +1,6 @@
 /*用户信息表
-    u_profession :用户职业*/
+    u_profession :用户职业
+    tpic :封面照片*/
 CREATE TABLE users(
    uids Varchar2(30),
    uname VARCHAR2(15),
@@ -7,8 +8,14 @@ CREATE TABLE users(
    usign VARCHAR2(50),
    uprofession VARCHAR2(20),
    upic VARCHAR2(50),
-   uemail VARCHAR2(50)
+   uemail VARCHAR2(50),
+   tpic varchar2(50)
 );
+drop table users
+
+insert into users(uids,uname,upassword,usign,uemail)
+values('1001','gr','a','haha','123@qq.com')
+
 select * from users
  select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 
 create sequence seq_users start with 10000;
@@ -218,6 +225,34 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
+select
+(select * from TOPICS where tid=(select ids from dynstate PARTITION(GH) where selfid='1003')) ,
+(select * from scolumn  where sccreid=(select ids from dynstate PARTITION(GZ) where selfid='1003')) ,
+(select * from FAVORITE where fcreid=(select ids from dynstate PARTITION(GS) where selfid='1003')) ,
+(select * from essay where eautid=(select ids from dynstate PARTITION(SW) where selfid='1003')) ,
+(select * from question where qautid=(select ids from dynstate PARTITION(SQ) where selfid='1003')) ,
+(select * from essay where eautid=(select ids from dynstate PARTITION(DW) where selfid='1003')) ,
+(select * from question where qautid=(select ids from dynstate PARTITION(DQ) where selfid='1003')) 
+from dual;
+
+select * from TOPICS,(select ids,kind from dynstate PARTITION(GH) where selfid='1003')tt where tid=(select ids from dynstate PARTITION(GH) where selfid='1003')
+
+SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind 
+			FROM Topics t,
+		  (SELECT * FROM USERS u,
+		    (SELECT * FROM essay e,
+		       (select ids from dynstate PARTITION(GH) WHERE selfid=#{uids})d
+       		 WHERE e.etid=d.ids)e
+		   WHERE u.uids=e.eautid)ue
+		WHERE ue.etid=t.tid
+		
+		select t.tid tid,t.ttopic tname,t.tpic tpic,ue.uname uname,'T' kind
+			from topics t,
+			(select * from users u where uids='1003')ue
+		where t.tid=ue.uids;
+			
+		select * from users;
+=======
 --关注人
 insert into dynstate
 select ''||ceil(dbms_random.value(10000,11000)),
@@ -252,6 +287,7 @@ select ''||ceil(dbms_random.value(10000,11000)),
 '' from dual connect by level <= 6000;
 select * from dynstate PARTITION (GR)
 
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 
 
 select * from QUESTION q,
@@ -292,6 +328,35 @@ select * from users where uids=1001
 
 select * from DYNSTATE where kind='GH' 
 
+select q.*,t.sum 
+from question q,(select qid from question where
+		qautid='1001') m,
+		(select count(reqid) sum from REPLY
+		where rkind='Q' and reqid=m.qid ) t
+		where qautid='1001'
+
+select * from question q,
+(select count(reqid) sum,a.qid from reply,
+  (select * from question where qautid='1001') a
+ where rkind='Q' and  reqid=a.qid group by qid)b
+ where q.qid=b.qid and q.qautid='1001'
+ 
+ 	select count(eid) from essay where eautid='1001' 
+		
+		select * from essay where eautid='1001'
+		
+		
+
+ 
+ select count(rid) from reply,
+
+ select count(reqid) from reply where rkind='Q' and  reqid='3'
+ 
+ insert into reply(rid,reqid,rkind,remitid,rreceid,rcontent,rtime)
+ values('1','2','Q','1003','1001','hhh','2017-4-8');
+  insert into reply(rid,reqid,rkind,remitid,rreceid,rcontent,rtime)
+ values('2','3','Q','1003','1001','hhh','2017-4-8');
+
 create table explore(
    ids VARCHAR2(30),  --文章或问题id
    kind VARCHAR2(4),  --文章还是问题
@@ -304,6 +369,10 @@ create table explore(
    times VARCHAR2(30),  --时间
    checks VARCHAR2(2) --是否以核查
 );
+<<<<<<< HEAD
+
+
+=======
 select count(0) from explore where checks='n'
 select e.*,rownum rn from explore e  where checks='n' and rownum>1
 select * from(
@@ -311,6 +380,7 @@ select inside.* ,rownum rn from(
 select * from explore where checks='n' order by 1 desc) inside where rownum<=#{currPage}*#{})where rn>(1-1)*9
 select * from explore
 drop table explore
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 create table infomation(
    selfname VARCHAR2(30), --发件人用户名
    aimname VARCHAR2(30), --收件人用户名
@@ -479,8 +549,18 @@ insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('1
 
 insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
 
-
 --gr 2
 insert into users(uids,uemail,uname,upassword) values('1003','365@qq.com','gr','a');
+<<<<<<< HEAD
+
+select
+(select count(reqid) from reply where remitid='1003' and rkind='Q') answer,
+((select count(scid) from scolumn where sccreid='1003')+
+(select count(eid) from essay where eautid='1003')) mine,
+(select count(qid) from question where qautid='1003') question,
+(select count(fid) from favorite where fcreid='1003') fav
+from dual;
+=======
 select * from users where uids='1003'
  10269 lhfjnrz    a         kkevobcrqxwebwalhhlqvvozpkke             翻译员         zzz.jpg 18070501074@qq.com
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
