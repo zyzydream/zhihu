@@ -18,7 +18,8 @@
 					<header
 						class="Navbar ScrollBackFixed ScrollBackFixed-active ScrollBackFixed-animation">
 						<div class="Navbar-logo-wrapper">
-							<a class="Navbar-logo" href="page/homepage.jsp" target="_blank" rel="noopener" aria-label="知乎首页">首页</a>
+							<a class="Navbar-logo" href="page/homepage.jsp" target="_blank"
+								rel="noopener" aria-label="知乎首页">首页</a>
 						</div>
 						<div class="Navbar-functionality">
 							<a class="Navbar-write" href="page/write.jsp">写文章 </a>
@@ -47,8 +48,7 @@
 						</div>
 					</div>
 					<div class="RichText PostIndex-content">
-						<blockquote>
-							<b>咨询记录2017.3.30</b>
+						<blockquote><b>咨询记录2017.3.30</b>
 						</blockquote>
 						<p>暖北老师您好，在知乎上看了很多您的文章,几乎所有的问答都看完了，非常相信您的专业知识，所以通过邮件跟您咨询一下困扰我的问题。</p>
 						<p>我的男朋友是白羊座的，虽然他三十岁了，但是他身上也像小白羊，也像大白羊，他非常的理性，冷静，我和他是今年跨年认识的，暧昧了三个月，终于在我死心觉得和他不可能的时候他却和我表白了，他表白的时候说了很久，说他一直在考虑想了很多，如果不用考虑的话我们应该早就在一起了，“我想问你愿不愿意做我女朋友,但是可能我没有办法给你什么承诺,但是我会尽量做到我能做的。”他问了我三次，尽管我觉得还是很不安觉得他不够喜欢我，但我抱着侥幸心理答应了。</p>
@@ -74,6 +74,8 @@
 						<p>其实关于最后为什么再也不回复了。是因为他要么跟你解释继续好下去，而这他心里并不是很想了；如果是解释分手又是很难堪的。所以自然还是不回复的好。我觉得最终他应该会找个理由过渡过去。比如彼此不和适，给不了你承诺之类的。或者是再也不回复了。</p>
 						<p>以上，供你参考。</p>
 					</div>
+
+
 					<div class="PostIndex-footer">
 						<div class="PostIndex-topics TopicItem-wrapper">
 							<span class="TopicItem u-ellipsis PostIndex-topicItem">金融</span>
@@ -81,47 +83,42 @@
 							<span class="TopicItem u-ellipsis PostIndex-topicItem">生活</span>
 						</div>
 						<div class="PostIndex-reviewers"></div>
-					</div>
-					<div class="PostIndex-vote">
-						<button class="Button PostIndex-voteButton Button--green"
-							aria-label="赞" type="button">
-							<i class="icon icon-ic_column_like"></i> 1034
-						</button>
-						<div class="PostIndex-voters">
-							<div class="HoverTitle HoverTitle--slim" data-hover-title="信念">
-								<a class="PostIndex-voter"
-									href="https://www.zhihu.com/people/xin-nian-67-80"
-									target="_blank"> <img class="Avatar Avatar--is" alt="信念"
-									src="https://pic1.zhimg.com/da8e974dc_is.jpg">
+
+						<div class="PostIndex-vote">
+							<button class="Button PostIndex-voteButton Button--green"
+								ria-label="赞" type="button">
+								<i class="icon icon-ic_column_like"></i> 1041
+							</button>
+							<div class="PostIndex-voters">
+								<a class="PostIndex-allVoters" href="/p/26159402/voters"
+									target="_blank" title="查看全部"> <i class="icon-ic_like_more"></i>
 								</a>
 							</div>
-							<a class="PostIndex-allVoters" href="/p/26159402/voters"
-								target="_blank" title="查看全部"> <i class="icon-ic_like_more"></i>
-							</a>
+
 						</div>
-					</div>
-					<div class="PostIndex-control">
-						<div class="Fav">
-							<button class="Button Button Button--plain FavButton"
-								type="button">
-								<i class="icon icon-ic_collect"></i> 收藏
-							</button>
-						</div>
-						<div class="PostShare">
-							<div class="Menu">
-								<button
-									class="Button Button Button--plain MenuButton MenuButton-listen-hover Button Button--plain"
+						<div class="PostIndex-control">
+							<div class="Fav">
+								<button class="Button Button Button--plain FavButton"
 									type="button">
-									<i class="icon icon-ic_column_share"></i> 分享
+									<i class="icon icon-ic_collect"></i> 收藏
 								</button>
-								<div class="Menu-dropdown"></div>
 							</div>
-						</div>
-						<div class="Report">
-							<button class="Button Button Button--plain ReportButton"
-								type="button">
-								<i class="icon icon-ic_column_report"></i> 举报
-							</button>
+							<div class="PostShare">
+								<div class="Menu">
+									<button
+										class="Button Button Button--plain MenuButton MenuButton-listen-hover Button Button--plain"
+										type="button">
+										<i class="icon icon-ic_column_share"></i> 分享
+									</button>
+									<div class="Menu-dropdown"></div>
+								</div>
+							</div>
+							<div class="Report">
+								<button class="Button Button Button--plain ReportButton"
+									type="button">
+									<i class="icon icon-ic_column_report"></i> 举报
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
