@@ -23,8 +23,29 @@ public class DynstateServiceImpl implements DynstateService {
 	private DynstateMapper dynstateMapper;
 
 	@Override
-	public List<Dynstate> list(PaginationBean<Explore> e) {
-		return dynstateMapper.list(e);
+	public PaginationBean<Dynstate> list(PaginationBean<Explore> pBean) {
+		//return dynstateMapper.list(e);
+		String currPage=String.valueOf(pBean.getCurrPage());
+		String pageSize=String.valueOf(pBean.getPageSize());
+		int cPage=1;
+		int pSize=10;
+		if(currPage!=null ){
+			cPage=Integer.parseInt(currPage);
+			if(currPage.intern()=="0"){
+				cPage=1;
+			}
+		}
+		if(pageSize!=null){
+			pSize=Integer.parseInt(pageSize);
+		}
+
+		int total=dynstateMapper.count(pBean);
+		int totalPage=total/pSize+(total%pSize==0?0:1);
+		if(cPage==totalPage+1){
+			cPage=totalPage;
+		}
+		List<Dynstate>us=dynstateMapper.list(pBean);
+		return new PaginationBean<Dynstate>(cPage,pSize,totalPage,total,us);
 	}
 
 	@Override

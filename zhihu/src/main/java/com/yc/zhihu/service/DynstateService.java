@@ -13,7 +13,7 @@ import com.yc.zhihu.entity.Users;
 
 public interface DynstateService {
 
-	List<Dynstate> list(PaginationBean<Explore> e);
+	PaginationBean<Dynstate> list(PaginationBean<Explore> e);
 
 	List<Reply> answer(Object object);
 	

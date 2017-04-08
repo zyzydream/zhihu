@@ -38,4 +38,6 @@ public interface DynstateMapper {
 	String findUsers(Object users);
 
 	List<Dynstate> list(PaginationBean<Explore> e);
+
+	int count(PaginationBean<Explore> pBean);
 }

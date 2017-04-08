@@ -8,14 +8,24 @@
   select * from(
        select inside.* ,rownum rn from(
        select * from dynstate
-		<if test="kind != 'all'">
+		<if test="sgin != 'all'">
 			PARTITION(${sgin})
 		</if>
-		<if test="kind == 'all'">
+		<if test="sgin == 'all'">
 
 		</if>
-		) inside where #{pageSize}*#{currPage}>=rownum)where rn>(#{currPage}-1)*#{pageSize}
+		) inside where ${pageSize}*${currPage}>=rownum)where rn>(${currPage}-1)*${pageSize}
 	</select>
+    <select id="count" parameterType="PaginationBean" resultType="int">
+       select count(0) from dynstate 
+       <if test="sgin != 'all'">
+			PARTITION(${sgin})
+		</if>
+		<if test="sgin == 'all'">
+
+		</if>
+    </select>
+
 
 	<resultMap type="Reply" id="ReplyMap">
 		<id column="rid" property="rid" />

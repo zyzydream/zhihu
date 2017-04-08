@@ -27,10 +27,9 @@ insert into users(uemail,uname,upassword) values('123','zy','a');
 
 delete  users where uemail = "1103743969@qq.com"
 drop table users;
+select * from USERS
 select * from essay
-select * from USERS
-=======
-select * from USERS
+
 
 
 create sequence seq_users
@@ -107,16 +106,29 @@ select seq_topics.nextval,
 dbms_random.string('l',dbms_random.value(5, 6)),
 '1',
 'car.png' from dual connect by level <= 15;
-drop sequence seq_question;
+drop sequence seq_topics
 drop table topics
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
+<<<<<<< HEAD
 select * from topics
 
 
 insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
 insert into topics(tid,ttopic,tstId,tpic)values('10002','计算机','10001','images/life.jpg');
 insert into topics(tid,ttopic,tstId,tpic)values('10003','生活' ,'','images/life.jpg');
+=======
+select * from topics where tid='1000'
+insert into topics(tid,ttopic)values('10001','编程');
+insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
+insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
+insert into topics(tid,ttopic,tstId,tpic)values('1000','编程' ,'','images/game.png');
+insert into topics(tid,ttopic,tstId,tpic)values('1001','计算机','10001','images/life.jpg');
+insert into topics(tid,ttopic,tstId,tpic)values('1002','生活' ,'','images/life.jpg');
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
 update TOPICS set tpic = 'images/life.jpg' where tpic='images/life.png'
 /*问题表
@@ -146,10 +158,17 @@ dbms_random.string('l',dbms_random.value(20, 50)),
 select * from question
 
 select * from QUESTION;
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 drop table question
 /*回复表
     reqid :文章或问题id
@@ -311,7 +330,7 @@ select e.*,rownum rn from explore e  where checks='n' and rownum>1
 select * from(
 select inside.* ,rownum rn from(
 select * from explore where checks='n' order by 1 desc) inside where rownum<=#{currPage}*#{})where rn>(1-1)*9
-
+select * from explore
 drop table explore
 create table infomation(
    selfname VARCHAR2(30), --发件人用户名
@@ -439,7 +458,6 @@ SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE se
                (select aimid from dynstate PARTITION(GR) WHERE selfid='1001')d
             where e.
 	
-<<<<<<< HEAD
 select q.qid ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks  from QUESTION q,
 	     (select * from topics t,
 	       (select * from users u,
@@ -485,3 +503,5 @@ insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','
 
 --gr 2
 insert into users(uids,uemail,uname,upassword) values('1003','365@qq.com','gr','a');
+select * from users where uids='1003'
+ 10269 lhfjnrz    a         kkevobcrqxwebwalhhlqvvozpkke             翻译员         zzz.jpg 18070501074@qq.com
