@@ -109,23 +109,14 @@ dbms_random.string('l',dbms_random.value(5, 6)),
 'car.png' from dual connect by level <= 15;
 drop sequence seq_question;
 drop table topics
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
 select * from topics
-insert into topics(tid,ttopic)values('10001','编程');
-insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
-=======
+
+
 insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
-=======
-insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,'','images/game.png');
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 insert into topics(tid,ttopic,tstId,tpic)values('10002','计算机','10001','images/life.jpg');
-<<<<<<< HEAD
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
-=======
 insert into topics(tid,ttopic,tstId,tpic)values('10003','生活' ,'','images/life.jpg');
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
 update TOPICS set tpic = 'images/life.jpg' where tpic='images/life.png'
 /*问题表
@@ -155,12 +146,10 @@ dbms_random.string('l',dbms_random.value(20, 50)),
 select * from question
 
 select * from QUESTION;
-<<<<<<< HEAD
+
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
-=======
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 drop table question
 /*回复表
     reqid :文章或问题id
@@ -273,7 +262,8 @@ select * from QUESTION q,
  where counts>0 and id=rid and rkind='Q' and rrid='')r
  where q.qid=r.reqid
  
-
+		select * from users where uids='1023' and uprofession is not null
+		select * from DYNSTATE where selfid='1026' and kind = 'GH'
 select 
 (select aimid from DYNSTATE where selfid='1003') myattenp,
 (select aimid from DYNSTATE where selfid=(select aimid from DYNSTATE where selfid='1003')) myattenwho
@@ -302,6 +292,7 @@ where uids=1001;
 select * from REPLY where remitid=1001
 select * from users where uids=1001
 
+select * from DYNSTATE where kind='GH' 
 
 create table explore(
    ids VARCHAR2(30),  --文章或问题id

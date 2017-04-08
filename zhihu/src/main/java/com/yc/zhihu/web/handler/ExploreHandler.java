@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.PaginationBean;
-import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.service.ExploreService;
 import com.yc.zhihu.util.ServletUtil;
 
