@@ -1,5 +1,6 @@
 /*用户信息表
-    u_profession :用户职业*/
+    u_profession :用户职业
+    tpic :封面照片*/
 CREATE TABLE users(
    uids Varchar2(30),
    uname VARCHAR2(15),
@@ -7,8 +8,14 @@ CREATE TABLE users(
    usign VARCHAR2(50),
    uprofession VARCHAR2(20),
    upic VARCHAR2(50),
-   uemail VARCHAR2(50)
+   uemail VARCHAR2(50),
+   tpic varchar2(50)
 );
+drop table users
+
+insert into users(uids,uname,upassword,usign,uemail)
+values('1001','gr','a','haha','123@qq.com')
+
 select * from users
  select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 
 create sequence seq_users start with 10000;

@@ -92,18 +92,19 @@
 				<div class="Card">
 					<div class="ProfileHeader-userCover">
 						<div class="UserCoverEditor">
-							<div class="UserCoverGuide">
-								<div class="UserCoverGuide-inner">
-									<div class="UserCoverGuide-buttonContainer">
-										<button class="Button DynamicColorButton" type="button"
-											id="changgeimage" onclick="updatePic()">上传封面图片</button>
+							<form id="uploadForm" method="post" enctype="multipart/form-data">
+								<div class="UserCoverGuide">
+									<div class="UserCoverGuide-inner">
+										<div class="UserCoverGuide-buttonContainer">
+											<button class="Button DynamicColorButton" type="button"
+												id="changgeimage" onclick="updatePic()">上传封面图片</button>
+										</div>
 									</div>
-
 								</div>
-							</div>
-							<div class="UserCover UserCover--colorBlock"></div>
-							<input type="file" accept="image/png,image/jpeg"
-								style="display: none;">
+							</form>
+								<div class="UserCover UserCover--colorBlock"></div>
+								<input type="file" accept="image/png,image/jpeg"
+									style="display: none;">
 						</div>
 					</div>
 					<div class="ProfileHeader-wrapper">
@@ -149,14 +150,10 @@
 			<div id="zhuyezhuti">
 				<div class="panel panel-default"
 					style="width: 660px; margin-left: 15px;">
-					<div class="panel-body" >
-						<span id="myself">
-							<span id="myself1">
-							</span>
-							
-							<span id="myself2">
-							</span>
-					
+					<div class="panel-body">
+						<span id="myself"> <span id="myself1"> </span> <span
+							id="myself2"> </span>
+
 						</span>
 					</div>
 				</div>

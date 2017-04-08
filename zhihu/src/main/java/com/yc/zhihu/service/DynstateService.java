@@ -41,4 +41,6 @@ public interface DynstateService {
 	List<Total> sumT(Object obj);
 	
 	List<ListAllMy> listtopic(Object obj);
+	
+	boolean updatetoppics(Object object);
 }

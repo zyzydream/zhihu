@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
@@ -125,6 +127,24 @@ public class DynstateHandler {
 	public List<Total> SUMTOTAL(HttpServletRequest request){
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		return dynstateService.sumT(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	@RequestMapping(value="/upload",method=RequestMethod.GET)
+	@ResponseBody
+	public boolean Upload(@RequestParam("picData") MultipartFile picData,Users users){
+		String picPath=null;
+		
+		if(picData!= null && !picData.isEmpty()){ //判断是否有文件上传
+			try {
+				picData.transferTo(ServletUtil.getUploadFile(picData.getOriginalFilename()));
+				picPath=ServletUtil.UPLOAD_TOP_DIR+picData.getOriginalFilename();
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+		users.setToppic(picPath);
+	
+		return dynstateService.modifyUserPic(users);
 	}
 	
 	

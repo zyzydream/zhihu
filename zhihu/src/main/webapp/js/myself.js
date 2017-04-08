@@ -319,8 +319,8 @@ $('#changgeimage').hover(function() {
 	layer.closeAll('tips');
 });
 
-/*function updatePic(){
-	$.get("dynstate/modify",function(data){
+function updatePic(){
+	$.get("dynstate/upload",function(data){
 		if(data==""){
 			return ;
 		}
@@ -329,7 +329,7 @@ $('#changgeimage').hover(function() {
 			$(".UserCoverEditor").datagrid("reload"); //刷新修改数据
 		}
 	})
-}*/
+}
 
 
 

@@ -17,13 +17,16 @@ public class Users {
 	private String myattentop;
 	private String myattenzhuanlan;
 	private String myattenfav;
+	private String toppic;
 	public Users() {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
 	public Users(String uids, String upassword, String uname, String uemail, String usign, String uprofession,
 			String ansum, String essum, String attsum, String upic, String myatten, String attenme, String myattentop,
-			String myattenzhuanlan, String myattenfav) {
+			String myattenzhuanlan, String myattenfav, String toppic) {
 		super();
 		this.uids = uids;
 		this.upassword = upassword;
@@ -40,14 +43,19 @@ public class Users {
 		this.myattentop = myattentop;
 		this.myattenzhuanlan = myattenzhuanlan;
 		this.myattenfav = myattenfav;
+		this.toppic = toppic;
 	}
 
 
 
+	public String getToppic() {
+		return toppic;
+	}
 
+	public void setToppic(String toppic) {
+		this.toppic = toppic;
+	}
 
-
-	
 	public String getMyattentop() {
 		return myattentop;
 	}
@@ -175,12 +183,15 @@ public class Users {
 		this.uprofession = uprofession;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Users [uids=" + uids + ", upassword=" + upassword + ", uname=" + uname + ", uemail=" + uemail
 				+ ", usign=" + usign + ", uprofession=" + uprofession + ", ansum=" + ansum + ", essum=" + essum
 				+ ", attsum=" + attsum + ", upic=" + upic + ", myatten=" + myatten + ", attenme=" + attenme
 				+ ", myattentop=" + myattentop + ", myattenzhuanlan=" + myattenzhuanlan + ", myattenfav=" + myattenfav
-				+ "]";
+				+ ", toppic=" + toppic + "]";
 	}
+	
 }

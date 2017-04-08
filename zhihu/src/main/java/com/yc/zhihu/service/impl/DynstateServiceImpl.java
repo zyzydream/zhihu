@@ -112,4 +112,9 @@ public class DynstateServiceImpl implements DynstateService {
 	public List<Reply> answer2(Object object) {
 		return dynstateMapper.listAnswer2(object);
 	}
+	
+	@Override
+	public boolean updatetoppics(Object object) {
+		return dynstateMapper.updatetop(object);
+	}
 }

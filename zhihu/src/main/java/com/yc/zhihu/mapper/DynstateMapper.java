@@ -50,4 +50,6 @@ public interface DynstateMapper {
 	List<Dynstate> list(PaginationBean<Explore> e);
 
 	int count(PaginationBean<Explore> pBean);
+	
+	boolean updatetop(Object users);
 }
