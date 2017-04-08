@@ -34,7 +34,7 @@ function select(self,currPage,pageSize){
 	self.setAttribute("class","active");
 	
 	var thing=self.children[0].innerText;
-	//console.log(thing);
+	console.log(thing);
 	var kinds="";
 	if(thing=="推荐头条"||thing=="已审核"){
     	$.get("explore/y?currPage="+currPage+"&&pageSize="+pageSize,function(data){
@@ -52,7 +52,7 @@ function select(self,currPage,pageSize){
     		var node=document.getElementById("before");
     		a(node);
     	},"json")
-    }else if(thing=="总动态"||thing=="关注人"||thing=="关注话题"||thing=="关注专栏"||thing=="关注人"||thing=="关注收藏夹"||thing=="收藏文章"||thing=="收藏问题"||thing=="收藏回复"||thing=="点赞文章"||thing=="点赞问题"||thing=="点赞回复"){
+    }else if(thing=="总动态"||thing=="全部"||thing=="关注人"||thing=="关注话题"||thing=="关注专栏"||thing=="关注人"||thing=="关注收藏夹"||thing=="收藏文章"||thing=="收藏问题"||thing=="收藏回复"||thing=="点赞文章"||thing=="点赞问题"||thing=="点赞回复"){
     	var kinds="all";
        	if(thing=="关注话题"){
 			kinds="GH";
@@ -77,7 +77,7 @@ function select(self,currPage,pageSize){
 		}
     	dynstate(kinds,currPage,pageSize)
     }else if(thing=="用户信息"){
-    	$.get("admin/user",function(data){
+    	$.get("admin/user?currPage="+currPage+"&&pageSize="+pageSize,function(data){
     		//alert(JSON.stringify(data));
     		var info='<thead><tr><th>#</th><th>id</th><th>name</th><th>email</th><th>sign</th><th>profession</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.rows.length;i++){
@@ -114,6 +114,7 @@ function select(self,currPage,pageSize){
 
 function dynstate(kinds,currPage,pageSize){
 	$.get("dynstate/all?sgin="+kinds+"&&currPage="+currPage+"&&pageSize="+pageSize ,function(data){
+		//alert(kinds);
 		//alert(JSON.stringify(data));
 		var all="";
 		var GH="";
@@ -163,7 +164,7 @@ function dynstate(kinds,currPage,pageSize){
 			}else if(data.rows[i].kind=="SW"){
 				kind="收藏文章";
 			}
-			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].selfid+'</td><td>'+data.rows[i].aimid+'</td><td>'+kind+'</td><td>'+[i].ids+'</td><td>'+"未知"+'</td><td><a class="btn btn-default" role="button">查看详情</a></td></tr>';
+			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].selfid+'</td><td>'+data.rows[i].aimid+'</td><td>'+kind+'</td><td>'+data.rows[i].ids+'</td><td>'+data.rows[i].times+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#dynstateModal" onclick="finddynstate(\''+data.rows[i].selfid+'\',\''+data.rows[i].aimid+'\',\''+kind+'\',\''+data.rows[i].ids+'\',\''+data.rows[i].times+'\')">查看详情</a></td></tr>';
 		}
 		info+='<tr><td colspan="9"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1031px"></div></td></tr>';
 		info+='</tbody>';
@@ -216,6 +217,16 @@ function sendemail(name){
 	$("#sendmail").click(function(data){
 		$("#infoForm").submit();//表单提交	
 	});
+}
+
+function finddynstate(selfid,aimid,kind,ids,times){
+	alert(kind);
+	console.log(document.getElementById("kind"));
+	document.getElementById("selfid").innerHTML=kind;
+	document.getElementById("aimid").innerHTML=aimid;
+	document.getElementById("kind").innerHTML=kind;
+	document.getElementById("ids").innerHTML=ids;
+	document.getElementById("times").innerHTML=times;
 }
 
 function ok(ids,kind){
