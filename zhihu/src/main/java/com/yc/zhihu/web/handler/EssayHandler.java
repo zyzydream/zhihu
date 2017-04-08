@@ -22,13 +22,15 @@ public class EssayHandler {
 	
 	@RequestMapping(value="/add" ,method=RequestMethod.POST )
 	@ResponseBody
-	public boolean add(Essay essay , HttpServletRequest request){
-		
+	public String add(Essay essay , HttpServletRequest request){
 		String eautid = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids();
 		essay.setEautid(eautid);
 		System.out.println("essay 进来了==》" + essay);
-		essayServie.add(essay);
-		return true;
+		if(essayServie.add(essay)){
+			return "true";
+		}else{
+			return "false";
+		}
 		
 	}
 }

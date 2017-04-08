@@ -26,7 +26,7 @@
 				</div>
 				<div class="publish-section ng-scope">
 
-					<a class="pop-button ng-binding ng-scope" onclick="addEssay()"> 发布 </a>
+					<a class="pop-button ng-binding ng-scope" onclick="addEssay()" > 发布 </a>
 
 				</div>
 
