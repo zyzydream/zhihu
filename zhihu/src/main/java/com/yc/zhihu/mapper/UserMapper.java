@@ -44,5 +44,8 @@ public interface UserMapper {
 	int statisticsPraise(Explore essay);
 
 	int statisticsCollect(Explore essay);
+	List<Users> findTopic(Users users);
+
+	List<Users> findUprf(Users users);
 
 }

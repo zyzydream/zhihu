@@ -31,5 +31,8 @@ public interface UserService {
 	boolean listprofession(Users users);
 
 	List<Explore> listExplore(Users user);
+	List<Users> listTp(Users users);
+
+	List<Users> findProfession(Users users);
 
 }

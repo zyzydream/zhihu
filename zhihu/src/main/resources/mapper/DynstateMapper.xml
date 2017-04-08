@@ -59,11 +59,24 @@
 	</resultMap>
 
 
-	<select id="listAnswer" parameterType="Users" resultMap="ReplyMap">
+	<select id="listAnswer2" parameterType="Users" resultMap="ReplyMap">
 		select
 		t.*,q.qtitle from
 		(select r.*,u.uname,u.usign,r.reqid a from REPLY
 		r,users u where remitid=#{uids}
+		and uids=remitid) t,question q
+		where
+		t.reqid=a
+	</select>
+
+	<select id="listAnswer" parameterType="Users" resultType="ListAllMy">
+		select
+		q.qtitle title,t.uname uname,t.usign sign,t.upic tpic,
+		t.rcontent,t.rtime times,'A' kind
+		from (select
+		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
+		r,users u where
+		remitid=#{uids}
 		and uids=remitid) t,question q
 		where
 		t.reqid=a
@@ -99,11 +112,11 @@
 	</select>
 
 	<select id="listMyQuestion" parameterType="Users" resultType="Question">
-		select q.*,t.sum from question q,
-		(select count(reqid) sum from REPLY
-		where rkind='Q' and reqid=(select reqid from question where
-		qautid=#{uids})) t
-		where q.qautid=#{uids}
+		select * from question q,
+		(select count(reqid) sum,a.qid from reply,
+		(select * from question where qautid=#{uids}) a
+		where rkind='Q' and reqid=a.qid group by qid)b
+		where q.qid=b.qid and q.qautid=#{uids}
 	</select>
 
 	<select id="listMyFavorite" parameterType="Users" resultType="Favorite">
@@ -132,23 +145,48 @@
 		DYNSTATE d where selfid=#{uids})
 	</select>
 
-
 	<select id="totalatten" parameterType="Users" resultType="Users">
 		select
 		(select count(aimid) from dynstate where selfid=#{uids}) myatten,
 		(select count(selfid) from DYNSTATE where aimid=#{uids}) attenme,
 		(select count(ids) from DYNSTATE where selfid=#{uids} and kind='GH')
 		myattentop,
-		(select count(ids) from DYNSTATE where selfid=#{uids} and kind='GZ')
+		(select count(ids) from DYNSTATE where selfid=#{uids} and
+		kind='GZ')
 		myattenzhuanlan,
-		(select count(ids) from DYNSTATE where selfid=#{uids} and kind='GS')
+		(select count(ids) from DYNSTATE where
+		selfid=#{uids} and kind='GS')
 		myattenfav
 		from dual
 	</select>
-	
-	
-	
-	<insert id="insertGH" parameterType="String" >
-		insert into dynstate(selfid,kind,ids,times) values(#{selfid},'GH',#{ids},to_char(sysdate,'yyyy-mm-dd'))
+
+	<insert id="insertGH" parameterType="String">
+		insert into
+		dynstate(selfid,kind,ids,times)
+		values(#{selfid},'GH',#{ids},to_char(sysdate,'yyyy-mm-dd'))
 	</insert>
+
+	<select id="Sum" parameterType="Users" resultType="Total">
+		select
+		(select
+		count(reqid) from reply where remitid=#{uids} and rkind='Q') answer,
+		((select count(scid) from scolumn where sccreid=#{uids})+
+		(select
+		count(eid) from essay where eautid=#{uids})) mine,
+		(select count(qid)
+		from question where qautid=#{uids}) question,
+		(select count(fid) from
+		favorite where fcreid=#{uids}) fav
+		from dual
+	</select>
+
+	<select id="listmytopic" parameterType="Users" resultType="ListAllMy">
+		select t.tid tid,t.ttopic tname,t.tpic tpic,ue.uname uname,'T' kind
+		from topics t,
+		(select * from users u where uids=#{uids})ue
+		where
+		t.tid=ue.uids
+	</select>
+	
+	
 </mapper>

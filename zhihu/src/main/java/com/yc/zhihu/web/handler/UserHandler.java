@@ -17,7 +17,6 @@ import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
-import com.yc.zhihu.service.DynstateService;
 import com.yc.zhihu.service.UserService;
 import com.yc.zhihu.util.EmailUtil;
 import com.yc.zhihu.util.ServletUtil;
@@ -42,8 +41,16 @@ public class UserHandler {
 		}else{
 			request.getSession().setAttribute("username",users.getUname());
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
-			System.out.println(ServletUtil.LOGIN_USER);
-			return "redirect:/page/homepage.jsp";	
+			//String uids = ((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids();
+			if(usersService.findProfession(users) == null ){
+				System.out.println(usersService.findProfession(users).size());
+				return "redirect:/page/work.jsp";
+			}else if(usersService.listTp(users) == null){
+				System.out.println("进来l");
+				return "redirect:/page/talk.jsp";
+			}else{
+				return "redirect:/page/homepage.jsp";	
+			}
 		}	
 	}
 	//用户注册

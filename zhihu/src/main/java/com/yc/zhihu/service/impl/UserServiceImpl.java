@@ -131,6 +131,16 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<Explore> listExplore(Users user) {
 		// TODO Auto-generated method stub
-		return userMapper.listExplore(user);
+		return userMapper.listExplore(user);	
+	}
+	
+	@Override
+	public List<Users> listTp(Users users) {
+		return userMapper.findTopic(users);
+	}
+
+	@Override
+	public List<Users> findProfession(Users users) {
+		return userMapper.findUprf(users);		//查询职业是否为空，如果为空，则跳入填写职业的页面
 	}
 }
