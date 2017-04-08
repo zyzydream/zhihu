@@ -28,14 +28,14 @@ public class UserHandler {
 
 	@Autowired
 	private UserService usersService;
-	
+
 	private String CODE;
-	
+
 	@RequestMapping(value="login" , method= RequestMethod.POST)
 	public String Login(Users users , HttpServletRequest request , HttpServletResponse response){		//查询所有主话题
 		System.out.println("取到user==》"+ users);
 		users = usersService.listUsers(users);
-		
+
 		if(users== null){
 			request.setAttribute(ServletUtil.ERROR_MASSAGE, "用户名或密码错误！！！");
 			return "/back/login.jsp";	
@@ -58,7 +58,7 @@ public class UserHandler {
 			users =usersService.listUsers(users);
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
 			try {
-				 CODE=em.setMail(users.getUemail());
+				CODE=em.setMail(users.getUemail());
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			}
@@ -75,17 +75,18 @@ public class UserHandler {
 			System.out.println(a);
 			return a;
 		}
-		
+
 	}
-	
+
 	//列出最新动态
 	@RequestMapping(value="dynstate",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Explore> listDynstate(HttpServletRequest request){
 		System.out.println("listDynstate ====> "+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		Users user= (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		List<Explore> all =usersService.listExplore((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER));;
 		//用来查找有关话题的文章
-		List<Explore> all =new ArrayList<Explore>();
+		/*List<Explore> all =new ArrayList<Explore>();
 		List<Explore> explores= usersService.listrelated(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	    for(Explore explore:explores){
 	    	all.add(explore);
@@ -96,17 +97,20 @@ public class UserHandler {
 	    for(Explore question:questions){
 	    	all.add(question);
 	    }
-	    //关注的对象的动态
-	    List<Explore> dynstate=usersService.listrelatedD(user);
-	    //如果关注对象没有动态或没有关注的对象，则返回关注的话题有关的文章或问题
-	    if(dynstate!=null){
-	    	dynstate.add(2, all.get(0));
-	    	 return dynstate;
-	    }else{
-	    	return all;
-	    }
+		 */
+		//关注的对象的动态
+		List<Explore> dynstate=usersService.listrelatedD(user);
+		//如果关注对象没有动态或没有关注的对象，则返回关注的话题有关的文章或问题
+		if(dynstate!=null){
+			for(int i=1;i<=all.size();i++){
+				dynstate.add(3*i, all.get(i-1));
+			}
+			return dynstate;
+		}else{
+			return all;
+		}
 	}
-	
+
 	//列出新消息
 	@RequestMapping(value="/new",method=RequestMethod.GET)
 	@ResponseBody
@@ -114,30 +118,30 @@ public class UserHandler {
 		System.out.println("====> listNews");
 		return usersService.listnews("10001");
 	}
-	
-	//列出新消息
+
+	//列出用户关注的话题
 	@RequestMapping(value="/topics",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Topics> listTopics(HttpServletRequest request){
 		System.out.println("====> listTopics");
 		return usersService.listTopics(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
-	
-	
-	
+
+
+
 	@RequestMapping(value="/code",method=RequestMethod.POST)
 	public String listCode(String ucode){
 		return "redirect:/page/work.jsp";
 	}
-	
-	
-	
+
+
+
 	//职业添加
-		@RequestMapping(value="profession" , method= RequestMethod.POST)
-		public String profession(Users users , HttpServletRequest request, HttpServletResponse response) {
-			System.out.println("users  ==>"+users);
-			usersService.listprofession(users);
-			return "redirect:/page/talk.jsp";
-		}
-		
+	@RequestMapping(value="profession" , method= RequestMethod.POST)
+	public String profession(Users users , HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("users  ==>"+users);
+		usersService.listprofession(users);
+		return "redirect:/page/talk.jsp";
+	}
+
 }

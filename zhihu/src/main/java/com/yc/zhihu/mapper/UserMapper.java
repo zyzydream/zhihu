@@ -39,4 +39,10 @@ public interface UserMapper {
 
 	boolean AddUsersprofession(Users users);
 
+	List<Explore> listExplore(Users user);
+
+	int statisticsPraise(Explore essay);
+
+	int statisticsCollect(Explore essay);
+
 }

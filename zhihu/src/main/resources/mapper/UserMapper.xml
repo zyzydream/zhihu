@@ -5,6 +5,7 @@
 <!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
 <mapper namespace="com.yc.zhihu.mapper.UserMapper">
 
+    <!-- 查询关注用户的话题的文章 -->	
 	<select id="listrelated" parameterType="Users" resultType="Explore">
 		SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM Topics t,
 		  (SELECT * FROM USERS u,
@@ -30,15 +31,22 @@
 	
 	<!-- 查询关注用户24小时之内写的文章 -->
 	<select id="listessay" parameterType="Users" resultType="Explore">
-	    select e.etid ids,e.eautid uids,e.econtent content,e.etime times,e.etitle title,e.etid tid,ud.uname author from essay e,
+	    select e.eid ids,e.eautid uids,e.econtent content,e.etime times,e.etitle title,e.etid tid,ud.uname author from essay e,
            (select * from users u,
 	         (SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
 	       where u.uids=d.aimid)ud
         where e.eautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(e.etime,'yyyy-mm-dd'))*24
 	</select>
+	
+	<select id="listExplore" parameterType="Users" resultType="Explore">
+	      select * from explore,
+	        (SELECT * from dynstate PARTITION(GH) WHERE selfid=#{uids})d
+	       where tid=d.ids
+	</select>
+	
 	<!-- 查询关注用户24小时之内提的问题 -->
 	<select id="listquestion" parameterType="Users" resultType="Explore">
-        select q.qtid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,
+        select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,
            (select * from users u,
 	         (SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
 	       where u.uids=d.aimid)ud
@@ -79,4 +87,33 @@
 	<update id="AddUsersprofession" parameterType="Users" >
 		update users set uprofession=#{uprofession} where uprofession is null
 	</update>
+	
+	<!-- 统计点攒数 -->
+	<select id="statisticsPraise" parameterType="Explore" resultType="int">
+	    select count(0) from dynstate
+	       <if test="kind=='DW'">
+	          PARTITION(${kind})
+	       </if>
+	       <if test="kind=='DQ'">
+	          PARTITION(${kind})
+	       </if>
+	       <if test="kind=='DH'">
+	          PARTITION(${kind})
+	       </if>
+	     where ids='${ids}'
+	</select>
+	
+	<select id="statisticsCollect" parameterType="Explore" resultType="int">
+	    select count(0) from dynstate
+	       <if test="kind =='SW'">
+	          PARTITION(${kind})
+	       </if>
+	       <if test="kind =='SQ'">
+	          PARTITION(${kind})
+	       </if>
+	       <if test="kind =='SH'">
+	          PARTITION(${kind})
+	       </if>
+	     where ids='${ids}'
+	</select>
 </mapper>

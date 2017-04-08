@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserMapper userMapper;
 	
-	//列出最新动态
+	//列出最新动态   查询关注用户的话题的文章  所有 与点赞无关
 	@Override
 	public List<Explore> listrelated(Object user) {
 		return userMapper.listrelated(user);
@@ -61,11 +61,19 @@ public class UserServiceImpl implements UserService{
 		List<Explore> all=new ArrayList<Explore>();
 		List<Explore> essays = userMapper.listessay(user);
 		for(Explore essay:essays){
+			essay.setKind("DW");
+			essay.setPraise(userMapper.statisticsPraise(essay));
+			essay.setKind("SW");
+			essay.setCollect(userMapper.statisticsCollect(essay));
 			essay.setKind("FW");
 			all.add(essay);
 		}
 		List<Explore> questions = userMapper.listquestion(user);
 		for(Explore question:questions){
+			question.setKind("DQ");
+			question.setPraise(userMapper.statisticsPraise(question));
+			question.setKind("SQ");
+			question.setCollect(userMapper.statisticsCollect(question));
 			question.setKind("FQ");
 			all.add(question);
 		}
@@ -118,5 +126,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean listprofession(Users users) {
 		return userMapper.AddUsersprofession(users);
+	}
+
+	@Override
+	public List<Explore> listExplore(Users user) {
+		// TODO Auto-generated method stub
+		return userMapper.listExplore(user);
 	}
 }

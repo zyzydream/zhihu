@@ -289,6 +289,28 @@
 								</div>
 								<hr class="featurette-divider">
 					<!-- 结束 -->
+					<!-- 开始  关注用户提出问题 -->
+								<div class="row featurette">
+									<div class="col-md-7">
+									    <h2 class="featurette-heading" style="font-size: 20px;">
+											<span class="text-muted" style="font-size: 15px">'+data[i].author+':提出问题：</span><br />'+data[i].title+'
+										</h2>
+										<span>
+										    <a href="#" style="font-size: 13px;font-weight: 40">阅览 <span class="badge" style="width: 20px;padding: 0px;">42</span></a>
+										    <a href="#" style="font-size: 13px;font-weight: 40">点赞 <span class="badge" style="width: 20px;padding: 0px;">42</span></a>
+										    <a href="#" style="font-size: 13px;font-weight: 40">收藏 <span class="badge" style="width: 20px;padding: 0px;">42</span></a>
+										</span>
+									</div>
+									<div class="col-md-5">
+										<label style="float: right;font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
+										<img class="featurette-image img-responsive center-block"
+											data-src="holder.js/500x500/auto"
+											tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto"
+											alt="">
+									</div>
+								</div>
+								<hr class="featurette-divider">
+					<!-- 结束 -->
 							</span>
 							<nav>
 								<ul class="pager">
@@ -353,6 +375,6 @@
 	<script
 		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
 		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-	<script type="text/javascript" src="js/homepage.js"></script> 
+	<script type="text/javascript" src="js/homepage.js"></script>
 </body>
 </html>

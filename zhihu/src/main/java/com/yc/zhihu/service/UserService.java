@@ -30,4 +30,6 @@ public interface UserService {
 
 	boolean listprofession(Users users);
 
+	List<Explore> listExplore(Users user);
+
 }
