@@ -39,4 +39,8 @@ public interface UserMapper {
 
 	boolean AddUsersprofession(Users users);
 
+	List<Users> findTopic(Users users);
+
+	List<Users> findUprf(Users users);
+
 }

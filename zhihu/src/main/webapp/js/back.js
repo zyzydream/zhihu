@@ -14,8 +14,8 @@ $('#pp').pagination({
 	onSelectPage:function(pageNumber, pageSize){
 		
 		$(this).pagination('loading');
-		alert('pageNumber:'+pageNumber+',pageSize:'+pageSize);
-		console.log(node);
+		//alert('pageNumber:'+pageNumber+',pageSize:'+pageSize);
+		//console.log(node);
 		select(node,pageNumber,pageSize);
 		$(this).pagination('loading');
 	}
@@ -34,7 +34,7 @@ function select(self,currPage,pageSize){
 	self.setAttribute("class","active");
 	
 	var thing=self.children[0].innerText;
-	//console.log(thing);
+	console.log(thing);
 	var kinds="";
 	if(thing=="推荐头条"||thing=="已审核"){
     	$.get("explore/y?currPage="+currPage+"&&pageSize="+pageSize,function(data){
@@ -52,7 +52,7 @@ function select(self,currPage,pageSize){
     		var node=document.getElementById("before");
     		a(node);
     	},"json")
-    }else if(thing=="总动态"||thing=="关注人"||thing=="关注话题"||thing=="关注专栏"||thing=="关注人"||thing=="关注收藏夹"||thing=="收藏文章"||thing=="收藏问题"||thing=="收藏回复"||thing=="点赞文章"||thing=="点赞问题"||thing=="点赞回复"){
+    }else if(thing=="总动态"||thing=="全部"||thing=="关注人"||thing=="关注话题"||thing=="关注专栏"||thing=="关注人"||thing=="关注收藏夹"||thing=="收藏文章"||thing=="收藏问题"||thing=="收藏回复"||thing=="点赞文章"||thing=="点赞问题"||thing=="点赞回复"){
     	var kinds="all";
        	if(thing=="关注话题"){
 			kinds="GH";
@@ -77,19 +77,20 @@ function select(self,currPage,pageSize){
 		}
     	dynstate(kinds,currPage,pageSize)
     }else if(thing=="用户信息"){
-    	//console.log(thing+"3")
-    	$.get("admin/user",function(data){
+    	$.get("admin/user?currPage="+currPage+"&&pageSize="+pageSize,function(data){
     		//alert(JSON.stringify(data));
     		var info='<thead><tr><th>#</th><th>id</th><th>name</th><th>email</th><th>sign</th><th>profession</th><th>操作</th></tr></thead><tbody>';
-    		for(var i=0;i<data.length;i++){
-    			var name=data[i].uname
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].uids+'</td><td>'+data[i].uname+'</td><td>'+data[i].uemail+'</td><td>'+data[i].usign+'...</td><td>'+data[i].profession+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#infoModal" onclick="sendemail(\''+name+'\')">发送信息</a></td></tr>';
+    		for(var i=0;i<data.rows.length;i++){
+    			var name=data.rows[i].uname
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].uids+'</td><td>'+data.rows[i].uname+'</td><td>'+data.rows[i].uemail+'</td><td>'+data.rows[i].usign+'...</td><td>'+data.rows[i].profession+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#infoModal" onclick="sendemail(\''+name+'\')">发送信息</a></td></tr>';
     		}
-    		//info+='<tr><td colspan="9"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1033px"></div></td></tr>';
+    		info+='<tr><td colspan="9"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1033px"></div></td></tr>';
     		info+='</tbody>';
     		//console.info(info);
     		document.getElementById("table").innerHTML = info;
     		document.getElementById("nav-tabs").innerHTML = "";
+    		var node=document.getElementById("users");
+    		a(node);
        	},"json");
     }else if(thing=="未审核"){
     	$.get("explore/n?currPage="+currPage+"&&pageSize="+pageSize,function(data){
@@ -112,7 +113,8 @@ function select(self,currPage,pageSize){
 }
 
 function dynstate(kinds,currPage,pageSize){
-	$.get("dynstate/all?kind="+kinds+"&&currPage="+currPage+"&&pageSize="+pageSize ,function(data){
+	$.get("dynstate/all?sgin="+kinds+"&&currPage="+currPage+"&&pageSize="+pageSize ,function(data){
+		//alert(kinds);
 		//alert(JSON.stringify(data));
 		var all="";
 		var GH="";
@@ -138,47 +140,50 @@ function dynstate(kinds,currPage,pageSize){
 		if(kinds=="SH") SH="active";
     	
 		var info='<thead><tr><th>#</th><th>本人id</th><th>目标id</th><th>kind</th><th>具体id</th><th>time</th><th>操作</th></tr></thead><tbody>';
-		for(var i=0;i<data.length;i++){
+		//alert(data.rows.length);
+		for(var i=0;i<data.rows.length;i++){
 			var kind="";
-			if(data[i].kind=="GH"){
+			if(data.rows[i].kind=="GH"){
 				kind="关注话题";
-			}else if(data[i].kind=="GZ"){
+			}else if(data.rows[i].kind=="GZ"){
 				kind="关注专栏";
-			}else if(data[i].kind=="GR"){
+			}else if(data.rows[i].kind=="GR"){
 				kind="关注人";
-			}else if(data[i].kind=="GS"){
+			}else if(data.rows[i].kind=="GS"){
 				kind="关注收藏夹";
-			}else if(data[i].kind=="SH"){
+			}else if(data.rows[i].kind=="SH"){
 				kind="收藏回复";
-			}else if(data[i].kind=="DH"){
+			}else if(data.rows[i].kind=="DH"){
 				kind="点赞回复";
-			}else if(data[i].kind=="DQ"){
+			}else if(data.rows[i].kind=="DQ"){
 				kind="点赞问题";
-			}else if(data[i].kind=="DW"){
+			}else if(data.rows[i].kind=="DW"){
 				kind="点赞文章";
-			}else if(data[i].kind=="SQ"){
+			}else if(data.rows[i].kind=="SQ"){
 				kind="收藏问题";
-			}else if(data[i].kind=="SW"){
+			}else if(data.rows[i].kind=="SW"){
 				kind="收藏文章";
 			}
-			info+='<tr><td>'+(i+1)+'</td><td>'+data[i].selfid+'</td><td>'+data[i].aimid+'</td><td>'+kind+'</td><td>'+data[i].ids+'</td><td>'+"未知"+'</td><td><a class="btn btn-default" role="button">查看详情</a></td></tr>';
+			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].selfid+'</td><td>'+data.rows[i].aimid+'</td><td>'+kind+'</td><td>'+data.rows[i].ids+'</td><td>'+data.rows[i].times+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#dynstateModal" onclick="finddynstate(\''+data.rows[i].selfid+'\',\''+data.rows[i].aimid+'\',\''+kind+'\',\''+data.rows[i].ids+'\',\''+data.rows[i].times+'\')">查看详情</a></td></tr>';
 		}
 		info+='<tr><td colspan="9"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1031px"></div></td></tr>';
 		info+='</tbody>';
-		document.getElementById("table").innerHTML = info;
 		var infos="";
-		infos+='<li role="presentation" class="'+all+'" onclick="select(this,1,10)"><a>全部</a></li>';
-		infos+='<li role="presentation" class="'+GR+'" onclick="select(this,1,10)"><a>关注人</a></li>';
-		infos+='<li role="presentation" class="'+GH+'" onclick="select(this,1,10)"><a>关注话题</a></li>';
-		infos+='<li role="presentation" class="'+GZ+'" onclick="select(this,1,10)"><a>关注专栏</a></li>';
-		infos+='<li role="presentation" class="'+GS+'" onclick="select(this,1,10)"><a>关注收藏夹</a></li>';
-		infos+='<li role="presentation" class="'+SW+'" onclick="select(this,1,10)"><a>收藏文章</a></li>';
-		infos+='<li role="presentation" class="'+SQ+'" onclick="select(this,1,10)"><a>收藏问题</a></li>';
-		infos+='<li role="presentation" class="'+SH+'" onclick="select(this,1,10)"><a>收藏回复</a></li>';
-		infos+='<li role="presentation" class="'+DQ+'" onclick="select(this,1,10)"><a>点赞问题</a></li>';
-		infos+='<li role="presentation" class="'+DW+'" onclick="select(this,1,10)"><a>点赞文章</a></li>';
-		infos+='<li role="presentation" class="'+DH+'" onclick="select(this,1,10)"><a>点赞回复</a></li>';
+		infos+='<li id="all" role="presentation" class="'+all+'" onclick="select(this,1,10)"><a>全部</a></li>';
+		infos+='<li id="GR" role="presentation" class="'+GR+'" onclick="select(this,1,10)"><a>关注人</a></li>';
+		infos+='<li id="GH" role="presentation" class="'+GH+'" onclick="select(this,1,10)"><a>关注话题</a></li>';
+		infos+='<li id="GZ" role="presentation" class="'+GZ+'" onclick="select(this,1,10)"><a>关注专栏</a></li>';
+		infos+='<li id="GS" role="presentation" class="'+GS+'" onclick="select(this,1,10)"><a>关注收藏夹</a></li>';
+		infos+='<li id="SW" role="presentation" class="'+SW+'" onclick="select(this,1,10)"><a>收藏文章</a></li>';
+		infos+='<li id="SQ" role="presentation" class="'+SQ+'" onclick="select(this,1,10)"><a>收藏问题</a></li>';
+		infos+='<li id="SH" role="presentation" class="'+SH+'" onclick="select(this,1,10)"><a>收藏回复</a></li>';
+		infos+='<li id="DQ" role="presentation" class="'+DQ+'" onclick="select(this,1,10)"><a>点赞问题</a></li>';
+		infos+='<li id="DW" role="presentation" class="'+DW+'" onclick="select(this,1,10)"><a>点赞文章</a></li>';
+		infos+='<li id="DH" role="presentation" class="'+DH+'" onclick="select(this,1,10)"><a>点赞回复</a></li>';
 	    document.getElementById("nav-tabs").innerHTML = infos;
+		document.getElementById("table").innerHTML = info;
+		var node=document.getElementById(""+kinds+"");
+		a(node);	
 	},"json")
 }
 
@@ -212,6 +217,16 @@ function sendemail(name){
 	$("#sendmail").click(function(data){
 		$("#infoForm").submit();//表单提交	
 	});
+}
+
+function finddynstate(selfid,aimid,kind,ids,times){
+	alert(kind);
+	console.log(document.getElementById("kind"));
+	document.getElementById("selfid").innerHTML=kind;
+	document.getElementById("aimid").innerHTML=aimid;
+	document.getElementById("kind").innerHTML=kind;
+	document.getElementById("ids").innerHTML=ids;
+	document.getElementById("times").innerHTML=times;
 }
 
 function ok(ids,kind){

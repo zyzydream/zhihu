@@ -66,7 +66,7 @@
 				<ul class="nav nav-sidebar">
 					<li class="active" onclick="select(this,1,10)"><a
 						href="javaScript:void(0)">总动态</a></li>
-					<li onclick="select(this,1,10)"><a href="javaScript:void(0)">用户信息</a></li>
+					<li id="users" onclick="select(this,1,10)"><a href="javaScript:void(0)">用户信息</a></li>
 					<li onclick="select(this,1,10)"><a href="javaScript:void(0)">推荐头条</a></li>
 				</ul>
 			</div>
@@ -85,7 +85,7 @@
 				</ul>
 				<div class="table-responsive">
 					<table class="table table-hover" id="table">
-						 <thead>
+						<!-- <thead>
 							<tr>
 								<th>#</th>
 								<th>Header</th>
@@ -208,13 +208,13 @@
 								<td>libero</td>
 							</tr>
 							
-						</tbody>
+						</tbody> --> 
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- 模态框（Modal） -->
+	<!-- 推荐展示（Modal） -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -310,7 +310,49 @@
 		</div>
 		<!-- /.modal -->
 	</div>
-		
+	<!-- 动态展示（Modal） -->
+	<div class="modal fade" id="dynstateModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">动态详情</h4>
+				</div>
+				<div class="modal-body">
+					<table class="input_table" width="500px">
+						<tr>
+							<td width="150px">本人id :</td>
+							<td><label id="selfid"></label></td>
+						</tr>
+						<tr>
+							<td>目标id :</td>
+							<td><label id="aimid"></label></td>
+						</tr>
+						<tr>
+							<td>动态类型 :</td>
+							<td><label id="kind"></label></td>
+						</tr>
+						<tr>
+							<td>有关id:</td>
+							<td><label id="ids"></label></td>
+						</tr>
+						<tr>
+							<td>  时间：</td>
+							<td><label id="times"></label></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>	
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
