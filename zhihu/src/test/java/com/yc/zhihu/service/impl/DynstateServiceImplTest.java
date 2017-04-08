@@ -60,6 +60,15 @@ public class DynstateServiceImplTest {
 		assertNotNull(r);
 	}
 	
+	@Test
+	public void testpic() {
+		Users users=new Users();
+		users.setUids("1001");
+		List<Users> r=dynstateService.showtop(users);
+		System.out.println(r);
+		assertNotNull(r);
+	}
+	
 	
 
 }

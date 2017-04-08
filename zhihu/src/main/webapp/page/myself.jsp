@@ -93,12 +93,15 @@
 				<div class="Card">
 					<div class="ProfileHeader-userCover">
 						<div class="UserCoverEditor">
-								<div class="UserCoverGuide" >							
+								<div class="UserCoverGuide" >						
 									<div class="UserCoverGuide-inner">
+									
 										<div class="UserCoverGuide-buttonContainer">
-										<form enctype="multipart/form-data"> 
+										<form enctype="multipart/form-data" method="post" id="uploads"> 
 											<input class="Button DynamicColorButton" type="file"
-												id="changgeimage" onclick="updatePic()" />
+												id="changgeimage" name="toppic" onchange="chgPic(this)"
+												onclick="updatePic()"  />
+											<img src="/zhihu/images/1.jpg" id="pic" width="100" height="100">
 										</form>
 										</div>
 									</div>
@@ -112,19 +115,11 @@
 						<div class="ProfileHeader-main">
 							<div class="UserAvatarEditor ProfileHeader-avatar"
 								style="top: -74px;">
-								<div class="UserAvatar">
+								<div class="UserAvatar" >
+									<div id="hhh"></div>
 									<img class="Avatar Avatar--large UserAvatar-inner"
 										src="/zhihu/images/touxiang.jpg"
 										style="width: 160px; height: 160px;">
-								</div>
-								<div class="Mask UserAvatarEditor-mask Mask-hidden">
-									<img src="/zhihu/images/touxiang.jpg">
-									<div
-										class="Mask-mask Mask-mask--black UserAvatarEditor-maskInner"></div>
-									<div class="Mask-content">
-										<img src="/zhihu/images/touxiang.jpg">
-										<div class="UserAvatarEditor-maskInnerText">修改我的头像</div>
-									</div>
 								</div>
 								<input type="file" accept="image/png,image/jpeg"
 									style="display: none;">

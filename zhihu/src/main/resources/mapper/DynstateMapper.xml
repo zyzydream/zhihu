@@ -188,5 +188,19 @@
 		t.tid=ue.uids
 	</select>
 	
+	<select id="showtopimg" parameterType="Users" resultType="Users">
+		select u.tpic toppic,u.upic upic from users u where uids=#{uids}
+	</select>
+	
+	<update id="updatetoppics" parameterType="Users">
+		update users 
+		<set>
+			<if test="toppic != null">
+				tpic=#{toppic}
+			</if>
+		</set>
+		where uids=#{uids}
+		</update>
+	
 	
 </mapper>

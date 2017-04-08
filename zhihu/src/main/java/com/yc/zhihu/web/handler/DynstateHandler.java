@@ -130,18 +130,34 @@ public class DynstateHandler {
 		return dynstateService.sumT(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
-	@RequestMapping(value="/upload",method=RequestMethod.GET)
+	@RequestMapping(value="/showtoppic",method=RequestMethod.GET)
 	@ResponseBody
-	public boolean Upload(File file,Users users,HttpServletRequest request){
-		String picPath=null;
+	public List<Users> show(HttpServletRequest request){	
 		
-		file=ServletUtil.getUploadFile(request.getSession().getServletContext().getRealPath("/")+"images");
-	
-		
-		return dynstateService.modifyUserPic(users);
+		return dynstateService.showtop(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
-	
+	@RequestMapping(value="upload")
+	@ResponseBody
+	public boolean modify(@RequestParam("picData") MultipartFile picData,Users user){
+		String picPath=null;
+		if(picData!= null && !picData.isEmpty()){ //判断是否有文件上传
+			try {
+				picData.transferTo(ServletUtil.getUploadFile(picData.getOriginalFilename()));
+				picPath=ServletUtil.LOGIN_UPLOAD_DIR+picData.getOriginalFilename();
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		user.setToppic(picPath);
+		
+		System.out.println("上传图片 ==》user"+ user);
+		System.out.println("modify: user ==>"+user);
+		
+		return  dynstateService.updatetoppics(user); //异步响应数据
+		
+	}
 	
 	
 	
