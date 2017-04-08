@@ -1,5 +1,6 @@
 package com.yc.zhihu.web.handler;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -131,21 +132,16 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/upload",method=RequestMethod.GET)
 	@ResponseBody
-	public boolean Upload(@RequestParam("picData") MultipartFile picData,Users users){
+	public boolean Upload(File file,Users users,HttpServletRequest request){
 		String picPath=null;
 		
-		if(picData!= null && !picData.isEmpty()){ //判断是否有文件上传
-			try {
-				picData.transferTo(ServletUtil.getUploadFile(picData.getOriginalFilename()));
-				picPath=ServletUtil.UPLOAD_TOP_DIR+picData.getOriginalFilename();
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
-		}
-		users.setToppic(picPath);
+		file=ServletUtil.getUploadFile(request.getSession().getServletContext().getRealPath("/")+"images");
 	
+		
 		return dynstateService.modifyUserPic(users);
 	}
+	
+	
 	
 	
 	

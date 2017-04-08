@@ -320,16 +320,14 @@ $('#changgeimage').hover(function() {
 });
 
 function updatePic(){
-	$.get("dynstate/upload",function(data){
-		if(data==""){
-			return ;
-		}
-
-		if(data.trim() == "true"){
-			$(".UserCoverEditor").datagrid("reload"); //刷新修改数据
-		}
-	})
+	  alter(1);
 }
+
+
+
+
+
+
 
 
 

@@ -115,19 +115,14 @@ dbms_random.string('l',dbms_random.value(5, 6)),
 'car.png' from dual connect by level <= 15;
 drop sequence seq_topics
 drop table topics
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
-<<<<<<< HEAD
 select * from topics
 
 
 insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
 insert into topics(tid,ttopic,tstId,tpic)values('10002','计算机','10001','images/life.jpg');
 insert into topics(tid,ttopic,tstId,tpic)values('10003','生活' ,'','images/life.jpg');
-=======
 select * from topics where tid='1000'
 insert into topics(tid,ttopic)values('10001','编程');
 insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
@@ -135,7 +130,6 @@ insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/ga
 insert into topics(tid,ttopic,tstId,tpic)values('1000','编程' ,'','images/game.png');
 insert into topics(tid,ttopic,tstId,tpic)values('1001','计算机','10001','images/life.jpg');
 insert into topics(tid,ttopic,tstId,tpic)values('1002','生活' ,'','images/life.jpg');
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
 update TOPICS set tpic = 'images/life.jpg' where tpic='images/life.png'
 /*问题表
@@ -165,17 +159,11 @@ dbms_random.string('l',dbms_random.value(20, 50)),
 select * from question
 
 select * from QUESTION;
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
-<<<<<<< HEAD
 
-=======
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 drop table question
 /*回复表
     reqid :文章或问题id
@@ -273,7 +261,6 @@ SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitl
 		where t.tid=ue.uids;
 			
 		select * from users;
-=======
 --关注人
 insert into dynstate
 select ''||ceil(dbms_random.value(10000,11000)),
@@ -308,7 +295,6 @@ select ''||ceil(dbms_random.value(10000,11000)),
 '' from dual connect by level <= 6000;
 select * from dynstate PARTITION (GR)
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 
 
 select * from QUESTION q,
@@ -390,10 +376,8 @@ create table explore(
    times VARCHAR2(30),  --时间
    checks VARCHAR2(2) --是否以核查
 );
-<<<<<<< HEAD
 
 
-=======
 select count(0) from explore where checks='n'
 select e.*,rownum rn from explore e  where checks='n' and rownum>1
 select * from(
@@ -401,7 +385,6 @@ select inside.* ,rownum rn from(
 select * from explore where checks='n' order by 1 desc) inside where rownum<=#{currPage}*#{})where rn>(1-1)*9
 select * from explore
 drop table explore
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 create table infomation(
    selfname VARCHAR2(30), --发件人用户名
    aimname VARCHAR2(30), --收件人用户名
@@ -572,7 +555,6 @@ insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','
 
 --gr 2
 insert into users(uids,uemail,uname,upassword) values('1003','365@qq.com','gr','a');
-<<<<<<< HEAD
 
 select
 (select count(reqid) from reply where remitid='1003' and rkind='Q') answer,
@@ -581,7 +563,4 @@ select
 (select count(qid) from question where qautid='1003') question,
 (select count(fid) from favorite where fcreid='1003') fav
 from dual;
-=======
 select * from users where uids='1003'
- 10269 lhfjnrz    a         kkevobcrqxwebwalhhlqvvozpkke             翻译员         zzz.jpg 18070501074@qq.com
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
