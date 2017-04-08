@@ -33,7 +33,7 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/all",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Dynstate> list(PaginationBean<Explore> e){
+	public PaginationBean<Dynstate> list(PaginationBean<Explore> e){
 //		System.out.println(sgin);
 //		PaginationBean<Explore> e=new PaginationBean<Explore>();
 //		e.setCurrPage(Integer.valueOf(currPage));

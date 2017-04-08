@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.AdminService;
 import com.yc.zhihu.service.ExploreService;
@@ -25,7 +26,7 @@ public class AdminHandler {
 	
 	@RequestMapping(value="/user",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Users> list(){
-		return adminService.list().subList(0, 10);
+	public PaginationBean<Users> list(PaginationBean<Users> users){
+		return adminService.list(users);
 	}
 }

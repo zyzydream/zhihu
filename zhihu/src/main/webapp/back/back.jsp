@@ -66,7 +66,7 @@
 				<ul class="nav nav-sidebar">
 					<li class="active" onclick="select(this,1,10)"><a
 						href="javaScript:void(0)">总动态</a></li>
-					<li onclick="select(this,1,10)"><a href="javaScript:void(0)">用户信息</a></li>
+					<li id="users" onclick="select(this,1,10)"><a href="javaScript:void(0)">用户信息</a></li>
 					<li onclick="select(this,1,10)"><a href="javaScript:void(0)">推荐头条</a></li>
 				</ul>
 			</div>
@@ -85,7 +85,7 @@
 				</ul>
 				<div class="table-responsive">
 					<table class="table table-hover" id="table">
-						 <thead>
+						<!-- <thead>
 							<tr>
 								<th>#</th>
 								<th>Header</th>
@@ -208,7 +208,7 @@
 								<td>libero</td>
 							</tr>
 							
-						</tbody>
+						</tbody> --> 
 					</table>
 				</div>
 			</div>

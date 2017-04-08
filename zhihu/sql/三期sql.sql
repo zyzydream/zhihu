@@ -9,7 +9,6 @@ CREATE TABLE users(
    upic VARCHAR2(50),
    uemail VARCHAR2(50)
 );
- 10268 fojff      a         wxwjlnhcxqhwrfoifbqasxmuazhrlnefjvi      管理员         zzz.jpg 18023296374@qq.com
 select * from users
  select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 
 create sequence seq_users start with 10000;
@@ -101,16 +100,16 @@ CREATE TABLE topics(
    tstid Varchar2(60),
    tpic Varchar2(60)
 );
-create sequence seq_topics start with 1003;
+create sequence seq_topics start with 1000;
 insert into topics
 select seq_topics.nextval, 
 dbms_random.string('l',dbms_random.value(5, 6)),
 '1',
-'car.png' from dual connect by level <= 12;
-drop sequence seq_question;
+'car.png' from dual connect by level <= 15;
+drop sequence seq_topics
 drop table topics
 
-select * from topics
+select * from topics where tid='1000'
 insert into topics(tid,ttopic)values('10001','编程');
 insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
 insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
@@ -308,7 +307,7 @@ select e.*,rownum rn from explore e  where checks='n' and rownum>1
 select * from(
 select inside.* ,rownum rn from(
 select * from explore where checks='n' order by 1 desc) inside where rownum<=#{currPage}*#{})where rn>(1-1)*9
-
+select * from explore
 drop table explore
 create table infomation(
    selfname VARCHAR2(30), --发件人用户名
@@ -437,7 +436,6 @@ SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE se
                (select aimid from dynstate PARTITION(GR) WHERE selfid='1001')d
             where e.
 	
-<<<<<<< HEAD
 select q.qid ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks  from QUESTION q,
 	     (select * from topics t,
 	       (select * from users u,
