@@ -41,7 +41,7 @@
 	</div>
 
 	<section class="receptacle">
-		<form method="post" id="addEssay">
+		<form method="post" id="addEssay" enctype="multipart/form-data">
 			<div class="title-input-container">
 				<textarea id="js-textarea"
 					class="title ng-pristine ng-invalid ng-invalid-required"

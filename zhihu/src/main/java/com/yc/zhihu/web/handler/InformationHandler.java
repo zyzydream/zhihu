@@ -22,7 +22,7 @@ public class InformationHandler {
 	private InfomationService infomationService;
 	
 	@RequestMapping(value="send",method=RequestMethod.GET)
-	//@ResponseBody
+	@ResponseBody
 	public String send(Infomation info,HttpServletRequest request) throws UnsupportedEncodingException{
 		String selfname=new String(info.getSelfname().getBytes("iso-8859-1"),"utf-8");
 		String aimname=new String(info.getAimname().getBytes("iso-8859-1"),"utf-8");
@@ -32,6 +32,6 @@ public class InformationHandler {
 		infos.setInfo(infomation);
 		infos.setSelfname(selfname);
 		infomationService.send(infos);
-		return "/back/back.jsp";
+		return "成功";
 	}
 }

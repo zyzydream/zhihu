@@ -79,4 +79,13 @@
 	<update id="AddUsersprofession" parameterType="Users" >
 		update users set uprofession=#{uprofession} where uprofession is null
 	</update>
+	
+	<!-- 查询话题是否为空 -->
+	<select id="findTopic" parameterType="Users" resultType="Users">
+		select * from dynstate where selfid=#{uids} and kind = 'GH'
+	</select>
+	
+	<select id="findUprf" parameterType="Users" resultType="Users">
+		select * from users where uids=#{uids} and uprofession is not null
+	</select>
 </mapper>

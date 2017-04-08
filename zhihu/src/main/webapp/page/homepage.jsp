@@ -20,6 +20,7 @@
 	tppabs="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"></script>
 
 <link type="text/css" rel="stylesheet" href="css/homepage.css">
+<link rel="shortcut icon" href="images/logohead.png">
 </head>
 <body class="zhi ">
 	<div role="navigation" class="zu-top" data-za-module="TopNavBar">

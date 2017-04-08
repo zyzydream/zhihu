@@ -2,21 +2,34 @@
     u_profession :用户职业*/
 CREATE TABLE users(
    uids Varchar2(30),
+   uname VARCHAR2(15),
    upassword varchar2(30),
    usign VARCHAR2(50),
-   uage Varchar2(5),
-   ugender VARCHAR2(5),
    uprofession VARCHAR2(20),
-   uname VARCHAR2(15),
    upic VARCHAR2(50),
    uemail VARCHAR2(50)
 );
-commit;
+select * from users
+ select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 
+create sequence seq_users start with 10000;
+insert into users
+select seq_users.nextval, 
+dbms_random.string('l',dbms_random.value(5, 10)),
+'a',
+dbms_random.string('l',dbms_random.value(10, 40)),
+decode(ceil(dbms_random.value(0, 6)), 1, '程序员', 2, '测试员', 3, '分析员', 4, '设计员', 5, '翻译员', '管理员'),
+'zzz.jpg',
+'180'||ceil(dbms_random.value(10000000,99999999))||'@qq.com' from dual connect by level <= 1000;
+select * from users where uids='10999'
+
 select * from USERS where uemail='123' and upassword='a' 
 insert into users(uemail,uname,upassword) values('123','zy','a');
+
 delete  users where uemail = "1103743969@qq.com"
 drop table users;
 select * from USERS
+select * from essay
+
 
 
 create sequence seq_users
@@ -43,9 +56,23 @@ CREATE TABLE essay(
    escid VARCHAR2(30),
    etid VARCHAR2(10)
 );
-select * from question
+create sequence seq_essay start with 10000;
+insert into essay
+select seq_essay.nextval||'', 
+''||ceil(dbms_random.value(10000,11000)),
+dbms_random.string('l',dbms_random.value(100, 200)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+dbms_random.string('l',dbms_random.value(10, 20)),
+'123',
+''||ceil(dbms_random.value(1000,1015)) from dual connect by level <= 3000;
 select * from essay
-drop table essay
+
+drop table essay;
+drop sequence seq_essay;
+
+
+INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES('1001','1003','ddddd','2017-3-3','主机','10001');
+select * from question
 
 select e.*,u.uname,u.usign,u.upic from ESSAY e,USERS u where eautid=1003
 
@@ -63,6 +90,7 @@ CREATE TABLE favorite(
    fname VARCHAR2(30),
    ftime VARCHAR2(30)
 );
+drop table FAVORITE
 select * from FAVORITE where fcreid='1003';
 /*话题表
     tstId :子话题id*/
@@ -72,11 +100,35 @@ CREATE TABLE topics(
    tstid Varchar2(60),
    tpic Varchar2(60)
 );
-select * from topics
+create sequence seq_topics start with 1000;
+insert into topics
+select seq_topics.nextval, 
+dbms_random.string('l',dbms_random.value(5, 6)),
+'1',
+'car.png' from dual connect by level <= 15;
+drop sequence seq_topics
 drop table topics
-insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,'','images/game.png');
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+
+<<<<<<< HEAD
+select * from topics
+
+
+insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
 insert into topics(tid,ttopic,tstId,tpic)values('10002','计算机','10001','images/life.jpg');
 insert into topics(tid,ttopic,tstId,tpic)values('10003','生活' ,'','images/life.jpg');
+=======
+select * from topics where tid='1000'
+insert into topics(tid,ttopic)values('10001','编程');
+insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
+insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
+insert into topics(tid,ttopic,tstId,tpic)values('1000','编程' ,'','images/game.png');
+insert into topics(tid,ttopic,tstId,tpic)values('1001','计算机','10001','images/life.jpg');
+insert into topics(tid,ttopic,tstId,tpic)values('1002','生活' ,'','images/life.jpg');
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
 update TOPICS set tpic = 'images/life.jpg' where tpic='images/life.png'
 /*问题表
@@ -93,8 +145,30 @@ CREATE TABLE question(
    qtid  VARCHAR2(30), --话题id
    qtime VARCHAR2(30)
 );
-select * from QUESTION;
+create sequence seq_question start with 10000;
 
+insert into question
+select seq_question.nextval, 
+''||ceil(dbms_random.value(10000,11000)),
+''||ceil(dbms_random.value(10000,11000)),
+dbms_random.string('l',dbms_random.value(10, 20)),
+dbms_random.string('l',dbms_random.value(20, 50)),
+''||ceil(dbms_random.value(1000,1015)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 3000;
+select * from question
+
+select * from QUESTION;
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
+<<<<<<< HEAD
+
+=======
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 drop table question
 /*回复表
     reqid :文章或问题id
@@ -114,6 +188,25 @@ CREATE TABLE reply(
    rtid VARCHAR2(30),
    rtime VARCHAR2(30)
 );
+create sequence seq_reply start with 10000;
+
+insert into reply
+select seq_reply.nextval, 
+''||ceil(dbms_random.value(10000,13000)),
+decode(ceil(dbms_random.value(0, 2)), 1, 'W', 'Q'),
+'',
+''||ceil(dbms_random.value(10000,11000)),
+''||ceil(dbms_random.value(10000,11000)),
+dbms_random.string('l',dbms_random.value(55, 200)),
+''||ceil(dbms_random.value(1000,1015)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 3000;
+select * from reply
+
+drop table dynstate;
+drop sequence seq_reply;
+
+
+
   select rid from reply where rrid='';
 
 select * from REPLY;
@@ -173,6 +266,42 @@ SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitl
 		where t.tid=ue.uids;
 			
 		select * from users;
+=======
+--关注人
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,11000)),
+''||ceil(dbms_random.value(10000,11000)),
+'GR',
+'',
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'' from dual connect by level <= 2000;
+--关注话题
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,11000)),
+'',
+'GH',
+''||ceil(dbms_random.value(1000,1015)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'' from dual connect by level <= 3000;
+--点赞文章
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,11000)),
+'',
+'DW',
+''||ceil(dbms_random.value(10000,13000)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'' from dual connect by level <= 6000;
+--点赞回复
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,11000)),
+'',
+'DH',
+''||ceil(dbms_random.value(10000,13000)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'' from dual connect by level <= 6000;
+select * from dynstate PARTITION (GR)
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 
 
 select * from QUESTION q,
@@ -181,7 +310,8 @@ select * from QUESTION q,
  where counts>0 and id=rid and rkind='Q' and rrid='')r
  where q.qid=r.reqid
  
-
+		select * from users where uids='1023' and uprofession is not null
+		select * from DYNSTATE where selfid='1026' and kind = 'GH'
 select 
 (select aimid from DYNSTATE where selfid='1003') myattenp,
 (select aimid from DYNSTATE where selfid=(select aimid from DYNSTATE where selfid='1003')) myattenwho
@@ -210,6 +340,7 @@ where uids=1001;
 select * from REPLY where remitid=1001
 select * from users where uids=1001
 
+select * from DYNSTATE where kind='GH' 
 
 select q.*,t.sum 
 from question q,(select qid from question where
@@ -252,8 +383,18 @@ create table explore(
    times VARCHAR2(30),  --时间
    checks VARCHAR2(2) --是否以核查
 );
+<<<<<<< HEAD
 
 
+=======
+select count(0) from explore where checks='n'
+select e.*,rownum rn from explore e  where checks='n' and rownum>1
+select * from(
+select inside.* ,rownum rn from(
+select * from explore where checks='n' order by 1 desc) inside where rownum<=#{currPage}*#{})where rn>(1-1)*9
+select * from explore
+drop table explore
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 create table infomation(
    selfname VARCHAR2(30), --发件人用户名
    aimname VARCHAR2(30), --收件人用户名
@@ -380,6 +521,21 @@ SELECT * FROM essay e,(SELECT * FROM collents c,(SELECT * FROM dynstate WHERE se
                (select aimid from dynstate PARTITION(GR) WHERE selfid='1001')d
             where e.
 	
+select q.qid ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks  from QUESTION q,
+	     (select * from topics t,
+	       (select * from users u,
+	          (select * from reply,
+        	    (select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids order by count(ids)DESC)
+	          where counts>4 and id=rid and rkind='Q' )r
+	        where u.uids=r.remitid)r
+	      where t.tid=r.rtid)rd
+	   where q.qid=rd.reqid	
+            
+    
+            
+	    update explore set checks='y' where ids='10001' and kind='W'
+         select * from EXPLORE where ids='10001' and kind='W'
+--
 	
 
 
@@ -387,25 +543,29 @@ drop table users;
 drop table topics;
 drop table essay;
 drop table dynstate;
+drop table question;
+drop table admin;
+drop table reply;
+drop table infomation;
+drop table explore;
 
 
-
---gr
 insert into FAVORITE(fid,fcreid,fname,ftime) values('1','1003','我的收藏夹','2017-4-3');
 
-insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3')
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('2','1003','什么是bootstrap？','bootstraps好用吗？','2017-4-3');
 insert into QUESTION(qid,qautid,qtitle,qdetail,qtime) values('3','1001','大数据的使用？','大数据的精华？','2017-4-5');
 
 INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES('1001','1003','ddddd','2017-3-3','主机','10001');
 
 
-insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('10001','1','Q',null,'1003','1001','java是一门语言','2017-4-3')
+insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('10001','1','Q',null,'1003','1001','java是一门语言','2017-4-3');
 
 
 insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
 
 --gr 2
 insert into users(uids,uemail,uname,upassword) values('1003','365@qq.com','gr','a');
+<<<<<<< HEAD
 
 select
 (select count(reqid) from reply where remitid='1003' and rkind='Q') answer,
@@ -414,3 +574,7 @@ select
 (select count(qid) from question where qautid='1003') question,
 (select count(fid) from favorite where fcreid='1003') fav
 from dual;
+=======
+select * from users where uids='1003'
+ 10269 lhfjnrz    a         kkevobcrqxwebwalhhlqvvozpkke             翻译员         zzz.jpg 18070501074@qq.com
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git

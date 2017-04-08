@@ -10,15 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Favorite;
 import com.yc.zhihu.entity.ListAllMy;
+import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Total;
@@ -35,9 +34,13 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/all",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Users> list(Dynstate dynstate ){
-		System.out.println("进来了 ====>  dynstate");
-		return dynstateService.list(dynstate);
+	public PaginationBean<Dynstate> list(PaginationBean<Explore> e){
+//		System.out.println(sgin);
+//		PaginationBean<Explore> e=new PaginationBean<Explore>();
+//		e.setCurrPage(Integer.valueOf(currPage));
+//		e.setPageSize(Integer.valueOf(pageSize));
+//		e.setSgin(sgin);
+		return dynstateService.list(e);
 	}
 	
 	
@@ -106,7 +109,7 @@ public class DynstateHandler {
 	}
 	
 
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String add(HttpServletRequest request,Dynstate dynstate){
 		String ids = request.getParameter("tid");
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());

@@ -9,6 +9,7 @@ import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Favorite;
 import com.yc.zhihu.entity.ListAllMy;
+import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.Topics;
@@ -45,4 +46,8 @@ public interface DynstateMapper {
 	List<Explore> listall(Object obj);
 	
 	List<ListAllMy> listmytopic(Object users);
+
+	List<Dynstate> list(PaginationBean<Explore> e);
+
+	int count(PaginationBean<Explore> pBean);
 }

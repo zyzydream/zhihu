@@ -119,4 +119,14 @@ public class UserServiceImpl implements UserService{
 	public boolean listprofession(Users users) {
 		return userMapper.AddUsersprofession(users);
 	}
+
+	@Override
+	public List<Users> listTp(Users users) {
+		return userMapper.findTopic(users);
+	}
+
+	@Override
+	public List<Users> findProfession(Users users) {
+		return userMapper.findUprf(users);		//查询职业是否为空，如果为空，则跳入填写职业的页面
+	}
 }

@@ -33,7 +33,6 @@
 							<a href="page/homepage.jsp"><button
 									class="Guide-TopicsSubmit Button Button-flatPrimary js-submit"
 									id="addTopics" onclick="add()">进入知乎</button></a>
-						
 					</div>
 
 				</div>
