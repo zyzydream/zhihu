@@ -228,14 +228,19 @@ function myfavorite(){
 	},'json');
 	$.get("dynstate/m7",function(data){
 		var favorites="";
-		for(var i=0;i<data.length;i++){
-			favorites+='<div class="List-item"><div class="ContentItem" data-za-module="QuestionItem"'
-				+'<h2 class="ContentItem-title"><div class="QuestionItem-title">'
-				+'<a href="#" target="_blank">'+data[i].fname+'</a></div></h2>'
-				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'
-				+data[i].ftime+'</span> <span class="ContentItem-statusItem">'+data[i].sum+' 条内容</span></div></div></div>'
-				+'</span></div></div>';
+		if(data.length>0){
+			for(var i=0;i<data.length;i++){
+				favorites+='<div class="List-item"><div class="ContentItem" data-za-module="QuestionItem"'
+					+'<h2 class="ContentItem-title"><div class="QuestionItem-title">'
+					+'<a href="#" target="_blank">'+data[i].fname+'</a></div></h2>'
+					+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'
+					+data[i].ftime+'</span> <span class="ContentItem-statusItem">'+data[i].sum+' 条内容</span></div></div></div>'
+					+'</span></div></div>';
 
+			}
+		}else{
+			favorites+='<div class="List-item" style="height:200px"><div class="ContentItem" data-za-module="QuestionItem">'
+				+'<a style="float:center" href="/zhihu/page/homepage.jsp">还没有收藏，去看一看吧>></a></div></div>';
 		}
 		document.getElementById("myself2").innerHTML = favorites;
 	},'json');
