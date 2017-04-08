@@ -146,6 +146,35 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
+select
+(select * from TOPICS where tid=(select ids from dynstate PARTITION(GH) where selfid='1003')) ,
+(select * from scolumn  where sccreid=(select ids from dynstate PARTITION(GZ) where selfid='1003')) ,
+(select * from FAVORITE where fcreid=(select ids from dynstate PARTITION(GS) where selfid='1003')) ,
+(select * from essay where eautid=(select ids from dynstate PARTITION(SW) where selfid='1003')) ,
+(select * from question where qautid=(select ids from dynstate PARTITION(SQ) where selfid='1003')) ,
+(select * from essay where eautid=(select ids from dynstate PARTITION(DW) where selfid='1003')) ,
+(select * from question where qautid=(select ids from dynstate PARTITION(DQ) where selfid='1003')) 
+from dual;
+
+select * from TOPICS,(select ids,kind from dynstate PARTITION(GH) where selfid='1003')tt where tid=(select ids from dynstate PARTITION(GH) where selfid='1003')
+
+SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind 
+			FROM Topics t,
+		  (SELECT * FROM USERS u,
+		    (SELECT * FROM essay e,
+		       (select ids from dynstate PARTITION(GH) WHERE selfid=#{uids})d
+       		 WHERE e.etid=d.ids)e
+		   WHERE u.uids=e.eautid)ue
+		WHERE ue.etid=t.tid
+		
+		select t.tid tid,t.ttopic tname,t.tpic tpic,ue.uname uname,'T' kind
+			from topics t,
+			(select * from users u where uids='1003')ue
+		where t.tid=ue.uids;
+			
+		select * from users;
+
+
 select * from QUESTION q,
 (select * from reply,
    (select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids order by count(ids)) 
@@ -182,6 +211,35 @@ select * from REPLY where remitid=1001
 select * from users where uids=1001
 
 
+select q.*,t.sum 
+from question q,(select qid from question where
+		qautid='1001') m,
+		(select count(reqid) sum from REPLY
+		where rkind='Q' and reqid=m.qid ) t
+		where qautid='1001'
+
+select * from question q,
+(select count(reqid) sum,a.qid from reply,
+  (select * from question where qautid='1001') a
+ where rkind='Q' and  reqid=a.qid group by qid)b
+ where q.qid=b.qid and q.qautid='1001'
+ 
+ 	select count(eid) from essay where eautid='1001' 
+		
+		select * from essay where eautid='1001'
+		
+		
+
+ 
+ select count(rid) from reply,
+
+ select count(reqid) from reply where rkind='Q' and  reqid='3'
+ 
+ insert into reply(rid,reqid,rkind,remitid,rreceid,rcontent,rtime)
+ values('1','2','Q','1003','1001','hhh','2017-4-8');
+  insert into reply(rid,reqid,rkind,remitid,rreceid,rcontent,rtime)
+ values('2','3','Q','1003','1001','hhh','2017-4-8');
+
 create table explore(
    ids VARCHAR2(30),  --文章或问题id
    kind VARCHAR2(4),  --文章还是问题
@@ -194,6 +252,7 @@ create table explore(
    times VARCHAR2(30),  --时间
    checks VARCHAR2(2) --是否以核查
 );
+
 
 create table infomation(
    selfname VARCHAR2(30), --发件人用户名
@@ -345,6 +404,13 @@ insert into reply(rid,reqid,rkind,rrid,remitid,rreceid,rcontent,rtime) values('1
 
 insert into dynstate(selfid,aimid,kind,ids,cfid) values('1003','1001','SQ','3','1');
 
-
 --gr 2
 insert into users(uids,uemail,uname,upassword) values('1003','365@qq.com','gr','a');
+
+select
+(select count(reqid) from reply where remitid='1003' and rkind='Q') answer,
+((select count(scid) from scolumn where sccreid='1003')+
+(select count(eid) from essay where eautid='1003')) mine,
+(select count(qid) from question where qautid='1003') question,
+(select count(fid) from favorite where fcreid='1003') fav
+from dual;

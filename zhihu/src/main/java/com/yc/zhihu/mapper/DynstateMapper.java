@@ -6,16 +6,21 @@ import org.apache.catalina.User;
 
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Favorite;
+import com.yc.zhihu.entity.ListAllMy;
 import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
+import com.yc.zhihu.entity.Topics;
+import com.yc.zhihu.entity.Total;
 import com.yc.zhihu.entity.Users;
 
 public interface DynstateMapper {
 
 	List<Users> list(Dynstate dynstate);
 	
-	List<Reply> listAnswer(Object users);
+	List<ListAllMy> listAnswer(Object users);
+	List<Reply> listAnswer2(Object users);
 
 	List<Essay> listMyEssay(Object users);
 	
@@ -34,4 +39,10 @@ public interface DynstateMapper {
 	boolean insertGH(Dynstate dynstate);
 
 	String findUsers(Object users);
+	
+	List<Total> Sum(Object users);
+	
+	List<Explore> listall(Object obj);
+	
+	List<ListAllMy> listmytopic(Object users);
 }
