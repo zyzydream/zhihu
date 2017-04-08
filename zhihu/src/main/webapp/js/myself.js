@@ -1,4 +1,16 @@
 function myansrer33(){
+	$.get("dynstate/showtoppic",function(data){
+		var a="";
+		if(data.length>0){
+			for(var i=0;i<data.length;i++){
+				a+='<img class="Avatar Avatar--large UserAvatar-inner"'
+					'src="'+data[i].upic+'"'
+						'style="width: 160px; height: 160px;">';
+			}
+		}
+		document.getElementById("hhh").innerHTML = a;
+	},'json');
+	
 	$.get("dynstate/a1",function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
@@ -24,7 +36,6 @@ function myansrer33(){
 }
 
 $.get("dynstate/m1",function(data){
-	alert(data);
 	myansrer33();
 	var myanswers="";
 	if(data.length>0){
@@ -320,8 +331,36 @@ $('#changgeimage').hover(function() {
 });
 
 function updatePic(){
-	  alter(1);
+	/*$.get("dynstate/upload",function(data){
+		alter(data);
+		var img="";
+		for(var i=0;i<data.length;i++){
+			img+='<img width="100" src="' + data[i].toppic + '"/>'
+			+'<form enctype="multipart/form-data"><input class="Button DynamicColorButton" type="file"'
+			+' id="changgeimage" name="toppic" onchange="chgPic(this)" onclick="updatePic()" />'
+			+'</form>';
+		}
+		document.getElementById("UserCoverGuide-inner").innerHTML = img;
+	},'json');
+		*/
 }
+
+	function chgPic(obj){
+		$("#changgeimage").attr("src", window.URL.createObjectURL(obj.files[0]));
+	}
+
+	$("#uploads").form({
+		url:"user/upload", 
+		success:function(data){ 
+			if(data.trim() == "true"){
+				for(var i=0;i<data.length;i++){
+					$("#pic").datagrid("reload"); //刷新修改数据
+				/*$("#pic").attr("src", data[i].toppic);*/
+				}
+			}
+		}
+	});
+
 
 
 

@@ -13,8 +13,8 @@ CREATE TABLE users(
 );
 drop table users
 
-insert into users(uids,uname,upassword,usign,uemail)
-values('1001','gr','a','haha','123@qq.com')
+insert into users(uids,uname,upassword,usign,uemail,tpic,upic)
+values('1001','gr','a','haha','123@qq.com','/zhihu/images/1.jpg','/zhihu/images/touxiang.jpg')
 
 select * from users
  select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 

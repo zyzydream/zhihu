@@ -52,4 +52,6 @@ public interface DynstateMapper {
 	int count(PaginationBean<Explore> pBean);
 	
 	boolean updatetop(Object users);
+	
+	List<Users> showtopimg(Object users); 
 }

@@ -117,4 +117,9 @@ public class DynstateServiceImpl implements DynstateService {
 	public boolean updatetoppics(Object object) {
 		return dynstateMapper.updatetop(object);
 	}
+	
+	@Override
+	public List<Users> showtop(Object obj) {
+		return dynstateMapper.showtopimg(obj);
+	}
 }
