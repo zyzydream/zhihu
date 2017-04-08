@@ -1,4 +1,4 @@
-UE.getEditor('js-editor-toolbar');	//<textarea>转变为富文本编辑工具
+UE.getEditor('econtent');	//<textarea>转变为富文本编辑工具
 
 $("#addEssay").form({
 	url:"essay/add",
