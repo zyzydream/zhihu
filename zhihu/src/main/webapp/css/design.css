@@ -1,0 +1,670 @@
+
+html.is-AppPromotionBarVisible body {
+    padding-bottom: 60px;
+}
+body.zhi {
+    padding-top: 46px;
+}
+body {
+    background-color: #fff;
+    color: #222;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+}
+body {
+}
+body, ul, ol, li, p, h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
+.zu-top {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #086ed5, #055db5) repeat scroll 0 0;
+    border-bottom: 1px solid #044e97;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    height: 45px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.zu-top .zg-wrap {
+    height: inherit;
+    position: relative;
+}
+.zg-wrap {
+    clear: both;
+    margin: 0 auto;
+    width: 960px;
+}
+.clearfix {
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.zu-top-link-logo {
+    background-image: url("../images/zhihu.png");
+    background-position: 0 8px;
+    background-repeat: no-repeat;
+    color: #fff;
+    float: left;
+    height: 100%;
+    text-indent: -9999px;
+    width: 61px;
+}
+a {
+    color: #259;
+}
+a {
+    text-decoration: none;
+}
+.top-nav-profile {
+    float: right;
+    margin-left: 15px;
+    min-width: 120px;
+    position: relative;
+    z-index: 10;
+}
+.top-nav-profile .zu-top-nav-userinfo {
+    background: transparent none repeat scroll 0 0;
+    border-top: 0 none;
+    box-shadow: none;
+    color: #fff;
+    height: 45px;
+    line-height: 45px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    text-indent: 46px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.top-nav-profile a {
+    background-color: #095fb3;
+    display: block;
+    font-size: 14px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    width: 120px;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+a {
+    color: #259;
+}
+a {
+    text-decoration: none;
+}
+.top-nav-profile .zu-top-nav-userinfo {
+    color: #fff;
+    line-height: 45px;
+    text-indent: 46px;
+    white-space: nowrap;
+}
+.top-nav-profile a {
+    font-size: 14px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+}
+a {
+    color: #259;
+}
+.zu-top-nav-userinfo .Avatar {
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+    left: 10px;
+    position: absolute;
+    top: 9px;
+}
+.Avatar {
+    background-color: #eee;
+    border-radius: 3px;
+    height: 25px;
+    width: 25px;
+}
+img {
+    border: 0 none;
+}
+element.style {
+    visibility: hidden;
+}
+.zu-top-nav-userinfo .zu-top-nav-pm-count {
+    left: 29px;
+}
+.zu-top-nav-count, .zu-top-nav-userinfo .zu-top-nav-pm-count {
+    position: absolute;
+    top: 5px;
+    z-index: 12;
+}
+.zg-noti-number {
+    -moz-text-size-adjust: none;
+    background: #bf1031 none repeat scroll 0 0;
+    border: 1px solid #b11331;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 5px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+}
+.top-nav-profile .top-nav-dropdown {
+    top: 46px;
+}
+.top-nav-dropdown {
+    display: none;
+    left: 0;
+    margin: 0;
+    position: absolute;
+}
+body, ul, ol, li, p, h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
+.top-nav-dropdown li {
+    list-style: outside none none;
+    margin: 0;
+}
+.top-nav-dropdown li:first-child > a {
+    border-top: 0 none;
+}
+.top-nav-profile .top-nav-dropdown a {
+    width: 120px;
+}
+.top-nav-dropdown li a {
+    border-top: 1px solid #0d5aa5;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 145px;
+}
+.top-nav-profile a {
+    background-color: #095fb3;
+    display: block;
+    font-size: 14px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    width: 120px;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.top-nav-dropdown .zg-icon {
+    height: 20px;
+    margin: 0 11px 0 15px;
+    vertical-align: -7px;
+    width: 20px;
+}
+.zg-icon-dd-home {
+    background-position: -6px -7px;
+}
+.icon, .tr-icon, .tr-inline-icon, .goog-option-selected .goog-menuitem-checkbox, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
+    background-image: url("/static/revved/img/sprites-1.9.2.4c54885a.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 16px;
+    vertical-align: middle;
+    width: 16px;
+}
+i, em {
+    font-style: italic;
+}
+element.style {
+    visibility: hidden;
+}
+.top-nav-profile .top-nav-dropdown .zu-top-nav-pm-count {
+    margin-left: 8px;
+    vertical-align: 1px;
+}
+.top-nav-dropdown img, .top-nav-dropdown span {
+    vertical-align: middle;
+}
+.zg-noti-number {
+    -moz-text-size-adjust: none;
+    background: #bf1031 none repeat scroll 0 0;
+    border: 1px solid #b11331;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 5px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+}
+.zu-top-add-question {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #0e7bef, #0d73da) repeat scroll 0 0;
+    border: 1px solid #045bb2;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 1px rgba(255, 255, 255, 0.15) inset;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    font-size: 14px;
+    height: 32px;
+    line-height: 30px;
+    margin-top: 7px;
+    outline: 0 none;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s ease-in-out 0s;
+    width: 66px;
+}
+button {
+    line-height: 1.7;
+    padding: 0;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+.zu-top-search {
+    float: left;
+    margin: -15px 0 0 12px;
+    position: relative;
+}
+.zu-top-search-form {
+    position: relative;
+    width: 367px;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+input::placeholder, textarea::placeholder {
+    color: #999;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+.hide-text {
+    background-color: transparent;
+    border: 0 none;
+    color: transparent;
+    font: 0px/0 a;
+    text-shadow: none;
+}
+input[type="text"], input[type="password"]:focus {
+}
+.zu-top-search-input {
+    background-color: #e1eaf2;
+    border: 1px solid #045bb2;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    color: #49525c;
+    font-size: 14px;
+    line-height: 17px;
+    outline: 0 none;
+    padding: 7px 50px 7px 10px;
+    transition: all 0.2s ease-in-out 0s;
+    width: 100%;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+.zu-top-search-input::placeholder {
+    color: #8d9ba8;
+}
+.zu-top-search-input::-moz-placeholder {
+    color: #8d9ba8;
+}
+input::placeholder, textarea::placeholder {
+    color: #999;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+.zu-top-search-form .zu-top-search-button::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.zu-top-search-form .zu-top-search-button {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #0e7bef, #0d73da) repeat scroll 0 0;
+    border: 1px solid #045bb2;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 1px rgba(255, 255, 255, 0.15) inset;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 60%;
+    outline: 0 none;
+    position: absolute;
+    right: 0;
+    top: 50;
+    width: 40px;
+}
+button {
+    line-height: 1.7;
+    padding: 0;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+.hide-text {
+    background-color: transparent;
+    border: 0 none;
+    color: transparent;
+    font: 0px/0 a;
+    text-shadow: none;
+}
+.sprite-global-icon-magnifier-dark {
+    background-position: -82px 0;
+    height: 15px;
+    width: 15px;
+}
+.sprite-global, [class*="sprite-global-"] {
+    background-image: url("../images/function.png");
+    background-repeat: no-repeat;
+}
+[class*="sprite-global-icon-"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+.zu-top-nav {
+    float: left;
+    position: relative;
+}
+.zg-clear::before, .zg-clear::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.zg-clear::after {
+    clear: both;
+}
+.zg-clear::before, .zg-clear::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.zu-top-nav-ul {
+    margin: 0 0 0 18px;
+    padding: 0;
+}
+.zg-clear {
+    height: 1%;
+}
+.zu-top-nav-li {
+    float: left;
+    list-style: outside none none;
+    margin: 0;
+    position: relative;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.zu-top-nav-link {
+    color: #f2f4f5;
+    display: block;
+    font-size: 14px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    width: 54px;
+}
+.zu-top-nav-link, .zu-top-nav-link:visited, .zu-top-nav-link:active {
+    color: #eee;
+}
+.zu-top-nav-li {
+    float: left;
+    list-style: outside none none;
+    margin: 0;
+    position: relative;
+}
+
+
+
+
+
+
+
+
+.zh-footer {
+    clear: both;
+    text-align: right;
+}
+.zh-footer, .zh-footer a {
+    color: #999;
+}
+.zh-footer .content {
+    border-top: 1px solid #ccc;
+    padding: 20px 15px;
+}
+.zh-footer ul, .zh-footer li {
+    display: inline;
+}
+.zh-footer li {
+    list-style: outside none none;
+}
+.zh-footer li + li::before {
+    color: #bbb;
+    content: "•";
+    font-family: Arial;
+    margin-right: 3px;
+    padding: 0 3px;
+}
+.zh-footer .copy {
+    float: left;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.zu-main {
+    min-height: 340px;
+    padding: 25px 0 50px;
+    position: relative;
+    z-index: 2;
+}
+.zg-wrap {
+    clear: both;
+    margin: 0 auto;
+    width: 960px;
+}
+.clearfix {
+}
+.zu-main.no-sidebar .zu-main-content {
+    float: none;
+}
+.zu-main-content {
+    float: left;
+    width: 100%;
+}
+.zu-main.no-sidebar .zu-main-content-inner {
+    margin: 0;
+}
+.zu-main-content-inner {
+    margin: 0 328px 0 0;
+    position: relative;
+}
+.tab-navs::before, .tab-navs::after {
+    content: "";
+    display: table;
+}
+.tab-navs::before, .tab-navs::after {
+    content: "";
+    display: table;
+}
+.tab-navs::after {
+    clear: both;
+}
+.tab-navs::before, .tab-navs::after {
+    content: "";
+    display: table;
+}
+.tab-navs::after {
+    clear: both;
+}
+.tab-navs::before, .tab-navs::after {
+    content: "";
+    display: table;
+}
+.tab-navs {
+    border-bottom: 1px solid #ccc;
+    list-style: outside none none;
+    margin: 0 0 10px;
+    padding: 0;
+    text-align: center;
+}
+.tab-navs .tab-nav {
+    float: left;
+    margin-bottom: -1px;
+    margin-right: 5px;
+    position: relative;
+}
+.tab-navs .tab-nav.active > a {
+    color: #666 !important;
+}
+.tab-navs .tab-nav.active > a, html.no-touchevents .tab-navs .tab-nav.active > a:hover {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #fff none repeat scroll 0 0 !important;
+    border-color: #ccc #ccc transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    cursor: default;
+}
+.tab-navs .tab-nav > a {
+    border: 1px solid transparent;
+    border-radius: 2px 2px 0 0;
+    color: #259;
+    display: block;
+    min-width: 45px;
+    padding: 5px 15px;
+    text-decoration: none;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.tab-navs .tab-nav {
+    float: left;
+    margin-bottom: -1px;
+    margin-right: 5px;
+    position: relative;
+}
+.settings-section {
+    border-bottom: 1px solid #eee;
+    margin-top: 10px;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.settings-item {
+    padding: 12px 0;
+    width: 100%;
+}
+.clearfix {
+}
+
+
+.settings-item-title {
+    float: left;
+    text-align: left;
+    width: 65px;
+}
+
+.settings-item-title + .settings-item-content {
+    margin-left: 90px;
+}
+
+.settings-item .validate-ok, .settings-item .validate-info, .settings-item .validate-error {
+    margin-left: 7px;
+}
+.zg-gray {
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.settings-item + .settings-item {
+    border-top: 1px dotted #f2f2f2;
+}
+.settings-item {
+    padding: 12px 0;
+    width: 100%;
+}
+.clearfix {
+}
+
+.settings-item-title.with-input {
+    margin-bottom: 4px;
+    margin-top: 5px;
+}
+.settings-item-title {
+    float: left;
+    text-align: left;
+    width: 65px;
+}

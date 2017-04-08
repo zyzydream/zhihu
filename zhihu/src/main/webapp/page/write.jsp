@@ -26,7 +26,7 @@
 				</div>
 				<div class="publish-section ng-scope">
 
-					<a class="pop-button ng-binding ng-scope" onclick="addEssay()"> 发布 </a>
+					<a class="pop-button ng-binding ng-scope" onclick="addEssay()" > 发布 </a>
 
 				</div>
 
@@ -43,12 +43,12 @@
 	<section class="receptacle">
 		<form method="post" id="addEssay" enctype="multipart/form-data">
 			<div class="title-input-container">
-				<textarea id="js-textarea"
+				<textarea id="etitle" name="etitle"
 					class="title ng-pristine ng-invalid ng-invalid-required"
 					placeholder="请输入标题" style="height: 47px;"></textarea>
 			</div>
 			<div class="toolbar-holder unsticky">
-				<textarea id="js-editor-toolbar" class="toolbar-holder sticky"
+				<textarea id="econtent" name="econtent" class="toolbar-holder sticky"
 					style="height: 450px" placeholder="请输入正文"></textarea>
 			</div>
 		</form>
