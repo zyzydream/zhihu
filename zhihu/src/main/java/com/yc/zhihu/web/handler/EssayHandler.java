@@ -1,5 +1,7 @@
 package com.yc.zhihu.web.handler;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class EssayHandler {
 	@Autowired
 	private EssayService essayServie;
 	
+	
+	//写文章
 	@RequestMapping(value="/add" ,method=RequestMethod.POST )
 	@ResponseBody
 	public String add(Essay essay , HttpServletRequest request){
@@ -33,4 +37,13 @@ public class EssayHandler {
 		}
 		
 	}
+	
+	//读取文章
+	@RequestMapping(value="/all" ,method=RequestMethod.POST )
+	@ResponseBody
+	public List<Essay> all(Essay essay , HttpServletRequest request){
+			String eid = request.getParameter("eid");
+			return essayServie.listAll(eid);
+	}
+	
 }
