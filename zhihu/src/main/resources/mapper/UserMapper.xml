@@ -124,5 +124,9 @@
 	<select id="findUprf" parameterType="Users" resultType="Users">
 		select * from users where uids=#{uids} and uprofession is not null
 	</select>
-    	
+	
+	<!-- 判断该动态是否已经点赞 -->
+    <select id="ypraise" parameterType="Dynstate" resultType="Dynstate">
+        select * from dynstate PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}'
+    </select>	
 </mapper>

@@ -12,8 +12,10 @@ CREATE TABLE users(
    tpic varchar2(50)
 );
 select * from users where uids='10368'
- 10272 cknefb     a         auvcmctqfxzefjadbczanwhdxznkyqmvwmcgm    管理员         zzz.jpg 18085337100@qq.com
-
+delete  DYNSTATE where selfid='10275' and ids='10324' 
+ 10942 eacecjh    a         qicykpgurudmgrcovdsdbwuscn               管理员         zzz.jpg 18066301969@qq.com
+select * from FAVORITE where fcreid='10275' 
+SELECT * from dynstate d, (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10275')dd WHERE d.selfid=dd.aimid AND 24>=to_number( SYSDATE- to_date(d.times,'yyyy-mm-dd'))*24 
 select * from topics where ttopic='qxnbl'
 select * from topics t, (select count(0) from dynstate PARTITION(DH) where ids='12774')d where d.ids=t.tid
 select count(0) from dynstate PARTITION(DW) where ids='12946' 
@@ -118,6 +120,14 @@ CREATE TABLE favorite(
    fname VARCHAR2(30),
    ftime VARCHAR2(30)
 );
+create sequence seq_favorite start with 10000;
+insert into favorite
+select seq_favorite.nextval||'', 
+''||ceil(dbms_random.value(10000,11000)),
+dbms_random.string('l',dbms_random.value(10, 20)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 3000;
+
+
 drop table FAVORITE
 select * from FAVORITE where fcreid='1003';
 /*话题表

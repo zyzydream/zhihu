@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +19,14 @@ import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.mapper.UserMapper;
 import com.yc.zhihu.service.UserService;
+import com.yc.zhihu.util.ServletUtil;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	//列出最新动态   查询关注用户的话题的文章  所有 与点赞无关
 	@Override
 	public List<Explore> listrelated(Object user) {
@@ -111,11 +114,11 @@ public class UserServiceImpl implements UserService{
 			}
 		}
 		all.clear();
-	    for(int i=1;i<=length;i++){
-	    	t[i-1].setChecks(i+"");
-	    	all.add(t[i-1]);
-	    }
-	    return all;
+		for(int i=1;i<=length;i++){
+			t[i-1].setChecks(i+"");
+			all.add(t[i-1]);
+		}
+		return all;
 	}
 
 	@Override
@@ -131,9 +134,37 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<Explore> listExplore(Users user) {
 		// TODO Auto-generated method stub
-		return userMapper.listExplore(user);	
+		return  userMapper.listExplore(user);
 	}
-	
+	//判断该动态用户是否已经点赞
+	@Override
+	public List<Explore> ypraise(List<Explore> explores,HttpServletRequest request){
+		List<Explore> news=new ArrayList<Explore>();
+		for(Explore explore:explores){
+			Dynstate dynstate=new Dynstate();
+			dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+			String kind =explore.getKind();
+			if(!"GH".equals(kind)){
+				if(kind=="FW"){
+					dynstate.setKind("DW");
+				}else if("W".equals(kind)){
+					dynstate.setKind("DW");
+				}else if("Q".equals(kind)){
+					dynstate.setKind("DH");
+				}else if(kind=="FQ"){
+					dynstate.setKind("DQ");
+				}
+				dynstate.setIds(explore.getIds());
+				if(userMapper.ypraise(dynstate)!=null){
+					explore.setYpraise("y");		
+				}else{
+					explore.setYpraise("n");
+				}
+			}
+			news.add(explore);
+		}
+		return news;
+	}
 	@Override
 	public List<Users> listTp(Users users) {
 		return userMapper.findTopic(users);

@@ -32,7 +32,7 @@ public interface UserMapper {
 	List<Explore> listessay(Users user);
 	//列出最新动态中的关注对象提的问题
 	List<Explore> listquestion(Users user);
-	
+	//列出最新动态中的关注对象关注的话题
 	List<Dynstate> lists(Users user);
 
 	Explore listrelatedTopic(Dynstate dynstate);
@@ -47,5 +47,7 @@ public interface UserMapper {
 	List<Users> findTopic(Users users);
 
 	List<Users> findUprf(Users users);
+
+	Dynstate ypraise(Dynstate dynstate);
 
 }

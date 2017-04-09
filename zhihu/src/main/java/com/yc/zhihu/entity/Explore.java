@@ -15,6 +15,25 @@ public class Explore {
 	private String checks;
 	private int praise;
 	private int collect;
+	private String ypraise;
+	private String ycollent;
+	
+	public String getYpraise() {
+		return ypraise;
+	}
+
+	public void setYpraise(String ypraise) {
+		this.ypraise = ypraise;
+	}
+
+	public String getYcollent() {
+		return ycollent;
+	}
+
+	public void setYcollent(String ycollent) {
+		this.ycollent = ycollent;
+	}
+
 	public Explore() {}
 	
 	public int getPraise() {

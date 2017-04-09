@@ -108,13 +108,21 @@ public class UserHandler {
 		//关注的对象的动态
 		List<Explore> dynstate=usersService.listrelatedD(user);
 		//如果关注对象没有动态或没有关注的对象，则返回关注的话题有关的文章或问题
-		if(dynstate!=null){
-			for(int i=1;i<=all.size();i++){
-				dynstate.add(3*i, all.get(i-1));
+		if(dynstate.size()>0){
+			if(dynstate.size()<=3){
+				dynstate.addAll((dynstate.size()), all);
+			}else{
+				int sum=0;
+				for(int i=0;i<all.size();i++){
+					sum+=i;
+					if(dynstate.size()>3*(i+1)+sum){
+					dynstate.add(3*(i+1)+sum, all.get(i));
+					}
+				}
 			}
-			return dynstate;
+			return usersService.ypraise(dynstate, request);
 		}else{
-			return all;
+			return usersService.ypraise(all, request);
 		}
 	}
 
