@@ -188,5 +188,29 @@
 		t.tid=ue.uids
 	</select>
 	
+	<select id="showtopimg" parameterType="Users" resultType="Users">
+		select u.tpic toppic,u.upic upic from users u where uids=#{uids}
+	</select>
+	
+	<update id="updatetoppics" parameterType="Users">
+		update users 
+		<set>
+			<if test="toppic != null">
+				tpic=#{toppic}
+			</if>
+		</set>
+		where uids=#{uids}
+		</update>
+	
+	<!-- 点赞 -->
+	<insert id="praise" parameterType="Dynstate">
+       insert into dynstate(selfid,kind,ids,times)
+       values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'))
+	</insert>
+	<!-- 收藏 -->
+	<insert id="collect" parameterType="Dynstate">
+       insert into dynstate(selfid,kind,ids,times,cfid)
+       values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'),'${cfid}')
+	</insert>
 	
 </mapper>

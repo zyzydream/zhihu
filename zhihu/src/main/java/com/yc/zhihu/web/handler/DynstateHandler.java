@@ -1,5 +1,6 @@
 package com.yc.zhihu.web.handler;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -129,24 +130,47 @@ public class DynstateHandler {
 		return dynstateService.sumT(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
-	@RequestMapping(value="/upload",method=RequestMethod.GET)
+	@RequestMapping(value="/showtoppic",method=RequestMethod.GET)
 	@ResponseBody
-	public boolean Upload(@RequestParam("picData") MultipartFile picData,Users users){
-		String picPath=null;
+	public List<Users> show(HttpServletRequest request){	
 		
+		return dynstateService.showtop(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	@RequestMapping(value="upload")
+	@ResponseBody
+	public boolean modify(@RequestParam("picData") MultipartFile picData,Users user){
+		String picPath=null;
 		if(picData!= null && !picData.isEmpty()){ //判断是否有文件上传
 			try {
 				picData.transferTo(ServletUtil.getUploadFile(picData.getOriginalFilename()));
-				picPath=ServletUtil.UPLOAD_TOP_DIR+picData.getOriginalFilename();
+				picPath=ServletUtil.LOGIN_UPLOAD_DIR+picData.getOriginalFilename();
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
 		}
-		users.setToppic(picPath);
-	
-		return dynstateService.modifyUserPic(users);
+		
+		user.setToppic(picPath);
+		
+		System.out.println("上传图片 ==》user"+ user);
+		System.out.println("modify: user ==>"+user);
+		
+		return  dynstateService.updatetoppics(user); //异步响应数据
+		
 	}
 	
+	@RequestMapping(value="/praise",method=RequestMethod.GET)
+	@ResponseBody
+	public int praise(Dynstate dynstate,HttpServletRequest request){
+		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		return dynstateService.praise(dynstate);
+	}
 	
+	@RequestMapping(value="/collect",method=RequestMethod.GET)
+	@ResponseBody
+	public int collect(Dynstate dynstate,HttpServletRequest request){
+		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+	    return dynstateService.collect(dynstate);
+	}
 	
 }

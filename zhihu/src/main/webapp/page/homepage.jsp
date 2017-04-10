@@ -17,7 +17,7 @@
 	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
 <script
 	src="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"
-	tppabs="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"></script>
+	tppabs="bootstrap-3.3.4/js/ie-emulation-modes-warning.js"></script>
 
 <link type="text/css" rel="stylesheet" href="css/homepage.css">
 <link rel="shortcut icon" href="images/logohead.png">
@@ -238,17 +238,22 @@
 										</h2>
 										<p class="lead" style="font-size: 14px;">'+data[i].econtent+'</p>
 										<span>
-										    <a href="#" style="font-size: 13px;font-weight: 40">阅览 <span class="badge" style="width: 20px;padding: 0px;">42</span></a>
-										    <a href="#" style="font-size: 13px;font-weight: 40">点赞 <span class="badge" style="width: 20px;padding: 0px;">42</span></a>
-										    <a href="#" style="font-size: 13px;font-weight: 40">收藏 <span class="badge" style="width: 20px;padding: 0px;">42</span></a>
+										   <div style="width: 70px;float: left;height: 20px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  42</a>
+										        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+										         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+										        </ul>
+										    </div>
+										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞  42</button></div>
+										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>
 										</span>
 									</div>
 									<div class="col-md-5">
 										<img class="featurette-image img-responsive center-block"
 											data-src="holder.js/500x500/auto"
-											src="images/game.jpg"
 											tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto"
-											alt="Generic placeholder image">
+											alt="">
 									</div>
 								</div>
 								<hr class="featurette-divider">
@@ -273,9 +278,15 @@
 										</h2>
 										<p class="lead" style="font-size: 14px;">'+data[i].econtent+'</p>
 										<span>
-										    <a href="#" style="font-size: 13px;font-weight: 40">阅览 <span class="badge" style="width: 20px;padding: 0px;">42</span></a>
-										    <a href="#" style="font-size: 13px;font-weight: 40">点赞 <span class="badge" style="width: 20px;padding: 0px;">42</span></a>
-										    <a href="#" style="font-size: 13px;font-weight: 40">收藏 <span class="badge" style="width: 20px;padding: 0px;">42</span></a>
+										   <div style="width: 70px;float: left;height: 20px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  42</a>
+										        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+										         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+										        </ul>
+										    </div>
+										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞  42</button></div>
+										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>
 										</span>
 									</div>
 									<div class="col-md-5">
@@ -285,6 +296,34 @@
 											data-src="holder.js/500x500/auto"
 											tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto"
 											alt="Generic placeholder image">
+									</div>
+								</div>
+								<hr class="featurette-divider">
+					<!-- 结束 -->
+					<!-- 开始  关注用户提出问题 -->
+								<div class="row featurette">
+									<div class="col-md-7">
+									    <h2 class="featurette-heading" style="font-size: 20px;">
+											<span class="text-muted" style="font-size: 15px">'+data[i].author+':提出问题：</span><br />'+data[i].title+'
+										</h2>
+										<span>
+                                            <div style="width: 70px;float: left;height: 20px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  42</a>
+										        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+										         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+										        </ul>
+										    </div>
+										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞  42</button></div>
+										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>
+										</span>
+									</div>
+									<div class="col-md-5">
+										<label style="float: right;font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
+										<img class="featurette-image img-responsive center-block"
+											data-src="holder.js/500x500/auto"
+											tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto"
+											alt="">
 									</div>
 								</div>
 								<hr class="featurette-divider">
@@ -330,7 +369,7 @@
 							class="glyphicon glyphicon-heart" aria-hidden="true"
 							style="margin: 5px"></span><a href="#" style="font-size: 11px;">我的收藏</a></li>
 						<li style="margin: 5px;"><span
-							class="glyphicon glyphicon-star-empty" aria-hidden="true"
+							class="glyphicon glyphicon-ok-circle" aria-hidden="true"
 							style="margin: 5px"></span><a href="#" style="font-size: 11px;">我关注的问题</a></li>
 						<li style="margin: 5px;"><span
 							class="glyphicon glyphicon-pencil" aria-hidden="true"
@@ -348,11 +387,41 @@
 
 		<!-- /.blog-sidebar -->
 	</div>
+	<!-- 选择专栏的弹框 -->
+	<div class="modal fade" id="infoModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">选择弹框</h4>
+				</div>
+				<div class="modal-body">
+				    <form id="infoForm"  method="get" action="information/send">
+				    <table>
+				       <tr>
+				           <td><hr></td>
+				           <td><hr></td>
+				           <td><hr></td>
+				       </tr>
+				    </table>
+				    </form>
+				</div>
+				<div class="modal-footer">
+				    <button type="button" class="btn btn-primary" id="sendmail">发送</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
 	<script
 		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
 		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-	<script type="text/javascript" src="js/homepage.js"></script> 
+	 <script type="text/javascript" src="js/homepage.js"></script>
 </body>
 </html>

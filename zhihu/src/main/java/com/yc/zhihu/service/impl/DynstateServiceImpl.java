@@ -117,4 +117,41 @@ public class DynstateServiceImpl implements DynstateService {
 	public boolean updatetoppics(Object object) {
 		return dynstateMapper.updatetop(object);
 	}
+	
+	@Override
+	public List<Users> showtop(Object obj) {
+		return dynstateMapper.showtopimg(obj);
+	}
+
+	@Override
+	public int praise(Dynstate dynstate) {
+		String kind=dynstate.getKind();
+		if("FW".equals(kind)){
+			dynstate.setKind("DW");
+		}else if("Q".equals(kind)){
+			dynstate.setKind("DH");
+		}else if("FQ".equals(kind)){
+			dynstate.setKind("DQ");
+		}else if("W".equals(kind)){
+			dynstate.setKind("DW");
+		}
+		System.out.println(dynstate.getKind());
+		return dynstateMapper.praise(dynstate);
+	}
+
+	@Override
+	public int collect(Dynstate dynstate) {
+		String kind=dynstate.getKind();
+		if("FW".equals(kind)){
+			dynstate.setKind("SW");
+		}else if("Q".equals(kind)){
+			dynstate.setKind("SH");
+		}else if("FQ".equals(kind)){
+			dynstate.setKind("SQ");
+		}else if("W".equals(kind)){
+			dynstate.setKind("SW");
+		}
+		//System.out.println(dynstate.getKind());
+		return dynstateMapper.collect(dynstate);
+	}
 }
