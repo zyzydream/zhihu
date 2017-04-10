@@ -48,10 +48,8 @@
 							</div>
 						</div> -->
 					</div>
-					<div class="RichText PostIndex-content">
-						<form action="">
+					<div class="RichText PostIndex-content" id="Content">
 							<!-- 取到正文 -->
-						</form>
 						<!-- <blockquote><b>咨询记录2017.3.30</b>
 						</blockquote>
 						<p>暖北老师您好，在知乎上看了很多您的文章,几乎所有的问答都看完了，非常相信您的专业知识，所以通过邮件跟您咨询一下困扰我的问题。</p>

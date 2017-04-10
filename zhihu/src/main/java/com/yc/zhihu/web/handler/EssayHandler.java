@@ -42,6 +42,7 @@ public class EssayHandler {
 	@RequestMapping(value="/all" ,method=RequestMethod.POST )
 	@ResponseBody
 	public List<Essay> all(Essay essay , HttpServletRequest request){
+			System.out.println("进来了");
 			String eid = request.getParameter("eid");
 			return essayServie.listAll(eid);
 	}

@@ -8,13 +8,9 @@
 			INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(sequence seq_essay,#{eauid},#{econtent},to_char(sysdata,'yyyy-mm-dd'),#{etitle},'10001'); 
 		</insert>
 		
-		<resultMap type="Essay" id="EssayMap">
-			<id />
-			<collection property=""></collection>
 		
-		</resultMap>
 		
 		<select id="findEssay" parameterType="string" resultType="Essay">
-			select e.*,u.* from essay e,users u where e.eid =#{eid}
+			select e.*,u.* from essay e,users u where e.eid = #{eid} and  e.eautid = uids
 		</select>	
 </mapper>

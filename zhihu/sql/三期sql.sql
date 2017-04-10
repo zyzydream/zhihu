@@ -16,6 +16,8 @@ drop table users
 insert into users(uids,uname,upassword,usign,uemail)
 values('1001','gr','a','haha','123@qq.com')
 
+update USERS set tpic='images/car.png' where uids='1001'
+
 select * from users
  select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 
 create sequence seq_users start with 10000;
