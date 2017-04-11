@@ -49,7 +49,8 @@ dbms_random.string('l',dbms_random.value(5, 10)),
 dbms_random.string('l',dbms_random.value(10, 40)),
 decode(ceil(dbms_random.value(0, 6)), 1, '程序员', 2, '测试员', 3, '分析员', 4, '设计员', 5, '翻译员', '管理员'),
 'zzz.jpg',
-'180'||ceil(dbms_random.value(10000000,99999999))||'@qq.com' from dual connect by level <= 1000;
+'180'||ceil(dbms_random.value(10000000,99999999))||'@qq.com',
+'/zhihu/images/touxiang.jpg' from dual connect by level <= 1000;
 select * from users where uids='10999'
 
 select * from USERS where uemail='123' and upassword='a' 
