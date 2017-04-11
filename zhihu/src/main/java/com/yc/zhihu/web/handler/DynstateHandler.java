@@ -1,6 +1,5 @@
 package com.yc.zhihu.web.handler;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +70,20 @@ public class DynstateHandler {
 		for(ListAllMy y:ys){
 			all.add(y);
 		}
+		}
+		
+		List<ListAllMy> zs=dynstateService.showessays(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		if(zs!=null){
+			for(ListAllMy z:zs){
+				all.add(z);
+			}
+		}
+		
+		List<ListAllMy> ms=dynstateService.showscolumns(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		if(ms!=null){
+			for(ListAllMy m:ms){
+				all.add(m);
+			}
 		}
 
 		return all;
@@ -170,7 +183,21 @@ public class DynstateHandler {
 	@ResponseBody
 	public int collect(Dynstate dynstate,HttpServletRequest request){
 		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
-	    return dynstateService.collect(dynstate);
+	    System.out.println(dynstate);
+		return dynstateService.collect(dynstate);
 	}
 	
+	@RequestMapping(value="/delpraise",method=RequestMethod.GET)
+	@ResponseBody
+	public int  delpraise(Dynstate dynstate,HttpServletRequest request){
+		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		return dynstateService.delpraise(dynstate);
+	}
+	
+	@RequestMapping(value="/delcollect",method=RequestMethod.GET)
+	@ResponseBody
+	public int  delcollect(Dynstate dynstate,HttpServletRequest request){
+		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		return dynstateService.delcollect(dynstate);
+	}
 }

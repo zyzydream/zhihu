@@ -118,9 +118,11 @@ public class UserHandler {
 					}
 				}
 			}
-			return usersService.ypraise(dynstate, request);
+			List<Explore> e=usersService.yPraiseAndCollect(dynstate, request);
+			System.out.println(e);
+			return e;
 		}else{
-			return usersService.ypraise(all, request);
+			return usersService.yPraiseAndCollect(all, request);
 		}
 	}
 

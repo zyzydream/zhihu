@@ -37,6 +37,6 @@ public interface UserService {
 
 	List<Users> findProfession(Users users);
 
-	List<Explore> ypraise(List<Explore> explores, HttpServletRequest request);
+	List<Explore> yPraiseAndCollect(List<Explore> explores, HttpServletRequest request);
 
 }

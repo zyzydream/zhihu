@@ -15,6 +15,7 @@ $.get("user/dynstate",function(data){
 	for(var i=0;i<data.length;i++){
 		var aaaa="";
 		aaaa+='<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">';
+		alert()
 		for(var j=0;j<favorite.length;j++){
 			alert(favorite[j].fname);
 			aaaa+='<li role="presentation"><a role="menuitem" tabindex="-1" onclick="collect(\''+data[i].ids+'\',\''+data[i].kind+'\',\''+favorite[j].fid+'\')">'+favorite[j].fname+'</a></li>';
@@ -29,17 +30,17 @@ $.get("user/dynstate",function(data){
 			dynstate+='<h2 class="featurette-heading" style="font-size: 13px;">'+data[i].author+' &nbsp;&nbsp;&nbsp;';
 			dynstate+='<span class="text-muted" style="font-size: 12px;font-weight: 300;">'+data[i].usign+'</span></h2>';
 			dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
-			if(data[i].ycollect=='n'){
+			if(data[i].ycollent=='n'){
 				dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
-			}else if(data[i].ycollect=='y'){
-				dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">取消收藏  '+data[i].collect+'</a></div>';
+			}else if(data[i].ycollent=='y'){
+				dynstate+='<div style="width: 100px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" onclick="delcollect(\''+data[i].ids+'\',\''+data[i].kind+'\')">取消收藏  '+data[i].collect+'</a></div>';
 			}else{
 				dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 			}
 			if(data[i].ypraise=='n'){
 			    dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="praise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞  '+data[i].praise+'</button></div>';
 			}else{
-			    dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="praise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
+			    dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="delpraise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
 			}
 			dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>';
 			dynstate+='</span></div><div class="col-md-5"><img class="featurette-image img-responsive center-block" src="" data-src="holder.js/500x500/auto"';
@@ -49,17 +50,17 @@ $.get("user/dynstate",function(data){
 			dynstate+='<div class="row featurette"><div class="col-md-7">';
 			dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px">'+data[i].author+':发表文章：</span><br />'+data[i].title+'</h2>';
 			dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
-			if(data[i].ycollect=='n'){
+			if(data[i].ycollent=='n'){
 				dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
-			}else if(data[i].ycollect=='y'){
-				dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">取消收藏  '+data[i].collect+'</a></div>';
+			}else if(data[i].ycollent=='y'){
+				dynstate+='<div style="width: 100px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" onclick="delcollect(\''+data[i].ids+'\',\''+data[i].kind+'\')">取消收藏  '+data[i].collect+'</a></div>';
 			}else{
 				dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 			}
 			if(data[i].ypraise=='n'){
 			    dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="praise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞  '+data[i].praise+'</button></div>';
 			}else{
-			    dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="praise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
+			    dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="delpraise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
 			}
 			dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>';
 			dynstate+='</span></div><div class="col-md-5"><label style="float: right;font-size: 15px; font-weight: lighter;">'+data[i].times+'</label>';
@@ -68,17 +69,17 @@ $.get("user/dynstate",function(data){
 		}else if(data[i].kind=="FQ"){
 			dynstate+='<div class="row featurette"><div class="col-md-7">';
 			dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px">'+data[i].author+':提出问题：</span><br />'+data[i].title+'</h2><span>'
-			if(data[i].ycollect=='n'){
+			if(data[i].ycollent=='n'){
 				dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
-			}else if(data[i].ycollect=='y'){
-				dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">取消收藏  '+data[i].collect+'</a></div>';
+			}else if(data[i].ycollent=='y'){
+				dynstate+='<div style="width: 100px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" onclick="delcollect(\''+data[i].ids+'\',\''+data[i].kind+'\')">取消收藏  '+data[i].collect+'</a></div>';
 			}else{
 				dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 			}
 			if(data[i].ypraise=='n'){
 			    dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="praise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞  '+data[i].praise+'</button></div>';
 			}else{
-			    dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="praise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
+			    dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="delpraise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
 			}
 			dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>';
 			dynstate+='</span></div><div class="col-md-5"><label style="float: right;font-size: 15px; font-weight: lighter;">'+data[i].times+'</label>';
@@ -125,15 +126,39 @@ function praise(ids,kind){
 }
 
 function collect(ids,kind,fname){
-	alert(ids);
-	alert(kind);
-	alert(fname);
-//	$.get("dynstate/collect?ids="+ids+"&&kind="+kind,function(data){
-//		if(data>0){
-//			alert("收藏成功");
-//			show();
-//		}else{
-//			alert("收藏失败");
-//		}
-//	},"json");
+	//alert(ids);
+	//alert(kind);
+	//alert(fname);
+	$.get("dynstate/collect?ids="+ids+"&&kind="+kind,function(data){
+		if(data>0){
+			alert("收藏成功");
+			show();
+		}else{
+			alert("收藏失败");
+		}
+	},"json");
+}
+
+function delpraise(ids,kind){
+	//alert(ids);
+	//alert(kind);
+	$.get("dynstate/delpraise?ids="+ids+"&&kind="+kind,function(data){
+		if(data>0){
+			//alert("点赞成功");
+			show();
+		}else{
+			alert("取消失败");
+		}
+	},"json");
+}
+
+function delcollect(ids,kind){
+	$.get("dynstate/delcollect?ids="+ids+"&&kind="+kind,function(data){
+		if(data>0){
+			//alert("点赞成功");
+			show();
+		}else{
+			alert("取消失败");
+		}
+	},"json");
 }

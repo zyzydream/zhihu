@@ -45,8 +45,16 @@ public interface DynstateService {
 	boolean updatetoppics(Object object);
 	
 	List<Users> showtop(Object obj);
+	
+	List<ListAllMy> showessays(Object obj);
+	
+	List<ListAllMy> showscolumns(Object obj);
 
 	int praise(Dynstate dynstate);
 
 	int collect(Dynstate dynstate);
+
+	int delpraise(Dynstate dynstate);
+
+	int delcollect(Dynstate dynstate);
 }
