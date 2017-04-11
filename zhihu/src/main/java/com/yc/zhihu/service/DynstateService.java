@@ -60,4 +60,8 @@ public interface DynstateService {
 	List<Total> listpeos(Object obj);
 	
 	List<Users> myatteninfo(Object obj);
+
+	int delpraise(Dynstate dynstate);
+
+	int delcollect(Dynstate dynstate);
 }

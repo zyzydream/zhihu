@@ -24,6 +24,9 @@
     <select id="find" parameterType="Strings" resultType="Explore">
         select * from explore where ids=#{ids} and kind=#{kind}
     </select>
+    <select id="findAll" parameterType="Strings" resultType="Explore">
+        select * from explore where ids like #{ids} and kind like #{kind}
+    </select>
     
     <select id="findUpdateW" resultType="Explore" >
 	select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid
@@ -58,4 +61,7 @@
       	    update explore set checks='y' where ids=#{ids} and kind=#{kind}
     </update>
     
+    <update id="updateExplore">
+       update explore set
+    </update>
 </mapper>

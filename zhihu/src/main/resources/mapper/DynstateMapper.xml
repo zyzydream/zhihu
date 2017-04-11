@@ -261,4 +261,13 @@
 		on u.uids=e.aimid
 	</select>
 
+	
+	<delete id="delpraise" parameterType="Dynstate">
+	   delete  DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}' 
+	</delete>
+	
+	<delete id="delcollect" parameterType="Dynstate">
+	   delete  DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}' 
+	</delete>
+	
 </mapper>

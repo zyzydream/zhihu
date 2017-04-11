@@ -65,4 +65,8 @@ public interface DynstateMapper {
 	List<Total> SumMyatteness(Object obj);
 	List<Total> SumMyattenpeos(Object obj);
 	List<Users> myatteninfo(Object obj);
+
+	int delpraise(Dynstate dynstate);
+
+	int delcollect(Dynstate dynstate); 
 }

@@ -15,8 +15,10 @@ import org.springframework.stereotype.Service;
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.Strings;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
+import com.yc.zhihu.mapper.ExploreMapper;
 import com.yc.zhihu.mapper.UserMapper;
 import com.yc.zhihu.service.UserService;
 import com.yc.zhihu.util.ServletUtil;
@@ -26,6 +28,8 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private UserMapper userMapper;
+	@Autowired
+	private ExploreMapper exploreMapper;
 
 	//列出最新动态   查询关注用户的话题的文章  所有 与点赞无关
 	@Override
@@ -62,35 +66,56 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<Explore> listrelatedD(Users user) {
 		List<Explore> all=new ArrayList<Explore>();
-		List<Explore> essays = userMapper.listessay(user);
-		for(Explore essay:essays){
-			essay.setKind("DW");
-			essay.setPraise(userMapper.statisticsPraise(essay));
-			essay.setKind("SW");
-			essay.setCollect(userMapper.statisticsCollect(essay));
-			essay.setKind("FW");
-			all.add(essay);
-		}
-		List<Explore> questions = userMapper.listquestion(user);
-		for(Explore question:questions){
-			question.setKind("DQ");
-			question.setPraise(userMapper.statisticsPraise(question));
-			question.setKind("SQ");
-			question.setCollect(userMapper.statisticsCollect(question));
-			question.setKind("FQ");
-			all.add(question);
-		}
-		List<Dynstate> dynstates=userMapper.lists(user);
-		for(Dynstate dynstate:dynstates){
-			//System.out.println(dynstate);
-			if(dynstate.getKind().equals("GH")){
-				Explore as=userMapper.listrelatedTopic(dynstate);
-				if(as!=null){
-					all.add(as);
-					System.out.println(as);
+		if(user!=null){
+			List<Explore> essays = userMapper.listessay(user);
+		    for(Explore essay:essays){
+				essay.setKind("DW");
+				essay.setPraise(userMapper.statisticsPraise(essay));
+				essay.setKind("SW");
+				essay.setCollect(userMapper.statisticsCollect(essay));
+				essay.setKind("FW");
+				all.add(essay);
+			}
+			
+			List<Explore> questions = userMapper.listquestion(user);
+			for(Explore question:questions){
+				question.setKind("DQ");
+				question.setPraise(userMapper.statisticsPraise(question));
+				question.setKind("SQ");
+				question.setCollect(userMapper.statisticsCollect(question));
+				question.setKind("FQ");
+				all.add(question);
+			}
+			List<Dynstate> dynstates=userMapper.lists(user);
+			for(Dynstate dynstate:dynstates){
+				//System.out.println(dynstate);
+				if(dynstate.getKind().equals("GH")){
+					Explore as=userMapper.listrelatedTopic(dynstate);
+					if(as!=null){
+						all.add(as);
+						//System.out.println(as);
+					}
+				}
+			}
+		}else{
+			all=exploreMapper.findAll(new Strings());
+			for(Explore explore:all){
+				if("W".equals(explore.getKind())){
+					explore.setKind("DW");
+				    explore.setPraise(userMapper.statisticsPraise(explore));
+			    	explore.setKind("SW");
+			    	explore.setCollect(userMapper.statisticsCollect(explore));
+				    explore.setKind("W");
+				}else if("Q".equals(explore.getKind())){
+					explore.setKind("DQ");
+				    explore.setPraise(userMapper.statisticsPraise(explore));
+			    	explore.setKind("SQ");
+			    	explore.setCollect(userMapper.statisticsCollect(explore));
+				    explore.setKind("Q");
 				}
 			}
 		}
+
 		int length=all.size();
 		DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 		Explore [] t=new Explore[length];
@@ -138,7 +163,7 @@ public class UserServiceImpl implements UserService{
 	}
 	//判断该动态用户是否已经点赞
 	@Override
-	public List<Explore> ypraise(List<Explore> explores,HttpServletRequest request){
+	public List<Explore> yPraiseAndCollect(List<Explore> explores,HttpServletRequest request){
 		List<Explore> news=new ArrayList<Explore>();
 		for(Explore explore:explores){
 			Dynstate dynstate=new Dynstate();
@@ -159,6 +184,20 @@ public class UserServiceImpl implements UserService{
 					explore.setYpraise("y");		
 				}else{
 					explore.setYpraise("n");
+				}
+				if(kind=="FW"){
+					dynstate.setKind("SW");
+				}else if("W".equals(kind)){
+					dynstate.setKind("SW");
+				}else if("Q".equals(kind)){
+					dynstate.setKind("SH");
+				}else if(kind=="FQ"){
+					dynstate.setKind("SQ");
+				}
+				if(userMapper.ycollect(dynstate)!=null){
+					explore.setYcollent("y");		
+				}else{
+					explore.setYcollent("n");
 				}
 			}
 			news.add(explore);

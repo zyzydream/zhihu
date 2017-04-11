@@ -1,6 +1,5 @@
 package com.yc.zhihu.web.handler;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -41,11 +40,10 @@ public class UserHandler {
 		}else{
 			request.getSession().setAttribute("username",users.getUname());
 			request.getSession().setAttribute(ServletUtil.LOGIN_USER, users);
-			//String uids = ((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids();
-			if(usersService.findProfession(users) == null ){
+			if(usersService.findProfession(users).isEmpty() ){
 				System.out.println(usersService.findProfession(users).size());
 				return "redirect:/page/work.jsp";
-			}else if(usersService.listTp(users) == null){
+			}else if(usersService.listTp(users).isEmpty()){
 				System.out.println("进来l");
 				return "redirect:/page/talk.jsp";
 			}else{
@@ -120,9 +118,11 @@ public class UserHandler {
 					}
 				}
 			}
-			return usersService.ypraise(dynstate, request);
+			List<Explore> e=usersService.yPraiseAndCollect(dynstate, request);
+			System.out.println(e);
+			return e;
 		}else{
-			return usersService.ypraise(all, request);
+			return usersService.yPraiseAndCollect(all, request);
 		}
 	}
 
