@@ -5,12 +5,12 @@ function myansrer33(){
 			for(var i=0;i<data.length;i++){
 				a+='<img class="Avatar Avatar--large UserAvatar-inner"'
 					'src="'+data[i].upic+'"'
-						'style="width: 160px; height: 160px;">';
+					'style="width: 160px; height: 160px;">';
 			}
 		}
 		document.getElementById("hhh").innerHTML = a;
 	},'json');
-	
+
 	$.get("dynstate/a1",function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
@@ -285,6 +285,7 @@ function myfavorite(){
 }
 
 function MyAttention(){
+	var myattention="";
 	$.get("dynstate/a1",function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
@@ -309,7 +310,7 @@ function MyAttention(){
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
 	$.get("dynstate/m8",function(data){
-		var myattention="";
+
 		for(var i=0;i<data.length;i++){
 			myattention+='<div class="List-item">'
 				+'<div class="ContentItem" ><div class="ContentItem-main"><div class="ContentItem-image">'
@@ -323,8 +324,9 @@ function MyAttention(){
 				+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data[i].uname+'</a></div>'
 				+'</div></span><span class="FollowStatus" id="showattenyn">相互关注</span></div></h2>'
 				+'<div class="ContentItem-meta"><div><div class="RichText">'+data[i].usign+'</div>'
-				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data[i].ansum+'回答</span>'
-				+'<span class="ContentItem-statusItem">'+data[i].essum+'文章</span><span class="ContentItem-statusItem">'+data[i].attsum+' 关注者</span>'
+				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data[i].myattenaw+'回答</span>'
+				+'<span class="ContentItem-statusItem">'+data[i].essum+'文章</span>'
+				+'<span class="ContentItem-statusItem">'+data[i].attsum+' 关注者</span>'
 				+'</div></div></div></div><div class="ContentItem-extra"><button class="Button FollowButton Button--primary Button--grey" id="attenbtn" type="button" onclick="touch()">'
 				+'已关注</button></div></div></div></div>'
 				+'</span></div></div>';
@@ -332,7 +334,14 @@ function MyAttention(){
 
 		document.getElementById("myself2").innerHTML = myattention;
 	},'json');	
+
+
+
+
+
 }
+
+
 
 function myatten(){
 	$.get("dynstate/me",function(data){
@@ -342,8 +351,8 @@ function myatten(){
 
 function touch(){
 	/*$.get("dynstate/touch",function(data){*/
-		doucument.getElementById(attenbtn).innerText="关注";
-/*	})*/
+	doucument.getElementById(attenbtn).innerText="关注";
+	/*	})*/
 
 }
 
@@ -368,24 +377,24 @@ function updatePic(){
 		}
 		document.getElementById("UserCoverGuide-inner").innerHTML = img;
 	},'json');
-		*/
+	 */
 }
 
-	function chgPic(obj){
-		$("#changgeimage").attr("src", window.URL.createObjectURL(obj.files[0]));
-	}
+function chgPic(obj){
+	$("#changgeimage").attr("src", window.URL.createObjectURL(obj.files[0]));
+}
 
-	$("#uploads").form({
-		url:"user/upload", 
-		success:function(data){ 
-			if(data.trim() == "true"){
-				for(var i=0;i<data.length;i++){
-					$("#pic").datagrid("reload"); //刷新修改数据
+$("#uploads").form({
+	url:"user/upload", 
+	success:function(data){ 
+		if(data.trim() == "true"){
+			for(var i=0;i<data.length;i++){
+				$("#pic").datagrid("reload"); //刷新修改数据
 				/*$("#pic").attr("src", data[i].toppic);*/
-				}
 			}
 		}
-	});
+	}
+});
 
 
 

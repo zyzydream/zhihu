@@ -28,9 +28,7 @@ public interface DynstateMapper {
 	List<Question> listMyQuestion(Object users);
 	
 	List<Favorite> listMyFavorite(Object users);
-	
-	List<Users> listMyAttention(Object users);
-	
+		
 	int updateUserPic(Users users);
 	
 	Users totalatten(Object users);
@@ -62,4 +60,9 @@ public interface DynstateMapper {
 	int praise(Dynstate dynstate);
 
 	int collect(Dynstate dynstate); 
+	
+	List<Total> SumMyattensw(Object obj);
+	List<Total> SumMyatteness(Object obj);
+	List<Total> SumMyattenpeos(Object obj);
+	List<Users> myatteninfo(Object obj);
 }

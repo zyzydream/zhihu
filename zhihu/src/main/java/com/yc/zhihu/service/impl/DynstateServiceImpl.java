@@ -73,10 +73,6 @@ public class DynstateServiceImpl implements DynstateService {
 		return dynstateMapper.listMyFavorite(obj);
 	}
 	
-	@Override
-	public List<Users> listAttention(Object obj) {
-		return dynstateMapper.listMyAttention(obj);
-	}
 	
 	@Override
 	public boolean modifyUserPic(Users users) {
@@ -163,5 +159,25 @@ public class DynstateServiceImpl implements DynstateService {
 		}
 		//System.out.println(dynstate.getKind());
 		return dynstateMapper.collect(dynstate);
+	}
+	
+	@Override
+	public List<Total> listsw(Object obj) {
+		return dynstateMapper.SumMyattensw(obj);
+	}
+	
+	@Override
+	public List<Total> listess(Object obj) {
+		return dynstateMapper.SumMyatteness(obj);
+	}
+	
+	@Override
+	public List<Total> listpeos(Object obj) {
+		return dynstateMapper.SumMyattenpeos(obj);
+	}
+	
+	@Override
+	public List<Users> myatteninfo(Object obj) {
+		return dynstateMapper.myatteninfo(obj);
 	}
 }

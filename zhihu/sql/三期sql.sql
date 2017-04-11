@@ -289,10 +289,6 @@ select count(rid),d.aimid from reply r
 full join (select aimid from dynstate where selfid='1001' order by aimid) d
 on r.remitid=d.aimid group by d.aimid
 
-select count(rid) from reply where remitid=1002
-select count(rid) from reply where remitid=1003
-
-
 --右连接 查询我关注的人有多少文章
 select count(eid),b.aimid from essay e
 right join (select aimid from dynstate where selfid='1001' order by aimid) b
@@ -303,7 +299,7 @@ select count(dd.selfid),c.aimid from dynstate dd
 right join (select aimid from dynstate where selfid='1001' order by aimid) c
 on dd.aimid=c.aimid group by c.aimid
 
-select u.uname,u.upic,u.usign,e.aimid from users u
+select u.uname,u.upic,u.usign from users u
 right join (select aimid from dynstate where selfid='1001' order by aimid) e
 on u.uids=e.aimid 
 
