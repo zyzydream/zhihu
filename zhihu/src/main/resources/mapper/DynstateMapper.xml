@@ -213,4 +213,12 @@
        values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'),'${cfid}')
 	</insert>
 	
+	<delete id="delpraise" parameterType="Dynstate">
+	   delete  DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}' 
+	</delete>
+	
+	<delete id="delcollect" parameterType="Dynstate">
+	   delete  DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}' 
+	</delete>
+	
 </mapper>

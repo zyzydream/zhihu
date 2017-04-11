@@ -49,4 +49,8 @@ public interface DynstateService {
 	int praise(Dynstate dynstate);
 
 	int collect(Dynstate dynstate);
+
+	int delpraise(Dynstate dynstate);
+
+	int delcollect(Dynstate dynstate);
 }

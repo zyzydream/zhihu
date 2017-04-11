@@ -50,4 +50,6 @@ public interface UserMapper {
 
 	Dynstate ypraise(Dynstate dynstate);
 
+	Dynstate ycollect(Dynstate dynstate);
+
 }

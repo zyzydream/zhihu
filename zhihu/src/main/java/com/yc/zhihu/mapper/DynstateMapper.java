@@ -57,5 +57,9 @@ public interface DynstateMapper {
 
 	int praise(Dynstate dynstate);
 
-	int collect(Dynstate dynstate); 
+	int collect(Dynstate dynstate);
+
+	int delpraise(Dynstate dynstate);
+
+	int delcollect(Dynstate dynstate); 
 }

@@ -129,4 +129,8 @@
     <select id="ypraise" parameterType="Dynstate" resultType="Dynstate">
         select * from dynstate PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}'
     </select>	
+    <!-- 判断该动态是否已经收藏 -->
+    <select id="ycollect" parameterType="Dynstate" resultType="Dynstate">
+        select * from dynstate PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}'
+    </select>
 </mapper>

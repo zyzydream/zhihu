@@ -138,7 +138,7 @@ public class UserServiceImpl implements UserService{
 	}
 	//判断该动态用户是否已经点赞
 	@Override
-	public List<Explore> ypraise(List<Explore> explores,HttpServletRequest request){
+	public List<Explore> yPraiseAndCollect(List<Explore> explores,HttpServletRequest request){
 		List<Explore> news=new ArrayList<Explore>();
 		for(Explore explore:explores){
 			Dynstate dynstate=new Dynstate();
@@ -159,6 +159,20 @@ public class UserServiceImpl implements UserService{
 					explore.setYpraise("y");		
 				}else{
 					explore.setYpraise("n");
+				}
+				if(kind=="FW"){
+					dynstate.setKind("SW");
+				}else if("W".equals(kind)){
+					dynstate.setKind("SW");
+				}else if("Q".equals(kind)){
+					dynstate.setKind("SH");
+				}else if(kind=="FQ"){
+					dynstate.setKind("SQ");
+				}
+				if(userMapper.ycollect(dynstate)!=null){
+					explore.setYcollent("y");		
+				}else{
+					explore.setYcollent("n");
 				}
 			}
 			news.add(explore);

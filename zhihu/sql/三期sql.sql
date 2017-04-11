@@ -11,8 +11,9 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+select * from dynstate PARTITION(SW) where selfid='10942'
 select * from users where uids='10368'
-delete  DYNSTATE where selfid='10275' and ids='10324' 
+delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324' 
  10942 eacecjh    a         qicykpgurudmgrcovdsdbwuscn               管理员         zzz.jpg 18066301969@qq.com
 select * from FAVORITE where fcreid='10275' 
 SELECT * from dynstate d, (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10275')dd WHERE d.selfid=dd.aimid AND 24>=to_number( SYSDATE- to_date(d.times,'yyyy-mm-dd'))*24 
