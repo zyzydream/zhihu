@@ -36,6 +36,7 @@ function myansrer33(){
 }
 
 $.get("dynstate/m1",function(data){
+	alert(data);
 	myansrer33();
 	var myanswers="";
 	if(data.length>0){
@@ -63,6 +64,31 @@ $.get("dynstate/m1",function(data){
 					+'<a class="TopicLink" href="/topic/19966000" target="_blank"><div class="Popover">'
 					+'<div id="Popover-12304-93779-toggle" aria-haspopup="true" aria-expanded="false" '
 					+'aria-owns="Popover-12304-93779-content">'+data[i].tname+'</div></div></a></h2></div></div>';
+			}else if(data[i].kind=='E'){
+				myanswers+='<div class="List-item"><div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="featurette-heading" style="font-size: 20px;">'
+					+'<span class="text-muted" style="font-size: 13px">发表了文章</span><br />'+data[i].title+'</h2>'
+					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].tpic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
+					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
+					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
+					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p>'
+					+'<p class="text-muted" style="font-size: 14px; color:">发布于'+data[i].times+'</p><span> <a href="#" style="font-size: 13px; font-weight: 40">阅览'
+					+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a href="#" style="font-size: 13px; font-weight: 40">点赞 '
+					+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
+					+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
+					+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
+					+'</span></div></div></div>';
+			}else if(data[i].kind=='S'){
+				myanswers+='<div class="List-item"><div class="List-itemMeta">'
+					+'<div class="ActivityItem-meta"><span class="ActivityItem-metaTitle">关注了'+data[i].uname+'的专栏</span>'
+					+'</div></div><div class="ContentItem-main">'
+					+'<div class="ContentItem-image"><a class="TopicLink" href="/topic/19966000" target="_blank">'
+					+'<div class="Popover"><div id="Popover-12300-80678-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-12300-80678-content">'
+					+'<img class="Avatar Avatar--large TopicLink-avatar" src="'+data[i].tpic+'"></div>'
+					+'</div></a></div><div class="ContentItem-head"><h2 class="ContentItem-title">'
+					+'<a class="TopicLink" href="/topic/19966000" target="_blank"><div class="Popover">'
+					+'<div id="Popover-12304-93779-toggle" aria-haspopup="true" aria-expanded="false" '
+					+'aria-owns="Popover-12304-93779-content">'+data[i].tname+'<span>'
+					+'<p class="text-muted" style="font-size: 14px; color:">关注于'+data[i].times+'</p></span></div></div></a></h2></div></div>';
 			}
 		}
 	}else{
@@ -295,11 +321,11 @@ function MyAttention(){
 				+'<div class="UserItem-title"><span class="UserLink UserItem-name">'
 				+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
 				+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data[i].uname+'</a></div>'
-				+'</div></span><span class="FollowStatus">相互关注</span></div></h2>'
+				+'</div></span><span class="FollowStatus" id="showattenyn">相互关注</span></div></h2>'
 				+'<div class="ContentItem-meta"><div><div class="RichText">'+data[i].usign+'</div>'
 				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data[i].ansum+'回答</span>'
 				+'<span class="ContentItem-statusItem">'+data[i].essum+'文章</span><span class="ContentItem-statusItem">'+data[i].attsum+' 关注者</span>'
-				+'</div></div></div></div><div class="ContentItem-extra"><button class="Button FollowButton Button--primary Button--grey" type="button" onclick="touch()">'
+				+'</div></div></div></div><div class="ContentItem-extra"><button class="Button FollowButton Button--primary Button--grey" id="attenbtn" type="button" onclick="touch()">'
 				+'已关注</button></div></div></div></div>'
 				+'</span></div></div>';
 		}
@@ -315,9 +341,9 @@ function myatten(){
 }
 
 function touch(){
-	$.get("dynstate/touch",function(data){
-
-	})
+	/*$.get("dynstate/touch",function(data){*/
+		doucument.getElementById(attenbtn).innerText="关注";
+/*	})*/
 
 }
 

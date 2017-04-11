@@ -122,7 +122,17 @@ public class DynstateServiceImpl implements DynstateService {
 	public List<Users> showtop(Object obj) {
 		return dynstateMapper.showtopimg(obj);
 	}
-
+	
+	@Override
+	public List<ListAllMy> showessays(Object obj) {
+		return dynstateMapper.showessay(obj);
+	}
+	
+	@Override
+	public List<ListAllMy> showscolumns(Object obj) {
+		return dynstateMapper.showscolumn(obj);
+	}
+	
 	@Override
 	public int praise(Dynstate dynstate) {
 		String kind=dynstate.getKind();

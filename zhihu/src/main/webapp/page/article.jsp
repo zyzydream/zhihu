@@ -32,8 +32,9 @@
 				<div></div>
 				<div class="Layout-main Layout-titleImage--normal"
 					data-za-module="PostItem">
-					<div class="PostIndex-header">
-						<h1 class="PostIndex-title">优质金融男这样对我，还要牵手走下去么？</h1>
+					<div class="PostIndex-header" id="esssayTitle">
+							<!-- 取到文章标题及作者 -->
+						<!-- <h1 class="PostIndex-title">优质金融男这样对我，还要牵手走下去么？</h1>
 						<div class="PostIndex-author">
 							<a href="https://www.zhihu.com/people/li-bang-yuan-2"
 								target="_blank"> <img
@@ -45,10 +46,11 @@
 								data-hover-title="2017 年 4月 3 日星期一晚上 6 点 28 分">
 								<time datetime="2017-04-03T10:28:33.000Z">3 天前</time>
 							</div>
-						</div>
+						</div> -->
 					</div>
-					<div class="RichText PostIndex-content">
-						<blockquote><b>咨询记录2017.3.30</b>
+					<div class="RichText PostIndex-content" id="Content">
+							<!-- 取到正文 -->
+						<!-- <blockquote><b>咨询记录2017.3.30</b>
 						</blockquote>
 						<p>暖北老师您好，在知乎上看了很多您的文章,几乎所有的问答都看完了，非常相信您的专业知识，所以通过邮件跟您咨询一下困扰我的问题。</p>
 						<p>我的男朋友是白羊座的，虽然他三十岁了，但是他身上也像小白羊，也像大白羊，他非常的理性，冷静，我和他是今年跨年认识的，暧昧了三个月，终于在我死心觉得和他不可能的时候他却和我表白了，他表白的时候说了很久，说他一直在考虑想了很多，如果不用考虑的话我们应该早就在一起了，“我想问你愿不愿意做我女朋友,但是可能我没有办法给你什么承诺,但是我会尽量做到我能做的。”他问了我三次，尽管我觉得还是很不安觉得他不够喜欢我，但我抱着侥幸心理答应了。</p>
@@ -72,7 +74,7 @@
 						<p>而他找到的时机是三个月后在你将要放弃的时候也许也是你爱他最深，略带悲观的时候，这个时候的你其实是最吸引他的，因为他是可以感觉得到你将要离开的感觉，而他显然就这么跟你分开也不甘心也不开心。这是属于他的占有欲，纵然没有那么的爱你，但是你的离去也是他不乐意的。所以才有说没办法给你承诺，只能做到最好。言外之意与原委我上述已说。</p>
 						<p>而这跟你接触下来，也许是感觉到了你们之间的不合适吧，比如说对于很多东西的看法和理解，不同阶层看到的东西也不一样，相敬如宾也就是彼此并不是很好的适应和融合在一起的意思。会让他没办法完全接受这样的你。所以迟迟做不了坚定的选择。只是将这一份感情拖延，而这些原因他是没办法告诉你的。因为谁又真的理解谁呢？说出了肯定是伤害你。</p>
 						<p>其实关于最后为什么再也不回复了。是因为他要么跟你解释继续好下去，而这他心里并不是很想了；如果是解释分手又是很难堪的。所以自然还是不回复的好。我觉得最终他应该会找个理由过渡过去。比如彼此不和适，给不了你承诺之类的。或者是再也不回复了。</p>
-						<p>以上，供你参考。</p>
+						<p>以上，供你参考。</p> -->
 					</div>
 
 
@@ -126,4 +128,8 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="easyui/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/article.js"></script>
 </html>

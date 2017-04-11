@@ -71,6 +71,20 @@ public class DynstateHandler {
 			all.add(y);
 		}
 		}
+		
+		List<ListAllMy> zs=dynstateService.showessays(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		if(zs!=null){
+			for(ListAllMy z:zs){
+				all.add(z);
+			}
+		}
+		
+		List<ListAllMy> ms=dynstateService.showscolumns(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		if(ms!=null){
+			for(ListAllMy m:ms){
+				all.add(m);
+			}
+		}
 
 		return all;
 	}

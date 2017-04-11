@@ -69,6 +69,24 @@ public class DynstateServiceImplTest {
 		assertNotNull(r);
 	}
 	
+	@Test
+	public void testessay() {
+		Users users=new Users();
+		users.setUids("1001");
+		List<ListAllMy> r=dynstateService.showessays(users);
+		System.out.println(r);
+		assertNotNull(r);
+	}
+	
+	@Test
+	public void testscolumn() {
+		Users users=new Users();
+		users.setUids("1001");
+		List<ListAllMy> r=dynstateService.showscolumns(users);
+		System.out.println(r);
+		assertNotNull(r);
+	}
+	
 	
 
 }
