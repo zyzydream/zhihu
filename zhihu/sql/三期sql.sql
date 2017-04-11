@@ -11,6 +11,7 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+select * from explore where ids like '%' and kind like '%'
 select * from dynstate PARTITION(SW) where selfid='10942'
 select * from users where uids='10368'
 delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324' 

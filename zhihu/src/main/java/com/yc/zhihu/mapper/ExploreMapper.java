@@ -13,6 +13,8 @@ public interface ExploreMapper {
 	List<Explore> lists(PaginationBean pBean);
 
 	Explore find(Strings s);
+	
+	List<Explore> findAll(Strings s);
 
 	List<Explore> findUpdateW();
 
@@ -23,4 +25,6 @@ public interface ExploreMapper {
 	int count(String s);
 
 	int submit(Explore explore);
+
+	void updateExplore();
 }

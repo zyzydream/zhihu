@@ -451,36 +451,6 @@
 
 		<!-- /.blog-sidebar -->
 	</div>
-	<!-- 选择专栏的弹框 -->
-	<div class="modal fade" id="infoModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">选择弹框</h4>
-				</div>
-				<div class="modal-body">
-					<form id="infoForm" method="get" action="information/send">
-						<table>
-							<tr>
-								<td><hr></td>
-								<td><hr></td>
-								<td><hr></td>
-							</tr>
-						</table>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" id="sendmail">发送</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal -->
-	</div>
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/homepage.js"></script>
 </body>
