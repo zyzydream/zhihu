@@ -11,13 +11,35 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+select * from users where uids='10368'
+delete  DYNSTATE where selfid='10275' and ids='10324' 
+ 10942 eacecjh    a         qicykpgurudmgrcovdsdbwuscn               管理员         zzz.jpg 18066301969@qq.com
+select * from FAVORITE where fcreid='10275' 
+SELECT * from dynstate d, (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10275')dd WHERE d.selfid=dd.aimid AND 24>=to_number( SYSDATE- to_date(d.times,'yyyy-mm-dd'))*24 
+select * from topics where ttopic='qxnbl'
+select * from topics t, (select count(0) from dynstate PARTITION(DH) where ids='12774')d where d.ids=t.tid
+select count(0) from dynstate PARTITION(DW) where ids='12946' 
+ select count(0) from dynstate PARTITION(DW) where ids='10863'
+ SELECT * FROM essay where eid='1009'
+  select e.etid ids,e.eautid uids,e.econtent content,e.etime times,e.etitle title,e.etid tid,ud.uname author from essay e,
+           (select * from users u,
+	         (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10001')d
+	       where u.uids=d.aimid)ud
+        where e.eautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(e.etime,'yyyy-mm-dd'))*24
+ 
+
+ select * from explore e, (select count(0) from dynstate PARTITION (DQ) where ids='12607')d where e.tid=d.ids 
+
 drop table users
 
 insert into users(uids,uname,upassword,usign,uemail,tpic,upic)
 values('1001','gr','a','haha','123@qq.com','/zhihu/images/1.jpg','/zhihu/images/touxiang.jpg')
 
+update USERS set tpic='images/car.png' where uids='1001'
+
 select * from users
  select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 
+
 create sequence seq_users start with 10000;
 insert into users
 select seq_users.nextval, 
@@ -44,6 +66,9 @@ increment by 1
 start with 1000
 cache 10;
 
+--删除表中重复数据
+delete from dynstate d where rowid>
+(select min(rowid) from dynstate b where b.ids=d.ids and b.kind=d.kind)
 
 /*管理员信息表*/
 CREATE TABLE admins(
@@ -112,6 +137,14 @@ CREATE TABLE favorite(
    fname VARCHAR2(30),
    ftime VARCHAR2(30)
 );
+create sequence seq_favorite start with 10000;
+insert into favorite
+select seq_favorite.nextval||'', 
+''||ceil(dbms_random.value(10000,11000)),
+dbms_random.string('l',dbms_random.value(10, 20)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 3000;
+
+
 drop table FAVORITE
 select * from FAVORITE where fcreid='1003';
 /*话题表
@@ -371,7 +404,7 @@ select ''||ceil(dbms_random.value(10000,11000)),
 'GR',
 '',
 '2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
-'' from dual connect by level <= 2000;
+'' from dual connect by level <= 3000;
 --关注话题
 insert into dynstate
 select ''||ceil(dbms_random.value(10000,11000)),
@@ -379,7 +412,7 @@ select ''||ceil(dbms_random.value(10000,11000)),
 'GH',
 ''||ceil(dbms_random.value(1000,1015)),
 '2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
-'' from dual connect by level <= 3000;
+'' from dual connect by level <= 4000;
 --点赞文章
 insert into dynstate
 select ''||ceil(dbms_random.value(10000,11000)),
@@ -387,7 +420,15 @@ select ''||ceil(dbms_random.value(10000,11000)),
 'DW',
 ''||ceil(dbms_random.value(10000,13000)),
 '2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
-'' from dual connect by level <= 6000;
+'' from dual connect by level <= 9000;
+--点赞问题
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,11000)),
+'',
+'DQ',
+''||ceil(dbms_random.value(10000,13000)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'' from dual connect by level <= 9000;
 --点赞回复
 insert into dynstate
 select ''||ceil(dbms_random.value(10000,11000)),
@@ -395,7 +436,7 @@ select ''||ceil(dbms_random.value(10000,11000)),
 'DH',
 ''||ceil(dbms_random.value(10000,13000)),
 '2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
-'' from dual connect by level <= 6000;
+'' from dual connect by level <= 9000;
 select * from dynstate PARTITION (GR)
 
 
@@ -436,6 +477,9 @@ where uids=1001;
 select * from REPLY where remitid=1001
 select * from users where uids=1001
 
+<<<<<<< HEAD
+drop table explore;
+=======
 select * from DYNSTATE where kind='GH' 
 
 select q.*,t.sum 
@@ -467,6 +511,7 @@ select * from question q,
   insert into reply(rid,reqid,rkind,remitid,rreceid,rcontent,rtime)
  values('2','3','Q','1003','1001','hhh','2017-4-8');
 
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 create table explore(
    ids VARCHAR2(30),  --文章或问题id
    kind VARCHAR2(4),  --文章还是问题
@@ -477,17 +522,33 @@ create table explore(
    uids VARCHAR2(30),  --作者或最热回复者id
    author VARCHAR2(30),  --作者或最热回复者姓名
    times VARCHAR2(30),  --时间
+   praise VARCHAR2(5),  --点赞数
+   collect  VARCHAR2(5),  --收藏数
    checks VARCHAR2(2) --是否以核查
 );
 
+<<<<<<< HEAD
+select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks from QUESTION q, 
+(select * from topics t, 
+(select * from users u, 
+(select * from reply, 
+(select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids order by count(ids)DESC)
+where counts>8 and id=rid and rkind='Q' )r 
+where u.uids=r.remitid)r
+where t.tid=r.rtid)rd 
+where q.qid=rd.reqid
 
+select count(0) from dynstate PARTITION(DH) where ids='12774'
+select * from question where qid='12774'
+=======
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 select count(0) from explore where checks='n'
 select e.*,rownum rn from explore e  where checks='n' and rownum>1
 select * from(
 select inside.* ,rownum rn from(
 select * from explore where checks='n' order by 1 desc) inside where rownum<=#{currPage}*#{})where rn>(1-1)*9
 select * from explore
-drop table explore
 create table infomation(
    selfname VARCHAR2(30), --发件人用户名
    aimname VARCHAR2(30), --收件人用户名
@@ -667,4 +728,23 @@ select
 (select count(fid) from favorite where fcreid='1003') fav
 from dual;
 select * from users where uids='1003'
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+select *  from dynstate PARTITION(DQ)
+
+      select count(w.ids),w.ids from dynstate PARTITION(DQ) w, 
+       (select q.qtid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,
+           (select * from users u,
+	         (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10001')d
+	       where u.uids=d.aimid)ud
+        where q.qautid=ud.uids AND 24>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24)uud
+       where uud.ids=w.ids group by w.ids
+       
+       
+select to_number( SYSDATE- to_date('2017-12-15','yyyy-mm-dd')) from dual
+=======
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git

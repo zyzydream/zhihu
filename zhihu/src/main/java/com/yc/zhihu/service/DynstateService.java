@@ -49,4 +49,8 @@ public interface DynstateService {
 	List<ListAllMy> showessays(Object obj);
 	
 	List<ListAllMy> showscolumns(Object obj);
+
+	int praise(Dynstate dynstate);
+
+	int collect(Dynstate dynstate);
 }

@@ -14,6 +14,7 @@ public class Essay {
 	 private String ttopic;
 	 private String uname;
 	 private String usign;
+	 private String tpic;
 	 private List<Users> users;
 	 public Essay() {
 		// TODO Auto-generated constructor stub
@@ -101,12 +102,23 @@ public class Essay {
 	public void setEtid(String etid) {
 		this.etid = etid;
 	}
+	
+	
+
+	public String getTpic() {
+		return tpic;
+	}
+
+	public void setTpic(String tpic) {
+		this.tpic = tpic;
+	}
 
 	@Override
 	public String toString() {
 		return "\nEssay [eid=" + eid + ", eautid=" + eautid + ", econtent=" + econtent + ", etime=" + etime + ", etitle="
 				+ etitle + ", escid=" + escid + ", etid=" + etid + ", ttopic=" + ttopic + ", uname=" + uname
-				+ ", usign=" + usign + ", users=" + users + "]";
+				+ ", usign=" + usign + ", tpic=" + tpic + ", users=" + users + "]";
 	}
+
 	
 }

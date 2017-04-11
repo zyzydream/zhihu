@@ -10,6 +10,7 @@
             select * from users
 		) inside where ${pageSize}*${currPage}>=rownum)where rn>(${currPage}-1)*${pageSize}
     </select>
+    
     <select id="count" resultType="int">
        select count(0) from users 
     </select>

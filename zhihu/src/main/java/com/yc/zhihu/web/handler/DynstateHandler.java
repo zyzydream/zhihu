@@ -173,6 +173,18 @@ public class DynstateHandler {
 		
 	}
 	
+	@RequestMapping(value="/praise",method=RequestMethod.GET)
+	@ResponseBody
+	public int praise(Dynstate dynstate,HttpServletRequest request){
+		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		return dynstateService.praise(dynstate);
+	}
 	
+	@RequestMapping(value="/collect",method=RequestMethod.GET)
+	@ResponseBody
+	public int collect(Dynstate dynstate,HttpServletRequest request){
+		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+	    return dynstateService.collect(dynstate);
+	}
 	
 }

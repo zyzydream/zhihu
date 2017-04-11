@@ -38,11 +38,11 @@ function select(self,currPage,pageSize){
 	var kinds="";
 	if(thing=="推荐头条"||thing=="已审核"){
     	$.get("explore/y?currPage="+currPage+"&&pageSize="+pageSize,function(data){
-    		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>操作</th></tr></thead><tbody>';
+    		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>点赞数</th><th>收藏数</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.rows.length;i++){
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].ids+'</td><td>'+data.rows[i].kind+'</td><td>'+data.rows[i].title+'</td><td>'+data.rows[i].content.substr(0,10)+'...</td><td>'+data.rows[i].tname+'</td><td>'+data.rows[i].author+'</td><td>'+data.rows[i].times+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\',\''+data.rows[i].title+'\',\''+data.rows[i].content+'\',\''+data.rows[i].tname+'\',\''+data.rows[i].author+'\',\''+data.rows[i].times+'\')">查看详情</a></td></tr>';
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].ids+'</td><td>'+data.rows[i].kind+'</td><td>'+data.rows[i].title+'</td><td>'+data.rows[i].content.substr(0,10)+'...</td><td>'+data.rows[i].tname+'</td><td>'+data.rows[i].author+'</td><td>'+data.rows[i].times+'</td><td>'+data.rows[i].praise+'</td><td>'+data.rows[i].collect+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\',\''+data.rows[i].title+'\',\''+data.rows[i].content+'\',\''+data.rows[i].tname+'\',\''+data.rows[i].author+'\',\''+data.rows[i].times+'\')">查看详情</a></td></tr>';
     		}
-    		info+='<tr><td colspan="9"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1033px"></div></td></tr>';
+    		info+='<tr><td colspan="11"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1033px"></div></td></tr>';
     		info+='</tbody>';
     		document.getElementById("table").innerHTML = info;
     		var infos="";
@@ -95,11 +95,11 @@ function select(self,currPage,pageSize){
     }else if(thing=="未审核"){
     	$.get("explore/n?currPage="+currPage+"&&pageSize="+pageSize,function(data){
     		//alert(JSON.stringify(data));
-    		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>操作</th></tr></thead><tbody>';
+    		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>点赞数</th><th>收藏数</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.rows.length;i++){
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].ids+'</td><td>'+data.rows[i].kind+'</td><td>'+data.rows[i].title+'</td><td>'+data.rows[i].content.substr(0,10)+'...</td><td>'+data.rows[i].tname+'</td><td>'+data.rows[i].author+'</td><td>'+data.rows[i].times+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\',\''+data.rows[i].title+'\',\''+data.rows[i].content+'\',\''+data.rows[i].tname+'\',\''+data.rows[i].author+'\',\''+data.rows[i].times+'\')">查看详情</a><a class="btn btn-default" role="button" onclick="ok(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\')">审核通过</a></td></tr>';
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].ids+'</td><td>'+data.rows[i].kind+'</td><td>'+data.rows[i].title+'</td><td>'+data.rows[i].content.substr(0,10)+'...</td><td>'+data.rows[i].tname+'</td><td>'+data.rows[i].author+'</td><td>'+data.rows[i].times+'</td><td>'+data.rows[i].praise+'</td><td>'+data.rows[i].collect+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\',\''+data.rows[i].title+'\',\''+data.rows[i].content+'\',\''+data.rows[i].tname+'\',\''+data.rows[i].author+'\',\''+data.rows[i].times+'\')">查看详情</a><a class="btn btn-default" role="button" onclick="ok(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\')">审核通过</a></td></tr>';
     		}
-    		info+='<tr><td colspan="9"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1031px"></div></td></tr>';
+    		info+='<tr><td colspan="11"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1031px"></div></td></tr>';
     		info+='</tbody>';
     		document.getElementById("table").innerHTML = info;
     		var infos="";
@@ -220,11 +220,11 @@ function sendemail(name){
 }
 
 function finddynstate(selfid,aimid,kind,ids,times){
-	alert(kind);
-	console.log(document.getElementById("kind"));
-	document.getElementById("selfid").innerHTML=kind;
+	alert(ids);
+	console.log(document.getElementById("ids"));
+	document.getElementById("selfid").innerHTML=selfid;
 	document.getElementById("aimid").innerHTML=aimid;
-	document.getElementById("kind").innerHTML=kind;
+	document.getElementById("kinds").innerHTML=kind;
 	document.getElementById("ids").innerHTML=ids;
 	document.getElementById("times").innerHTML=times;
 }
