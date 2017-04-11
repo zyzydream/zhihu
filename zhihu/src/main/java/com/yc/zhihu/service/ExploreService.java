@@ -18,6 +18,8 @@ public interface ExploreService {
 	void update(List<Explore> explores);
 
 	int submit(Explore explore);
+
+	void updateExplore();
 	
 
 }

@@ -105,5 +105,10 @@ public class ExploreServiceImpl implements ExploreService{
 			exploreMapper.update(explore);
 		}
 	}
+	
+	@Override
+	public void updateExplore(){
+		exploreMapper.updateExplore();
+	}
 
 }
