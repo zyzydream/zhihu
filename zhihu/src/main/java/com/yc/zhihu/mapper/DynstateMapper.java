@@ -54,4 +54,8 @@ public interface DynstateMapper {
 	boolean updatetop(Object users);
 	
 	List<Users> showtopimg(Object users); 
+	
+	List<ListAllMy> showessay(Object object);
+	
+	List<ListAllMy> showscolumn(Object obj);
 }

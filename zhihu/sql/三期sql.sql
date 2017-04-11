@@ -63,6 +63,11 @@ CREATE TABLE essay(
    escid VARCHAR2(30),
    etid VARCHAR2(10)
 );
+
+select e.etitle title,e.etime times,e.eid tid,'E' kind ,u.upic tpic from essay e ,users u
+where eautid='1001' and  uids='1001';
+
+
 create sequence seq_essay start with 10000;
 insert into essay
 select seq_essay.nextval||'', 
@@ -82,7 +87,11 @@ INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES('1001','1003','dd
 select * from question
 
 select e.*,u.uname,u.usign,u.upic from ESSAY e,USERS u where eautid=1003
-
+select * from users
+insert into users(uids,uname,usign,upic,upassword,uemail)
+values('1002','hh','hhhh','/zhihu/images/1.jpg','a','365@qq.com')
+insert into users(uids,uname,usign,upic,upassword,uemail)
+values('1003','rr','hff','/zhihu/images/1.jpg','a','366@qq.com')
 /*专栏表*/
 CREATE TABLE scolumn(
    scid VARCHAR2(30),
@@ -90,6 +99,12 @@ CREATE TABLE scolumn(
    scname VARCHAR2(20),
    sctime VARCHAR2(30)
 );
+select * from scolumn where sccreid='1001';
+insert into scolumn(scid,sccreid,scname,sctime)
+values('101','1002','我的专栏','2017-4-9');
+insert into scolumn(scid,sccreid,scname,sctime)
+values('102','1003','专栏哈哈','2017-4-9');
+
 /*收藏夹表*/
 CREATE TABLE favorite(
    fid VARCHAR2(30),
@@ -116,17 +131,13 @@ dbms_random.string('l',dbms_random.value(5, 6)),
 drop sequence seq_topics
 drop table topics
 
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 select * from topics
 
 
 insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/game.png');
 insert into topics(tid,ttopic,tstId,tpic)values('10002','计算机','10001','images/life.jpg');
 insert into topics(tid,ttopic,tstId,tpic)values('10003','生活' ,'','images/life.jpg');
-<<<<<<< HEAD
 select * from topics where tid='1000'
 insert into topics(tid,ttopic)values('10001','编程');
 insert into topics(tid,ttopic,tstId)values('10002','计算机','10001');
@@ -134,9 +145,7 @@ insert into topics(tid,ttopic,tstId,tpic)values('10001','编程' ,' ','images/ga
 insert into topics(tid,ttopic,tstId,tpic)values('1000','编程' ,'','images/game.png');
 insert into topics(tid,ttopic,tstId,tpic)values('1001','计算机','10001','images/life.jpg');
 insert into topics(tid,ttopic,tstId,tpic)values('1002','生活' ,'','images/life.jpg');
-=======
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 select 'GH' kind, t.tid tid,t.ttopic tname,t.tpic content,'15' times,'4564' uids,u.uname author from users u,(select * from Topics tt where tt.tid='10001') t where u.uids='25'
 update TOPICS set tpic = 'images/life.jpg' where tpic='images/life.png'
 /*问题表
@@ -241,6 +250,93 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
+
+--外连接 查询我关注的人有多少个回答
+select count(rid),d.aimid from reply r 
+full join (select aimid from dynstate where selfid='1001' order by aimid) d
+on r.remitid=d.aimid group by d.aimid
+
+select count(rid) from reply where remitid=1002
+select count(rid) from reply where remitid=1003
+
+
+--右连接 查询我关注的人有多少文章
+select count(eid),b.aimid from essay e
+right join (select aimid from dynstate where selfid='1001' order by aimid) b
+on e.eautid=b.aimid group by b.aimid
+
+--右连接 查询我关注的人有多少个人关注
+select count(dd.selfid),c.aimid from dynstate dd
+right join (select aimid from dynstate where selfid='1001' order by aimid) c
+on dd.aimid=c.aimid group by c.aimid
+
+select u.uname,u.upic,u.usign,e.aimid from users u
+right join (select aimid from dynstate where selfid='1001' order by aimid) e
+on u.uids=e.aimid 
+
+select 
+(select count(rid) from reply r 
+full join (select aimid from dynstate where selfid='1001' order by aimid) d
+on r.remitid=d.aimid ) x,
+(select count(eid),b.aimid from essay e
+right join (select aimid from dynstate where selfid='1001' order by aimid) b
+on e.eautid=b.aimid ) y,
+(select count(dd.selfid),c.aimid from dynstate dd
+right join (select aimid from dynstate where selfid='1001' order by aimid) c
+on dd.aimid=c.aimid ) z
+from dual
+
+
+
+
+select * from reply
+select * from essay where eautid='1002'
+
+select count(eid) from essay where eautid='1002'
+
+select count(rid) from reply where remitid='1003'
+insert into reply(rid,reqid,rkind,remitid,rreceid,rcontent,rtime)
+values('3','2','Q','1002','1001','uuu','2017-4-9')
+
+delete  from reply where remitid='1002' 
+
+--是否相互关注
+select d.aimid myatten from dynstate d,
+(select aimid from dynstate where selfid='1001' order by aimid) t
+where d.selfid=t.aimid 
+
+select aimid from dynstate where selfid='1003'
+select aimid from dynstate where selfid='1002'
+
+select * from dynstate;
+
+insert into dynstate(selfid,aimid,kind,ids,times)
+values('1001','1002','GZ','101','2017-4-9');
+insert into dynstate(selfid,aimid,kind,ids,times)
+values('1001','1003','GZ','102','2017-4-9');
+insert into dynstate(selfid,aimid,kind,ids,times)
+values('1002','1003','GZ','102','2017-4-9');
+insert into dynstate(selfid,aimid,kind,ids,times)
+values('1003','1001','GZ','102','2017-4-9');
+
+
+select ids from dynstate PARTITION(GZ) where selfid='1001'
+
+select s.scname tname,u.uname uname,t.times times,'S' kind,u.upic tpic
+from scolumn s,
+(select times from dynstate PARTITION(GZ) where selfid='1001')t,
+Users u,
+(select ids from dynstate PARTITION(GZ) where selfid='1001') x
+where 
+s.scid=x.ids
+and uids=(select ss.sccreid from scolumn ss where ss.scid=s.scid)
+
+
+
+select * from users
+
+select sccreid from scolumn where scid=(select ids from dynstate PARTITION(GZ) where selfid='1001')
+
 select
 (select * from TOPICS where tid=(select ids from dynstate PARTITION(GH) where selfid='1003')) ,
 (select * from scolumn  where sccreid=(select ids from dynstate PARTITION(GZ) where selfid='1003')) ,
@@ -571,3 +667,4 @@ select
 (select count(fid) from favorite where fcreid='1003') fav
 from dual;
 select * from users where uids='1003'
+
