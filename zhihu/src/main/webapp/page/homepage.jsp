@@ -40,7 +40,6 @@
 					<li><a href="/people/yan-ling-78-98"> <i
 							class="zg-icon zg-icon-dd-home"></i>我的主页
 					</a></li>
-
 					<li><a href="/inbox"> <i class="zg-icon zg-icon-dd-pm"></i>私信
 							<span id="zh-top-nav-pm-count"
 							class="zu-top-nav-pm-count zg-noti-number"
@@ -88,8 +87,6 @@
 						data-za-c="view_home" data-za-a="visit_home"
 						data-za-l="top_navigation_home">首页</a></li>
 
-
-
 					<li class="zu-top-nav-li " id="zh-top-nav-explore"><a
 						class="zu-top-nav-link" href="/zhihu/page/explore.jsp">发现</a></li>
 
@@ -97,7 +94,6 @@
 						class="zu-top-nav-link" href="javascript:void(0)"
 						id="zh-top-nav-count-wrap" role="button"><span
 							class="mobi-arrow"></span>消息</a></li>
-
 				</ul>
 				<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard"
 					id="zh-top-nav-live-new" role="popup" tabindex="0">
@@ -306,12 +302,9 @@
 				<div id="zh-footer" class="zh-footer">
 					<div class="content zg-wrap clearfix">
 						<ul>
-
 							<li><a href="https://liukanshan.zhihu.com" target="_blank">刘看山</a></li>
-
 							<li><a href="/question/19581624" target="_blank">知乎指南</a></li>
 							<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
-
 							<li><a href="/app" target="_blank">移动应用</a></li>
 							<li><a href="/careers">加入知乎</a></li>
 							<li><a href="/terms" target="_blank">知乎协议</a></li>
