@@ -331,7 +331,7 @@
 						</tr>
 						<tr>
 							<td>动态类型 :</td>
-							<td><label id="kind"></label></td>
+							<td><label id="kinds"></label></td>
 						</tr>
 						<tr>
 							<td>有关id:</td>

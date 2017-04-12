@@ -71,6 +71,21 @@ public class DynstateHandler {
 			all.add(y);
 		}
 		}
+		
+		List<ListAllMy> zs=dynstateService.showessays(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		if(zs!=null){
+			for(ListAllMy z:zs){
+				
+				all.add(z);
+			}
+		}
+		
+		List<ListAllMy> ms=dynstateService.showscolumns(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		if(ms!=null){
+			for(ListAllMy m:ms){
+				all.add(m);
+			}
+		}
 
 		return all;
 	}
@@ -105,9 +120,37 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/m8",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Users> DynstateMyAttention(HttpServletRequest request){
+	public List DynstateMyAttention(HttpServletRequest request){
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.listAttention(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<Users> xs=dynstateService.myatteninfo(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<Total> ys=dynstateService.listsw(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<Total> zs=dynstateService.listess(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<Total> ms=dynstateService.listpeos(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		ys.addAll(zs);
+		ys.addAll(ms);
+		System.out.println("A"+ys);
+		return ys;
+	}
+	
+	@RequestMapping(value="/m81",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Total> DynstateMyAttention1(HttpServletRequest request){
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.listsw(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	@RequestMapping(value="/m82",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Total> DynstateMyAttention2(HttpServletRequest request){
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.listess(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	@RequestMapping(value="/m83",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Total> DynstateMyAttention3(HttpServletRequest request){
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.listpeos(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
 
@@ -129,24 +172,61 @@ public class DynstateHandler {
 		return dynstateService.sumT(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
-	@RequestMapping(value="/upload",method=RequestMethod.GET)
+	@RequestMapping(value="/showtoppic",method=RequestMethod.GET)
 	@ResponseBody
-	public boolean Upload(@RequestParam("picData") MultipartFile picData,Users users){
-		String picPath=null;
+	public List<Users> show(HttpServletRequest request){	
 		
+		return dynstateService.showtop(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	@RequestMapping(value="upload")
+	@ResponseBody
+	public boolean modify(@RequestParam("picData") MultipartFile picData,Users user){
+		String picPath=null;
 		if(picData!= null && !picData.isEmpty()){ //判断是否有文件上传
 			try {
 				picData.transferTo(ServletUtil.getUploadFile(picData.getOriginalFilename()));
-				picPath=ServletUtil.UPLOAD_TOP_DIR+picData.getOriginalFilename();
+				picPath=ServletUtil.LOGIN_UPLOAD_DIR+picData.getOriginalFilename();
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
 		}
-		users.setToppic(picPath);
-	
-		return dynstateService.modifyUserPic(users);
+		
+		user.setToppic(picPath);
+		
+		System.out.println("上传图片 ==》user"+ user);
+		System.out.println("modify: user ==>"+user);
+		
+		return  dynstateService.updatetoppics(user); //异步响应数据
+		
 	}
 	
+	@RequestMapping(value="/praise",method=RequestMethod.GET)
+	@ResponseBody
+	public int praise(Dynstate dynstate,HttpServletRequest request){
+		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		return dynstateService.praise(dynstate);
+	}
 	
+	@RequestMapping(value="/collect",method=RequestMethod.GET)
+	@ResponseBody
+	public int collect(Dynstate dynstate,HttpServletRequest request){
+		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+	    System.out.println(dynstate);
+		return dynstateService.collect(dynstate);
+	}
 	
+	@RequestMapping(value="/delpraise",method=RequestMethod.GET)
+	@ResponseBody
+	public int  delpraise(Dynstate dynstate,HttpServletRequest request){
+		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		return dynstateService.delpraise(dynstate);
+	}
+	
+	@RequestMapping(value="/delcollect",method=RequestMethod.GET)
+	@ResponseBody
+	public int  delcollect(Dynstate dynstate,HttpServletRequest request){
+		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		return dynstateService.delcollect(dynstate);
+	}
 }

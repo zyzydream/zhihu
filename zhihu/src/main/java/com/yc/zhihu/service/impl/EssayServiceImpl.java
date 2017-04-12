@@ -1,5 +1,7 @@
 package com.yc.zhihu.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class EssayServiceImpl implements EssayService {
 	@Override
 	public boolean add(Essay essay) {
 		return essayMapper.addEssay(essay);
+	}
+
+	@Override
+	public List<Essay> listAll(String eid) {
+		return essayMapper.findEssay(eid);
 	}
 
 }

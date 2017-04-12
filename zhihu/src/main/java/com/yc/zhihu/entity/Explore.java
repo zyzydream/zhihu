@@ -13,7 +13,45 @@ public class Explore {
 	private String author;
 	private String times;
 	private String checks;
+	private int praise;
+	private int collect;
+	private String ypraise;
+	private String ycollent;
+	
+	public String getYpraise() {
+		return ypraise;
+	}
+
+	public void setYpraise(String ypraise) {
+		this.ypraise = ypraise;
+	}
+
+	public String getYcollent() {
+		return ycollent;
+	}
+
+	public void setYcollent(String ycollent) {
+		this.ycollent = ycollent;
+	}
+
 	public Explore() {}
+	
+	public int getPraise() {
+		return praise;
+	}
+
+	public void setPraise(int praise) {
+		this.praise = praise;
+	}
+
+	public int getCollect() {
+		return collect;
+	}
+
+	public void setCollect(int collect) {
+		this.collect = collect;
+	}
+
 	public String getUsign() {
 		return usign;
 	}
@@ -83,7 +121,7 @@ public class Explore {
 	@Override
 	public String toString() {
 		return "Explore [ids=" + ids + ", kind=" + kind + ", title=" + title + ", content=" + content + ", tid=" + tid
-				+ ", tname=" + tname + ", uids=" + uids + ", author=" + author + ", times=" + times + ", checks="
-				+ checks + "]\n";
+				+ ", tname=" + tname + ", usign=" + usign + ", uids=" + uids + ", author=" + author + ", times=" + times
+				+ ", checks=" + checks + ", praise=" + praise + ", collect=" + collect + "]\n";
 	}	
 }

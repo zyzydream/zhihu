@@ -2,6 +2,8 @@ package com.yc.zhihu.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
@@ -30,8 +32,11 @@ public interface UserService {
 
 	boolean listprofession(Users users);
 
+	List<Explore> listExplore(Users user);
 	List<Users> listTp(Users users);
 
 	List<Users> findProfession(Users users);
+
+	List<Explore> yPraiseAndCollect(List<Explore> explores, HttpServletRequest request);
 
 }

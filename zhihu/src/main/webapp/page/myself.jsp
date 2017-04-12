@@ -18,7 +18,8 @@
 	src="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"
 	tppabs="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"></script>
 <link type="text/css" rel="stylesheet" href="css/myself.css">
-
+<!-- <link type="text/css" rel="stylesheet" href="bootstrap-3.3.4/bootstrap-fileinput-master/css/fileinput.css">
+ -->
 </head>
 <body>
 	<div>
@@ -92,16 +93,19 @@
 				<div class="Card">
 					<div class="ProfileHeader-userCover">
 						<div class="UserCoverEditor">
-							<form id="uploadForm" method="post" enctype="multipart/form-data">
-								<div class="UserCoverGuide">
+								<div class="UserCoverGuide" >						
 									<div class="UserCoverGuide-inner">
+									
 										<div class="UserCoverGuide-buttonContainer">
-											<button class="Button DynamicColorButton" type="button"
-												id="changgeimage" onclick="updatePic()">上传封面图片</button>
+										<form enctype="multipart/form-data" method="post" id="uploads"> 
+											<input class="Button DynamicColorButton" type="file"
+												id="changgeimage" name="toppic" onchange="chgPic(this)"
+												onclick="updatePic()"  />
+											<img src="/zhihu/images/1.jpg" id="pic" width="100" height="100">
+										</form>
 										</div>
 									</div>
 								</div>
-							</form>
 								<div class="UserCover UserCover--colorBlock"></div>
 								<input type="file" accept="image/png,image/jpeg"
 									style="display: none;">
@@ -111,19 +115,11 @@
 						<div class="ProfileHeader-main">
 							<div class="UserAvatarEditor ProfileHeader-avatar"
 								style="top: -74px;">
-								<div class="UserAvatar">
+								<div class="UserAvatar" >
+									<div id="hhh"></div>
 									<img class="Avatar Avatar--large UserAvatar-inner"
 										src="/zhihu/images/touxiang.jpg"
 										style="width: 160px; height: 160px;">
-								</div>
-								<div class="Mask UserAvatarEditor-mask Mask-hidden">
-									<img src="/zhihu/images/touxiang.jpg">
-									<div
-										class="Mask-mask Mask-mask--black UserAvatarEditor-maskInner"></div>
-									<div class="Mask-content">
-										<img src="/zhihu/images/touxiang.jpg">
-										<div class="UserAvatarEditor-maskInnerText">修改我的头像</div>
-									</div>
 								</div>
 								<input type="file" accept="image/png,image/jpeg"
 									style="display: none;">
@@ -151,9 +147,12 @@
 				<div class="panel panel-default"
 					style="width: 660px; margin-left: 15px;">
 					<div class="panel-body">
-						<span id="myself"> <span id="myself1"> </span> <span
-							id="myself2"> </span>
-
+						<span id="myself"> 
+							<span id="myself1"> </span> 
+							<span id="myself2"> 
+				
+							</span>
+							
 						</span>
 					</div>
 				</div>
@@ -202,5 +201,6 @@
 		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
 	<script type="text/javascript" src="js/myself.js"></script>
 	<script src='js/layer/layer.js' type="text/javascript"></script>
-</body>
+<!-- 	<script type="text/javascript" src="bootstrap-3.3.4/bootstrap-fileinput-master/js/fileinput.js"></script>
+ --></body>
 </html>

@@ -1,4 +1,16 @@
 function myansrer33(){
+	$.get("dynstate/showtoppic",function(data){
+		var a="";
+		if(data.length>0){
+			for(var i=0;i<data.length;i++){
+				a+='<img class="Avatar Avatar--large UserAvatar-inner"'
+					'src="'+data[i].upic+'"'
+					'style="width: 160px; height: 160px;">';
+			}
+		}
+		document.getElementById("hhh").innerHTML = a;
+	},'json');
+
 	$.get("dynstate/a1",function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
@@ -52,6 +64,31 @@ $.get("dynstate/m1",function(data){
 					+'<a class="TopicLink" href="/topic/19966000" target="_blank"><div class="Popover">'
 					+'<div id="Popover-12304-93779-toggle" aria-haspopup="true" aria-expanded="false" '
 					+'aria-owns="Popover-12304-93779-content">'+data[i].tname+'</div></div></a></h2></div></div>';
+			}else if(data[i].kind=='E'){
+				myanswers+='<div class="List-item"><div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="featurette-heading" style="font-size: 20px;">'
+					+'<span class="text-muted" style="font-size: 13px">发表了文章</span><br />'+data[i].title+'</h2>'
+					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].tpic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
+					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
+					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
+					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p>'
+					+'<p class="text-muted" style="font-size: 14px; color:">发布于'+data[i].times+'</p><span> <a href="#" style="font-size: 13px; font-weight: 40">阅览'
+					+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a href="#" style="font-size: 13px; font-weight: 40">点赞 '
+					+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
+					+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
+					+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
+					+'</span></div></div></div>';
+			}else if(data[i].kind=='S'){
+				myanswers+='<div class="List-item"><div class="List-itemMeta">'
+					+'<div class="ActivityItem-meta"><span class="ActivityItem-metaTitle">关注了'+data[i].uname+'的专栏</span>'
+					+'</div></div><div class="ContentItem-main">'
+					+'<div class="ContentItem-image"><a class="TopicLink" href="/topic/19966000" target="_blank">'
+					+'<div class="Popover"><div id="Popover-12300-80678-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-12300-80678-content">'
+					+'<img class="Avatar Avatar--large TopicLink-avatar" src="'+data[i].tpic+'"></div>'
+					+'</div></a></div><div class="ContentItem-head"><h2 class="ContentItem-title">'
+					+'<a class="TopicLink" href="/topic/19966000" target="_blank"><div class="Popover">'
+					+'<div id="Popover-12304-93779-toggle" aria-haspopup="true" aria-expanded="false" '
+					+'aria-owns="Popover-12304-93779-content">'+data[i].tname+'<span>'
+					+'<p class="text-muted" style="font-size: 14px; color:">关注于'+data[i].times+'</p></span></div></div></a></h2></div></div>';
 			}
 		}
 	}else{
@@ -248,6 +285,7 @@ function myfavorite(){
 }
 
 function MyAttention(){
+	var myattention="";
 	$.get("dynstate/a1",function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
@@ -272,7 +310,7 @@ function MyAttention(){
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
 	$.get("dynstate/m8",function(data){
-		var myattention="";
+
 		for(var i=0;i<data.length;i++){
 			myattention+='<div class="List-item">'
 				+'<div class="ContentItem" ><div class="ContentItem-main"><div class="ContentItem-image">'
@@ -284,18 +322,26 @@ function MyAttention(){
 				+'<div class="UserItem-title"><span class="UserLink UserItem-name">'
 				+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
 				+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data[i].uname+'</a></div>'
-				+'</div></span><span class="FollowStatus">相互关注</span></div></h2>'
+				+'</div></span><span class="FollowStatus" id="showattenyn">相互关注</span></div></h2>'
 				+'<div class="ContentItem-meta"><div><div class="RichText">'+data[i].usign+'</div>'
-				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data[i].ansum+'回答</span>'
-				+'<span class="ContentItem-statusItem">'+data[i].essum+'文章</span><span class="ContentItem-statusItem">'+data[i].attsum+' 关注者</span>'
-				+'</div></div></div></div><div class="ContentItem-extra"><button class="Button FollowButton Button--primary Button--grey" type="button" onclick="touch()">'
+				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data[i].myattenaw+'回答</span>'
+				+'<span class="ContentItem-statusItem">'+data[i].essum+'文章</span>'
+				+'<span class="ContentItem-statusItem">'+data[i].attsum+' 关注者</span>'
+				+'</div></div></div></div><div class="ContentItem-extra"><button class="Button FollowButton Button--primary Button--grey" id="attenbtn" type="button" onclick="touch()">'
 				+'已关注</button></div></div></div></div>'
 				+'</span></div></div>';
 		}
 
 		document.getElementById("myself2").innerHTML = myattention;
 	},'json');	
+
+
+
+
+
 }
+
+
 
 function myatten(){
 	$.get("dynstate/me",function(data){
@@ -304,9 +350,9 @@ function myatten(){
 }
 
 function touch(){
-	$.get("dynstate/touch",function(data){
-
-	})
+	/*$.get("dynstate/touch",function(data){*/
+	doucument.getElementById(attenbtn).innerText="关注";
+	/*	})*/
 
 }
 
@@ -320,16 +366,42 @@ $('#changgeimage').hover(function() {
 });
 
 function updatePic(){
-	$.get("dynstate/upload",function(data){
-		if(data==""){
-			return ;
+	/*$.get("dynstate/upload",function(data){
+		alter(data);
+		var img="";
+		for(var i=0;i<data.length;i++){
+			img+='<img width="100" src="' + data[i].toppic + '"/>'
+			+'<form enctype="multipart/form-data"><input class="Button DynamicColorButton" type="file"'
+			+' id="changgeimage" name="toppic" onchange="chgPic(this)" onclick="updatePic()" />'
+			+'</form>';
 		}
-
-		if(data.trim() == "true"){
-			$(".UserCoverEditor").datagrid("reload"); //刷新修改数据
-		}
-	})
+		document.getElementById("UserCoverGuide-inner").innerHTML = img;
+	},'json');
+	 */
 }
+
+function chgPic(obj){
+	$("#changgeimage").attr("src", window.URL.createObjectURL(obj.files[0]));
+}
+
+$("#uploads").form({
+	url:"user/upload", 
+	success:function(data){ 
+		if(data.trim() == "true"){
+			for(var i=0;i<data.length;i++){
+				$("#pic").datagrid("reload"); //刷新修改数据
+				/*$("#pic").attr("src", data[i].toppic);*/
+			}
+		}
+	}
+});
+
+
+
+
+
+
+
 
 
 

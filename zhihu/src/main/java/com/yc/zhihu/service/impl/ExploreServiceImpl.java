@@ -10,6 +10,7 @@ import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Strings;
 import com.yc.zhihu.mapper.ExploreMapper;
+import com.yc.zhihu.mapper.UserMapper;
 import com.yc.zhihu.service.ExploreService;
 
 @Service("exploreService")
@@ -17,6 +18,8 @@ public class ExploreServiceImpl implements ExploreService{
 
 	@Autowired
 	private ExploreMapper exploreMapper;
+	@Autowired
+	private UserMapper userMapper;
 	
 	@Override
 	public List<Explore> list(Object user) {
@@ -70,11 +73,25 @@ public class ExploreServiceImpl implements ExploreService{
 		List<Explore> questionExplore = exploreMapper.findUpdateW();
 		for(Explore e:essayExplore){
 			if(find(e.getIds(),e.getKind())==null){
+				String kind=e.getKind();
+				e.setKind("DW");
+				e.setPraise(userMapper.statisticsPraise(e));
+				e.setKind("SW");
+				e.setCollect(userMapper.statisticsCollect(e));
+				e.setKind(kind);
 				all.add(e);
 			}
 		}
 		for(Explore e:questionExplore){
+			System.out.println(questionExplore);
 			if(find(e.getIds(),e.getKind())==null){
+				String kind=e.getKind();
+				e.setKind("DH");
+				e.setPraise(userMapper.statisticsPraise(e));
+				e.setKind("SH");
+				e.setCollect(userMapper.statisticsCollect(e));
+				e.setKind(kind);
+				System.out.println(e);
 				all.add(e);
 			}
 		}
@@ -87,6 +104,11 @@ public class ExploreServiceImpl implements ExploreService{
 		for(Explore explore:explores){
 			exploreMapper.update(explore);
 		}
+	}
+	
+	@Override
+	public void updateExplore(){
+		exploreMapper.updateExplore();
 	}
 
 }

@@ -28,7 +28,6 @@ public interface DynstateService {
 	
 	List<Favorite> listFavorite(Object obj);
 	
-	List<Users> listAttention(Object obj);
 	
 	boolean modifyUserPic(Users users);
 	
@@ -43,4 +42,26 @@ public interface DynstateService {
 	List<ListAllMy> listtopic(Object obj);
 	
 	boolean updatetoppics(Object object);
+	
+	List<Users> showtop(Object obj);
+	
+	List<ListAllMy> showessays(Object obj);
+	
+	List<ListAllMy> showscolumns(Object obj);
+
+	int praise(Dynstate dynstate);
+
+	int collect(Dynstate dynstate);
+	
+	List<Total> listsw(Object obj);
+	
+	List<Total> listess(Object obj);
+	
+	List<Total> listpeos(Object obj);
+	
+	List<Users> myatteninfo(Object obj);
+
+	int delpraise(Dynstate dynstate);
+
+	int delcollect(Dynstate dynstate);
 }

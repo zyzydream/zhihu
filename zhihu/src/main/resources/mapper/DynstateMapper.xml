@@ -5,26 +5,27 @@
 <!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
 <mapper namespace="com.yc.zhihu.mapper.DynstateMapper">
 	<select id="list" parameterType="PaginationBean" resultType="Dynstate">
-  select * from(
-       select inside.* ,rownum rn from(
-       select * from dynstate
+		select * from(
+		select inside.* ,rownum rn from(
+		select * from dynstate
 		<if test="sgin != 'all'">
 			PARTITION(${sgin})
 		</if>
 		<if test="sgin == 'all'">
 
 		</if>
-		) inside where ${pageSize}*${currPage}>=rownum)where rn>(${currPage}-1)*${pageSize}
+		) inside where ${pageSize}*${currPage}>=rownum)where
+		rn>(${currPage}-1)*${pageSize}
 	</select>
-    <select id="count" parameterType="PaginationBean" resultType="int">
-       select count(0) from dynstate 
-       <if test="sgin != 'all'">
+	<select id="count" parameterType="PaginationBean" resultType="int">
+		select count(0) from dynstate
+		<if test="sgin != 'all'">
 			PARTITION(${sgin})
 		</if>
 		<if test="sgin == 'all'">
 
 		</if>
-    </select>
+	</select>
 
 
 	<resultMap type="Reply" id="ReplyMap">
@@ -115,7 +116,8 @@
 		select * from question q,
 		(select count(reqid) sum,a.qid from reply,
 		(select * from question where qautid=#{uids}) a
-		where rkind='Q' and reqid=a.qid group by qid)b
+		where rkind='Q' and
+		reqid=a.qid group by qid)b
 		where q.qid=b.qid and q.qautid=#{uids}
 	</select>
 
@@ -126,24 +128,6 @@
 		where fcreid=#{uids}
 	</select>
 
-	<select id="listMyAttention" parameterType="Users" resultType="Users">
-		select uname,usign,upic,
-		(select count(remitid) from reply where
-		remitid=(select d.aimid atten from
-		DYNSTATE d where selfid=#{uids}) )
-		ansum,
-		(select count(eautid) from ESSAY where eautid=(select d.aimid
-		atten from
-		DYNSTATE d where selfid=#{uids}) ) essum,
-		(select count(1)
-		from DYNSTATE where aimid=(select d.aimid atten from
-		DYNSTATE d where
-		selfid=#{uids})) attsum
-		from dual,users
-		where uids=(select d.aimid atten
-		from
-		DYNSTATE d where selfid=#{uids})
-	</select>
 
 	<select id="totalatten" parameterType="Users" resultType="Users">
 		select
@@ -187,6 +171,103 @@
 		where
 		t.tid=ue.uids
 	</select>
+
+	<select id="showtopimg" parameterType="Users" resultType="Users">
+		select
+		u.tpic toppic,u.upic upic from users u where uids=#{uids}
+	</select>
+
+	<update id="updatetoppics" parameterType="Users">
+		update users
+		<set>
+			<if test="toppic != null">
+				tpic=#{toppic}
+			</if>
+		</set>
+		where uids=#{uids}
+	</update>
+
+	<select id="showessay" parameterType="Users" resultType="ListAllMy">
+		select
+		e.etitle title,e.etime times,e.eid tid,'E' kind ,u.upic tpic
+		,e.econtent content from
+		essay e ,users u
+		where eautid=#{uids} and
+		uids=eautid
+	</select>
+
+	<select id="showscolumn" parameterType="Users" resultType="ListAllMy">
+		select s.scname tname,u.uname uname,t.times times,'S' kind,u.upic tpic
+		from scolumn s,
+		(select times from dynstate PARTITION(GZ) where
+		selfid=#{uids})t,
+		Users u,
+		(select ids from dynstate PARTITION(GZ) where
+		selfid=#{uids}) x
+		where
+		s.scid=x.ids
+		and uids=(select ss.sccreid from
+		scolumn ss where ss.scid=s.scid)
+
+	</select>
+
+
+
+	<!-- 点赞 -->
+	<insert id="praise" parameterType="Dynstate">
+		insert into
+		dynstate(selfid,kind,ids,times)
+		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'))
+	</insert>
+	<!-- 收藏 -->
+	<insert id="collect" parameterType="Dynstate">
+		insert into
+		dynstate(selfid,kind,ids,times,cfid)
+		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'),'${cfid}')
+	</insert>
+
+
+	<select id="SumMyattensw" parameterType="Users" resultType="Total">
+		select count(rid) myattenaw from reply r
+		full join (select aimid from
+		dynstate where selfid=#{uids} order by aimid)
+		d
+		on r.remitid=d.aimid
+		group by d.aimid
+	</select>
+
+	<select id="SumMyatteness" parameterType="Users" resultType="Total">
+		select count(eid) myatteness from essay e
+		right join (select aimid from
+		dynstate where selfid=#{uids} order by aimid)
+		b
+		on e.eautid=b.aimid
+		group by b.aimid
+	</select>
+
+	<select id="SumMyattenpeos" parameterType="Users" resultType="Total">
+		select count(dd.selfid) myattenpeos from dynstate dd
+		right join (select
+		aimid from dynstate where selfid=#{uids} order by aimid)
+		c
+		on
+		dd.aimid=c.aimid group by c.aimid
+	</select>
+
+	<select id="myatteninfo" parameterType="Users" resultType="Users">
+		select u.uname,u.upic,u.usign from users u
+		right join (select aimid from dynstate where selfid=#{uids} order by aimid)
+		e
+		on u.uids=e.aimid
+	</select>
+
 	
+	<delete id="delpraise" parameterType="Dynstate">
+	   delete  DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}' 
+	</delete>
+	
+	<delete id="delcollect" parameterType="Dynstate">
+	   delete  DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}' 
+	</delete>
 	
 </mapper>
