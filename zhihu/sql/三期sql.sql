@@ -11,6 +11,7 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+select * from USERS
 insert into EXPLORE(ids)VALUES ('101');
 update USERS set tpic='images/car.png' where uids='1001'
 update explore set praise='15' , collect='4' where ids='101'
@@ -307,6 +308,12 @@ PARTITION BY LIST(kind)(
    PARTITION DH VALUES('DH') --点赞回复
 );
 
+select f.*,t.sum from FAVORITE f,
+		(select count(ids) sum from DYNSTATE
+		where selfid='10001'and cfid=(select fid from favorite where fcreid='10001')) t
+		where fcreid='10001'
+
+		select * from favorite
 --外连接 查询我关注的人有多少个回答
 select count(rid),d.aimid from reply r 
 full join (select aimid from dynstate where selfid='1001' order by aimid) d
