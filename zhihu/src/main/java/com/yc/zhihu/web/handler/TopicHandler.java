@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.service.TopicService;
 import com.yc.zhihu.service.UserService;
@@ -33,6 +34,12 @@ public class TopicHandler {
 	public List<Topics> All(){
 		List<Topics> tp = topicService.listAll();
 		return tp;
+	}
+	
+	@RequestMapping(value="/allExplore",method=RequestMethod.POST)
+	@ResponseBody
+	public List<Explore> allExplore(String ids){
+		return topicService.allExplore(ids);
 	}
 	
 }
