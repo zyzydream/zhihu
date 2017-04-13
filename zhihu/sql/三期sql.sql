@@ -11,11 +11,19 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+insert into EXPLORE(ids)VALUES ('101');
+update USERS set tpic='images/car.png' where uids='1001'
+update explore set praise='15' , collect='4' where ids='101'
 select * from explore where ids like '%' and kind like '%'
 select * from dynstate PARTITION(SW) where selfid='10942'
-select * from users where uids='10368'
+select * from users where uids='10186'
 delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324' 
  10942 eacecjh    a         qicykpgurudmgrcovdsdbwuscn               管理员         zzz.jpg 18066301969@qq.com
+ 10941 uvyxvw     a         jxhkhlncksncoftepjqiugrgtuw              设计员         zzz.jpg 18061965099@qq.com
+ 10186 amyolt     a         akfuacipwhikbgxqpsqce                    分析员         zzz.jpg 18057467468@qq.com
+
+ select * from explore where kind='Q'
+select * from dynstate where kind='GH' and ids='1008'
 select * from FAVORITE where fcreid='10275' 
 SELECT * from dynstate d, (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10275')dd WHERE d.selfid=dd.aimid AND 24>=to_number( SYSDATE- to_date(d.times,'yyyy-mm-dd'))*24 
 select * from topics where ttopic='qxnbl'
@@ -94,6 +102,10 @@ CREATE TABLE essay(
 
 select e.etitle title,e.etime times,e.eid tid,'E' kind ,u.upic tpic from essay e ,users u
 where eautid='1001' and  uids='1001';
+
+select * from essay where etid = '10003'
+INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval,'10001','ddddd','2017-3-3','主机','10003');
+
 
 
 create sequence seq_essay start with 10000;
@@ -174,6 +186,7 @@ select * from topics
 drop sequence seq_topics
 drop table topics
 
+updata
 
 select * from topics
 
@@ -483,9 +496,7 @@ where uids=1001;
 select * from REPLY where remitid=1001
 select * from users where uids=1001
 
-<<<<<<< HEAD
 drop table explore;
-=======
 select * from DYNSTATE where kind='GH' 
 
 select q.*,t.sum 
@@ -506,7 +517,7 @@ select * from question q,
 		select * from essay where eautid='1001'
 		
 		
-
+select * from DYNSTATE where  selfid = '10000' and kind = 'GH'
  
  select count(rid) from reply,
 
@@ -517,7 +528,6 @@ select * from question q,
   insert into reply(rid,reqid,rkind,remitid,rreceid,rcontent,rtime)
  values('2','3','Q','1003','1001','hhh','2017-4-8');
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 create table explore(
    ids VARCHAR2(30),  --文章或问题id
    kind VARCHAR2(4),  --文章还是问题
@@ -533,7 +543,6 @@ create table explore(
    checks VARCHAR2(2) --是否以核查
 );
 
-<<<<<<< HEAD
 select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks from QUESTION q, 
 (select * from topics t, 
 (select * from users u, 
@@ -546,9 +555,7 @@ where q.qid=rd.reqid
 
 select count(0) from dynstate PARTITION(DH) where ids='12774'
 select * from question where qid='12774'
-=======
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 select count(0) from explore where checks='n'
 select e.*,rownum rn from explore e  where checks='n' and rownum>1
 select * from(
@@ -734,10 +741,7 @@ select
 (select count(fid) from favorite where fcreid='1003') fav
 from dual;
 select * from users where uids='1003'
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
 
 select *  from dynstate PARTITION(DQ)
 
@@ -751,3 +755,18 @@ select *  from dynstate PARTITION(DQ)
        
        
 select to_number( SYSDATE- to_date('2017-12-15','yyyy-mm-dd')) from dual
+
+
+
+
+
+--查询关注用户的话题的文章
+SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM Topics t,
+		  (SELECT * FROM USERS u,
+		    (SELECT * FROM essay e,
+		       (select ids from dynstate PARTITION(GH) WHERE selfid='10003')d
+       		 WHERE e.etid=d.ids)e
+		   WHERE u.uids=e.eautid)ue
+		WHERE ue.etid=t.tid
+
+

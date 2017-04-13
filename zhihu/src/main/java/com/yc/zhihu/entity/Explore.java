@@ -13,8 +13,8 @@ public class Explore {
 	private String author;
 	private String times;
 	private String checks;
-	private int praise;
-	private int collect;
+	private String praise;
+	private String collect;
 	private String ypraise;
 	private String ycollent;
 	
@@ -36,19 +36,20 @@ public class Explore {
 
 	public Explore() {}
 	
-	public int getPraise() {
+
+	public String getPraise() {
 		return praise;
 	}
 
-	public void setPraise(int praise) {
+	public void setPraise(String praise) {
 		this.praise = praise;
 	}
 
-	public int getCollect() {
+	public String getCollect() {
 		return collect;
 	}
 
-	public void setCollect(int collect) {
+	public void setCollect(String collect) {
 		this.collect = collect;
 	}
 

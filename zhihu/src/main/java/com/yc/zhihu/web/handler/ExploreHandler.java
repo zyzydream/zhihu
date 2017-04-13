@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.service.ExploreService;
+import com.yc.zhihu.service.UserService;
 import com.yc.zhihu.util.ServletUtil;
 
 @Controller("exploreHandler")
@@ -22,6 +23,8 @@ public class ExploreHandler {
 
 	@Autowired
 	private ExploreService exploreService;
+	@Autowired
+	private UserService usersService;
 
 
 	//推荐头条
@@ -30,7 +33,7 @@ public class ExploreHandler {
 	public List<Explore> list(HttpServletRequest request){
 		List<Explore> explore= exploreService.list(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 		//List<Explore> explores=exploreService.lists();
-		return explore;
+		return usersService.yPraiseAndCollect(explore, request);
 	}
 
 	//后台展示审核

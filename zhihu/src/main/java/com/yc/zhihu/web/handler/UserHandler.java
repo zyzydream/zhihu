@@ -16,6 +16,7 @@ import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
+import com.yc.zhihu.service.ExploreService;
 import com.yc.zhihu.service.UserService;
 import com.yc.zhihu.util.EmailUtil;
 import com.yc.zhihu.util.ServletUtil;
@@ -26,6 +27,8 @@ public class UserHandler {
 
 	@Autowired
 	private UserService usersService;
+	@Autowired
+	private ExploreService exploreService;
 
 	private String CODE;
 
@@ -87,8 +90,9 @@ public class UserHandler {
 	@RequestMapping(value="dynstate",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Explore> listDynstate(HttpServletRequest request){
-		System.out.println("listDynstate ====> "+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		//System.out.println("listDynstate ====> "+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		Users user= (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		exploreService.updateExplore();
 		List<Explore> all =usersService.listExplore((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER));;
 		//用来查找有关话题的文章
 		/*List<Explore> all =new ArrayList<Explore>();
@@ -119,7 +123,7 @@ public class UserHandler {
 				}
 			}
 			List<Explore> e=usersService.yPraiseAndCollect(dynstate, request);
-			System.out.println(e);
+			//System.out.println(e);
 			return e;
 		}else{
 			return usersService.yPraiseAndCollect(all, request);
