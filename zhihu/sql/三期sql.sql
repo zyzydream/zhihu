@@ -22,8 +22,9 @@ delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324'
 
 select * from users
  10001 qwbccyjt   a         zvparnkripxijysiebqwvuflwtcthvlvs        测试员         zzz.jpg 18065182570@qq.com /zhihu/images/touxiang.jpg
-select * from dynstate where selfid='10001' and kind='GR'
-
+select * from dynstate where selfid='10001' and kind='SW'
+select * from question where qautid='10001'
+select * from reply where reqid='12897'
 select
 		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
 		r,users u where
@@ -168,7 +169,16 @@ CREATE TABLE scolumn(
    scname VARCHAR2(20),
    sctime VARCHAR2(30)
 );
+<<<<<<< HEAD
 drop table scolumn
+=======
+
+select
+		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
+		r,users u where
+		remitid='1002'
+		and uids=remitid
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 select * from scolumn where sccreid='1001';
 insert into scolumn(scid,sccreid,scname,sctime)
 values('101','1002','我的专栏','2017-4-9');
@@ -206,6 +216,7 @@ select seq_topics.nextval,
 dbms_random.string('l',dbms_random.value(5, 6)),
 '1',
 'car.png' from dual connect by level <= 15;
+select * from topics
 drop sequence seq_topics
 drop table topics
 
@@ -519,9 +530,7 @@ where uids=1001;
 select * from REPLY where remitid=1001
 select * from users where uids=1001
 
-<<<<<<< HEAD
 drop table explore;
-=======
 select * from DYNSTATE where kind='GH' 
 
 select q.*,t.sum 
@@ -553,7 +562,6 @@ select * from DYNSTATE where  selfid = '10000' and kind = 'GH'
   insert into reply(rid,reqid,rkind,remitid,rreceid,rcontent,rtime)
  values('2','3','Q','1003','1001','hhh','2017-4-8');
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 create table explore(
    ids VARCHAR2(30),  --文章或问题id
    kind VARCHAR2(4),  --文章还是问题
@@ -569,7 +577,6 @@ create table explore(
    checks VARCHAR2(2) --是否以核查
 );
 
-<<<<<<< HEAD
 select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks from QUESTION q, 
 (select * from topics t, 
 (select * from users u, 
@@ -582,9 +589,7 @@ where q.qid=rd.reqid
 
 select count(0) from dynstate PARTITION(DH) where ids='12774'
 select * from question where qid='12774'
-=======
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 select count(0) from explore where checks='n'
 select e.*,rownum rn from explore e  where checks='n' and rownum>1
 select * from(
@@ -770,10 +775,7 @@ select
 (select count(fid) from favorite where fcreid='1003') fav
 from dual;
 select * from users where uids='1003'
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
 
 select *  from dynstate PARTITION(DQ)
 

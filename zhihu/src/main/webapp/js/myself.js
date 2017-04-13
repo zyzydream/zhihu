@@ -366,18 +366,17 @@ $('#changgeimage').hover(function() {
 });
 
 function updatePic(){
-	/*$.get("dynstate/upload",function(data){
+	$.get("dynstate/upload",function(data){
 		alter(data);
 		var img="";
 		for(var i=0;i<data.length;i++){
 			img+='<img width="100" src="' + data[i].toppic + '"/>'
-			+'<form enctype="multipart/form-data"><input class="Button DynamicColorButton" type="file"'
-			+' id="changgeimage" name="toppic" onchange="chgPic(this)" onclick="updatePic()" />'
-			+'</form>';
+			+'<input class="Button DynamicColorButton" type="file"'
+			+' id="changgeimage" name="toppic" onchange="chgPic(this)" onclick="updatePic()" />';
 		}
 		document.getElementById("UserCoverGuide-inner").innerHTML = img;
 	},'json');
-	 */
+	 
 }
 
 function chgPic(obj){
