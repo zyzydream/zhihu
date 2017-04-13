@@ -95,6 +95,10 @@ CREATE TABLE essay(
 select e.etitle title,e.etime times,e.eid tid,'E' kind ,u.upic tpic from essay e ,users u
 where eautid='1001' and  uids='1001';
 
+select * from essay where etid = '10003'
+INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval,'10001','ddddd','2017-3-3','主机','10003');
+
+
 
 create sequence seq_essay start with 10000;
 insert into essay
@@ -167,6 +171,7 @@ dbms_random.string('l',dbms_random.value(5, 6)),
 drop sequence seq_topics
 drop table topics
 
+updata
 
 select * from topics
 
@@ -503,7 +508,7 @@ select * from question q,
 		select * from essay where eautid='1001'
 		
 		
-
+select * from DYNSTATE where  selfid = '10000' and kind = 'GH'
  
  select count(rid) from reply,
 
@@ -748,6 +753,18 @@ select *  from dynstate PARTITION(DQ)
        
        
 select to_number( SYSDATE- to_date('2017-12-15','yyyy-mm-dd')) from dual
-=======
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
+
+
+
+
+
+--查询关注用户的话题的文章
+SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM Topics t,
+		  (SELECT * FROM USERS u,
+		    (SELECT * FROM essay e,
+		       (select ids from dynstate PARTITION(GH) WHERE selfid='10003')d
+       		 WHERE e.etid=d.ids)e
+		   WHERE u.uids=e.eautid)ue
+		WHERE ue.etid=t.tid
+
+

@@ -6,7 +6,7 @@
 <mapper namespace="com.yc.zhihu.mapper.TopicsMapper">
 		<!-- 查询话题 -->
     	<select id="findAll" resultType="Topics">
-    			select * from topics where tstid is null
+    			select * from topics 
     	</select>
     	
     	
