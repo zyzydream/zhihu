@@ -75,6 +75,7 @@ public class DynstateHandler {
 		List<ListAllMy> zs=dynstateService.showessays(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 		if(zs!=null){
 			for(ListAllMy z:zs){
+				
 				all.add(z);
 			}
 		}
@@ -119,9 +120,37 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/m8",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Users> DynstateMyAttention(HttpServletRequest request){
+	public List DynstateMyAttention(HttpServletRequest request){
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.listAttention(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<Users> xs=dynstateService.myatteninfo(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<Total> ys=dynstateService.listsw(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<Total> zs=dynstateService.listess(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<Total> ms=dynstateService.listpeos(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		ys.addAll(zs);
+		ys.addAll(ms);
+		System.out.println("A"+ys);
+		return ys;
+	}
+	
+	@RequestMapping(value="/m81",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Total> DynstateMyAttention1(HttpServletRequest request){
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.listsw(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	@RequestMapping(value="/m82",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Total> DynstateMyAttention2(HttpServletRequest request){
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.listess(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	@RequestMapping(value="/m83",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Total> DynstateMyAttention3(HttpServletRequest request){
+		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.listpeos(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
 

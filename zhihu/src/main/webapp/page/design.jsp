@@ -18,9 +18,7 @@
 			<div class="top-nav-profile">
 				<a id=":0" class="zu-top-nav-userinfo " href="/people/bbv-70"
 					role="button" aria-haspopup="true" aria-activedescendant=""> 
-					<span
-					class="name">dsvb</span> <img class="Avatar" src="images/poto.jpg"
-					srcset="https://pic1.zhimg.com/da8e974dc_xs.jpg 2x" alt="dsvb">
+					<span class="name">dsvb</span> <img class="Avatar" src="images/poto.jpg" alt="dsvb">
 					<span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
@@ -62,11 +60,11 @@
 			<div id="zg-top-nav" class="zu-top-nav">
 				<ul class="zu-top-nav-ul zg-clear">
 					<li id="zh-top-nav-home" class="zu-top-nav-li "><a
-						id="zh-top-link-home" class="zu-top-nav-link" href="/"
+						id="zh-top-link-home" class="zu-top-nav-link" href="page/homepage.jsp"
 						data-za-c="view_home" data-za-a="visit_home"
 						data-za-l="top_navigation_home">首页</a></li>
 					<li id="zh-top-nav-explore" class="zu-top-nav-li "><a
-						class="zu-top-nav-link" href="/explore">发现</a></li>
+						class="zu-top-nav-link" href="page/explore.jsp">发现</a></li>
 					<li class="top-nav-noti zu-top-nav-li "><a
 						id="zh-top-nav-count-wrap" class="zu-top-nav-link"
 						href="javascript:;" role="button"> <span class="mobi-arrow"></span>
@@ -82,11 +80,8 @@
 		<div class="zu-main-content">
 			<div class="zu-main-content-inner">
 				<ul class="tab-navs">
-					<li class="tab-nav active"><a href="/settings/profile">基本资料</a>
-					</li>
+					<li class="tab-nav active"><a href="/settings/profile">基本资料</a></li>
 					<li class="tab-nav"><a href="/settings/account">帐号和密码</a></li>
-					<li class="tab-nav"><a href="/settings/notification">消息和邮件</a>
-					</li>
 					<li class="tab-nav"><a href="/settings/filter">屏蔽</a></li>
 				</ul>
 			</div>
@@ -107,7 +102,7 @@
 						<div class="settings-item-content">
 							<input id="url_token" class="zg-form-text-input"
 								autocomplete="off" name="url_token" value="bbv-70">
-							
+								
 						</div>
 					</div>
 					<div class="settings-item clearfix">
@@ -131,6 +126,10 @@
 				</div>
 			</form>
 		</div>
+		
+		
+		
+		
 	</div>
 
 

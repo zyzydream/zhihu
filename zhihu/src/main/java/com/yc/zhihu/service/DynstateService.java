@@ -28,7 +28,6 @@ public interface DynstateService {
 	
 	List<Favorite> listFavorite(Object obj);
 	
-	List<Users> listAttention(Object obj);
 	
 	boolean modifyUserPic(Users users);
 	
@@ -53,6 +52,14 @@ public interface DynstateService {
 	int praise(Dynstate dynstate);
 
 	int collect(Dynstate dynstate);
+	
+	List<Total> listsw(Object obj);
+	
+	List<Total> listess(Object obj);
+	
+	List<Total> listpeos(Object obj);
+	
+	List<Users> myatteninfo(Object obj);
 
 	int delpraise(Dynstate dynstate);
 

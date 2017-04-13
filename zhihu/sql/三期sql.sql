@@ -11,11 +11,19 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+insert into EXPLORE(ids)VALUES ('101');
+update USERS set tpic='images/car.png' where uids='1001'
+update explore set praise='15' , collect='4' where ids='101'
 select * from explore where ids like '%' and kind like '%'
 select * from dynstate PARTITION(SW) where selfid='10942'
-select * from users where uids='10368'
+select * from users where uids='10186'
 delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324' 
  10942 eacecjh    a         qicykpgurudmgrcovdsdbwuscn               管理员         zzz.jpg 18066301969@qq.com
+ 10941 uvyxvw     a         jxhkhlncksncoftepjqiugrgtuw              设计员         zzz.jpg 18061965099@qq.com
+ 10186 amyolt     a         akfuacipwhikbgxqpsqce                    分析员         zzz.jpg 18057467468@qq.com
+
+ select * from explore where kind='Q'
+select * from dynstate where kind='GH' and ids='1008'
 select * from FAVORITE where fcreid='10275' 
 SELECT * from dynstate d, (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10275')dd WHERE d.selfid=dd.aimid AND 24>=to_number( SYSDATE- to_date(d.times,'yyyy-mm-dd'))*24 
 select * from topics where ttopic='qxnbl'
@@ -297,10 +305,6 @@ select count(rid),d.aimid from reply r
 full join (select aimid from dynstate where selfid='1001' order by aimid) d
 on r.remitid=d.aimid group by d.aimid
 
-select count(rid) from reply where remitid=1002
-select count(rid) from reply where remitid=1003
-
-
 --右连接 查询我关注的人有多少文章
 select count(eid),b.aimid from essay e
 right join (select aimid from dynstate where selfid='1001' order by aimid) b
@@ -311,7 +315,7 @@ select count(dd.selfid),c.aimid from dynstate dd
 right join (select aimid from dynstate where selfid='1001' order by aimid) c
 on dd.aimid=c.aimid group by c.aimid
 
-select u.uname,u.upic,u.usign,e.aimid from users u
+select u.uname,u.upic,u.usign from users u
 right join (select aimid from dynstate where selfid='1001' order by aimid) e
 on u.uids=e.aimid 
 

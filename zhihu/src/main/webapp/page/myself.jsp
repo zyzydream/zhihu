@@ -140,9 +140,12 @@
 				<div class="panel panel-default"
 					style="width: 660px; margin-left: 15px;">
 					<div class="panel-body">
-						<span id="myself"> <span id="myself1"> </span> <span
-							id="myself2"> </span>
-
+						<span id="myself"> 
+							<span id="myself1"> </span> 
+							<span id="myself2"> 
+				
+							</span>
+							
 						</span>
 					</div>
 				</div>

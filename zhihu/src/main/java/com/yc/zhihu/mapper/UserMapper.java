@@ -41,9 +41,9 @@ public interface UserMapper {
 
 	List<Explore> listExplore(Users user);
 
-	int statisticsPraise(Explore essay);
+	String statisticsPraise(Explore essay);
 
-	int statisticsCollect(Explore essay);
+	String statisticsCollect(Explore essay);
 	List<Users> findTopic(Users users);
 
 	List<Users> findUprf(Users users);
