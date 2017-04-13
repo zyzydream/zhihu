@@ -11,14 +11,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>知乎首页</title>
-<link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
-	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
-	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
-<script
-	src="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"
-	tppabs="bootstrap-3.3.4/js/ie-emulation-modes-warning.js"></script>
-
 <link type="text/css" rel="stylesheet" href="css/homepage.css">
 <link rel="shortcut icon" href="images/logohead.png">
 </head>
@@ -30,9 +22,9 @@
 				data-za-l="top_navigation_zhihu_logo">知乎</a>
 
 			<div class="top-nav-profile">
-				<a href="/zhihu/page/myself.jsp" class="zu-top-nav-userinfo "> <span class="name"
-					id="name"><%=request.getSession().getAttribute("username") %></span> <img class="Avatar" src=""
-					alt="" /> <span id="zh-top-nav-new-pm"
+				<a href="/zhihu/page/myself.jsp" class="zu-top-nav-userinfo "> <span
+					class="name" id="name"><%=request.getSession().getAttribute("username")%></span>
+					<img class="Avatar" src="" alt="" /> <span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
 				</a>
@@ -40,7 +32,6 @@
 					<li><a href="/people/yan-ling-78-98"> <i
 							class="zg-icon zg-icon-dd-home"></i>我的主页
 					</a></li>
-
 					<li><a href="/inbox"> <i class="zg-icon zg-icon-dd-pm"></i>私信
 							<span id="zh-top-nav-pm-count"
 							class="zu-top-nav-pm-count zg-noti-number"
@@ -84,11 +75,9 @@
 				<ul class="zu-top-nav-ul zg-clear">
 
 					<li class="zu-top-nav-li current" id="zh-top-nav-home"><a
-						class="zu-top-nav-link" href="javascript:void(0)" id="zh-top-link-home"
-						data-za-c="view_home" data-za-a="visit_home"
+						class="zu-top-nav-link" href="javascript:void(0)"
+						id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home"
 						data-za-l="top_navigation_home">首页</a></li>
-
-
 
 					<li class="zu-top-nav-li " id="zh-top-nav-explore"><a
 						class="zu-top-nav-link" href="/zhihu/page/explore.jsp">发现</a></li>
@@ -97,7 +86,6 @@
 						class="zu-top-nav-link" href="javascript:void(0)"
 						id="zh-top-nav-count-wrap" role="button"><span
 							class="mobi-arrow"></span>消息</a></li>
-
 				</ul>
 				<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard"
 					id="zh-top-nav-live-new" role="popup" tabindex="0">
@@ -238,15 +226,40 @@
 										</h2>
 										<p class="lead" style="font-size: 14px;">'+data[i].econtent+'</p>
 										<span>
-										   <div style="width: 70px;float: left;height: 20px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  42</a>
-										        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-										         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
-                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
-                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
-										        </ul>
-										    </div>
-										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞  42</button></div>
-										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>
+											<div style="width: 70px; float: left; height: 20px">
+												<a
+													style="font-size: 13px; font-weight: 40; border-style: none;"
+													class="btn btn-default dropdown-toggle" type="button"
+													id="dropdownMenu1" data-toggle="dropdown"
+													aria-expanded="true">收藏 42</a>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation"><a role="menuitem"
+														tabindex="-1" href="#">Regular link</a></li>
+													<li role="presentation"><a role="menuitem"
+														tabindex="-1" href="#">Disabled link</a></li>
+													<li role="presentation"><a role="menuitem"
+														tabindex="-1" href="#">Another link</a></li>
+												</ul>
+											</div>
+											<div style="width: 70px; float: left; height: 20px"
+												class="btn-group" role="group" aria-label="...">
+												<button
+													style="font-size: 13px; font-weight: 40; border-style: none;"
+													type="button" class="btn btn-default">
+													<span class="glyphicon glyphicon-star-empty"
+														aria-hidden="true"></span>点赞 42
+												</button>
+											</div>
+											<div style="width: 70px; float: left; height: 20px"
+												class="btn-group" role="group" aria-label="...">
+												<button
+													style="font-size: 13px; font-weight: 40; border-style: none;"
+													type="button" class="btn btn-default">
+													<span class="glyphicon glyphicon-map-marker"
+														aria-hidden="true"></span>阅览 42
+												</button>
+											</div>
 										</span>
 									</div>
 									<div class="col-md-5">
@@ -261,11 +274,13 @@
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 18px;">
-											<span class="text-muted" style="font-size: 15px">'+data[i].author+':关注话题：</span><br /><img alt="" src="images/game.png" width="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].tname+'
+											<span class="text-muted" style="font-size: 15px">'+data[i].author+':关注话题：</span><br />
+											<img alt="" src="images/game.png" width="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].tname+'
 										</h2>
 									</div>
-									<div class="col-md-5" >
-										<label style="float: right;font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
+									<div class="col-md-5">
+										<label
+											style="float: right; font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
 									</div>
 								</div>
 								<hr class="featurette-divider">
@@ -273,27 +288,52 @@
 					<!-- 开始  关注用户发表文章 
 								<div class="row featurette">
 									<div class="col-md-7">
-									    <h2 class="featurette-heading" style="font-size: 20px;">
+										<h2 class="featurette-heading" style="font-size: 20px;">
 											<span class="text-muted" style="font-size: 15px">'+data[i].author+':发表文章：</span><br />'+data[i].tname+'
 										</h2>
 										<p class="lead" style="font-size: 14px;">'+data[i].econtent+'</p>
 										<span>
-										   <div style="width: 70px;float: left;height: 20px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  42</a>
-										        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-										         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
-                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
-                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
-										        </ul>
-										    </div>
-										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞  42</button></div>
-										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>
+											<div style="width: 70px; float: left; height: 20px">
+												<a
+													style="font-size: 13px; font-weight: 40; border-style: none;"
+													class="btn btn-default dropdown-toggle" type="button"
+													id="dropdownMenu1" data-toggle="dropdown"
+													aria-expanded="true">收藏 42</a>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation"><a role="menuitem"
+														tabindex="-1" href="#">Regular link</a></li>
+													<li role="presentation"><a role="menuitem"
+														tabindex="-1" href="#">Disabled link</a></li>
+													<li role="presentation"><a role="menuitem"
+														tabindex="-1" href="#">Another link</a></li>
+												</ul>
+											</div>
+											<div style="width: 70px; float: left; height: 20px"
+												class="btn-group" role="group" aria-label="...">
+												<button
+													style="font-size: 13px; font-weight: 40; border-style: none;"
+													type="button" class="btn btn-default">
+													<span class="glyphicon glyphicon-star-empty"
+														aria-hidden="true"></span>点赞 42
+												</button>
+											</div>
+											<div style="width: 70px; float: left; height: 20px"
+												class="btn-group" role="group" aria-label="...">
+												<button
+													style="font-size: 13px; font-weight: 40; border-style: none;"
+													type="button" class="btn btn-default">
+													<span class="glyphicon glyphicon-map-marker"
+														aria-hidden="true"></span>阅览 42
+												</button>
+											</div>
 										</span>
 									</div>
 									<div class="col-md-5">
-										<label style="float: right;font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
+										<label
+											style="float: right; font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
 										<img class="featurette-image img-responsive center-block"
-										    src="images/game.jpg"
-											data-src="holder.js/500x500/auto"
+											src="images/game.jpg" data-src="holder.js/500x500/auto"
 											tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto"
 											alt="Generic placeholder image">
 									</div>
@@ -303,23 +343,49 @@
 					<!-- 开始  关注用户提出问题 
 								<div class="row featurette">
 									<div class="col-md-7">
-									    <h2 class="featurette-heading" style="font-size: 20px;">
+										<h2 class="featurette-heading" style="font-size: 20px;">
 											<span class="text-muted" style="font-size: 15px">'+data[i].author+':提出问题：</span><br />'+data[i].title+'
 										</h2>
 										<span>
-                                            <div style="width: 70px;float: left;height: 20px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏  42</a>
-										        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-										         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
-                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
-                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
-										        </ul>
-										    </div>
-										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞  42</button></div>
-										    <div style="width: 70px;float: left;height: 20px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>
+											<div style="width: 70px; float: left; height: 20px">
+												<a
+													style="font-size: 13px; font-weight: 40; border-style: none;"
+													class="btn btn-default dropdown-toggle" type="button"
+													id="dropdownMenu1" data-toggle="dropdown"
+													aria-expanded="true">收藏 42</a>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation"><a role="menuitem"
+														tabindex="-1" href="#">Regular link</a></li>
+													<li role="presentation"><a role="menuitem"
+														tabindex="-1" href="#">Disabled link</a></li>
+													<li role="presentation"><a role="menuitem"
+														tabindex="-1" href="#">Another link</a></li>
+												</ul>
+											</div>
+											<div style="width: 70px; float: left; height: 20px"
+												class="btn-group" role="group" aria-label="...">
+												<button
+													style="font-size: 13px; font-weight: 40; border-style: none;"
+													type="button" class="btn btn-default">
+													<span class="glyphicon glyphicon-star-empty"
+														aria-hidden="true"></span>点赞 42
+												</button>
+											</div>
+											<div style="width: 70px; float: left; height: 20px"
+												class="btn-group" role="group" aria-label="...">
+												<button
+													style="font-size: 13px; font-weight: 40; border-style: none;"
+													type="button" class="btn btn-default">
+													<span class="glyphicon glyphicon-map-marker"
+														aria-hidden="true"></span>阅览 42
+												</button>
+											</div>
 										</span>
 									</div>
 									<div class="col-md-5">
-										<label style="float: right;font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
+										<label
+											style="float: right; font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
 										<img class="featurette-image img-responsive center-block"
 											data-src="holder.js/500x500/auto"
 											tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto"
@@ -345,12 +411,9 @@
 				<div id="zh-footer" class="zh-footer">
 					<div class="content zg-wrap clearfix">
 						<ul>
-
 							<li><a href="https://liukanshan.zhihu.com" target="_blank">刘看山</a></li>
-
 							<li><a href="/question/19581624" target="_blank">知乎指南</a></li>
 							<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
-
 							<li><a href="/app" target="_blank">移动应用</a></li>
 							<li><a href="/careers">加入知乎</a></li>
 							<li><a href="/terms" target="_blank">知乎协议</a></li>
@@ -388,10 +451,6 @@
 		<!-- /.blog-sidebar -->
 	</div>
 	<script src="js/jquery.min.js"></script>
-	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
-	<script
-		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
-		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-	 <script type="text/javascript" src="js/homepage.js"></script>
+	<script type="text/javascript" src="js/homepage.js"></script>
 </body>
 </html>

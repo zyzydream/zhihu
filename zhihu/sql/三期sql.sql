@@ -58,7 +58,8 @@ dbms_random.string('l',dbms_random.value(5, 10)),
 dbms_random.string('l',dbms_random.value(10, 40)),
 decode(ceil(dbms_random.value(0, 6)), 1, '程序员', 2, '测试员', 3, '分析员', 4, '设计员', 5, '翻译员', '管理员'),
 'zzz.jpg',
-'180'||ceil(dbms_random.value(10000000,99999999))||'@qq.com' from dual connect by level <= 1000;
+'180'||ceil(dbms_random.value(10000000,99999999))||'@qq.com',
+'/zhihu/images/touxiang.jpg' from dual connect by level <= 1000;
 select * from users where uids='10999'
 
 select * from USERS where uemail='123' and upassword='a' 
@@ -299,10 +300,6 @@ select count(rid),d.aimid from reply r
 full join (select aimid from dynstate where selfid='1001' order by aimid) d
 on r.remitid=d.aimid group by d.aimid
 
-select count(rid) from reply where remitid=1002
-select count(rid) from reply where remitid=1003
-
-
 --右连接 查询我关注的人有多少文章
 select count(eid),b.aimid from essay e
 right join (select aimid from dynstate where selfid='1001' order by aimid) b
@@ -313,7 +310,7 @@ select count(dd.selfid),c.aimid from dynstate dd
 right join (select aimid from dynstate where selfid='1001' order by aimid) c
 on dd.aimid=c.aimid group by c.aimid
 
-select u.uname,u.upic,u.usign,e.aimid from users u
+select u.uname,u.upic,u.usign from users u
 right join (select aimid from dynstate where selfid='1001' order by aimid) e
 on u.uids=e.aimid 
 

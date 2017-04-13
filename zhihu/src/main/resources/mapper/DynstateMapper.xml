@@ -128,24 +128,6 @@
 		where fcreid=#{uids}
 	</select>
 
-	<select id="listMyAttention" parameterType="Users" resultType="Users">
-		select uname,usign,upic,
-		(select count(remitid) from reply where
-		remitid=(select d.aimid atten from
-		DYNSTATE d where selfid=#{uids}) )
-		ansum,
-		(select count(eautid) from ESSAY where eautid=(select d.aimid
-		atten from
-		DYNSTATE d where selfid=#{uids}) ) essum,
-		(select count(1)
-		from DYNSTATE where aimid=(select d.aimid atten from
-		DYNSTATE d where
-		selfid=#{uids})) attsum
-		from dual,users
-		where uids=(select d.aimid atten
-		from
-		DYNSTATE d where selfid=#{uids})
-	</select>
 
 	<select id="totalatten" parameterType="Users" resultType="Users">
 		select
@@ -217,27 +199,68 @@
 	<select id="showscolumn" parameterType="Users" resultType="ListAllMy">
 		select s.scname tname,u.uname uname,t.times times,'S' kind,u.upic tpic
 		from scolumn s,
-		(select times from dynstate PARTITION(GZ) where selfid=#{uids})t,
+		(select times from dynstate PARTITION(GZ) where
+		selfid=#{uids})t,
 		Users u,
-		(select ids from dynstate PARTITION(GZ) where selfid=#{uids}) x
+		(select ids from dynstate PARTITION(GZ) where
+		selfid=#{uids}) x
 		where
 		s.scid=x.ids
-		and uids=(select ss.sccreid from scolumn ss where ss.scid=s.scid)
+		and uids=(select ss.sccreid from
+		scolumn ss where ss.scid=s.scid)
 
 	</select>
 
 
-			
+
 	<!-- 点赞 -->
 	<insert id="praise" parameterType="Dynstate">
-       insert into dynstate(selfid,kind,ids,times)
-       values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'))
+		insert into
+		dynstate(selfid,kind,ids,times)
+		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'))
 	</insert>
 	<!-- 收藏 -->
 	<insert id="collect" parameterType="Dynstate">
-       insert into dynstate(selfid,kind,ids,times,cfid)
-       values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'),'${cfid}')
+		insert into
+		dynstate(selfid,kind,ids,times,cfid)
+		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'),'${cfid}')
 	</insert>
+
+
+	<select id="SumMyattensw" parameterType="Users" resultType="Total">
+		select count(rid) myattenaw from reply r
+		full join (select aimid from
+		dynstate where selfid=#{uids} order by aimid)
+		d
+		on r.remitid=d.aimid
+		group by d.aimid
+	</select>
+
+	<select id="SumMyatteness" parameterType="Users" resultType="Total">
+		select count(eid) myatteness from essay e
+		right join (select aimid from
+		dynstate where selfid=#{uids} order by aimid)
+		b
+		on e.eautid=b.aimid
+		group by b.aimid
+	</select>
+
+	<select id="SumMyattenpeos" parameterType="Users" resultType="Total">
+		select count(dd.selfid) myattenpeos from dynstate dd
+		right join (select
+		aimid from dynstate where selfid=#{uids} order by aimid)
+		c
+		on
+		dd.aimid=c.aimid group by c.aimid
+	</select>
+
+	<select id="myatteninfo" parameterType="Users" resultType="Users">
+		select u.uname,u.upic,u.usign from users u
+		right join (select aimid from dynstate where selfid=#{uids} order by aimid)
+		e
+		on u.uids=e.aimid
+	</select>
+
 	
 	<delete id="delpraise" parameterType="Dynstate">
 	   delete  DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}' 
