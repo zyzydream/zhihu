@@ -1,0 +1,477 @@
+body {
+    color: #222;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    word-wrap: break-word;
+}
+element.style {
+    width: 550px;
+}
+html.modal-open .modal-wrapper .modal-dialog {
+    margin-top: 14vh;
+    position: static;
+}
+.modal-dialog {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #888;
+    border-radius: 8px;
+    box-shadow: 0 0 80px 0 rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+    position: absolute;
+    text-align: left;
+    width: 420px;
+    z-index: 99;
+}
+.modal-dialog, div[contentEditable] {
+    outline: 0 none;
+}
+
+
+.modal-dialog-title {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #1d7fe2, #0865c2) repeat scroll 0 0;
+    border: 1px solid #0d6eb8;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 1px 1px rgba(0, 0, 0, 0.2);
+    line-height: 14px;
+    margin: -1px -1px 0;
+    padding: 10px 15px;
+    position: relative;
+}
+
+
+.modal-dialog-title-text {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.modal-dialog-title-close {
+    background-position: -60px -53px;
+    cursor: pointer;
+    height: 30px;
+    margin-top: -15px;
+    position: absolute;
+    right: 3px;
+    text-indent: -9999px;
+    top: 50%;
+    width: 30px;
+}
+.icon, .tr-icon, .tr-inline-icon, .goog-option-selected .goog-menuitem-checkbox, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
+    background-image: url("/static/revved/img/sprites-1.9.2.4c54885a.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 16px;
+    vertical-align: middle;
+    width: 16px;
+}
+
+.modal-dialog-content {
+    margin: 17px 0;
+    padding: 0 15px;
+}
+
+.zh-add-question-form {
+    padding: 2px 2px 0;
+}
+
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.zh-add-question-form .zg-section-big, .zh-add-question-form #zh-question-suggest-autocomplete-container, .zh-add-question-form #zh-question-suggest-autocomplete-container2 {
+    position: relative;
+}
+.zg-section-big {
+    margin: 0 0 15px;
+}
+.clearfix {
+}
+
+element.style {
+    position: relative;
+}
+.zg-form-text-input, .zg-form-select {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+    color: #222;
+    font-size: 13px;
+    line-height: 15px;
+    padding: 8px 10px;
+}
+
+element.style {
+    height: 39px;
+}
+.zh-add-question-form .add-question-title-form textarea {
+    min-height: 1em;
+    vertical-align: bottom;
+}
+textarea.zg-form-text-input, .zg-form-text-input > textarea {
+    border: 0 none;
+    color: #222;
+    font-size: 13px;
+    line-height: 22px;
+    margin: 0 !important;
+    min-height: 66px;
+    overflow: hidden;
+    padding: 0 !important;
+}
+.zg-editor-input {
+    border: 0 none;
+    font-weight: 400;
+    margin: 0;
+    min-height: 66px;
+    padding: 0;
+    width: 100%;
+}
+.zu-seamless-input-origin-element {
+    overflow: hidden;
+}
+textarea {
+    border: 0 none;
+    outline: 0 none;
+    overflow: auto;
+    resize: none;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+
+.zh-add-question-form .question-suggest-ac-wrap {
+    margin-top: 5px;
+}
+
+.zh-add-question-form .zg-section-big, .zh-add-question-form #zh-question-suggest-autocomplete-container, .zh-add-question-form #zh-question-suggest-autocomplete-container2 {
+    position: relative;
+}
+.zg-section-big {
+    margin: 0 0 15px;
+}
+
+.zh-add-question-form .add-question-section-title {
+    margin-bottom: 5px;
+}
+
+.zg-right {
+    float: right;
+}
+
+element.style {
+    -moz-user-select: none;
+}
+.zh-add-question-form .extra-editor-toolbar div {
+    margin-left: 10px;
+}
+.goog-inline-block {
+    display: inline-block;
+    position: relative;
+}
+.goog-link-button {
+    color: #259;
+    cursor: pointer;
+    position: relative;
+    text-decoration: underline;
+}
+
+
+.tr-image {
+    background-position: -80px -127px;
+}
+.tr-inline-icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+.icon, .tr-icon, .tr-inline-icon, .goog-option-selected .goog-menuitem-checkbox, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
+    background-image: url("/static/revved/img/sprites-1.9.2.4c54885a.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 16px;
+    vertical-align: middle;
+    width: 16px;
+}
+i, em {
+    font-style: italic;
+}
+
+.zh-add-question-form #zh-question-form-tag-err, .zh-add-question-form #zh-question-form-detail-err {
+    color: #c33;
+    font-size: 13px;
+    font-weight: 400;
+}
+.zh-add-question-form .zm-editable-editor-wrap {
+    margin-top: 5px;
+}
+.zm-editable-editor-wrap {
+    margin: 8px 0 5px;
+    position: relative;
+}
+
+.zm-editable-editor-outer {
+    background: #fff none repeat scroll 0 0;
+    position: relative;
+}
+
+#zh-question-suggest-detail-container .zm-editable-editor-field-wrap {
+    max-height: 192px;
+    overflow-y: auto;
+}
+.zm-editable-editor-wrap.no-toolbar .zm-editable-editor-field-wrap {
+    border-radius: 4px;
+}
+.zm-editable-editor-field-wrap {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1) inset;
+    padding: 8px 10px;
+    position: relative;
+}
+
+element.style {
+    font-style: italic;
+}
+.zh-add-question-form .editable {
+    min-height: 66px;
+}
+.modal-dialog, div[contentEditable] {
+    outline: 0 none;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.editable {
+    background: #fff none repeat scroll 0 0;
+    cursor: text;
+    font-size: 13px;
+    min-height: 88px;
+}
+
+.zm-item-rich-text p:first-child, .zm-editable-content p:first-child, .editable p:first-child, .zm-item-rich-text h2:first-child, .zm-editable-content h2:first-child, .editable h2:first-child {
+    margin-top: 0;
+}
+.zm-item-rich-text p, .zm-editable-content p, .editable p, .zm-item-rich-text h2, .zm-editable-content h2, .editable h2 {
+    margin: 12px 0;
+}
+body, ul, ol, li, p, h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
+
+element.style {
+    color: #999;
+    font-style: normal;
+}
+
+.zh-add-question-form .add-question-section-title {
+    margin-bottom: 5px;
+}
+
+.zg-right {
+    float: right;
+}
+.zg-gray {
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.zh-add-question-form #zh-question-form-tag-err {
+    margin-left: 10px;
+}
+.zh-add-question-form #zh-question-form-tag-err, .zh-add-question-form #zh-question-form-detail-err {
+    color: #c33;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.zm-tag-editor {
+    margin: 0 0 5px;
+}
+.zg-section {
+    display: block;
+    margin: 0 0 10px;
+}
+
+.zg-clear::before, .zg-clear::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.zg-clear::after {
+    clear: both;
+}
+.zg-clear::before, .zg-clear::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.zm-add-question-form-topic-wrap .zm-tag-editor-editor {
+    border: 1px solid #ccc !important;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+    padding: 8px 8px 3px;
+    position: relative;
+}
+.zg-clear {
+    height: 1%;
+}
+
+.zg-inline {
+    display: inline !important;
+}
+
+.zm-tag-editor-command-buttons-wrap {
+    position: relative;
+}
+.zg-left {
+    float: left;
+}
+.zm-add-question-form-topic-wrap .zm-tag-editor-editor .icon-magnify {
+    vertical-align: -1px;
+}
+.icon-magnify {
+    background-position: -45px -52px;
+    height: 12px;
+    vertical-align: -3px;
+    width: 12px;
+}
+.icon, .tr-icon, .tr-inline-icon, .goog-option-selected .goog-menuitem-checkbox, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
+    background-image: url("/static/revved/img/sprites-1.9.2.4c54885a.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 16px;
+    vertical-align: middle;
+    width: 16px;
+}
+
+.zh-add-question-form .label-input-label {
+    color: #999 !important;
+    line-height: 23px;
+}
+.zh-add-question-form .zu-question-suggest-topic-input {
+    width: 120px;
+}
+.zh-add-question-form .zu-question-suggest-topic-input {
+    border: 0 none;
+    margin: 0 0 5px 5px;
+}
+input[type="text"], input[type="password"]:focus {
+}
+.label-input-label {
+    color: #777 !important;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+
+.zh-add-question-form .zg-section-big, .zh-add-question-form #zh-question-suggest-autocomplete-container, .zh-add-question-form #zh-question-suggest-autocomplete-container2 {
+    position: relative;
+}
+
+.modal-dialog .zm-command {
+    padding: 20px 0 0;
+}
+.zm-command {
+    padding: 10px 0;
+    text-align: right;
+}
+
+.zh-add-question-form .zm-question-form-hide-in-about-question-el {
+    color: #666;
+    margin: 5px 0;
+}
+.zg-left {
+    float: left;
+}
+
+input[type="checkbox"] {
+    margin: 0 5px 0 0;
+    vertical-align: 0;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+
+div[contentEditable], input, textarea, button, a:link {
+}
+.zm-command-cancel {
+    cursor: pointer;
+    margin: 0 15px 0 0;
+}
+a {
+    color: #259;
+}
+a {
+    text-decoration: none;
+}
+
+.zm-command > .zg-btn-blue, .zm-command > .zg-btn-green, .zm-command > .zg-btn-white, .zm-command > .zg-btn-disabled {
+    vertical-align: baseline;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.zg-btn-blue, .zg-btn-green, .zg-btn-white, a.follow {
+}
+.zg-btn-blue {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #1d7fe2, #0865c2) repeat scroll 0 0;
+    border: 1px solid #0d6eb8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 0 rgba(0, 0, 0, 0.2);
+    color: #fff !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+.zg-btn-blue, .zg-btn-green, .zg-btn-red, .zg-btn-white, .zg-btn-disabled {
+    border-radius: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none !important;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.zg-r5px, .goog-tooltip {
+    border-radius: 5px;
+}
+a {
+    color: #259;
+}
+a {
+    text-decoration: none;
+}

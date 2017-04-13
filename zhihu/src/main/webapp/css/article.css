@@ -6,8 +6,9 @@
     align-items: stretch;
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
+    flex-shrink: 0;  
 }
+
 * {
     box-sizing: inherit;
 }
