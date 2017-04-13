@@ -11,6 +11,15 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>知乎首页</title>
+<title>Insert title here</title>
+<link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
+	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
+	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
+<script
+	src="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"
+	tppabs="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
 <link type="text/css" rel="stylesheet" href="css/homepage.css">
 <link rel="shortcut icon" href="images/logohead.png">
 </head>
@@ -49,7 +58,7 @@
 
 
 
-			<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+			<a class="zu-top-add-question" id="zu-top-add-question" style=" text-decoration:none" href="page/introducteQuestion.jsp" >提问</a>
 
 
 			<div role="search" id="zh-top-search" class="zu-top-search">

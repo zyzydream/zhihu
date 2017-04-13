@@ -59,7 +59,7 @@ html.modal-open .modal-wrapper .modal-dialog {
     width: 30px;
 }
 .icon, .tr-icon, .tr-inline-icon, .goog-option-selected .goog-menuitem-checkbox, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
-    background-image: url("/static/revved/img/sprites-1.9.2.4c54885a.png");
+    background-image: url("../images/design2.png");
     background-repeat: no-repeat;
     display: inline-block;
     height: 16px;
@@ -200,14 +200,7 @@ element.style {
     height: 16px;
     width: 16px;
 }
-.icon, .tr-icon, .tr-inline-icon, .goog-option-selected .goog-menuitem-checkbox, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
-    background-image: url("/static/revved/img/sprites-1.9.2.4c54885a.png");
-    background-repeat: no-repeat;
-    display: inline-block;
-    height: 16px;
-    vertical-align: middle;
-    width: 16px;
-}
+
 i, em {
     font-style: italic;
 }
@@ -355,14 +348,6 @@ element.style {
     vertical-align: -3px;
     width: 12px;
 }
-.icon, .tr-icon, .tr-inline-icon, .goog-option-selected .goog-menuitem-checkbox, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
-    background-image: url("/static/revved/img/sprites-1.9.2.4c54885a.png");
-    background-repeat: no-repeat;
-    display: inline-block;
-    height: 16px;
-    vertical-align: middle;
-    width: 16px;
-}
 
 .zh-add-question-form .label-input-label {
     color: #999 !important;
@@ -474,4 +459,14 @@ a {
 }
 a {
     text-decoration: none;
+}
+
+
+.zh-add-question-form #zh-question-form-tag-err {
+    margin-left: 10px;
+}
+.zh-add-question-form #zh-question-form-tag-err, .zh-add-question-form #zh-question-form-detail-err {
+    color: #c33;
+    font-size: 13px;
+    font-weight: 400;
 }
