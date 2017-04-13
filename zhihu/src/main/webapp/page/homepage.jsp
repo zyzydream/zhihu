@@ -279,7 +279,7 @@
 									</div>
 								</div>
 								<hr class="featurette-divider">
-					<!-- 开始  关注用户关注话题
+					<!-- 开始  关注用户关注话题 -->
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 18px;">
@@ -293,8 +293,8 @@
 									</div>
 								</div>
 								<hr class="featurette-divider">
-					结束 -->
-					<!-- 开始  关注用户发表文章 
+					<!-- 结束 -->
+					<!-- 开始  关注用户发表文章  -->
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 20px;">
@@ -348,8 +348,8 @@
 									</div>
 								</div>
 								<hr class="featurette-divider">
-				 结束 -->
-					<!-- 开始  关注用户提出问题 
+				 <!-- 结束 -->
+					<!-- 开始  关注用户提出问题  -->
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 20px;">
@@ -402,7 +402,7 @@
 									</div>
 								</div>
 								<hr class="featurette-divider">
-					 结束 -->
+					<!-- 结束 -->
 							</span>
 							<nav>
 								<ul class="pager">
@@ -460,6 +460,10 @@
 		<!-- /.blog-sidebar -->
 	</div>
 	<script src="js/jquery.min.js"></script>
+	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+	<script
+		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
+		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
 	<script type="text/javascript" src="js/homepage.js"></script>
 </body>
 </html>

@@ -80,7 +80,7 @@
 		remitid=#{uids}
 		and uids=remitid) t,question q
 		where
-		t.reqid=a
+		q.qid=t.a
 	</select>
 
 	<resultMap type="Essay" id="EssayMap">
@@ -124,7 +124,8 @@
 	<select id="listMyFavorite" parameterType="Users" resultType="Favorite">
 		select f.*,t.sum from FAVORITE f,
 		(select count(ids) sum from DYNSTATE
-		where selfid=#{uids}) t
+		where selfid=#{uids} and cfid=(select fid from favorite where
+		fcreid=#{uids})) t
 		where fcreid=#{uids}
 	</select>
 
@@ -256,18 +257,19 @@
 
 	<select id="myatteninfo" parameterType="Users" resultType="Users">
 		select u.uname,u.upic,u.usign from users u
-		right join (select aimid from dynstate where selfid=#{uids} order by aimid)
+		right join (select aimid
+		from dynstate where selfid=#{uids} order by aimid)
 		e
 		on u.uids=e.aimid
 	</select>
 
-	
+
 	<delete id="delpraise" parameterType="Dynstate">
-	   delete  DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}' 
+		delete DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}'
 	</delete>
-	
+
 	<delete id="delcollect" parameterType="Dynstate">
-	   delete  DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}' 
+		delete DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}'
 	</delete>
-	
+
 </mapper>
