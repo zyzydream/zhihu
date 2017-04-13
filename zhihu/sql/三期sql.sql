@@ -127,6 +127,12 @@ CREATE TABLE scolumn(
    scname VARCHAR2(20),
    sctime VARCHAR2(30)
 );
+
+select
+		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
+		r,users u where
+		remitid='1002'
+		and uids=remitid
 select * from scolumn where sccreid='1001';
 insert into scolumn(scid,sccreid,scname,sctime)
 values('101','1002','我的专栏','2017-4-9');
@@ -164,6 +170,7 @@ select seq_topics.nextval,
 dbms_random.string('l',dbms_random.value(5, 6)),
 '1',
 'car.png' from dual connect by level <= 15;
+select * from topics
 drop sequence seq_topics
 drop table topics
 
@@ -744,6 +751,3 @@ select *  from dynstate PARTITION(DQ)
        
        
 select to_number( SYSDATE- to_date('2017-12-15','yyyy-mm-dd')) from dual
-=======
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git

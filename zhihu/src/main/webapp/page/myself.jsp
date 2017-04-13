@@ -93,7 +93,9 @@
 				<div class="Card">
 					<div class="ProfileHeader-userCover">
 						<div class="UserCoverEditor">
-								<div class="UserCoverGuide" >						
+						
+								<div class="UserCoverGuide" >	
+									<!-- <img alt="yy" src="/zhihu/images/1.jpg" style="width:1349px;height:141px"> -->					
 									<div class="UserCoverGuide-inner">
 									
 										<div class="UserCoverGuide-buttonContainer">
