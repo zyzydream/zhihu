@@ -89,7 +89,7 @@
 	</update>
 	
 	<!-- 统计点攒数 -->
-	<select id="statisticsPraise" parameterType="Explore" resultType="int">
+	<select id="statisticsPraise" parameterType="Explore" resultType="string">
 	    select count(0) from dynstate
 	       <if test="kind=='DW'">
 	          PARTITION(${kind})
@@ -103,7 +103,7 @@
 	     where ids='${ids}'
 	</select>
 	
-	<select id="statisticsCollect" parameterType="Explore" resultType="int">
+	<select id="statisticsCollect" parameterType="Explore" resultType="string">
 	    select count(0) from dynstate
 	       <if test="kind =='SW'">
 	          PARTITION(${kind})

@@ -67,6 +67,7 @@ public class UserServiceImpl implements UserService{
 	public List<Explore> listrelatedD(Users user) {
 		List<Explore> all=new ArrayList<Explore>();
 		if(user!=null){
+			//System.out.println("user");
 			List<Explore> essays = userMapper.listessay(user);
 		    for(Explore essay:essays){
 				essay.setKind("DW");
@@ -98,7 +99,9 @@ public class UserServiceImpl implements UserService{
 				}
 			}
 		}else{
-			all=exploreMapper.findAll(new Strings());
+			//System.out.println("null");
+			Strings s=new Strings();
+			all=exploreMapper.findAll(new Strings("%","%"));
 			for(Explore explore:all){
 				if("W".equals(explore.getKind())){
 					explore.setKind("DW");

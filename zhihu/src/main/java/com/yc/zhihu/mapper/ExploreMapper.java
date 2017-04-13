@@ -26,5 +26,5 @@ public interface ExploreMapper {
 
 	int submit(Explore explore);
 
-	void updateExplore();
+	void updateExplore(Explore e);
 }

@@ -61,7 +61,7 @@
       	    update explore set checks='y' where ids=#{ids} and kind=#{kind}
     </update>
     
-    <update id="updateExplore">
-       update explore set
+    <update id="updateExplore" parameterType="Explore">
+       update explore set praise='${praise}' , collect='${collect}' where ids=#{ids} and kind=#{kind}
     </update>
 </mapper>

@@ -43,6 +43,29 @@ function show(){
 					dynstate+='</span></div><div class="col-md-5"><img class="featurette-image img-responsive center-block" src="" data-src="holder.js/500x500/auto"';
 					dynstate+='tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto" alt=""></div></div>';
 					dynstate+='<hr class="featurette-divider" style="margin-top:10px;">';
+				}else if(data[i].kind=="Q"){
+					dynstate+='<div class="row featurette"><div class="col-md-7">';
+					dynstate+='<h2 class="featurette-heading" style="font-size: 20px;">';
+					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].tname+'Q</span><br/>'+data[i].title+'</h2>';
+					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;">'+data[i].author+' &nbsp;&nbsp;&nbsp;';
+					dynstate+='<span class="text-muted" style="font-size: 12px;font-weight: 300;">'+data[i].usign+'</span></h2>';
+					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
+					if(data[i].ycollent=='n'){
+						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
+					}else if(data[i].ycollent=='y'){
+						dynstate+='<div style="width: 100px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" onclick="delcollect(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 取消收藏  '+data[i].collect+'</a></div>';
+					}else{
+						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
+					}
+					if(data[i].ypraise=='n'){
+					    dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="praise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞  '+data[i].praise+'</button></div>';
+					}else{
+					    dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="delpraise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
+					}
+					dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>';
+					dynstate+='</span></div><div class="col-md-5"><img class="featurette-image img-responsive center-block" src="" data-src="holder.js/500x500/auto"';
+					dynstate+='tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto" alt=""></div></div>';
+					dynstate+='<hr class="featurette-divider" style="margin-top:10px;">';
 				}else if(data[i].kind=="FW"){
 					dynstate+='<div class="row featurette"><div class="col-md-7">';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px">'+data[i].author+':发表文章：</span><br />'+data[i].title+'</h2>';
@@ -100,7 +123,7 @@ $.get("user/topics",function(data){
 //	alert("请求的话题："+JSON.stringify(data));
 	var topics="";
 	for(var i=0;i<data.length;i++){
-		topics+='<a class="HomeTopics-item zm-item-tag" href="/topic/19550517" target="_blank">'+data[i].ttopic+'</a>';
+		topics+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?ids='+data[i].tid+'" target="_blank">'+data[i].ttopic+'</a>';
 	}
 	document.getElementById("title").innerHTML =topics;
 },"json");
