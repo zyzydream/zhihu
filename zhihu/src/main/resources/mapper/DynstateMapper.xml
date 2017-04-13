@@ -80,7 +80,7 @@
 		remitid=#{uids}
 		and uids=remitid) t,question q
 		where
-		t.reqid=a
+		q.qid=t.a
 	</select>
 
 	<resultMap type="Essay" id="EssayMap">
