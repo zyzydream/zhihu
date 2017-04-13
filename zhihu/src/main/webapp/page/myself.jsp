@@ -13,6 +13,15 @@
 <link type="text/css" rel="stylesheet" href="css/myself.css">
 <!-- <link type="text/css" rel="stylesheet" href="bootstrap-3.3.4/bootstrap-fileinput-master/css/fileinput.css">
  -->
+ <link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
+	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
+	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
+<script
+	src="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"
+	tppabs="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"></script>
+<link type="text/css" rel="stylesheet" href="css/myself.css">
+<link rel="shortcut icon" href="images/logohead.png">
 </head>
 <body>
 	<div>
