@@ -123,7 +123,7 @@ $.get("user/topics",function(data){
 //	alert("请求的话题："+JSON.stringify(data));
 	var topics="";
 	for(var i=0;i<data.length;i++){
-		topics+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?ids='+data[i].tid+'" target="_blank">'+data[i].ttopic+'</a>';
+		topics+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].ttopic+'" target="_blank">'+data[i].ttopic+'</a>';
 	}
 	document.getElementById("title").innerHTML =topics;
 },"json");

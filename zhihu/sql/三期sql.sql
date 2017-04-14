@@ -23,7 +23,8 @@ select * from explore where ids like '%' and kind like '%'
 select * from dynstate PARTITION(SW) where selfid='10942'
 select * from users where uids='10186'
 delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324' 
-
+delete dynstate where selfid='10001' and ids='10103' 
+select * from dynstate where selfid='10001' and ids='10103' 
 select * from users
  10001 qwbccyjt   a         zvparnkripxijysiebqwvuflwtcthvlvs        测试员         zzz.jpg 18065182570@qq.com /zhihu/images/touxiang.jpg
 select * from dynstate where selfid='10001' and kind='SW'

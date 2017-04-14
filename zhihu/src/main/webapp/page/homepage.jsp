@@ -171,7 +171,7 @@
 				<span id="omissible">
 					<div class="HomeEntry" data-za-module="HomeEntry">
 						<div class="HomeEntry-avatar">
-							<img class="Avatar Avatar--xs" src=" " alt="xxx" />
+							<img class="Avatar Avatar--xs" src="images/1.jpg" alt="xxx" />
 						</div>
 						<div class="HomeEntry-box">
 							<span class="HomeEntry-boxArrow"></span>
