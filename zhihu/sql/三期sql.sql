@@ -11,11 +11,14 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
-<<<<<<< HEAD
+select * from users;
+ select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
+
+ 18039696056@qq.com
+ 
+ select *from question
 drop table users
-=======
 select * from USERS
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 insert into EXPLORE(ids)VALUES ('101');
 update USERS set tpic='images/car.png' where uids='1001'
 update explore set praise='15' , collect='4' where ids='101'
@@ -76,6 +79,13 @@ select count(0) from dynstate PARTITION(DW) where ids='12946'
  select * from explore e, (select count(0) from dynstate PARTITION (DQ) where ids='12607')d where e.tid=d.ids 
 
 drop table users
+
+
+select f.*,t.sum from FAVORITE f,
+		(select count(ids) sum from DYNSTATE
+		where selfid='10001' and cfid=(select fid from favorite where
+		fcreid='10001')) t
+		where fcreid='10001'
 
 insert into users(uids,uname,upassword,usign,uemail,tpic,upic)
 values('1001','gr','a','haha','123@qq.com','/zhihu/images/1.jpg','/zhihu/images/touxiang.jpg')
@@ -174,16 +184,13 @@ CREATE TABLE scolumn(
    scname VARCHAR2(20),
    sctime VARCHAR2(30)
 );
-<<<<<<< HEAD
 drop table scolumn
-=======
 
 select
 		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
 		r,users u where
 		remitid='1002'
 		and uids=remitid
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 select * from scolumn where sccreid='1001';
 insert into scolumn(scid,sccreid,scname,sctime)
 values('101','1002','我的专栏','2017-4-9');
@@ -257,8 +264,9 @@ CREATE TABLE question(
    qtid  VARCHAR2(30), --话题id
    qtime VARCHAR2(30)
 );
+drop table question
 create sequence seq_question start with 10000;
-
+drop sequence seq_question
 insert into question
 select seq_question.nextval, 
 ''||ceil(dbms_random.value(10000,11000)),
@@ -294,6 +302,8 @@ CREATE TABLE reply(
    rtid VARCHAR2(30),
    rtime VARCHAR2(30)
 );
+drop table reply
+select * from reply
 create sequence seq_reply start with 10000;
 
 insert into reply
@@ -406,6 +416,49 @@ select aimid from dynstate where selfid='1003'
 select aimid from dynstate where selfid='1002'
 
 select * from dynstate;
+
+select * from reply where remitid='10197'
+
+select
+		(select
+		count(reqid) from reply where remitid='10197' and rkind='Q') answer,
+		((select count(scid) from scolumn where sccreid='10197')+
+		(select
+		count(eid) from essay where eautid='10197')) mine,
+		(select count(qid)
+		from question where qautid='10197') question,
+		(select count(fid) from
+		favorite where fcreid='10197') fav
+		from dual;
+		
+		select
+		q.qtitle title,t.uname uname,t.usign sign,t.upic tpic,
+		t.rcontent,t.rtime times,'A' kind
+		from (select
+		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
+		r,users u where
+		remitid='10197'
+		and uids=remitid and rkind='Q') t,question q
+		where
+		q.qid=t.a
+		
+		select * from question where qautid='10197'
+		
+		select * from question q,
+		(select count(reqid) sum,a.qid from reply,
+		(select qid from question where qautid='10197') a
+		where rkind='Q' and
+		reqid=a.qid group by a.qid)b
+		where q.qid=b.qid and q.qautid='10197'
+		
+		select * from question q,
+		(select count(reqid) sum,a.qid from reply
+		right join (select qid from question where qautid='10197') a
+		on rkind='Q' and reqid=a.qid group by a.qid) b
+		where q.qid=b.qid and q.qautid='10197'
+		
+		select * from reply where reqid=10029
+		select * from question where qautid='10197'
 
 insert into dynstate(selfid,aimid,kind,ids,times)
 values('1001','1002','GZ','101','2017-4-9');
