@@ -23,6 +23,8 @@ public class TopicHandler {
 
 	@Autowired
 	private TopicService topicService;
+	@Autowired
+	private UserService usersService;
 	
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	public List<Topics> list(HttpServletRequest request){
@@ -36,10 +38,12 @@ public class TopicHandler {
 		return tp;
 	}
 	
-	@RequestMapping(value="/allExplore",method=RequestMethod.POST)
+	@RequestMapping(value="/allExplore",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Explore> allExplore(String ids){
-		return topicService.allExplore(ids);
+	public List<Explore> allExplore(Topics t,HttpServletRequest request){
+		int pagenum=Integer.valueOf(t.getTstid());
+		List<Explore> e= topicService.allExplore(t.getTid()).subList(0,pagenum*10);
+	    return usersService.yPraiseAndCollect(e, request);
 	}
 	
 }

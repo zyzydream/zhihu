@@ -65,9 +65,10 @@
 		t.*,q.qtitle from
 		(select r.*,u.uname,u.usign,r.reqid a from REPLY
 		r,users u where remitid=#{uids}
-		and uids=remitid) t,question q
+		and uids=remitid and rkind='Q')
+		t,question q
 		where
-		t.reqid=a
+		q.qid=t.a
 	</select>
 
 	<select id="listAnswer" parameterType="Users" resultType="ListAllMy">
@@ -78,7 +79,7 @@
 		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
 		r,users u where
 		remitid=#{uids}
-		and uids=remitid) t,question q
+		and uids=remitid and rkind='Q') t,question q
 		where
 		q.qid=t.a
 	</select>
@@ -114,11 +115,12 @@
 
 	<select id="listMyQuestion" parameterType="Users" resultType="Question">
 		select * from question q,
-		(select count(reqid) sum,a.qid from reply,
-		(select * from question where qautid=#{uids}) a
-		where rkind='Q' and
-		reqid=a.qid group by qid)b
-		where q.qid=b.qid and q.qautid=#{uids}
+		(select count(reqid) sum,a.qid from reply
+		right join (select qid from question where qautid=#{uids}) a
+		on
+		rkind='Q' and reqid=a.qid group by a.qid) b
+		where q.qid=b.qid and
+		q.qautid=#{uids}
 	</select>
 
 	<select id="listMyFavorite" parameterType="Users" resultType="Favorite">
@@ -265,11 +267,13 @@
 
 
 	<delete id="delpraise" parameterType="Dynstate">
-		delete DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}'
+		delete DYNSTATE
+		PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}'
 	</delete>
 
 	<delete id="delcollect" parameterType="Dynstate">
-		delete DYNSTATE PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}'
+		delete DYNSTATE
+		PARTITION(${kind}) where selfid='${selfid}' and ids='${ids}'
 	</delete>
 
 </mapper>
