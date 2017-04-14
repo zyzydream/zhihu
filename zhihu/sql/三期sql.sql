@@ -257,7 +257,12 @@ CREATE TABLE question(
    qtime VARCHAR2(30)
 );
 create sequence seq_question start with 10000;
+INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(sequence seq_essay,'','',to_char(sysdata,'yyyy-mm-dd'),'','10001'); 
 
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtid,qtime)
+		values (seq_question.nextval,'','','','',to_char(sysdate,'yyyy-MM-dd'))
+		SELECT to_char(sysdate,'yyyy-mm-dd') from dual
+select * from question
 insert into question
 select seq_question.nextval, 
 ''||ceil(dbms_random.value(10000,11000)),
