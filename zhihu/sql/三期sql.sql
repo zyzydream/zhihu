@@ -16,7 +16,16 @@ select * from users;
 
  18039696056@qq.com
  
- select *from question
+ select
+		t.*,q.qtitle from
+		(select r.*,u.uname,u.usign,r.reqid a from REPLY
+		r,users u where remitid='10198'
+		and uids=remitid and rkind='Q')
+		t,question q
+		where
+		q.qid=t.a
+ 
+ select *from topics
 drop table users
 select * from USERS
 insert into EXPLORE(ids)VALUES ('101');
@@ -354,6 +363,30 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
+select count(ids) from dynstate PARTITION(DH)
+where selfid='10198'
+
+select count(1) from dynstate PARTITION(DH) 
+where selfid='10198' and ids=10101
+select reqid from reply where remitid='10198' and rkind='Q'
+
+--我的回答的点赞数
+select count(ids),b.reqid,'Z' kind from dynstate PARTITION(DH)
+right join (select reqid from reply where remitid='10198' and rkind='Q') b
+on ids=b.reqid and selfid='10198' group by b.reqid
+
+select count(0) from dynstate PARTITION(DH)
+where ids='10101' and selfid='10198'
+--我的回答的收藏数
+select count(ids),b.reqid from dynstate PARTITION(SH)
+right join (select reqid from reply where remitid='10198' and rkind='Q') b
+on ids=b.reqid and selfid='10198' group by b.reqid
+--我的回答的阅览数
+
+
+
+select * from dynstate PARTITION(DH) where selfid='10198' and ids='10101'
+
 
 select f.*,t.sum from FAVORITE f,
 		(select count(ids) sum from DYNSTATE
@@ -363,13 +396,15 @@ select f.*,t.sum from FAVORITE f,
 		select * from favorite
 --外连接 查询我关注的人有多少个回答
 select count(rid),d.aimid from reply r 
-full join (select aimid from dynstate where selfid='1001' order by aimid) d
+right join (select aimid from dynstate where selfid='10197' order by aimid) d
 on r.remitid=d.aimid group by d.aimid
 
 --右连接 查询我关注的人有多少文章
 select count(eid),b.aimid from essay e
-right join (select aimid from dynstate where selfid='1001' order by aimid) b
+right join (select aimid from dynstate where selfid='10197' order by aimid) b
 on e.eautid=b.aimid group by b.aimid
+
+
 
 --右连接 查询我关注的人有多少个人关注
 select count(dd.selfid),c.aimid from dynstate dd
@@ -430,18 +465,48 @@ select
 		favorite where fcreid='10197') fav
 		from dual;
 		
+		select count(0),m.ids from dynstate PARTITION(DH) m
+where ids='10101' and selfid='10198' group by m.ids
+
 		select
 		q.qtitle title,t.uname uname,t.usign sign,t.upic tpic,
-		t.rcontent,t.rtime times,'A' kind
+		t.rcontent,t.rtime times,'A' kind,count(m.ids)
 		from (select
 		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
 		r,users u where
-		remitid='10197'
-		and uids=remitid and rkind='Q') t,question q
+		remitid='10198'
+		and uids=remitid and rkind='Q') t,question q,dynstate PARTITION(DH) m
 		where
-		q.qid=t.a
+		q.qid=t.a and m.ids=t.a and m.selfid='10198' 
+		group by q.qtitle ,t.uname ,t.usign ,t.upic ,
+		t.rcontent,t.rtime ,kind
 		
-		select * from question where qautid='10197'
+		select
+		q.qtitle title,t.uname uname,t.usign sign,t.upic tpic,
+		t.rcontent,t.rtime times,'A' kind,count(m.ids) dz
+		from (((select
+		r.*,u.uname,u.usign,r.reqid a,u.upic,r.remitid b from REPLY
+		r,users u where
+		remitid='10198'
+		and uids=remitid and rkind='Q') t
+		left join question q on q.qid=t.a)
+		left join dynstate PARTITION(DH) m
+		on m.ids=t.a and m.selfid=t.b) 
+		group by q.qtitle ,t.uname ,t.usign ,t.upic ,
+		t.rcontent,t.rtime ,kind
+		
+		select * from essay where eautid='10198'
+
+		select
+		e.etitle title,e.etime times,e.eid tid,'E' kind ,u.upic tpic
+		,e.econtent content,u.uname,u.usign sign,e.eautid,count(m.ids) dz
+		from (essay e  join users u
+		on e.eautid='10198' and u.uids=e.eautid)  
+		left join dynstate PARTITION(DW) m 
+		on m.ids=e.eid and m.selfid=e.eautid
+		group by e.etitle ,e.etime ,e.eid , kind ,u.upic 
+		,e.econtent ,u.uname,u.usign ,e.eautid
+		
 		
 		select * from question q,
 		(select count(reqid) sum,a.qid from reply,
@@ -556,12 +621,16 @@ select ''||ceil(dbms_random.value(10000,11000)),
 select * from dynstate PARTITION (GR)
 
 
-
-select * from QUESTION q,
-(select * from reply,
-   (select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids order by count(ids)) 
- where counts>0 and id=rid and rkind='Q' and rrid='')r
- where q.qid=r.reqid
+		select
+		q.qtitle title,t.uname uname,t.usign sign,t.upic tpic,
+		t.rcontent,t.rtime times,'A' kind
+		from (select
+		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
+		r,users u where
+		remitid=#{uids}
+		and uids=remitid and rkind='Q') t,question q
+		where
+		q.qid=t.a
  
 		select * from users where uids='1023' and uprofession is not null
 		select * from DYNSTATE where selfid='1026' and kind = 'GH'

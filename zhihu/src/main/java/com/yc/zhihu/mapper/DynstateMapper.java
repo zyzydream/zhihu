@@ -69,4 +69,10 @@ public interface DynstateMapper {
 	int delpraise(Dynstate dynstate);
 
 	int delcollect(Dynstate dynstate); 
+	
+	int countdz(Object obj);
+	
+	int favoriteinfo(Favorite obj);
+	
+	
 }

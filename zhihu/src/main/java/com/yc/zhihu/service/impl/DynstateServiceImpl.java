@@ -212,4 +212,14 @@ public class DynstateServiceImpl implements DynstateService {
 		System.out.println(dynstate.getKind());
 		return dynstateMapper.delcollect(dynstate);
 	}
+	
+	@Override
+	public int countdz(Object obj) {
+		return dynstateMapper.countdz(obj);
+	}
+	
+	@Override
+	public int favoriteinfo(Favorite attribute) {
+		return dynstateMapper.favoriteinfo(attribute);
+	}
 }

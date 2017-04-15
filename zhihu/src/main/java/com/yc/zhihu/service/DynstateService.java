@@ -64,4 +64,9 @@ public interface DynstateService {
 	int delpraise(Dynstate dynstate);
 
 	int delcollect(Dynstate dynstate);
+	
+	int countdz(Object obj);
+
+	int favoriteinfo(Favorite attribute);
+	
 }

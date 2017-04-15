@@ -47,12 +47,14 @@ $.get("dynstate/m1",function(data){
 					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
 					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
-					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span> <a href="#" style="font-size: 13px; font-weight: 40">阅览'
-					+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a href="#" style="font-size: 13px; font-weight: 40">点赞 '
-					+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
-					+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
-					+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
-					+'</span></div></div>';
+					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p>'
+					+'<span><div style="width: 70px; float: left; height: 20px"'
+					+' class="btn-group" role="group" aria-label="...">'
+					+'<button'
+					+'	style="font-size: 13px; font-weight: 40; border-style: none;"'
+					+'	type="button" class="btn btn-default">'
+					+'	<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞'
+					+   data[i].dz+'</button></div></span></div></div><hr>';
 			}else if(data[i].kind=="T"){
 				myanswers+='<div class="List-item"><div class="List-itemMeta">'
 					+'<div class="ActivityItem-meta"><span class="ActivityItem-metaTitle">关注了话题</span>'
@@ -71,12 +73,14 @@ $.get("dynstate/m1",function(data){
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
 					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
 					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p>'
-					+'<p class="text-muted" style="font-size: 14px; color:">发布于'+data[i].times+'</p><span> <a href="#" style="font-size: 13px; font-weight: 40">阅览'
-					+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a href="#" style="font-size: 13px; font-weight: 40">点赞 '
-					+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
-					+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
-					+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
-					+'</span></div></div></div>';
+					+'<p class="text-muted" style="font-size: 14px; color:">发布于'+data[i].times+'</p>'
+					+'<span><div style="width: 70px; float: left; height: 20px"'
+					+' class="btn-group" role="group" aria-label="...">'
+					+'<button'
+					+'	style="font-size: 13px; font-weight: 40; border-style: none;"'
+					+'	type="button" class="btn btn-default">'
+					+'	<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞'
+					+   data[i].dz+'</button></div></span></div></div><hr>';
 			}else if(data[i].kind=='S'){
 				myanswers+='<div class="List-item"><div class="List-itemMeta">'
 					+'<div class="ActivityItem-meta"><span class="ActivityItem-metaTitle">关注了'+data[i].uname+'的专栏</span>'
@@ -125,30 +129,67 @@ function Myanswer3(){
 	},'json');
 
 	$.get("dynstate/m3",function(data){
-		alert(data);
-		var myanswers="";
-		if((data.length)>0){
+		if(data.length>0){
+			var myanswers="";
 			for(var i=0;i<data.length;i++){
 				myanswers+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="featurette-heading" style="font-size: 20px;">'
-					+'<span class="text-muted" style="font-size: 13px">回答了问题</span><br />'+data[i].question[i].qtitle+'</h2>'
-					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
-					+data[i].users[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
-					+'style="font-size: 12px; font-weight: 300;">'+data[i].users[i].usign+'</span></h2>'
-					+'<p class="lead" style="font-size: 14px;">'+data[i].rcontent+'</p><span> '
-					+'<p class="text-muted" style="font-size: 14px; color:">发布于'+data[i].rtime+'</p><a href="#" style="font-size: 13px; font-weight: 40">阅览'
-					+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a href="#" style="font-size: 13px; font-weight: 40">点赞 '
-					+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
-					+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
-					+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
-					+'</span></div></div>';
+					+'<span class="text-muted" style="font-size: 13px">回答了问题</span><br />'+data[i].title+'</h2>'
+					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].tpic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
+					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
+					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
+					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span> '
+					+'<p class="text-muted" style="font-size: 14px; color:">发布于'+data[i].times+'</p>'
+					+'<span><div style="width: 70px; float: left; height: 20px">'
+					+'<a style="font-size: 13px; font-weight: 40; border-style: none;"'
+					+' class="btn btn-default dropdown-toggle" type="button"'
+					+' id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏'
+					+' </a>'
+					+' <ul class="dropdown-menu" role="menu"'
+					+' aria-labelledby="dropdownMenu1">'
+					+' <li role="presentation"><a role="menuitem" tabindex="-1"'
+					+'	onclick="addfav()">添加收藏夹</a></li>'
+					+'</ul></div>'
+					+'<div style="width: 70px; float: left; height: 20px"'
+					+' class="btn-group" role="group" aria-label="...">'
+					+'<button'
+					+'	style="font-size: 13px; font-weight: 40; border-style: none;"'
+					+'	type="button" class="btn btn-default">'
+					+'	<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞'
+					+   data[i].dz+'</button></div></span></div></div><hr>';
 			}
-		}else{
-			myanswers+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px;text-align:center;height:200px"><div class="col-md-7">'
-				+'<a style="float:center">还没有回答，快去回答一下！</b></div><div/>';
 		}
-
 		document.getElementById("myself2").innerHTML = myanswers;
 	},'json');
+
+}
+
+function addfav(){
+	$.get("dynstate/m7",function(data){
+		var info="";
+		if(data.length>0){
+			for(var i=0;i<data.length;i++){
+				info+='';
+			}
+		}else{
+			info+='<div class="modal-header">'
+			+'<button type="button" class="close" data-dismiss="modal"'
+			+'	aria-label="Close">'
+			+'	<span aria-hidden="true">×</span>'
+			+'</button>'
+			+'<h4 class="modal-title" id="myModalLabel">添加收藏</h4>'
+			+'<h5>请选择你想添加的收藏夹</h5>'
+			+'</div>'
+			+'<div class="modal-body">'
+			+'<span><a id="createfav" href="javascript:void(0)" onclick="createfav()">当前没有收藏夹，请创建一个收藏夹</a><span>'
+			+'</div>';
+		}
+		document.getElementById("favinfos").innerHTML = info;
+	},'json');
+	$('#myModal').modal();
+}
+
+function createfav(){
+	$('#myModal2').modal();
 }
 
 function My(){
@@ -177,21 +218,29 @@ function My(){
 	},'json');
 	$.get("dynstate/m4",function(data){
 		var my="";
-		for(var i=0;i<data.length;i++){
-			my+='<div class="List-item"><div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="ContentItem-title">'
-				+'<a>'+data[i].etitle+'</a></h2><br/>'
-				+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
-				+data[i].users[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
-				+'style="font-size: 12px; font-weight: 300;">'+data[i].users[i].usign+'</span></h2>'
-				+'<p class="lead" style="font-size: 14px;">'+data[i].econtent+'</p><br/>'
-				+'<p class="text-muted" style="font-size: 14px; color:">发布于'+data[i].etime+'</p><span> <a href="#" style="font-size: 13px; font-weight: 40">阅览'
-				+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a href="#" style="font-size: 13px; font-weight: 40">点赞 '
-				+'<span class="badge" style="width: 20px; padding: 0px;">42</span></a> <a'
-				+'href="#" style="font-size: 13px; font-weight: 40">收藏 <span'
-				+' class="badge" style="width: 20px; padding: 0px;">42</span></a></span></div></div>'
-				+'</span></div></div></div>';
+		if(data.length>0){
+			for(var i=0;i<data.length;i++){
+				my+='<div class="List-item"><div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="ContentItem-title">'
+					+'<a>'+data[i].title+'</a></h2><br/>'
+					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
+					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
+					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
+					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><br/>'
+					+'<p class="text-muted" style="font-size: 14px; color:">发布于'+data[i].times+'</p>'
+					+'<span><div style="width: 70px; float: left; height: 20px"'
+					+' class="btn-group" role="group" aria-label="...">'
+					+'<button'
+					+'	style="font-size: 13px; font-weight: 40; border-style: none;"'
+					+'	type="button" class="btn btn-default">'
+					+'	<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞'
+					+   data[i].dz+'</button></div></span></div></div><hr>';
 
+			}
+		}else{
+			my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px;text-align:center;height:300px;">'
+				+'<div class="col-md-7"><a style="float:center">还没有文章，赶快发表一篇吧。。。</a></div></div>';
 		}
+		
 		document.getElementById("myself2").innerHTML = my;
 
 	},'json');
@@ -325,7 +374,7 @@ function MyAttention(){
 				+'</div></span><span class="FollowStatus" id="showattenyn">相互关注</span></div></h2>'
 				+'<div class="ContentItem-meta"><div><div class="RichText">'+data[i].usign+'</div>'
 				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data[i].myattenaw+'回答</span>'
-				+'<span class="ContentItem-statusItem">'+data[i].essum+'文章</span>'
+				+'<span class="ContentItem-statusItem">'+data[i].myatteness+'文章</span>'
 				+'<span class="ContentItem-statusItem">'+data[i].attsum+' 关注者</span>'
 				+'</div></div></div></div><div class="ContentItem-extra"><button class="Button FollowButton Button--primary Button--grey" id="attenbtn" type="button" onclick="touch()">'
 				+'已关注</button></div></div></div></div>'
@@ -376,7 +425,7 @@ function updatePic(){
 		}
 		document.getElementById("UserCoverGuide-inner").innerHTML = img;
 	},'json');
-	 
+
 }
 
 function chgPic(obj){
