@@ -186,7 +186,7 @@
 										  <%=request.getSession().getAttribute("ids") %></h1>
 										<ul class="nav nav-pills" style="width:580px;float: left;margin-left: 10px;">
 											<li role="presentation" class="active"><a href="#" style="font-size:small;padding: 5px;font-weight: lighter;">所有动态</a></li>
-											<li role="presentation"><a href="#" style="font-size:small;padding: 5px;font-weight: lighter;">精选</a></li>
+											<li role="presentation" onclick="selectExplore(0)"><a href="javascript:void(0)" style="font-size:small;padding: 5px;font-weight: lighter;">精选</a></li>
 											<li role="presentation"><a href="#" style="font-size:small;padding: 5px;font-weight: lighter;">等待回答</a></li>
 										</ul>
 									</div>
@@ -266,7 +266,7 @@
 								<hr class="featurette-divider"> -->
 							</span>
 							<nav>
-								<ul class="pager">
+								<ul class="pager" id="more">
 									<li><a href="javascript:void(0)" onclick="more(1)">more</a></li>
 								</ul>
 							</nav>

@@ -46,4 +46,12 @@ public class TopicHandler {
 	    return usersService.yPraiseAndCollect(e, request);
 	}
 	
+	@RequestMapping(value="/selectExplore",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Explore> selectExplore(Topics t,HttpServletRequest request){
+		int pagenum=Integer.valueOf(t.getTstid());
+		List<Explore> e= topicService.selectExplore(t);
+	    return usersService.yPraiseAndCollect(e, request);
+	}
+	
 }

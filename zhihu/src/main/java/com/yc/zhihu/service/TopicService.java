@@ -13,6 +13,8 @@ public interface TopicService {
 
 	public List<Explore> allExplore(String ids);
 
+	public List<Explore> selectExplore(Topics t);
+
 	
 
 }

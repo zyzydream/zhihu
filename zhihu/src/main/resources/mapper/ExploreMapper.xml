@@ -29,7 +29,7 @@
     </select>
     
     <select id="findUpdateW" resultType="Explore" >
-	select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid
+	select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,rd.tid
 	tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname
 	author,rd.rtime times,'n' checks from QUESTION q,
 	(select * from topics t,

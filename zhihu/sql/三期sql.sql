@@ -11,9 +11,11 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+select * from TOPICS
 select * from users;
+select * from explore;
  select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
-
+select * from reply
  18039696056@qq.com
  
  select *from question

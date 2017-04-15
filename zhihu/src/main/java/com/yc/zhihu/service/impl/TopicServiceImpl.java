@@ -23,10 +23,10 @@ public class TopicServiceImpl implements TopicService{
 	private UserMapper userMapper;
 	@Autowired
 	private TopicsMapper topicsMapper;
-	
+
 	@Override
 	public List<Topics> list(Object user) {
-		
+
 		return topicsMapper.list(user);
 	}
 
@@ -58,6 +58,33 @@ public class TopicServiceImpl implements TopicService{
 			q.setKind("Q");
 			all.add(q);
 		}
+		return times(all);
+	}
+
+	@Override
+	public List<Explore> selectExplore(Topics t) {
+		List<Explore> explores= topicsMapper.selectExplore(t);
+		for(Explore explore:explores){
+			if("W".equals(explore.getKind())){
+				explore.setKind("DW");
+				explore.setPraise(userMapper.statisticsPraise(explore));
+				explore.setKind("SW");
+				explore.setCollect(userMapper.statisticsCollect(explore));
+				explore.setKind("W");
+			}else if("Q".equals(explore.getKind())){
+				explore.setKind("DQ");
+				explore.setPraise(userMapper.statisticsPraise(explore));
+				explore.setKind("SQ");
+				explore.setCollect(userMapper.statisticsCollect(explore));
+				explore.setKind("Q");
+			}
+		}
+		return times(explores);
+
+	}
+
+	//按时间排列
+	public List<Explore> times(List<Explore> all){
 		int length=all.size();
 		DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 		Explore [] t=new Explore[length];
