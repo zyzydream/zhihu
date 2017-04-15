@@ -11,9 +11,11 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+select * from TOPICS
 select * from users;
+select * from explore;
  select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
-
+select * from reply
  18039696056@qq.com
  
  select *from question
@@ -26,7 +28,8 @@ select * from explore where ids like '%' and kind like '%'
 select * from dynstate PARTITION(SW) where selfid='10942'
 select * from users where uids='10186'
 delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324' 
-
+delete dynstate where selfid='10001' and ids='10103' 
+select * from dynstate where selfid='10001' and ids='10103' 
 select * from users
  10001 qwbccyjt   a         zvparnkripxijysiebqwvuflwtcthvlvs        测试员         zzz.jpg 18065182570@qq.com /zhihu/images/touxiang.jpg
 select * from dynstate where selfid='10001' and kind='SW'
@@ -265,7 +268,16 @@ CREATE TABLE question(
 );
 drop table question
 create sequence seq_question start with 10000;
+
+INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(sequence seq_essay,'','',to_char(sysdata,'yyyy-mm-dd'),'','10001'); 
+
+insert into QUESTION(qid,qautid,qtitle,qdetail,qtid,qtime)
+		values (seq_question.nextval,'','','','',to_char(sysdate,'yyyy-MM-dd'))
+		SELECT to_char(sysdate,'yyyy-mm-dd') from dual
+select * from question
+
 drop sequence seq_question
+
 insert into question
 select seq_question.nextval, 
 ''||ceil(dbms_random.value(10000,11000)),
