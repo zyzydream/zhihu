@@ -1,5 +1,6 @@
 package com.yc.zhihu.web.handler;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,9 +27,13 @@ public class EssayHandler {
 	//写文章
 	@RequestMapping(value="/add" ,method=RequestMethod.POST )
 	@ResponseBody
-	public String add(Essay essay , HttpServletRequest request){
+	public String add(Essay essay , HttpServletRequest request) throws UnsupportedEncodingException{
 		String eautid = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids();
 		essay.setEautid(eautid);
+		String etitle = new String(essay.getEtitle().getBytes("iso-8859-1"),"utf-8");
+		String econtent = new String(essay.getEcontent().getBytes("iso-8859-1"),"utf-8");
+		essay.setEtitle(etitle);
+		essay.setEcontent(econtent);
 		System.out.println("essay 进来了==》" + essay);
 		if(essayServie.add(essay)){
 			return "true";
