@@ -11,7 +11,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>知乎首页</title>
-<title>Insert title here</title>
 <link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
 	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
@@ -187,7 +186,7 @@
 										<i class="sprite-home-answer-off"></i> 回答
 								</a></li>
 								<li class="HomeEntry-item"><a
-									href="//zhuanlan.zhihu.com/write" target="_blank"
+									href="page/write.jsp" target="_blank"
 									class="HomeEntry-post js-HomeEntry-post"> <i
 										class="sprite-home-post-off"></i> 写文章
 								</a></li>

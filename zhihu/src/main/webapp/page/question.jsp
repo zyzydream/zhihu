@@ -137,15 +137,7 @@
 								<div class="QuestionHeader-follow-status">
 									<div class="QuestionFollowStatus">
 										<div class="NumberBoard QuestionFollowStatus-counts">
-											<button class="Button NumberBoard-item Button--plain"
-												type="button">
-												<div class="NumberBoard-name">关注者</div>
-												<div class="NumberBoard-value">43516</div>
-											</button>
-											<div class="NumberBoard-divider"></div>
 											<div class="NumberBoard-item">
-												<div class="NumberBoard-name">被浏览</div>
-												<div class="NumberBoard-value">29109115</div>
 											</div>
 										</div>
 									</div>
@@ -182,10 +174,6 @@
 								</div>
 
 								<div class="QuestionHeader-side">
-									<div class="QuestionButtonGroup">
-										<button class="Button Button--primary Button--blue"
-											type="button">关注问题</button>
-									</div>
 									<button class="Button" type="button">写回答</button>
 								</div>
 

@@ -162,7 +162,9 @@ where eautid='1001' and  uids='1001';
 select * from essay where etid = '10003'
 INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval,'10001','ddddd','2017-3-3','主机','10003');
 
+INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval,'10135','<p>相册现在<img alt="2.png" src="/upload30/image/20170415/1492247766872047588.png" title="1492247766872047588.png"/></p>',to_char(sysdate,'yyyy-mm-dd'),'对对对','10002');
 
+select * from essay where eid='130' and etid='10002'
 
 create sequence seq_essay start with 10000;
 insert into essay
