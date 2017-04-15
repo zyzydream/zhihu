@@ -9,7 +9,7 @@
 <title>账号设置</title>
 <link type="text/css" rel="stylesheet" href="css/design.css">
 </head>
-<body class="zhi ">
+<body class="zhi">
 	<div class="zu-top" role="navigation" data-za-module="TopNavBar">
 		<div id="zh-top-inner" class="zg-wrap modal-shifting clearfix">
 			<a id="zh-top-link-logo" class="zu-top-link-logo" href="/"
@@ -80,12 +80,12 @@
 		<div class="zu-main-content">
 			<div class="zu-main-content-inner">
 				<ul class="tab-navs">
-					<li class="tab-nav active"><a href="/settings/profile">基本资料</a></li>
-					<li class="tab-nav"><a href="/settings/account">帐号和密码</a></li>
-					<li class="tab-nav"><a href="/settings/filter">屏蔽</a></li>
+					<li class="tab-nav active" onclick="lick('infomation-form',1)"><a href="#" onclick="return false">基本资料</a></li>
+					<li class="tab-nav" onclick="lick('account-form',3)"><a href="#" onclick="return false">帐号和密码</a></li>
+					<li class="tab-nav" onclick="lick('shield-form',5)"><a href="#" onclick="return false">屏蔽</a></li>
 				</ul>
 			</div>
-			<form id="js-settings-account-form" class="zm-settings-account"
+			<form id="infomation-form" class="zm-settings-account"
 				action="/settings/profile" method="POST" autocomplete="off">
 				<input name="_xsrf" value="f5c87945329c77b31c12918738783665"
 					type="hidden">
@@ -125,11 +125,9 @@
 					<button class="zg-btn-blue" type="submit">保存</button>
 				</div>
 			</form>
+			<form id="account-form" class="form"></form>
+			<form id="shield-form" class="form"></form>
 		</div>
-		
-		
-		
-		
 	</div>
 
 
@@ -149,5 +147,13 @@
 			<span class="copy">&copy; 2017 知乎</span>
 		</div>
 	</div>
+
+<script type="text/javascript" src="easyui/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/holder.js"></script>
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+<script type="text/javascript" src="js/design.js"></script>
 </body>
 </html>

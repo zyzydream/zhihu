@@ -38,7 +38,7 @@
 					style="visibility: hidden" data-count="0"> </span>
 				</a>
 				<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
-					<li><a href="/people/yan-ling-78-98"> <i
+					<li><a href="page/myself.jsp"> <i
 							class="zg-icon zg-icon-dd-home"></i>我的主页
 					</a></li>
 					<li><a href="/inbox"> <i class="zg-icon zg-icon-dd-pm"></i>私信
@@ -46,10 +46,10 @@
 							class="zu-top-nav-pm-count zg-noti-number"
 							style="visibility: hidden" data-count="0"> </span>
 					</a></li>
-					<li><a href="/settings"> <i
+					<li><a href="page/design.jsp"> <i
 							class="zg-icon zg-icon-dd-settings"></i>设置
 					</a></li>
-					<li><a href="/logout"> <i
+					<li><a href="page/login.jsp"> <i
 							class="zg-icon zg-icon-dd-logout"></i>退出
 					</a></li>
 				</ul>
