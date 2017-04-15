@@ -37,23 +37,6 @@
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
 				</a>
-				<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
-					<li><a href="/people/yan-ling-78-98"> <i
-							class="zg-icon zg-icon-dd-home"></i>我的主页
-					</a></li>
-					<li><a href="/inbox"> <i class="zg-icon zg-icon-dd-pm"></i>私信
-							<span id="zh-top-nav-pm-count"
-							class="zu-top-nav-pm-count zg-noti-number"
-							style="visibility: hidden" data-count="0"> </span>
-					</a></li>
-					<li><a href="/settings"> <i
-							class="zg-icon zg-icon-dd-settings"></i>设置
-					</a></li>
-					<li><a href="/logout"> <i
-							class="zg-icon zg-icon-dd-logout"></i>退出
-					</a></li>
-				</ul>
-
 			</div>
 
 
@@ -226,11 +209,11 @@
 							</span> <span id="seflmain">
 								<div class="row featurette">
 									<div class="col-md-7">
-										<h2 class="featurette-heading" style="font-size: 20px;">
+										<h2 class="featurette-heading" style="font-size: 20px" >
 											<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].ttopic+'</span><br />'+data[i].etitle+'
 										</h2>
 										<h2 class="featurette-heading" style="font-size: 13px;">
-											'+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"
+											<a href="javascript:void(0)"  rel="drevil">'+data[i].author+'</a> &nbsp;&nbsp;&nbsp; <span class="text-muted"
 												style="font-size: 12px; font-weight: 300;">'+data[i].usign+'</span>
 										</h2>
 										<p class="lead" style="font-size: 14px;">'+data[i].econtent+'</p>
@@ -461,6 +444,7 @@
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/popover.js"></script>
 	<script
 		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
 		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>

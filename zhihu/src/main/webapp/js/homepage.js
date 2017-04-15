@@ -1,7 +1,9 @@
 //document.getElementById("name").innerHTML="zy";
 console.log($("#seflmain"));
 console.log(document.getElementById("seflmain"));
+var length=0;
 show();
+
 
 //请求最新动态
 function show(){
@@ -9,6 +11,7 @@ function show(){
 		var favorite=date;
 		$.get("user/dynstate",function(data){
 			var dynstate="";			
+			length=data.length;
 			for(var i=0;i<data.length;i++){
 				var aaaa="";
 				aaaa+='<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">';
@@ -23,8 +26,8 @@ function show(){
 				if(data[i].kind=="W"){
 					dynstate+='<div class="row featurette"><div class="col-md-7">';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 20px;">';
-					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].tname+'</span><br/><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
-					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;">'+data[i].author+' &nbsp;&nbsp;&nbsp;';
+					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：<a href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].tname+'">'+data[i].tname+'</a></span><br/><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
+					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;"><a href="javascript:void(0)"  rel="a'+i+'">'+data[i].author+'</a> &nbsp;&nbsp;&nbsp;';
 					dynstate+='<span class="text-muted" style="font-size: 12px;font-weight: 300;">'+data[i].usign+'</span></h2>';
 					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
 					if(data[i].ycollent=='n'){
@@ -46,7 +49,7 @@ function show(){
 				}else if(data[i].kind=="Q"){
 					dynstate+='<div class="row featurette"><div class="col-md-7">';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 20px;">';
-					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].tname+'Q</span><br/><a href="javascript:void(0)">'+data[i].title+'</a></h2>';
+					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：<a href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].tname+'">'+data[i].tname+'</a></span><br/><a href="javascript:void(0)">'+data[i].title+'</a></h2>';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;">'+data[i].author+' &nbsp;&nbsp;&nbsp;';
 					dynstate+='<span class="text-muted" style="font-size: 12px;font-weight: 300;">'+data[i].usign+'</span></h2>';
 					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
@@ -113,6 +116,8 @@ function show(){
 				}
 			}
 			document.getElementById("seflmain").innerHTML = dynstate;
+			test();
+			
 		},"json");
 	  }
 	,"json");
@@ -183,4 +188,32 @@ function delcollect(ids,kind){
 			alert("取消失败");
 		}
 	},"json");
+}
+
+function test(){
+	for(var i=0;i<10;i++){
+		$(function(){
+		    $("[rel=a"+i+"]").popover({
+		        trigger:'manual',
+		        placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+		        title : '<div style="text-align:center; color:red; text-decoration:underline; font-size:14px;"> Muah ha ha</div>', //this is the top title bar of the popover. add some basic css
+		        html: 'true', //needed to show html of course
+		        content : '<div id="popOverBox"><img src="http://www.hd-report.com/wp-content/uploads/2008/08/mr-evil.jpg" width="251" height="201" /></div>', //this is the content of the html box. add the image here or anything you want really.
+		        animation: false
+		    }).on("mouseenter", function () {
+		                var _this = this;
+		                $(this).popover("show");
+		                $(this).siblings(".popover").on("mouseleave", function () {
+		                    $(_this).popover('hide');
+		                });
+		            }).on("mouseleave", function () {
+		                var _this = this;
+		                setTimeout(function () {
+		                    if (!$(".popover:hover").length) {
+		                        $(_this).popover("hide")
+		                    }
+		                }, 100);
+		            });
+		});
+	}
 }
