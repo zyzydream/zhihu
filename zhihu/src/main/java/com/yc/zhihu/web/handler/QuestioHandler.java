@@ -1,6 +1,7 @@
 package com.yc.zhihu.web.handler;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Question;
+import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.QuestionService;
 import com.yc.zhihu.util.ServletUtil;
@@ -41,6 +43,27 @@ public class QuestioHandler {
 		}else{
 			return "false";
 		}
-		
 	}
+	
+	@RequestMapping(value="topic" , method =RequestMethod.POST)
+	@ResponseBody
+	public List<Topics> topic(Question question){
+		//String qid = request.getParameter("qid");
+		List<Question> qu = questionService.list(question);
+		System.out.println(qu);
+		String qtid = qu.get(0).getQtid();
+		//System.out.println(qtid);List<Topics>  
+		//System.out.println(top.get(0));
+		return questionService.listTopics(qtid);
+	}
+	
+	@RequestMapping(value="title" , method =RequestMethod.POST)
+	@ResponseBody
+	public List<Question> title(Question question){
+		//String qid = request.getParameter("qid");
+		return  questionService.list(question);
+
+	}
+	
+	
 }

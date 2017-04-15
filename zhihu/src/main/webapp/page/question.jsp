@@ -108,29 +108,29 @@
 					<div class="QuestionStatus"></div>
 					<div class="QuestionHeader">
 						<div class="QuestionHeader-content">
-							<div class="QuestionHeader-main">
+							<div class="QuestionHeader-main" id="questionHand">
 								<div class="QuestionHeader-topics">
 									<div class="Tag QuestionTopic" data-za-module="TopicItem"
 										data-za-module-info="{"card":{"content":{"type":"Topic","token":"19588167"}}}">
 										<span class="Tag-content"> <a class="TopicLink"
 											href="/topic/19588167">
-												<div class="Popover">
-													<div id="Popover-93694-85063-toggle" aria-haspopup="true"
+												<div class="Popover" id="Topic">
+													<!-- <div id="Popover-93694-85063-toggle" aria-haspopup="true"
 														aria-expanded="false"
-														aria-owns="Popover-93694-85063-content">医患关系</div>
+														aria-owns="Popover-93694-85063-content">医患关系</div> -->
 												</div>
 										</a>
 										</span>
 									</div>
 								</div>
-								<h1 class="QuestionHeader-title">作为医学生，你经历或老师讲述过的有意思的病例有哪些？</h1>
+								<!-- <h1 class="QuestionHeader-title" >作为医学生，你经历或老师讲述过的有意思的病例有哪些？</h1>
 								<div class="QuestionHeader-detail">
 									<div class="QuestionRichText QuestionRichText--collapsed">
 										<div>
 											<span class="RichText">教学病例</span>
 										</div>
 									</div>
-								</div>
+								</div> -->
 							</div>
 
 							<div class="QuestionHeader-side">
@@ -157,8 +157,8 @@
 							<div class="QuestionHeader-footer-inner">
 								<div class="QuestionHeader-main QuestionHeader-footer-main">
 									<div class="QuestionHeader-actions">
-										<button class="Button Button--plain" type="button">
-											31 条评论</button>
+										<!-- <button class="Button Button--plain" type="button">
+											31 条评论</button> -->
 										<div class="Popover ShareMenu">
 											<div id="Popover-66947-65137-toggle" aria-haspopup="true"
 												aria-expanded="false"
@@ -531,4 +531,8 @@
 	</div>
 
 </body>
+<script type="text/javascript" src="easyui/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/question.js"></script>
 </html>
