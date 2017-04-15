@@ -33,7 +33,7 @@
 				<div class="Layout-main Layout-titleImage--normal"
 					data-za-module="PostItem">
 					<div class="PostIndex-header" id="esssayTitle">
-							<!-- 取到文章标题及作者 -->
+						<!-- 取到文章标题及作者 -->
 						<!-- <h1 class="PostIndex-title">优质金融男这样对我，还要牵手走下去么？</h1>
 						<div class="PostIndex-author">
 							<a href="https://www.zhihu.com/people/li-bang-yuan-2"
@@ -49,7 +49,7 @@
 						</div> -->
 					</div>
 					<div class="RichText PostIndex-content" id="Content">
-							<!-- 取到正文 -->
+						<!-- 取到正文 -->
 						<!-- <blockquote><b>咨询记录2017.3.30</b>
 						</blockquote>
 						<p>暖北老师您好，在知乎上看了很多您的文章,几乎所有的问答都看完了，非常相信您的专业知识，所以通过邮件跟您咨询一下困扰我的问题。</p>
@@ -76,7 +76,6 @@
 						<p>其实关于最后为什么再也不回复了。是因为他要么跟你解释继续好下去，而这他心里并不是很想了；如果是解释分手又是很难堪的。所以自然还是不回复的好。我觉得最终他应该会找个理由过渡过去。比如彼此不和适，给不了你承诺之类的。或者是再也不回复了。</p>
 						<p>以上，供你参考。</p> -->
 					</div>
-
 
 					<div class="PostIndex-footer">
 						<div class="PostIndex-topics TopicItem-wrapper">
@@ -120,6 +119,109 @@
 									type="button">
 									<i class="icon icon-ic_column_report"></i> 举报
 								</button>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="Contributes">
+						<div class="BlockTitle">
+							<span class="BlockTitle-title">文章被以下专栏收录</span> <span
+								class="BlockTitle-line"></span>
+						</div>
+						<ul class="Contributes-list">
+							<li style="opacity: 1; max-height: 300px;">
+								<div class="ContributesItem">
+									<a class="ContributesItem-avatar"
+										href="https://zhuanlan.zhihu.com/pulluq"> <img
+										class="Avatar" src="images/game.png">
+									</a>
+									<div class="ContributesItem-info">
+										<div class="ContributesItem-nameLine">
+											<a class="ContributesItem-name"
+												href="https://zhuanlan.zhihu.com/pulluq">新潮沉思录</a>
+										</div>
+										<p class="ContributesItem-intro u-ellipsis">这里是发布关于新潮沉思录的相关信息</p>
+									</div>
+									<a class="ContributesItem-entrance"
+										href="https://zhuanlan.zhihu.com/pulluq">进入专栏</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="PostComment">
+						<div class="BlockTitle PostComment-blockTitle">
+							<span class="BlockTitle-title">762 条评论</span> <span
+								class="BlockTitle-line"></span>
+						</div>
+						<div class="CommentEditor PostComment-mainEditor">
+							<img srcset="https://pic1.zhimg.com/da8e974dc_l.jpg 2x"
+								src="https://pic1.zhimg.com/da8e974dc_xs.jpg" alt="周艳霞"
+								class="Avatar CommentEditor-avatar">
+							<div class="CommentEditor-input">
+								<div
+									class="Input-wrapper Input-wrapper--spread Input-wrapper--large Input-wrapper--noPadding">
+									<div class="Input Editable">
+										<div style="min-height: 38px;"
+											accept="image/jpg,image/jpeg,image/png" class="RichText">
+
+											<div class="public-DraftEditorPlaceholder-root">
+												<input type="text" class="search-input" id="q" name="q"
+													autocomplete="off" value="" maxlength="1000"
+													placeholder="写下你的评论">
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="CommentEditor-actions">
+									<button type="button" class="Button Button--plain">取消</button>
+									<button type="button" disabled="" class="Button Button--blue">评论</button>
+								</div>
+							</div>
+							<div class="PostCommentList">
+								<div class="CommentItem">
+									<a target="_blank"
+										href="https://www.zhihu.com/people/gao-nan-87"
+										class="UserAvatar CommentItem-author"> <img
+										srcset="https://pic1.zhimg.com/da8e974dc_l.jpg 2x"
+										src="https://pic1.zhimg.com/da8e974dc_xs.jpg" alt="高男"
+										class="Avatar Avatar--xs">
+									</a>
+									<div class="CommentItem-headWrapper">
+										<div class="CommentItem-head">
+											<span class="CommentItem-context"> <a target="_blank"
+												class="" href="https://www.zhihu.com/people/gao-nan-87">高男</a>
+											</span>
+										</div>
+									</div>
+									<div class="CommentItem-content">
+										高攀了的你会从别的地方弥补～结婚一定要势均力敌～不然就做好从其他方向弥补的准备～</div>
+									<div class="CommentItem-foot">
+										<span title="128 人觉得这个很赞" class="CommentItem-like"> 赞 </span>
+										<div data-hover-title="2017 年 4月 4 日星期二下午 5 点 52 分"
+											class="HoverTitle CommentItem-createdTime">
+											<time datetime="Tue Apr 04 2017 17:52:24 GMT+0800">9
+												天前</time>
+										</div>
+										<button type="button"
+											class="Button CommentItem-action CommentItem-actionReply Button--plain">
+											<i class="icon icon-ic_column_reply"></i> 回复
+										</button>
+										<button type="button"
+											class="Button CommentItem-action CommentItem-actionLike Button--plain">
+											<i class="icon icon-ic_comment_like"></i>赞
+										</button>
+										<div
+											class="Report CommentItem-action CommentItem-actionReport">
+											<button type="button"
+												class="Button Button Button--plain ReportButton">
+												<i class="icon icon-ic_column_report"></i>举报
+											</button>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

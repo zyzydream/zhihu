@@ -47,6 +47,7 @@
 					class="title ng-pristine ng-invalid ng-invalid-required"
 					placeholder="请输入标题" style="height: 47px;"></textarea>
 			</div>
+			<div class="write-talk">请选择话题：<select class="talk" style="width:240px" id="qtid" name="qtid"></select></div>
 			<div class="toolbar-holder unsticky">
 				<textarea id="econtent" name="econtent" class="toolbar-holder sticky"
 					style="height: 450px" placeholder="请输入正文"></textarea>

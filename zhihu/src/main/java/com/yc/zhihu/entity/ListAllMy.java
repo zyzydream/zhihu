@@ -10,14 +10,19 @@ public class ListAllMy {
 	private String kind;
 	private String title;
 	private String sign;
+	private Integer sum1;
+	private Integer dz;
 	
 	public ListAllMy() {
 		// TODO Auto-generated constructor stub
 	}
 
 	
+	
+
+
 	public ListAllMy(String tid, String tname, String tpic, String uname, String content, String times, String kind,
-			String title, String sign) {
+			String title, String sign, Integer sum1, Integer dz) {
 		super();
 		this.tid = tid;
 		this.tname = tname;
@@ -28,7 +33,50 @@ public class ListAllMy {
 		this.kind = kind;
 		this.title = title;
 		this.sign = sign;
+		this.sum1 = sum1;
+		this.dz = dz;
 	}
+
+
+
+
+
+
+
+
+
+
+	
+	public Integer getDz() {
+		return dz;
+	}
+
+
+
+
+
+	public void setDz(Integer dz) {
+		this.dz = dz;
+	}
+
+
+
+
+
+	public Integer getSum1() {
+		return sum1;
+	}
+
+
+
+
+
+	public void setSum1(Integer sum1) {
+		this.sum1 = sum1;
+	}
+
+
+
 
 
 	public String getSign() {
@@ -110,11 +158,19 @@ public class ListAllMy {
 	}
 
 
+
+
+
 	@Override
 	public String toString() {
 		return "ListAllMy [tid=" + tid + ", tname=" + tname + ", tpic=" + tpic + ", uname=" + uname + ", content="
-				+ content + ", times=" + times + ", kind=" + kind + ", title=" + title + ", sign=" + sign + "]";
+				+ content + ", times=" + times + ", kind=" + kind + ", title=" + title + ", sign=" + sign + ", sum1="
+				+ sum1 + ", dz=" + dz + "]";
 	}
+	
+
+
+	
 	
 
 	

@@ -15,5 +15,7 @@ public interface TopicsMapper {
 
 	List<Explore> allExploreQ(Topics topic);
 
+	List<Explore> selectExplore(Topics t);
+
 	
 }

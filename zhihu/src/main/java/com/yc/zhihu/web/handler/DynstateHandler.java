@@ -56,6 +56,8 @@ public class DynstateHandler {
 		request.getSession().setAttribute("myattentop", users.getMyattentop());
 		request.getSession().setAttribute("myattenzhuanlan", users.getMyattenzhuanlan());
 		request.getSession().setAttribute("myattenfav", users.getMyattenfav());
+		
+		
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		
 		List<ListAllMy> all=new ArrayList<ListAllMy>();
@@ -92,16 +94,16 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/m3",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Reply> Dynstatehuida3(HttpServletRequest request){
+	public List<ListAllMy> Dynstatehuida3(HttpServletRequest request){
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.answer2(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		return dynstateService.answer(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
 	@RequestMapping(value="/m4",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Essay> DynstateMy(HttpServletRequest request){
+	public List<ListAllMy> DynstateMy(HttpServletRequest request){
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.myessay(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		return dynstateService.showessays(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
 	@RequestMapping(value="/m6",method=RequestMethod.GET)
@@ -126,10 +128,17 @@ public class DynstateHandler {
 		List<Total> ys=dynstateService.listsw(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 		List<Total> zs=dynstateService.listess(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 		List<Total> ms=dynstateService.listpeos(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
-		ys.addAll(zs);
-		ys.addAll(ms);
-		System.out.println("A"+ys);
-		return ys;
+		List all=new ArrayList<>();
+		for(Total y:ys){
+			all.add(0, y);
+		}
+		for(Total z:zs){
+			all.add(0, z);
+		}
+		
+		
+		System.out.println("A"+all);
+		return all;
 	}
 	
 	@RequestMapping(value="/m81",method=RequestMethod.GET)
@@ -228,5 +237,16 @@ public class DynstateHandler {
 	public int  delcollect(Dynstate dynstate,HttpServletRequest request){
 		dynstate.setSelfid(((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
 		return dynstateService.delcollect(dynstate);
+	}
+	
+	
+	@RequestMapping(value="/createf",method=RequestMethod.GET)
+	@ResponseBody
+	public int  favinfo(Favorite fav,HttpServletRequest request,Users users){
+		System.out.println("进来了 users==>"+users);
+		Users users1=(Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		fav.setFcreid(users1.getUids());
+		System.out.println("进来了 fav==>"+fav);
+		return dynstateService.favoriteinfo(fav);
 	}
 }

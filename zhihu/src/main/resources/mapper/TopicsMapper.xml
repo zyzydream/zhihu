@@ -32,5 +32,12 @@
 		WHERE ue.rtid=t.tid)tre
 	where tre.reqid=q.qid
 	</select>
+	
+	<select id="selectExplore" parameterType="Topics" resultType="Explore">
+	   select * from(
+       select inside.* ,rownum rn from(
+        select * from explore where tid='${tid}'order by 1 desc) inside where ${tstid}*10>=rownum)where rn>0
+	   
+	</select>
 
 </mapper>
