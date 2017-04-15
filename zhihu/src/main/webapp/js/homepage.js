@@ -23,7 +23,7 @@ function show(){
 				if(data[i].kind=="W"){
 					dynstate+='<div class="row featurette"><div class="col-md-7">';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 20px;">';
-					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].tname+'</span><br/>'+data[i].title+'</h2>';
+					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].tname+'</span><br/><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;">'+data[i].author+' &nbsp;&nbsp;&nbsp;';
 					dynstate+='<span class="text-muted" style="font-size: 12px;font-weight: 300;">'+data[i].usign+'</span></h2>';
 					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
@@ -46,7 +46,7 @@ function show(){
 				}else if(data[i].kind=="Q"){
 					dynstate+='<div class="row featurette"><div class="col-md-7">';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 20px;">';
-					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].tname+'Q</span><br/>'+data[i].title+'</h2>';
+					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].tname+'Q</span><br/><a href="javascript:void(0)">'+data[i].title+'</a></h2>';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;">'+data[i].author+' &nbsp;&nbsp;&nbsp;';
 					dynstate+='<span class="text-muted" style="font-size: 12px;font-weight: 300;">'+data[i].usign+'</span></h2>';
 					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
@@ -68,7 +68,7 @@ function show(){
 					dynstate+='<hr class="featurette-divider" style="margin-top:10px;">';
 				}else if(data[i].kind=="FW"){
 					dynstate+='<div class="row featurette"><div class="col-md-7">';
-					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px">'+data[i].author+':发表文章：</span><br />'+data[i].title+'</h2>';
+					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px">'+data[i].author+':发表文章：</span><br /><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
 					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
@@ -88,7 +88,7 @@ function show(){
 					dynstate+='</div></div><hr class="featurette-divider">';
 				}else if(data[i].kind=="FQ"){
 					dynstate+='<div class="row featurette"><div class="col-md-7">';
-					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px">'+data[i].author+':提出问题：</span><br />'+data[i].title+'</h2><span>'
+					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;" onclick="showdeilt(\''+data[i].ids+'\')"><span class="text-muted" style="font-size: 15px">'+data[i].author+':提出问题：</span><br /><a href="javascript:void(0)">'+data[i].title+'</a></h2><span>'
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 					}else if(data[i].ycollent=='y'){
@@ -123,7 +123,7 @@ $.get("user/topics",function(data){
 //	alert("请求的话题："+JSON.stringify(data));
 	var topics="";
 	for(var i=0;i<data.length;i++){
-		topics+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?ids='+data[i].tid+'" target="_blank">'+data[i].ttopic+'</a>';
+		topics+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].ttopic+'" target="_blank">'+data[i].ttopic+'</a>';
 	}
 	document.getElementById("title").innerHTML =topics;
 },"json");

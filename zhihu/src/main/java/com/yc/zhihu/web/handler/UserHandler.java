@@ -93,7 +93,7 @@ public class UserHandler {
 		//System.out.println("listDynstate ====> "+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		Users user= (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
 		exploreService.updateExplore();
-		List<Explore> all =usersService.listExplore((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER));;
+		List<Explore> all =usersService.listExplore((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 		//用来查找有关话题的文章
 		/*List<Explore> all =new ArrayList<Explore>();
 		List<Explore> explores= usersService.listrelated(request.getSession().getAttribute(ServletUtil.LOGIN_USER));

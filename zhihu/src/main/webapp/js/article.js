@@ -17,6 +17,6 @@ $.post("essay/all"+window.location.search,function(data){
 	$("#Content").empty();
 	for(var i=0;i<data.length;i++){
 		alert("aaaa");
-		$("#Content").append("<div>"+data[i].econtent+"<div>")
+		$("#Content").append("<textarea cols='90'  disabled='disabled' style='border-style: none;'>"+data[i].econtent+"</textarea>")
 	}
 },"json");

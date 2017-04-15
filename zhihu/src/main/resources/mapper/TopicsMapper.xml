@@ -23,16 +23,21 @@
 		WHERE ue.etid=t.tid
 	</select>
 	<!-- 查询与话题的问题和回复 -->	
-	<select id="listrelatedQ" parameterType="Users" resultType="Explore">
+	<select id="allExploreQ" parameterType="Topics" resultType="Explore">
 	select tre.rid ids, q.qtitle title,tre.rcontent content,tre.rtid tid,tre.ttopic tname,tre.uids uids,tre.usign usign ,tre.uname author,tre.rtime times,'Q' kind from QUESTION q,
        (SELECT * FROM Topics t,
 		  (SELECT * FROM USERS u,
-		    (SELECT r.* FROM reply r,
-		       (select ids from dynstate PARTITION(GH) WHERE selfid=#{uids})d
-       		 WHERE r.rtid=d.ids)r
+		    (SELECT r.* FROM reply r WHERE r.rtid=${tid})r
 		   WHERE u.uids=r.remitid)ue
 		WHERE ue.rtid=t.tid)tre
 	where tre.reqid=q.qid
+	</select>
+	
+	<select id="selectExplore" parameterType="Topics" resultType="Explore">
+	   select * from(
+       select inside.* ,rownum rn from(
+        select * from explore where tid='${tid}'order by 1 desc) inside where ${tstid}*10>=rownum)where rn>0
+	   
 	</select>
 
 </mapper>
