@@ -62,12 +62,12 @@
 			<div id="zg-top-nav" class="zu-top-nav">
 				<ul class="zu-top-nav-ul zg-clear">
 					<li id="zh-top-nav-home" class="zu-top-nav-li "><a
-						id="zh-top-link-home" class="zu-top-nav-link" href="/"
+						id="zh-top-link-home" class="zu-top-nav-link" href="back/back.jsp"
 						data-za-c="view_home" data-za-a="visit_home"
 						data-za-l="top_navigation_home">首页</a></li>
 					<li id="zh-top-nav-topic"
 						class="top-nav-topic-selector zu-top-nav-li "><a
-						id="top-nav-dd-topic" class="zu-top-nav-link" href="/topic">话题</a>
+						id="top-nav-dd-topic" class="zu-top-nav-link" href="page/talk.jsp">话题</a>
 					</li>
 					<li id="zh-top-nav-explore" class="zu-top-nav-li "><a
 						class="zu-top-nav-link" href="/explore">发现</a></li>
@@ -89,7 +89,8 @@
 						<ul class="PageInbox-nav-tabs">
 							<li>最近联系</li>
 						</ul>
-						<button id="zh-create-pm" class="zg-btn-justify zg-btn-blue">写私信</button>
+						<button id="zh-create-pm" class="zg-btn-justify zg-btn-blue"
+							onclick="createfav()">写私信</button>
 					</div>
 				</div>
 
@@ -107,5 +108,74 @@
 			</div>
 		</div>
 	</div>
+	<div id="zh-footer" class="zh-footer">
+		<div class="content zg-wrap clearfix">
+			<ul>
+				<li><a href="https://liukanshan.zhihu.com" target="_blank">刘看山</a></li>
+				<li><a href="/question/19581624" target="_blank">知乎指南</a></li>
+				<li><a id="js-feedback-button" href="javascript:;">建议反馈</a></li>
+				<li><a href="/app" target="_blank">移动应用</a></li>
+				<li><a href="/careers">加入知乎</a></li>
+				<li><a href="/terms" target="_blank">知乎协议</a></li>
+				<li><a href="/jubao" target="_blank">举报投诉</a></li>
+				<li><a href="/contact">联系我们</a></li>
+			</ul>
+			<span class="copy">© 2017 知乎</span>
+		</div>
+	</div>
+
+	<!-- 弹框 -->
+	<div class="modal-wrapper" id="modal-wrapper">
+		<div class="modal-dialog" tabindex="0" style="" role="dialog"
+			aria-labelledby=":8">
+			<div class="modal-dialog-title">
+				<span id=":8" class="modal-dialog-title-text" role="heading">发送私信</span>
+				<span class="modal-dialog-title-close" role="button" tabindex="0"
+					aria-label="Close"></span>
+			</div>
+			<div class="modal-dialog-content">
+				<div class="zm-pm-wrap">
+					<dl class="zm-form-table zm-form-table-medium">
+						<dt class="zm-form-table-head zm-form-table-head-align-middle">
+							<label class="zg-medium-gray">发给：</label>
+						</dt>
+						<dd class="zm-form-table-field">
+							<div class="zm-pm-selector-wrap">
+								<div class="zg-user-name"
+									style="display: none; padding: 4px 0 0 0"></div>
+								<input
+									class="zg-form-text-input zm-pm-user-selector label-input-label"
+									placeholder="搜索用户" aria-label="搜索用户" role="combobox"
+									aria-autocomplete="list" type="text">
+							</div>
+						</dd>
+						<dt class="zm-form-table-head zm-form-table-head-align-middle">
+							<label class="zg-medium-gray">内容：</label>
+						</dt>
+						<dd class="zm-form-table-field zm-form-table-field-last">
+							<div class="zg-editor-simple-wrap zg-form-text-input">
+								<textarea
+									class="zg-editor-input zu-seamless-input-origin-element"
+									style="font-weight: normal; height: 39px;"></textarea>
+							</div>
+						</dd>
+					</dl>
+					<div class="zm-command zg-clear">
+						<a class="zm-command-cancel" name="cancel" href="javascript:;">取消</a>
+						<a id="zh-question-pm-send-button" class="zg-btn-blue zg-r3px"
+							name="send" href="javascript:;">发送</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+	<script src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
+		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script src='js/layer/layer.js' type="text/javascript"></script>
+	<script type="text/javascript" src="/bootstrap-3.3.4/js/popover.js"></script>
+	<script type="text/javascript" src="js/litter.js"></script>
+
 </body>
 </html>
