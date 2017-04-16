@@ -106,6 +106,7 @@ update USERS set tpic='images/car.png' where uids='1001'
 select * from users
  select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 
 drop sequence seq_users
+drop table users
 create sequence seq_users start with 10000;
 insert into users
 select seq_users.nextval, 
@@ -185,6 +186,7 @@ CREATE TABLE essay(
    escid VARCHAR2(30),
    etid VARCHAR2(10)
 );
+
     select * from users ,
      (select d.countr countr,ru.countr countr,ru.counte counte ,ru.uids uids from (select count(0)countr ,aimid from dynstate PARTITION(GR) group by aimid) d,
      (select * from  (select count(0)countr,r.remitid from reply r group by r.remitid)rr ,
@@ -211,7 +213,8 @@ INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval
 INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval,'10135','<p>相册现在<img alt="2.png" src="/upload30/image/20170415/1492247766872047588.png" title="1492247766872047588.png"/></p>',to_char(sysdate,'yyyy-mm-dd'),'对对对','10002');
 
 select * from essay where eid='130' and etid='10002'
-
+drop sequence seq_essay
+drop table essay
 create sequence seq_essay start with 10000;
 insert into essay
 select seq_essay.nextval||'', 
@@ -243,9 +246,7 @@ CREATE TABLE scolumn(
    scname VARCHAR2(20),
    sctime VARCHAR2(30)
 );
-<<<<<<< HEAD
 drop table explore
-=======
 drop table scolumn
 
 select count(r.rid) myattenaw,count(e.eid),count(n.selfid) 
@@ -263,8 +264,7 @@ from dynstate PARTITION(GR) where aimid='10198') myattenpeos,
 (select usign from users where uids='10198') usign,
 (select upic from users where uids='10198') upic
 from dual 
-
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+select * from e
 
 select
 		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
@@ -284,12 +284,14 @@ CREATE TABLE favorite(
    fname VARCHAR2(30),
    ftime VARCHAR2(30)
 );
+drop table favorite;
+drop sequence seq_favorite;
 create sequence seq_favorite start with 10000;
 insert into favorite
 select seq_favorite.nextval||'', 
 ''||ceil(dbms_random.value(10000,11000)),
 dbms_random.string('l',dbms_random.value(10, 20)),
-'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 3000;
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 4000;
 
 
 drop table FAVORITE
@@ -302,6 +304,7 @@ CREATE TABLE topics(
    tstid Varchar2(60),
    tpic Varchar2(60)
 );
+
 create sequence seq_topics start with 1000;
 insert into topics
 select seq_topics.nextval, 
@@ -428,7 +431,8 @@ select q.*,t.s from question q,
 (select count(reqid) s from REPLY where rkind='Q' and reqid=(select reqid from question where qautid='1003')) t
 where q.qautid='1003';
  
-
+drop table dynstate;
+drop sequence seq_reply;
 /*动态总表*/
 CREATE TABLE dynstate(
    selfid VARCHAR2(30), --本人id
@@ -682,7 +686,7 @@ select ''||ceil(dbms_random.value(10000,11000)),
 'GR',
 '',
 '2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
-'' from dual connect by level <= 3000;
+'' from dual connect by level <= 4000;
 --关注话题
 insert into dynstate
 select ''||ceil(dbms_random.value(10000,11000)),
@@ -841,7 +845,7 @@ insert into explore(title,content,tname,tid,author,times,checks)values('dsfsdaf�
 
 select * from explore
 select * from explore where checks='y'
-drop table explore
+drop table infomation
 select * from explore e,
 (select ids from dynstate PARTITION (GH) where selfid='1001')d
 where e.tid=d.ids;
@@ -1006,6 +1010,12 @@ select
 from dual;
 select * from users where uids='1003'
 
+
+select f.*,t.sum from FAVORITE f,
+		(select count(ids) sum from DYNSTATE
+		where selfid='10198' and cfid=(select fid from favorite where
+		fcreid='10198')) t
+		where fcreid='10198'
 
 select *  from dynstate PARTITION(DQ)
 

@@ -32,7 +32,7 @@
 			<a href="/zhihu/page/homepage.jsp" aria-label="知乎">知乎</a>
 			<nav class="AppHeader-nav" role="navigation"> <a
 				class="AppHeader-navItem" href="/zhihu/page/homepage.jsp">首页</a> <a
-				class="AppHeader-navItem" href="/explore">发现</a> <a
+				class="AppHeader-navItem" href="/explore" href="/zhihu/page/explore.jsp">发现</a> <a
 				class="AppHeader-navItem" href="/topic">话题</a> </nav>
 			<div class="SearchBar" role="search">
 				<div class="SearchBar-toolWrapper">
