@@ -122,47 +122,30 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/m8",method=RequestMethod.GET)
 	@ResponseBody
-	public List DynstateMyAttention(HttpServletRequest request){
-		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		List<Users> xs=dynstateService.myatteninfo(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
-		List<Total> ys=dynstateService.listsw(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
-		List<Total> zs=dynstateService.listess(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
-		List<Total> ms=dynstateService.listpeos(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
-		List all=new ArrayList<>();
-		for(Total y:ys){
-			all.add(0, y);
-		}
-		for(Total z:zs){
-			all.add(0, z);
-		}
-		
-		
-		System.out.println("A"+all);
-		return all;
+	public Total DynstateMyAttention(String aimid){
+		System.out.println("aimid==>"+aimid);
+		return dynstateService.myatteninfo(aimid);
+	}
+	
+	@RequestMapping(value="/m822",method=RequestMethod.GET)
+	@ResponseBody
+	public Total DynstateMyAttention2(String selfid){
+		System.out.println("selfid==>"+selfid);
+		return dynstateService.myatteninfo(selfid);
 	}
 	
 	@RequestMapping(value="/m81",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Total> DynstateMyAttention1(HttpServletRequest request){
-		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.listsw(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public List<Users> DynstateMyAttentionq(HttpServletRequest request){
+		return dynstateService.alluses(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
 	@RequestMapping(value="/m82",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Total> DynstateMyAttention2(HttpServletRequest request){
-		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.listess(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public List<Users> DynstateAttentionme(HttpServletRequest request){
+		return dynstateService.allattenme(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
-	@RequestMapping(value="/m83",method=RequestMethod.GET)
-	@ResponseBody
-	public List<Total> DynstateMyAttention3(HttpServletRequest request){
-		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.listpeos(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
-	}
-	
-
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String add(HttpServletRequest request,Dynstate dynstate){
 		String ids = request.getParameter("tid");
@@ -240,10 +223,11 @@ public class DynstateHandler {
 	}
 	
 	
-	@RequestMapping(value="/createf",method=RequestMethod.GET)
+	@RequestMapping(value="/createf",method=RequestMethod.POST)
 	@ResponseBody
-	public int  favinfo(Favorite fav,HttpServletRequest request,Users users){
-		System.out.println("进来了 users==>"+users);
+	public int  favinfo(Favorite fav,HttpServletRequest request){
+		String fname=request.getParameter("fname");
+		System.out.println("进来了 fname==>"+fname);
 		Users users1=(Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
 		fav.setFcreid(users1.getUids());
 		System.out.println("进来了 fav==>"+fav);

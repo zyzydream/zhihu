@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Strings;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
@@ -215,5 +216,24 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<Users> findProfession(Users users) {
 		return userMapper.findUprf(users);		//查询职业是否为空，如果为空，则跳入填写职业的页面
+	}
+
+	@Override
+	public ShowUser showUser(Users user) {
+		 Users u=userMapper.fUsers(user);
+		 user.setUids(u.getUids());
+		 ShowUser users=userMapper.showUser(user);
+		 users.setNum(user.getNum());
+		 users.setT(userMapper.listTopics(user));
+		 users.setNsign(u.getUsign());
+		 users.setUpic(u.getUpic());
+		 users.setUname(u.getUname());
+		 return users;
+	}
+
+	@Override
+	public ShowUser attentionUser(Users user) {
+		//return userMapper.attentionUser(user);
+		return null;
 	}
 }

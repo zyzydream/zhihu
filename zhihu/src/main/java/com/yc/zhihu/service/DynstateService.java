@@ -53,13 +53,9 @@ public interface DynstateService {
 
 	int collect(Dynstate dynstate);
 	
-	List<Total> listsw(Object obj);
+
 	
-	List<Total> listess(Object obj);
-	
-	List<Total> listpeos(Object obj);
-	
-	List<Users> myatteninfo(Object obj);
+	Total myatteninfo(String obj);
 
 	int delpraise(Dynstate dynstate);
 
@@ -68,5 +64,9 @@ public interface DynstateService {
 	int countdz(Object obj);
 
 	int favoriteinfo(Favorite attribute);
+	
+	List<Users> alluses(Object obj);
+	
+	List<Users> allattenme(Object obj);
 	
 }

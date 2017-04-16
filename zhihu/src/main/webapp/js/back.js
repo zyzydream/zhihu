@@ -23,8 +23,6 @@ $('#pp').pagination({
 }
 
 
-
-
 function select(self,currPage,pageSize){
 	var p=self.parentNode.children;
 	for(var i=0;i<p.length;i++){

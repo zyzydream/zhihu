@@ -141,6 +141,7 @@ section {
 .Navbar.ScrollBackFixed-active {
   -webkit-transform: translateY(0);
           transform: translateY(0);
+
 }
 
 .Navbar.ScrollBackFixed-animation {
@@ -802,9 +803,6 @@ body:not(.Body--isAppleDevice) .RichText h1, body:not(.Body--isAppleDevice) .Ric
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-ic_column_like:before {
-  content: "\E902";
-}
 
 .PostIndex-voters {
   -webkit-flex-direction: row;
@@ -848,13 +846,11 @@ body:not(.Body--isAppleDevice) .RichText h1, body:not(.Body--isAppleDevice) .Ric
  background: transparent;
 }
 
-.icon-ic_collect:before {
-  content: "\E933";
-}
 
 .PostShare .MenuButton {
  font-size: 15px;
  font-weight: normal;
+
 }
 
 .MenuButton-listen-hover ~ .Menu-dropdown {
@@ -862,9 +858,7 @@ body:not(.Body--isAppleDevice) .RichText h1, body:not(.Body--isAppleDevice) .Ric
           transition-delay: .2s;
 }
 
-.icon-ic_column_share:before {
-  content: "\E905";
-}
+
 
 .Menu-dropdown,
 .Popover-targetContainer .Menu {
@@ -920,9 +914,6 @@ body:not(.Body--isAppleDevice) .RichText h1, body:not(.Body--isAppleDevice) .Ric
 	
 }
 
-.icon-ic_column_report:before {
-  content: "\E917";
-}
 
 .PostIndex-control {
   margin: 10px 0;
@@ -1164,6 +1155,7 @@ body:not(.Body--isAppleDevice) .RichText h1, body:not(.Body--isAppleDevice) .Ric
 
 .PostCommentList .CommentItem:first-child {
  margin-top: 0;
+ margin-left: -35px;
 }
 
 .CommentItem {
@@ -1305,16 +1297,6 @@ body:not(.Body--isAppleDevice) .RichText h1, body:not(.Body--isAppleDevice) .Ric
  color: #333;
 }
 
-.icon-ic_column_reply:before {
-  content: "\E904";
-}
-
-
-
-.icon-ic_comment_like:before {
-  content: "\E906";
-}
-
 .CommentItem-actionReport {
   margin: 0;
 }
@@ -1334,7 +1316,15 @@ body:not(.Body--isAppleDevice) .RichText h1, body:not(.Body--isAppleDevice) .Ric
 .search-input{
 	border: none;
     position: relative;
-    top: -32px;
+    top: -55px;
     height: 46px;
     width: 606px;
+    
+}
+.PostIndex-control {
+    align-items: flex-start;
+    flex: 0 0 60%;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 10px 10px -5px 140px;
 }

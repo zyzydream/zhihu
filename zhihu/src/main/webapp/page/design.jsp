@@ -17,9 +17,9 @@
 				data-za-l="top_navigation_zhihu_logo">知乎</a>
 			<div class="top-nav-profile">
 				<a id=":0" class="zu-top-nav-userinfo " href="/people/bbv-70"
-					role="button" aria-haspopup="true" aria-activedescendant=""> 
-					<span class="name">dsvb</span> <img class="Avatar" src="images/poto.jpg" alt="dsvb">
-					<span id="zh-top-nav-new-pm"
+					role="button" aria-haspopup="true" aria-activedescendant=""> <span
+					class="name">dsvb</span> <img class="Avatar" src="images/poto.jpg"
+					alt="dsvb"> <span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
 				</a>
@@ -60,9 +60,9 @@
 			<div id="zg-top-nav" class="zu-top-nav">
 				<ul class="zu-top-nav-ul zg-clear">
 					<li id="zh-top-nav-home" class="zu-top-nav-li "><a
-						id="zh-top-link-home" class="zu-top-nav-link" href="page/homepage.jsp"
-						data-za-c="view_home" data-za-a="visit_home"
-						data-za-l="top_navigation_home">首页</a></li>
+						id="zh-top-link-home" class="zu-top-nav-link"
+						href="page/homepage.jsp" data-za-c="view_home"
+						data-za-a="visit_home" data-za-l="top_navigation_home">首页</a></li>
 					<li id="zh-top-nav-explore" class="zu-top-nav-li "><a
 						class="zu-top-nav-link" href="page/explore.jsp">发现</a></li>
 					<li class="top-nav-noti zu-top-nav-li "><a
@@ -80,53 +80,91 @@
 		<div class="zu-main-content">
 			<div class="zu-main-content-inner">
 				<ul class="tab-navs">
-					<li class="tab-nav active" onclick="lick('infomation-form',1)"><a href="#" onclick="return false">基本资料</a></li>
-					<li class="tab-nav" onclick="lick('account-form',3)"><a href="#" onclick="return false">帐号和密码</a></li>
-					<li class="tab-nav" onclick="lick('shield-form',5)"><a href="#" onclick="return false">屏蔽</a></li>
+					<li class="tab-nav active" onclick="lick('infomation-form',1)"><a
+						href="#" onclick="return false">基本资料</a></li>
+					<li class="tab-nav" onclick="lick('account-form',3)"><a
+						href="#" onclick="return false">帐号和密码</a></li>
 				</ul>
 			</div>
-			<form id="infomation-form" class="zm-settings-account"
-				action="/settings/profile" method="POST" autocomplete="off">
-				<input name="_xsrf" value="f5c87945329c77b31c12918738783665"
-					type="hidden">
-				<div class="settings-section">
-					<div class="settings-item clearfix">
-						<label class="settings-item-title" for="fullname">姓名</label>
-						<div id="rename-section"
-							class="settings-item-content rename-section">
-							<span class="name">dsvb</span> 
-						</div>
-					</div>
-					<div class="settings-item clearfix">
-						<label class="settings-item-title with-input" for="url_token">个性签名</label>
-						<div class="settings-item-content">
-							<input id="url_token" class="zg-form-text-input"
-								autocomplete="off" name="url_token" value="bbv-70">
-								
-						</div>
-					</div>
-					<div class="settings-item clearfix">
-						<label class="settings-item-title" for="private">隐私保护</label>
-						<div class="settings-item-content">
-							<div>
-								<label class="settings-checkbox-label"> <input
-									id="private" name="private" type="checkbox">
-									在站外搜到我在知乎创作的内容时，我的姓名将不会被显示
-								</label>
+			<div id="infomation-form">
+				<form class="zm-settings-account" action="/settings/profile"
+					method="POST" autocomplete="off">
+					<input name="_xsrf" value="f5c87945329c77b31c12918738783665"
+						type="hidden">
+					<div class="settings-section">
+						<div class="settings-item clearfix">
+							<label class="settings-item-title" for="fullname">姓名</label>
+							<div id="rename-section"
+								class="settings-item-content rename-section">
+								<span class="name">dsvb</span>
 							</div>
-							<div class="settings-item-content-desc">
-								<a class="zg-link-litblue"
-									href="//www.zhihu.com/question/20758264" target="_blank">什么情况下应该使用这个选项？</a>
+						</div>
+						<div class="settings-item clearfix">
+							<label class="settings-item-title with-input" for="url_token">个性签名</label>
+							<div class="settings-item-content">
+								<input id="url_token" class="zg-form-text-input"
+									autocomplete="off" name="url_token" value="bbv-70">
+
+							</div>
+						</div>
+						<div class="settings-item clearfix">
+							<label class="settings-item-title" for="private">隐私保护</label>
+							<div class="settings-item-content">
+								<div>
+									<label class="settings-checkbox-label"> <input
+										id="private" name="private" type="checkbox">
+										在站外搜到我在知乎创作的内容时，我的姓名将不会被显示
+									</label>
+								</div>
+								<div class="settings-item-content-desc">
+									<a class="zg-link-litblue"
+										href="//www.zhihu.com/question/20758264" target="_blank">什么情况下应该使用这个选项？</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="settings-save">
+						<button class="zg-btn-blue" type="submit">保存</button>
+					</div>
+				</form>
+			</div>
+			<div id="account-form" class="form">
+				<div class="settings-acount-main">
+					<div class="settings-intro">绑定手机和邮箱，并设置密码，帐号更安全。</div>
+					<div class="settings-section">
+						<label class="settings-item-title">邮箱</label>
+						<div class="settings-item-content form-container">
+							<div class="group group-text hidden-expanded">
+								<span class="text email">邮箱号</span>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="settings-save">
-					<button class="zg-btn-blue" type="submit">保存</button>
+
+				<div class="settings-item clearfix" style="height: 300px">
+					<label class="settings-item-title">帐号密码</label>
+					<div class="settings-item-content form-container">
+						<div onclick="modify();" id="modifypass"
+							class="group group-text hidden-expanded">
+							<a href="#" onclick="return false">修改密码</a>
+						</div>
+						<form class="form-basic panel hidden password-form" method="POST"
+							novalidate="novalidate">
+							<div class="group">
+								<input id="password" class="text" required=""
+									placeholder="输入新密码" name="password" type="password">
+							</div>
+							<div class="group">
+								<input class="text" required="" placeholder="再次输入"
+									name="password_repeat" data-rule-equalto="#password"
+									type="password">
+							</div>
+							<button class="next zg-btn-blue">确定</button>
+						</form>
+					</div>
 				</div>
-			</form>
-			<form id="account-form" class="form"></form>
-			<form id="shield-form" class="form"></form>
+			</div>
+			<div id="shield-form" class="form"></div>
 		</div>
 	</div>
 
@@ -148,12 +186,13 @@
 		</div>
 	</div>
 
-<script type="text/javascript" src="easyui/jquery.min.js"></script>
-<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/holder.js"></script>
-<script src="js/ie10-viewport-bug-workaround.js"></script>
-<script type="text/javascript" src="js/design.js"></script>
+
+	<script type="text/javascript" src="easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/holder.js"></script>
+	<script src="js/ie10-viewport-bug-workaround.js"></script>
+	<script type="text/javascript" src="js/design.js"></script>
 </body>
 </html>

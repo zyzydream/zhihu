@@ -127,6 +127,36 @@ select * from USERS
 select * from essay
 
 
+select
+		(select count(aimid) from dynstate PARTITION(GR) where selfid='10198') myatten,
+		(select count(selfid) from DYNSTATE PARTITION(GR) where aimid='10198') attenme,
+		(select count(ids) from DYNSTATE PARTITION(GH) where selfid='10198')
+		myattentop,
+		(select count(ids) from DYNSTATE PARTITION(GZ) where selfid='10198')
+		myattenzhuanlan,
+		(select count(ids) from DYNSTATE PARTITION(GS) where
+		selfid='10198' )
+		myattenfav
+		from dual
+		
+		
+		select
+		(select count(r.rid)
+		from reply r where r.remitid='10198')
+		myattenaw,
+		(select count(e.eid)
+		from essay e where e.eautid='10198')
+		myatteness,
+		(select count(selfid)
+		from dynstate PARTITION(GR) where
+		aimid='10198') myattenpeos,
+		(select uname from users where
+		uids='10198') uname,
+		(select usign from users where uids='10198')
+		usign,
+		(select upic from users where uids='10198') upic
+		from dual
+
 
 create sequence seq_users
 increment by 1
@@ -155,7 +185,23 @@ CREATE TABLE essay(
    escid VARCHAR2(30),
    etid VARCHAR2(10)
 );
-
+    select * from users ,
+     (select d.countr countr,ru.countr countr,ru.counte counte ,ru.uids uids from (select count(0)countr ,aimid from dynstate PARTITION(GR) group by aimid) d,
+     (select * from  (select count(0)countr,r.remitid from reply r group by r.remitid)rr ,
+      (select count(0)counte,'10001' uids from essay where eautid='10001')e where rr.remitid=e.uids)ru
+      where d.aimid=ru.uids)rud
+      where uids=rud.uids
+  select * from users where uname='10690'  
+  
+ select e.eid ids,'W' kind,e.etitle title,e.econtent content,e.etid tid,t.ttopic tname,e.usign usign,e.uids uids,e.uname author,e.etime times,'n' checks  from topics t,
+	     (select * from users u,
+	       (select * from essay,
+           	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
+	        where counts>8 and id=eid )e
+	      where u.uids=e.eautid)e
+	    where t.tid=e.etid
+  
+select * from explore where ids='10324'
 select e.etitle title,e.etime times,e.eid tid,'E' kind ,u.upic tpic from essay e ,users u
 where eautid='1001' and  uids='1001';
 
@@ -197,7 +243,28 @@ CREATE TABLE scolumn(
    scname VARCHAR2(20),
    sctime VARCHAR2(30)
 );
+<<<<<<< HEAD
+drop table explore
+=======
 drop table scolumn
+
+select count(r.rid) myattenaw,count(e.eid),count(n.selfid) 
+from reply r,essay e,dynstate PARTITION(GR) n
+where r.remitid='10198' and e.eautid='10198' and n.aimid='10198'
+
+select 
+(select count(r.rid) 
+from reply r where r.remitid='10198') myattenaw,
+(select count(e.eid) 
+from essay e where e.eautid='10198') myatteness,
+(select count(selfid)
+from dynstate PARTITION(GR) where aimid='10198') myattenpeos,
+(select uname from users where uids='10198') uname,
+(select usign from users where uids='10198') usign,
+(select upic from users where uids='10198') upic
+from dual 
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 select
 		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
@@ -383,6 +450,16 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
+select aimid from dynstate PARTITION(GR) where selfid='10198'
+
+select aimid from dynstate PARTITION(GR) where selfid=10401
+
+select u.upic,u.uname,u.usign from 
+((select aimid from dynstate PARTITION(GR) where selfid='10198' ) b
+left join users u
+on u.uids=b.aimid)
+group by u.upic,u.uname,u.usign,b.aimid
+
 select count(ids) from dynstate PARTITION(DH)
 where selfid='10198'
 
@@ -728,7 +805,8 @@ create table explore(
    collect  VARCHAR2(5),  --收藏数
    checks VARCHAR2(2) --是否以核查
 );
-
+select * from users where uname='baurflda'
+drop table Explore
 select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks from QUESTION q, 
 (select * from topics t, 
 (select * from users u, 

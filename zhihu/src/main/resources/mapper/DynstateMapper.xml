@@ -67,15 +67,19 @@
 
 	<select id="totalatten" parameterType="Users" resultType="Users">
 		select
-		(select count(aimid) from dynstate where selfid=#{uids}) myatten,
-		(select count(selfid) from DYNSTATE where aimid=#{uids}) attenme,
-		(select count(ids) from DYNSTATE where selfid=#{uids} and kind='GH')
+		(select count(aimid) from dynstate PARTITION(GR) where selfid=#{uids})
+		myatten,
+		(select count(selfid) from DYNSTATE PARTITION(GR) where
+		aimid=#{uids}) attenme,
+		(select count(ids) from DYNSTATE PARTITION(GH)
+		where selfid=#{uids})
 		myattentop,
-		(select count(ids) from DYNSTATE where selfid=#{uids} and
-		kind='GZ')
+		(select count(ids) from DYNSTATE
+		PARTITION(GZ) where selfid=#{uids})
 		myattenzhuanlan,
-		(select count(ids) from DYNSTATE where
-		selfid=#{uids} and kind='GS')
+		(select count(ids)
+		from DYNSTATE PARTITION(GS) where
+		selfid=#{uids} )
 		myattenfav
 		from dual
 	</select>
@@ -130,11 +134,14 @@
 		from
 		(essay e join users u
 		on e.eautid=#{uids} and u.uids=e.eautid)
-		left join dynstate PARTITION(DW) m
+		left join
+		dynstate PARTITION(DW) m
 		on m.ids=e.eid and m.selfid=e.eautid
-		group by e.etitle ,e.etime ,e.eid ,
+		group by
+		e.etitle ,e.etime ,e.eid ,
 		kind ,u.upic
-		,e.econtent ,u.uname,u.usign ,e.eautid
+		,e.econtent ,u.uname,u.usign
+		,e.eautid
 	</select>
 
 	<select id="showscolumn" parameterType="Users" resultType="ListAllMy">
@@ -168,39 +175,48 @@
 	</insert>
 
 
-	<select id="SumMyattensw" parameterType="Users" resultType="Total">
-		select count(rid) myattenaw from reply r
-		full join (select aimid from
-		dynstate where selfid=#{uids} order by aimid)
-		d
-		on r.remitid=d.aimid
-		group by d.aimid
+	<select id="SumMyattensw" parameterType="String" resultType="Total">
+		select
+		(select count(r.rid)
+		from reply r where r.remitid=#{remitid})
+		myattenaw,
+		(select count(e.eid)
+		from essay e where e.eautid=#{eautid})
+		myatteness,
+		(select count(selfid)
+		from dynstate PARTITION(GR) where
+		aimid=#{aimid}) myattenpeos
+		from dual
 	</select>
 
-	<select id="SumMyatteness" parameterType="Users" resultType="Total">
+	<select id="SumMyatteness" parameterType="String" resultType="Total">
 		select count(eid) myatteness from essay e
-		right join (select aimid from
-		dynstate where selfid=#{uids} order by aimid)
-		b
-		on e.eautid=b.aimid
-		group by b.aimid
+		where e.eautid=#{eautid}
 	</select>
 
 	<select id="SumMyattenpeos" parameterType="Users" resultType="Total">
-		select count(dd.selfid) myattenpeos from dynstate dd
-		right join (select
-		aimid from dynstate where selfid=#{uids} order by aimid)
-		c
-		on
-		dd.aimid=c.aimid group by c.aimid
+		select count(selfid) myattenpeos from dynstate PARTITION(GR)
+		where
+		aimid=#{aimid}
 	</select>
 
-	<select id="myatteninfo" parameterType="Users" resultType="Users">
-		select u.uname,u.upic,u.usign from users u
-		right join (select aimid
-		from dynstate where selfid=#{uids} order by aimid)
-		e
-		on u.uids=e.aimid
+	<select id="myatteninfo" parameterType="String" resultType="Total">
+		select
+		(select count(r.rid)
+		from reply r where r.remitid=#{uids})
+		myattenaw,
+		(select count(e.eid)
+		from essay e where e.eautid=#{uids})
+		myatteness,
+		(select count(selfid)
+		from dynstate PARTITION(GR) where
+		aimid=#{uids}) myattenpeos,
+		(select uname from users where
+		uids=#{uids}) uname,
+		(select usign from users where uids=#{uids})
+		usign,
+		(select upic from users where uids=#{uids}) upic
+		from dual
 	</select>
 
 
@@ -222,10 +238,22 @@
 		on
 		ids=b.reqid and selfid=#{uids} group by b.reqid
 	</select>
-	
-	<insert id="favoriteinfo" parameterType="Favorite" >
-		insert into favorite(fid,fname,ftime)
-		values(seq_favorite.nextval,#{fname},Sysdate)
+
+	<insert id="favoriteinfo" parameterType="Favorite">
+		insert into
+		favorite(fid,fcreid,fname,ftime)
+		values(seq_favorite.nextval,#{fcreid},#{fname},Sysdate)
 	</insert>
+
+	<!-- 我关注的人的id -->
+	<select id="alluids" parameterType="Users" resultType="Dynstate">
+		select
+		aimid from dynstate PARTITION(GR) where selfid=#{uids}
+	</select>
+	
+	<!-- 关注了我的人的id -->
+	<select id="attenme" parameterType="Users" resultType="Dynstate">
+		select selfid from dynstate PARTITION(GR) where aimid=#{uids}
+	</select>
 
 </mapper>

@@ -12,8 +12,7 @@ body {
     line-height: 1.7;
     overflow-wrap: break-word;
 }
-body {
-}
+
 body, ul, ol, li, p, h1, h2, h3, h4, h5 {
     margin: 0;
     padding: 0;
@@ -218,11 +217,6 @@ div[contentEditable], input, textarea, button, a:link {
 .zg-icon-dd-home {
     background-position: -6px -7px;
 }
-
-.top-nav-profile:hover ul{
-	display:block; 
-}
-
 .icon, .tr-icon, .tr-inline-icon, .goog-option-selected .goog-menuitem-checkbox, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
     background-image: url("../images/design2.png");
     background-repeat: no-repeat;
@@ -231,17 +225,16 @@ div[contentEditable], input, textarea, button, a:link {
     vertical-align: middle;
     width: 16px;
 }
-i, em {
-    font-style: italic;
-}
 .zg-icon-dd-pm {
     background-position: -6px -34px;
-}
-.zg-icon-dd-settings {
+}.zg-icon-dd-settings {
     background-position: -6px -60px;
-}
-.zg-icon-dd-logout {
+}.zg-icon-dd-logout {
     background-position: -6px -87px;
+}
+
+i, em {
+    font-style: italic;
 }
 element.style {
     visibility: hidden;
@@ -468,14 +461,6 @@ div[contentEditable], input, textarea, button, a:link {
     margin: 0;
     position: relative;
 }
-
-
-
-
-
-
-
-
 .zh-footer {
     clear: both;
     text-align: right;
@@ -495,7 +480,7 @@ div[contentEditable], input, textarea, button, a:link {
 }
 .zh-footer li + li::before {
     color: #bbb;
-    content: "•";
+    content: "鈥?;
     font-family: Arial;
     margin-right: 3px;
     padding: 0 3px;
@@ -602,12 +587,6 @@ div[contentEditable], input, textarea, button, a:link {
 }
 div[contentEditable], input, textarea, button, a:link {
 }
-.tab-navs .tab-nav {
-    float: left;
-    margin-bottom: -1px;
-    margin-right: 5px;
-    position: relative;
-}
 .settings-section {
     border-bottom: 1px solid #eee;
     margin-top: 10px;
@@ -682,3 +661,122 @@ div[contentEditable], input, textarea, button, a:link {
     width: 65px;
 }
 
+.form{
+	background-color: #fff;
+	width: 960px;
+	height: 222.5px;
+	position: absolute;
+	top: 70px;
+	z-index: -1;
+}
+
+.settings-save{
+	height: 50px;	
+}
+
+.settings-intro{
+    color: #999;
+}
+.settings-item-title{
+    float: left;
+    text-align: left;
+    width: 65px;
+}
+.settings-item-title + .settings-item-content{
+    margin-left: 90px;
+}
+.clearfix::before, .clearfix::after{
+    content: "";
+    display: table;
+}
+.clearfix::after{
+    clear: both;
+}
+.clearfix::before, .clearfix::after{
+    content: "";
+    display: table;
+}
+.settings-item + .settings-item {
+    border-top: 1px dotted #f2f2f2;
+}
+.settings-item {
+    padding: 12px 0;
+    width: 100%;
+}
+.clearfix {
+}
+.settings-item-title {
+    float: left;
+    text-align: left;
+    width: 65px;
+}
+.settings-item-title + .settings-item-content {
+    margin-left: 90px;
+}
+.settings-acount-main a {
+    color: #698ebf;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.hidden {
+    display: none;
+}
+.form-basic .group {
+    margin-bottom: 1em;
+    
+}
+input.text, textarea.text {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+    box-sizing: border-box;
+    color: #222;
+    font-size: 13px;
+    line-height: 15px;
+    padding: 8px 10px;
+    margin: 10px 10px 10px 0px;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+input::placeholder, textarea::placeholder {
+    color: #999;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+.zg-btn-blue, .zg-btn-green, .zg-btn-white, a.follow {
+}
+.zg-btn-blue {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #1d7fe2, #0865c2) repeat scroll 0 0;
+    border: 1px solid #0d6eb8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 0 rgba(0, 0, 0, 0.2);
+    color: #fff !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+.zg-btn-blue, .zg-btn-green, .zg-btn-red, .zg-btn-white, .zg-btn-disabled {
+    border-radius: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 4px 25px;
+    text-align: center;
+    text-decoration: none !important;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.group a:hover{
+	text-decoration:underline;
+}
+
+.top-nav-profile:hover ul{
+	display: block;
+}

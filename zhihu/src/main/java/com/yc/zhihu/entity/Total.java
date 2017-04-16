@@ -8,15 +8,16 @@ public class Total {
 	private Integer myattenaw;
 	private Integer myatteness;
 	private Integer myattenpeos;
+	private String uname;
+	private String usign;
+	private String upic;
 	
 	public Total() {
 		// TODO Auto-generated constructor stub
 	}
-
-	
 	
 	public Total(Integer answer, Integer mine, Integer question, Integer fav, Integer myattenaw, Integer myatteness,
-			Integer myattenpeos) {
+			Integer myattenpeos, String uname, String usign, String upic) {
 		super();
 		this.answer = answer;
 		this.mine = mine;
@@ -25,9 +26,34 @@ public class Total {
 		this.myattenaw = myattenaw;
 		this.myatteness = myatteness;
 		this.myattenpeos = myattenpeos;
+		this.uname = uname;
+		this.usign = usign;
+		this.upic = upic;
+	}
+	
+	public String getUname() {
+		return uname;
 	}
 
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 
+	public String getUsign() {
+		return usign;
+	}
+
+	public void setUsign(String usign) {
+		this.usign = usign;
+	}
+
+	public String getUpic() {
+		return upic;
+	}
+
+	public void setUpic(String upic) {
+		this.upic = upic;
+	}
 
 	public Integer getMyattenaw() {
 		return myattenaw;
@@ -97,13 +123,13 @@ public class Total {
 		this.fav = fav;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "\nTotal [answer=" + answer + ", mine=" + mine + ", question=" + question + ", fav=" + fav + ", myattenaw="
-				+ myattenaw + ", myatteness=" + myatteness + ", myattenpeos=" + myattenpeos + "]";
+		return "Total [answer=" + answer + ", mine=" + mine + ", question=" + question + ", fav=" + fav + ", myattenaw="
+				+ myattenaw + ", myatteness=" + myatteness + ", myattenpeos=" + myattenpeos + ", uname=" + uname
+				+ ", usign=" + usign + ", upic=" + upic + "]";
 	}
+	
 
 	
 	
