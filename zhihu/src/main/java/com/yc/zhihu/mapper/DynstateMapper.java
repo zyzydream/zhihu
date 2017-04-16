@@ -61,12 +61,22 @@ public interface DynstateMapper {
 
 	int collect(Dynstate dynstate); 
 	
-	List<Total> SumMyattensw(Object obj);
-	List<Total> SumMyatteness(Object obj);
-	List<Total> SumMyattenpeos(Object obj);
-	List<Users> myatteninfo(Object obj);
+	
+	Total myatteninfo(String obj);
 
 	int delpraise(Dynstate dynstate);
 
 	int delcollect(Dynstate dynstate); 
+	
+	int countdz(Object obj);
+	
+	int favoriteinfo(Favorite obj);
+	
+	List<Users> alluids(Object obj) ;
+	
+	List<Users> attenme(Object obj);
+	
+
+	
+	
 }

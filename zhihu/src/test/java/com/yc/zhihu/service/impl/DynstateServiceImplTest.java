@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.yc.zhihu.entity.Favorite;
 import com.yc.zhihu.entity.ListAllMy;
 import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
@@ -86,6 +87,7 @@ public class DynstateServiceImplTest {
 		System.out.println(r);
 		assertNotNull(r);
 	}
+	
 	
 	
 

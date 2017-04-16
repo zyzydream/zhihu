@@ -157,27 +157,10 @@ public class DynstateServiceImpl implements DynstateService {
 		}else if("W".equals(kind)){
 			dynstate.setKind("SW");
 		}
-		//System.out.println(dynstate.getKind());
 		return dynstateMapper.collect(dynstate);
 	}
-	
 	@Override
-	public List<Total> listsw(Object obj) {
-		return dynstateMapper.SumMyattensw(obj);
-	}
-	
-	@Override
-	public List<Total> listess(Object obj) {
-		return dynstateMapper.SumMyatteness(obj);
-	}
-	
-	@Override
-	public List<Total> listpeos(Object obj) {
-		return dynstateMapper.SumMyattenpeos(obj);
-	}
-	
-	@Override
-	public List<Users> myatteninfo(Object obj) {
+	public Total myatteninfo(String obj) {
 		return dynstateMapper.myatteninfo(obj);
 	}
 	
@@ -211,5 +194,25 @@ public class DynstateServiceImpl implements DynstateService {
 		}
 		System.out.println(dynstate.getKind());
 		return dynstateMapper.delcollect(dynstate);
+	}
+	
+	@Override
+	public int countdz(Object obj) {
+		return dynstateMapper.countdz(obj);
+	}
+	
+	@Override
+	public int favoriteinfo(Favorite attribute) {
+		return dynstateMapper.favoriteinfo(attribute);
+	}
+	
+	@Override
+	public List<Users> alluses(Object obj) {
+		return dynstateMapper.alluids(obj);
+	}
+	
+	@Override
+	public List<Users> allattenme(Object obj) {
+		return dynstateMapper.attenme(obj);
 	}
 }

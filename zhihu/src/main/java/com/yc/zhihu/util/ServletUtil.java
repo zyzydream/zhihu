@@ -19,6 +19,8 @@ public class ServletUtil {
 	public static String DEPLOY_NAME=null;
 	public static List<Users> alluser;
 	public static final String LOGIN_UPLOAD_DIR="/upload/";
+	public static final String[] favname={};
+	public static final String[] favsum={};
 	
 	public static File getUploadFile(String fileName){
 		File file=new File(UPLOAD_DIR,fileName);  //上传文件
