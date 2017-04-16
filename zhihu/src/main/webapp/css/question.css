@@ -1011,3 +1011,67 @@ a {
 }
 
 
+
+
+.Card:last-child {
+    margin-bottom: 0;
+}
+.QuestionAnswers-answerAdd {
+    margin-bottom: 60px !important;
+    margin-top: 40px;
+}
+.AnswerAdd-header {
+    -moz-box-align: start;
+    align-items: flex-start;
+    display: flex;
+    padding: 16px 20px;
+}
+.AnswerAdd-info {
+    -moz-box-flex: 1;
+    flex-grow: 1;
+}
+.AuthorInfo {
+    -moz-box-align: center;
+    align-items: center;
+    display: flex;
+}.AuthorInfo-avatar {
+    vertical-align: top;
+}
+.Avatar {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 2px;
+}
+.AuthorInfo-content {
+    -moz-box-flex: 1;
+    flex: 1 1 0;
+    margin-left: 14px;
+    overflow: hidden;
+}
+.AuthorInfo-title {
+    display: flex;
+}
+.AuthorInfo-name {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.1;
+}
+.AnswerAdd-toggleAnonymous {
+    margin-left: auto;
+}
+.AnswerForm-footer {
+    -moz-box-align: center;
+    align-items: center;
+    background: #fff none repeat scroll 0 0;
+    box-sizing: border-box;
+    display: flex;
+    height: 64px;
+    padding: 12px 24px;
+}
+.AnswerForm-footerRight {
+    margin-left: auto;
+    transition: opacity 0.3s ease-out 0s;
+}
+.Button--primary.Button--blue, .Button--primary.Button--blue:disabled {
+    background: #0f88eb none repeat scroll 0 0;
+}
+

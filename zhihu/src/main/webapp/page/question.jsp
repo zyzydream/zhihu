@@ -137,8 +137,7 @@
 								<div class="QuestionHeader-follow-status">
 									<div class="QuestionFollowStatus">
 										<div class="NumberBoard QuestionFollowStatus-counts">
-											<div class="NumberBoard-item">
-											</div>
+											<div class="NumberBoard-item"></div>
 										</div>
 									</div>
 								</div>
@@ -429,6 +428,49 @@
 							<a class="QuestionMainAction"
 								data-za-detail-view-element_name="ViewAll"
 								href="/question/56314897">查看全部 77 个回答</a>
+						</div>
+						<!-- 回答问题 -->
+						<div class="Card QuestionAnswers-answerAdd">
+							<div class="AnswerAdd">
+								<div class="AnswerAdd-header">
+									<div class="AuthorInfo AnswerAdd-info">
+										<span class="UserLink AuthorInfo-avatarWrapper"> <img
+											class="Avatar AuthorInfo-avatar"
+											src="https://pic1.zhimg.com/da8e974dc_xs.jpg"
+											srcset="https://pic1.zhimg.com/da8e974dc_l.jpg 2x"
+											alt="xiaoxiaoying" width="38" height="38">
+										</span>
+										<div class="AuthorInfo-content">
+											<div class="AuthorInfo-title">
+												<div class="AuthorInfo-name">
+													<span class="UserLink">xiaoxiaoying</span>
+												</div>
+											</div>
+											<div class="AuthorInfo-badge">
+												<button
+													class="Button ModifyButton AnswerAdd-topicBiosButton Button--link"
+													type="button">
+													<img src="images/pen.png"
+														style="height: 16px; width: 12px;"> 编辑话题经验
+												</button>
+											</div>
+										</div>
+										<button class="Button AnswerAdd-toggleAnonymous Button--plain"
+											type="button">使用匿名身份回答</button>
+									</div>
+								</div>
+
+								<form class="AnswerForm" novalidate=""
+									data-za-module="AnswerEditView" data-za-module-info="{"card":{"content":{"type":"Answer","parent_token":"46404678","author_member_hash_id":"9bec4b886e1eeea1e3e94ba9a92b7ca4"}}}">
+									<div>
+										<div class="Sticky AnswerForm-footer is-bottom" style="">
+											<button
+												class="Button AnswerForm-submit Button--primary Button--blue"
+												type="button">提交回答</button>
+										</div>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 
