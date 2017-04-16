@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 
@@ -38,5 +39,9 @@ public interface UserService {
 	List<Users> findProfession(Users users);
 
 	List<Explore> yPraiseAndCollect(List<Explore> explores, HttpServletRequest request);
+
+	ShowUser showUser(Users user);
+
+	ShowUser attentionUser(Users user);
 
 }

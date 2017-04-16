@@ -5,6 +5,7 @@ import java.util.List;
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 
@@ -51,5 +52,9 @@ public interface UserMapper {
 	Dynstate ypraise(Dynstate dynstate);
 
 	Dynstate ycollect(Dynstate dynstate);
+
+	ShowUser showUser(Users user);
+
+	Users fUsers(Users user);
 
 }

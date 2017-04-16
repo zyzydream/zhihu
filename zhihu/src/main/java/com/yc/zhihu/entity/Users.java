@@ -18,6 +18,8 @@ public class Users {
 	private String myattenzhuanlan;
 	private String myattenfav;
 	private String toppic;
+	private String num;
+
 	public Users() {
 		// TODO Auto-generated constructor stub
 	}
@@ -44,6 +46,13 @@ public class Users {
 		this.myattenzhuanlan = myattenzhuanlan;
 		this.myattenfav = myattenfav;
 		this.toppic = toppic;
+	}
+
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
 	}
 
 

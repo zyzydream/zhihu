@@ -37,6 +37,22 @@
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
 				</a>
+				<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+					<li><a href="page/myself.jsp"> <i
+							class="zg-icon zg-icon-dd-home"></i>我的主页
+					</a></li>
+					<li><a href="/inbox"> <i class="zg-icon zg-icon-dd-pm"></i>私信
+							<span id="zh-top-nav-pm-count"
+							class="zu-top-nav-pm-count zg-noti-number"
+							style="visibility: hidden" data-count="0"> </span>
+					</a></li>
+					<li><a href="page/design.jsp"> <i
+							class="zg-icon zg-icon-dd-settings"></i>设置
+					</a></li>
+					<li><a href="page/login.jsp"> <i
+							class="zg-icon zg-icon-dd-logout"></i>退出
+					</a></li>
+				</ul>
 			</div>
 
 
@@ -439,12 +455,15 @@
 				</div>
 			</div>
 		</div>
+		<div class="media"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:70px"> </a></div><div class="media-body"><h4 class="media-heading">jlvrpt</h4>undefined<span><a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid=1007&&tname=mgfxq" target="_blank">mgfxq</a><a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid=1008&&tname=imuzc" target="_blank">imuzc</a><a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid=1008&&tname=imuzc" target="_blank">imuzc</a><a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid=1010&&tname=vizxhm" target="_blank">vizxhm</a></span></div></div>
 
 		<!-- /.blog-sidebar -->
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/tooltip.js"></script>
 	<script type="text/javascript" src="js/popover.js"></script>
+	
 	<script
 		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
 		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
