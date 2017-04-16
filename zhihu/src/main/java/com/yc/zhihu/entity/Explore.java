@@ -2,6 +2,7 @@ package com.yc.zhihu.entity;
 
 public class Explore {
 
+	
 	private String ids;
 	private String kind;
 	private String title;

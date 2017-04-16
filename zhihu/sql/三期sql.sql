@@ -186,7 +186,23 @@ CREATE TABLE essay(
    escid VARCHAR2(30),
    etid VARCHAR2(10)
 );
-
+    select * from users ,
+     (select d.countr countr,ru.countr countr,ru.counte counte ,ru.uids uids from (select count(0)countr ,aimid from dynstate PARTITION(GR) group by aimid) d,
+     (select * from  (select count(0)countr,r.remitid from reply r group by r.remitid)rr ,
+      (select count(0)counte,'10001' uids from essay where eautid='10001')e where rr.remitid=e.uids)ru
+      where d.aimid=ru.uids)rud
+      where uids=rud.uids
+  select * from users where uname='10690'  
+  
+ select e.eid ids,'W' kind,e.etitle title,e.econtent content,e.etid tid,t.ttopic tname,e.usign usign,e.uids uids,e.uname author,e.etime times,'n' checks  from topics t,
+	     (select * from users u,
+	       (select * from essay,
+           	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
+	        where counts>8 and id=eid )e
+	      where u.uids=e.eautid)e
+	    where t.tid=e.etid
+  
+select * from explore where ids='10324'
 select e.etitle title,e.etime times,e.eid tid,'E' kind ,u.upic tpic from essay e ,users u
 where eautid='1001' and  uids='1001';
 
@@ -228,6 +244,9 @@ CREATE TABLE scolumn(
    scname VARCHAR2(20),
    sctime VARCHAR2(30)
 );
+<<<<<<< HEAD
+drop table explore
+=======
 drop table scolumn
 
 select count(r.rid) myattenaw,count(e.eid),count(n.selfid) 
@@ -246,6 +265,7 @@ from dynstate PARTITION(GR) where aimid='10198') myattenpeos,
 (select upic from users where uids='10198') upic
 from dual 
 
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 select
 		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
@@ -372,12 +392,21 @@ CREATE TABLE reply(
    rrid VARCHAR2(30),
    remitid VARCHAR2(30),
    rreceid VARCHAR2(30),
-   rcontent VARCHAR2(300),
+   rcontent VARCHAR2(300),	--	回复内容
    rtid VARCHAR2(30),
    rtime VARCHAR2(30)
 );
+<<<<<<< HEAD
 drop sequence seq_reply
 drop table reply
+=======
+
+select r.* ,u.*
+from reply r ,users u
+where r.reqid='10198' and u.uids=r.remitid
+
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 drop table reply
 select * from reply
 create sequence seq_reply start with 10000;
@@ -787,7 +816,8 @@ create table explore(
    collect  VARCHAR2(5),  --收藏数
    checks VARCHAR2(2) --是否以核查
 );
-
+select * from users where uname='baurflda'
+drop table Explore
 select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks from QUESTION q, 
 (select * from topics t, 
 (select * from users u, 

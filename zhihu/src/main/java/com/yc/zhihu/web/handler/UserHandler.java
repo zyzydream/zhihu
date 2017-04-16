@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.ExploreService;
@@ -162,5 +163,19 @@ public class UserHandler {
 		usersService.listprofession(users);
 		return "redirect:/page/talk.jsp";
 	}
+	
+	@RequestMapping(value="/showUser",method=RequestMethod.GET)
+	@ResponseBody
+	public ShowUser showUser(Users user){
+		System.out.println("showUser====>"+user.toString());
+		return usersService.showUser(user);
+	}
 
+	//关注用户
+	@RequestMapping(value="/attentionUser",method=RequestMethod.GET)
+	@ResponseBody
+	public ShowUser attentionUser(Users user){
+		System.out.println("attentionUser====>"+user.toString());
+		return usersService.attentionUser(user);
+	}
 }
