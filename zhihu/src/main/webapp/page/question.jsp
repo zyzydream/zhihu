@@ -407,7 +407,6 @@
 													</button>
 													<button class="Button VoteButton VoteButton--down"
 														aria-label="反对" type="button">
-
 														<img src="images/no.png" style="height: 12px; width: 9px;">
 													</button>
 												</span>

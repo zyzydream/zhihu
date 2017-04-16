@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="/zhihu/">
+<link rel="shortcut icon" href="images/logohead.png">
+<link type="text/css" rel="stylesheet" href="css/litter.css">
 <meta charset="UTF-8">
 <title>私信</title>
 </head>
@@ -75,7 +78,32 @@
 							class="zu-top-nav-count zg-noti-number" style="display: none;">0</span>
 					</a></li>
 				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="zg-wrap zu-main clearfix " role="main">
+		<div class="zu-main-content">
+			<div class="zu-main-content-inner">
+				<div class="PageInbox-nav">
+					<div class="PageInbox-nav-inner">
+						<ul class="PageInbox-nav-tabs">
+							<li>最近联系</li>
+						</ul>
+						<button id="zh-create-pm" class="zg-btn-justify zg-btn-blue">写私信</button>
+					</div>
+				</div>
 
+				<div id="zh-pm-item-wrap" class="navigable">
+					<div class="zu-list-empyt-place-holder zg-r5px"
+						data-za-module="MessageItem">
+						还没有人给你发私信，不如你主动一点，给神交已久的知友发一封问候私信吧:)</div>
+				</div>
+			</div>
+			<div class="zu-main-sidebar" data-za-module="RightSideBar">
+				<div class="zg-info-message"
+					style="margin: 0 0 10px; text-align: left;">
+					担心骚扰？可以 <a href="/settings/notification">设置</a> 为「开启陌生人私信箱」。
+				</div>
 			</div>
 		</div>
 	</div>

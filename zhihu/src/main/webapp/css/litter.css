@@ -1,0 +1,524 @@
+
+html.is-AppPromotionBarVisible body {
+    padding-bottom: 60px;
+}
+body.zhi {
+    padding-top: 46px;
+}
+body {
+    background-color: #fff;
+    color: #222;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+}
+body {
+}
+body, ul, ol, li, p, h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
+.zu-top {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #086ed5, #055db5) repeat scroll 0 0;
+    border-bottom: 1px solid #044e97;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    height: 45px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.zu-top .zg-wrap {
+    height: inherit;
+    position: relative;
+}
+.zg-wrap {
+    clear: both;
+    margin: 0 auto;
+    width: 960px;
+}
+.clearfix {
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.zu-top-link-logo {
+    background-image: url("../images/zhihu.png");
+    background-position: 0 8px;
+    background-repeat: no-repeat;
+    color: #fff;
+    float: left;
+    height: 100%;
+    text-indent: -9999px;
+    width: 61px;
+}
+a {
+    color: #259;
+}
+a {
+    text-decoration: none;
+}
+.top-nav-profile {
+    float: right;
+    margin-left: 15px;
+    min-width: 120px;
+    position: relative;
+    z-index: 10;
+}
+.top-nav-profile .zu-top-nav-userinfo {
+    background: transparent none repeat scroll 0 0;
+    border-top: 0 none;
+    box-shadow: none;
+    color: #fff;
+    height: 45px;
+    line-height: 45px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    text-indent: 46px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.top-nav-profile a {
+    background-color: #095fb3;
+    display: block;
+    font-size: 14px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    width: 120px;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.top-nav-profile .zu-top-nav-userinfo {
+    color: #fff;
+    line-height: 45px;
+    text-indent: 46px;
+    white-space: nowrap;
+}
+.top-nav-profile a {
+    font-size: 14px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+}
+.zu-top-nav-userinfo .Avatar {
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+    left: 10px;
+    position: absolute;
+    top: 9px;
+}
+.Avatar {
+    background-color: #eee;
+    border-radius: 3px;
+    height: 25px;
+    width: 25px;
+}
+img {
+    border: 0 none;
+}
+element.style {
+    visibility: hidden;
+}
+.zu-top-nav-userinfo .zu-top-nav-pm-count {
+    left: 29px;
+}
+.zu-top-nav-count, .zu-top-nav-userinfo .zu-top-nav-pm-count {
+    position: absolute;
+    top: 5px;
+    z-index: 12;
+}
+.zg-noti-number {
+    -moz-text-size-adjust: none;
+    background: #bf1031 none repeat scroll 0 0;
+    border: 1px solid #b11331;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 5px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+}
+.top-nav-profile .top-nav-dropdown {
+    top: 46px;
+}
+.top-nav-dropdown {
+    display: none;
+    left: 0;
+    margin: 0;
+    position: absolute;
+}
+body, ul, ol, li, p, h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}.top-nav-dropdown li {
+    list-style: outside none none;
+    margin: 0;
+}
+.top-nav-dropdown li:first-child > a {
+    border-top: 0 none;
+}
+.top-nav-profile .top-nav-dropdown a {
+    width: 120px;
+}
+.top-nav-dropdown li a {
+    border-top: 1px solid #0d5aa5;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 145px;
+}
+.top-nav-profile a {
+    background-color: #095fb3;
+    display: block;
+    font-size: 14px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    width: 120px;
+}
+.top-nav-dropdown .zg-icon {
+    height: 20px;
+    margin: 0 11px 0 15px;
+    vertical-align: -7px;
+    width: 20px;
+}
+.zg-icon-dd-home {
+    background-position: -6px -7px;
+}
+.icon, .tr-icon, .tr-inline-icon, .goog-option-selected .goog-menuitem-checkbox, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
+    background-image: url("../images/design2.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 16px;
+    vertical-align: middle;
+    width: 16px;
+}
+i, em {
+    font-style: italic;
+}.zg-icon-dd-pm {
+    background-position: -6px -34px;
+}.zg-icon-dd-settings {
+    background-position: -6px -60px;
+}.zg-icon-dd-logout {
+    background-position: -6px -87px;
+}
+.top-nav-profile:hover ul{
+	display: block;
+}
+.zu-top-add-question {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #0e7bef, #0d73da) repeat scroll 0 0;
+    border: 1px solid #045bb2;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 1px rgba(255, 255, 255, 0.15) inset;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    font-size: 14px;
+    height: 32px;
+    line-height: 30px;
+    margin-top: 7px;
+    outline: 0 none;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s ease-in-out 0s;
+    width: 66px;
+}
+button {
+    line-height: 1.7;
+    padding: 0;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+.zu-top-search {
+    float: left;
+    margin: 7px 0 0 12px;
+    position: relative;
+}
+.zu-top-search-form {
+    position: relative;
+    width: 367px;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+input::placeholder, textarea::placeholder {
+    color: #999;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+.hide-text {
+    background-color: transparent;
+    border: 0 none;
+    color: transparent;
+    font: 0px/0 a;
+    text-shadow: none;
+}
+input[type="text"], input[type="password"]:focus {
+}
+.zu-top-search-input {
+    background-color: #e1eaf2;
+    border: 1px solid #045bb2;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    color: #49525c;
+    font-size: 14px;
+    line-height: 17px;
+    outline: 0 none;
+    padding: 7px 50px 7px 10px;
+    transition: all 0.2s ease-in-out 0s;
+    width: 90%;
+}
+.zu-top-search-form .zu-top-search-button::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.zu-top-search-form .zu-top-search-button {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #0e7bef, #0d73da) repeat scroll 0 0;
+    border: 1px solid #045bb2;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 1px rgba(255, 255, 255, 0.15) inset;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 100%;
+    outline: 0 none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+}
+.hide-text {
+    background-color: transparent;
+    border: 0 none;
+    color: transparent;
+    font: 0px/0 a;
+    text-shadow: none;
+}
+.sprite-global-icon-magnifier-dark {
+    background-position: -82px 0;
+    height: 15px;
+    width: 15px;
+}
+.sprite-global, [class*="sprite-global-"] {
+    background-image: url("../images/function.png");
+    background-repeat: no-repeat;
+}
+[class*="sprite-global-icon-"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+.zu-top-nav {
+    float: left;
+    position: relative;
+}
+.zg-clear::before, .zg-clear::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.zg-clear::after {
+    clear: both;
+}
+.zg-clear::before, .zg-clear::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.zu-top-nav-ul {
+    margin: 0 0 0 18px;
+    padding: 0;
+}
+.zg-clear {
+    height: 1%;
+}
+.zu-top-nav-li {
+    float: left;
+    list-style: outside none none;
+    margin: 0;
+    position: relative;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.zu-top-nav-link {
+    color: #f2f4f5;
+    display: block;
+    font-size: 14px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    width: 54px;
+}
+.zu-top-nav-link, .zu-top-nav-link:visited, .zu-top-nav-link:active {
+    color: #eee;
+}
+
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.zu-main {
+    min-height: 340px;
+    padding: 25px 0 50px;
+    position: relative;
+    z-index: 2;
+}
+.zg-wrap {
+    clear: both;
+    margin: 0 auto;
+    width: 960px;
+}
+.clearfix {
+}
+.zu-main-content {
+    float: left;
+    width: 100%;
+}
+.zu-main-content-inner {
+    margin: 0 328px 0 0;
+    position: relative;
+}
+.PageInbox-nav-inner::before, .page-inbox .PageInbox-nav-inner::after {
+    content: "";
+    display: table;
+}
+.PageInbox-nav-inner::after {
+    clear: both;
+}
+.PageInbox-nav-inner::before, .page-inbox .PageInbox-nav-inner::after {
+    content: "";
+    display: table;
+}
+.PageInbox-nav-inner {
+    border-bottom: 1px solid #ccc;
+    height: 28px;
+    line-height: 28px;
+    padding-bottom: 10px;
+}
+.PageInbox-nav-tabs {
+    float: left;
+    list-style: outside none none;
+}
+.PageInbox-nav-tabs li:first-child {
+    margin-left: 0;
+}
+.PageInbox-nav-tabs li {
+    float: left;
+    margin-left: 15px;
+   
+}
+#zh-create-pm {
+    float: right;
+}
+.PageInbox-nav-tabs {
+    float: left;
+    list-style: outside none none;
+    
+}
+.zg-btn-blue.zg-btn-justify, .zg-btn-green.zg-btn-justify, .zg-btn-white.zg-btn-justify {
+    font-size: 13px !important;
+    line-height: 18px !important;
+}
+.zg-btn-blue, .zg-btn-green, .zg-btn-white, a.follow {
+}
+.zg-btn-blue {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #1d7fe2, #0865c2) repeat scroll 0 0;
+    border: 1px solid #0d6eb8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 0 rgba(0, 0, 0, 0.2);
+    color: #fff !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+.zg-btn-blue, .zg-btn-green, .zg-btn-red, .zg-btn-white, .zg-btn-disabled {
+    border-radius: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none !important;
+    vertical-align: middle;
+    white-space: nowrap;
+
+}
+
+.zu-list-empyt-place-holder {
+    border: 2px dashed #ddd;
+    color: #ccc;
+    margin: 15px 0 0;
+    padding: 15px 0;
+    text-align: center;
+}
+.zg-r5px, .goog-tooltip {
+    border-radius: 5px;
+}
+
+.zu-main-sidebar {
+    float: right;
+    margin: -100px 0 0 -270px;
+    position: relative;
+    width: 270px;
+}
+element.style {
+    margin: 0 0 10px;
+    text-align: left;
+}
+.zg-info-message {
+    background: #f2fddb none repeat scroll 0 0;
+    border-color: #adcf66;
+}
+.zg-warn-message, .zg-error-message, .zg-info-message {
+    border: 1px solid;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+
+
