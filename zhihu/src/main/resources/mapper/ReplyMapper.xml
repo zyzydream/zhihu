@@ -21,7 +21,7 @@
 
 	<!-- 查询回复消息及回复人 -->
 	<select id="findReplyUser" parameterType="Reply" resultMap="ReplyMap">
-		select r.rid ids, r.rcontent content,r.time 
+		select r.*, u.*
 		from reply r ,users u
 		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'W'
 	</select>
