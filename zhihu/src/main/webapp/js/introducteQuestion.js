@@ -1,10 +1,11 @@
-function TopicIsNot(){
-	console.log(document.getElementById('topic').value)
+function check(){
+	//console.log(document.getElementById('topic').value)
 	$('#zh-question-form-tag-err').remove();
-	if(document.getElementById('topic').value == ""){
-		$('#xuanTopic').append("<span id='zh-question-form-tag-err'>至少添加一个话题</span>");
-	}else{
+	var a = document.getElementById('zh-question-suggest-title-content').value;//获取到的值
+	if(a.charAt(a.length-1) == "?" || a.charAt(a.length-1) == "？"){
 		$('#zh-question-form-tag-err').remove();
+	}else{
+		$('#Question').append("<span id='zh-question-form-tag-err'>亲，没有问号哦！！！！</span>");
 	}
 }
 

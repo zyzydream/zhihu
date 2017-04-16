@@ -10,4 +10,16 @@
 		insert into QUESTION(qid,qautid,qtitle,qdetail,qtid,qtime)
 		values (seq_question.nextval,#{qautid},#{qtitle},#{qdetail},#{qtid},to_char(sysdate,'yyyy-mm-dd'))
 	</insert>
+	
+	
+	<!-- 查询问题 -->
+	<select id="findQuestion" parameterType="Question" resultType="Question">
+			select * from question where qid=#{qid}
+	</select>
+	
+	
+	<!-- 根据id查询话题 -->
+	<select id="findTopics" parameterType="String" resultType="Topics">
+		select * from topics where tid=#{tid}
+	</select>
 </mapper>
