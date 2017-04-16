@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.service.ReplyService;
 
@@ -22,7 +23,7 @@ public class ReplyHandler {
 	
 	@RequestMapping(value="list" , method=RequestMethod.POST)
 	@ResponseBody
-	public List<Reply> list(Reply reply ,HttpServletRequest request){
+	public List<Explore> list(Reply reply ,HttpServletRequest request){
 		String reqid= request.getParameter("qid");
 		reply.setReqid(reqid);
 		System.out.println("进来了 reply==》" + reply);

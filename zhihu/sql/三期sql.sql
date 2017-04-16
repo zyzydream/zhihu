@@ -16,7 +16,11 @@ select * from users;
 select * from explore;
  select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
 select * from reply
- 18039696056@qq.com
+
+select r.*,u.*
+		from reply r ,users u
+		where r.reqid='10001' and u.uids=r.remitid and rkind= 'W'
+
  
  select
 		t.*,q.qtitle from
