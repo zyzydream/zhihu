@@ -29,9 +29,9 @@
 			data-za-module="TopNavBar"
 			style="width: 1349px; top: 0px; left: 0px;">
 		<div class="AppHeader-inner">
-			<a href="/" aria-label="知乎">知乎</a>
+			<a href="/zhihu/page/homepage.jsp" aria-label="知乎">知乎</a>
 			<nav class="AppHeader-nav" role="navigation"> <a
-				class="AppHeader-navItem" href="/page/homepage.jsp">首页</a> <a
+				class="AppHeader-navItem" href="/zhihu/page/homepage.jsp">首页</a> <a
 				class="AppHeader-navItem" href="/explore">发现</a> <a
 				class="AppHeader-navItem" href="/topic">话题</a> </nav>
 			<div class="SearchBar" role="search">
@@ -269,28 +269,31 @@
 		</div>
 		
 		
-		<form action="dynstate/createf" method="get">
+		 <form action="dynstate/createf" id="ssss"> 
+		
 		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel">
+			aria-labelledby="myModalLabel" action="dynstate/createf" method="post">
+			
 			<div class="modal-dialog" role="document">
-				<div class="modal-content" id="favinfos">
+				<div class="modal-content" id="favinfos2">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">×</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel" style="float:center">添加收藏</h4>
+						<h4 class="modal-title" id="myModalLabel2" style="float:center">添加收藏</h4>
 					</div>
 					<div class="modal-body">
-
+						
 						<div class="form-group">
 							<label for="txt_departmentname">收藏夹名称</label> <input type="text"
 								name="fname" class="form-control"
-								id="txt_departmentname" placeholder="收藏夹名称">
+								id="fname" placeholder="收藏夹名称">
 						</div>
+						
 						<div class="form-group">
 							<label for="txt_statu">描述</label> <input type="text"
-								name="finfo" class="form-control" id="txt_statu"
+								name="finfo" class="form-control" id="finfo"
 								placeholder="收藏描述(可选)">
 						</div>
 					</div>
@@ -299,14 +302,15 @@
 							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>取消
 						</button>
 						<button type="button" id="btn_submit" class="btn btn-primary"
-							data-dismiss="modal">
-							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>确认创建
+							data-dismiss="modal" onclick="yesfav()">
+							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true" ></span>确认创建
 						</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		</form>
+		
 		
 		
 	</div>

@@ -172,16 +172,16 @@ function addfav(){
 			}
 		}else{
 			info+='<div class="modal-header">'
-			+'<button type="button" class="close" data-dismiss="modal"'
-			+'	aria-label="Close">'
-			+'	<span aria-hidden="true">×</span>'
-			+'</button>'
-			+'<h4 class="modal-title" id="myModalLabel">添加收藏</h4>'
-			+'<h5>请选择你想添加的收藏夹</h5>'
-			+'</div>'
-			+'<div class="modal-body">'
-			+'<span><a id="createfav" href="javascript:void(0)" onclick="createfav()">当前没有收藏夹，请创建一个收藏夹</a><span>'
-			+'</div>';
+				+'<button type="button" class="close" data-dismiss="modal"'
+				+'	aria-label="Close">'
+				+'	<span aria-hidden="true">×</span>'
+				+'</button>'
+				+'<h4 class="modal-title" id="myModalLabel">添加收藏</h4>'
+				+'<h5>请选择你想添加的收藏夹</h5>'
+				+'</div>'
+				+'<div class="modal-body">'
+				+'<span><a id="createfav" href="javascript:void(0)" onclick="createfav()">当前没有收藏夹，请创建一个收藏夹</a><span>'
+				+'</div>';
 		}
 		document.getElementById("favinfos").innerHTML = info;
 	},'json');
@@ -190,6 +190,12 @@ function addfav(){
 
 function createfav(){
 	$('#myModal2').modal();
+}
+
+function yesfav(){
+	$.post("dynstate/createf",function(data){
+		alert(1);
+	})
 }
 
 function My(){
@@ -240,7 +246,7 @@ function My(){
 			my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px;text-align:center;height:300px;">'
 				+'<div class="col-md-7"><a style="float:center">还没有文章，赶快发表一篇吧。。。</a></div></div>';
 		}
-		
+
 		document.getElementById("myself2").innerHTML = my;
 
 	},'json');
@@ -333,8 +339,9 @@ function myfavorite(){
 
 }
 
+/*我的关注*/
 function MyAttention(){
-	var myattention="";
+	
 	$.get("dynstate/a1",function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
@@ -353,50 +360,138 @@ function MyAttention(){
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
 				+'<a class="SubTabs-item is-active" href="javascript:void(0)" onclick="myatten()">我关注的人</a>'
-				+'<a class="SubTabs-item" href="javascript:void(0)">关注我的人</a><span class="SubTabs-item">'
+				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="attenme()">关注我的人</a><span class="SubTabs-item">'
 				+'<div class="Popover"></div></span></div></h4></div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
-	$.get("dynstate/m8",function(data){
-
-		for(var i=0;i<data.length;i++){
-			myattention+='<div class="List-item">'
-				+'<div class="ContentItem" ><div class="ContentItem-main"><div class="ContentItem-image">'
-				+'<span class="UserLink UserItem-avatar"><div class="Popover">'
-				+'<div id="Popover-81043-7312-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81043-7312-content">'
-				+'<a class="UserLink-link" target="_blank" href="#">'
-				+'<img class="Avatar Avatar--large UserLink-avatar" src="/zhihu/images/touxiang.jpg"  style="width: 60px; height: 60px;">'
-				+'</a></div></div></span></div><div class="ContentItem-head"><h2 class="ContentItem-title">'
-				+'<div class="UserItem-title"><span class="UserLink UserItem-name">'
-				+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
-				+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data[i].uname+'</a></div>'
-				+'</div></span><span class="FollowStatus" id="showattenyn">相互关注</span></div></h2>'
-				+'<div class="ContentItem-meta"><div><div class="RichText">'+data[i].usign+'</div>'
-				+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data[i].myattenaw+'回答</span>'
-				+'<span class="ContentItem-statusItem">'+data[i].myatteness+'文章</span>'
-				+'<span class="ContentItem-statusItem">'+data[i].attsum+' 关注者</span>'
-				+'</div></div></div></div><div class="ContentItem-extra"><button class="Button FollowButton Button--primary Button--grey" id="attenbtn" type="button" onclick="touch()">'
-				+'已关注</button></div></div></div></div>'
-				+'</span></div></div>';
+	
+	$.get("dynstate/m81",function(data){
+		var alluids=data;
+		$.get("dynstate/m82",function(data){
+			var x=data;
+		if(alluids.length>0){
+			var myattention='';
+			for(var i=0;i<alluids.length;i++){
+				var y=alluids[i].aimid;
+				$.get("dynstate/m8?aimid="+alluids[i].aimid,function(data){
+					
+					myattention+='<div class="List-item">'
+							+'<div class="ContentItem" ><div class="ContentItem-main"><div class="ContentItem-image">'
+							+'<span class="UserLink UserItem-avatar"><div class="Popover">'
+							+'<div id="Popover-81043-7312-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81043-7312-content">'
+							+'<a class="UserLink-link" target="_blank" href="#">'
+							+'<img class="Avatar Avatar--large UserLink-avatar" src="'+data.upic+'"  style="width: 60px; height: 60px;">'
+							+'</a></div></div></span></div><div class="ContentItem-head"><h2 class="ContentItem-title">'
+							+'<div class="UserItem-title"><span class="UserLink UserItem-name">'
+							+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
+							+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data.uname+'</a></div>'
+							for(var j=0;j<x.length;j++){
+								if(y==x[j].selfid){
+									myattention+='</div></span><span class="FollowStatus" id="showattenyn">相互关注</span></div></h2>'
+								}else{
+									myattention+='</div></span><span class="FollowStatus" id="showattenyn">他没有关注你</span></div></h2>'
+								}
+							}
+					myattention+='<div class="ContentItem-meta"><div><div class="RichText">'+data.usign+'</div>'
+							+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data.myattenaw+'回答</span>'
+							+'<span class="ContentItem-statusItem">'+data.myatteness+'文章</span>'
+							+'<span class="ContentItem-statusItem">'+data.myattenpeos+' 关注者</span>'
+							+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit" class="btn btn-primary"'
+							+' data-dismiss="modal" onclick="yesfav()">'
+							+'<span aria-hidden="false" ></span>已关注'
+							+'</button></div></div></div></div>'
+							+'</span></div></div>';
+					
+					
+					if((i-1) == (alluids.length-1)){
+						
+						document.getElementById("myself2").innerHTML = myattention;
+					}else{
+						alert(no);
+					}
+					
+				},'json');
+				
+			}
+			
+			
 		}
-
-		document.getElementById("myself2").innerHTML = myattention;
+		},'json');
 	},'json');	
 
-
-
-
-
 }
-
-
 
 function myatten(){
-	$.get("dynstate/me",function(data){
+	MyAttention();
+}
 
+
+function attenme(){
+	$.get("dynstate/a1",function(data){
+		var total="";
+		for(var i=0;i<data.length;i++){
+			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
+				+'<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a'
+				+' class="Tabs-link" href="/zhihu/page/myself.jsp">动态</a></li>'
+				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
+				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
+				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
+				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
+				+' href="javascript:void(0)" onclick="myfavorite()"> 收藏 <span class="Tabs-meta">'+data[i].fav+'</span>'
+				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
+				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
+				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myatten()">我关注的人</a>'
+				+'<a class="SubTabs-item is-active" href="javascript:void(0)" onclick="attenme()">关注我的人</a><span class="SubTabs-item">'
+				+'<div class="Popover"></div></span></div></h4></div>';
+		}
+		document.getElementById("myself1").innerHTML = total;
+	},'json');
+	
+	$.get("dynstate/m82",function(data){
+		var all=data;
+		if(all.length>0){
+			var info='';
+			for(var i=0;i<all.length;i++){
+				$.get("dynstate/m822?selfid="+all[i].selfid,function(data){
+					info+='<div class="List-item">'
+						+'<div class="ContentItem" ><div class="ContentItem-main"><div class="ContentItem-image">'
+						+'<span class="UserLink UserItem-avatar"><div class="Popover">'
+						+'<div id="Popover-81043-7312-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81043-7312-content">'
+						+'<a class="UserLink-link" target="_blank" href="#">'
+						+'<img class="Avatar Avatar--large UserLink-avatar" src="'+data.upic+'"  style="width: 60px; height: 60px;">'
+						+'</a></div></div></span></div><div class="ContentItem-head"><h2 class="ContentItem-title">'
+						+'<div class="UserItem-title"><span class="UserLink UserItem-name">'
+						+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
+						+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data.uname+'</a></div>'
+						+'</div></span><span class="FollowStatus" id="showattenyn">相互关注</span></div></h2>'
+						+'<div class="ContentItem-meta"><div><div class="RichText">'+data.usign+'</div>'
+						+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data.myattenaw+'回答</span>'
+						+'<span class="ContentItem-statusItem">'+data.myatteness+'文章</span>'
+						+'<span class="ContentItem-statusItem">'+data.myattenpeos+' 关注者</span>'
+						+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit" class="btn btn-primary"'
+						+' data-dismiss="modal" onclick="yesfav()">'
+						+'<span aria-hidden="true" ></span>已关注'
+						+'</button></div></div></div></div>'
+						+'</span></div></div>';
+
+				if((i-1) == (all.length-1)){
+					document.getElementById("myself2").innerHTML = info;
+				}else{
+					alert(no);
+				}
+				
+				},'json');
+			}
+		}
+		
 	},'json');
 }
+
 
 function touch(){
 	/*$.get("dynstate/touch",function(data){*/

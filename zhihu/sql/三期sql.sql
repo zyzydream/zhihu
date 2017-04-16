@@ -127,6 +127,36 @@ select * from USERS
 select * from essay
 
 
+select
+		(select count(aimid) from dynstate PARTITION(GR) where selfid='10198') myatten,
+		(select count(selfid) from DYNSTATE PARTITION(GR) where aimid='10198') attenme,
+		(select count(ids) from DYNSTATE PARTITION(GH) where selfid='10198')
+		myattentop,
+		(select count(ids) from DYNSTATE PARTITION(GZ) where selfid='10198')
+		myattenzhuanlan,
+		(select count(ids) from DYNSTATE PARTITION(GS) where
+		selfid='10198' )
+		myattenfav
+		from dual
+		
+		
+		select
+		(select count(r.rid)
+		from reply r where r.remitid='10198')
+		myattenaw,
+		(select count(e.eid)
+		from essay e where e.eautid='10198')
+		myatteness,
+		(select count(selfid)
+		from dynstate PARTITION(GR) where
+		aimid='10198') myattenpeos,
+		(select uname from users where
+		uids='10198') uname,
+		(select usign from users where uids='10198')
+		usign,
+		(select upic from users where uids='10198') upic
+		from dual
+
 
 create sequence seq_users
 increment by 1
@@ -196,6 +226,23 @@ CREATE TABLE scolumn(
    sctime VARCHAR2(30)
 );
 drop table scolumn
+
+select count(r.rid) myattenaw,count(e.eid),count(n.selfid) 
+from reply r,essay e,dynstate PARTITION(GR) n
+where r.remitid='10198' and e.eautid='10198' and n.aimid='10198'
+
+select 
+(select count(r.rid) 
+from reply r where r.remitid='10198') myattenaw,
+(select count(e.eid) 
+from essay e where e.eautid='10198') myatteness,
+(select count(selfid)
+from dynstate PARTITION(GR) where aimid='10198') myattenpeos,
+(select uname from users where uids='10198') uname,
+(select usign from users where uids='10198') usign,
+(select upic from users where uids='10198') upic
+from dual 
+
 
 select
 		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
@@ -375,6 +422,16 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
+select aimid from dynstate PARTITION(GR) where selfid='10198'
+
+select aimid from dynstate PARTITION(GR) where selfid=10401
+
+select u.upic,u.uname,u.usign from 
+((select aimid from dynstate PARTITION(GR) where selfid='10198' ) b
+left join users u
+on u.uids=b.aimid)
+group by u.upic,u.uname,u.usign,b.aimid
+
 select count(ids) from dynstate PARTITION(DH)
 where selfid='10198'
 
