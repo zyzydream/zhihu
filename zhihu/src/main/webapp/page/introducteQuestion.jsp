@@ -8,20 +8,22 @@
 <meta charset="utf-8">
 <title>提出问题</title>
 <link type="text/css" rel="stylesheet" href="css/introducteQuestion.css">
+<link rel="shortcut icon" href="images/logohead.png">
 </head>
 <body>
 	<div class="modal-dialog-content">
 		<div class="zh-add-question-form">
 			<form class="js-add-question-form" id="Addquestion" method="post">
-				<div class="zg-section-big clearfix">
-					<div id="zm-modal-dialog-info-wrapper"></div>
+				<div class="zg-section-big clearfix" id="Question">
+					<!--  <span id="zh-question-form-tag-err">至少添加一个话题</span> -->
 					<div class="zg-form-text-input add-question-title-form"
 						style="position: relative;">
+						
 						<textarea id="zh-question-suggest-title-content"
 							class="zg-editor-input zu-seamless-input-origin-element"
 							title="在这里输入问题" rows="1" aria-label="写下你的问题" placeholder="写下你的问题"
 							role="combobox" aria-autocomplete="list" style="height: 39px;"
-							name="qtitle"></textarea>
+							name="qtitle" onblur="check()"></textarea>
 					</div>
 					<div id="zh-question-suggest-ac-wrap"
 						class="question-suggest-ac-wrap"></div>

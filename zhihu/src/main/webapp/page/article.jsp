@@ -88,7 +88,9 @@
 						<div class="PostIndex-vote">
 							<button class="Button PostIndex-voteButton Button--green"
 								ria-label="赞" type="button">
-								<i class="icon icon-ic_column_like"></i> 1041
+								<i class="icon icon-ic_column_like">
+									<img src="images/ok.png" style="height: 20px; width: 18px;">
+								</i> 1041
 							</button>
 							<div class="PostIndex-voters">
 								<a class="PostIndex-allVoters" href="/p/26159402/voters"
@@ -101,7 +103,9 @@
 							<div class="Fav">
 								<button class="Button Button Button--plain FavButton"
 									type="button">
-									<i class="icon icon-ic_collect"></i> 收藏
+									<i class="icon icon-ic_collect">
+										<img src="images/shou.png"style="height: 20px; width: 18px;">
+									</i> 收藏
 								</button>
 							</div>
 							<div class="PostShare">
@@ -109,7 +113,9 @@
 									<button
 										class="Button Button Button--plain MenuButton MenuButton-listen-hover Button Button--plain"
 										type="button">
-										<i class="icon icon-ic_column_share"></i> 分享
+										<i class="icon icon-ic_column_share">
+											<img src="images/fen.png" style="height: 20px; width: 18px;">
+										</i> 分享
 									</button>
 									<div class="Menu-dropdown"></div>
 								</div>
@@ -117,14 +123,16 @@
 							<div class="Report">
 								<button class="Button Button Button--plain ReportButton"
 									type="button">
-									<i class="icon icon-ic_column_report"></i> 举报
+									<i class="icon icon-ic_column_report">
+										<img src="images/ju.png"  style="height: 20px; width: 18px;">
+									</i> 举报
 								</button>
 							</div>
 						</div>
 					</div>
 
 
-					<div class="Contributes">
+					<!-- <div class="Contributes">
 						<div class="BlockTitle">
 							<span class="BlockTitle-title">文章被以下专栏收录</span> <span
 								class="BlockTitle-line"></span>
@@ -148,7 +156,7 @@
 								</div>
 							</li>
 						</ul>
-					</div>
+					</div> -->
 
 					<div class="PostComment">
 						<div class="BlockTitle PostComment-blockTitle">
@@ -157,15 +165,13 @@
 						</div>
 						<div class="CommentEditor PostComment-mainEditor">
 							<img srcset="https://pic1.zhimg.com/da8e974dc_l.jpg 2x"
-								src="https://pic1.zhimg.com/da8e974dc_xs.jpg" alt="周艳霞"
+								src="images/car.png" alt="周艳霞"
 								class="Avatar CommentEditor-avatar">
 							<div class="CommentEditor-input">
 								<div
 									class="Input-wrapper Input-wrapper--spread Input-wrapper--large Input-wrapper--noPadding">
 									<div class="Input Editable">
-										<div style="min-height: 38px;"
-											accept="image/jpg,image/jpeg,image/png" class="RichText">
-
+										<div style="min-height: 38px;" ccept="image/jpg,image/jpeg,image/png" class="RichText">
 											<div class="public-DraftEditorPlaceholder-root">
 												<input type="text" class="search-input" id="q" name="q"
 													autocomplete="off" value="" maxlength="1000"
@@ -186,7 +192,7 @@
 										href="https://www.zhihu.com/people/gao-nan-87"
 										class="UserAvatar CommentItem-author"> <img
 										srcset="https://pic1.zhimg.com/da8e974dc_l.jpg 2x"
-										src="https://pic1.zhimg.com/da8e974dc_xs.jpg" alt="高男"
+										src="images/education.png" alt="高男"
 										class="Avatar Avatar--xs">
 									</a>
 									<div class="CommentItem-headWrapper">
@@ -207,17 +213,23 @@
 										</div>
 										<button type="button"
 											class="Button CommentItem-action CommentItem-actionReply Button--plain">
-											<i class="icon icon-ic_column_reply"></i> 回复
+											<i class="icon icon-ic_column_reply">
+												<img src="images/hui.png"  style="height: 18px; width: 14px;">
+											</i> 回复
 										</button>
 										<button type="button"
 											class="Button CommentItem-action CommentItem-actionLike Button--plain">
-											<i class="icon icon-ic_comment_like"></i>赞
+											<i class="icon icon-ic_comment_like">
+												<img src="images/zan.png" style="height: 18px; width: 18px;">
+											</i>赞
 										</button>
 										<div
 											class="Report CommentItem-action CommentItem-actionReport">
 											<button type="button"
 												class="Button Button Button--plain ReportButton">
-												<i class="icon icon-ic_column_report"></i>举报
+												<i class="icon icon-ic_column_report">
+													<img src="images/ju.png"  style="height: 18px; width: 14px;">
+												</i>举报
 											</button>
 										</div>
 									</div>
