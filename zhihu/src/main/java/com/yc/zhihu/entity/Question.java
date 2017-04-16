@@ -1,7 +1,5 @@
 package com.yc.zhihu.entity;
 
-import java.sql.Date;
-
 public class Question {
 	private String qid;
 	private String qautid;
@@ -18,6 +16,10 @@ public class Question {
 	
 
 
+
+
+
+
 	public Question(String qid, String qautid, String qinid, String qtitle, String qdetail, String qtid, String qtime,
 			String sum) {
 		super();
@@ -30,6 +32,10 @@ public class Question {
 		this.qtime = qtime;
 		this.sum = sum;
 	}
+
+
+
+
 
 
 
@@ -111,10 +117,11 @@ public class Question {
 
 
 
+
 	@Override
 	public String toString() {
 		return "\nQuestion [qid=" + qid + ", qautid=" + qautid + ", qinid=" + qinid + ", qtitle=" + qtitle + ", qdetail="
-				+ qdetail + ", qtid=" + qtid + ", qtime=" + qtime + ", sum=" + sum + "]";
+				+ qdetail + ", qtid=" + qtid + ", qtime=" + qtime + ", sum=" + sum +  "]";
 	}
 
 

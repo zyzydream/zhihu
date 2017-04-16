@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
+<mapper namespace="com.yc.zhihu.mapper.ReplyMapper">
+	<resultMap type="Reply" id="ReplyMap">
+		<id column="rid" property="rid"/>
+		<result column="reqid" property="reqid"/>
+		<result column="rcontent" property="rcontent"/>
+		<result column="remitid" property="remitid"/>
+		<result column="rtime" property="rtime"/>
+		<result column="rreceid" property="rreceid"/>
+		<collection property="users" ofType="Users">
+			<id column="uids" property="uids"/>
+			<result column="uname" property="uname"/>
+			<result column="usign" property="usign"/>
+			<result column="upic" property="upic"/>
+		</collection>
+	</resultMap>
+
+	<!-- 查询回复消息及回复人 -->
+	<select id="findReplyUser" parameterType="Reply" resultMap="ReplyMap">
+		select r.rid ids, r.rcontent content,r.time 
+		from reply r ,users u
+		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'W'
+	</select>
+</mapper>

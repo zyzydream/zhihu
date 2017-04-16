@@ -22,4 +22,6 @@
 	<select id="findTopics" parameterType="String" resultType="Topics">
 		select * from topics where tid=#{tid}
 	</select>
+	
+	
 </mapper>

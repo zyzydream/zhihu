@@ -320,10 +320,16 @@ CREATE TABLE reply(
    rrid VARCHAR2(30),
    remitid VARCHAR2(30),
    rreceid VARCHAR2(30),
-   rcontent VARCHAR2(300),
+   rcontent VARCHAR2(300),	--	回复内容
    rtid VARCHAR2(30),
    rtime VARCHAR2(30)
 );
+
+select r.* ,u.*
+from reply r ,users u
+where r.reqid='10198' and u.uids=r.remitid
+
+
 drop table reply
 select * from reply
 create sequence seq_reply start with 10000;
