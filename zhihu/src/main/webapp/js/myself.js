@@ -79,7 +79,7 @@ $.get("dynstate/m1",function(data){
 					+'aria-owns="Popover-12304-93779-content">'+data[i].tname+'</div></div></a></h2></div></div></div><hr>';
 			}else if(data[i].kind=='E'){
 				myanswers+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="featurette-heading" style="font-size: 20px;">'
-					+'<span class="text-muted" style="font-size: 13px">发表了文章</span><br />'+data[i].title+'</h2>'
+					+'<span class="text-muted" style="font-size: 13px">发表了文章</span><br /><a href="/zhihu/page/article.jsp?eid='+data[i].tid+'">'+data[i].title+'</a></h2>'
 					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].tpic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
 					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
