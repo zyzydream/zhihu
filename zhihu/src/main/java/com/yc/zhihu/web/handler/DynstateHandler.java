@@ -26,6 +26,8 @@ import com.yc.zhihu.entity.Total;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.DynstateService;
 import com.yc.zhihu.util.ServletUtil;
+import com.yc.zhihu.util.UploadFileUtil;
+import com.yc.zhihu.util.UploadFileUtil.UploadFile;
 
 @Controller("dynstateHandler")
 @RequestMapping("/dynstate")
@@ -56,7 +58,7 @@ public class DynstateHandler {
 		request.getSession().setAttribute("myattentop", users.getMyattentop());
 		request.getSession().setAttribute("myattenzhuanlan", users.getMyattenzhuanlan());
 		request.getSession().setAttribute("myattenfav", users.getMyattenfav());
-		
+		request.getSession().setAttribute(ServletUtil.LOGIN_UIDS,users.getUids());
 		
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		
@@ -173,24 +175,21 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="upload")
 	@ResponseBody
-	public boolean modify(@RequestParam("picData") MultipartFile picData,Users user){
-		String picPath=null;
+	public boolean modify(@RequestParam("picData") MultipartFile picData,Users user,HttpServletRequest request){
 		if(picData!= null && !picData.isEmpty()){ //判断是否有文件上传
+			UploadFile uploadFile=null;
 			try {
-				picData.transferTo(ServletUtil.getUploadFile(picData.getOriginalFilename()));
-				picPath=ServletUtil.LOGIN_UPLOAD_DIR+picData.getOriginalFilename();
-			} catch (IllegalStateException | IOException e) {
+				UploadFileUtil uf=new UploadFileUtil();
+				uploadFile=uf.uploadFile(request, picData, null);
+				user.setToppic(uploadFile.getNewFilePath());
+				System.out.println(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+				user.setUids(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+			} catch (Exception e) {;
 				e.printStackTrace();
 			}
 		}
-		
-		user.setToppic(picPath);
-		
-		System.out.println("上传图片 ==》user"+ user);
-		System.out.println("modify: user ==>"+user);
-		
-		return  dynstateService.updatetoppics(user); //异步响应数据
-		
+		System.out.println("users==>"+user);
+		return  dynstateService.updatetoppics(user); //异步响应数据	
 	}
 	
 	@RequestMapping(value="/praise",method=RequestMethod.GET)

@@ -30,4 +30,6 @@ public class QuestionServiceImpl implements QuestionService {
 		return questionMapper.findTopics(qtid);
 	}
 
+
+
 }

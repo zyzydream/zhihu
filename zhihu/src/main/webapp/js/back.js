@@ -32,7 +32,7 @@ function select(self,currPage,pageSize){
 	self.setAttribute("class","active");
 	
 	var thing=self.children[0].innerText;
-	console.log(thing);
+	//console.log(self.children[0].innerHTML);
 	var kinds="";
 	if(thing=="推荐头条"||thing=="已审核"){
     	$.get("explore/y?currPage="+currPage+"&&pageSize="+pageSize,function(data){
