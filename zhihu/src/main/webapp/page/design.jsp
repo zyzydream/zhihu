@@ -16,28 +16,28 @@
 				data-za-c="view_home" data-za-a="visit_home"
 				data-za-l="top_navigation_zhihu_logo">知乎</a>
 			<div class="top-nav-profile">
-				<a id=":0" class="zu-top-nav-userinfo " href="/people/bbv-70"
+				<a id=":0" class="zu-top-nav-userinfo " href="page/myself.jsp"
 					role="button" aria-haspopup="true" aria-activedescendant=""> <span
-					class="name">dsvb</span> <img class="Avatar" src="images/poto.jpg"
+					class="name">xiaoxiao</span> <img class="Avatar" src="images/poto.jpg"
 					alt="dsvb"> <span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
 				</a>
 				<ul id="top-nav-profile-dropdown" class="top-nav-dropdown"
 					aria-labelledby=":0">
-					<li><a id=":1" href="/people/bbv-70" tabindex="-1"> <i
+					<li><a id=":1" href="page/homepage.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-home"></i> 我的主页
 					</a></li>
-					<li><a id=":2" href="/inbox" tabindex="-1"> <i
+					<li><a id=":2" href="page/litter.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-pm"></i> 私信 <span
 							id="zh-top-nav-pm-count"
 							class="zu-top-nav-pm-count zg-noti-number"
 							style="visibility: hidden" data-count="0"> </span>
 					</a></li>
-					<li><a id=":3" href="/settings" tabindex="-1"> <i
+					<li><a id=":3" href="page/design.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-settings"></i> 设置
 					</a></li>
-					<li><a id=":4" href="/logout" tabindex="-1"> <i
+					<li><a id=":4" href="back/login.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-logout"></i> 退出
 					</a></li>
 				</ul>

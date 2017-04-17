@@ -28,6 +28,12 @@ select * from reply
  18039696056@qq.com
   10202 vnuivskij  a         ezjvzpfxofoiifpvyzijejhtfhcdkqvidqzkn    程序员         zzz.jpg 7 /zhihu/images/touxiang.jpg
 
+
+select r.*,u.*
+		from reply r ,users u
+		where r.reqid='10001' and u.uids=r.remitid and rkind= 'W'
+
+ 
  select
 		t.*,q.qtitle from
 		(select r.*,u.uname,u.usign,r.reqid a from REPLY
@@ -40,6 +46,7 @@ select * from reply
  select *from topics
 drop table users
 select * from USERS
+select * from users
 insert into EXPLORE(ids)VALUES ('101');
 update USERS set tpic='images/car.png' where uids='1001'
 update explore set praise='15' , collect='4' where ids='101'
@@ -305,7 +312,8 @@ select seq_favorite.nextval||'',
 dbms_random.string('l',dbms_random.value(10, 20)),
 '2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 4000;
 
-
+drop table favorite;
+drop sequence seq_favorite;
 drop table FAVORITE
 select * from FAVORITE where fcreid='1003';
 /*话题表
@@ -317,6 +325,8 @@ CREATE TABLE topics(
    tpic Varchar2(60)
 );
 
+drop table topics;
+drop sequence seq_topics;
 create sequence seq_topics start with 1000;
 insert into topics
 select seq_topics.nextval, 
@@ -359,6 +369,7 @@ CREATE TABLE question(
    qtid  VARCHAR2(30), --话题id
    qtime VARCHAR2(30)
 );
+drop sequence seq_question
 drop table question
 create sequence seq_question start with 10000;
 
@@ -406,6 +417,8 @@ CREATE TABLE reply(
    rtid VARCHAR2(30),
    rtime VARCHAR2(30)
 );
+drop sequence seq_reply
+drop table reply
 
 select r.* ,u.*
 from reply r ,users u
@@ -445,6 +458,9 @@ where q.qautid='1003';
  
 drop table dynstate;
 drop sequence seq_reply;
+ drop table dynstate;
+drop sequence seq_reply;
+
 /*动态总表*/
 CREATE TABLE dynstate(
    selfid VARCHAR2(30), --本人id
@@ -832,7 +848,7 @@ where counts>8 and id=rid and rkind='Q' )r
 where u.uids=r.remitid)r
 where t.tid=r.rtid)rd 
 where q.qid=rd.reqid
-
+drop table infomation
 select count(0) from dynstate PARTITION(DH) where ids='12774'
 select * from question where qid='12774'
 
