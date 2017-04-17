@@ -7,6 +7,8 @@
 <base href="${zhihuName}">
 <meta charset="utf-8">
 <title>提出问题</title>
+<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
 <link type="text/css" rel="stylesheet" href="css/introducteQuestion.css">
 <link rel="shortcut icon" href="images/logohead.png">
 </head>
@@ -19,7 +21,7 @@
 					<div class="zg-form-text-input add-question-title-form"
 						style="position: relative;">
 						
-						<textarea id="zh-question-suggest-title-content"
+						<textarea id="title"
 							class="zg-editor-input zu-seamless-input-origin-element"
 							title="在这里输入问题" rows="1" aria-label="写下你的问题" placeholder="写下你的问题"
 							role="combobox" aria-autocomplete="list" style="height: 39px;"
@@ -38,7 +40,7 @@
 						<div class="zm-editable-editor-wrap no-toolbar" style="">
 							<div class="zm-editable-editor-outer">
 								<div class="zm-editable-editor-field-wrap">
-									<textarea id="zh-question-suggest-title-content"
+									<textarea id="content"
 										class="zg-editor-input zu-seamless-input-origin-element"
 										title="在这里输入问题" rows="1" aria-label="问题的详细描述"
 										placeholder="问题的详细描述" role="combobox" aria-autocomplete="list"

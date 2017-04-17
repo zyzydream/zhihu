@@ -101,7 +101,7 @@ public class Reply {
 	}
 	@Override
 	public String toString() {
-		return "Reply [rid=" + rid + ", reqid=" + reqid + ", rkind=" + rkind + ", rrid=" + rrid + ", remitid=" + remitid
+		return "\nReply [rid=" + rid + ", reqid=" + reqid + ", rkind=" + rkind + ", rrid=" + rrid + ", remitid=" + remitid
 				+ ", rreceid=" + rreceid + ", rcontent=" + rcontent + ", rtime=" + rtime + ", users=" + users
 				+ ", question=" + question + "]";
 	}

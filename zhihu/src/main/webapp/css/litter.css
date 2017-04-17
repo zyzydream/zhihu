@@ -522,3 +522,278 @@ div[contentEditable], input, textarea, button, a:link {
 }
 
 
+.zh-footer, .zh-footer a {
+    color: #999;
+}
+.zh-footer {
+    clear: both;
+    text-align: right;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+}
+.zh-footer .content {
+    border-top: 1px solid #ccc;
+    padding: 20px 15px;
+}
+.zh-footer ul, .zh-footer li {
+    display: inline;
+}
+.zh-footer, .zh-footer a {
+    color: #999;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.zh-footer .copy {
+    float: left;
+}
+.zh-footer li + li::before {
+    color: #bbb;
+    content: "•";
+    font-family: Arial;
+    margin-right: 3px;
+    padding: 0 3px;
+}
+
+
+
+/* 弹框*/
+
+html.modal-open.flexbox .modal-wrapper {
+    -moz-box-align: start;
+    -moz-box-pack: center;
+    align-items: flex-start;
+    display: flex;
+    justify-content: center;
+}
+.modal-wrapper {
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99;
+}
+html.modal-open .modal-wrapper .modal-dialog {
+    margin-top: 14vh;
+    position: static;
+}
+.modal-dialog {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #888;
+    border-radius: 8px;
+    box-shadow: 0 0 80px 0 rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+    position: absolute;
+    text-align: left;
+    width: 420px;
+    z-index: 99;
+}
+.modal-dialog, div[contentEditable] {
+    outline: 0 none;
+}
+.modal-dialog-title {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #1d7fe2, #0865c2) repeat scroll 0 0;
+    border: 1px solid #0d6eb8;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 1px 1px rgba(0, 0, 0, 0.2);
+    line-height: 14px;
+    margin: -1px -1px 0;
+    padding: 10px 15px;
+    position: relative;
+}
+.modal-dialog-title-text {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+.modal-dialog-title-close {
+    background-position: -60px -53px;
+    cursor: pointer;
+    height: 30px;
+    margin-top: -15px;
+    position: absolute;
+    right: 3px;
+    text-indent: -9999px;
+    top: 50%;
+    width: 30px;
+}
+.icon, .tr-icon, .tr-inline-icon, .goog-option-selected .goog-menuitem-checkbox, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
+    background-image: url("../images/design2.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 25px;
+    vertical-align: middle;
+    width: 25px;
+}
+.modal-dialog-content {
+    margin: 17px 0;
+    padding: 0 15px;
+}
+.zm-pm-wrap {
+    position: relative;
+}
+.zm-form-table {
+    margin: 0;
+    width: 100%;
+}
+.zm-form-table-medium > .zm-form-table-head {
+    clear: both;
+    width: 3em;
+}
+.zm-form-table-head-align-middle {
+    margin: 5px 0 0;
+}
+.zm-form-table-head {
+    float: left;
+    text-align: right;
+    width: 43px;
+}
+.zg-medium-gray {
+    color: #999;
+    font-size: 13px;
+}
+.zm-form-table-medium > .zm-form-table-field {
+    margin: 0 0 0 3.5em;
+}
+.zm-form-table-field {
+    margin: 0 0 0 53px;
+    padding: 0 0 10px;
+    vertical-align: top;
+}
+.modal-dialog {
+    text-align: left;
+}
+input[type="text"], input[type="password"]:focus {
+}
+.label-input-label {
+    color: #777 !important;
+}
+.zg-form-text-input, .zg-form-select {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+    color: #222;
+    font-size: 13px;
+    line-height: 15px;
+    padding: 8px 10px;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+input::placeholder, textarea::placeholder {
+    color: #999;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+element.style {
+    font-weight: normal;
+    height: 39px;
+}
+textarea.zg-form-text-input, .zg-form-text-input > textarea {
+    border: 0 none;
+    color: #222;
+    font-size: 13px;
+    line-height: 22px;
+    margin: 0 !important;
+    min-height: 66px;
+    overflow: hidden;
+    padding: 0 !important;
+}
+.zg-editor-input {
+    border: 0 none;
+    font-weight: 400;
+    margin: 0;
+    min-height: 66px;
+    padding: 0;
+    width: 100%;
+}
+.zu-seamless-input-origin-element {
+    overflow: hidden;
+}
+textarea {
+    border: 0 none;
+    outline: 0 none;
+    overflow: auto;
+    resize: none;
+}
+.zg-clear::before, .zg-clear::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.zg-clear::after {
+    clear: both;
+}
+.zg-clear::before, .zg-clear::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.modal-dialog .zm-command {
+    padding: 20px 0 0;
+}
+.zm-pm-wrap .zm-command {
+    line-height: 33px;
+}
+.zm-command {
+    padding: 10px 0;
+    text-align: right;
+}
+.zg-clear {
+    height: 1%;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.zm-command-cancel {
+    cursor: pointer;
+    margin: 0 15px 0 0;
+}
+.zm-command > .zg-btn-blue, .zm-command > .zg-btn-green, .zm-command > .zg-btn-white, .zm-command > .zg-btn-disabled {
+    vertical-align: baseline;
+}
+div[contentEditable], input, textarea, button, a:link {
+}
+.zg-btn-blue, .zg-btn-green, .zg-btn-white, a.follow {
+}
+.zg-btn-blue {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #1d7fe2, #0865c2) repeat scroll 0 0;
+    border: 1px solid #0d6eb8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 0 rgba(0, 0, 0, 0.2);
+    color: #fff !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+.zg-btn-blue, .zg-btn-green, .zg-btn-red, .zg-btn-white, .zg-btn-disabled {
+    border-radius: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none !important;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.zg-r3px {
+    border-radius: 3px;
+}

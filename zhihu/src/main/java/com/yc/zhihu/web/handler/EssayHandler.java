@@ -16,7 +16,7 @@ import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.EssayService;
 import com.yc.zhihu.util.ServletUtil;
 
-@Controller("essayHAndler")
+@Controller("essayHandler")
 @RequestMapping("/essay")
 public class EssayHandler {
 

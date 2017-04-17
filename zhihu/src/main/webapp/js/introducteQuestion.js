@@ -1,7 +1,7 @@
 function check(){
 	//console.log(document.getElementById('topic').value)
 	$('#zh-question-form-tag-err').remove();
-	var a = document.getElementById('zh-question-suggest-title-content').value;//获取到的值
+	var a = document.getElementById('title').value;//获取到的值
 	if(a.charAt(a.length-1) == "?" || a.charAt(a.length-1) == "？"){
 		$('#zh-question-form-tag-err').remove();
 	}else{
@@ -23,8 +23,8 @@ $("#Addquestion").form({
 	success: function(data){
 		if(data == "true"){
 			alert("发布成功!!!!");
-			$("#zh-question-suggest-title-content").value=null;
-			$("#zh-question-suggest-title-content").value=null;
+			$("#title").val(null);
+			$("#content").val(null);
 			 location.reload()
 		}else{
 			$.messager.show({

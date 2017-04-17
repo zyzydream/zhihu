@@ -80,7 +80,9 @@
 		(select count(ids)
 		from DYNSTATE PARTITION(GS) where
 		selfid=#{uids} )
-		myattenfav
+		myattenfav,
+		(select
+		uids from users where uids=#{uids}) uids
 		from dual
 	</select>
 
@@ -117,7 +119,7 @@
 		u.tpic toppic,u.upic upic from users u where uids=#{uids}
 	</select>
 
-	<update id="updatetoppics" parameterType="Users">
+	<update id="updatetop" parameterType="Users">
 		update users
 		<set>
 			<if test="toppic != null">
@@ -250,10 +252,11 @@
 		select
 		aimid from dynstate PARTITION(GR) where selfid=#{uids}
 	</select>
-	
+
 	<!-- 关注了我的人的id -->
 	<select id="attenme" parameterType="Users" resultType="Dynstate">
-		select selfid from dynstate PARTITION(GR) where aimid=#{uids}
+		select
+		selfid from dynstate PARTITION(GR) where aimid=#{uids}
 	</select>
 
 </mapper>

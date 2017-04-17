@@ -194,9 +194,9 @@
 								data-za-detail-view-element_name="ViewAll"
 								href="/question/35713706">查看全部 1532 个回答</a>
 						</div>
-						<div class="Card">
-							<div class="QuestionAnswer-content">
-								<div class="ContentItem AnswerItem" name="156837738"
+						<div class="Card" >
+							<div class="QuestionAnswer-content" id="reply">
+								<!-- <div class="ContentItem AnswerItem" name="156837738"
 									data-za-module="AnswerItem" data-za-module-info="{"card":{"content":{"type":"Answer","token":"156837738","upvote_num":133,"comment_num":72,"publish_timestamp":null,"parent_token":"56314897","author_member_hash_id":"4fb8434a7c7c02f2055dde1e2e2e9769"}}}">
 									<div class="ContentItem-meta">
 										<div class="AnswerItem-meta AnswerItem-meta--related">
@@ -240,7 +240,7 @@
 											</div>
 										</div>
 									</div>
-									<!-- 内容 评论 -->
+									内容 评论
 									<div class="RichContent RichContent--unescapable">
 										<div class="RichContent-inner">
 											<span class="RichText CopyrightRichText-richText">
@@ -301,8 +301,8 @@
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
+								</div>-->
+							</div> 
 						</div>
 						<!-- 更多回答 -->
 						<div class="Card">
