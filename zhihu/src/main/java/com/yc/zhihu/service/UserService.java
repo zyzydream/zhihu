@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.ShowUser;
@@ -42,6 +43,8 @@ public interface UserService {
 
 	ShowUser showUser(Users user);
 
-	ShowUser attentionUser(Users user);
+	int attentionUser(Dynstate dynstate);
+
+	String yattention(Dynstate dynstate);
 
 }

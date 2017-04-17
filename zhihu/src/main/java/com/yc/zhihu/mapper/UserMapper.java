@@ -57,4 +57,10 @@ public interface UserMapper {
 
 	Users fUsers(Users user);
 
+	int attentionUser(Dynstate dynstate);
+
+	Dynstate yattention(Dynstate dynstate);
+
+	String counte(Users user);
+
 }

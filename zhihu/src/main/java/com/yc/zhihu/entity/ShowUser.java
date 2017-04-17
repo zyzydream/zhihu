@@ -4,6 +4,7 @@ import java.util.List;
 
 public class ShowUser {
 
+	private String uids;
 	private String uname;
 	private String nsign;
 	private String counte;
@@ -12,7 +13,21 @@ public class ShowUser {
 	private List<Topics> t;
 	private String upic;
 	private String num;
+	private String attention;
+	
 
+	public String getAttention() {
+		return attention;
+	}
+	public void setAttention(String attention) {
+		this.attention = attention;
+	}
+	public String getUids() {
+		return uids;
+	}
+	public void setUids(String uids) {
+		this.uids = uids;
+	}
 	public String getNum() {
 		return num;
 	}

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.ShowUser;
@@ -166,16 +167,25 @@ public class UserHandler {
 	
 	@RequestMapping(value="/showUser",method=RequestMethod.GET)
 	@ResponseBody
-	public ShowUser showUser(Users user){
+	public ShowUser showUser(Users user,HttpServletRequest request){
 		System.out.println("showUser====>"+user.toString());
-		return usersService.showUser(user);
+		ShowUser users=usersService.showUser(user);
+		Dynstate dynstate=new Dynstate();
+		dynstate.setAimid(users.getUids());
+		dynstate.setSelfid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		users.setAttention(usersService.yattention(dynstate));
+		return users;
 	}
 
 	//关注用户
 	@RequestMapping(value="/attentionUser",method=RequestMethod.GET)
 	@ResponseBody
-	public ShowUser attentionUser(Users user){
+	public ShowUser attentionUser(Users user,HttpServletRequest request){
 		System.out.println("attentionUser====>"+user.toString());
-		return usersService.attentionUser(user);
+		Dynstate dynstate =new Dynstate();
+		dynstate.setSelfid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		dynstate.setAimid(user.getUids());
+		dynstate.setKind("GR");
+		return showUser(user,request);
 	}
 }

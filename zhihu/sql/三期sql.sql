@@ -11,13 +11,31 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+
+select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from
+		select * from (select count(0)counts ,aimid from dynstate PARTITION(GR) group by
+		aimid) d,
+		(select * from (select count(0)countr,r.remitid from reply r group by
+		r.remitid)rr ,
+		(select count(0)counte,'${uids}' uids from essay where eautid='${uids}')e where
+		rr.remitid=e.uids)ru
+		where d.aimid=ru.uids
+18037560013@qq.com /zhihu/images/touxiang.jpg
+	
+select * from (select count(0)counts ,'10381' uids from dynstate PARTITION(GR) where aimid='10381') d,
+		(select * from (select count(0)countr,'10381' ids from reply r where r.remitid='10381')rr ,
+		(select count(0)counte,'10381' uids from essay where eautid='10381')e where
+		rr.ids=e.uids)ru
+		where d.uids=ru.uids
+
 select * from TOPICS
 select * from users;
 select * from explore;
  select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
 select * from reply
- 18039696056@qq.com
- 
+18084250564@qq.com /zhihu/images/touxiang.jpg
+
+
  select
 		t.*,q.qtitle from
 		(select r.*,u.uname,u.usign,r.reqid a from REPLY
@@ -444,10 +462,17 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
-select aimid from dynstate PARTITION(GR) where selfid='10198'
-
+select * from dynstate PARTITION(SQ) where selfid='10198'
+DELETE FROM dynstate WHERE  kind='SQ'
 select aimid from dynstate PARTITION(GR) where selfid=10401
-
+select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from
+		(select count(0)countr ,aimid from dynstate PARTITION(GR) group by
+		aimid) d,
+		(select * from (select count(0)countr,r.remitid from reply r group by
+		r.remitid)rr ,
+		(select count(0)counte,'11111' uids from essay where eautid='11111')e where
+		rr.remitid=e.uids)ru
+		where d.aimid=ru.uids
 select u.upic,u.uname,u.usign from 
 ((select aimid from dynstate PARTITION(GR) where selfid='10198' ) b
 left join users u
@@ -468,13 +493,20 @@ on ids=b.reqid and selfid='10198' group by b.reqid
 
 select count(0) from dynstate PARTITION(DH)
 where ids='10101' and selfid='10198'
+
+select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from 
+(select count(0)countr ,aimid from dynstate PARTITION(GR) group by aimid) d, 
+(select * from (select count(0)countr,r.remitid from reply r group by r.remitid)rr ,
+(select count(0)counte,'10750' uids from essay where eautid='10750')e where rr.remitid=e.uids)ru 
+where d.aimid=ru.uids 
+select * from users where uname='flmjezzr'
 --我的回答的收藏数
 select count(ids),b.reqid from dynstate PARTITION(SH)
 right join (select reqid from reply where remitid='10198' and rkind='Q') b
 on ids=b.reqid and selfid='10198' group by b.reqid
 --我的回答的阅览数
-
-
+ insert into dynstate(selfid,aimid,kind,times)values('${selfid}','${aimid}','GR',to_char(sysdate,'yyyy-mm-dd'))
+DELETE FROM dynstate where selfid='${selfid}'
 
 select * from dynstate PARTITION(DH) where selfid='10198' and ids='10101'
 
@@ -639,7 +671,10 @@ and uids=(select ss.sccreid from scolumn ss where ss.scid=s.scid)
 
 
 select * from users
-
+ 10000 eoetks     a         kziuohojekrkueoovravycrwxqpouqdyaqz      分析员         zzz.jpg 18013770922@qq.com /zhihu/images/touxiang.jpg
+ 10001 qwbccyjt   a         zvparnkripxijysiebqwvuflwtcthvlvs        测试员         zzz.jpg 18065182570@qq.com /zhihu/images/touxiang.jpg
+ 10003 orynpuqz   a         ucdmzmbmkuqshxjeqwiilcwmxvnwtsrn         测试员         zzz.jpg 18018268259@qq.com /zhihu/images/touxiang.jpg
+select * from dynstate PARTITION(SW) where selfid='10003'
 select sccreid from scolumn where scid=(select ids from dynstate PARTITION(GZ) where selfid='1001')
 
 select
@@ -651,7 +686,7 @@ select
 (select * from essay where eautid=(select ids from dynstate PARTITION(DW) where selfid='1003')) ,
 (select * from question where qautid=(select ids from dynstate PARTITION(DQ) where selfid='1003')) 
 from dual;
-
+drop table explore
 select * from TOPICS,(select ids,kind from dynstate PARTITION(GH) where selfid='1003')tt where tid=(select ids from dynstate PARTITION(GH) where selfid='1003')
 
 SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind 
