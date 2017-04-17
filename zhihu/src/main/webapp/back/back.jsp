@@ -66,7 +66,7 @@
 				<ul class="nav nav-sidebar">
 					<li class="active" onclick="select(this,1,10)"><a
 						href="javaScript:void(0)">总动态</a></li>
-					<li id="users" onclick="xzdj(this,1,10)"><a href="javaScript:void(0)">用户信息</a></li>
+					<li id="users" onclick="select(this,1,10)"><a href="javaScript:void(0)">用户信息</a></li>
 					<li onclick="select(this,1,10)"><a href="javaScript:void(0)">推荐头条</a></li>
 				</ul>
 			</div>

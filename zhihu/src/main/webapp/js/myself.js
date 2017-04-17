@@ -573,7 +573,7 @@ $('#changgeimage').hover(function() {
 	layer.closeAll('tips');
 });
 
-function updatePic(){
+/*function updatePic(){
 	$.get("dynstate/upload",function(data){
 		alter(data);
 		var img="";
@@ -585,26 +585,26 @@ function updatePic(){
 		document.getElementById("UserCoverGuide-inner").innerHTML = img;
 	},'json');
 
-}
+}*/
 
 function chgPic(obj){
 	$("#changgeimage").attr("src", window.URL.createObjectURL(obj.files[0]));
 }
 
-$("#uploads").form({
-	url:"user/upload", 
-	success:function(data){ 
-		if(data.trim() == "true"){
-			for(var i=0;i<data.length;i++){
-				$("#pic").datagrid("reload"); //刷新修改数据
-				/*$("#pic").attr("src", data[i].toppic);*/
-			}
-		}
-	}
-});
 
 function editor(){
 	url:'/zhihu/page/ediuorinfo.jsp'
+}
+
+function previewMultipleImage() {	
+	var reader = new FileReader();
+	var file = document.getElementById("changgeimage").files[0]
+	reader.readAsDataURL(file);
+	reader.onload = function(evt) {
+		$('#showImage_gr').html("<img src='"+evt.target.result+"' height='132px' width='966px' />");
+	};	
+	
+	document.myform.submit();
 }
 
 

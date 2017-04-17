@@ -11,13 +11,23 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+
+alter table users rename column tpic to tpic2;
+alter table users add tpic varchar2(200);
+update users set tpic=trim(tpic2);
+alter table users drop column tpic2;
+alert table users modify column tpic varchar(200);
+
+SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM   TOPICS t,   (SELECT * FROM USERS u,   (SELECT * FROM essay e WHERE e.etid=1008)e   WHERE u.uids=e.eautid)ue   WHERE ue.etid=t.tid
+
 select * from TOPICS
 select * from users;
 select * from explore;
  select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
 select * from reply
  18039696056@qq.com
- 
+  10202 vnuivskij  a         ezjvzpfxofoiifpvyzijejhtfhcdkqvidqzkn    程序员         zzz.jpg 7 /zhihu/images/touxiang.jpg
+
  select
 		t.*,q.qtitle from
 		(select r.*,u.uname,u.usign,r.reqid a from REPLY
@@ -253,6 +263,8 @@ select count(r.rid) myattenaw,count(e.eid),count(n.selfid)
 from reply r,essay e,dynstate PARTITION(GR) n
 where r.remitid='10198' and e.eautid='10198' and n.aimid='10198'
 
+
+SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM   Topics t,   (SELECT * FROM USERS u,   (SELECT * FROM essay e WHERE e.etid=1008)e   WHERE u.uids=e.eautid)ue   WHERE ue.etid=t.tid
 select 
 (select count(r.rid) 
 from reply r where r.remitid='10198') myattenaw,
