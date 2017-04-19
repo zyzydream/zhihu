@@ -163,13 +163,19 @@
 
     <!-- 查找目标用户的问题文章和关注者数 -->
 	<select id="showUser" parameterType="Users" resultType="showUser">
-		select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from
-		(select count(0)countr ,aimid from dynstate PARTITION(GR) group by
-		aimid) d,
-		(select * from (select count(0)countr,r.remitid from reply r group by
-		r.remitid)rr ,
+		select * from (select count(0)counts ,'${uids}' uids from dynstate PARTITION(GR) where aimid='${uids}') d,
+		(select * from (select count(0)countr,'${uids}' ids from reply r where r.remitid='${uids}')rr ,
 		(select count(0)counte,'${uids}' uids from essay where eautid='${uids}')e where
-		rr.remitid=e.uids)ru
-		where d.aimid=ru.uids
+		rr.ids=e.uids)ru
+		where d.uids=ru.uids
 	</select>
+	
+	<select id="yattention" parameterType="Dynstate" resultType="Dynstate">
+	    select * from dynstate PARTITION(GR) where selfid='${selfid}' and aimid='${aimid}' 
+	</select>
+	
+	<insert id="attentionUser" parameterType="Dynstate">
+	     insert into dynstate(selfid,aimid,kind,times)values
+	     ('${selfid}','${aimid}','GR',to_char(sysdate,'yyyy-mm-dd'))
+	</insert>
 </mapper>

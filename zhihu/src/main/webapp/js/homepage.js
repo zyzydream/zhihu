@@ -1,7 +1,8 @@
 //document.getElementById("name").innerHTML="zy";
 console.log($("#seflmain"));
 console.log(document.getElementById("seflmain"));
-var length=0;
+var alllength=0;
+var ageday=1;
 show();
 
 
@@ -11,7 +12,7 @@ function show(){
 		var favorite=date;
 		$.get("user/dynstate",function(data){
 			var dynstate="";			
-			length=data.length;
+			alllength=data.length;
 			for(var i=0;i<data.length;i++){
 				var aaaa="";
 				aaaa+='<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">';
@@ -152,11 +153,11 @@ function praise(ids,kind){
 	},"json")
 }
 
-function collect(ids,kind,fname){
+function collect(ids,kind,fcid){
 	//alert(ids);
 	//alert(kind);
 	//alert(fname);
-	$.get("dynstate/collect?ids="+ids+"&&kind="+kind,function(data){
+	$.get("dynstate/collect?ids="+ids+"&&kind="+kind+"&&cfid="+fcid,function(data){
 		if(data>0){
 			alert("收藏成功");
 			show();
@@ -191,20 +192,19 @@ function delcollect(ids,kind){
 }
 
 function test(){
-	//console.log(document.getElementsByName("showUsers"));
-	//console.log(document.getElementsByName("showUsers")[1]);
 	var length=document.getElementsByName("showUsers").length;
 	var titles="";
 	var contents="";
 	for(var i=0;i<length;i++){
-		//console.log(i);
-		//titles="@";
 		var uname=document.getElementsByName("showUsers")[i].innerHTML;
-		//console.log(uname);
 		$.get("user/showUser?uname="+uname+"&&num="+i,function(data){
 			titles+=''+data.num+'====<div class="media" style="400px;"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:60px"> </a></div><div class="media-body"><h4 class="media-heading">'+data.uname+'</h4>'+data.nsign+'<span>';
 			contents+=''+data.num+'====<table style="width: 230px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td>';
-			contents+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="attentionUser(\''+data.uname+'\')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td>';
+			if(data.attention=='y'){
+				contents+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消</button></td>';
+			}else if(data.attention=='n'){
+				contents+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="attentionUser(\''+data.uids+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td>';
+			}
 			contents+='</tr><tr><td style="border-right-style: solid;">'+data.counte+'</td><td style="border-right-style: solid;">'+data.countr+'</td><td>'+data.counts+'</td><td></td></tr></table>';
 			contents+='@@@'
 			for(var j=0;j<data.t.length;j++){
@@ -218,7 +218,7 @@ function test(){
     		//console.log(titles);
     		window.clearInterval(id);
     		var strs=titles.split("@@@");
-    		console.log(contents);
+    		//console.log(contents);
     		var strss=contents.split("@@@");
     		//console.log(strs.length);
     		for(var t=0;t<strs.length-1;t++){
@@ -226,13 +226,12 @@ function test(){
     			var title=strs[t].split("====")[1];
     			var p=strss[t].split("====")[0];
     			var content=strss[t].split("====")[1];
-    			console.log(p);
-    			console.log(content);
     			document.getElementsByName("showUsers")[i].setAttribute("title",title);
     			document.getElementsByName("showUsers")[p].setAttribute("data-content",content);
-    			//console.log(document.getElementsByName("showUsers")[i]);
     		}
-    		for(var a=0;a<length;a++){
+    		console.log(length);
+    		for(var a=0;a<alllength;a++){
+    			//console.log($("#"+a+""));
     			$("#"+a+"").popover({
         			trigger:'manual',
         			placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
@@ -257,10 +256,48 @@ function test(){
     }, 1000);
 }
 
-function attentionUser(uname){
-	$.get("user/attentionUser?uname="+uname,function(data){
+function attentionUser(uids,num){
+	//alert(uids);
+	$.get("user/attentionUser?uids="+uids+"&&num="+num,function(data){
 		alert(data);
+		if(data!=null){
+			var change="";
+			change+='<table style="width: 230px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td>';
+			if(data.attention=='y'){
+				change+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消</button></td>';
+			}else if(data.attention=='n'){
+				change+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="attentionUser(\''+data.uids+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td>';
+			    alert("关注失败");
+			}
+			change+='</tr><tr><td style="border-right-style: solid;">'+data.counte+'</td><td style="border-right-style: solid;">'+data.countr+'</td><td>'+data.counts+'</td><td></td></tr></table>';
+			document.getElementsByName("showUsers")[data.num].setAttribute("data-content",content);
+			for(var a=0;a<alllength;a++){
+    			$("#"+a+"").popover({
+        			trigger:'manual',
+        			placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+        			html: 'true', //needed to show html of course
+        			animation: false
+        		}).on("mouseenter", function () {
+        			var _this = this;
+        			$(this).popover("show");
+        			$(this).siblings(".popover").on("mouseleave", function () {
+        				$(_this).popover('hide');
+        			});
+        		}).on("mouseleave", function () {
+        			var _this = this;
+        			setTimeout(function () {
+        				if (!$(".popover:hover").length) {
+        					$(_this).popover("hide")
+        				}
+        			}, 100);
+        		});
+    		}
+		}else{
+			alert("失败");
+		}
 	},"json");
+//	alert(uname);
+//	alert(num);
 }
 
 //function test(){
