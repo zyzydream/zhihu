@@ -818,6 +818,8 @@ create table explore(
 );
 select * from users where uname='baurflda'
 drop table Explore
+18029506136@qq.com /zhihu/images/touxiang.jpg
+
 select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks from QUESTION q, 
 (select * from topics t, 
 (select * from users u, 
