@@ -134,7 +134,7 @@
 											<div id="Popover-66947-65137-toggle" aria-haspopup="true"
 												aria-expanded="false"
 												aria-owns="Popover-66947-65137-content">
-												<button class="Button Button--plain" type="button" >
+												<button class="Button Button--plain" type="button">
 													分享</button>
 											</div>
 										</div>
@@ -179,8 +179,7 @@
 							</div>
 						</div>
 						<!--  更多回答  -->
-						<div class="Card" data-za-module="MessageItem"
-							id="sumReply1">
+						<div class="Card" data-za-module="MessageItem" id="sumReply1">
 							<!--  查看全部 XXX 个回答  -->
 						</div>
 						<!-- 回答问题 -->
@@ -218,6 +217,7 @@
 							</div> 
 						</div>-->
 					</div>
+
 
 					<div class="Question-sideColumn" data-za-module="RightSideBar">
 						<div>

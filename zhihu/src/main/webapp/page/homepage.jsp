@@ -167,11 +167,7 @@
 
 	<div class="zg-wrap zu-main clearfix " role="main">
 		<div class="zu-main-content">
-<<<<<<< HEAD
-			<div class="zu-main-content-inner" style="width: 640px; float: left;word-wrap:break-word;">
-=======
 			<div class="zu-main-content-inner" style="width: 640px; float: left; word-wrap:break-word">
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 				<span id="omissible">
 					<div class="HomeEntry" data-za-module="HomeEntry">
 						<div class="HomeEntry-avatar">
