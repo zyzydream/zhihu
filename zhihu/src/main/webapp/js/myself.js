@@ -423,7 +423,7 @@ function MyAttention(){
 							+'<span class="ContentItem-statusItem">'+data.myattenpeos+' 关注者</span>'
 							+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit" class="btn btn-primary"'
 							+' data-dismiss="modal" onclick="yesfav()" value="已关注">'
-							+'<span aria-hidden="false" ></span>已关注'
+							+'<span id="guanzhu_name" aria-hidden="false" >已关注</span>'
 							+'</button></div></div></div></div>'
 							+'</span></div></div>';
 
@@ -544,7 +544,7 @@ function attenme(){
 
 $(".btn_submit").click(function(){
 	var txt=document.getElementById("btn_submit").value;
-	alert(JSON.stringify(txt));
+	alert(JSON.stringify(txt)=="已关注");
 	if(JSON.stringify(txt)=="+关注"){
 		alert(1);
 		document.getElementById("btn_submit").innerHTML=="已关注";
@@ -555,12 +555,15 @@ $(".btn_submit").click(function(){
 });
 
 function yesfav(){
+	
 	var txt=document.getElementById("btn_submit").value;
 	alert(txt);
 	if(btn_submit.value=="+关注"){
-		document.getElementById("btn_submit").value=="已关注";
+		document.getElementById("btn_submit").value="已关注";
 	}else if(btn_submit.value=="已关注"){
-		document.getElementById("btn_submit").value=="+关注";
+		alert(2);
+		$("#guanzhu_name").html("+关注");
+		document.getElementById("btn_submit").value="+关注";
 	}
 }
 
@@ -607,8 +610,23 @@ function previewMultipleImage() {
 	document.myform.submit();
 }
 
+function previewMultipleImage_icon() {	
+	var reader = new FileReader();
+	var file = document.getElementById("changgeimage").files[0]
+	reader.readAsDataURL(file);
+	reader.onload = function(evt) {
+		$('#showImage_gr').html("<img src='"+evt.target.result+"' height='132px' width='966px' />");
+	};	
+	
+	document.myform.submit();
+}
 
 
+function updateimg(obj){
+	//var img=$(obj).attr("src");
+	alert($("img_icon_file").onclick)
+	$("img_icon_file").onclick;
+}
 
 
 
