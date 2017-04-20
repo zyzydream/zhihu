@@ -18,7 +18,16 @@ public class Explore {
 	private String collect;
 	private String ypraise;
 	private String ycollent;
+	private String count;
 	
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+
 	public String getYpraise() {
 		return ypraise;
 	}
@@ -124,6 +133,7 @@ public class Explore {
 	public String toString() {
 		return "Explore [ids=" + ids + ", kind=" + kind + ", title=" + title + ", content=" + content + ", tid=" + tid
 				+ ", tname=" + tname + ", usign=" + usign + ", uids=" + uids + ", author=" + author + ", times=" + times
-				+ ", checks=" + checks + ", praise=" + praise + ", collect=" + collect + "]\n";
+				+ ", checks=" + checks + ", praise=" + praise + ", collect=" + collect + ", ypraise=" + ypraise
+				+ ", ycollent=" + ycollent + ", count=" + count + "]";
 	}	
 }

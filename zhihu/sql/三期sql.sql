@@ -462,7 +462,7 @@ CREATE TABLE reply(
 drop sequence seq_reply
 drop table reply
 
-select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u.usign usign ,u.upic author
+select r.* ,u.*
 		from reply r ,users u
 		where r.reqid='10116' and u.uids=r.remitid and rkind= 'Q'
 
@@ -1137,3 +1137,26 @@ SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitl
 		WHERE ue.etid=t.tid
 
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u.usign usign ,u.upic author
+		from reply r ,users u
+		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'Q'		
+		
+		

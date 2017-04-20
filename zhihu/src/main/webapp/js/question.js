@@ -114,8 +114,6 @@ $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:
 	}else{
 		alert("回复为空");
 	}
-
-
 },dataType:"json"});
 
 
@@ -187,5 +185,8 @@ function add(){
 
 }
 
+
+
+//显示评论回复
 
 

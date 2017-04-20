@@ -40,6 +40,9 @@ public class ReplyHandler {
 		reply.setReqid(reqid);
 		request.getSession().setAttribute(ServletUtil.LOGIN_REQID, reply);
 		//System.out.println("进来了 reply==》" + reply);
+		for(int i=0;i<replyService.list(reply).size();i++){
+			
+		}
 		return replyService.list(reply);
 	}
 	
