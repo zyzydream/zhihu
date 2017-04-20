@@ -21,11 +21,12 @@ public class ServletUtil {
 	public static final String LOGIN_EID="eid";
 	public static final String LOGIN_REQID="Reply";	//当前问题的ID
 	public static final String LOGIN_UPLOAD_DIR="/upload/";
+	public static final String LOGIN_UIDS="uids";
 	public static final String[] favname={};
 	public static final String[] favsum={};
 	
 	public static File getUploadFile(String fileName){
-		File file=new File(UPLOAD_DIR,fileName);  //上传文件
+		File file=new File(LOGIN_UPLOAD_DIR,fileName);  //上传文件
 		if(!file.getParentFile().exists()){
 			file.getParentFile().mkdirs();
 		}

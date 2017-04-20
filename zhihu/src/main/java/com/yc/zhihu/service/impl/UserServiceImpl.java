@@ -231,14 +231,25 @@ public class UserServiceImpl implements UserService{
 		 return users;
 	}
 
-	@Override
-	public ShowUser attentionUser(Users user) {
-		//return userMapper.attentionUser(user);
-		return null;
-	}
+
 
 	@Override
 	public Users list(Users user) {
 		return userMapper.fUsers(user);
+	}
+	
+	@Override
+	public int attentionUser(Dynstate dynstate) {
+		return userMapper.attentionUser(dynstate);
+		//return null;
+	}
+
+	//判断是否已关注
+	@Override
+	public String yattention(Dynstate dynstate) {
+		if(userMapper.yattention(dynstate)!=null){
+			return "y";
+		}
+		return "n";
 	}
 }

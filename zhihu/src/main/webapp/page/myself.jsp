@@ -32,7 +32,7 @@
 			<a href="/zhihu/page/homepage.jsp" aria-label="知乎">知乎</a>
 			<nav class="AppHeader-nav" role="navigation"> <a
 				class="AppHeader-navItem" href="/zhihu/page/homepage.jsp">首页</a> <a
-				class="AppHeader-navItem" href="/explore">发现</a> <a
+				class="AppHeader-navItem" href="/explore" href="/zhihu/page/explore.jsp">发现</a> <a
 				class="AppHeader-navItem" href="/topic">话题</a> </nav>
 			<div class="SearchBar" role="search">
 				<div class="SearchBar-toolWrapper">
@@ -101,16 +101,16 @@
 								<div class="UserCoverGuide-inner">
 
 									<div class="UserCoverGuide-buttonContainer">
-										<form enctype="multipart/form-data" method="post" id="uploads">
+										<form enctype="multipart/form-data" target="uploadFrame" action="dynstate/upload" method="post" name="myform" id="uploads">
 											<input class="Button DynamicColorButton" type="file"
-												id="changgeimage" name="toppic" onchange="chgPic(this)"
-												onclick="updatePic()" /> <img src="/zhihu/images/1.jpg"
-												id="pic" width="100" height="100">
+												id="changgeimage" name="picData" onchange='previewMultipleImage()'							 />
 										</form>
+										<iframe name="uploadFrame" id="uploadFrame" style="display:none;"></iframe>
+										<!-- onclick="updatePic()" -->
 									</div>
 								</div>
 							</div>
-							<div class="UserCover UserCover--colorBlock"></div>
+							<div id="showImage_gr" class="UserCover UserCover--colorBlock"></div>
 							<input type="file" accept="image/png,image/jpeg"
 								style="display: none;">
 						</div>
@@ -149,7 +149,7 @@
 
 			<div id="zhuyezhuti">
 				<div class="panel panel-default"
-					style="width: 660px; margin-left: 15px;">
+					style="width: 660px; margin-left: 15px;word-wrap:break-word;">
 					<div class="panel-body">
 						<span id="myself"> <span id="myself1"> </span> <span
 							id="myself2">

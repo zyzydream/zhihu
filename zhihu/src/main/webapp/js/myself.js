@@ -245,7 +245,7 @@ function My(){
 		if(data.length>0){
 			for(var i=0;i<data.length;i++){
 				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="ContentItem-title">'
-					+'<a>'+data[i].title+'</a></h2><br/>'
+					+'<a href="/zhihu/page/article.jsp?eid='+data[i].tid+'">'+data[i].title+'</a></h2><br/>'
 					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
 					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
@@ -573,7 +573,7 @@ $('#changgeimage').hover(function() {
 	layer.closeAll('tips');
 });
 
-function updatePic(){
+/*function updatePic(){
 	$.get("dynstate/upload",function(data){
 		alter(data);
 		var img="";
@@ -585,26 +585,26 @@ function updatePic(){
 		document.getElementById("UserCoverGuide-inner").innerHTML = img;
 	},'json');
 
-}
+}*/
 
 function chgPic(obj){
 	$("#changgeimage").attr("src", window.URL.createObjectURL(obj.files[0]));
 }
 
-$("#uploads").form({
-	url:"user/upload", 
-	success:function(data){ 
-		if(data.trim() == "true"){
-			for(var i=0;i<data.length;i++){
-				$("#pic").datagrid("reload"); //刷新修改数据
-				/*$("#pic").attr("src", data[i].toppic);*/
-			}
-		}
-	}
-});
 
 function editor(){
 	url:'/zhihu/page/ediuorinfo.jsp'
+}
+
+function previewMultipleImage() {	
+	var reader = new FileReader();
+	var file = document.getElementById("changgeimage").files[0]
+	reader.readAsDataURL(file);
+	reader.onload = function(evt) {
+		$('#showImage_gr').html("<img src='"+evt.target.result+"' height='132px' width='966px' />");
+	};	
+	
+	document.myform.submit();
 }
 
 

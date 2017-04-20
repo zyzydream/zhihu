@@ -11,17 +11,53 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+
+<<<<<<< HEAD
+select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from
+		select * from (select count(0)counts ,aimid from dynstate PARTITION(GR) group by
+		aimid) d,
+		(select * from (select count(0)countr,r.remitid from reply r group by
+		r.remitid)rr ,
+		(select count(0)counte,'${uids}' uids from essay where eautid='${uids}')e where
+		rr.remitid=e.uids)ru
+		where d.aimid=ru.uids
+18037560013@qq.com /zhihu/images/touxiang.jpg
+	
+select * from (select count(0)counts ,'10381' uids from dynstate PARTITION(GR) where aimid='10381') d,
+		(select * from (select count(0)countr,'10381' ids from reply r where r.remitid='10381')rr ,
+		(select count(0)counte,'10381' uids from essay where eautid='10381')e where
+		rr.ids=e.uids)ru
+		where d.uids=ru.uids
+=======
+alter table users rename column tpic to tpic2;
+alter table users add tpic varchar2(200);
+update users set tpic=trim(tpic2);
+alter table users drop column tpic2;
+alert table users modify column tpic varchar(200);
+
+SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM   TOPICS t,   (SELECT * FROM USERS u,   (SELECT * FROM essay e WHERE e.etid=1008)e   WHERE u.uids=e.eautid)ue   WHERE ue.etid=t.tid
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+
 select * from TOPICS
 select * from users;
 select * from explore;
  select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
 select * from reply
+<<<<<<< HEAD
+18084250564@qq.com /zhihu/images/touxiang.jpg
+
+
+=======
+ 18039696056@qq.com
+  10202 vnuivskij  a         ezjvzpfxofoiifpvyzijejhtfhcdkqvidqzkn    程序员         zzz.jpg 7 /zhihu/images/touxiang.jpg
+
 
 select r.*,u.*
 		from reply r ,users u
 		where r.reqid='10001' and u.uids=r.remitid and rkind= 'W'
 
  
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
  select
 		t.*,q.qtitle from
 		(select r.*,u.uname,u.usign,r.reqid a from REPLY
@@ -111,6 +147,7 @@ update USERS set tpic='images/car.png' where uids='1001'
 select * from users
  select * from explore e, (select ids from dynstate PARTITION (GH) where selfid='10268')d where e.tid=d.ids 
 drop sequence seq_users
+drop table users
 create sequence seq_users start with 10000;
 insert into users
 select seq_users.nextval, 
@@ -190,6 +227,7 @@ CREATE TABLE essay(
    escid VARCHAR2(30),
    etid VARCHAR2(10)
 );
+
     select * from users ,
      (select d.countr countr,ru.countr countr,ru.counte counte ,ru.uids uids from (select count(0)countr ,aimid from dynstate PARTITION(GR) group by aimid) d,
      (select * from  (select count(0)countr,r.remitid from reply r group by r.remitid)rr ,
@@ -216,7 +254,8 @@ INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval
 INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval,'10135','<p>相册现在<img alt="2.png" src="/upload30/image/20170415/1492247766872047588.png" title="1492247766872047588.png"/></p>',to_char(sysdate,'yyyy-mm-dd'),'对对对','10002');
 
 select * from essay where eid='130' and etid='10002'
-
+drop sequence seq_essay
+drop table essay
 create sequence seq_essay start with 10000;
 insert into essay
 select seq_essay.nextval||'', 
@@ -248,15 +287,15 @@ CREATE TABLE scolumn(
    scname VARCHAR2(20),
    sctime VARCHAR2(30)
 );
-<<<<<<< HEAD
 drop table explore
-=======
 drop table scolumn
 
 select count(r.rid) myattenaw,count(e.eid),count(n.selfid) 
 from reply r,essay e,dynstate PARTITION(GR) n
 where r.remitid='10198' and e.eautid='10198' and n.aimid='10198'
 
+
+SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM   Topics t,   (SELECT * FROM USERS u,   (SELECT * FROM essay e WHERE e.etid=1008)e   WHERE u.uids=e.eautid)ue   WHERE ue.etid=t.tid
 select 
 (select count(r.rid) 
 from reply r where r.remitid='10198') myattenaw,
@@ -268,8 +307,7 @@ from dynstate PARTITION(GR) where aimid='10198') myattenpeos,
 (select usign from users where uids='10198') usign,
 (select upic from users where uids='10198') upic
 from dual 
-
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+select * from e
 
 select
 		r.*,u.uname,u.usign,r.reqid a,u.upic from REPLY
@@ -289,12 +327,14 @@ CREATE TABLE favorite(
    fname VARCHAR2(30),
    ftime VARCHAR2(30)
 );
+drop table favorite;
+drop sequence seq_favorite;
 create sequence seq_favorite start with 10000;
 insert into favorite
 select seq_favorite.nextval||'', 
 ''||ceil(dbms_random.value(10000,11000)),
 dbms_random.string('l',dbms_random.value(10, 20)),
-'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 3000;
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 4000;
 
 drop table favorite;
 drop sequence seq_favorite;
@@ -308,6 +348,7 @@ CREATE TABLE topics(
    tstid Varchar2(60),
    tpic Varchar2(60)
 );
+
 drop table topics;
 drop sequence seq_topics;
 create sequence seq_topics start with 1000;
@@ -400,16 +441,18 @@ CREATE TABLE reply(
    rtid VARCHAR2(30),
    rtime VARCHAR2(30)
 );
-<<<<<<< HEAD
 drop sequence seq_reply
 drop table reply
-=======
 
 select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u.usign usign ,u.upic author
 		from reply r ,users u
 		where r.reqid='10116' and u.uids=r.remitid and rkind= 'Q'
 
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 drop table reply
 select * from reply
 create sequence seq_reply start with 10000;
@@ -440,6 +483,9 @@ select q.qtitle,q.qtime,count(reqid) t from QUESTION q,REPLY r where r.rkind='Q'
 select q.*,t.s from question q,
 (select count(reqid) s from REPLY where rkind='Q' and reqid=(select reqid from question where qautid='1003')) t
 where q.qautid='1003';
+ 
+drop table dynstate;
+drop sequence seq_reply;
  drop table dynstate;
 drop sequence seq_reply;
 
@@ -464,10 +510,17 @@ PARTITION BY LIST(kind)(
    PARTITION DQ VALUES('DQ'), --点赞问题
    PARTITION DH VALUES('DH') --点赞回复
 );
-select aimid from dynstate PARTITION(GR) where selfid='10198'
-
+select * from dynstate PARTITION(SQ) where selfid='10198'
+DELETE FROM dynstate WHERE  kind='SQ'
 select aimid from dynstate PARTITION(GR) where selfid=10401
-
+select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from
+		(select count(0)countr ,aimid from dynstate PARTITION(GR) group by
+		aimid) d,
+		(select * from (select count(0)countr,r.remitid from reply r group by
+		r.remitid)rr ,
+		(select count(0)counte,'11111' uids from essay where eautid='11111')e where
+		rr.remitid=e.uids)ru
+		where d.aimid=ru.uids
 select u.upic,u.uname,u.usign from 
 ((select aimid from dynstate PARTITION(GR) where selfid='10198' ) b
 left join users u
@@ -488,13 +541,20 @@ on ids=b.reqid and selfid='10198' group by b.reqid
 
 select count(0) from dynstate PARTITION(DH)
 where ids='10101' and selfid='10198'
+
+select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from 
+(select count(0)countr ,aimid from dynstate PARTITION(GR) group by aimid) d, 
+(select * from (select count(0)countr,r.remitid from reply r group by r.remitid)rr ,
+(select count(0)counte,'10750' uids from essay where eautid='10750')e where rr.remitid=e.uids)ru 
+where d.aimid=ru.uids 
+select * from users where uname='flmjezzr'
 --我的回答的收藏数
 select count(ids),b.reqid from dynstate PARTITION(SH)
 right join (select reqid from reply where remitid='10198' and rkind='Q') b
 on ids=b.reqid and selfid='10198' group by b.reqid
 --我的回答的阅览数
-
-
+ insert into dynstate(selfid,aimid,kind,times)values('${selfid}','${aimid}','GR',to_char(sysdate,'yyyy-mm-dd'))
+DELETE FROM dynstate where selfid='${selfid}'
 
 select * from dynstate PARTITION(DH) where selfid='10198' and ids='10101'
 
@@ -659,7 +719,10 @@ and uids=(select ss.sccreid from scolumn ss where ss.scid=s.scid)
 
 
 select * from users
-
+ 10000 eoetks     a         kziuohojekrkueoovravycrwxqpouqdyaqz      分析员         zzz.jpg 18013770922@qq.com /zhihu/images/touxiang.jpg
+ 10001 qwbccyjt   a         zvparnkripxijysiebqwvuflwtcthvlvs        测试员         zzz.jpg 18065182570@qq.com /zhihu/images/touxiang.jpg
+ 10003 orynpuqz   a         ucdmzmbmkuqshxjeqwiilcwmxvnwtsrn         测试员         zzz.jpg 18018268259@qq.com /zhihu/images/touxiang.jpg
+select * from dynstate PARTITION(SW) where selfid='10003'
 select sccreid from scolumn where scid=(select ids from dynstate PARTITION(GZ) where selfid='1001')
 
 select
@@ -671,7 +734,7 @@ select
 (select * from essay where eautid=(select ids from dynstate PARTITION(DW) where selfid='1003')) ,
 (select * from question where qautid=(select ids from dynstate PARTITION(DQ) where selfid='1003')) 
 from dual;
-
+drop table explore
 select * from TOPICS,(select ids,kind from dynstate PARTITION(GH) where selfid='1003')tt where tid=(select ids from dynstate PARTITION(GH) where selfid='1003')
 
 SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind 
@@ -696,7 +759,7 @@ select ''||ceil(dbms_random.value(10000,11000)),
 'GR',
 '',
 '2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
-'' from dual connect by level <= 3000;
+'' from dual connect by level <= 4000;
 --关注话题
 insert into dynstate
 select ''||ceil(dbms_random.value(10000,11000)),
@@ -821,6 +884,8 @@ create table explore(
 );
 select * from users where uname='baurflda'
 drop table Explore
+18029506136@qq.com /zhihu/images/touxiang.jpg
+
 select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks from QUESTION q, 
 (select * from topics t, 
 (select * from users u, 
@@ -855,7 +920,7 @@ insert into explore(title,content,tname,tid,author,times,checks)values('dsfsdaf�
 
 select * from explore
 select * from explore where checks='y'
-drop table explore
+drop table infomation
 select * from explore e,
 (select ids from dynstate PARTITION (GH) where selfid='1001')d
 where e.tid=d.ids;
@@ -1020,6 +1085,12 @@ select
 from dual;
 select * from users where uids='1003'
 
+
+select f.*,t.sum from FAVORITE f,
+		(select count(ids) sum from DYNSTATE
+		where selfid='10198' and cfid=(select fid from favorite where
+		fcreid='10198')) t
+		where fcreid='10198'
 
 select *  from dynstate PARTITION(DQ)
 

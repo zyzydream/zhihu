@@ -89,13 +89,16 @@
 			<div id="infomation-form">
 				<form class="zm-settings-account" action="/settings/profile"
 					method="POST" autocomplete="off">
-					<input name="_xsrf" value="f5c87945329c77b31c12918738783665"
-						type="hidden">
 					<div class="settings-section">
 						<div class="settings-item clearfix">
+							<lable class="settings-item-title">头像</lable>
+							<div class="head photo" style="padding-left: 90px;">
+								<img alt="头像" src="images/115.jpg" style="width: 50px; height: 50px">
+							</div>
+						</div>
+						<div class="settings-item clearfix">
 							<label class="settings-item-title" for="fullname">姓名</label>
-							<div id="rename-section"
-								class="settings-item-content rename-section">
+							<div id="rename-section" class="settings-item-content rename-section">
 								<span class="name">dsvb</span>
 							</div>
 						</div>
@@ -103,23 +106,8 @@
 							<label class="settings-item-title with-input" for="url_token">个性签名</label>
 							<div class="settings-item-content">
 								<input id="url_token" class="zg-form-text-input"
-									autocomplete="off" name="url_token" value="bbv-70">
-
-							</div>
-						</div>
-						<div class="settings-item clearfix">
-							<label class="settings-item-title" for="private">隐私保护</label>
-							<div class="settings-item-content">
-								<div>
-									<label class="settings-checkbox-label"> <input
-										id="private" name="private" type="checkbox">
-										在站外搜到我在知乎创作的内容时，我的姓名将不会被显示
-									</label>
-								</div>
-								<div class="settings-item-content-desc">
-									<a class="zg-link-litblue"
-										href="//www.zhihu.com/question/20758264" target="_blank">什么情况下应该使用这个选项？</a>
-								</div>
+									autocomplete="off" name="url_token"  onkeydown="this.onkeyup();" 
+									 size="100">
 							</div>
 						</div>
 					</div>

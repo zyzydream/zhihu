@@ -24,3 +24,8 @@ $(function(){
 	});
 
 $(function () { $("[data-toggle='popover']").popover({ trigger:'hover'}); });  
+
+
+function closeD(){
+	document.getElementById("modal-wrapper").style.display="none";
+}
