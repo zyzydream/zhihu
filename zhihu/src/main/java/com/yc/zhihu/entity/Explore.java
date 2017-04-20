@@ -14,9 +14,13 @@ public class Explore {
 	private String author;
 	private String times;
 	private String checks;
+	//点赞数
 	private String praise;
+	//收藏数
 	private String collect;
+	//当前登录用户是否点赞
 	private String ypraise;
+	//当前登录用户是否收藏
 	private String ycollent;
 	private String count;
 	
