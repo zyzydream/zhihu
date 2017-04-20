@@ -89,8 +89,7 @@
 						<ul class="PageInbox-nav-tabs">
 							<li>最近联系</li>
 						</ul>
-						<button id="zh-create-pm" class="zg-btn-justify zg-btn-blue"
-							onclick="createfav()">写私信</button>
+						<button id="zh-create-pm" class="zg-btn-justify zg-btn-blue" onclick="opendiv()">写私信</button>
 					</div>
 				</div>
 
@@ -131,7 +130,7 @@
 			<div class="modal-dialog-title">
 				<span id=":8" class="modal-dialog-title-text" role="heading">发送私信</span>
 				<span class="modal-dialog-title-close" role="button" tabindex="0"
-					aria-label="Close"></span>
+					aria-label="Close" onclick="closeD()"></span>
 			</div>
 			<div class="modal-dialog-content">
 				<div class="zm-pm-wrap">

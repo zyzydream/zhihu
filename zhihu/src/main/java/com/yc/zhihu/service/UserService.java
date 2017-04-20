@@ -47,4 +47,6 @@ public interface UserService {
 
 	String yattention(Dynstate dynstate);
 
+	Users list(Users user);
+
 }

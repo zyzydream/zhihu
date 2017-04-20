@@ -582,6 +582,7 @@ html.modal-open.flexbox .modal-wrapper {
     right: 0;
     top: 0;
     z-index: 99;
+    display:none;
 }
 html.modal-open .modal-wrapper .modal-dialog {
     margin-top: 14vh;
@@ -594,9 +595,9 @@ html.modal-open .modal-wrapper .modal-dialog {
     box-shadow: 0 0 80px 0 rgba(0, 0, 0, 0.4);
     max-width: 100%;
     position: absolute;
-    text-align: left;
     width: 420px;
-    z-index: 99;
+    top:150px;
+    left:450px;
 }
 .modal-dialog, div[contentEditable] {
     outline: 0 none;

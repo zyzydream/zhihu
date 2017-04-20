@@ -40,7 +40,7 @@
 					<li><a href="page/myself.jsp"> <i
 							class="zg-icon zg-icon-dd-home"></i>我的主页
 					</a></li>
-					<li><a href="/inbox"> <i class="zg-icon zg-icon-dd-pm"></i>私信
+					<li><a href="page/litter.jsp"> <i class="zg-icon zg-icon-dd-pm"></i>私信
 							<span id="zh-top-nav-pm-count"
 							class="zu-top-nav-pm-count zg-noti-number"
 							style="visibility: hidden" data-count="0"> </span>

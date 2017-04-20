@@ -42,7 +42,7 @@
 			<td></td>
 		</tr>
 	</table>
-	<
+	
 
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>

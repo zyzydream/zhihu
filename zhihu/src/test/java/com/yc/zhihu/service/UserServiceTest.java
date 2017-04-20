@@ -63,4 +63,14 @@ public class UserServiceTest {
 		assertNotNull(e);
 	}
 
+	
+	@Test
+	public void testList(){
+		Users user = new Users();
+		user.setUname("efaeljxq");
+		user =userService.list(user);
+		System.out.println(user);
+		assertNotNull(user);
+	}
+
 }
