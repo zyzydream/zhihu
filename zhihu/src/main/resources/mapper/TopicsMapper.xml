@@ -40,4 +40,8 @@
 	   
 	</select>
 
+	<select id="findTopic" parameterType="Topics" resultType="Topics">
+		select * from topics where tid=#{tid}
+	</select>
+	
 </mapper>

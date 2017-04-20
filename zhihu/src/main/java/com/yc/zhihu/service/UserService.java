@@ -51,5 +51,7 @@ public interface UserService {
 	int delattentionUser(Dynstate dynstate);
 
 	int newFav(Favorite favorite);
+	
+	Users list(Users user);
 
 }

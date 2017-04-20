@@ -18,6 +18,8 @@ public class ServletUtil {
 	public static String UPLOAD_DIR=null;
 	public static String DEPLOY_NAME=null;
 	public static List<Users> alluser;
+	public static final String LOGIN_EID="eid";
+	public static final String LOGIN_REQID="Reply";	//当前问题的ID
 	public static final String LOGIN_UPLOAD_DIR="/upload/";
 	public static final String LOGIN_UIDS="uids";
 	public static final String[] favname={};

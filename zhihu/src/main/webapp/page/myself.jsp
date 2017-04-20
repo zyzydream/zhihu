@@ -149,7 +149,7 @@
 
 			<div id="zhuyezhuti">
 				<div class="panel panel-default"
-					style="width: 660px; margin-left: 15px;">
+					style="width: 660px; margin-left: 15px;word-wrap:break-word;">
 					<div class="panel-body">
 						<span id="myself"> <span id="myself1"> </span> <span
 							id="myself2">

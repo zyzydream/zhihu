@@ -38,8 +38,12 @@ alert table users modify column tpic varchar(200);
 SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM   TOPICS t,   (SELECT * FROM USERS u,   (SELECT * FROM essay e WHERE e.etid=1008)e   WHERE u.uids=e.eautid)ue   WHERE ue.etid=t.tid
 >>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
-select * from TOPICS
+select * from users
 select * from users where uids='10004';
+18037560013@qq.com /zhihu/images/touxiang.jpg
+
+select * from reply where reqid='10627'
+
 18037560013@qq.com /zhihu/images/touxiang.jpg
 
 select * from explore;
@@ -84,7 +88,7 @@ delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324'
 delete dynstate where selfid='10001' and ids='10103' 
 select * from dynstate where selfid='10001' and ids='10103' 
 select * from users
- 10001 qwbccyjt   a         zvparnkripxijysiebqwvuflwtcthvlvs        测试员         zzz.jpg 18065182570@qq.com /zhihu/images/touxiang.jpg
+ 10135 efaeljxq   a         figagjkhcifkvdoksizovweegvqeaelwhmm      测试员         zzz.jpg 18011542696@qq.com /zhihu/images/touxiang.jpg
 select * from dynstate where selfid='10001' and kind='SW'
 select * from question where qautid='10001'
 select * from reply where reqid='12897'
@@ -458,11 +462,15 @@ CREATE TABLE reply(
 drop sequence seq_reply
 drop table reply
 
-select r.* ,u.*
-from reply r ,users u
-where r.reqid='10198' and u.uids=r.remitid
+select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u.usign usign ,u.upic author
+		from reply r ,users u
+		where r.reqid='10116' and u.uids=r.remitid and rkind= 'Q'
 
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 drop table reply
 select * from reply
 create sequence seq_reply start with 10000;
@@ -894,6 +902,8 @@ create table explore(
 );
 select * from users where uname='baurflda'
 drop table Explore
+18029506136@qq.com /zhihu/images/touxiang.jpg
+
 select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks from QUESTION q, 
 (select * from topics t, 
 (select * from users u, 

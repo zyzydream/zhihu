@@ -15,6 +15,8 @@ public interface TopicService {
 
 	public List<Explore> selectExplore(Topics t);
 
+	public Topics listTopic(Topics topic);
+
 	
 
 }

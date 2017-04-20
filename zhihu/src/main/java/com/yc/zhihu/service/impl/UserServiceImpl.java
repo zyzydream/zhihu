@@ -233,6 +233,13 @@ public class UserServiceImpl implements UserService{
 		 return users;
 	}
 
+
+
+	@Override
+	public Users list(Users user) {
+		return userMapper.fUsers(user);
+	}
+	
 	@Override
 	public int attentionUser(Dynstate dynstate) {
 		return userMapper.attentionUser(dynstate);

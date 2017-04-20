@@ -17,5 +17,7 @@ public interface TopicsMapper {
 
 	List<Explore> selectExplore(Topics t);
 
+	Topics findTopic(Topics topic);
+
 	
 }

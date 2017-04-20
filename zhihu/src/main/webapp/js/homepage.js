@@ -96,7 +96,7 @@ function show(num){
 					dynstate+='</div></div><hr class="featurette-divider">';
 				}else if(data[i].kind=="FQ"){
 					dynstate+='<div class="row featurette" id="a'+i+'"><div class="col-md-7">';
-					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;" onclick="showdeilt(\''+data[i].ids+'\')"><span class="text-muted" style="font-size: 15px">'+data[i].author+':提出问题：</span><br /><a href="javascript:void(0)">'+data[i].title+'</a></h2><span>'
+					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;" onclick="showdeilt(\''+data[i].ids+'\')"><span class="text-muted" style="font-size: 15px">'+data[i].author+':提出问题：</span><br /><a href="page/question.jsp?qid='+data[i].ids+'">'+data[i].title+'</a></h2><span>'
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 					}else if(data[i].ycollent=='y'){

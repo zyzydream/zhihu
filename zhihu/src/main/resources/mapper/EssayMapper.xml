@@ -2,15 +2,30 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
+<!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
 <mapper namespace="com.yc.zhihu.mapper.EssayMapper">
-		<insert id="addEssay" parameterType="Essay">
-			INSERT INTO essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval,'${eautid}','${econtent}',to_char(sysdate,'yyyy-mm-dd'),'${etitle}','${etid}') 
-		</insert>
-		
-		
-		
-		<select id="findEssay" parameterType="string" resultType="Essay">
-			select e.*,u.* from essay e,users u where e.eid = #{eid} and  e.eautid = uids
-		</select>	
+	<insert id="addEssay" parameterType="Essay">
+		INSERT INTO
+		essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval,'${eautid}','${econtent}',to_char(sysdate,'yyyy-mm-dd'),'${etitle}','${etid}')
+	</insert>
+
+
+
+	<select id="findEssay" parameterType="string" resultType="Essay">
+		select e.*,u.* from essay e,users u where e.eid = #{eid} and e.eautid = uids
+	</select>
+
+
+	<select id="findReply" parameterType="Reply" resultType="Explore">
+		select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname
+		tname ,u.usign usign ,u.upic author
+		from reply r ,users u
+		where
+		r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'W'
+	</select>
+	
+	
+	<insert id="insertReply" parameterType="Reply">
+		insert into reply(rid,reqid,rkind,remitid,rcontent,rtime) values(seq_reply.nextval,#{reqid},'W',#{remitid},#{rcontent},to_char(sysdate,'yyyy-mm-dd'))
+	</insert>
 </mapper>
