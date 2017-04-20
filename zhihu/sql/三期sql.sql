@@ -39,7 +39,9 @@ SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.eti
 >>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 select * from TOPICS
-select * from users;
+select * from users where uids='10004';
+18037560013@qq.com /zhihu/images/touxiang.jpg
+
 select * from explore;
  select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
 select * from reply
@@ -75,7 +77,8 @@ insert into EXPLORE(ids)VALUES ('101');
 update USERS set tpic='images/car.png' where uids='1001'
 update explore set praise='15' , collect='4' where ids='101'
 select * from explore where ids like '%' and kind like '%'
-select * from dynstate PARTITION(SW) where selfid='10942'
+select * from users where uname='vbthjdmf'
+select * from dynstate PARTITION(GR) where aimid='10381' and aimid='10004' where selfid='10942'
 select * from users where uids='10186'
 delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324' 
 delete dynstate where selfid='10001' and ids='10103' 
@@ -325,8 +328,19 @@ CREATE TABLE favorite(
    fid VARCHAR2(30),
    fcreid VARCHAR2(30),
    fname VARCHAR2(30),
+   finfo varchar2(50),
    ftime VARCHAR2(30)
 );
+select * from favorite where fcreid='10004'
+delete from favorite where fid='13004'
+select e.eid ids,e.eautid uids,e.econtent content,e.etime times,e.etitle
+		title,e.etid tid,ud.uname author from essay e,
+		(select * from users u,
+		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10004')d
+		where u.uids=d.aimid)ud
+		where e.eautid=ud.uids AND 24*3>=to_number( to_date('2017-12-30','yyyy-mm-dd')-
+		to_date(e.etime,'yyyy-mm-dd'))*24
+
 drop table favorite;
 drop sequence seq_favorite;
 create sequence seq_favorite start with 10000;

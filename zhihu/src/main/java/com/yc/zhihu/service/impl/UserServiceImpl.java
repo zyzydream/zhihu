@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.Favorite;
 import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Strings;
 import com.yc.zhihu.entity.Topics;
@@ -65,10 +66,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<Explore> listrelatedD(Users user) {
+	public List<Explore> listrelatedD(Users user,Explore times) {
 		List<Explore> all=new ArrayList<Explore>();
 		if(user!=null){
 			//System.out.println("user");
+			user.setNum(times.getTimes());
 			List<Explore> essays = userMapper.listessay(user);
 		    for(Explore essay:essays){
 				essay.setKind("DW");
@@ -233,9 +235,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public int attentionUser(Dynstate dynstate) {
-		
 		return userMapper.attentionUser(dynstate);
-		//return null;
 	}
 
 	//判断是否已关注
@@ -245,5 +245,16 @@ public class UserServiceImpl implements UserService{
 			return "y";
 		}
 		return "n";
+	}
+
+	@Override
+	public int delattentionUser(Dynstate dynstate) {
+		return userMapper.delattentionUser(dynstate);
+	}
+
+	//创建收藏夹
+	@Override
+	public int newFav(Favorite favorite) {
+		return userMapper.newFav(favorite);
 	}
 }

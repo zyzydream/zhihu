@@ -56,7 +56,8 @@
 
 
 
-			<a class="zu-top-add-question" id="zu-top-add-question" style=" text-decoration:none" href="page/introducteQuestion.jsp" >提问</a>
+			<a class="zu-top-add-question" id="zu-top-add-question"
+				style="text-decoration: none" href="page/introducteQuestion.jsp">提问</a>
 
 
 			<div role="search" id="zh-top-search" class="zu-top-search">
@@ -167,11 +168,8 @@
 
 	<div class="zg-wrap zu-main clearfix " role="main">
 		<div class="zu-main-content">
-<<<<<<< HEAD
-			<div class="zu-main-content-inner" style="width: 640px; float: left;word-wrap:break-word;">
-=======
-			<div class="zu-main-content-inner" style="width: 640px; float: left; word-wrap:break-word">
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
+			<div class="zu-main-content-inner"
+				style="width: 640px; float: left; word-wrap: break-word;">
 				<span id="omissible">
 					<div class="HomeEntry" data-za-module="HomeEntry">
 						<div class="HomeEntry-avatar">
@@ -188,9 +186,8 @@
 									target="_blank" class="HomeEntry-answer js-HomeEntry-answer">
 										<i class="sprite-home-answer-off"></i> 回答
 								</a></li>
-								<li class="HomeEntry-item"><a
-									href="page/write.jsp" target="_blank"
-									class="HomeEntry-post js-HomeEntry-post"> <i
+								<li class="HomeEntry-item"><a href="page/write.jsp"
+									target="_blank" class="HomeEntry-post js-HomeEntry-post"> <i
 										class="sprite-home-post-off"></i> 写文章
 								</a></li>
 							</ul>
@@ -228,11 +225,12 @@
 							</span> <span id="seflmain">
 								<div class="row featurette">
 									<div class="col-md-7">
-										<h2 class="featurette-heading" style="font-size: 20px" >
+										<h2 class="featurette-heading" style="font-size: 20px">
 											<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].ttopic+'</span><br />'+data[i].etitle+'
 										</h2>
 										<h2 class="featurette-heading" style="font-size: 13px;">
-											<a href="javascript:void(0)"  rel="drevil">'+data[i].author+'</a> &nbsp;&nbsp;&nbsp; <span class="text-muted"
+											<a href="javascript:void(0)" rel="drevil">'+data[i].author+'</a>
+											&nbsp;&nbsp;&nbsp; <span class="text-muted"
 												style="font-size: 12px; font-weight: 300;">'+data[i].usign+'</span>
 										</h2>
 										<p class="lead" style="font-size: 14px;">'+data[i].econtent+'</p>
@@ -280,8 +278,7 @@
 											alt="">
 									</div>
 								</div>
-								<hr class="featurette-divider">
-					<!-- 开始  关注用户关注话题 -->
+								<hr class="featurette-divider"> <!-- 开始  关注用户关注话题 -->
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 18px;">
@@ -294,9 +291,7 @@
 											style="float: right; font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
 									</div>
 								</div>
-								<hr class="featurette-divider">
-					<!-- 结束 -->
-					<!-- 开始  关注用户发表文章  -->
+								<hr class="featurette-divider"> <!-- 结束 --> <!-- 开始  关注用户发表文章  -->
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 20px;">
@@ -349,9 +344,7 @@
 											alt="Generic placeholder image">
 									</div>
 								</div>
-								<hr class="featurette-divider">
-				 <!-- 结束 -->
-					<!-- 开始  关注用户提出问题  -->
+								<hr class="featurette-divider"> <!-- 结束 --> <!-- 开始  关注用户提出问题  -->
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 20px;">
@@ -403,12 +396,11 @@
 											alt="">
 									</div>
 								</div>
-								<hr class="featurette-divider">
-					<!-- 结束 -->
+								<hr class="featurette-divider"> <!-- 结束 -->
 							</span>
 							<nav>
 								<ul class="pager">
-									<li><a href="#">more</a></li>
+									<li><a href="javascript:void(0)" onclick="show(1)">more</a></li>
 								</ul>
 							</nav>
 						</div>
@@ -458,15 +450,66 @@
 				</div>
 			</div>
 		</div>
-		<div class="media"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:70px"> </a></div><div class="media-body"><h4 class="media-heading">jlvrpt</h4>undefined<span><a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid=1007&&tname=mgfxq" target="_blank">mgfxq</a><a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid=1008&&tname=imuzc" target="_blank">imuzc</a><a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid=1008&&tname=imuzc" target="_blank">imuzc</a><a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid=1010&&tname=vizxhm" target="_blank">vizxhm</a></span></div></div>
-
+		<div class="media">
+			<div class="media-left">
+				<a href="#"><img class="media-object" src="images/1.jpg"
+					alt="..." style="width: 70px"> </a>
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">jlvrpt</h4>
+				undefined<span><a class="HomeTopics-item zm-item-tag"
+					href="/zhihu/page/findtopic.jsp?tid=1007&&tname=mgfxq"
+					target="_blank">mgfxq</a><a class="HomeTopics-item zm-item-tag"
+					href="/zhihu/page/findtopic.jsp?tid=1008&&tname=imuzc"
+					target="_blank">imuzc</a><a class="HomeTopics-item zm-item-tag"
+					href="/zhihu/page/findtopic.jsp?tid=1008&&tname=imuzc"
+					target="_blank">imuzc</a><a class="HomeTopics-item zm-item-tag"
+					href="/zhihu/page/findtopic.jsp?tid=1010&&tname=vizxhm"
+					target="_blank">vizxhm</a></span>
+			</div>
+		</div>
 		<!-- /.blog-sidebar -->
 	</div>
+	<!-- 新建收藏夹 -->
+	<div class="modal fade" id="makeModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true" >
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">新建收藏夹</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="txt_departmentname">收藏夹名称</label> <input type="text"
+							name="fname" class="form-control" id="fname" placeholder="收藏夹名称">
+					</div>
+					<div class="form-group">
+						<label for="txt_statu">描述</label> <input type="text" name="finfo"
+							class="form-control" id="finfo" placeholder="收藏描述(可选)">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>取消
+					</button>
+					<button type="button" id="btn_submit" class="btn btn-primary"
+						data-dismiss="modal" onclick="yesfav(this)">
+						<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>确认创建
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+
 	<script src="js/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/tooltip.js"></script>
+	<script type="text/javascript" src="js/tooltip.js"></script>
 	<script type="text/javascript" src="js/popover.js"></script>
-	
+
 	<script
 		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
 		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>

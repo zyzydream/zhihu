@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.Favorite;
 import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
@@ -28,7 +29,7 @@ public interface UserService {
 
 	List<Explore> listrelatedQ(Object user);
 
-	List<Explore> listrelatedD(Users user);
+	List<Explore> listrelatedD(Users user, Explore explore);
 
 	List<Users> listOneUsers(Users users);
 
@@ -46,5 +47,9 @@ public interface UserService {
 	int attentionUser(Dynstate dynstate);
 
 	String yattention(Dynstate dynstate);
+
+	int delattentionUser(Dynstate dynstate);
+
+	int newFav(Favorite favorite);
 
 }
