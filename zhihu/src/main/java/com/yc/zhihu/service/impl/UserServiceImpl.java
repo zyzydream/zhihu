@@ -236,4 +236,9 @@ public class UserServiceImpl implements UserService{
 		//return userMapper.attentionUser(user);
 		return null;
 	}
+
+	@Override
+	public Users list(Users user) {
+		return userMapper.fUsers(user);
+	}
 }

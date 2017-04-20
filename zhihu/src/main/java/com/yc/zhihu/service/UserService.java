@@ -44,4 +44,6 @@ public interface UserService {
 
 	ShowUser attentionUser(Users user);
 
+	Users list(Users user);
+
 }

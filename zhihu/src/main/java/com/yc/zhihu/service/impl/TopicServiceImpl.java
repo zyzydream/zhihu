@@ -114,4 +114,9 @@ public class TopicServiceImpl implements TopicService{
 		}
 		return all;
 	}
+
+	@Override
+	public Topics listTopic(Topics topic) {
+		return topicsMapper.findTopic(topic);
+	}
 }

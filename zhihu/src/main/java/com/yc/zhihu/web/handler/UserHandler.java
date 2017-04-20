@@ -1,5 +1,7 @@
 package com.yc.zhihu.web.handler;
 
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -158,8 +160,10 @@ public class UserHandler {
 
 	//职业添加
 	@RequestMapping(value="profession" , method= RequestMethod.POST)
-	public String profession(Users users , HttpServletRequest request, HttpServletResponse response) {
+	public String profession(Users users , HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		System.out.println("users  ==>"+users);
+		String uprofession=new String(users.getUprofession().getBytes("iso-8859-1"),"utf-8");
+		users.setUprofession(uprofession);
 		usersService.listprofession(users);
 		return "redirect:/page/talk.jsp";
 	}
@@ -178,4 +182,17 @@ public class UserHandler {
 		System.out.println("attentionUser====>"+user.toString());
 		return usersService.attentionUser(user);
 	}
+	
+	
+	//关注用户
+	@RequestMapping(value="/listuser",method=RequestMethod.POST)
+	@ResponseBody
+	public List<Users> listuser(Users user,HttpServletRequest request){
+		user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		System.out.println(user);
+		List<Users> a = new ArrayList<Users>() ;
+		a.add(usersService.list(user));
+		return a;
+	}
+	
 }

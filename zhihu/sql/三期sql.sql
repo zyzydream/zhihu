@@ -45,7 +45,7 @@ delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324'
 delete dynstate where selfid='10001' and ids='10103' 
 select * from dynstate where selfid='10001' and ids='10103' 
 select * from users
- 10001 qwbccyjt   a         zvparnkripxijysiebqwvuflwtcthvlvs        测试员         zzz.jpg 18065182570@qq.com /zhihu/images/touxiang.jpg
+ 10135 efaeljxq   a         figagjkhcifkvdoksizovweegvqeaelwhmm      测试员         zzz.jpg 18011542696@qq.com /zhihu/images/touxiang.jpg
 select * from dynstate where selfid='10001' and kind='SW'
 select * from question where qautid='10001'
 select * from reply where reqid='12897'
@@ -405,12 +405,11 @@ drop sequence seq_reply
 drop table reply
 =======
 
-select r.* ,u.*
-from reply r ,users u
-where r.reqid='10198' and u.uids=r.remitid
+select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u.usign usign ,u.upic author
+		from reply r ,users u
+		where r.reqid='10116' and u.uids=r.remitid and rkind= 'Q'
 
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 drop table reply
 select * from reply
 create sequence seq_reply start with 10000;

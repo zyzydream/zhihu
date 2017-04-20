@@ -5,6 +5,9 @@
 <head>
 <base href="/zhihu/">
 <link rel="shortcut icon" href="images/logohead.png">
+<link rel="stylesheet" type="text/css"
+	href="easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
 <link type="text/css" rel="stylesheet" href="css/article.css">
 <meta charset="UTF-8">
 <title>显示文章</title>
@@ -78,18 +81,16 @@
 					</div>
 
 					<div class="PostIndex-footer">
-						<div class="PostIndex-topics TopicItem-wrapper">
-							<span class="TopicItem u-ellipsis PostIndex-topicItem">金融</span>
-							<span class="TopicItem u-ellipsis PostIndex-topicItem">创业</span>
-							<span class="TopicItem u-ellipsis PostIndex-topicItem">生活</span>
+						<div class="PostIndex-topics TopicItem-wrapper" id="Topics">
+							<!-- 文章话题 -->
 						</div>
 						<div class="PostIndex-reviewers"></div>
 
 						<div class="PostIndex-vote">
 							<button class="Button PostIndex-voteButton Button--green"
 								ria-label="赞" type="button">
-								<i class="icon icon-ic_column_like">
-									<img src="images/ok.png" style="height: 20px; width: 18px;">
+								<i class="icon icon-ic_column_like"> <img
+									src="images/ok.png" style="height: 20px; width: 18px;">
 								</i> 1041
 							</button>
 							<div class="PostIndex-voters">
@@ -103,8 +104,8 @@
 							<div class="Fav">
 								<button class="Button Button Button--plain FavButton"
 									type="button">
-									<i class="icon icon-ic_collect">
-										<img src="images/shou.png"style="height: 20px; width: 18px;">
+									<i class="icon icon-ic_collect"> <img src="images/shou.png"
+										style="height: 20px; width: 18px;">
 									</i> 收藏
 								</button>
 							</div>
@@ -113,8 +114,8 @@
 									<button
 										class="Button Button Button--plain MenuButton MenuButton-listen-hover Button Button--plain"
 										type="button">
-										<i class="icon icon-ic_column_share">
-											<img src="images/fen.png" style="height: 20px; width: 18px;">
+										<i class="icon icon-ic_column_share"> <img
+											src="images/fen.png" style="height: 20px; width: 18px;">
 										</i> 分享
 									</button>
 									<div class="Menu-dropdown"></div>
@@ -123,8 +124,8 @@
 							<div class="Report">
 								<button class="Button Button Button--plain ReportButton"
 									type="button">
-									<i class="icon icon-ic_column_report">
-										<img src="images/ju.png"  style="height: 20px; width: 18px;">
+									<i class="icon icon-ic_column_report"> <img
+										src="images/ju.png" style="height: 20px; width: 18px;">
 									</i> 举报
 								</button>
 							</div>
@@ -132,63 +133,37 @@
 					</div>
 
 
-					<!-- <div class="Contributes">
-						<div class="BlockTitle">
-							<span class="BlockTitle-title">文章被以下专栏收录</span> <span
-								class="BlockTitle-line"></span>
-						</div>
-						<ul class="Contributes-list">
-							<li style="opacity: 1; max-height: 300px;">
-								<div class="ContributesItem">
-									<a class="ContributesItem-avatar"
-										href="https://zhuanlan.zhihu.com/pulluq"> <img
-										class="Avatar" src="images/game.png">
-									</a>
-									<div class="ContributesItem-info">
-										<div class="ContributesItem-nameLine">
-											<a class="ContributesItem-name"
-												href="https://zhuanlan.zhihu.com/pulluq">新潮沉思录</a>
-										</div>
-										<p class="ContributesItem-intro u-ellipsis">这里是发布关于新潮沉思录的相关信息</p>
-									</div>
-									<a class="ContributesItem-entrance"
-										href="https://zhuanlan.zhihu.com/pulluq">进入专栏</a>
-								</div>
-							</li>
-						</ul>
-					</div> -->
-
 					<div class="PostComment">
-						<div class="BlockTitle PostComment-blockTitle">
-							<span class="BlockTitle-title">762 条评论</span> <span
-								class="BlockTitle-line"></span>
+						<div class="BlockTitle PostComment-blockTitle" id="AllReply">
+							<!-- <span class="BlockTitle-title">762 条评论</span> <span
+								class="BlockTitle-line"></span> -->
 						</div>
-						<div class="CommentEditor PostComment-mainEditor">
-							<img srcset="https://pic1.zhimg.com/da8e974dc_l.jpg 2x"
-								src="images/car.png" alt="周艳霞"
-								class="Avatar CommentEditor-avatar">
+						<div class="CommentEditor PostComment-mainEditor" id="myPic">
+							<!--本人信息 -->
 							<div class="CommentEditor-input">
-								<div
-									class="Input-wrapper Input-wrapper--spread Input-wrapper--large Input-wrapper--noPadding">
-									<div class="Input Editable">
-										<div style="min-height: 38px;" ccept="image/jpg,image/jpeg,image/png" class="RichText">
-											<div class="public-DraftEditorPlaceholder-root">
-												<input type="text" class="search-input" id="q" name="q"
-													autocomplete="off" value="" maxlength="1000"
-													placeholder="写下你的评论">
+								<form id="inputReply">
+									<div
+										class="Input-wrapper Input-wrapper--spread Input-wrapper--large Input-wrapper--noPadding">
+										<div class="Input Editable">
+											<div style="min-height: 38px;" class="RichText">
+												<div class="public-DraftEditorPlaceholder-root">
+													<input type="text" class="search-input" id="rcontent" name="rcontent"
+														autocomplete="off" value="" maxlength="1000"
+														placeholder="写下你的评论">
+												</div>
 											</div>
-
 										</div>
 									</div>
-								</div>
-								<div class="CommentEditor-actions">
-									<button type="button" class="Button Button--plain">取消</button>
-									<button type="button" disabled="" class="Button Button--blue">评论</button>
-								</div>
+									<div class="CommentEditor-actions" style="padding-left: 400px;">
+										<button type="button" class="Button Button--plain" onclick="document.getElementById('rcontent').val(null)">取消</button>
+										<button type="button" class="Button Button--blue"  onclick="addmyReply()">评论</button>
+									</div>
+								</form>
 							</div>
 							<div class="PostCommentList">
-								<div class="CommentItem">
-									<a target="_blank"
+								<div class="CommentItem" id="Replys"
+									style='width: 650px; word-wrap: break-word'>
+									<!-- <a target="_blank"
 										href="https://www.zhihu.com/people/gao-nan-87"
 										class="UserAvatar CommentItem-author"> <img
 										srcset="https://pic1.zhimg.com/da8e974dc_l.jpg 2x"
@@ -202,7 +177,7 @@
 											</span>
 										</div>
 									</div>
-									<div class="CommentItem-content">
+									<div class="CommentItem-content" >
 										高攀了的你会从别的地方弥补～结婚一定要势均力敌～不然就做好从其他方向弥补的准备～</div>
 									<div class="CommentItem-foot">
 										<span title="128 人觉得这个很赞" class="CommentItem-like"> 赞 </span>
@@ -232,7 +207,7 @@
 												</i>举报
 											</button>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
