@@ -166,8 +166,9 @@
 	</div>
 
 	<div class="zg-wrap zu-main clearfix " role="main">
+
 		<div class="zu-main-content">
-			<div class="zu-main-content-inner" style="width: 640px; float: left; word-wrap:break-word">
+		<div class="zu-main-content-inner" style="width: 640px; float: left; word-wrap:break-word">
 				<span id="omissible">
 					<div class="HomeEntry" data-za-module="HomeEntry">
 						<div class="HomeEntry-avatar">
