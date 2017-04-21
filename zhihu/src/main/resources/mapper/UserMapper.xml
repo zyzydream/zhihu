@@ -45,14 +45,14 @@
 		(select * from users u,
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
 		where u.uids=d.aimid)ud
-		where e.eautid=ud.uids AND 24*${num}>=to_number( to_date('2017-12-30','yyyy-mm-dd')-
+		where e.eautid=ud.uids AND 24*${num}>=to_number(sysdate-
 		to_date(e.etime,'yyyy-mm-dd'))*24
 	</select>
 
 	<select id="listExplore" parameterType="Users" resultType="Explore">
 		select * from explore,
 		(SELECT * from dynstate PARTITION(GH) WHERE selfid=#{uids})d
-		where tid=d.ids
+		where tid=d.ids and checks='y'
 	</select>
 
 	<!-- 查询关注用户24小时之内提的问题 -->
@@ -62,7 +62,7 @@
 		(select * from users u,
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
 		where u.uids=d.aimid)ud
-		where q.qautid=ud.uids AND 24*${num}>=to_number( to_date('2017-12-30','yyyy-mm-dd')-
+		where q.qautid=ud.uids AND 24*${num}>=to_number(sysdate-
 		to_date(q.qtime,'yyyy-mm-dd'))*24
 	</select>
 	<!-- 获得当前关注的所有对象24小时内的全部动态 -->

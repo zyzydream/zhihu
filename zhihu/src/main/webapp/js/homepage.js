@@ -1,4 +1,28 @@
 //document.getElementById("name").innerHTML="zy";
+$(function(){
+        $("[rel=drevil]").popover({
+            trigger:'manual',
+            placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+            title : '<div class="btn-group btn-group-justified" role="group" aria-label="..." ><div class="btn-group" role="group"><button type="button" class="btn btn-default" style="border-style: none;">Left</button></div><div class="btn-group" role="group"><button type="button" class="btn btn-default" style="border-style: none;">Middle</button></div><div class="btn-group" role="group"><button type="button" class="btn btn-default" style="border-style: none;">Right</button></div></div>', //this is the top title bar of the popover. add some basic css
+            html: 'true', //needed to show html of course
+            content : '<table style="width: 250px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td><td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td></tr><tr><td style="border-right-style: solid;">1</td><td style="border-right-style: solid;">2</td><td>3</td><td></td></tr></table>',
+            animation: false
+        }).on("mouseenter", function () {
+                    var _this = this;
+                    $(this).popover("show");
+                    console.log($("[rel=drevil]"));
+                    $(this).siblings(".popover").on("mouseleave", function () {
+                        $(_this).popover('hide');
+                    });
+                }).on("mouseleave", function () {
+                    var _this = this;
+                    setTimeout(function () {
+                        if (!$(".popover:hover").length) {
+                            $(_this).popover("hide")
+                        }
+                    }, 100);
+                });
+	});
 console.log($("#seflmain"));
 console.log(document.getElementById("seflmain"));
 var alllength=0;
@@ -76,7 +100,7 @@ function show(num){
 					dynstate+='<hr class="featurette-divider" style="margin-top:10px;">';
 				}else if(data[i].kind=="FW"){
 					dynstate+='<div class="row featurette" id="a'+i+'"><div class="col-md-7">';
-					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px">'+data[i].author+':发表文章：</span><br /><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
+					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px"><a id="'+i+'" name="showUsers">'+data[i].author+'</a>:发表文章：</span><br /><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
 					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
@@ -96,7 +120,7 @@ function show(num){
 					dynstate+='</div></div><hr class="featurette-divider">';
 				}else if(data[i].kind=="FQ"){
 					dynstate+='<div class="row featurette" id="a'+i+'"><div class="col-md-7">';
-					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;" onclick="showdeilt(\''+data[i].ids+'\')"><span class="text-muted" style="font-size: 15px">'+data[i].author+':提出问题：</span><br /><a href="page/question.jsp?qid='+data[i].ids+'">'+data[i].title+'</a></h2><span>'
+					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;" onclick="showdeilt(\''+data[i].ids+'\')"><span class="text-muted" style="font-size: 15px"><a id="'+i+'" name="showUsers">'+data[i].author+'</a>:提出问题：</span><br /><a href="page/question.jsp?qid='+data[i].ids+'">'+data[i].title+'</a></h2><span>'
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 					}else if(data[i].ycollent=='y'){
@@ -115,7 +139,7 @@ function show(num){
 					dynstate+='<hr class="featurette-divider">';
 				}else if(data[i].kind=="GH"){
 					dynstate+='<div class="row featurette"><div class="col-md-7">';
-					dynstate+='<h2 class="featurette-heading" style="font-size: 18px;"><span class="text-muted" style="font-size: 15px">'+data[i].author+':关注话题：</span><br /><img alt="" src="images/game.png" width="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].tname+'</h2></div>';
+					dynstate+='<h2 class="featurette-heading" style="font-size: 18px;"><span class="text-muted" style="font-size: 15px"><a id="'+i+'" name="showUsers">'+data[i].author+'</a>:关注话题：</span><br /><img alt="" src="images/game.png" width="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].tname+'</h2></div>';
 					dynstate+='<div class="col-md-5" ><label style="float: right;font-size: 15px; font-weight: lighter;">'+data[i].times+'</label>';
 					dynstate+='</div></div><hr class="featurette-divider">';
 				}

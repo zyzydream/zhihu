@@ -90,7 +90,7 @@
 					<li class="zu-top-nav-li " id="zh-top-nav-explore"><a
 						class="zu-top-nav-link" href="/zhihu/page/explore.jsp">发现</a></li>
 
-					<li class="top-nav-noti zu-top-nav-li "><a
+					<li class="top-nav-noti zu-top-nav-li " href="#" rel="drevil" id="example"><a
 						class="zu-top-nav-link" href="javascript:void(0)"
 						id="zh-top-nav-count-wrap" role="button"><span
 							class="mobi-arrow"></span>消息</a></li>
@@ -506,7 +506,7 @@
 
 	<script src="js/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/tooltip.js"></script>
+	<!-- <script type="text/javascript" src="js/tooltip.js"></script> -->
 	<script type="text/javascript" src="js/popover.js"></script>
 
 	<script

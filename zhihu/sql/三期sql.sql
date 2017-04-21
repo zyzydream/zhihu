@@ -11,6 +11,11 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+select * from explore
+
+select * from explore,
+		(SELECT * from dynstate PARTITION(GH) WHERE selfid='10001')d
+		where tid=d.ids and checks='y'
 
 <<<<<<< HEAD
 select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from
