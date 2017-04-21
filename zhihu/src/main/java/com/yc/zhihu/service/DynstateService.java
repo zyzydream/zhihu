@@ -42,6 +42,7 @@ public interface DynstateService {
 	List<ListAllMy> listtopic(Object obj);
 	
 	boolean updatetoppics(Object object);
+	boolean updateupic(Object obj);
 	
 	List<Users> showtop(Object obj);
 	
@@ -53,7 +54,7 @@ public interface DynstateService {
 
 	int collect(Dynstate dynstate);
 	
-
+	Users listupic(Object obj);
 	
 	Total myatteninfo(String obj);
 

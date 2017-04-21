@@ -215,4 +215,14 @@ public class DynstateServiceImpl implements DynstateService {
 	public List<Users> allattenme(Object obj) {
 		return dynstateMapper.attenme(obj);
 	}
+	
+	@Override
+	public boolean updateupic(Object obj) {
+		return dynstateMapper.updateupic(obj);
+	}
+	
+	@Override
+	public Users listupic(Object obj) {
+		return dynstateMapper.listupic(obj);
+	}
 }

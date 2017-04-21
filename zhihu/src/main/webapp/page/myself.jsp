@@ -32,8 +32,9 @@
 			<a href="/zhihu/page/homepage.jsp" aria-label="知乎">知乎</a>
 			<nav class="AppHeader-nav" role="navigation"> <a
 				class="AppHeader-navItem" href="/zhihu/page/homepage.jsp">首页</a> <a
-				class="AppHeader-navItem" href="/explore" href="/zhihu/page/explore.jsp">发现</a> <a
-				class="AppHeader-navItem" href="/topic">话题</a> </nav>
+				class="AppHeader-navItem" href="/explore"
+				href="/zhihu/page/explore.jsp">发现</a> <a class="AppHeader-navItem"
+				href="/topic">话题</a> </nav>
 			<div class="SearchBar" role="search">
 				<div class="SearchBar-toolWrapper">
 					<form class="SearchBar-tool">
@@ -101,11 +102,15 @@
 								<div class="UserCoverGuide-inner">
 
 									<div class="UserCoverGuide-buttonContainer">
-										<form enctype="multipart/form-data" target="uploadFrame" action="dynstate/upload" method="post" name="myform" id="uploads">
+										<form enctype="multipart/form-data" target="uploadFrame"
+											action="dynstate/upload" method="post" name="myform"
+											id="uploads">
 											<input class="Button DynamicColorButton" type="file"
-												id="changgeimage" name="picData" onchange='previewMultipleImage()'							 />
+												id="changgeimage" name="picData"
+												onchange='previewMultipleImage()' />
 										</form>
-										<iframe name="uploadFrame" id="uploadFrame" style="display:none;"></iframe>
+										<iframe name="uploadFrame" id="uploadFrame"
+											style="display: none;"></iframe>
 										<!-- onclick="updatePic()" -->
 									</div>
 								</div>
@@ -117,16 +122,27 @@
 					</div>
 					<div class="ProfileHeader-wrapper">
 						<div class="ProfileHeader-main">
-							<div class="UserAvatarEditor ProfileHeader-avatar"
+							<div class="UserAvatarEditor ProfileHeader-avatar" id="userava"
 								style="top: -74px;">
-								<div class="UserAvatar">
-									<div id="hhh"></div>
-									<img class="Avatar Avatar--large UserAvatar-inner"
-										src="/zhihu/images/touxiang.jpg"
-										style="width: 160px; height: 160px;">
-								</div>
-								<input type="file" accept="image/png,image/jpeg"
-									style="display: none;">
+								<!-- <form enctype="multipart/form-data" target="uploadFrame"
+									action="dynstate/upload2" method="post" name="form"
+									id="uploadupic">
+									<div class="UserAvatar">
+										<div id="hhh">
+										<img id="img_icon"
+											class="Avatar Avatar--large UserAvatar-inner"
+											src="/zhihu/images/touxiang.jpg"
+											style="width: 160px; height: 160px;"
+											onclick="updateimg(this)">
+										</div>
+										
+									</div>
+									<input id="img_icon_file" type="file"
+										accept="image/png,image/jpeg" style="display: none;"
+										onchange="previewMultipleImage_icon()" name="picData"/>
+								</form>
+								<iframe name="uploadFrame2" id="uploadFrame2"
+											style="display: none;"></iframe> -->
 							</div>
 							<div class="ProfileHeader-content">
 								<div class="ProfileHeader-contentHead">
@@ -138,7 +154,8 @@
 								<span class="ProfileHeader-tips">暂无个人资料</span>
 								<div class="ProfileHeader-contentFooter">
 									<div class="ProfileButtonGroup ProfileHeader-buttons">
-										<a class="Button Button--blue" type="button" href="/zhihu/page/ediuorinfo.jsp">编辑个人资料</a>
+										<a class="Button Button--blue" type="button"
+											href="/zhihu/page/design.jsp">编辑个人资料</a>
 									</div>
 								</div>
 							</div>
@@ -149,15 +166,14 @@
 
 			<div id="zhuyezhuti">
 				<div class="panel panel-default"
-					style="width: 660px; margin-left: 15px;word-wrap:break-word;">
+					style="width: 660px; margin-left: 15px; word-wrap: break-word;">
 					<div class="panel-body">
 						<span id="myself"> <span id="myself1"> </span> <span
 							id="myself2">
 								<div class="dropdown">
 									<a id="dLabel" data-target="#" href="http://example.com"
 										data-toggle="dropdown" aria-haspopup="true" role="button"
-										aria-expanded="false"> 我关注的专栏 <span
-										class="caret"></span>
+										aria-expanded="false"> 我关注的专栏 <span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 										<li><a>我关注的专栏</a></li>

@@ -1,14 +1,14 @@
 function myansrer33(){
+	
+	
 	$.get("dynstate/showtoppic",function(data){
 		var a="";
 		if(data.length>0){
 			for(var i=0;i<data.length;i++){
-				a+='<img class="Avatar Avatar--large UserAvatar-inner"'
-					'src="'+data[i].upic+'"'
-					'style="width: 160px; height: 160px;">';
+				a+="<img src='"+data[i].toppic+"' height='132px' width='966px' />";
 			}
 		}
-		document.getElementById("hhh").innerHTML = a;
+		document.getElementById("showImage_gr").innerHTML = a;
 	},'json');
 
 	$.get("dynstate/a1",function(data){
@@ -34,6 +34,30 @@ function myansrer33(){
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
 }
+
+$.get("dynstate/upic",function(data){
+	alert(data);
+	var upic='';
+		upic+='<form enctype="multipart/form-data" target="uploadFrame"'
+			+'action="dynstate/upload2" method="post" name="form"'
+			+'	id="uploadupic">'
+			+'	<div class="UserAvatar">'
+			+'		<div id="hhh">'
+			+'		<img id="img_icon"'
+			+'			class="Avatar Avatar--large UserAvatar-inner"'
+			+'			src="'+data.upic+'"'
+			+'			style="width: 160px; height: 160px;"'
+			+'			onclick="updateimg(this)"> </div>'
+			+'	</div>'
+			+'	<input id="img_icon_file" type="file"'
+			+'		accept="image/png,image/jpeg" style="display: none;"'
+			+'		onchange="previewMultipleImage_icon()" name="picData"/>'
+			+'</form>'
+			+'<iframe name="uploadFrame2" id="uploadFrame2"'
+			+'			style="display: none;"></iframe>';
+	
+	document.getElementById("userava").innerHTML = upic;
+},'json');
 
 $.get("dynstate/m1",function(data){
 	alert(data);
@@ -179,6 +203,7 @@ function Myanswer3(){
 
 function addfav(){
 	$.get("dynstate/m7",function(data){
+		alert(data);
 		var info="";
 		if(data.length>0){
 			for(var i=0;i<data.length;i++){
@@ -208,11 +233,11 @@ function createfav(){
 	$('#myModal2').modal();
 }
 
-function yesfav(){
+/*function yesfav(){
 	$.post("dynstate/createf",function(data){
 		alert(1);
 	})
-}
+}*/
 
 function My(){
 	$.get("dynstate/a1",function(data){
@@ -612,20 +637,20 @@ function previewMultipleImage() {
 
 function previewMultipleImage_icon() {	
 	var reader = new FileReader();
-	var file = document.getElementById("changgeimage").files[0]
+	var file = document.getElementById("img_icon_file").files[0]
 	reader.readAsDataURL(file);
 	reader.onload = function(evt) {
-		$('#showImage_gr').html("<img src='"+evt.target.result+"' height='132px' width='966px' />");
+		$('#hhh').html("<img id='img_icon' class='Avatar Avatar--large UserAvatar-inner' src='"+evt.target.result+"' style='width: 160px; height: 160px;' onclick='updateimg(this)'/>");
 	};	
 	
-	document.myform.submit();
+	document.form.submit();
 }
 
 
 function updateimg(obj){
 	//var img=$(obj).attr("src");
-	alert($("img_icon_file").onclick)
-	$("img_icon_file").onclick;
+	document.getElementById("img_icon_file").click();
+	
 }
 
 

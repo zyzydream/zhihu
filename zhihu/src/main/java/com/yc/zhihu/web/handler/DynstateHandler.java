@@ -94,6 +94,14 @@ public class DynstateHandler {
 		return all;
 	}
 	
+	@RequestMapping(value="/upic",method=RequestMethod.GET)
+	@ResponseBody
+	public Users Dynstatelistupic(HttpServletRequest request){
+		System.out.println("upic进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
+		return dynstateService.listupic(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
+	
 	@RequestMapping(value="/m3",method=RequestMethod.GET)
 	@ResponseBody
 	public List<ListAllMy> Dynstatehuida3(HttpServletRequest request){
@@ -181,7 +189,7 @@ public class DynstateHandler {
 			try {
 				UploadFileUtil uf=new UploadFileUtil();
 				uploadFile=uf.uploadFile(request, picData, null);
-				user.setToppic(uploadFile.getNewFilePath());
+				user.setToppic(uploadFile.getNewFileUrl());
 				System.out.println(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
 				user.setUids(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
 			} catch (Exception e) {;
@@ -190,6 +198,25 @@ public class DynstateHandler {
 		}
 		System.out.println("users==>"+user);
 		return  dynstateService.updatetoppics(user); //异步响应数据	
+	}
+	
+	@RequestMapping(value="upload2")
+	@ResponseBody
+	public boolean modify2(@RequestParam("picData") MultipartFile picData,Users user,HttpServletRequest request){
+		if(picData!= null && !picData.isEmpty()){ //判断是否有文件上传
+			UploadFile uploadFile=null;
+			try {
+				UploadFileUtil uf=new UploadFileUtil();
+				uploadFile=uf.uploadFile(request, picData, null);
+				user.setUpic(uploadFile.getNewFileUrl());
+				System.out.println("upload2  user==>"+request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+				user.setUids(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+			} catch (Exception e) {;
+				e.printStackTrace();
+			}
+		}
+		System.out.println("users==>"+user);
+		return  dynstateService.updateupic(user); //异步响应数据	
 	}
 	
 	@RequestMapping(value="/praise",method=RequestMethod.GET)
