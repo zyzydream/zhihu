@@ -156,7 +156,7 @@ $.get("user/topics",function(data){
 //	alert("请求的话题："+JSON.stringify(data));
 	var topics="";
 	for(var i=0;i<data.length;i++){
-		topics+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].ttopic+'" target="_blank">'+data[i].ttopic+'</a>';
+		topics+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+encodeURIComponent(data[i].ttopic)+'" target="_blank">'+data[i].ttopic+'</a>';
 	}
 	document.getElementById("title").innerHTML =topics;
 },"json");
@@ -224,6 +224,7 @@ function test(){
 	var contents="";
 	for(var i=0;i<length;i++){
 		var uname=document.getElementsByName("showUsers")[i].innerHTML;
+		alert(uname);
 		$.get("user/showUser?uname="+uname+"&&num="+i,function(data){
 			titles+=''+data.num+'====<div class="media" style="400px;"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:60px"> </a></div><div class="media-body"><h4 class="media-heading">'+data.uname+'</h4>'+data.nsign+'<span>';
 			contents+=''+data.num+'====<table style="width: 230px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td>';

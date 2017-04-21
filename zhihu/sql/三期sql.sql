@@ -118,6 +118,28 @@ select
 		r,users u where remitid='10001'
 		and uids=remitid
 
+		
+		select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,rd.tid
+	tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname
+	author,rd.rtime times,'n' checks from QUESTION q,
+	(select * from topics t,
+	(select * from users u,
+	(select * from reply,
+	(select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids
+	order by count(ids)DESC)
+	where counts>=0 and id=rid and rkind='Q' )r
+	where u.uids=r.remitid)r
+	where t.tid=r.rtid)rd
+	where q.qid=rd.reqid
+	
+	select e.eid ids,'W' kind,e.etitle title,e.econtent content,e.etid tid,t.ttopic tname,e.usign usign,e.uids uids,e.uname author,e.etime times,'n' checks  from topics t,
+	     (select * from users u,
+	       (select * from essay,
+           	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
+	        where counts>=0 and id=eid )e
+	      where u.uids=e.eautid)e
+	    where t.tid=e.etid
+select * from topics
 
 select s.scname tname,u.uname uname,t.times times,'S' kind,u.upic tpic   from scolumn s,   
 (select times from dynstate PARTITION(GZ) where   selfid='')t,   Users u,   
@@ -331,6 +353,22 @@ insert into scolumn(scid,sccreid,scname,sctime)
 values('101','1002','我的专栏','2017-4-9');
 insert into scolumn(scid,sccreid,scname,sctime)
 values('102','1003','专栏哈哈','2017-4-9');
+
+ select e.eid ids,'W' kind,e.etitle title,e.econtent content,e.etid tid,t.ttopic tname,e.usign usign,e.uids uids,e.uname author,e.etime times,'n' checks  from topics t,
+	     (select * from users u,
+	       (select * from essay,
+           	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
+	        where counts>=0 and id=eid )e
+	      where u.uids=e.eautid)e
+	    where t.tid=e.etid
+
+select tre.rid ids, q.qtitle title,tre.rcontent content,tre.rtid tid,tre.ttopic tname,tre.uids uids,tre.usign usign ,tre.uname author,tre.rtime times,'Q' kind from QUESTION q,
+(SELECT * FROM Topics t, 
+(SELECT * FROM USERS u, 
+(SELECT r.* FROM reply r WHERE r.rtid='1000')r 
+WHERE u.uids=r.remitid)ue
+WHERE ue.rtid=t.tid)tre 
+where tre.reqid=q.qid 
 
 /*收藏夹表*/
 CREATE TABLE favorite(
@@ -598,6 +636,7 @@ select count(eid),b.aimid from essay e
 right join (select aimid from dynstate where selfid='10197' order by aimid) b
 on e.eautid=b.aimid group by b.aimid
 
+select * from essay
 
 
 --右连接 查询我关注的人有多少个人关注
@@ -793,12 +832,31 @@ select ''||ceil(dbms_random.value(10000,11000)),
 '' from dual connect by level <= 4000;
 --点赞文章
 insert into dynstate
-select ''||ceil(dbms_random.value(10000,11000)),
+select ''||ceil(dbms_random.value(10000,10002)),
 '',
 'DW',
-''||ceil(dbms_random.value(10000,13000)),
-'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
-'' from dual connect by level <= 9000;
+''||ceil(dbms_random.value(10000,10015)),
+to_char(sysdate,'yyyy-mm-dd'),
+'' from dual connect by level <=;
+
+insert into dynstate
+select '10000',
+'',
+'DW',
+'10013',
+'2017-04-21',
+'' from dual ;
+select * from dynstate where kind='DW' and selfid='10001'
+delete from dynstate where kind='DH'
+--点赞文章
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,10002)),
+'',
+'DW',
+''||ceil(dbms_random.value(10000,10015)),
+to_char(sysdate,'yyyy-mm-dd'),
+'' from dual connect by level <=
+
 --点赞问题
 insert into dynstate
 select ''||ceil(dbms_random.value(10000,11000)),
