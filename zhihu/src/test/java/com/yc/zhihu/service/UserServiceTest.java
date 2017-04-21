@@ -41,14 +41,14 @@ public class UserServiceTest {
 	}
 	
 
-	@Test
-	public void testListrelatedD(){
-		Users user=new Users();
-		user.setUids("1002");
-		List<Explore> dy=userService.listrelatedD(user);
-		System.out.println(dy);
-		assertNotNull(dy);
-	}
+//	@Test
+//	public void testListrelatedD(){
+//		Users user=new Users();
+//		user.setUids("1002");
+//		List<Explore> dy=userService.listrelatedD(user);
+//		System.out.println(dy);
+//		assertNotNull(dy);
+//	}
 	
 	@Test
 	public void testListprofession(){
@@ -58,9 +58,9 @@ public class UserServiceTest {
 //		boolean a = userService.listprofession(user);
 //		System.out.println(a);
 //		assertNotNull(a);
-		List<Explore> e=userService.listrelatedD(null);
-		System.out.println(e);
-		assertNotNull(e);
+//		List<Explore> e=userService.listrelatedD(null);
+//		System.out.println(e);
+//		assertNotNull(e);
 	}
 
 	

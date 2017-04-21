@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Reply;
 import com.yc.zhihu.entity.ShowUser;
@@ -26,6 +27,8 @@ public class ReplyHandler {
 
 	@Autowired
 	private ReplyService replyService;
+	@Autowired
+	private UserService usersService;
 	
 	@Autowired
 	private UserService userService;
@@ -37,17 +40,24 @@ public class ReplyHandler {
 		reply.setReqid(reqid);
 		request.getSession().setAttribute(ServletUtil.LOGIN_REQID, reply);
 		//System.out.println("进来了 reply==》" + reply);
-		return replyService.list(reply);
+		List<Explore> replys=replyService.list(reply);
+		for(int i=0;i<replys.size();i++){
+			
+		}
+		return usersService.yPraiseAndCollect(replys, request);
 	}
 	
 	
 	@RequestMapping(value="user" , method=RequestMethod.POST)
 	@ResponseBody
-	public List<ShowUser> user(Users user ,HttpServletRequest request){
+	public ShowUser user(Users user ,HttpServletRequest request){
 		System.out.println("进来了 user==》" + user);
-		List<ShowUser> a = new ArrayList<ShowUser>();
-		a.add(userService.showUser(user));
-		return a;
+		ShowUser users=userService.showUser(user);
+		Dynstate dynstate=new Dynstate();
+		dynstate.setAimid(users.getUids());
+		dynstate.setSelfid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		users.setAttention(usersService.yattention(dynstate));
+		return users;
 	}
 	
 	@RequestMapping(value="my" , method=RequestMethod.POST)

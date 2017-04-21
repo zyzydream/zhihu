@@ -1,20 +1,48 @@
 //document.getElementById("name").innerHTML="zy";
+$(function(){
+        $("[rel=drevil]").popover({
+            trigger:'manual',
+            placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+            title : '<div class="btn-group btn-group-justified" role="group" aria-label="..." ><div class="btn-group" role="group"><button type="button" class="btn btn-default" style="border-style: none;">Left</button></div><div class="btn-group" role="group"><button type="button" class="btn btn-default" style="border-style: none;">Middle</button></div><div class="btn-group" role="group"><button type="button" class="btn btn-default" style="border-style: none;">Right</button></div></div>', //this is the top title bar of the popover. add some basic css
+            html: 'true', //needed to show html of course
+            content : '<table style="width: 250px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td><td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td></tr><tr><td style="border-right-style: solid;">1</td><td style="border-right-style: solid;">2</td><td>3</td><td></td></tr></table>',
+            animation: false
+        }).on("mouseenter", function () {
+                    var _this = this;
+                    $(this).popover("show");
+                    console.log($("[rel=drevil]"));
+                    $(this).siblings(".popover").on("mouseleave", function () {
+                        $(_this).popover('hide');
+                    });
+                }).on("mouseleave", function () {
+                    var _this = this;
+                    setTimeout(function () {
+                        if (!$(".popover:hover").length) {
+                            $(_this).popover("hide")
+                        }
+                    }, 100);
+                });
+	});
 console.log($("#seflmain"));
 console.log(document.getElementById("seflmain"));
 var alllength=0;
-var ageday=1;
-show();
+var favorite=null;
+var aaaa="";
+var dynstate="";
+var times=1;
+show(0);
 
 
 //请求最新动态
-function show(){
+function show(num){
 	$.get("favorite/all",function(date){
-		var favorite=date;
-		$.get("user/dynstate",function(data){
-			var dynstate="";			
+		favorite=date;
+		times+=num;
+		$.get("user/dynstate?times="+times,function(data){
+			dynstate="";			
 			alllength=data.length;
 			for(var i=0;i<data.length;i++){
-				var aaaa="";
+				aaaa="";
 				aaaa+='<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">';
 				//alert(JSON.stringify(favorite));
 				for(var j=0;j<favorite.length;j++){
@@ -22,10 +50,10 @@ function show(){
 					aaaa+='<li role="presentation"><a role="menuitem" tabindex="-1" onclick="collect(\''+data[i].ids+'\',\''+data[i].kind+'\',\''+favorite[j].fid+'\')">'+favorite[j].fname+'</a></li>';
 				}
 				aaaa+='<li role="presentation" class="divider"></li>';
-				aaaa+='<li role="presentation"><a><span class="glyphicon glyphicon-plus"  aria-hidden="true"></span>新建收藏夹</a></li>';
+				aaaa+='<li role="presentation"><a class="btn btn-default" role="button" data-toggle="modal" data-target="#makeModal"><span class="glyphicon glyphicon-plus"  aria-hidden="true"></span>新建收藏夹</a></li>';
 				aaaa+='</ul>';
 				if(data[i].kind=="W"){
-					dynstate+='<div class="row featurette"><div class="col-md-7">';
+					dynstate+='<div class="row featurette" id="a'+i+'"><div class="col-md-7">';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 20px;">';
 					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：<a href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].tname+'">'+data[i].tname+'</a></span><br/><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;"><a href="javascript:void(0)" id="'+i+'" name="showUsers" >'+data[i].author+'</a> &nbsp;&nbsp;&nbsp;';
@@ -48,7 +76,7 @@ function show(){
 					dynstate+='tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto" alt=""></div></div>';
 					dynstate+='<hr class="featurette-divider" style="margin-top:10px;">';
 				}else if(data[i].kind=="Q"){
-					dynstate+='<div class="row featurette"><div class="col-md-7">';
+					dynstate+='<div class="row featurette" id="a'+i+'"><div class="col-md-7">';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 20px;">';
 					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：<a href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].tname+'">'+data[i].tname+'</a></span><br/><a href="javascript:void(0)">'+data[i].title+'</a></h2>';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;"><a href="javascript:void(0)" id="'+i+'" name="showUsers" >'+data[i].author+'</a> &nbsp;&nbsp;&nbsp;';
@@ -71,8 +99,8 @@ function show(){
 					dynstate+='tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto" alt=""></div></div>';
 					dynstate+='<hr class="featurette-divider" style="margin-top:10px;">';
 				}else if(data[i].kind=="FW"){
-					dynstate+='<div class="row featurette"><div class="col-md-7">';
-					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px">'+data[i].author+':发表文章：</span><br /><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
+					dynstate+='<div class="row featurette" id="a'+i+'"><div class="col-md-7">';
+					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px"><a id="'+i+'" name="showUsers">'+data[i].author+'</a>:发表文章：</span><br /><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
 					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
@@ -91,8 +119,8 @@ function show(){
 					dynstate+='<img class="featurette-image img-responsive center-block" src="" data-src="holder.js/500x500/auto" tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto"alt="">';
 					dynstate+='</div></div><hr class="featurette-divider">';
 				}else if(data[i].kind=="FQ"){
-					dynstate+='<div class="row featurette"><div class="col-md-7">';
-					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;" onclick="showdeilt(\''+data[i].ids+'\')"><span class="text-muted" style="font-size: 15px">'+data[i].author+':提出问题：</span><br /><a href="javascript:void(0)">'+data[i].title+'</a></h2><span>'
+					dynstate+='<div class="row featurette" id="a'+i+'"><div class="col-md-7">';
+					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;" onclick="showdeilt(\''+data[i].ids+'\')"><span class="text-muted" style="font-size: 15px"><a id="'+i+'" name="showUsers">'+data[i].author+'</a>:提出问题：</span><br /><a href="page/question.jsp?qid='+data[i].ids+'">'+data[i].title+'</a></h2><span>'
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 					}else if(data[i].ycollent=='y'){
@@ -111,14 +139,13 @@ function show(){
 					dynstate+='<hr class="featurette-divider">';
 				}else if(data[i].kind=="GH"){
 					dynstate+='<div class="row featurette"><div class="col-md-7">';
-					dynstate+='<h2 class="featurette-heading" style="font-size: 18px;"><span class="text-muted" style="font-size: 15px">'+data[i].author+':关注话题：</span><br /><img alt="" src="images/game.png" width="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].tname+'</h2></div>';
+					dynstate+='<h2 class="featurette-heading" style="font-size: 18px;"><span class="text-muted" style="font-size: 15px"><a id="'+i+'" name="showUsers">'+data[i].author+'</a>:关注话题：</span><br /><img alt="" src="images/game.png" width="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].tname+'</h2></div>';
 					dynstate+='<div class="col-md-5" ><label style="float: right;font-size: 15px; font-weight: lighter;">'+data[i].times+'</label>';
 					dynstate+='</div></div><hr class="featurette-divider">';
 				}
 			}
 			document.getElementById("seflmain").innerHTML = dynstate;
 			test();
-
 		},"json");
 	}
 	,"json");
@@ -146,7 +173,7 @@ function praise(ids,kind){
 	$.get("dynstate/praise?ids="+ids+"&&kind="+kind,function(data){
 		if(data>0){
 			//alert("点赞成功");
-			show();
+			show(0);
 		}else{
 			alert("点赞失败");
 		}
@@ -160,7 +187,7 @@ function collect(ids,kind,fcid){
 	$.get("dynstate/collect?ids="+ids+"&&kind="+kind+"&&cfid="+fcid,function(data){
 		if(data>0){
 			alert("收藏成功");
-			show();
+			show(0);
 		}else{
 			alert("收藏失败");
 		}
@@ -173,7 +200,7 @@ function delpraise(ids,kind){
 	$.get("dynstate/delpraise?ids="+ids+"&&kind="+kind,function(data){
 		if(data>0){
 			//alert("点赞成功");
-			show();
+			show(0);
 		}else{
 			alert("取消失败");
 		}
@@ -184,7 +211,7 @@ function delcollect(ids,kind){
 	$.get("dynstate/delcollect?ids="+ids+"&&kind="+kind,function(data){
 		if(data>0){
 			//alert("点赞成功");
-			show();
+			show(0);
 		}else{
 			alert("取消失败");
 		}
@@ -201,161 +228,220 @@ function test(){
 			titles+=''+data.num+'====<div class="media" style="400px;"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:60px"> </a></div><div class="media-body"><h4 class="media-heading">'+data.uname+'</h4>'+data.nsign+'<span>';
 			contents+=''+data.num+'====<table style="width: 230px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td>';
 			if(data.attention=='y'){
-				contents+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消</button></td>';
+				contents+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="delattentionUser(\''+data.uids+'\',\''+data.uname+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消</button></td>';
 			}else if(data.attention=='n'){
-				contents+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="attentionUser(\''+data.uids+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td>';
+				contents+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="attentionUser(\''+data.uids+'\',\''+data.uname+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td>';
 			}
 			contents+='</tr><tr><td style="border-right-style: solid;">'+data.counte+'</td><td style="border-right-style: solid;">'+data.countr+'</td><td>'+data.counts+'</td><td></td></tr></table>';
 			contents+='@@@'
-			for(var j=0;j<data.t.length;j++){
-				titles+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data.t[j].tid+'&&tname='+data.t[j].ttopic+'" target="_blank">'+data.t[j].ttopic+'</a>';
-			}
+				for(var j=0;j<data.t.length;j++){
+					titles+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data.t[j].tid+'&&tname='+data.t[j].ttopic+'" target="_blank">'+data.t[j].ttopic+'</a>';
+				}
 			titles+='</span></div></div>@@@';
 		},"json");
 	}
 	var id=window.setInterval(function(){
-    	if(titles.length>100){
-    		//console.log(titles);
-    		window.clearInterval(id);
-    		var strs=titles.split("@@@");
-    		//console.log(contents);
-    		var strss=contents.split("@@@");
-    		//console.log(strs.length);
-    		for(var t=0;t<strs.length-1;t++){
-    			var i=strs[t].split("====")[0];
-    			var title=strs[t].split("====")[1];
-    			var p=strss[t].split("====")[0];
-    			var content=strss[t].split("====")[1];
-    			document.getElementsByName("showUsers")[i].setAttribute("title",title);
-    			document.getElementsByName("showUsers")[p].setAttribute("data-content",content);
-    		}
-    		console.log(length);
-    		for(var a=0;a<alllength;a++){
-    			//console.log($("#"+a+""));
-    			$("#"+a+"").popover({
-        			trigger:'manual',
-        			placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
-        			html: 'true', //needed to show html of course
-        			animation: false
-        		}).on("mouseenter", function () {
-        			var _this = this;
-        			$(this).popover("show");
-        			$(this).siblings(".popover").on("mouseleave", function () {
-        				$(_this).popover('hide');
-        			});
-        		}).on("mouseleave", function () {
-        			var _this = this;
-        			setTimeout(function () {
-        				if (!$(".popover:hover").length) {
-        					$(_this).popover("hide")
-        				}
-        			}, 100);
-        		});
-    		}
-    	}
-    }, 1000);
+		if(titles.length>100){
+			//console.log(titles);
+			window.clearInterval(id);
+			var strs=titles.split("@@@");
+			//console.log(contents);
+			var strss=contents.split("@@@");
+			//console.log(strs.length);
+			for(var t=0;t<strs.length-1;t++){
+				var i=strs[t].split("====")[0];
+				var title=strs[t].split("====")[1];
+				var p=strss[t].split("====")[0];
+				var content=strss[t].split("====")[1];
+				document.getElementsByName("showUsers")[i].setAttribute("title",title);
+				document.getElementsByName("showUsers")[p].setAttribute("data-content",content);
+			}
+			console.log(length);
+			console.log(alllength);
+			for(var a=0;a<alllength;a++){
+				console.log($("#"+a+""));
+				$("#"+a+"").popover({
+					trigger:'manual',
+					placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+					html: 'true', //needed to show html of course
+					animation: false
+				}).on("mouseenter", function () {
+					var _this = this;
+					$(this).popover("show");
+					$(this).siblings(".popover").on("mouseleave", function () {
+						$(_this).popover('hide');
+					});
+				}).on("mouseleave", function () {
+					var _this = this;
+					setTimeout(function () {
+						if (!$(".popover:hover").length) {
+							$(_this).popover("hide")
+						}
+					}, 100);
+				});
+			}
+		}
+	}, 1000);
 }
 
-function attentionUser(uids,num){
+function attentionUser(uids,uname,num){
 	//alert(uids);
-	$.get("user/attentionUser?uids="+uids+"&&num="+num,function(data){
-		alert(data);
+	$.get("user/attentionUser?uids="+uids+"&&uname="+uname+"&&num="+num,function(data){
+		//alert(data);
 		if(data!=null){
 			var change="";
 			change+='<table style="width: 230px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td>';
 			if(data.attention=='y'){
-				change+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消</button></td>';
+				alert("成功");
+				change+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="delattentionUser(\''+data.uids+'\',\''+data.uname+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消</button></td>';
 			}else if(data.attention=='n'){
-				change+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="attentionUser(\''+data.uids+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td>';
-			    alert("关注失败");
+				change+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="attentionUser(\''+data.uids+'\',\''+data.uname+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td>';
+				alert("关注失败");
 			}
 			change+='</tr><tr><td style="border-right-style: solid;">'+data.counte+'</td><td style="border-right-style: solid;">'+data.countr+'</td><td>'+data.counts+'</td><td></td></tr></table>';
-			document.getElementsByName("showUsers")[data.num].setAttribute("data-content",content);
+			document.getElementsByName("showUsers")[data.num].setAttribute("data-content",change);
 			for(var a=0;a<alllength;a++){
-    			$("#"+a+"").popover({
-        			trigger:'manual',
-        			placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
-        			html: 'true', //needed to show html of course
-        			animation: false
-        		}).on("mouseenter", function () {
-        			var _this = this;
-        			$(this).popover("show");
-        			$(this).siblings(".popover").on("mouseleave", function () {
-        				$(_this).popover('hide');
-        			});
-        		}).on("mouseleave", function () {
-        			var _this = this;
-        			setTimeout(function () {
-        				if (!$(".popover:hover").length) {
-        					$(_this).popover("hide")
-        				}
-        			}, 100);
-        		});
-    		}
+				$("#"+a+"").popover({
+					trigger:'manual',
+					placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+					html: 'true', //needed to show html of course
+					animation: false
+				}).on("mouseenter", function () {
+					var _this = this;
+					$(this).popover("show");
+					$(this).siblings(".popover").on("mouseleave", function () {
+						$(_this).popover('hide');
+					});
+				}).on("mouseleave", function () {
+					var _this = this;
+					setTimeout(function () {
+						if (!$(".popover:hover").length) {
+							$(_this).popover("hide")
+						}
+					}, 100);
+				});
+			}
 		}else{
 			alert("失败");
 		}
 	},"json");
-//	alert(uname);
-//	alert(num);
 }
 
+function delattentionUser(uids,uname,num){
+	$.get("user/delattentionUser?uids="+uids+"&&uname="+uname+"&&num="+num,function(data){
+		//alert(data);
+		if(data!=null){
+			var change="";
+			change+='<table style="width: 230px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td>';
+			if(data.attention=='y'){
+				change+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="delattentionUser(\''+data.uids+'\',\''+data.uname+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消</button></td>';
+				alert("取消失败");
+			}else if(data.attention=='n'){
+				alert("成功");
+				change+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="attentionUser(\''+data.uids+'\',\''+data.uname+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td>';
+			}
+			change+='</tr><tr><td style="border-right-style: solid;">'+data.counte+'</td><td style="border-right-style: solid;">'+data.countr+'</td><td>'+data.counts+'</td><td></td></tr></table>';
+			document.getElementsByName("showUsers")[data.num].setAttribute("data-content",change);
+			for(var a=0;a<alllength;a++){
+				$("#"+a+"").popover({
+					trigger:'manual',
+					placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+					html: 'true', //needed to show html of course
+					animation: false
+				}).on("mouseenter", function () {
+					var _this = this;
+					$(this).popover("show");
+					$(this).siblings(".popover").on("mouseleave", function () {
+						$(_this).popover('hide');
+					});
+				}).on("mouseleave", function () {
+					var _this = this;
+					setTimeout(function () {
+						if (!$(".popover:hover").length) {
+							$(_this).popover("hide")
+						}
+					}, 100);
+				});
+			}
+		}else{
+			alert("查找不到数据，请刷新");
+		}
+	},"json");
+}
+
+function yesfav(self){
+	var finfo=document.getElementsByName("finfo")[0].value;
+	var fname=document.getElementsByName("fname")[0].value;
+	if(fname!=""){
+		$.get("user/newFav?fname="+fname,function(data){
+			document.getElementsByName("fname")[0].innerHTML="";
+			document.getElementsByName("finfo")[0].innerHTML="";
+		    if(data>0){
+		    	show(0);
+		    }else{
+		    	alert("创建失败！！");
+		    }
+		},"json");
+	}else{
+		alert("收藏夹名不能为空！！！");
+	}
+}
 //function test(){
-//	
-//	for(var i=0;i<10&&title.length>20;i++){
-//		console.log("i="+i);
-//		$(function(){
-//			var info="";
-//			var title="";
-//			var uname=$("#"+i+"")[0].innerHTML;
-//			$.get("user/showUser?uname="+uname,function(data){
-//				title+='<div class="media" style="400px;"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:60px"> </a></div><div class="media-body"><h4 class="media-heading">'+data.uname+'</h4>'+data.nsign+'<span>';
-//				for(var j=0;j<data.t.length;j++){
-//					title+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data.t[j].tid+'&&tname='+data.t[j].ttopic+'" target="_blank">'+data.t[j].ttopic+'</a>';
-//				}
-//				title+='</span></div></div>@';
-//				title+=i;
-//			},"json");
-//            console.log("开始");
-//            var id=window.setInterval(function(){
-//            	if(title.length>20){
-//            		console.log(title);
-//            		window.clearInterval(id);
-//            		wait(title);
-//            	}
-//            }, 1000);
-//			//window.setTimeout("wait("+title+")", 5000);
-//		});
-//	}
+
+//for(var i=0;i<10&&title.length>20;i++){
+//console.log("i="+i);
+//$(function(){
+//var info="";
+//var title="";
+//var uname=$("#"+i+"")[0].innerHTML;
+//$.get("user/showUser?uname="+uname,function(data){
+//title+='<div class="media" style="400px;"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:60px"> </a></div><div class="media-body"><h4 class="media-heading">'+data.uname+'</h4>'+data.nsign+'<span>';
+//for(var j=0;j<data.t.length;j++){
+//title+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data.t[j].tid+'&&tname='+data.t[j].ttopic+'" target="_blank">'+data.t[j].ttopic+'</a>';
 //}
-//
+//title+='</span></div></div>@';
+//title+=i;
+//},"json");
+//console.log("开始");
+//var id=window.setInterval(function(){
+//if(title.length>20){
+//console.log(title);
+//window.clearInterval(id);
+//wait(title);
+//}
+//}, 1000);
+////window.setTimeout("wait("+title+")", 5000);
+//});
+//}
+//}
+
 //function wait(title){
-//	var titles=title.split("@")[0];
-//	var i=title.split("@")[1];
-//	console.log(titles);
-//	console.log(i);
-//	document.getElementById(""+i).setAttribute("title",titles);
-//	$("#"+i+"").popover({
-//		trigger:'manual',
-//		placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
-//		html: 'true', //needed to show html of course
-//		content : '<div id="popOverBox"><img src="http://www.hd-report.com/wp-content/uploads/2008/08/mr-evil.jpg" width="251" height="201" /></div>', //this is the content of the html box. add the image here or anything you want really.
-//		animation: false
-//	}).on("mouseenter", function () {
-//		var _this = this;
-//		$(this).popover("show");
-//		$(this).siblings(".popover").on("mouseleave", function () {
-//			$(_this).popover('hide');
-//		});
-//	}).on("mouseleave", function () {
-//		var _this = this;
-//		setTimeout(function () {
-//			if (!$(".popover:hover").length) {
-//				$(_this).popover("hide")
-//			}
-//		}, 100);
-//	});
-//	console.log("结束");
+//var titles=title.split("@")[0];
+//var i=title.split("@")[1];
+//console.log(titles);
+//console.log(i);
+//document.getElementById(""+i).setAttribute("title",titles);
+//$("#"+i+"").popover({
+//trigger:'manual',
+//placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+//html: 'true', //needed to show html of course
+//content : '<div id="popOverBox"><img src="http://www.hd-report.com/wp-content/uploads/2008/08/mr-evil.jpg" width="251" height="201" /></div>', //this is the content of the html box. add the image here or anything you want really.
+//animation: false
+//}).on("mouseenter", function () {
+//var _this = this;
+//$(this).popover("show");
+//$(this).siblings(".popover").on("mouseleave", function () {
+//$(_this).popover('hide');
+//});
+//}).on("mouseleave", function () {
+//var _this = this;
+//setTimeout(function () {
+//if (!$(".popover:hover").length) {
+//$(_this).popover("hide")
+//}
+//}, 100);
+//});
+//console.log("结束");
 //}
 
 

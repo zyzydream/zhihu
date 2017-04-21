@@ -25,7 +25,7 @@ public class DynstateServiceTest {
 		Dynstate dy = new Dynstate();
 		dy.setIds("10001");
 		dy.setSelfid("10000");
-		boolean c = dynstateService.AddGH(dy);
+		int c = dynstateService.AddGH(dy);
 		System.out.println(c);
 		assertNotNull(c);
 	}

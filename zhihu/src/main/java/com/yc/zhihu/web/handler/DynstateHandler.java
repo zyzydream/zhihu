@@ -156,15 +156,20 @@ public class DynstateHandler {
 		return dynstateService.allattenme(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 	
-	@RequestMapping(value="/add",method=RequestMethod.POST)
+	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@ResponseBody
 	public String add(HttpServletRequest request,Dynstate dynstate){
 		String ids = request.getParameter("tid");
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		String selfid = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids();
 		dynstate.setIds(ids);
 		dynstate.setSelfid(selfid);
-		dynstateService.AddGH(dynstate);
-		return "redirect:/page/homepage.jsp";
+		if(dynstateService.AddGH(dynstate)>0){
+			return "true";
+		}else{
+			return "false";
+		}
+		
 	}
 	
 	@RequestMapping(value="/a1",method=RequestMethod.GET)

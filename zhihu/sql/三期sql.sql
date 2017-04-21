@@ -11,6 +11,11 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
+select * from explore
+
+select * from explore,
+		(SELECT * from dynstate PARTITION(GH) WHERE selfid='10001')d
+		where tid=d.ids and checks='y'
 
 select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from
 		select * from (select count(0)counts ,aimid from dynstate PARTITION(GR) group by
@@ -41,8 +46,14 @@ alert table users modify column upic varchar(200);
 
 SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM   TOPICS t,   (SELECT * FROM USERS u,   (SELECT * FROM essay e WHERE e.etid=1008)e   WHERE u.uids=e.eautid)ue   WHERE ue.etid=t.tid
 
-select * from TOPICS
-select * from users;
+select * from users
+select * from users where uids='10004';
+18037560013@qq.com /zhihu/images/touxiang.jpg
+
+select * from reply where reqid='10627'
+
+18037560013@qq.com /zhihu/images/touxiang.jpg
+
 select * from explore;
  select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
 select * from reply
@@ -78,7 +89,8 @@ insert into EXPLORE(ids)VALUES ('101');
 update USERS set tpic='images/car.png' where uids='1001'
 update explore set praise='15' , collect='4' where ids='101'
 select * from explore where ids like '%' and kind like '%'
-select * from dynstate PARTITION(SW) where selfid='10942'
+select * from users where uname='vbthjdmf'
+select * from dynstate PARTITION(GR) where aimid='10381' and aimid='10004' where selfid='10942'
 select * from users where uids='10186'
 delete  DYNSTATE PARTITION(SW) where selfid='10942' and ids='10324' 
 delete dynstate where selfid='10001' and ids='10103' 
@@ -328,8 +340,19 @@ CREATE TABLE favorite(
    fid VARCHAR2(30),
    fcreid VARCHAR2(30),
    fname VARCHAR2(30),
+   finfo varchar2(50),
    ftime VARCHAR2(30)
 );
+select * from favorite where fcreid='10004'
+delete from favorite where fid='13004'
+select e.eid ids,e.eautid uids,e.econtent content,e.etime times,e.etitle
+		title,e.etid tid,ud.uname author from essay e,
+		(select * from users u,
+		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10004')d
+		where u.uids=d.aimid)ud
+		where e.eautid=ud.uids AND 24*3>=to_number( to_date('2017-12-30','yyyy-mm-dd')-
+		to_date(e.etime,'yyyy-mm-dd'))*24
+
 drop table favorite;
 drop sequence seq_favorite;
 create sequence seq_favorite start with 10000;
@@ -447,7 +470,7 @@ CREATE TABLE reply(
 drop sequence seq_reply
 drop table reply
 
-select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u.usign usign ,u.upic author
+select r.* ,u.*
 		from reply r ,users u
 		where r.reqid='10116' and u.uids=r.remitid and rkind= 'Q'
 
@@ -1121,6 +1144,7 @@ SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitl
 		   WHERE u.uids=e.eautid)ue
 		WHERE ue.etid=t.tid
 
+<<<<<<< HEAD
  select f.*,t.sum from FAVORITE f,  
  (select count(ids) sum from DYNSTATE   where selfid='10202' and
  cfid=(select fid from favorite where   fcreid='10202')) t   
@@ -1155,3 +1179,29 @@ select * from favorite where fcreid='10202'
 select * from dynstate where selfid='10202' and cfid=''
  
  
+=======
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u.usign usign ,u.upic author
+		from reply r ,users u
+		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'Q'		
+		
+		
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
