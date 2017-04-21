@@ -1,3 +1,5 @@
+
+
 function changeColor(id){
 	var g=document.getElementById(id);
 	if(g.className=="Guide-TopicsIcon Guide-TopicsUnCheckedIcon sprite-global-icon-green-check"){
@@ -23,8 +25,15 @@ $.post("topic/all",function(data){
 
 
 function add(){
-		var id= $(".sprite-global-icon-green-check").attr("id");
-		$.post("dynstate/add?tid="+id,"json");
+	var ids=new Array();
+
+		//var id= $(".sprite-global-icon-green-check").attr("id");
+	for(var j=0;j<ids.length;j++){
+		alert(ids[j]);
+	}
+		
+		//$.post("dynstate/add?tid="+id,"json");
+		//window.location.href="../page/homepage.jsp";
 }
 	
 
