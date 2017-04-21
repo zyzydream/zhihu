@@ -47,6 +47,13 @@ public class DynstateHandler {
 		return dynstateService.list(e);
 	}
 	
+	@RequestMapping(value="/right",method=RequestMethod.GET)
+	@ResponseBody
+	public Users listright(HttpServletRequest request){
+
+		return dynstateService.total(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	}
+	
 	
 	@RequestMapping(value="/m1",method=RequestMethod.GET)
 	@ResponseBody

@@ -224,6 +224,8 @@
 					</div>
 				</div>
 			</div>
+			
+			<div id="rightmyself">
 			<div class="totalinfos">
 				<table class="table table-striped"
 					style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">
@@ -241,8 +243,6 @@
 					</tr>
 				</table>
 			</div>
-
-
 			<div class="panel panel-default"
 				style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
 				<div class="panel-body">
@@ -257,6 +257,7 @@
 							style="padding-left: 120px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("attenme")%></li>
 					</ul>
 				</div>
+			</div>
 			</div>
 		</div>
 

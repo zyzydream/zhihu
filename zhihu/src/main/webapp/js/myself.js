@@ -59,6 +59,46 @@ $.get("dynstate/upic",function(data){
 	document.getElementById("userava").innerHTML = upic;
 },'json');
 
+
+$.get("dynstate/right",function(data){
+	var right='';
+	for(var i=0;i<data.length;i++){
+		right+='<div class="totalinfos" style="margin-top:20px">'
+			+'<table class="table table-striped"'
+			+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
+			+'	<tr>'
+			+'		<td class="info">关注的话题</td>'
+			+'		<td class="info">'+data.myattentop+'</td>'
+			+'	</tr>'
+			+'	<tr>'
+			+'		<td class="info">关注的专题</td>'
+			+'		<td class="info">'+data.myattenzhuanlan+'</td>'
+			+'	</tr>'
+			+'	<tr>'
+			+'		<td class="info">关注的收藏夹</td>'
+			+'		<td class="info">'+data.myattenfav+'</td>'
+			+'	</tr>'
+			+'</table>'
+			+'</div>'
+			+'<div class="panel panel-default"'
+			+'style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
+			+'<div class="panel-body" style="margin-top:20px">'
+			+'	<ul class="list-inline">'
+			+'		<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
+			+'		<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
+			+'	</ul>'
+			+'	<ul class="list-inline">'
+			+'		<li'
+			+'			style="padding-left: 40px; padding-top: 10px; text-align: center">'+data.myatten+'</li>'
+			+'		<li'
+			+'			style="padding-left: 120px; padding-top: 10px; text-align: center">'+data.attenme+'</li>'
+			+'	</ul>'
+			+'</div>'
+			+'</div>';
+		document.getElementById("rightmyself").innerHTML = right;
+	}
+},'json');
+
 $.get("dynstate/m1",function(data){
 	alert(data);
 	myansrer33();
@@ -583,12 +623,15 @@ function yesfav(){
 	
 	var txt=document.getElementById("btn_submit").value;
 	alert(txt);
-	if(btn_submit.value=="+关注"){
-		document.getElementById("btn_submit").value="已关注";
-	}else if(btn_submit.value=="已关注"){
+	
+	if(btn_submit.value=="已关注"){
 		alert(2);
 		$("#guanzhu_name").html("+关注");
 		document.getElementById("btn_submit").value="+关注";
+	}else if(btn_submit.value=="+关注"){
+		alert(3);
+		$("#guanzhu_name").html("已关注");
+		document.getElementById("btn_submit").value="已关注";
 	}
 }
 
