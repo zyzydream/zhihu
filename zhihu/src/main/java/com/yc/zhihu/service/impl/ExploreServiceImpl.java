@@ -112,7 +112,7 @@ public class ExploreServiceImpl implements ExploreService{
 	
 	@Override
 	public void updateExplore(){
-		List<Explore> es=userService.listrelatedD(null);
+		List<Explore> es=userService.listrelatedD(null,null);
 		for(Explore e:es){
 			exploreMapper.updateExplore(e);
 		}

@@ -30,7 +30,7 @@ $.post("essay/reply"+window.location.search,function(data){
 	$("#Replys").emply;
 	for(var i=0;i<data.length;i++){
 		$("#Replys").append("<a target='_blank' href='https://www.zhihu.com/people/gao-nan-87' class='UserAvatar CommentItem-author'> " 
-							+"<img src='"+data[i].author+"' alt='"+data[i].tname+"' class='Avatar Avatar--xs'></a>"
+							+"<img src='"+data[i].author+"' class='Avatar Avatar--xs'></a>"
 							+"<div class='CommentItem-headWrapper'><div class='CommentItem-head'>"
 							+"<span class='CommentItem-context'> <a target='_blank'  href='https://www.zhihu.com/people/gao-nan-87'>"+data[i].tname+"</a>"
 							+"</span></div></div>"

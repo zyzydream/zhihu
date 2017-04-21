@@ -5,6 +5,7 @@ import java.util.List;
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.Favorite;
 import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
@@ -62,5 +63,9 @@ public interface UserMapper {
 	Dynstate yattention(Dynstate dynstate);
 
 	String counte(Users user);
+
+	int delattentionUser(Dynstate dynstate);
+
+	int newFav(Favorite favorite);
 
 }

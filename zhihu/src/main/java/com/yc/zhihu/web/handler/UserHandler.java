@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Essay;
 import com.yc.zhihu.entity.Explore;
+import com.yc.zhihu.entity.Favorite;
 import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
@@ -93,7 +94,7 @@ public class UserHandler {
 	//列出最新动态
 	@RequestMapping(value="dynstate",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Explore> listDynstate(HttpServletRequest request){
+	public List<Explore> listDynstate(Explore explore,HttpServletRequest request){
 		//System.out.println("listDynstate ====> "+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		Users user= (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
 		exploreService.updateExplore();
@@ -112,7 +113,7 @@ public class UserHandler {
 	    }
 		 */
 		//关注的对象的动态
-		List<Explore> dynstate=usersService.listrelatedD(user);
+		List<Explore> dynstate=usersService.listrelatedD(user,explore);
 		//如果关注对象没有动态或没有关注的对象，则返回关注的话题有关的文章或问题
 		if(dynstate.size()>0){
 			if(dynstate.size()<=3){
@@ -122,12 +123,11 @@ public class UserHandler {
 				for(int i=0;i<all.size();i++){
 					sum+=i;
 					if(dynstate.size()>3*(i+1)+sum){
-					dynstate.add(3*(i+1)+sum, all.get(i));
+						dynstate.add(3*(i+1)+sum, all.get(i));
 					}
 				}
 			}
 			List<Explore> e=usersService.yPraiseAndCollect(dynstate, request);
-			//System.out.println(e);
 			return e;
 		}else{
 			return usersService.yPraiseAndCollect(all, request);
@@ -151,12 +151,10 @@ public class UserHandler {
 	}
 
 
-
 	@RequestMapping(value="/code",method=RequestMethod.POST)
 	public String listCode(String ucode){
 		return "redirect:/page/work.jsp";
 	}
-
 
 
 	//职业添加
@@ -168,7 +166,7 @@ public class UserHandler {
 		usersService.listprofession(users);
 		return "redirect:/page/talk.jsp";
 	}
-	
+
 	@RequestMapping(value="/showUser",method=RequestMethod.GET)
 	@ResponseBody
 	public ShowUser showUser(Users user,HttpServletRequest request){
@@ -190,8 +188,33 @@ public class UserHandler {
 		dynstate.setSelfid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
 		dynstate.setAimid(user.getUids());
 		dynstate.setKind("GR");
+		usersService.attentionUser(dynstate);
 		return showUser(user,request);
 	}
+	//取消关注用户
+	@RequestMapping(value="/delattentionUser",method=RequestMethod.GET)
+	@ResponseBody
+	public ShowUser delattentionUser(Users user,HttpServletRequest request){
+		System.out.println("attentionUser====>"+user.toString());
+		Dynstate dynstate =new Dynstate();
+		dynstate.setSelfid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		dynstate.setAimid(user.getUids());
+		dynstate.setKind("GR");
+		usersService.delattentionUser(dynstate);
+		return showUser(user,request);
+	}
+
+
+	//创建收藏夹
+	@RequestMapping(value="/newFav",method=RequestMethod.GET)
+	@ResponseBody
+	public int newFav(Favorite favorite,HttpServletRequest request) throws UnsupportedEncodingException{
+		String selfname=new String(favorite.getFname().getBytes("iso-8859-1"),"utf-8");
+		favorite.setFname(selfname);
+        favorite.setFcreid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		return usersService.newFav(favorite);
+	}
+
 	
 	
 	//关注用户
