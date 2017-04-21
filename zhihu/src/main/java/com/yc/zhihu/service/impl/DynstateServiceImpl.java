@@ -85,7 +85,7 @@ public class DynstateServiceImpl implements DynstateService {
 	}
 
 	@Override
-	public boolean AddGH(Dynstate dynstate) {
+	public int AddGH(Dynstate dynstate) {
 		return dynstateMapper.insertGH(dynstate);
 	}
 

@@ -35,7 +35,7 @@ public interface DynstateMapper {
 	
 	Dynstate ifAtten(Object users);
 
-	boolean insertGH(Dynstate dynstate);
+	int insertGH(Dynstate dynstate);
 
 	String findUsers(Object users);
 	

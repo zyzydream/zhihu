@@ -33,7 +33,7 @@ public interface DynstateService {
 	
 	Users total(Object users);
 
-	boolean AddGH(Dynstate dynstate);
+	int AddGH(Dynstate dynstate);
 
 	String listUsers(Object obj);
 	

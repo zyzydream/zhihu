@@ -72,7 +72,6 @@ $.ajax({url:"question/title"+window.location.search,async:false,type:"POST",succ
 
 //显示回复内容
 $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:function(data){
-	
 		$("#reply").empty;
 		$("#reply").append("<div class='ContentItem AnswerItem' name='156837738'"
 				+"data-za-module='AnswerItem' data-za-module-info='{'card':{'content':{'type':'Answer','token':'156837738','upvote_num':133,'comment_num':72,'publish_timestamp':null,'parent_token':'56314897','author_member_hash_id':'4fb8434a7c7c02f2055dde1e2e2e9769'}}}'>"
@@ -111,7 +110,6 @@ $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:
 				+"<div class='AnswerAuthor-user-content'><div class='AnswerAuthor-user-name'>"
 				+"<span class='UserLink'> <a class='UserLink-link' id='userName'>"+data[0].tname+"</a></span>"
 				+"</div><div class='AnswerAuthor-user-headline'><div class='RichText'>"+data[0].usign+"</div></div></div>");
-
 },dataType:"json"});
 
 
