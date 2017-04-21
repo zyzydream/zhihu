@@ -85,7 +85,7 @@ public class DynstateServiceImpl implements DynstateService {
 	}
 
 	@Override
-	public boolean AddGH(Dynstate dynstate) {
+	public int AddGH(Dynstate dynstate) {
 		return dynstateMapper.insertGH(dynstate);
 	}
 
@@ -214,5 +214,15 @@ public class DynstateServiceImpl implements DynstateService {
 	@Override
 	public List<Users> allattenme(Object obj) {
 		return dynstateMapper.attenme(obj);
+	}
+	
+	@Override
+	public boolean updateupic(Object obj) {
+		return dynstateMapper.updateupic(obj);
+	}
+	
+	@Override
+	public Users listupic(Object obj) {
+		return dynstateMapper.listupic(obj);
 	}
 }

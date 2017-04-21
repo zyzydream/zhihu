@@ -25,6 +25,7 @@ $.post("topic/all",function(data){
 
 
 function add(){
+
 	var ids=new Array();
 
 		//var id= $(".sprite-global-icon-green-check").attr("id");
@@ -34,6 +35,13 @@ function add(){
 		
 		//$.post("dynstate/add?tid="+id,"json");
 		//window.location.href="../page/homepage.jsp";
+
+		var ids= new Array();
+		for(var i=0;i<$(".sprite-global-icon-green-check").length;i++){
+			ids[i]=$(".sprite-global-icon-green-check").eq(i).attr("id");
+			$.ajax({url:"dynstate/add?tid="+ids[i],async:false,dataType:"json"});	
+		}
+		window.location.href="../zhihu/page/homepage.jsp";
 }
 	
 

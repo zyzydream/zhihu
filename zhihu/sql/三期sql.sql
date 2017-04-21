@@ -17,7 +17,6 @@ select * from explore,
 		(SELECT * from dynstate PARTITION(GH) WHERE selfid='10001')d
 		where tid=d.ids and checks='y'
 
-<<<<<<< HEAD
 select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from
 		select * from (select count(0)counts ,aimid from dynstate PARTITION(GR) group by
 		aimid) d,
@@ -33,15 +32,19 @@ select * from (select count(0)counts ,'10381' uids from dynstate PARTITION(GR) w
 		(select count(0)counte,'10381' uids from essay where eautid='10381')e where
 		rr.ids=e.uids)ru
 		where d.uids=ru.uids
-=======
 alter table users rename column tpic to tpic2;
 alter table users add tpic varchar2(200);
 update users set tpic=trim(tpic2);
 alter table users drop column tpic2;
 alert table users modify column tpic varchar(200);
 
+alter table users rename column upic to upic2;
+alter table users add upic varchar2(200);
+update users set upic=trim(upic2);
+alter table users drop column upic2;
+alert table users modify column upic varchar(200);
+
 SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM   TOPICS t,   (SELECT * FROM USERS u,   (SELECT * FROM essay e WHERE e.etid=1008)e   WHERE u.uids=e.eautid)ue   WHERE ue.etid=t.tid
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 select * from users
 select * from users where uids='10004';
@@ -1199,6 +1202,42 @@ SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitl
 		   WHERE u.uids=e.eautid)ue
 		WHERE ue.etid=t.tid
 
+<<<<<<< HEAD
+ select f.*,t.sum from FAVORITE f,  
+ (select count(ids) sum from DYNSTATE   where selfid='10202' and
+ cfid=(select fid from favorite where   fcreid='10202')) t   
+ where fcreid='10202'
+ 
+ select count(ids) sum from DYNSTATE   where selfid='10202' and
+ cfid='10794'
+ 
+ select f.fid,f.fcreid,f.fname,f.ftime,count(ids) sum from 
+ (select fid from favorite where fcreid='10202') x,
+ favorite f,dynstate d
+ where f.fcreid='10202' and d.selfid=f.fcreid and d.cfid=x.fid 
+ group by f.fid,f.fcreid,f.fname,f.ftime
+ 
+ select f.fid,f.fcreid,f.fname,f.ftime,x.fid,count(d.ids) sum
+ from ((select fid from favorite where fcreid='10202') x
+ right join FAVORITE f on f.fcreid='10202')
+ left join DYNSTATE d on d.selfid=f.fcreid and d.cfid=x.fid
+group by f.fid,f.fcreid,f.fname,f.ftime,x.fid
+
+
+
+select f.fid,f.fcreid,f.fname,f.ftime,count(d.ids) sum
+ from ((select fid from favorite where fcreid='10202') x
+ left join FAVORITE f on f.fcreid='10202' and f.fid=x.fid)
+ left join DYNSTATE d on d.selfid=f.fcreid and d.cfid=x.fid
+group by f.fid,f.fcreid,f.fname,f.ftime
+
+
+select * from favorite where fcreid='10202'
+
+select * from dynstate where selfid='10202' and cfid=''
+ 
+ 
+=======
 
 		
 		
@@ -1223,3 +1262,4 @@ select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u
 		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'Q'		
 		
 		
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git

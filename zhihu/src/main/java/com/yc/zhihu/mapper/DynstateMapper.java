@@ -35,7 +35,7 @@ public interface DynstateMapper {
 	
 	Dynstate ifAtten(Object users);
 
-	boolean insertGH(Dynstate dynstate);
+	int insertGH(Dynstate dynstate);
 
 	String findUsers(Object users);
 	
@@ -50,7 +50,7 @@ public interface DynstateMapper {
 	int count(PaginationBean<Explore> pBean);
 	
 	boolean updatetop(Object users);
-	
+	boolean updateupic(Object users);
 	
 	List<ListAllMy> showessay(Object object);
 	
@@ -76,7 +76,7 @@ public interface DynstateMapper {
 	
 	List<Users> attenme(Object obj);
 	
-
+	Users listupic(Object obj);
 	
 	
 }

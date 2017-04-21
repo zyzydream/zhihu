@@ -25,9 +25,7 @@ $('.imgcode').hover(function() {
 				$(".zt").hide();
 			}
 		})
-		
-		
-
+				
 $("#yanzhengma").dialog({
 	title:'',
 	border:false,
