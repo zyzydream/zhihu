@@ -43,6 +43,33 @@
 		</tr>
 	</table>
 	
+	<table style="width: 500px;">
+	   <tr>
+	      <td colspan="2">用户A发送消息</td>
+	   </tr>
+	   <tr>
+	       <td>content..</td>
+	      <td>2017-04-22</td>
+	   </tr>
+	   <tr>
+	      <td colspan="2">
+	         <hr style="margin: 5px;">
+	      </td>
+	   </tr>
+	   <tr>
+	      <td colspan="2">用户A发送消息</td>
+	   </tr>
+	   <tr>
+	       <td>content..</td>
+	      <td>2017-04-22</td>
+	   </tr>
+	   <tr>
+	      <td colspan="2">
+	         <hr style="margin: 5px;">
+	      </td>
+	   </tr>
+	</table>
+	
 
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>

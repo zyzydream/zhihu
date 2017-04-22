@@ -178,13 +178,13 @@
 	<insert id="praise" parameterType="Dynstate">
 		insert into
 		dynstate(selfid,kind,ids,times)
-		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'))
+		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd HH24:MI:SS'))
 	</insert>
 	<!-- 收藏 -->
 	<insert id="collect" parameterType="Dynstate">
 		insert into
 		dynstate(selfid,kind,ids,times,cfid)
-		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'),'${cfid}')
+		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd HH24:MI:SS'),'${cfid}')
 	</insert>
 
 

@@ -84,10 +84,10 @@
 					<li class="zu-top-nav-li " id="zh-top-nav-explore"><a
 						class="zu-top-nav-link" href="/zhihu/page/explore.jsp">发现</a></li>
 
-					<li class="top-nav-noti zu-top-nav-li " href="#" rel="drevil" id="example"><a
+					<li class="top-nav-noti zu-top-nav-li " href="#" rel="drevil" id="example" onmousedown="delnew()"><a
 						class="zu-top-nav-link" href="javascript:void(0)"
 						id="zh-top-nav-count-wrap" role="button"><span
-							class="mobi-arrow"></span>消息</a></li>
+							class="mobi-arrow" style="color: red" id="newinfo"></span>消息</a></li>
 				</ul>
 				<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard"
 					id="zh-top-nav-live-new" role="popup" tabindex="0">

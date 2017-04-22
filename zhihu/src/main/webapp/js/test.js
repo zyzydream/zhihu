@@ -4,7 +4,7 @@ $(function(){
             placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
             title : '', //this is the top title bar of the popover. add some basic css
             html: 'true', //needed to show html of course
-            content : '<table style="width: 250px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td><td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td></tr><tr><td style="border-right-style: solid;">1</td><td style="border-right-style: solid;">2</td><td>3</td><td></td></tr></table>',
+            content : '<table style="width: 300px;"><tr><td colspan="2">用户A发送消息</td></tr><tr><td>content..</td><td>2017-04-22</td></tr><tr><td colspan="2"><hr style="margin: 5px;"></td></tr><tr><td colspan="2">用户A发送消息</td></tr><tr><td>content..</td><td>2017-04-22</td></tr><tr><td colspan="2"><hr style="margin: 5px;"></td> </tr></table>',
             animation: false
         }).on("mouseenter", function () {
                     var _this = this;

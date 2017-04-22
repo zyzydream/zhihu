@@ -123,7 +123,7 @@ public class UserServiceImpl implements UserService{
 		}
 
 		int length=all.size();
-		DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Explore [] t=new Explore[length];
 		for(int i=0;i<length;i++){
 			t[i]=all.get(i);
