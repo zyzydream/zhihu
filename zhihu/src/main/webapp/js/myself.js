@@ -67,7 +67,6 @@ $.get("dynstate/right",function(data){
 			+'		<td class="info">关注的话题</td>'
 			+'		<td class="info">'+data.myattentop+'</td>'
 			+'	</tr>'
-			
 			+'	<tr>'
 			+'		<td class="info">关注的收藏夹</td>'
 			+'		<td class="info">'+data.myattenfav+'</td>'
@@ -303,7 +302,7 @@ function My(){
 		var my="";
 		if(data.length>0){
 			for(var i=0;i<data.length;i++){
-				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="ContentItem-title">'
+				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px;"><div class="col-md-7"><h2 class="ContentItem-title">'
 					+'<a href="/zhihu/page/article.jsp?eid='+data[i].tid+'">'+data[i].title+'</a></h2><br/>'
 					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
