@@ -43,6 +43,10 @@ element.style {
     transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
     width: 1000px;
 }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 .AppHeader-nav {
     -moz-box-pack: justify;
     color: #999;
@@ -103,7 +107,7 @@ a {
     padding: 4px 10px;
     position: relative;
     transition: background 0.2s ease 0s, border 0.2s ease 0s;
-    width: 180px;
+    width: 330px;
 }
 input.Input {
     height: 24px;
@@ -124,25 +128,32 @@ input.Input {
 .Input .public-DraftEditorPlaceholder-root, .Input::placeholder {
     color: #9fadc7;
 }
-.Button--primary.Button--blue, .Button--primary.Button--blue:disabled {
-    background: #0f88eb none repeat scroll 0 0;
+.Input-after {
+    -moz-box-direction: normal;
+    -moz-box-orient: vertical;
+    -moz-box-pack: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate3d(0px, -50%, 0px);
 }
-.Button--primary.Button--blue {
-    color: #fff;
-}
-.SearchBar-askButton {
-    line-height: 30px;
-    margin-left: 16px;
-    padding: 0 14px;
-    transition: opacity 0.3s ease 0s, transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
-    z-index: 103;
+.SearchBar-searchIcon {
+    background: transparent none repeat scroll 0 0;
+    border: medium none transparent;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    bottom: -17px;
+    padding: 0 12px;
+    position: absolute;
+    right: -11px;
+    transition: fill 0.3s ease 0s;
 }
 .Button--primary {
     background: #ccd8e1 none repeat scroll 0 0;
-}
-.Button--blue {
-    border: 1px solid #0f88eb;
-    color: #0f88eb;
 }
 .Button {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
@@ -168,6 +179,26 @@ button {
     font: inherit;
     outline: medium none;
     padding: 0;
+}
+.Button--primary.Button--blue, .Button--primary.Button--blue:disabled {
+    background: #0f88eb none repeat scroll 0 0;
+}
+.Button--primary.Button--blue {
+    color: #fff;
+}
+.SearchBar-askButton {
+    line-height: 30px;
+    margin-left: 16px;
+    padding: 0 14px;
+    transition: opacity 0.3s ease 0s, transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+    z-index: 103;
+}
+.Button--primary {
+    background: #ccd8e1 none repeat scroll 0 0;
+}
+.Button--blue {
+    border: 1px solid #0f88eb;
+    color: #0f88eb;
 }
 .AppHeader-userInfo {
     -moz-box-align: center;
@@ -200,9 +231,181 @@ button {
     line-height: inherit;
     padding: 0;
 }
+.AppHeader-profileEntry .Avatar {
+    display: block;
+}
+.Avatar {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 2px;
+}
+
+*::after, *::before {
+    box-sizing: border-box;
+}
+.sprite-global-icon-magnifier-dark {
+    background-position: -82px -17px;
+    height: 15px;
+    width: 15px;
+}
+.sprite-global, [class*="sprite-global-"] {
+    background-image: url("../images/function.png");
+    background-repeat: no-repeat;
+}
+[class*="sprite-global-icon-"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+* {
+    box-sizing: border-box;
+}
+
+
+
+.App-main {
+    display: block;
+}
+.ProfileHeader {
+    margin: 10px auto;
+    padding: 0 16px;
+    position: relative;
+    width: 1000px;
+    margin-top:70px;
+}
+.Card:last-child {
+    margin-bottom: 0;
+}
+.Card {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e7eaf1;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 37, 55, 0.05);
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.ProfileHeader-userCover {
+    width: 100%;
+}
+
+.ProfileHeader-userCover .UserCover--colorBlock {
+    background: #96a1a9 none repeat scroll 0 0;
+    height: 132px;
+}
+.UserCover {
+    background: #f7f8fa none repeat scroll 0 0;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    height: 140px;
+    overflow: hidden;
+    position: relative;
+    transition: height 0.3s ease 0s;
+}
+.ProfileHeader-wrapper {
+    background: #fff none repeat scroll 0 0;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+}
+.ProfileHeader-main {
+    margin: 0 20px 24px;
+    position: relative;
+}
+element.style {
+    top: -74px;
+}
+.ProfileHeader-avatar {
+    left: 0;
+    position: absolute;
+    top: -25px;
+    z-index: 4;
+}
+.UserAvatar, .UserAvatar-inner {
+    vertical-align: top;
+}
+.UserAvatar {
+    border: 4px solid #fff;
+    border-radius: 8px;
+    display: inline-block;
+    overflow: hidden;
+}
+.UserAvatar, .UserAvatar-inner {
+    vertical-align: top;
+}
+.Avatar--large {
+    border-radius: 4px;
+}
+.Avatar {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 2px;
+}
+.ProfileHeader-content {
+    border-left: 164px solid transparent;
+    padding-left: 32px;
+    padding-top: 16px;
+
+}
+.ProfileHeader-contentHead {
+    margin-bottom: 16px;
+    padding-right: 106px;
+    position: relative;
+}
+.ProfileHeader-title {
+    -moz-box-flex: 1;
+    flex: 1 1 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+h1, h2, h3 {
+    font: inherit;
+    margin: 0;
+}
+.ProfileHeader-name {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 30px;
+}
+.ProfileHeader-headline {
+    font-size: 18px;
+    margin-left: 12px;
+    white-space: nowrap;
+}
+.RichText {
+    white-space: pre-wrap;
+}
+.ProfileHeader-tips {
+    color: #8590a6;
+    font-size: 14px;
+}
+.ProfileHeader-contentFooter {
+    padding-top: 8px;
+    position: relative;
+}
+.ProfileHeader-buttons {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+}
+.Button--primary.Button--blue, .Button--primary.Button--blue:disabled {
+    background: #0f88eb none repeat scroll 0 0;
+}
+.Button--primary.Button--blue {
+    color: #fff;
+}
+.FollowButton {
+    width: 96px;
+}
+.Button--primary {
+    background: #ccd8e1 none repeat scroll 0 0;
+}
+.Button--blue {
+    border: 1px solid #0f88eb;
+    color: #0f88eb;
+}
+.MemberButtonGroup .Button + .Button {
+    margin-left: 16px;
+}
 .Button {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border: 1px solid #ccd8e1;
     border-radius: 3px;
     color: #8590a6;
     cursor: pointer;
@@ -215,20 +418,6 @@ button {
 body, button, p, pre {
     margin: 0;
 }
-button {
-    -moz-appearance: none;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border: medium none;
-    color: inherit;
-    cursor: pointer;
-    font: inherit;
-    outline: medium none;
-    padding: 0;
-}
-.AppHeader-profileEntry .Avatar {
-    display: block;
-}
-.Avatar {
-    background: #fff none repeat scroll 0 0;
-    border-radius: 2px;
-}
+
+
+

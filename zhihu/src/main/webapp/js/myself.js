@@ -120,6 +120,7 @@ $.get("dynstate/right",function(data){
 		+' href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a>';
 	document.getElementById("bianji").innerHTML = des;
 	for(var i=0;i<data.length;i++){
+		right+='<div>'
 		right2+='<div class="totalinfos" style="margin-top:20px">'
 			+'<table class="table table-striped"'
 			+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
@@ -133,9 +134,8 @@ $.get("dynstate/right",function(data){
 			+'	</tr>'
 			+'</table>'
 			+'</div>'
-			+'<div class="panel panel-default"'
-			+'style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
-			+'<div class="panel-body" style="margin-top:20px">'
+			+'<div>'
+			+'<div>'
 			+'	<ul class="list-inline">'
 			+'		<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
 			+'		<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
