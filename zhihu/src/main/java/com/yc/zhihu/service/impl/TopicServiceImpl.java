@@ -87,7 +87,7 @@ public class TopicServiceImpl implements TopicService{
 	//按时间排列
 	public List<Explore> times(List<Explore> all){
 		int length=all.size();
-		DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Explore [] t=new Explore[length];
 		for(int i=0;i<length;i++){
 			t[i]=all.get(i);

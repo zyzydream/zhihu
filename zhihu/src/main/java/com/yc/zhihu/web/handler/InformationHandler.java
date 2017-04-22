@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Infomation;
+import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.InfomationService;
+import com.yc.zhihu.util.ServletUtil;
 
 @Controller("informationHandler")
 @RequestMapping("/information")
@@ -33,5 +35,11 @@ public class InformationHandler {
 		infomationService.send(infos);
 		//request.getSession().setAttribute("aaaa", "成功！！！");
 		return "redirect:/back/back.jsp";
+	}
+	
+	@RequestMapping(value="list",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Infomation> list(HttpServletRequest request){
+		return infomationService.list((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER));
 	}
 }

@@ -46,14 +46,14 @@ alert table users modify column upic varchar(200);
 
 SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM   TOPICS t,   (SELECT * FROM USERS u,   (SELECT * FROM essay e WHERE e.etid=1008)e   WHERE u.uids=e.eautid)ue   WHERE ue.etid=t.tid
 
-select * from users
+select * from users where uname='xiakhwqimf'
 select * from users where uids='10009';
 18037560013@qq.com /zhihu/images/touxiang.jpg
 18087787759@qq.com /zhihu/images/touxiang.jpg
 18035528789@qq.com /zhihu/images/touxiang.jpg
 18057091262@qq.com /zhihu/images/touxiang.jpg
 
-select * from dynstate where selfid='10004' and kind='GH' and ids='1010'
+select * from dynstate where selfid='10771' and kind='GH'
 
 select * from reply where reqid='10627'
 
@@ -1005,6 +1005,9 @@ create table infomation(
    times VARCHAR2(30), --时间
    info VARCHAR2(300)  --内容
 );
+select to_number(to_date('2017-12-30 00:00:01','yyyy-mm-dd HH24:MI:SS')-to_date('2017-12-29 00:00:01','yyyy-mm-dd HH24:MI:SS'))*24 from dual
+ select * from infomation where aimname='${aimname}'
+
 insert into explore(title,content,tname,tid,author,times,checks)values('我是知乎吗？','是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是','未知','10001','zy','2017-3-12','y');
 insert into explore(title,content,tname,tid,author,times,checks)values('我是知乎？','是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是','未知','10001','zy','2017-4-1','n');
 insert into explore(title,content,tname,tid,author,times,checks)values('你是谁？','是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是是','未知','10001','zy','2017-3-11','y');

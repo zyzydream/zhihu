@@ -2,13 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
+<!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
 <mapper namespace="com.yc.zhihu.mapper.InfomationMapper">
-    <insert id="send" parameterType="Infomation">
-       insert into infomation(selfname,aimname,info) values( #{selfname}, #{aimname} , #{info})
-    </insert>
-    
-    <select id="find" parameterType="Infomation" resultType="Infomation">
-       select * from infomation where selfname=#{selfname} and aimname=#{aimname} and info=#{info}
-    </select>
+	<insert id="send" parameterType="Infomation">
+		insert into infomation(selfname,aimname,info) values( #{selfname},
+		#{aimname} , #{info})
+	</insert>
+
+	<select id="find" parameterType="Infomation" resultType="Infomation">
+		select * from infomation where selfname=#{selfname} and aimname=#{aimname}
+		and info=#{info}
+	</select>
+
+	<select id="list" parameterType="Users" resultType="Infomation">
+		select * from infomation where aimname='${aimname}'
+	</select>
 </mapper>
