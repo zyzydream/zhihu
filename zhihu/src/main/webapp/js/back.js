@@ -95,7 +95,7 @@ function select(self,currPage,pageSize){
     		//alert(JSON.stringify(data));
     		var info='<thead><tr><th>#</th><th>id</th><th>kind</th><th>title</th><th>content</th><th>tname</th><th>author</th><th>time</th><th>点赞数</th><th>收藏数</th><th>操作</th></tr></thead><tbody>';
     		for(var i=0;i<data.rows.length;i++){
-    			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].ids+'</td><td>'+data.rows[i].kind+'</td><td>'+data.rows[i].title+'</td><td>'+data.rows[i].content.substr(0,10)+'...</td><td>'+data.rows[i].tname+'</td><td>'+data.rows[i].author+'</td><td>'+data.rows[i].times+'</td><td>'+data.rows[i].praise+'</td><td>'+data.rows[i].collect+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\',\''+data.rows[i].title+'\',\''+data.rows[i].content+'\',\''+data.rows[i].tname+'\',\''+data.rows[i].author+'\',\''+data.rows[i].times+'\')">查看详情</a><a class="btn btn-default" role="button" onclick="ok(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\')">审核通过</a></td></tr>';
+    			info+='<tr><td>'+(i+1)+'</td><td>'+data.rows[i].ids+'</td><td>'+data.rows[i].kind+'</td><td>'+data.rows[i].title.substr(0,6)+'</td><td>'+data.rows[i].content.substr(0,10)+'...</td><td>'+data.rows[i].tname+'</td><td>'+data.rows[i].author+'</td><td>'+data.rows[i].times+'</td><td>'+data.rows[i].praise+'</td><td>'+data.rows[i].collect+'</td><td><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal" onclick="fun(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\',\"'+data.rows[i].title+'\',\''+data.rows[i].tname+'\',\''+data.rows[i].author+'\',\''+data.rows[i].times+'\')">查看详情</a><a class="btn btn-default" role="button" onclick="ok(\''+data.rows[i].ids+'\',\''+data.rows[i].kind+'\')">审核通过</a></td></tr>';
     		}
     		info+='<tr><td colspan="11"><div id="pp" class="easyui-pagination" data-options="total:'+data.total+',pageSize:'+data.pageSize+',pageNumber:'+data.currPage+'" style="background:#efefef;border:1px solid #ccc;width: 1031px"></div></td></tr>';
     		info+='</tbody>';
@@ -199,11 +199,11 @@ function showdetail(self){
 }
 
 
-function fun(ids,kind,title,content,tname,author,time){
+function fun(ids,kind,title,tname,author,time){
 	document.getElementById("ids").innerHTML=ids;
 	document.getElementById("kind").innerHTML=kind;
 	document.getElementById("title").innerHTML=title;
-	document.getElementById("content").innerHTML=content;
+	//document.getElementById("content").innerHTML=content;
 	document.getElementById("tname").innerHTML=tname;
 	document.getElementById("author").innerHTML=author;
 	document.getElementById("time").innerHTML=time;

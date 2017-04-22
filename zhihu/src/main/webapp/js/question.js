@@ -112,7 +112,7 @@ $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:
 				+"<span class='UserLink'> <a class='UserLink-link' id='userName'>"+data[0].tname+"</a></span>"
 				+"</div><div class='AnswerAuthor-user-headline'><div class='RichText'>"+data[0].usign+"</div></div></div>");
 	}else{
-		alert("回复为空");
+		
 	}
 },dataType:"json"});
 

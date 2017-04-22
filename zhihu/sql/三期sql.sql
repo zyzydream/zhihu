@@ -17,7 +17,6 @@ select * from explore,
 		(SELECT * from dynstate PARTITION(GH) WHERE selfid='10001')d
 		where tid=d.ids and checks='y'
 
-<<<<<<< HEAD
 select d.countr counts,ru.countr countr,ru.counte counte ,ru.uids uids from
 		select * from (select count(0)counts ,aimid from dynstate PARTITION(GR) group by
 		aimid) d,
@@ -33,15 +32,19 @@ select * from (select count(0)counts ,'10381' uids from dynstate PARTITION(GR) w
 		(select count(0)counte,'10381' uids from essay where eautid='10381')e where
 		rr.ids=e.uids)ru
 		where d.uids=ru.uids
-=======
 alter table users rename column tpic to tpic2;
 alter table users add tpic varchar2(200);
 update users set tpic=trim(tpic2);
 alter table users drop column tpic2;
 alert table users modify column tpic varchar(200);
 
+alter table users rename column upic to upic2;
+alter table users add upic varchar2(200);
+update users set upic=trim(upic2);
+alter table users drop column upic2;
+alert table users modify column upic varchar(200);
+
 SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM   TOPICS t,   (SELECT * FROM USERS u,   (SELECT * FROM essay e WHERE e.etid=1008)e   WHERE u.uids=e.eautid)ue   WHERE ue.etid=t.tid
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 
 select * from users
 select * from users where uids='10009';
@@ -128,6 +131,28 @@ select
 		r,users u where remitid='10001'
 		and uids=remitid
 
+		
+		select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,rd.tid
+	tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname
+	author,rd.rtime times,'n' checks from QUESTION q,
+	(select * from topics t,
+	(select * from users u,
+	(select * from reply,
+	(select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids
+	order by count(ids)DESC)
+	where counts>=0 and id=rid and rkind='Q' )r
+	where u.uids=r.remitid)r
+	where t.tid=r.rtid)rd
+	where q.qid=rd.reqid
+	
+	select e.eid ids,'W' kind,e.etitle title,e.econtent content,e.etid tid,t.ttopic tname,e.usign usign,e.uids uids,e.uname author,e.etime times,'n' checks  from topics t,
+	     (select * from users u,
+	       (select * from essay,
+           	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
+	        where counts>=0 and id=eid )e
+	      where u.uids=e.eautid)e
+	    where t.tid=e.etid
+select * from topics
 
 select s.scname tname,u.uname uname,t.times times,'S' kind,u.upic tpic   from scolumn s,   
 (select times from dynstate PARTITION(GZ) where   selfid='')t,   Users u,   
@@ -341,6 +366,22 @@ insert into scolumn(scid,sccreid,scname,sctime)
 values('101','1002','我的专栏','2017-4-9');
 insert into scolumn(scid,sccreid,scname,sctime)
 values('102','1003','专栏哈哈','2017-4-9');
+
+ select e.eid ids,'W' kind,e.etitle title,e.econtent content,e.etid tid,t.ttopic tname,e.usign usign,e.uids uids,e.uname author,e.etime times,'n' checks  from topics t,
+	     (select * from users u,
+	       (select * from essay,
+           	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
+	        where counts>=0 and id=eid )e
+	      where u.uids=e.eautid)e
+	    where t.tid=e.etid
+
+select tre.rid ids, q.qtitle title,tre.rcontent content,tre.rtid tid,tre.ttopic tname,tre.uids uids,tre.usign usign ,tre.uname author,tre.rtime times,'Q' kind from QUESTION q,
+(SELECT * FROM Topics t, 
+(SELECT * FROM USERS u, 
+(SELECT r.* FROM reply r WHERE r.rtid='1000')r 
+WHERE u.uids=r.remitid)ue
+WHERE ue.rtid=t.tid)tre 
+where tre.reqid=q.qid 
 
 /*收藏夹表*/
 CREATE TABLE favorite(
@@ -608,6 +649,7 @@ select count(eid),b.aimid from essay e
 right join (select aimid from dynstate where selfid='10197' order by aimid) b
 on e.eautid=b.aimid group by b.aimid
 
+select * from essay
 
 
 --右连接 查询我关注的人有多少个人关注
@@ -803,12 +845,31 @@ select ''||ceil(dbms_random.value(10000,11000)),
 '' from dual connect by level <= 4000;
 --点赞文章
 insert into dynstate
-select ''||ceil(dbms_random.value(10000,11000)),
+select ''||ceil(dbms_random.value(10000,10002)),
 '',
 'DW',
-''||ceil(dbms_random.value(10000,13000)),
-'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
-'' from dual connect by level <= 9000;
+''||ceil(dbms_random.value(10000,10015)),
+to_char(sysdate,'yyyy-mm-dd'),
+'' from dual connect by level <=;
+
+insert into dynstate
+select '10000',
+'',
+'DW',
+'10013',
+'2017-04-21',
+'' from dual ;
+select * from dynstate where kind='DW' and selfid='10001'
+delete from dynstate where kind='DH'
+--点赞文章
+insert into dynstate
+select ''||ceil(dbms_random.value(10000,10002)),
+'',
+'DW',
+''||ceil(dbms_random.value(10000,10015)),
+to_char(sysdate,'yyyy-mm-dd'),
+'' from dual connect by level <=
+
 --点赞问题
 insert into dynstate
 select ''||ceil(dbms_random.value(10000,11000)),
@@ -1151,6 +1212,42 @@ SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitl
 		   WHERE u.uids=e.eautid)ue
 		WHERE ue.etid=t.tid
 
+<<<<<<< HEAD
+ select f.*,t.sum from FAVORITE f,  
+ (select count(ids) sum from DYNSTATE   where selfid='10202' and
+ cfid=(select fid from favorite where   fcreid='10202')) t   
+ where fcreid='10202'
+ 
+ select count(ids) sum from DYNSTATE   where selfid='10202' and
+ cfid='10794'
+ 
+ select f.fid,f.fcreid,f.fname,f.ftime,count(ids) sum from 
+ (select fid from favorite where fcreid='10202') x,
+ favorite f,dynstate d
+ where f.fcreid='10202' and d.selfid=f.fcreid and d.cfid=x.fid 
+ group by f.fid,f.fcreid,f.fname,f.ftime
+ 
+ select f.fid,f.fcreid,f.fname,f.ftime,x.fid,count(d.ids) sum
+ from ((select fid from favorite where fcreid='10202') x
+ right join FAVORITE f on f.fcreid='10202')
+ left join DYNSTATE d on d.selfid=f.fcreid and d.cfid=x.fid
+group by f.fid,f.fcreid,f.fname,f.ftime,x.fid
+
+
+
+select f.fid,f.fcreid,f.fname,f.ftime,count(d.ids) sum
+ from ((select fid from favorite where fcreid='10202') x
+ left join FAVORITE f on f.fcreid='10202' and f.fid=x.fid)
+ left join DYNSTATE d on d.selfid=f.fcreid and d.cfid=x.fid
+group by f.fid,f.fcreid,f.fname,f.ftime
+
+
+select * from favorite where fcreid='10202'
+
+select * from dynstate where selfid='10202' and cfid=''
+ 
+ 
+=======
 
 		
 		
@@ -1175,3 +1272,4 @@ select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u
 		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'Q'		
 		
 		
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git

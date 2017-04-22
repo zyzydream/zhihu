@@ -8,6 +8,13 @@
 <meta charset="UTF-8">
 <title>账号设置</title>
 <link type="text/css" rel="stylesheet" href="css/design.css">
+<link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
+	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
+	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
+<script
+	src="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"
+	tppabs="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"></script>
 </head>
 <body class="zhi">
 	<div class="zu-top" role="navigation" data-za-module="TopNavBar">
@@ -18,7 +25,8 @@
 			<div class="top-nav-profile">
 				<a id=":0" class="zu-top-nav-userinfo " href="page/myself.jsp"
 					role="button" aria-haspopup="true" aria-activedescendant=""> <span
-					class="name">xiaoxiao</span> <img class="Avatar" src="images/poto.jpg"
+					class="name"><%=request.getSession().getAttribute("username") %></span> 
+					<img class="Avatar" src="images/poto.jpg"
 					alt="dsvb"> <span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
@@ -178,9 +186,17 @@
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 	<script src="js/holder.js"></script>
 	<script src="js/ie10-viewport-bug-workaround.js"></script>
 	<script type="text/javascript" src="js/design.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+	<script
+		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
+		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script type="text/javascript" src="js/myself.js"></script>
+	<script src='js/layer/layer.js' type="text/javascript"></script>
+	<script type="text/javascript" src="/bootstrap-3.3.4/js/popover.js"></script>
+	<script type="text/javascript" src="js/jquery-form.js"></script>
 </body>
 </html>

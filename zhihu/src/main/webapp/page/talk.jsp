@@ -29,24 +29,27 @@
 						</ul>
 						<p class="Guide-TopicsHint">可以通过搜索和「话题广场」找到更多你想要的话题</p>
 					</div>
+					
 					<div class="Guide-TopicsFooter GaussianBlur">
-							<a href="page/homepage.jsp"><button
-									class="Guide-TopicsSubmit Button Button-flatPrimary js-submit"
-									id="addTopics" onclick="add()">进入知乎</button></a>
+						<a href="page/homepage.jsp">
+							<div class="Guide-TopicsFooter GaussianBlur">
+								<a onclick="add()"><button
+										class="Guide-TopicsSubmit Button Button-flatPrimary js-submit"
+										id="addTopics">进入知乎</button></a>
+							</div>
 					</div>
-
 				</div>
+				<div class="modal-dialog-buttons" style="display: none;"></div>
 			</div>
-			<div class="modal-dialog-buttons" style="display: none;"></div>
 		</div>
-	</div>
 
-	<script src='js/particles.js' type="text/javascript"></script>
-	<script src='js/background.js' type="text/javascript"></script>
-	<script type="text/javascript" src="easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-	<script src='js/layer/layer.js' type="text/javascript"></script>
-	<script src='js/talk.js' type="text/javascript"></script>
+		<script src='js/particles.js' type="text/javascript"></script>
+		<script src='js/background.js' type="text/javascript"></script>
+		<script type="text/javascript" src="easyui/jquery.min.js"></script>
+		<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+		<script type="text/javascript"
+			src="easyui/locale/easyui-lang-zh_CN.js"></script>
+		<script src='js/layer/layer.js' type="text/javascript"></script>
+		<script src='js/talk.js' type="text/javascript"></script>
 </body>
 </html>
