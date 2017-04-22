@@ -1,6 +1,7 @@
 package com.yc.zhihu.web.handler;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -274,11 +275,18 @@ public class DynstateHandler {
 		return dynstateService.favoriteinfo(fav);
 	}
 	
-	@RequestMapping(value="/updateinfo",method=RequestMethod.GET)
-	@ResponseBody
-	public Users updateinfo(HttpServletRequest request,Users user){
-		user.setUids(ServletUtil.LOGIN_UIDS);
-		
-		return dynstateService.total(user);
+	@RequestMapping(value="/updateinfo",method= RequestMethod.POST)
+	public String updateinfo(HttpServletRequest request,Users user) throws UnsupportedEncodingException{
+		String usign=new String(user.getUsign().getBytes("iso-8859-1"),"utf-8");
+		System.out.println("进来了  更新user ==》"+user);
+		Users users=new Users();
+		users.setUids(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+		users.setUsign(usign);
+		int n=dynstateService.updateinfo(users);
+		if(n>0){
+			return "redirect:/page/myself.jsp";
+		}else{
+			return "/page/design.jsp";
+		}
 	}
 }
