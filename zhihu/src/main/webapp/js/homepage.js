@@ -398,38 +398,56 @@ function yesfav(self){
 
 
 function litter(){
+	var content="";
+	var changecontent="";
 	var id=window.setInterval(function(){
 		$.get("information/list",function(data){
 			window.clearInterval(id);
+			content+='<table style="width: 300px;">';
 			for(var i=0;i<data.length;i++){
-				alert(JSON.stringify(data[i]));
+				content+='<tr><td colspan="2"> '+data[i].selfname+' 发送消息</td></tr><tr><td>'+data[i].info+'..</td><td>'+data[i].times+'</td></tr><tr><td colspan="2"><hr style="margin: 5px;"></td></tr>';
 			}
-		},"json")
+			content+='</table>';
+			if(content!=changecontent){
+			   alert("新消息");
+			   document.getElementById("newinfo").innerHTML='新';
+			   changecontent=content;
+			}
+			document.getElementById("example").setAttribute("data-content",content);
+		},"json");
+		var ids=window.setInterval(function(){
+			if(content.length>30){
+				window.clearInterval(ids);
+				$(function(){
+					$("[rel=drevil]").popover({
+						trigger:'manual',
+						placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+						//title : '', //this is the top title bar of the popover. add some basic css
+						html: 'true', //needed to show html of course
+						animation: false
+					}).on("mouseenter", function () {
+						var _this = this;
+						$(this).popover("show");
+						console.log($("[rel=drevil]"));
+						$(this).siblings(".popover").on("mouseleave", function () {
+							$(_this).popover('hide');
+						});
+					}).on("mouseleave", function () {
+						var _this = this;
+						setTimeout(function () {
+							if (!$(".popover:hover").length) {
+								$(_this).popover("hide")
+							}
+						}, 100);
+					});
+				});
+			}
+		},500);
 	}, 3000);
-	$(function(){
-		$("[rel=drevil]").popover({
-			trigger:'manual',
-			placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
-			//title : '', //this is the top title bar of the popover. add some basic css
-			html: 'true', //needed to show html of course
-			content : '<table style="width: 300px;"><tr><td colspan="2">用户A发送消息</td></tr><tr><td>content..</td><td>2017-04-22</td></tr><tr><td colspan="2"><hr style="margin: 5px;"></td></tr><tr><td colspan="2">用户A发送消息</td></tr><tr><td>content..</td><td>2017-04-22</td></tr><tr><td colspan="2"><hr style="margin: 5px;"></td> </tr></table>',
-			animation: false
-		}).on("mouseenter", function () {
-			var _this = this;
-			$(this).popover("show");
-			console.log($("[rel=drevil]"));
-			$(this).siblings(".popover").on("mouseleave", function () {
-				$(_this).popover('hide');
-			});
-		}).on("mouseleave", function () {
-			var _this = this;
-			setTimeout(function () {
-				if (!$(".popover:hover").length) {
-					$(_this).popover("hide")
-				}
-			}, 100);
-		});
-	});
+}
+
+function delnew(){
+	document.getElementById("newinfo").innerHTML='';
 }
 //function test(){
 

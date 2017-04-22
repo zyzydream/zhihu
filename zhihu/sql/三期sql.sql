@@ -1152,7 +1152,7 @@ drop table admin;
 drop table reply;
 drop table infomation;
 drop table explore;
-
+drop table favorite;
 
 insert into FAVORITE(fid,fcreid,fname,ftime) values('1','1003','我的收藏夹','2017-4-3');
 
@@ -1252,3 +1252,115 @@ select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u
 		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'Q'		
 		
 		
+--基本信息中 用户四个10000、10001、10002、10003、10004、10005、10006
+--话题15个1000~1014，
+--文章和问题及回复若干 （每个编号10000~10020...）（至少保证每个话题都有相关的文章与问题）
+
+--点赞问题的基本数据
+insert into dynstate select '10000','','DW','10003','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','','DW','10004','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','','DW','10005','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','','DW','10006','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','','DW','10007','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','','DW','10008','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','','DW','10009','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','','DW','10010','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','','DW','10011','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','','DW','10012','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','','DW','10017','2017-04-24 00:00:01','' from dual ;
+
+insert into dynstate select '10001','','DW','10000','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10001','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10002','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10003','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10004','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10005','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10010','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10011','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10012','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10013','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10017','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10018','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10019','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','','DW','10020','2017-04-24 00:00:01','' from dual ;
+
+insert into dynstate select '10002','','DW','10000','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10001','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10002','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10003','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10009','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10010','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10011','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10012','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10013','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10014','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10015','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10016','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10017','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10018','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10019','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','','DW','10020','2017-04-24 00:00:01','' from dual ;
+
+insert into dynstate select '10003','','DW','10000','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10001','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10002','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10003','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10004','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10005','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10006','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10007','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10008','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10009','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10010','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10011','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10012','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10013','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10014','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10015','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10016','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10017','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10018','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10019','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','','DW','10020','2017-04-24 00:00:01','' from dual ;
+
+insert into dynstate select '10004','','DW','10000','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10001','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10002','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10003','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10004','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10006','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10007','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10009','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10010','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10011','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10012','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10013','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10014','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10015','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10016','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10017','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10018','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10019','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','','DW','10020','2017-04-24 00:00:01','' from dual ;
+
+insert into dynstate select '10005','','DW','10000','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10001','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10002','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10004','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10005','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10006','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10007','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10008','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10009','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10010','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10011','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10013','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10014','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10015','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10016','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10017','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10018','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10019','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','','DW','10020','2017-04-24 00:00:01','' from dual ;
+
+
