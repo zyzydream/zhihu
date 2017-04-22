@@ -225,4 +225,9 @@ public class DynstateServiceImpl implements DynstateService {
 	public Users listupic(Object obj) {
 		return dynstateMapper.listupic(obj);
 	}
+	
+	@Override
+	public int updateinfo(Object obj) {
+		return dynstateMapper.updateinfo(obj);
+	}
 }

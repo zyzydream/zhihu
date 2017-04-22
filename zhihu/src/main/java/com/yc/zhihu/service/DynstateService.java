@@ -70,4 +70,6 @@ public interface DynstateService {
 	
 	List<Users> allattenme(Object obj);
 	
+	int updateinfo(Object obj);
+	
 }
