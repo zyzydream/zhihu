@@ -14,4 +14,12 @@ public interface ReplyService {
 
 	int add(Reply reply);
 
+	String listcount(String rrid);
+
+	List<Explore> listReply(Reply reply);
+
+	String listUR(String rid);
+
+	int addReply(Reply reply);
+
 }

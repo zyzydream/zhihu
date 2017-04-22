@@ -43,4 +43,24 @@ public class ReplyServiceImpl implements ReplyService {
 		return replyMapper.addReply(reply);
 	}
 
+	@Override
+	public String listcount(String rrid) {
+		return replyMapper.findAllReply(rrid);
+	}
+
+	@Override
+	public List<Explore> listReply(Reply reply) {
+		return replyMapper.findReplyReply(reply);
+	}
+
+	@Override
+	public String listUR(String rid) {
+		return replyMapper.findrreceid(rid);
+	}
+
+	@Override
+	public int addReply(Reply reply) {
+		return replyMapper.insertReply(reply);
+	}
+
 }

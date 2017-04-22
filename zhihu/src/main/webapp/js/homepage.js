@@ -37,7 +37,7 @@ show(0);
 function show(num){
 	$.get("favorite/all",function(date){
 		favorite=date;
-		times+=num;
+		times+=num
 		$.get("user/dynstate?times="+times,function(data){
 			dynstate="";			
 			alllength=data.length;

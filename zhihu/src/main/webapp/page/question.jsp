@@ -219,38 +219,9 @@
 					</div>
 
 
-					<div class="Question-sideColumn" data-za-module="RightSideBar">
-						<div>
-							<div class="Card AnswerAuthor">
-								<div class="Card-header AnswerAuthor-title">
-									<div class="Card-headerText">关于作者</div>
-								</div>
-								<div class="Card-section">
-									<div class="AnswerAuthor-user" id="user">
-										<!-- 关于作者 -->
-									</div>
-								</div>
-								<div class="Card-section">
-									<div class="AnswerAuthor-counts">
-										<div class="NumberBoard" id="alluser">
-											<!-- 关注人数 -->
-										</div>
-									</div>
-
-									<div class="MemberButtonGroup AnswerAuthor-buttons">
-										<button
-											class="Button FollowButton Button--primary Button--blue"
-											type="button">
-											<span> 关注 </span>
-										</button>
-										<button class="Button" type="button">
-											<span>发私信</span>
-
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
+					<div class="Question-sideColumn" data-za-module="RightSideBar"
+						id="someReplys">
+						<!-- 作者 -->
 						<footer class="Footer">
 							<a class="Footer-item" target="_blank"
 								href="//liukanshan.zhihu.com/">刘看山</a> <span class="Footer-dot"></span>

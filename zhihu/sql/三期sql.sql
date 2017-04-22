@@ -1164,4 +1164,16 @@ select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u
 		from reply r ,users u
 		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'Q'		
 		
+
+		
+		
+		
+		
+ select e.eid ids,e.eautid uids,e.econtent content,e.etime times,e.etitle  title,e.etid tid,ud.uname author from essay e, 
+ (select * from users u,  
+ (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='2532582')d   
+ where u.uids=d.aimid)ud  
+ where e.eautid=ud.uids AND 24*1>=to_number(sysdate-to_date(e.etime,'yyyy-mm-dd'))*24
+		select
+		
 		

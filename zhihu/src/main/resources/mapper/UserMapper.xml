@@ -46,7 +46,7 @@
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
 		where u.uids=d.aimid)ud
 		where e.eautid=ud.uids AND 24*${num}>=to_number(sysdate-
-		to_date(e.etime,'yyyy-mm-dd'))*24
+		to_date(e.etime,'yyyy-mm-dd HH24:MI:SS'))*24
 	</select>
 
 	<select id="listExplore" parameterType="Users" resultType="Explore">
@@ -63,14 +63,14 @@
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
 		where u.uids=d.aimid)ud
 		where q.qautid=ud.uids AND 24*${num}>=to_number(sysdate-
-		to_date(q.qtime,'yyyy-mm-dd'))*24
+		to_date(q.qtime,'yyyy-mm-dd HH24:MI:SS'))*24
 	</select>
 	<!-- 获得当前关注的所有对象24小时内的全部动态 -->
 	<select id="lists" parameterType="Users" resultType="Dynstate">
 		SELECT * from dynstate d,
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid='${uids}')dd
-		WHERE d.selfid=dd.aimid AND 24*${num}>=to_number( to_date('2017-12-30','yyyy-mm-dd')-
-		to_date(d.times,'yyyy-mm-dd'))*24
+		WHERE d.selfid=dd.aimid AND 24*${num}>=to_number( to_date('2017-12-30','yyyy-mm-dd HH24:MI:SS')-
+		to_date(d.times,'yyyy-mm-dd HH24:MI:SS'))*24
 	</select>
 	<select id="listrelatedTopic" parameterType="Dynstate"
 		resultType="Explore">
@@ -176,7 +176,7 @@
 	
 	<insert id="attentionUser" parameterType="Dynstate">
 	     insert into dynstate(selfid,aimid,kind,times)values
-	     ('${selfid}','${aimid}','GR',to_char(sysdate,'yyyy-mm-dd'))
+	     ('${selfid}','${aimid}','GR',to_char(sysdate,'yyyy-mm-dd HH24:MI:SS'))
 	</insert>
 	
 	<delete id="delattentionUser" parameterType="Dynstate" >
@@ -184,6 +184,6 @@
 	</delete>
 	
 	<insert id="newFav" parameterType="Favorite">
-	    insert into favorite(fid,fcreid ,fname,ftime)values(seq_favorite.nextval,'${fcreid}','${fname}',to_char(sysdate,'yyyy-mm-dd'))
+	    insert into favorite(fid,fcreid ,fname,ftime)values(seq_favorite.nextval,'${fcreid}','${fname}',to_char(sysdate,'yyyy-mm-dd HH24:MI:SS'))
 	</insert>
 </mapper>

@@ -6,7 +6,7 @@
 <mapper namespace="com.yc.zhihu.mapper.EssayMapper">
 	<insert id="addEssay" parameterType="Essay">
 		INSERT INTO
-		essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval,'${eautid}','${econtent}',to_char(sysdate,'yyyy-mm-dd'),'${etitle}','${etid}')
+		essay(eid,eautid,econtent,etime,etitle,etid)VALUES(seq_essay.nextval,'${eautid}','${econtent}',to_char(sysdate,'yyyy-mm-dd HH24:MI:SS'),'${etitle}','${etid}')
 	</insert>
 
 
