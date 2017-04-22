@@ -211,7 +211,7 @@
 									</h1>
 								</div>
 							</span> <span id="seflmain">
-								<div class="row featurette">
+								<!-- <div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 20px">
 											<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].ttopic+'</span><br />'+data[i].etitle+'
@@ -266,7 +266,7 @@
 											alt="">
 									</div>
 								</div>
-								<hr class="featurette-divider"> <!-- 开始  关注用户关注话题 -->
+								<hr class="featurette-divider"> 
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 18px;">
@@ -277,9 +277,19 @@
 									<div class="col-md-5">
 										<label
 											style="float: right; font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
+									   <span style="float: right; width: 200px">
+									<div style="float: left; "
+												class="btn-group" role="group" aria-label="...">
+												<button
+													style="font-size: 13px; font-weight: 40;"
+													type="button" class="btn btn-default btn-lg">
+													<span class="glyphicon glyphicon-plus"
+														aria-hidden="true"></span>加关注
+												</button>
+											</div></span>
 									</div>
 								</div>
-								<hr class="featurette-divider"> <!-- 结束 --> <!-- 开始  关注用户发表文章  -->
+								<hr class="featurette-divider"> 
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 20px;">
@@ -332,7 +342,7 @@
 											alt="Generic placeholder image">
 									</div>
 								</div>
-								<hr class="featurette-divider"> <!-- 结束 --> <!-- 开始  关注用户提出问题  -->
+								<hr class="featurette-divider"> 
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 20px;">
@@ -384,7 +394,7 @@
 											alt="">
 									</div>
 								</div>
-								<hr class="featurette-divider"> <!-- 结束 -->
+								<hr class="featurette-divider"> -->
 							</span>
 							<nav>
 								<ul class="pager">

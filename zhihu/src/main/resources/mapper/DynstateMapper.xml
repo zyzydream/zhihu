@@ -86,7 +86,9 @@
 		(select
 		usign from users where uids=#{uids}) usign,
 		(select
-		uname from users where uids=#{uids}) uname
+		uname from users where uids=#{uids}) uname,
+		(select
+		upic from users where uids=#{uids}) upic
 		from dual
 	</select>
 
@@ -277,5 +279,17 @@
 		select
 		upic from users where uids=#{uids}
 	</select>
+	
+	<update id="updateinfo" parameterType="Users">
+		update users
+		<set>
+			<if test="usign !=null">
+				usign=#{usign}
+			</if>
+		</set>
+		<where>
+			uids=#{uids} and uname=#{uname}
+		</where>
+	</update>
 
 </mapper>

@@ -47,10 +47,20 @@ alert table users modify column upic varchar(200);
 SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.etitle title,ue.econtent content,ue.etime times,'W' kind FROM   TOPICS t,   (SELECT * FROM USERS u,   (SELECT * FROM essay e WHERE e.etid=1008)e   WHERE u.uids=e.eautid)ue   WHERE ue.etid=t.tid
 
 select * from users
-select * from users where uids='10004';
+select * from users where uids='10009';
 18037560013@qq.com /zhihu/images/touxiang.jpg
+18087787759@qq.com /zhihu/images/touxiang.jpg
+18035528789@qq.com /zhihu/images/touxiang.jpg
+18057091262@qq.com /zhihu/images/touxiang.jpg
+
+select * from dynstate where selfid='10004' and kind='GH' and ids='1010'
 
 select * from reply where reqid='10627'
+
+SELECT * from dynstate d,
+		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10004')dd
+		WHERE d.selfid=dd.aimid AND 24*1>=to_number( to_date('2017-12-30','yyyy-mm-dd')-
+		to_date(d.times,'yyyy-mm-dd'))*24
 
 18037560013@qq.com /zhihu/images/touxiang.jpg
 

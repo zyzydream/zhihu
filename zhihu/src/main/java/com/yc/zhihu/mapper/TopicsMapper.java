@@ -2,6 +2,7 @@ package com.yc.zhihu.mapper;
 
 import java.util.List;
 
+import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 
@@ -18,6 +19,8 @@ public interface TopicsMapper {
 	List<Explore> selectExplore(Topics t);
 
 	Topics findTopic(Topics topic);
+
+	Dynstate findDynstate(Dynstate dynstate);
 
 	
 }

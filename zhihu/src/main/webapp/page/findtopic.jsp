@@ -182,13 +182,22 @@
 											<img src="images/1.jpg" alt="..." width="50px" /> </a>
 										</div>
 										<h1 id="topicname"
-											style="font-size: large; font-weight:lighter; margin: 5px;margin-left:10px;font-style: italic; float: left;">
+											style="font-size: large; font-weight:lighter; margin: 5px;margin-left:10px;margin-right:100px;font-style: italic; float: left;">
 										  <%=request.getSession().getAttribute("ids") %></h1>
-										<ul class="nav nav-pills" style="width:580px;float: left;margin-left: 10px;">
+										<ul class="nav nav-pills" style="width:480px;float: left;margin-left: 10px;" id="first">
 											<li role="presentation" class="active"><a href="#" style="font-size:small;padding: 5px;font-weight: lighter;">所有动态</a></li>
 											<li role="presentation" onclick="selectExplore(0)"><a href="javascript:void(0)" style="font-size:small;padding: 5px;font-weight: lighter;">精选</a></li>
 											<li role="presentation"><a href="#" style="font-size:small;padding: 5px;font-weight: lighter;">等待回答</a></li>
 										</ul>
+										<div style="float: right; width: 100px;"
+												class="btn-group" role="group" aria-label="..."  id="attention">
+										    <!-- <button
+													style="font-size: 13px; font-weight: 40;float: left;"
+													type="button" class="btn btn-default">
+													<span class="glyphicon glyphicon-plus"
+														aria-hidden="true"></span>关注
+												</button>  -->
+												</div>   
 									</div>
 									<!-- <h1>
 										编辑推荐

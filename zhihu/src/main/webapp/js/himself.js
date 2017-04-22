@@ -47,6 +47,10 @@ $.get("him/upic"+window.location.search,function(data){
 			+'	</div>';
 	
 	document.getElementById("userava").innerHTML = upic;
+	
+	var topupic='';
+	topupic+='<img class="Avatar" src="'+data.upic+'" style="width: 30px; height: 30px;">';
+	document.getElementById("Popover-21677-9959-toggle").innerHTML = topupic;
 },'json');
 
 

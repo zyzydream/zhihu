@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.mapper.TopicsMapper;
@@ -118,5 +119,9 @@ public class TopicServiceImpl implements TopicService{
 	@Override
 	public Topics listTopic(Topics topic) {
 		return topicsMapper.findTopic(topic);
+	}
+
+	public Dynstate attention(Dynstate dynstate) {
+		return topicsMapper.findDynstate(dynstate);
 	}
 }
