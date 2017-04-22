@@ -225,7 +225,7 @@ function test(){
 	for(var i=0;i<length;i++){
 		var uname=document.getElementsByName("showUsers")[i].innerHTML;
 		$.get("user/showUser?uname="+uname+"&&num="+i,function(data){
-			titles+=''+data.num+'====<div class="media" style="400px;"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:60px"> </a></div><div class="media-body"><h4 class="media-heading">'+data.uname+'</h4>'+data.nsign+'<span>';
+			titles+=''+data.num+'====<div class="media" style="400px;"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:60px"> </a></div><div class="media-body"><h4 class="media-heading"><a href="page/himself.jsp?uids='+data.uids+'">'+data.uname+'</a></h4>'+data.nsign+'<span>';
 			contents+=''+data.num+'====<table style="width: 230px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td>';
 			if(data.attention=='y'){
 				contents+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="delattentionUser(\''+data.uids+'\',\''+data.uname+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消</button></td>';
