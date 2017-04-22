@@ -48,24 +48,18 @@
 					<li><a href="page/design.jsp"> <i
 							class="zg-icon zg-icon-dd-settings"></i>设置
 					</a></li>
-					<li><a href="page/login.jsp"> <i
+					<li><a href="back/login.jsp"> <i
 							class="zg-icon zg-icon-dd-logout"></i>退出
 					</a></li>
 				</ul>
 			</div>
 
-
-
 			<a class="zu-top-add-question" id="zu-top-add-question"
 				style="text-decoration: none" href="page/introducteQuestion.jsp">提问</a>
-
 
 			<div role="search" id="zh-top-search" class="zu-top-search">
 				<form method="GET" action="/search" id="zh-top-search-form"
 					class="zu-top-search-form">
-
-
-
 					<input type="hidden" name="type" value="content"> <label
 						for="q" class="hide-text">知乎搜索</label><input type="text"
 						class="zu-top-search-input" id="q" name="q" autocomplete="off"
@@ -90,10 +84,10 @@
 					<li class="zu-top-nav-li " id="zh-top-nav-explore"><a
 						class="zu-top-nav-link" href="/zhihu/page/explore.jsp">发现</a></li>
 
-					<li class="top-nav-noti zu-top-nav-li " href="#" rel="drevil" id="example"><a
+					<li class="top-nav-noti zu-top-nav-li " href="#" rel="drevil" id="example" onmousedown="delnew()"><a
 						class="zu-top-nav-link" href="javascript:void(0)"
 						id="zh-top-nav-count-wrap" role="button"><span
-							class="mobi-arrow"></span>消息</a></li>
+							class="mobi-arrow" style="color: red" id="newinfo"></span>消息</a></li>
 				</ul>
 				<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard"
 					id="zh-top-nav-live-new" role="popup" tabindex="0">
@@ -177,22 +171,17 @@
 						<div class="HomeEntry-box">
 							<span class="HomeEntry-boxArrow"></span>
 							<ul class="HomeEntry-list">
-								<li class="HomeEntry-item"><a href="#"
+								<li class="HomeEntry-item"><a href="page/introducteQuestion.jsp"
 									class="HomeEntry-ask js-HomeEntry-ask"> <i
 										class="sprite-home-question-off"></i> 提问
 								</a></li>
-								<li class="HomeEntry-item"><a href="/question"
-									target="_blank" class="HomeEntry-answer js-HomeEntry-answer">
-										<i class="sprite-home-answer-off"></i> 回答
-								</a></li>
+								
 								<li class="HomeEntry-item"><a href="page/write.jsp"
 									target="_blank" class="HomeEntry-post js-HomeEntry-post"> <i
 										class="sprite-home-post-off"></i> 写文章
 								</a></li>
 							</ul>
-							<div class="HomeEntry-draft">
-								<a href="/draft" target="_blank"> 草稿 </a>
-							</div>
+							
 						</div>
 					</div>
 					<div class="HomeTopics zg-section" data-za-module="HomeTopics">
@@ -222,7 +211,7 @@
 									</h1>
 								</div>
 							</span> <span id="seflmain">
-								<div class="row featurette">
+								<!-- <div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 20px">
 											<span class="text-muted" style="font-size: 13px">来自话题：'+data[i].ttopic+'</span><br />'+data[i].etitle+'
@@ -277,7 +266,7 @@
 											alt="">
 									</div>
 								</div>
-								<hr class="featurette-divider"> <!-- 开始  关注用户关注话题 -->
+								<hr class="featurette-divider"> 
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 18px;">
@@ -288,9 +277,19 @@
 									<div class="col-md-5">
 										<label
 											style="float: right; font-size: 15px; font-weight: lighter;">+'data[i].times'+</label>
+									   <span style="float: right; width: 200px">
+									<div style="float: left; "
+												class="btn-group" role="group" aria-label="...">
+												<button
+													style="font-size: 13px; font-weight: 40;"
+													type="button" class="btn btn-default btn-lg">
+													<span class="glyphicon glyphicon-plus"
+														aria-hidden="true"></span>加关注
+												</button>
+											</div></span>
 									</div>
 								</div>
-								<hr class="featurette-divider"> <!-- 结束 --> <!-- 开始  关注用户发表文章  -->
+								<hr class="featurette-divider"> 
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 20px;">
@@ -343,7 +342,7 @@
 											alt="Generic placeholder image">
 									</div>
 								</div>
-								<hr class="featurette-divider"> <!-- 结束 --> <!-- 开始  关注用户提出问题  -->
+								<hr class="featurette-divider"> 
 								<div class="row featurette">
 									<div class="col-md-7">
 										<h2 class="featurette-heading" style="font-size: 20px;">
@@ -395,7 +394,7 @@
 											alt="">
 									</div>
 								</div>
-								<hr class="featurette-divider"> <!-- 结束 -->
+								<hr class="featurette-divider"> -->
 							</span>
 							<nav>
 								<ul class="pager">

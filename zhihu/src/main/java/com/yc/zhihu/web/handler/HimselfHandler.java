@@ -1,7 +1,6 @@
 package com.yc.zhihu.web.handler;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,63 +29,55 @@ import com.yc.zhihu.util.ServletUtil;
 import com.yc.zhihu.util.UploadFileUtil;
 import com.yc.zhihu.util.UploadFileUtil.UploadFile;
 
-@Controller("dynstateHandler")
-@RequestMapping("/dynstate")
-public class DynstateHandler {
+@Controller("himselfHandler")
+@RequestMapping("/him")
+public class HimselfHandler {
 
 	@Autowired
 	private DynstateService dynstateService;
 	
-	@RequestMapping(value="/all",method=RequestMethod.GET)
-	@ResponseBody
-	public PaginationBean<Dynstate> list(PaginationBean<Explore> e){
-//		System.out.println(sgin);
-//		PaginationBean<Explore> e=new PaginationBean<Explore>();
-//		e.setCurrPage(Integer.valueOf(currPage));
-//		e.setPageSize(Integer.valueOf(pageSize));
-//		e.setSgin(sgin);
-		return dynstateService.list(e);
-	}
 	
 	@RequestMapping(value="/right",method=RequestMethod.GET)
 	@ResponseBody
-	public Users listright(HttpServletRequest request){
-
-		return dynstateService.total(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public Users listright(String uids,Users user){
+		user.setUids(uids);
+		return dynstateService.total(user);
 	}
 	
 	
 	@RequestMapping(value="/m1",method=RequestMethod.GET)
 	@ResponseBody
-	public List<ListAllMy> Dynstatehuida(HttpServletRequest request){
+	public List<ListAllMy> Dynstatehuida(String uids,Users user,HttpServletRequest request){
+		System.out.println(uids);
+		user.setUids(uids);
+		System.out.println("进来了 user==》"+user);
 		Users users=new Users();
-		users=dynstateService.total(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
-		request.getSession().setAttribute("myatten", users.getMyatten());
-		request.getSession().setAttribute("attenme", users.getAttenme());
-		request.getSession().setAttribute("myattentop", users.getMyattentop());
-		request.getSession().setAttribute("myattenzhuanlan", users.getMyattenzhuanlan());
-		request.getSession().setAttribute("myattenfav", users.getMyattenfav());
-		request.getSession().setAttribute("usign", users.getUsign());
-		request.getSession().setAttribute("upic", users.getUpic());
-		request.getSession().setAttribute(ServletUtil.LOGIN_UIDS,users.getUids());
+		users=dynstateService.total(user);
+		request.getSession().setAttribute("myatten2", users.getMyatten());
+		request.getSession().setAttribute("attenme2", users.getAttenme());
+		request.getSession().setAttribute("myattentop2", users.getMyattentop());
+		request.getSession().setAttribute("myattenzhuanlan2", users.getMyattenzhuanlan());
+		request.getSession().setAttribute("myattenfav2", users.getMyattenfav());
+		request.getSession().setAttribute("usign2", users.getUsign());
+		request.getSession().setAttribute("username2", users.getUname());
+		//request.getSession().setAttribute(ServletUtil.LOGIN_UIDS,users.getUids());
 		
-		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
 		
 		List<ListAllMy> all=new ArrayList<ListAllMy>();
-		List<ListAllMy> xs=dynstateService.listtopic(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<ListAllMy> xs=dynstateService.listtopic(user);
 		if(xs!=null){
 		for(ListAllMy x:xs){
 			all.add(x);
 		}
 		}
-		List<ListAllMy> ys=dynstateService.answer(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<ListAllMy> ys=dynstateService.answer(user);
 		if(ys!=null){
 		for(ListAllMy y:ys){
 			all.add(y);
 		}
 		}
 		
-		List<ListAllMy> zs=dynstateService.showessays(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<ListAllMy> zs=dynstateService.showessays(user);
 		if(zs!=null){
 			for(ListAllMy z:zs){
 				
@@ -94,7 +85,7 @@ public class DynstateHandler {
 			}
 		}
 		
-		List<ListAllMy> ms=dynstateService.showscolumns(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+		List<ListAllMy> ms=dynstateService.showscolumns(user);
 		if(ms!=null){
 			for(ListAllMy m:ms){
 				all.add(m);
@@ -106,17 +97,18 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/upic",method=RequestMethod.GET)
 	@ResponseBody
-	public Users Dynstatelistupic(HttpServletRequest request){
-		System.out.println("upic进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.listupic(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public Users Dynstatelistupic(String uids){
+		Users users=new Users();
+		users.setUids(uids);
+		return dynstateService.listupic(users);
 	}
 	
 	
 	@RequestMapping(value="/m3",method=RequestMethod.GET)
 	@ResponseBody
-	public List<ListAllMy> Dynstatehuida3(HttpServletRequest request){
-		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.answer(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public List<ListAllMy> Dynstatehuida3(String uids,Users user){
+		user.setUids(uids);
+		return dynstateService.answer(user);
 	}
 	
 	@RequestMapping(value="/m4",method=RequestMethod.GET)
@@ -128,16 +120,16 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/m6",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Question> DynstateMyQuestion(HttpServletRequest request){
-		System.out.println("进来了 ====>  question"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.myquestion(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public List<Question> DynstateMyQuestion(String uids,Users user){
+		user.setUids(uids);
+		return dynstateService.myquestion(uids);
 	}
 	
 	@RequestMapping(value="/m7",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Favorite> DynstateMyFavorite(HttpServletRequest request){
-		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.listFavorite(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public List<Favorite> DynstateMyFavorite(String uids,Users user){
+		user.setUids(uids);	
+		return dynstateService.listFavorite(user);
 	}
 	
 	@RequestMapping(value="/m8",method=RequestMethod.GET)
@@ -156,14 +148,16 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/m81",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Users> DynstateMyAttentionq(HttpServletRequest request){
-		return dynstateService.alluses(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public List<Users> DynstateMyAttentionq(String uids,Users user){
+		user.setUids(uids);
+		return dynstateService.alluses(user);
 	}
 	
 	@RequestMapping(value="/m82",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Users> DynstateAttentionme(HttpServletRequest request){
-		return dynstateService.allattenme(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public List<Users> DynstateAttentionme(String uids,Users user){
+		user.setUids(uids);
+		return dynstateService.allattenme(user);
 	}
 	
 	@RequestMapping(value="/add",method=RequestMethod.GET)
@@ -184,16 +178,18 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/a1",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Total> SUMTOTAL(HttpServletRequest request){
-		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.sumT(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public List<Total> SUMTOTAL(String uids){
+		Users users=new Users();
+		users.setUids(uids);
+		return dynstateService.sumT(users);
 	}
 	
 	@RequestMapping(value="/showtoppic",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Users> show(HttpServletRequest request){	
-		
-		return dynstateService.showtop(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public List<Users> show(String uids){	
+		Users users=new Users();
+		users.setUids(uids);
+		return dynstateService.showtop(users);
 	}
 	
 	@RequestMapping(value="upload")
@@ -273,20 +269,5 @@ public class DynstateHandler {
 		fav.setFcreid(users1.getUids());
 		System.out.println("进来了 fav==>"+fav);
 		return dynstateService.favoriteinfo(fav);
-	}
-	
-	@RequestMapping(value="/updateinfo",method= RequestMethod.POST)
-	public String updateinfo(HttpServletRequest request,Users user) throws UnsupportedEncodingException{
-		String usign=new String(user.getUsign().getBytes("iso-8859-1"),"utf-8");
-		System.out.println("进来了  更新user ==》"+user);
-		Users users=new Users();
-		users.setUids(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
-		users.setUsign(usign);
-		int n=dynstateService.updateinfo(users);
-		if(n>0){
-			return "redirect:/page/myself.jsp";
-		}else{
-			return "/page/design.jsp";
-		}
 	}
 }

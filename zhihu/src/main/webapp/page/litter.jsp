@@ -16,7 +16,7 @@
 				data-za-c="view_home" data-za-a="visit_home"
 				data-za-l="top_navigation_zhihu_logo">知乎</a>
 			<div class="top-nav-profile">
-				<a id=":0" class="zu-top-nav-userinfo " href="/people/xiao-35-30"
+				<a id=":0" class="zu-top-nav-userinfo " href="page/myself.jsp"
 					role="button" aria-haspopup="true" aria-activedescendant=""> <span
 					class="name">xiao</span> <img class="Avatar"
 					src="https://pic1.zhimg.com/da8e974dc_s.jpg"
@@ -27,24 +27,24 @@
 				</a>
 				<ul id="top-nav-profile-dropdown" class="top-nav-dropdown"
 					aria-labelledby=":0">
-					<li><a id=":1" href="/people/xiao-35-30" tabindex="-1"> <i
+					<li><a id=":1" href="page/myself.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-home"></i> 我的主页
 					</a></li>
-					<li><a id=":2" href="/inbox" tabindex="-1"> <i
+					<li><a id=":2" href="page/litter.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-pm"></i> 私信 <span
 							id="zh-top-nav-pm-count"
 							class="zu-top-nav-pm-count zg-noti-number"
 							style="visibility: hidden;" data-count="0"> </span>
 					</a></li>
-					<li><a id=":3" href="/settings" tabindex="-1"> <i
+					<li><a id=":3" href="page/design.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-settings"></i> 设置
 					</a></li>
-					<li><a id=":4" href="/logout" tabindex="-1"> <i
+					<li><a id=":4" href="back/login.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-logout"></i> 退出
 					</a></li>
 				</ul>
 			</div>
-			<button id="zu-top-add-question" class="zu-top-add-question">提问</button>
+			<a href="page/introducteQuestion.jsp"><button id="zu-top-add-question" class="zu-top-add-question">提问</button></a>
 			<div id="zh-top-search" class="zu-top-search" role="search">
 				<form id="zh-top-search-form" class="zu-top-search-form"
 					method="GET" action="/search">
@@ -62,7 +62,7 @@
 			<div id="zg-top-nav" class="zu-top-nav">
 				<ul class="zu-top-nav-ul zg-clear">
 					<li id="zh-top-nav-home" class="zu-top-nav-li "><a
-						id="zh-top-link-home" class="zu-top-nav-link" href="back/back.jsp"
+						id="zh-top-link-home" class="zu-top-nav-link" href="page/homepage.jsp"
 						data-za-c="view_home" data-za-a="visit_home"
 						data-za-l="top_navigation_home">首页</a></li>
 					<li id="zh-top-nav-topic"
@@ -70,7 +70,7 @@
 						id="top-nav-dd-topic" class="zu-top-nav-link" href="page/talk.jsp">话题</a>
 					</li>
 					<li id="zh-top-nav-explore" class="zu-top-nav-li "><a
-						class="zu-top-nav-link" href="/explore">发现</a></li>
+						class="zu-top-nav-link" href="page/explore.jsp">发现</a></li>
 					<li class="top-nav-noti zu-top-nav-li "><a
 						id="zh-top-nav-count-wrap" class="zu-top-nav-link"
 						href="javascript:;" role="button"> <span class="mobi-arrow"></span>
@@ -99,12 +99,7 @@
 						还没有人给你发私信，不如你主动一点，给神交已久的知友发一封问候私信吧:)</div>
 				</div>
 			</div>
-			<div class="zu-main-sidebar" data-za-module="RightSideBar">
-				<div class="zg-info-message"
-					style="margin: 0 0 10px; text-align: left;">
-					担心骚扰？可以 <a href="/settings/notification">设置</a> 为「开启陌生人私信箱」。
-				</div>
-			</div>
+			
 		</div>
 	</div>
 	<div id="zh-footer" class="zh-footer">

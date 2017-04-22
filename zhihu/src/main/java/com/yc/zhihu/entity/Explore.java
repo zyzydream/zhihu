@@ -18,7 +18,7 @@ public class Explore {
 	private String praise;
 	//收藏数
 	private String collect;
-	//当前登录用户是否点赞
+	//当前登录用户是否点赞或关注
 	private String ypraise;
 	//当前登录用户是否收藏
 	private String ycollent;

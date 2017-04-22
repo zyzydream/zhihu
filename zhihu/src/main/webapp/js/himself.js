@@ -1,5 +1,6 @@
+//显示封面图片
 function myansrer33(){
-	$.get("dynstate/showtoppic",function(data){
+	$.get("him/showtoppic"+window.location.search,function(data){
 		var a="";
 		if(data.length>0){
 			for(var i=0;i<data.length;i++){
@@ -9,7 +10,7 @@ function myansrer33(){
 		document.getElementById("showImage_gr").innerHTML = a;
 	},'json');
 
-	$.get("dynstate/a1",function(data){
+	$.get("him/a1"+window.location.search,function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
@@ -18,7 +19,7 @@ function myansrer33(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> ta的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -26,102 +27,37 @@ function myansrer33(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
-				+'<h2 style="padding-left: 10px; padding-top: 10px">我的动态</h2>'
+				+'<h2 style="padding-left: 10px; padding-top: 10px">ta的动态</h2>'
 				+'</div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
 }
 
-$.get("dynstate/upic",function(data){
+//显示头像
+$.get("him/upic"+window.location.search,function(data){
 	var upic='';
-	upic+='<form enctype="multipart/form-data" target="uploadFrame"'
-		+'action="dynstate/upload2" method="post" name="form"'
-		+'	id="uploadupic">'
-		+'	<div class="UserAvatar">'
-		+'		<div id="hhh">'
-		+'		<img id="img_icon"'
-		+'			class="Avatar Avatar--large UserAvatar-inner"'
-		+'			src="'+data.upic+'"'
-		+'			style="width: 160px; height: 160px;"'
-		+'			onclick="updateimg(this)"> </div>'
-		+'	</div>'
-		+'	<input id="img_icon_file" type="file"'
-		+'		accept="image/png,image/jpeg" style="display: none;"'
-		+'		onchange="previewMultipleImage_icon()" name="picData"/>'
-		+'</form>'
-		+'<iframe name="uploadFrame2" id="uploadFrame2"'
-		+'			style="display: none;"></iframe>';
-
+		upic+='	<div class="UserAvatar">'
+			+'		<div id="hhh">'
+			+'		<img id="img_icon"'
+			+'			class="Avatar Avatar--large UserAvatar-inner"'
+			+'			src="'+data.upic+'"'
+			+'			style="width: 160px; height: 160px;"'
+			+'			onclick="updateimg(this)"> </div>'
+			+'	</div>';
+	
 	document.getElementById("userava").innerHTML = upic;
-
+	
 	var topupic='';
 	topupic+='<img class="Avatar" src="'+data.upic+'" style="width: 30px; height: 30px;">';
 	document.getElementById("Popover-21677-9959-toggle").innerHTML = topupic;
 },'json');
 
-$.get("dynstate/right",function(data){
+
+$.get("him/right"+window.location.search,function(data){
 	var right='';
-	var right2='';
-	right+='<div class="totalinfos" style="margin-top:20px">'
-		+'<table class="table table-striped"'
-		+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
-		+'	<tr>'
-		+'		<td class="info">关注的话题</td>'
-		+'		<td class="info">'+data.myattentop+'</td>'
-		+'	</tr>'
-		+'	<tr>'
-		+'		<td class="info">关注的专题</td>'
-		+'		<td class="info">'+data.myattenzhuanlan+'</td>'
-		+'	</tr>'
-		+'	<tr>'
-		+'		<td class="info">关注的收藏夹</td>'
-		+'		<td class="info">'+data.myattenfav+'</td>'
-		+'	</tr>'
-		+'</table>'
-		+'</div>'
-		+'<div class="panel panel-default"'
-		+'style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
-		+'<div class="panel-body" style="margin-top:20px">'
-		+'	<ul class="list-inline">'
-		+'		<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
-		+'		<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
-		+'	</ul>'
-		+'	<ul class="list-inline">'
-		+'		<li'
-		+'			style="padding-left: 40px; padding-top: 10px; text-align: center">'+data.myatten+'</li>'
-		+'		<li'
-		+'			style="padding-left: 120px; padding-top: 10px; text-align: center">'+data.attenme+'</li>'
-		+'	</ul>'
-		+'</div>'
-		+'</div>';
-	document.getElementById("rightmyself").innerHTML = right;
-
-
-	var des='';
-	alert("编辑个人资料")
-	des+='<div class="ProfileHeader-contentHead">'
-		+'<h1 class="ProfileHeader-title">'
-		+'<span class="ProfileHeader-name">'+data.uname+'</span>'
-		+'<span class="RichText ProfileHeader-headline">'+data.usign+'</span>'
-		+'</h1>'
-		+'</div>'
-		+'<span class="ProfileHeader-tips"></span>'
-		+'<div class="ProfileHeader-contentFooter">'
-		+'<div class="ProfileButtonGroup ProfileHeader-buttons" id="bianji">'
-		+'<a class="Button Button--blue" type="button"'
-		+'href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a> '
-		+'</div>'
-		+'</div>';
-	document.getElementById("bianji").innerHTML = des;
-	
-	
-	des+='<a class="Button Button--blue" type="button"'
-		+' href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a>';
-	document.getElementById("bianji").innerHTML = des;
 	for(var i=0;i<data.length;i++){
-		right+='<div>'
-		right2+='<div class="totalinfos" style="margin-top:20px">'
+		right+='<div class="totalinfos" style="margin-top:20px">'
 			+'<table class="table table-striped"'
 			+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
 			+'	<tr>'
@@ -129,13 +65,18 @@ $.get("dynstate/right",function(data){
 			+'		<td class="info">'+data.myattentop+'</td>'
 			+'	</tr>'
 			+'	<tr>'
+			+'		<td class="info">关注的专题</td>'
+			+'		<td class="info">'+data.myattenzhuanlan+'</td>'
+			+'	</tr>'
+			+'	<tr>'
 			+'		<td class="info">关注的收藏夹</td>'
 			+'		<td class="info">'+data.myattenfav+'</td>'
 			+'	</tr>'
 			+'</table>'
 			+'</div>'
-			+'<div>'
-			+'<div>'
+			+'<div class="panel panel-default"'
+			+'style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
+			+'<div class="panel-body" style="margin-top:20px">'
 			+'	<ul class="list-inline">'
 			+'		<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
 			+'		<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
@@ -148,12 +89,12 @@ $.get("dynstate/right",function(data){
 			+'	</ul>'
 			+'</div>'
 			+'</div>';
-		document.getElementById("rightmyself").innerHTML = right2;
+		document.getElementById("rightmyself").innerHTML = right;
 	}
 },'json');
 
-$.get("dynstate/m1",function(data){
-	alert(data);
+
+$.get("him/m1"+window.location.search,function(data){
 	myansrer33();
 	var myanswers="";
 	if(data.length>0){
@@ -229,12 +170,11 @@ $.get("dynstate/m1",function(data){
 	}
 
 	document.getElementById("myself2").innerHTML = myanswers;
-
 },'json');
 
 //回答
 function Myanswer3(){
-	$.get("dynstate/a1",function(data){
+	$.get("him/a1"+window.location.search,function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
@@ -243,7 +183,7 @@ function Myanswer3(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link is-active" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> ta的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -251,13 +191,13 @@ function Myanswer3(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
-				+'<h2 style="padding-left: 10px; padding-top: 10px">我的回答</h2>'
+				+'<h2 style="padding-left: 10px; padding-top: 10px">ta的回答</h2>'
 				+'</div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
 
-	$.get("dynstate/m3",function(data){
+	$.get("him/m3"+window.location.search,function(data){
 		if(data.length>0){
 			var myanswers="";
 			for(var i=0;i<data.length;i++){
@@ -292,49 +232,10 @@ function Myanswer3(){
 		}
 		document.getElementById("myself2").innerHTML = myanswers;
 	},'json');
-
 }
-
-function addfav(){
-	$.get("dynstate/m7",function(data){
-		alert(data);
-		var info="";
-		if(data.length>0){
-			for(var i=0;i<data.length;i++){
-				info+='<li role="presentation"><a role="menuitem" tabindex="-1"'
-					+' href="#">'+data[i].fname+'</a></li>';
-			}
-			document.getElementById("dropdown-menu").innerHTML = info;
-		}else{
-			info+='<div class="modal-header">'
-				+'<button type="button" class="close" data-dismiss="modal"'
-				+'	aria-label="Close">'
-				+'	<span aria-hidden="true">×</span>'
-				+'</button>'
-				+'<h4 class="modal-title" id="myModalLabel">添加收藏</h4>'
-				+'<h5>请选择你想添加的收藏夹</h5>'
-				+'</div>'
-				+'<div class="modal-body">'
-				+'<span><a id="createfav" href="javascript:void(0)" onclick="createfav()">当前没有收藏夹，请创建一个收藏夹</a><span>'
-				+'</div>';
-			document.getElementById("favinfos").innerHTML = info;
-		}
-	},'json');
-	$('#myModal').modal();
-}
-
-function createfav(){
-	$('#myModal2').modal();
-}
-
-/*function yesfav(){
-	$.post("dynstate/createf",function(data){
-		alert(1);
-	})
-}*/
 
 function My(){
-	$.get("dynstate/a1",function(data){
+	$.get("him/a1"+window.location.search,function(data){
 		var total="";
 
 		for(var i=0;i<data.length;i++){
@@ -344,7 +245,7 @@ function My(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link is-active" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link is-active" href="javascript:void(0)" onclick="My()"> ta的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -352,18 +253,18 @@ function My(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
-				+'<a class="SubTabs-item is-active" onclick="myessay()" href="javascript:void(0)" style="margin-top:20px">我的文章</a>'
-				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myscolumn()" style="margin-top:20px">我的专栏</a></div>'
+				+'<a class="SubTabs-item is-active" onclick="myessay()" href="javascript:void(0)" style="margin-top:20px">ta的文章</a>'
+				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myscolumn()" style="margin-top:20px">ta的专栏</a></div>'
 				+'</h4></div>';
 		}
 
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
-	$.get("dynstate/m4",function(data){
+	$.get("him/m4"+window.location.search,function(data){
 		var my="";
 		if(data.length>0){
 			for(var i=0;i<data.length;i++){
-				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px;"><div class="col-md-7"><h2 class="ContentItem-title">'
+				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="ContentItem-title">'
 					+'<a href="/zhihu/page/article.jsp?eid='+data[i].tid+'">'+data[i].title+'</a></h2><br/>'
 					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
@@ -383,18 +284,12 @@ function My(){
 			my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px;text-align:center;height:300px;">'
 				+'<div class="col-md-7"><a style="float:center" href="/zhihu/page/write.jsp">还没有文章，赶快发表一篇吧。。。</a></div></div>';
 		}
-
 		document.getElementById("myself2").innerHTML = my;
-
 	},'json');
 }
 
-function myscolumn(){
-
-}
-
 function MyQuestion(){
-	$.get("dynstate/a1",function(data){
+	$.get("him/a1"+window.location.search,function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
@@ -403,7 +298,7 @@ function MyQuestion(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> ta的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+'  class="Tabs-link is-active" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -411,13 +306,13 @@ function MyQuestion(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
-				+'<h2 style="padding-left: 10px; padding-top: 10px">我的提问</h2>'
+				+'<h2 style="padding-left: 10px; padding-top: 10px">ta的提问</h2>'
 				+'</div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
 
-	$.get("dynstate/m6",function(data){
+	$.get("him/m6"+window.location.search,function(data){
 		var myquestions="";
 		if(data.length>0){
 			for(var i=0;i<data.length;i++){
@@ -436,9 +331,9 @@ function MyQuestion(){
 	},'json');
 }
 
-
+//ta的收藏
 function myfavorite(){
-	$.get("dynstate/a1",function(data){
+	$.get("him/a1"+window.location.search,function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
@@ -447,7 +342,7 @@ function myfavorite(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> ta的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link is-active"'
@@ -455,12 +350,12 @@ function myfavorite(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
-				+'<h2 style="padding-left: 10px; padding-top: 10px">我的收藏夹</h2>'
+				+'<h2 style="padding-left: 10px; padding-top: 10px">ta的收藏夹</h2>'
 				+'</div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
-	$.get("dynstate/m7",function(data){
+	$.get("him/m7"+window.location.search,function(data){
 		var favorites="";
 		if(data.length>0){
 			for(var i=0;i<data.length;i++){
@@ -481,10 +376,10 @@ function myfavorite(){
 
 }
 
-/*我的关注*/
+
 function MyAttention(){
 
-	$.get("dynstate/a1",function(data){
+	$.get("him/a1"+window.location.search,function(data){
 		var total="";
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
@@ -493,7 +388,7 @@ function MyAttention(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> ta的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -501,24 +396,24 @@ function MyAttention(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
-				+'<a class="SubTabs-item is-active" href="javascript:void(0)" onclick="myatten()">我关注的人</a>'
-				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="attenme()">关注我的人</a><span class="SubTabs-item">'
+				+'<a class="SubTabs-item is-active" href="javascript:void(0)" onclick="myatten()">ta关注的人</a>'
+				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="attenme()">关注ta的人</a><span class="SubTabs-item">'
 				+'<div class="Popover"></div></span></div></h4></div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
 
-	$.get("dynstate/m81",function(data){
+	$.get("him/m81"+window.location.search,function(data){
 		var no='';
 		if(data.length>0){
 			var alluids=data;
-			$.get("dynstate/m82",function(data){
+			$.get("him/m82"+window.location.search,function(data){
 				var x=data;
 				if(alluids.length>0){
 					var myattention='';
 					for(var i=0;i<alluids.length;i++){
 						var y=alluids[i].aimid;
-						$.get("dynstate/m8?aimid="+alluids[i].aimid,function(data){
+						$.get("him/m8?aimid="+alluids[i].aimid,function(data){
 
 							myattention+='<div class="List-item">'
 								+'<div class="ContentItem" ><div class="ContentItem-main"><div class="ContentItem-image">'
@@ -530,7 +425,7 @@ function MyAttention(){
 								+'<div class="UserItem-title"><span class="UserLink UserItem-name">'
 								+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
 								+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data.uname+'</a></div>'
-								+'</div></span><span class="FollowStatus" id="showattenyn">他没有关注你</span></div></h2>';
+								+'</div></span><span class="FollowStatus" id="showattenyn">ta没有关注你</span></div></h2>';
 							for(var j=0;j<x.length;j++){
 								if(y==x[j].selfid){
 									$('.showattenyn').val("互相关注");
@@ -567,16 +462,10 @@ function MyAttention(){
 			document.getElementById("myself2").innerHTML = no;
 		}
 	},'json');	
-
 }
-
-function myatten(){
-	MyAttention();
-}
-
 
 function attenme(){
-	$.get("dynstate/a1",function(data){
+	$.get("him/a1"+window.location.search,function(data){
 
 		var total="";
 		for(var i=0;i<data.length;i++){
@@ -586,7 +475,7 @@ function attenme(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> ta的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -594,24 +483,24 @@ function attenme(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
-				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myatten()">我关注的人</a>'
-				+'<a class="SubTabs-item is-active" href="javascript:void(0)" onclick="attenme()">关注我的人</a><span class="SubTabs-item">'
+				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myatten()">ta关注的人</a>'
+				+'<a class="SubTabs-item is-active" href="javascript:void(0)" onclick="attenme()">关注ta的人</a><span class="SubTabs-item">'
 				+'<div class="Popover"></div></span></div></h4></div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
 	},'json');
 
-	$.get("dynstate/m82",function(data){
+	$.get("him/m82"+window.location.search,function(data){
 		var o='';
 		if(data.length>0){
 			var all=data;
-			$.get("dynstate/m81",function(data){
+			$.get("him/m81"+window.location.search,function(data){
 				var b=data;
 				if(all.length>0){
 					var info='';
 					for(var i=0;i<all.length;i++){
 						var x=all[i].selfid;
-						$.get("dynstate/m822?selfid="+all[i].selfid,function(data){
+						$.get("him/m822?selfid="+all[i].selfid,function(data){
 							info+='<div class="List-item">'
 								+'<div class="ContentItem" ><div class="ContentItem-main"><div class="ContentItem-image">'
 								+'<span class="UserLink UserItem-avatar"><div class="Popover">'
@@ -622,7 +511,7 @@ function attenme(){
 								+'<div class="UserItem-title"><span class="UserLink UserItem-name">'
 								+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
 								+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data.uname+'</a></div>'
-								+'</div></span><span class="FollowStatus" id="showattenyn">你没有关注他</span></div></h2>'
+								+'</div></span><span class="FollowStatus" id="showattenyn">你没有关注ta</span></div></h2>'
 
 
 								+'<div class="ContentItem-meta"><div><div class="RichText">'+data.usign+'</div>'
@@ -661,85 +550,7 @@ function attenme(){
 	},'json');
 }
 
-$(".btn_submit").click(function(){
-	var txt=document.getElementById("btn_submit").value;
-	alert(JSON.stringify(txt)=="已关注");
-	if(JSON.stringify(txt)=="+关注"){
-		alert(1);
-		document.getElementById("btn_submit").innerHTML=="已关注";
-	}else if(JSON.stringify(txt)=="已关注"){
-		alert(2);
-		document.getElementById("btn_submit").innerHTML=="+关注";
-	}
-});
 
-function yesfav(){
-
-	var txt=document.getElementById("btn_submit").value;
-	alert(txt);
-
-	if(btn_submit.value=="已关注"){
-		alert(2);
-		$("#guanzhu_name").html("+关注");
-		document.getElementById("btn_submit").value="+关注";
-	}else if(btn_submit.value=="+关注"){
-		alert(3);
-		$("#guanzhu_name").html("已关注");
-		document.getElementById("btn_submit").value="已关注";
-	}
+function myatten(){
+	MyAttention();
 }
-
-$('#changgeimage').hover(function() {
-	layer.tips("上传一张图片，展示在这里", '.DynamicColorButton', {
-		time : 6000,
-		tips : [ 2, "#3c3c3c" ]
-	})
-}, function() {
-	layer.closeAll('tips');
-});
-
-
-
-function chgPic(obj){
-	$("#changgeimage").attr("src", window.URL.createObjectURL(obj.files[0]));
-}
-
-
-function editor(){
-	url:'/zhihu/page/ediuorinfo.jsp'
-}
-
-function previewMultipleImage() {	
-	var reader = new FileReader();
-	var file = document.getElementById("changgeimage").files[0]
-	reader.readAsDataURL(file);
-	reader.onload = function(evt) {
-		$('#showImage_gr').html("<img src='"+evt.target.result+"' height='132px' width='966px' />");
-	};	
-
-	document.myform.submit();
-}
-
-function previewMultipleImage_icon() {	
-	var reader = new FileReader();
-	var file = document.getElementById("img_icon_file").files[0]
-	reader.readAsDataURL(file);
-	reader.onload = function(evt) {
-		$('#hhh').html("<img id='img_icon' class='Avatar Avatar--large UserAvatar-inner' src='"+evt.target.result+"' style='width: 160px; height: 160px;' onclick='updateimg(this)'/>");
-	};	
-
-	document.form.submit();
-}
-
-
-function updateimg(obj){
-	//var img=$(obj).attr("src");
-	document.getElementById("img_icon_file").click();
-
-}
-
-
-
-
-
-

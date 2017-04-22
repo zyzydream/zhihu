@@ -50,7 +50,7 @@ public interface DynstateMapper {
 	int count(PaginationBean<Explore> pBean);
 	
 	boolean updatetop(Object users);
-	
+	boolean updateupic(Object users);
 	
 	List<ListAllMy> showessay(Object object);
 	
@@ -76,7 +76,8 @@ public interface DynstateMapper {
 	
 	List<Users> attenme(Object obj);
 	
-
+	Users listupic(Object obj);
 	
+	int updateinfo(Object obj);
 	
 }

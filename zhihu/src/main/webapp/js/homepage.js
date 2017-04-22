@@ -1,30 +1,7 @@
 //document.getElementById("name").innerHTML="zy";
-$(function(){
-        $("[rel=drevil]").popover({
-            trigger:'manual',
-            placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
-            title : '<div class="btn-group btn-group-justified" role="group" aria-label="..." ><div class="btn-group" role="group"><button type="button" class="btn btn-default" style="border-style: none;">Left</button></div><div class="btn-group" role="group"><button type="button" class="btn btn-default" style="border-style: none;">Middle</button></div><div class="btn-group" role="group"><button type="button" class="btn btn-default" style="border-style: none;">Right</button></div></div>', //this is the top title bar of the popover. add some basic css
-            html: 'true', //needed to show html of course
-            content : '<table style="width: 250px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td><td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button></td></tr><tr><td style="border-right-style: solid;">1</td><td style="border-right-style: solid;">2</td><td>3</td><td></td></tr></table>',
-            animation: false
-        }).on("mouseenter", function () {
-                    var _this = this;
-                    $(this).popover("show");
-                    console.log($("[rel=drevil]"));
-                    $(this).siblings(".popover").on("mouseleave", function () {
-                        $(_this).popover('hide');
-                    });
-                }).on("mouseleave", function () {
-                    var _this = this;
-                    setTimeout(function () {
-                        if (!$(".popover:hover").length) {
-                            $(_this).popover("hide")
-                        }
-                    }, 100);
-                });
-	});
 console.log($("#seflmain"));
 console.log(document.getElementById("seflmain"));
+listtopic();
 var alllength=0;
 var favorite=null;
 var aaaa="";
@@ -141,6 +118,11 @@ function show(num){
 					dynstate+='<div class="row featurette"><div class="col-md-7">';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 18px;"><span class="text-muted" style="font-size: 15px"><a id="'+i+'" name="showUsers">'+data[i].author+'</a>:关注话题：</span><br /><img alt="" src="images/game.png" width="60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].tname+'</h2></div>';
 					dynstate+='<div class="col-md-5" ><label style="float: right;font-size: 15px; font-weight: lighter;">'+data[i].times+'</label>';
+					if(data[i].praise=='y'){
+						dynstate+='<span style="float: right; width: 200px"><div style="float: left; " class="btn-group" role="group" aria-label="..."> <button style="font-size: 13px; font-weight: 40;" type="button" class="btn btn-default btn-lg" onclick="delattentiontopics('+data[i].tid+')"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消关注</button></div></span>';
+					}else{
+						dynstate+='<span style="float: right; width: 200px"><div style="float: left; " class="btn-group" role="group" aria-label="..."> <button style="font-size: 13px; font-weight: 40;" type="button" class="btn btn-default btn-lg" onclick="attentiontopics('+data[i].tid+')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>加关注</button></div></span>';
+					}
 					dynstate+='</div></div><hr class="featurette-divider">';
 				}
 			}
@@ -152,14 +134,16 @@ function show(num){
 }
 
 //请求用户关注话题
-$.get("user/topics",function(data){
-//	alert("请求的话题："+JSON.stringify(data));
-	var topics="";
-	for(var i=0;i<data.length;i++){
-		topics+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].ttopic+'" target="_blank">'+data[i].ttopic+'</a>';
-	}
-	document.getElementById("title").innerHTML =topics;
-},"json");
+function listtopic(){
+	$.get("user/topics",function(data){
+//		alert("请求的话题："+JSON.stringify(data));
+		var topics="";
+		for(var i=0;i<data.length;i++){
+			topics+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].ttopic+'" target="_blank">'+data[i].ttopic+'</a>';
+		}
+		document.getElementById("title").innerHTML =topics;
+	},"json");
+}
 
 
 //点击进入发现
@@ -218,14 +202,39 @@ function delcollect(ids,kind){
 	},"json");
 }
 
+function attentiontopics(tid){
+	$.get("user/attentiontopics?tid="+tid,function(data){
+		if(data>0){
+			alert("关注成功");
+			listtopic();
+			show(0);
+		}else{
+			alert("失败！！");
+		}
+	},"json")
+}
+
+function delattentiontopics(tid){
+	$.get("user/delattentiontopics?tid="+tid,function(data){
+		if(data>0){
+			alert("取消关注成功");
+			listtopic();
+			show(0);
+		}else{
+			alert("取消关注失败！！");
+		}
+	},"json")
+}
+
 function test(){
 	var length=document.getElementsByName("showUsers").length;
 	var titles="";
 	var contents="";
 	for(var i=0;i<length;i++){
 		var uname=document.getElementsByName("showUsers")[i].innerHTML;
+		//alert(uname);
 		$.get("user/showUser?uname="+uname+"&&num="+i,function(data){
-			titles+=''+data.num+'====<div class="media" style="400px;"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:60px"> </a></div><div class="media-body"><h4 class="media-heading">'+data.uname+'</h4>'+data.nsign+'<span>';
+			titles+=''+data.num+'====<div class="media" style="400px;"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:60px"> </a></div><div class="media-body"><h4 class="media-heading"><a href="page/himself.jsp?uids='+data.uids+'">'+data.uname+'</a></h4>'+data.nsign+'<span>';
 			contents+=''+data.num+'====<table style="width: 230px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td>';
 			if(data.attention=='y'){
 				contents+='<td rowspan="2" style="width: 70px;"><button type="button" class="btn btn-default btn-xs" onclick="delattentionUser(\''+data.uids+'\',\''+data.uname+'\',\''+data.num+'\')"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消</button></td>';
@@ -234,7 +243,7 @@ function test(){
 			}
 			contents+='</tr><tr><td style="border-right-style: solid;">'+data.counte+'</td><td style="border-right-style: solid;">'+data.countr+'</td><td>'+data.counts+'</td><td></td></tr></table>';
 			contents+='@@@'
-				for(var j=0;j<data.t.length;j++){
+				for(var j=0;j<data.t.length;j++){                  
 					titles+='<a class="HomeTopics-item zm-item-tag" href="/zhihu/page/findtopic.jsp?tid='+data.t[j].tid+'&&tname='+data.t[j].ttopic+'" target="_blank">'+data.t[j].ttopic+'</a>';
 				}
 			titles+='</span></div></div>@@@';
@@ -376,15 +385,69 @@ function yesfav(self){
 		$.get("user/newFav?fname="+fname,function(data){
 			document.getElementsByName("fname")[0].innerHTML="";
 			document.getElementsByName("finfo")[0].innerHTML="";
-		    if(data>0){
-		    	show(0);
-		    }else{
-		    	alert("创建失败！！");
-		    }
+			if(data>0){
+				show(0);
+			}else{
+				alert("创建失败！！");
+			}
 		},"json");
 	}else{
 		alert("收藏夹名不能为空！！！");
 	}
+}
+
+
+function litter(){
+	var content="";
+	var changecontent="";
+	var id=window.setInterval(function(){
+		$.get("information/list",function(data){
+			window.clearInterval(id);
+			content+='<table style="width: 300px;">';
+			for(var i=0;i<data.length;i++){
+				content+='<tr><td colspan="2"> '+data[i].selfname+' 发送消息</td></tr><tr><td>'+data[i].info+'..</td><td>'+data[i].times+'</td></tr><tr><td colspan="2"><hr style="margin: 5px;"></td></tr>';
+			}
+			content+='</table>';
+			if(content!=changecontent){
+			   alert("新消息");
+			   document.getElementById("newinfo").innerHTML='新';
+			   changecontent=content;
+			}
+			document.getElementById("example").setAttribute("data-content",content);
+		},"json");
+		var ids=window.setInterval(function(){
+			if(content.length>30){
+				window.clearInterval(ids);
+				$(function(){
+					$("[rel=drevil]").popover({
+						trigger:'manual',
+						placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+						//title : '', //this is the top title bar of the popover. add some basic css
+						html: 'true', //needed to show html of course
+						animation: false
+					}).on("mouseenter", function () {
+						var _this = this;
+						$(this).popover("show");
+						console.log($("[rel=drevil]"));
+						$(this).siblings(".popover").on("mouseleave", function () {
+							$(_this).popover('hide');
+						});
+					}).on("mouseleave", function () {
+						var _this = this;
+						setTimeout(function () {
+							if (!$(".popover:hover").length) {
+								$(_this).popover("hide")
+							}
+						}, 100);
+					});
+				});
+			}
+		},500);
+	}, 3000);
+}
+
+function delnew(){
+	document.getElementById("newinfo").innerHTML='';
 }
 //function test(){
 

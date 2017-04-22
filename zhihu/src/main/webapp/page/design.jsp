@@ -8,6 +8,13 @@
 <meta charset="UTF-8">
 <title>账号设置</title>
 <link type="text/css" rel="stylesheet" href="css/design.css">
+<link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
+	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
+	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
+<script
+	src="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"
+	tppabs="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"></script>
 </head>
 <body class="zhi">
 	<div class="zu-top" role="navigation" data-za-module="TopNavBar">
@@ -18,9 +25,9 @@
 			<div class="top-nav-profile">
 				<a id=":0" class="zu-top-nav-userinfo " href="page/myself.jsp"
 					role="button" aria-haspopup="true" aria-activedescendant=""> <span
-					class="name">xiaoxiao</span> <img class="Avatar" src="images/poto.jpg"
-					alt="dsvb"> <span id="zh-top-nav-new-pm"
-					class="zg-noti-number zu-top-nav-pm-count"
+					class="name"><%=request.getSession().getAttribute("username")%></span>
+					<img class="Avatar" src="images/poto.jpg"> <span
+					id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
 				</a>
 				<ul id="top-nav-profile-dropdown" class="top-nav-dropdown"
@@ -87,27 +94,25 @@
 				</ul>
 			</div>
 			<div id="infomation-form">
-				<form class="zm-settings-account" action="/settings/profile"
-					method="POST" autocomplete="off">
-					<div class="settings-section">
-						<div class="settings-item clearfix">
-							<lable class="settings-item-title">头像</lable>
-							<div class="head photo" style="padding-left: 90px;">
-								<img alt="头像" src="images/115.jpg" style="width: 50px; height: 50px">
-							</div>
-						</div>
+				<form class="zm-settings-account" action="dynstate/updateinfo"
+					autocomplete="off" method="post">
+					<div class="settings-section" id="myselfinfo">
 						<div class="settings-item clearfix">
 							<label class="settings-item-title" for="fullname">姓名</label>
-							<div id="rename-section" class="settings-item-content rename-section">
-								<span class="name">dsvb</span>
+							<div id="rename-section"
+								class="settings-item-content rename-section">
+								<input id="url_token" class="zg-form-text-input"
+									autocomplete="off" name="uname" onkeydown="this.onkeyup();"
+									size="100"
+									value="<%=request.getSession().getAttribute("username")%>"
+									disabled="disabled">
 							</div>
 						</div>
 						<div class="settings-item clearfix">
 							<label class="settings-item-title with-input" for="url_token">个性签名</label>
 							<div class="settings-item-content">
-								<input id="url_token" class="zg-form-text-input"
-									autocomplete="off" name="url_token"  onkeydown="this.onkeyup();" 
-									 size="100">
+								<input id="url_token" class="zg-form-text-input" name="usign"
+									size="100">
 							</div>
 						</div>
 					</div>
@@ -178,9 +183,17 @@
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 	<script src="js/holder.js"></script>
 	<script src="js/ie10-viewport-bug-workaround.js"></script>
 	<script type="text/javascript" src="js/design.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+	<script
+		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
+		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script type="text/javascript" src="js/myself.js"></script>
+	<script src='js/layer/layer.js' type="text/javascript"></script>
+	<script type="text/javascript" src="/bootstrap-3.3.4/js/popover.js"></script>
+	<script type="text/javascript" src="js/jquery-form.js"></script>
 </body>
 </html>

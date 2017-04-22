@@ -10,7 +10,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>知乎</title>
-<link type="text/css" rel="stylesheet" href="css/myself.css">
 <!-- <link type="text/css" rel="stylesheet" href="bootstrap-3.3.4/bootstrap-fileinput-master/css/fileinput.css">
  -->
 <link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
@@ -29,15 +28,15 @@
 			data-za-module="TopNavBar"
 			style="width: 1349px; top: 0px; left: 0px;">
 		<div class="AppHeader-inner">
-			<a href="/zhihu/page/homepage.jsp" aria-label="知乎">知乎</a>
+
 			<nav class="AppHeader-nav" role="navigation"> <a
-				class="AppHeader-navItem" href="/zhihu/page/homepage.jsp">首页</a> <a
-				class="AppHeader-navItem" href="/explore" href="/zhihu/page/explore.jsp">发现</a> <a
-				class="AppHeader-navItem" href="/topic">话题</a> </nav>
+				class="AppHeader-navItem" href="page/homepage.jsp">首页</a> <a
+				class="AppHeader-navItem" href="page/explore.jsp">发现</a> <a
+				class="AppHeader-navItem" href="page/talk.jsp">话题</a> </nav>
 			<div class="SearchBar" role="search">
 				<div class="SearchBar-toolWrapper">
 					<form class="SearchBar-tool">
-						<div>
+						
 							<div class="Popover">
 								<div class="SearchBar-input Input-wrapper Input-wrapper--grey">
 									<input id="Popover-21490-83503-toggle" class="Input"
@@ -46,17 +45,18 @@
 										aria-activedescendant="AutoComplete-21488-96386--1"
 										aria-haspopup="true" aria-owns="Popover-21490-83503-content"
 										placeholder="搜索你感兴趣的内容…">
+									<button type="submit" class="zu-top-search-button">
+										<span class="sprite-global-icon-magnifier-dark"></span>
+									</button>
 								</div>
 							</div>
-						</div>
-						<button class="Button SearchBar-searchIcon Button--plain"
-							aria-label="搜索" type="button"></button>
-						<div class="SearchBar-iconDecorator"></div>
+						
+
 					</form>
 				</div>
-				<button
-					class="Button SearchBar-askButton Button--primary Button--blue"
-					type="button">提问</button>
+				<a href="page/introducteQuestion.jsp"><button
+						class="Button SearchBar-askButton Button--primary Button--blue"
+						type="button">提问</button></a>
 			</div>
 			<div class="AppHeader-userInfo">
 				<div class="Popover PushNotifications AppHeader-notifications">
@@ -79,8 +79,7 @@
 							class="Button AppHeader-profileEntry Button--plain" type="button"
 							aria-haspopup="true" aria-expanded="false"
 							aria-owns="Popover-21677-9959-content">
-							<img class="Avatar" src="/zhihu/images/touxiang.jpg"
-								srcset="/zhihu/images/touxiang.jpg"
+							<img class="Avatar" src="<%=request.getSession().getAttribute("upic") %>>"
 								style="width: 30px; height: 30px;">
 						</button>
 					</div>
@@ -101,11 +100,15 @@
 								<div class="UserCoverGuide-inner">
 
 									<div class="UserCoverGuide-buttonContainer">
-										<form enctype="multipart/form-data" target="uploadFrame" action="dynstate/upload" method="post" name="myform" id="uploads">
+										<form enctype="multipart/form-data" target="uploadFrame"
+											action="dynstate/upload" method="post" name="myform"
+											id="uploads">
 											<input class="Button DynamicColorButton" type="file"
-												id="changgeimage" name="picData" onchange='previewMultipleImage()'							 />
+												id="changgeimage" name="picData"
+												onchange='previewMultipleImage()' />
 										</form>
-										<iframe name="uploadFrame" id="uploadFrame" style="display:none;"></iframe>
+										<iframe name="uploadFrame" id="uploadFrame"
+											style="display: none;"></iframe>
 										<!-- onclick="updatePic()" -->
 									</div>
 								</div>
@@ -117,28 +120,40 @@
 					</div>
 					<div class="ProfileHeader-wrapper">
 						<div class="ProfileHeader-main">
-							<div class="UserAvatarEditor ProfileHeader-avatar"
+							<div class="UserAvatarEditor ProfileHeader-avatar" id="userava"
 								style="top: -74px;">
-								<div class="UserAvatar">
-									<div id="hhh"></div>
-									<img class="Avatar Avatar--large UserAvatar-inner"
-										src="/zhihu/images/touxiang.jpg"
-										style="width: 160px; height: 160px;">
-								</div>
-								<input type="file" accept="image/png,image/jpeg"
-									style="display: none;">
+								<!-- <form enctype="multipart/form-data" target="uploadFrame"
+									action="dynstate/upload2" method="post" name="form"
+									id="uploadupic">
+									<div class="UserAvatar">
+										<div id="hhh">
+										<img id="img_icon"
+											class="Avatar Avatar--large UserAvatar-inner"
+											src="/zhihu/images/touxiang.jpg"
+											style="width: 160px; height: 160px;"
+											onclick="updateimg(this)">
+										</div>
+										
+									</div>
+									<input id="img_icon_file" type="file"
+										accept="image/png,image/jpeg" style="display: none;"
+										onchange="previewMultipleImage_icon()" name="picData"/>
+								</form>
+								<iframe name="uploadFrame2" id="uploadFrame2"
+											style="display: none;"></iframe> -->
 							</div>
-							<div class="ProfileHeader-content">
+							<div class="ProfileHeader-content" id="bianji">
 								<div class="ProfileHeader-contentHead">
 									<h1 class="ProfileHeader-title">
 										<span class="ProfileHeader-name"><%=request.getSession().getAttribute("username")%></span>
 										<span class="RichText ProfileHeader-headline"><%=request.getSession().getAttribute("usign")%></span>
 									</h1>
 								</div>
-								<span class="ProfileHeader-tips">暂无个人资料</span>
+								
 								<div class="ProfileHeader-contentFooter">
-									<div class="ProfileButtonGroup ProfileHeader-buttons">
-										<a class="Button Button--blue" type="button" href="/zhihu/page/ediuorinfo.jsp">编辑个人资料</a>
+									<div class="ProfileButtonGroup ProfileHeader-buttons" id="bianji">
+										<!-- <a class="Button Button--blue" type="button"
+											href="/zhihu/page/design.jsp">编辑个人资料</a> -->
 									</div>
 								</div>
 							</div>
@@ -149,15 +164,14 @@
 
 			<div id="zhuyezhuti">
 				<div class="panel panel-default"
-					style="width: 660px; margin-left: 15px;word-wrap:break-word;">
+					style="width: 660px; margin-left: 15px; word-wrap: break-word;">
 					<div class="panel-body">
 						<span id="myself"> <span id="myself1"> </span> <span
 							id="myself2">
 								<div class="dropdown">
 									<a id="dLabel" data-target="#" href="http://example.com"
 										data-toggle="dropdown" aria-haspopup="true" role="button"
-										aria-expanded="false"> 我关注的专栏 <span
-										class="caret"></span>
+										aria-expanded="false"> 我关注的专栏 <span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 										<li><a>我关注的专栏</a></li>
@@ -169,78 +183,12 @@
 						</span>
 
 						</span>
-						<!-- <span>
-							<div style="width: 70px; float: left; height: 20px">
-								<a style="font-size: 13px; font-weight: 40; border-style: none;"
-									class="btn btn-default dropdown-toggle" type="button"
-									id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏
-									42</a>
-								<ul class="dropdown-menu" role="menu"
-									aria-labelledby="dropdownMenu1" id="dropdown-menu">
-									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#">Regular link</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#">Disabled link</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#">Another link</a></li>
-								</ul>
-							</div>
-							<div style="width: 70px; float: left; height: 20px"
-								class="btn-group" role="group" aria-label="...">
-								<button
-									style="font-size: 13px; font-weight: 40; border-style: none;"
-									type="button" class="btn btn-default">
-									<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞
-									42
-								</button>
-							</div>
-							<div style="width: 70px; float: left; height: 20px"
-								class="btn-group" role="group" aria-label="...">
-								<button
-									style="font-size: 13px; font-weight: 40; border-style: none;"
-									type="button" class="btn btn-default">
-									<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览
-									42
-								</button>
-							</div>
-						</span> -->
-
 					</div>
 				</div>
 			</div>
-			<div class="totalinfos">
-				<table class="table table-striped"
-					style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">
-					<tr>
-						<td class="info">关注的话题</td>
-						<td class="info"><%=request.getSession().getAttribute("myattentop")%></td>
-					</tr>
-					<tr>
-						<td class="info">关注的专题</td>
-						<td class="info"><%=request.getSession().getAttribute("myattenzhuanti")%></td>
-					</tr>
-					<tr>
-						<td class="info">关注的收藏夹</td>
-						<td class="info"><%=request.getSession().getAttribute("myattenfav")%></td>
-					</tr>
-				</table>
-			</div>
 
-
-			<div class="panel panel-default"
-				style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
-				<div class="panel-body">
-					<ul class="list-inline">
-						<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
-						<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
-					</ul>
-					<ul class="list-inline">
-						<li
-							style="padding-left: 40px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("myatten")%></li>
-						<li
-							style="padding-left: 120px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("attenme")%></li>
-					</ul>
-				</div>
+			<div id="rightmyself" style="margin-top:-2800px; position: absolute;">
+				
 			</div>
 		</div>
 

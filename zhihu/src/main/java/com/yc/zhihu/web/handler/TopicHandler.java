@@ -1,5 +1,6 @@
 package com.yc.zhihu.web.handler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
+import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.TopicService;
 import com.yc.zhihu.service.UserService;
 import com.yc.zhihu.util.ServletUtil;
@@ -54,4 +57,18 @@ public class TopicHandler {
 	    return usersService.yPraiseAndCollect(e, request);
 	}
 	
+	
+	@RequestMapping(value="/attention",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Dynstate> attention(Topics t,HttpServletRequest request){
+		Dynstate dynstate =new Dynstate();
+		dynstate.setSelfid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		dynstate.setIds(t.getTid());;
+		Dynstate d=topicService.attention(dynstate);
+		List<Dynstate> ds=new ArrayList<Dynstate>();
+		if(d!=null){
+			ds.add(d);
+		}
+		return ds;
+	}
 }

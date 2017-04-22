@@ -169,7 +169,9 @@ public class UserHandler {
 
 	@RequestMapping(value="/showUser",method=RequestMethod.GET)
 	@ResponseBody
-	public ShowUser showUser(Users user,HttpServletRequest request){
+	public ShowUser showUser(Users user,HttpServletRequest request) throws UnsupportedEncodingException{
+		String uname=new String(user.getUname().getBytes("iso-8859-1"),"utf-8");
+		user.setUname(uname);
 		System.out.println("showUser====>"+user.toString());
 		ShowUser users=usersService.showUser(user);
 		Dynstate dynstate=new Dynstate();
@@ -182,7 +184,7 @@ public class UserHandler {
 	//关注用户
 	@RequestMapping(value="/attentionUser",method=RequestMethod.GET)
 	@ResponseBody
-	public ShowUser attentionUser(Users user,HttpServletRequest request){
+	public ShowUser attentionUser(Users user,HttpServletRequest request) throws UnsupportedEncodingException{
 		System.out.println("attentionUser====>"+user.toString());
 		Dynstate dynstate =new Dynstate();
 		dynstate.setSelfid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
@@ -194,7 +196,7 @@ public class UserHandler {
 	//取消关注用户
 	@RequestMapping(value="/delattentionUser",method=RequestMethod.GET)
 	@ResponseBody
-	public ShowUser delattentionUser(Users user,HttpServletRequest request){
+	public ShowUser delattentionUser(Users user,HttpServletRequest request) throws UnsupportedEncodingException{
 		System.out.println("attentionUser====>"+user.toString());
 		Dynstate dynstate =new Dynstate();
 		dynstate.setSelfid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
@@ -221,11 +223,36 @@ public class UserHandler {
 	@RequestMapping(value="/listuser",method=RequestMethod.POST)
 	@ResponseBody
 	public List<Users> listuser(Users user,HttpServletRequest request){
-		user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);//?
 		System.out.println(user);
 		List<Users> a = new ArrayList<Users>() ;
 		a.add(usersService.list(user));
 		return a;
 	}
+	
+
+	//关注话题
+	@RequestMapping(value="/attentiontopics",method=RequestMethod.GET)
+	@ResponseBody
+	public int attentiontopics(Topics topics,HttpServletRequest request){
+		Users user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		Dynstate dynstate =new Dynstate();
+		dynstate.setSelfid(user.getUids());
+		dynstate.setIds(topics.getTid());
+		dynstate.setKind("GH");
+		return usersService.attentiontopics(dynstate);
+	}
+	
+	//关注话题
+		@RequestMapping(value="/delattentiontopics",method=RequestMethod.GET)
+		@ResponseBody
+		public int delattentiontopics(Topics topics,HttpServletRequest request){
+			Users user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+			Dynstate dynstate =new Dynstate();
+			dynstate.setSelfid(user.getUids());
+			dynstate.setIds(topics.getTid());
+			dynstate.setKind("GH");
+			return usersService.delattentiontopics(dynstate);
+		}
 	
 }

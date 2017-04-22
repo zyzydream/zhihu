@@ -1120,7 +1120,7 @@ body:not(.Body--isAppleDevice) .RichText h1, body:not(.Body--isAppleDevice) .Ric
 .CommentEditor-actions .Button {
  width: 80px;
  height: 34px;
- margin-left: 16px;
+ margin-left: 160px;
 }
 
 .PostComment .PostComment-mainEditor .CommentEditor-actions {

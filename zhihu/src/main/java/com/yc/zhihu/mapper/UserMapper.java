@@ -68,4 +68,10 @@ public interface UserMapper {
 
 	int newFav(Favorite favorite);
 
+	Dynstate yattentiontopics(Dynstate d);
+
+	int attentiontopics(Dynstate dynstate);
+
+	int delattentiontopics(Dynstate dynstate);
+
 }

@@ -57,11 +57,11 @@
 	</select>
 
 	<select id="listMyFavorite" parameterType="Users" resultType="Favorite">
-		select f.*,t.sum from FAVORITE f,
-		(select count(ids) sum from DYNSTATE
-		where selfid=#{uids} and cfid=(select fid from favorite where
-		fcreid=#{uids})) t
-		where fcreid=#{uids}
+		select f.fid,f.fcreid,f.fname,f.ftime,count(d.ids) sum
+		from ((select fid from favorite where fcreid=#{uids}) x
+		left join FAVORITE f on f.fcreid=#{uids} and f.fid=x.fid)
+		left join DYNSTATE d on d.selfid=f.fcreid and d.cfid=x.fid
+		group by f.fid,f.fcreid,f.fname,f.ftime
 	</select>
 
 
@@ -82,7 +82,13 @@
 		selfid=#{uids} )
 		myattenfav,
 		(select
-		uids from users where uids=#{uids}) uids
+		uids from users where uids=#{uids}) uids,
+		(select
+		usign from users where uids=#{uids}) usign,
+		(select
+		uname from users where uids=#{uids}) uname,
+		(select
+		upic from users where uids=#{uids}) upic
 		from dual
 	</select>
 
@@ -167,13 +173,13 @@
 	<insert id="praise" parameterType="Dynstate">
 		insert into
 		dynstate(selfid,kind,ids,times)
-		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'))
+		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd HH24:MI:SS'))
 	</insert>
 	<!-- 收藏 -->
 	<insert id="collect" parameterType="Dynstate">
 		insert into
 		dynstate(selfid,kind,ids,times,cfid)
-		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd'),'${cfid}')
+		values('${selfid}','${kind}','${ids}',to_char(SYSDATE,'yyyy-mm-dd HH24:MI:SS'),'${cfid}')
 	</insert>
 
 
@@ -258,5 +264,32 @@
 		select
 		selfid from dynstate PARTITION(GR) where aimid=#{uids}
 	</select>
+
+	<update id="updateupic" parameterType="Users">
+		update users
+		<set>
+			<if test="upic != null">
+				upic=#{upic}
+			</if>
+		</set>
+		where uids=#{uids}
+	</update>
+
+	<select id="listupic" parameterType="Users" resultType="Users">
+		select
+		upic from users where uids=#{uids}
+	</select>
+	
+	<update id="updateinfo" parameterType="Users">
+		update users
+		<set>
+			<if test="usign !=null">
+				usign=#{usign}
+			</if>
+		</set>
+		<where>
+			uids=#{uids} 
+		</where>
+	</update>
 
 </mapper>

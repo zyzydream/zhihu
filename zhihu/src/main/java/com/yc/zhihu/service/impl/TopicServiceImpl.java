@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yc.zhihu.entity.Dynstate;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.mapper.TopicsMapper;
@@ -86,7 +87,7 @@ public class TopicServiceImpl implements TopicService{
 	//按时间排列
 	public List<Explore> times(List<Explore> all){
 		int length=all.size();
-		DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Explore [] t=new Explore[length];
 		for(int i=0;i<length;i++){
 			t[i]=all.get(i);
@@ -118,5 +119,9 @@ public class TopicServiceImpl implements TopicService{
 	@Override
 	public Topics listTopic(Topics topic) {
 		return topicsMapper.findTopic(topic);
+	}
+
+	public Dynstate attention(Dynstate dynstate) {
+		return topicsMapper.findDynstate(dynstate);
 	}
 }
