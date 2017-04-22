@@ -72,4 +72,7 @@ public interface DynstateService {
 	
 	int updateinfo(Object obj);
 	
+	int deteleatten(Object obj);
+	int addatten(Object obj);
+	
 }

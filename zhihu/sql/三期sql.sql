@@ -38,6 +38,30 @@ update users set tpic=trim(tpic2);
 alter table users drop column tpic2;
 alert table users modify column tpic varchar(200);
 
+
+select
+		(select count(r.rid)
+		from reply r where r.remitid='10202')
+		myattenaw,
+		(select count(e.eid)
+		from essay e where e.eautid='10202')
+		myatteness,
+		(select count(selfid)
+		from dynstate PARTITION(GR) where
+		aimid='10202') myattenpeos,
+		(select uname from users where
+		uids='10202') uname,
+		(select usign from users where uids='10202')
+		usign,
+		(select upic from users where uids='10202') upic,
+
+		from dual
+		10075
+		
+		
+		select * from 
+		delete from dynstate PARTITION(GR) where selfid='10202' and aimid='10075'
+
 alter table users rename column upic to upic2;
 alter table users add upic varchar2(200);
 update users set upic=trim(upic2);

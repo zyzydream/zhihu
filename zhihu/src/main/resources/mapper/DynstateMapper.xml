@@ -58,10 +58,14 @@
 
 	<select id="listMyFavorite" parameterType="Users" resultType="Favorite">
 		select f.fid,f.fcreid,f.fname,f.ftime,count(d.ids) sum
-		from ((select fid from favorite where fcreid=#{uids}) x
-		left join FAVORITE f on f.fcreid=#{uids} and f.fid=x.fid)
-		left join DYNSTATE d on d.selfid=f.fcreid and d.cfid=x.fid
-		group by f.fid,f.fcreid,f.fname,f.ftime
+		from ((select
+		fid from favorite where fcreid=#{uids}) x
+		left join FAVORITE f on
+		f.fcreid=#{uids} and f.fid=x.fid)
+		left join DYNSTATE d on
+		d.selfid=f.fcreid and d.cfid=x.fid
+		group by
+		f.fid,f.fcreid,f.fname,f.ftime
 	</select>
 
 
@@ -84,7 +88,8 @@
 		(select
 		uids from users where uids=#{uids}) uids,
 		(select
-		usign from users where uids=#{uids}) usign,
+		usign from users where
+		uids=#{uids}) usign,
 		(select
 		uname from users where uids=#{uids}) uname,
 		(select
@@ -279,7 +284,7 @@
 		select
 		upic from users where uids=#{uids}
 	</select>
-	
+
 	<update id="updateinfo" parameterType="Users">
 		update users
 		<set>
@@ -288,8 +293,17 @@
 			</if>
 		</set>
 		<where>
-			uids=#{uids} 
+			uids=#{uids}
 		</where>
 	</update>
+
+	<delete id="deleteatten" parameterType="Dynstate">
+		delete from dynstate PARTITION(GR) where selfid=#{selfid} and aimid=#{aimid}
+	</delete>
+	
+	<insert id="addatten" parameterType="Dynstate">
+		insert into dynstate (selfid,aimid,kind)
+		values(#{selfid},#{aimid},'GR')
+	</insert>
 
 </mapper>
