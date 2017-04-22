@@ -67,11 +67,9 @@ SELECT * from dynstate d,
 select * from explore;
  select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
 select * from reply
-<<<<<<< HEAD
 18084250564@qq.com /zhihu/images/touxiang.jpg
 
 
-=======
  18039696056@qq.com
   10202 vnuivskij  a         ezjvzpfxofoiifpvyzijejhtfhcdkqvidqzkn    程序员         zzz.jpg 7 /zhihu/images/touxiang.jpg
 
@@ -81,7 +79,6 @@ select r.*,u.*
 		where r.reqid='10001' and u.uids=r.remitid and rkind= 'W'
 
  
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
  select
 		t.*,q.qtitle from
 		(select r.*,u.uname,u.usign,r.reqid a from REPLY
@@ -1212,7 +1209,6 @@ SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid ids,ue.etitl
 		   WHERE u.uids=e.eautid)ue
 		WHERE ue.etid=t.tid
 
-<<<<<<< HEAD
  select f.*,t.sum from FAVORITE f,  
  (select count(ids) sum from DYNSTATE   where selfid='10202' and
  cfid=(select fid from favorite where   fcreid='10202')) t   
@@ -1246,30 +1242,10 @@ select * from favorite where fcreid='10202'
 
 select * from dynstate where selfid='10202' and cfid=''
  
- 
-=======
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u.usign usign ,u.upic author
 		from reply r ,users u
 		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'Q'		
 		
 		
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git

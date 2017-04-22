@@ -62,6 +62,7 @@ $.get("dynstate/upic",function(data){
 
 $.get("dynstate/right",function(data){
 	var right='';
+	var right2='';
 	right+='<div class="totalinfos" style="margin-top:20px">'
 		+'<table class="table table-striped"'
 		+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
@@ -99,18 +100,30 @@ $.get("dynstate/right",function(data){
 
 	var des='';
 	alert("编辑个人资料")
-	des+='<a class="Button Button--blue" type="button"'
-		+' href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a>';
+	des+='<div class="ProfileHeader-contentHead">'
+		+'<h1 class="ProfileHeader-title">'
+		+'<span class="ProfileHeader-name">'+data.uname+'</span>'
+		+'<span class="RichText ProfileHeader-headline">'+data.usign+'</span>'
+		+'</h1>'
+		+'</div>'
+		+'<span class="ProfileHeader-tips"></span>'
+		+'<div class="ProfileHeader-contentFooter">'
+		+'<div class="ProfileButtonGroup ProfileHeader-buttons" id="bianji">'
+		+'<a class="Button Button--blue" type="button"'
+		+'href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a> '
+		+'</div>'
+		+'</div>';
 	document.getElementById("bianji").innerHTML = des;
+	
+	
 	for(var i=0;i<data.length;i++){
-		right+='<div class="totalinfos" style="margin-top:20px">'
+		right2+='<div class="totalinfos" style="margin-top:20px">'
 			+'<table class="table table-striped"'
 			+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
 			+'	<tr>'
 			+'		<td class="info">关注的话题</td>'
 			+'		<td class="info">'+data.myattentop+'</td>'
 			+'	</tr>'
-			
 			+'	<tr>'
 			+'		<td class="info">关注的收藏夹</td>'
 			+'		<td class="info">'+data.myattenfav+'</td>'
@@ -132,7 +145,7 @@ $.get("dynstate/right",function(data){
 			+'	</ul>'
 			+'</div>'
 			+'</div>';
-		document.getElementById("rightmyself").innerHTML = right;
+		document.getElementById("rightmyself").innerHTML = right2;
 	}
 },'json');
 
