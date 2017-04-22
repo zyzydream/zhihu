@@ -37,7 +37,7 @@
 	(select * from reply,
 	(select ids id,count(ids) counts from DYNSTATE PARTITION (DH) group by ids
 	order by count(ids)DESC)
-	where counts>7 and id=rid and rkind='Q' )r
+	where counts>=0 and id=rid and rkind='Q' )r
 	where u.uids=r.remitid)r
 	where t.tid=r.rtid)rd
 	where q.qid=rd.reqid
@@ -47,7 +47,7 @@
 	     (select * from users u,
 	       (select * from essay,
            	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
-	        where counts>7 and id=eid )e
+	        where counts>=0 and id=eid )e
 	      where u.uids=e.eautid)e
 	    where t.tid=e.etid
     </select>

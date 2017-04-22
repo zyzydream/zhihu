@@ -27,24 +27,24 @@
 				</a>
 				<ul id="top-nav-profile-dropdown" class="top-nav-dropdown"
 					aria-labelledby=":0">
-					<li><a id=":1" href="/people/xiao-35-30" tabindex="-1"> <i
+					<li><a id=":1" href="page/myselef.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-home"></i> 我的主页
 					</a></li>
-					<li><a id=":2" href="/inbox" tabindex="-1"> <i
+					<li><a id=":2" href="page/litter.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-pm"></i> 私信 <span
 							id="zh-top-nav-pm-count"
 							class="zu-top-nav-pm-count zg-noti-number"
 							style="visibility: hidden;" data-count="0"> </span>
 					</a></li>
-					<li><a id=":3" href="/settings" tabindex="-1"> <i
+					<li><a id=":3" href="page/design.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-settings"></i> 设置
 					</a></li>
-					<li><a id=":4" href="/logout" tabindex="-1"> <i
+					<li><a id=":4" href="back/login.jsp" tabindex="-1"> <i
 							class="zg-icon zg-icon-dd-logout"></i> 退出
 					</a></li>
 				</ul>
 			</div>
-			<button id="zu-top-add-question" class="zu-top-add-question">提问</button>
+			<a href="page/introducteQuestion.jsp"><button id="zu-top-add-question" class="zu-top-add-question">提问</button></a>
 			<div id="zh-top-search" class="zu-top-search" role="search">
 				<form id="zh-top-search-form" class="zu-top-search-form"
 					method="GET" action="/search">

@@ -14,4 +14,9 @@
     <select id="count" resultType="int">
        select count(0) from users 
     </select>
+    
+    <select id="findAdmins" parameterType="Admins" resultType="Admins">
+    	select * from admins where adname=#{adname} and adpassword = #{adpassword}
+    </select>
+    
 </mapper>

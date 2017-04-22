@@ -48,7 +48,7 @@
 					<li><a href="page/design.jsp"> <i
 							class="zg-icon zg-icon-dd-settings"></i>设置
 					</a></li>
-					<li><a href="page/login.jsp"> <i
+					<li><a href="back/login.jsp"> <i
 							class="zg-icon zg-icon-dd-logout"></i>退出
 					</a></li>
 				</ul>
