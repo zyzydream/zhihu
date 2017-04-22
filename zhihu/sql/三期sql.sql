@@ -1270,7 +1270,7 @@ select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u
 --基本信息中 用户四个10000、10001、10002、10003、10004、10005、10006
 --话题15个1000~1014，
 --文章和问题及回复若干 （每个编号10000~10020...）（至少保证每个话题都有相关的文章与问题）
-
+select * from infomation
 --点赞问题的基本数据
 insert into dynstate select '10000','','DW','10003','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10000','','DW','10004','2017-04-24 00:00:01','' from dual ;
@@ -1377,6 +1377,49 @@ insert into dynstate select '10005','','DW','10017','2017-04-24 00:00:01','' fro
 insert into dynstate select '10005','','DW','10018','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10005','','DW','10019','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10005','','DW','10020','2017-04-24 00:00:01','' from dual ;
+
+--用户关注的话题
+insert into dynstate select '10000','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10002','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10005','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10005','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10006','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10005','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10005','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10002','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10006','DR','','2017-04-24 00:00:01','' from dual ;
+
+insert into dynstate select '10005','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10002','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10006','DR','','2017-04-24 00:00:01','' from dual ;
+
+insert into dynstate select '10006','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10002','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10005','DR','','2017-04-24 00:00:01','' from dual ;
+
+
+
 
 
 >>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
