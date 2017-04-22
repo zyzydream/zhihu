@@ -29,7 +29,7 @@
 						</ul>
 						<p class="Guide-TopicsHint">可以通过搜索和「话题广场」找到更多你想要的话题</p>
 					</div>
-					<<<<<<< HEAD
+					
 					<div class="Guide-TopicsFooter GaussianBlur">
 						<a href="page/homepage.jsp">
 							<div class="Guide-TopicsFooter GaussianBlur">

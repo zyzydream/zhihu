@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yc.zhihu.entity.Admins;
 import com.yc.zhihu.entity.Explore;
 import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Users;
@@ -40,5 +41,10 @@ public class AdminServiceImpl implements AdminService{
 		}
 		List<Users>us=adminMapper.list(users);
 		return new PaginationBean<Users>(cPage,pSize,totalPage,total,us);
+	}
+
+	@Override
+	public Admins login(Admins admins) {
+		return adminMapper.findAdmins(admins);
 	}
 }

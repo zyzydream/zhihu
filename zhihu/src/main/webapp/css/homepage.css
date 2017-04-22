@@ -1468,20 +1468,8 @@ html.no-touchevents .meta-item:hover .z-icon-comment {
 .zg-btn-white > .zu-entry-focus-each, .zg-btn-unfollow > .zu-entry-focus-each {
     display: inline-block;
 }
-@media not all, (min-resolution: 2dppx), (min-resolution: 192dpi) {
-.icon, i[class^="z-icon-"], .modal-dialog-title-close, .goog-option-selected .goog-menuitem-checkbox, .zg-content-img-icon, .zg-content-video-icon, .tr-icon, .tr-inline-icon, .zg-icon, .icon-external, .feed-item .ignore, .side-topic-item .up, .side-topic-item .delete, .zu-edit-button-icon, .zg-blue-edit, .zm-add-question-detail-icon, .zh-hovercard-arrow, .zu-top-live-icon, .zm-item-top-btn, .zm-profile-icon, .zm-profile-header-icon, .zm-profile-empty-icon, .zu-global-notify-icon, .zu-global-notify-close, .zm-modal-dialog-guide-title-msg, .zm-modal-dialog-guide-title-dropdown, .zm-noti7-popup-tab-item .icon, .zu-noti7-popup .zu-top-live-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-delete, .icon-edit {
-    background-image: url("/static/revved/img/sprites-1.9.2@2x.6e638473.png");
-    background-size: 308px 250px;
-}
-.spinner-gray {
-    background-image: url("/static/revved/img/spinner/grey-loading@2x.c8492b4b.gif");
-}
-.spinner-lightgray {
-    background-image: url("/static/revved/img/spinner/lightgray-loading@2x.0ac3edf8.gif");
-}
-}
+
 .zg-icon-rare {
-    background-image: url("/static/revved/img/sprites-rare-0.1.42f52e35.png");
     background-repeat: no-repeat;
     display: inline-block;
     height: 16px;
@@ -1490,7 +1478,6 @@ html.no-touchevents .meta-item:hover .z-icon-comment {
 }
 @media not all, (min-resolution: 2dppx), (min-resolution: 192dpi) {
 .zg-icon-rare {
-    background-image: url("/static/revved/img/sprites-rare-0.1@2x.4c1b03dc.png");
     background-size: 256px 30px;
 }
 }
@@ -2813,6 +2800,13 @@ html.is-AppPromotionBarVisible .AppPromotionBar {
 .Guide-header {
     text-align: center;
 }
+
+.modal.in .modal-dialog {
+    margin-left: 500px;
+    margin-top: 100px;
+    transform: translate(0px, 0px);
+}
+
 @media (max-width: 767px) {
 .Guide-header {
     padding: 0 20px;
@@ -7607,7 +7601,7 @@ html.modal-open.flexbox .modal-wrapper {
     border-radius: 8px;
     box-shadow: 0 0 80px 0 rgba(0, 0, 0, 0.4);
     max-width: 100%;
-    position: absolute;
+  
     text-align: left;
     width: 420px;
     z-index: 99;
@@ -14768,4 +14762,12 @@ a .OrgIcon, a .icon-badge, .OrgIcon.no-badge-explain, .icon-badge.no-badge-expla
 }
 .wechat-binding-result.is-active {
     top: 0;
+}
+.col-md-7 {
+    width: 530px;
+}.col-md-5 {
+    width: 110px;
+}
+h1 .small, .h1 small, .h2 .small, .h2 small, .h3 .small, .h3 small, h1 .small, h1 small, h2 .small, h2 small, h3 .small, h3 small {
+    font-size: 100%;
 }
