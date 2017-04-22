@@ -45,7 +45,7 @@
 		(select * from users u,
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
 		where u.uids=d.aimid)ud
-		where e.eautid=ud.uids AND 24*${num}>=to_number(sysdate-
+		where e.eautid=ud.uids AND 24*${num}>=to_number(to_date('2017-12-30','yyyy-mm-dd')-
 		to_date(e.etime,'yyyy-mm-dd'))*24
 	</select>
 
@@ -62,7 +62,7 @@
 		(select * from users u,
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
 		where u.uids=d.aimid)ud
-		where q.qautid=ud.uids AND 24*${num}>=to_number(sysdate-
+		where q.qautid=ud.uids AND 24*${num}>=to_number(to_date('2017-12-30','yyyy-mm-dd')-
 		to_date(q.qtime,'yyyy-mm-dd'))*24
 	</select>
 	<!-- 获得当前关注的所有对象24小时内的全部动态 -->
@@ -186,4 +186,17 @@
 	<insert id="newFav" parameterType="Favorite">
 	    insert into favorite(fid,fcreid ,fname,ftime)values(seq_favorite.nextval,'${fcreid}','${fname}',to_char(sysdate,'yyyy-mm-dd'))
 	</insert>
+	
+	<select id="yattentiontopics" parameterType="Dynstate" resultType="Dynstate">
+	    select * from dynstate where selfid='${selfid}' and kind='${kind}' and ids='${ids}'
+	</select>
+	
+	<insert id="attentiontopics" parameterType="Dynstate">
+	   insert into dynstate(selfid,ids,times,kind)values
+	   ('${selfid}','${ids}',to_char(sysdate,'yyyy-mm-dd'),'${kind}')
+	</insert>
+	
+	<delete id="delattentiontopics" parameterType="Dynstate">
+	   delete from dynstate PARTITION(GH) where selfid='${selfid}' and ids='${ids}'
+	</delete>
 </mapper>

@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService{
 			//System.out.println("user");
 			user.setNum(times.getTimes());
 			List<Explore> essays = userMapper.listessay(user);
-		    for(Explore essay:essays){
+			for(Explore essay:essays){
 				essay.setKind("DW");
 				essay.setPraise(userMapper.statisticsPraise(essay));
 				essay.setKind("SW");
@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService{
 				essay.setKind("FW");
 				all.add(essay);
 			}
-			
+
 			List<Explore> questions = userMapper.listquestion(user);
 			for(Explore question:questions){
 				question.setKind("DQ");
@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService{
 				if(dynstate.getKind().equals("GH")){
 					Explore as=userMapper.listrelatedTopic(dynstate);
 					if(as!=null){
-						all.add(as);
+						all.add(yattentiontopics(as,user));
 						//System.out.println(as);
 					}
 				}
@@ -108,16 +108,16 @@ public class UserServiceImpl implements UserService{
 			for(Explore explore:all){
 				if("W".equals(explore.getKind())){
 					explore.setKind("DW");
-				    explore.setPraise(userMapper.statisticsPraise(explore));
-			    	explore.setKind("SW");
-			    	explore.setCollect(userMapper.statisticsCollect(explore));
-				    explore.setKind("W");
+					explore.setPraise(userMapper.statisticsPraise(explore));
+					explore.setKind("SW");
+					explore.setCollect(userMapper.statisticsCollect(explore));
+					explore.setKind("W");
 				}else if("Q".equals(explore.getKind())){
 					explore.setKind("DQ");
-				    explore.setPraise(userMapper.statisticsPraise(explore));
-			    	explore.setKind("SQ");
-			    	explore.setCollect(userMapper.statisticsCollect(explore));
-				    explore.setKind("Q");
+					explore.setPraise(userMapper.statisticsPraise(explore));
+					explore.setKind("SQ");
+					explore.setCollect(userMapper.statisticsCollect(explore));
+					explore.setKind("Q");
 				}
 			}
 		}
@@ -150,6 +150,20 @@ public class UserServiceImpl implements UserService{
 			all.add(t[i-1]);
 		}
 		return all;
+	}
+
+	//判断是否关注话题
+	public Explore yattentiontopics(Explore e,Users user){
+		Dynstate d=new Dynstate();
+		d.setSelfid(user.getUids());
+		d.setKind("GH");
+		d.setIds(e.getTid());
+		if(userMapper.yattentiontopics(d)!=null){
+			e.setPraise("y");
+		}else{
+			e.setPraise("n");
+		}
+		return e;
 	}
 
 	@Override
@@ -222,15 +236,15 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public ShowUser showUser(Users user) {
-		 Users u=userMapper.fUsers(user);
-		 user.setUids(u.getUids());
-		 ShowUser users=userMapper.showUser(user);
-		 users.setNum(user.getNum());
-		 users.setT(userMapper.listTopics(user));
-		 users.setNsign(u.getUsign());
-		 users.setUpic(u.getUpic());
-		 users.setUname(u.getUname());
-		 return users;
+		Users u=userMapper.fUsers(user);
+		user.setUids(u.getUids());
+		ShowUser users=userMapper.showUser(user);
+		users.setNum(user.getNum());
+		users.setT(userMapper.listTopics(user));
+		users.setNsign(u.getUsign());
+		users.setUpic(u.getUpic());
+		users.setUname(u.getUname());
+		return users;
 	}
 
 
@@ -239,7 +253,7 @@ public class UserServiceImpl implements UserService{
 	public Users list(Users user) {
 		return userMapper.fUsers(user);
 	}
-	
+
 	@Override
 	public int attentionUser(Dynstate dynstate) {
 		return userMapper.attentionUser(dynstate);
@@ -263,5 +277,15 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int newFav(Favorite favorite) {
 		return userMapper.newFav(favorite);
+	}
+
+	@Override
+	public int attentiontopics(Dynstate dynstate) {
+		return userMapper.attentiontopics(dynstate);
+	}
+
+	@Override
+	public int delattentiontopics(Dynstate dynstate) {
+		return userMapper.delattentiontopics(dynstate);
 	}
 }

@@ -54,4 +54,8 @@ public interface UserService {
 	
 	Users list(Users user);
 
+	int attentiontopics(Dynstate dynstate);
+
+	int delattentiontopics(Dynstate dynstate);
+
 }

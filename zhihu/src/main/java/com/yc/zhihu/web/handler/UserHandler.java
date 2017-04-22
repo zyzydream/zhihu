@@ -221,11 +221,36 @@ public class UserHandler {
 	@RequestMapping(value="/listuser",method=RequestMethod.POST)
 	@ResponseBody
 	public List<Users> listuser(Users user,HttpServletRequest request){
-		user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);//?
 		System.out.println(user);
 		List<Users> a = new ArrayList<Users>() ;
 		a.add(usersService.list(user));
 		return a;
 	}
+	
+
+	//关注话题
+	@RequestMapping(value="/attentiontopics",method=RequestMethod.GET)
+	@ResponseBody
+	public int attentiontopics(Topics topics,HttpServletRequest request){
+		Users user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		Dynstate dynstate =new Dynstate();
+		dynstate.setSelfid(user.getUids());
+		dynstate.setIds(topics.getTid());
+		dynstate.setKind("GH");
+		return usersService.attentiontopics(dynstate);
+	}
+	
+	//关注话题
+		@RequestMapping(value="/delattentiontopics",method=RequestMethod.GET)
+		@ResponseBody
+		public int delattentiontopics(Topics topics,HttpServletRequest request){
+			Users user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+			Dynstate dynstate =new Dynstate();
+			dynstate.setSelfid(user.getUids());
+			dynstate.setIds(topics.getTid());
+			dynstate.setKind("GH");
+			return usersService.delattentiontopics(dynstate);
+		}
 	
 }
