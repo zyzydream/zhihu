@@ -61,23 +61,17 @@
 		tid,ud.uname author from question q,
 		(select * from users u,
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
-<<<<<<< HEAD
-		where u.uids=d.aimid)ud
-=======
+
 		where u.uids=d.aimid)ud
 		where q.qautid=ud.uids AND 24*${num}>=to_number(sysdate-
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 		to_date(q.qtime,'yyyy-mm-dd HH24:MI:SS'))*24
 	</select>
 	<!-- 获得当前关注的所有对象24小时内的全部动态 -->
 	<select id="lists" parameterType="Users" resultType="Dynstate">
 		SELECT * from dynstate d,
-<<<<<<< HEAD
-		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid='${uids}')dd
-=======
+
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid='${uids}')dd
 		WHERE d.selfid=dd.aimid AND 24*${num}>=to_number( sysdate-
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 		to_date(d.times,'yyyy-mm-dd HH24:MI:SS'))*24
 	</select>
 	<select id="listrelatedTopic" parameterType="Dynstate"
