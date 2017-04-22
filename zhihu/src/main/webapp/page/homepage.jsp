@@ -54,18 +54,12 @@
 				</ul>
 			</div>
 
-
-
 			<a class="zu-top-add-question" id="zu-top-add-question"
 				style="text-decoration: none" href="page/introducteQuestion.jsp">提问</a>
-
 
 			<div role="search" id="zh-top-search" class="zu-top-search">
 				<form method="GET" action="/search" id="zh-top-search-form"
 					class="zu-top-search-form">
-
-
-
 					<input type="hidden" name="type" value="content"> <label
 						for="q" class="hide-text">知乎搜索</label><input type="text"
 						class="zu-top-search-input" id="q" name="q" autocomplete="off"
@@ -177,22 +171,17 @@
 						<div class="HomeEntry-box">
 							<span class="HomeEntry-boxArrow"></span>
 							<ul class="HomeEntry-list">
-								<li class="HomeEntry-item"><a href="#"
+								<li class="HomeEntry-item"><a href="page/introducteQuestion.jsp"
 									class="HomeEntry-ask js-HomeEntry-ask"> <i
 										class="sprite-home-question-off"></i> 提问
 								</a></li>
-								<li class="HomeEntry-item"><a href="/question"
-									target="_blank" class="HomeEntry-answer js-HomeEntry-answer">
-										<i class="sprite-home-answer-off"></i> 回答
-								</a></li>
+								
 								<li class="HomeEntry-item"><a href="page/write.jsp"
 									target="_blank" class="HomeEntry-post js-HomeEntry-post"> <i
 										class="sprite-home-post-off"></i> 写文章
 								</a></li>
 							</ul>
-							<div class="HomeEntry-draft">
-								<a href="/draft" target="_blank"> 草稿 </a>
-							</div>
+							
 						</div>
 					</div>
 					<div class="HomeTopics zg-section" data-za-module="HomeTopics">

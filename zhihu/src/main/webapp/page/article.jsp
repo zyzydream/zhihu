@@ -26,9 +26,6 @@
 						</div>
 						<div class="Navbar-functionality">
 							<a class="Navbar-write" href="page/write.jsp">写文章 </a>
-							<div class="Menu Navbar-menu">
-								<a>更多</a>
-							</div>
 						</div>
 					</header>
 				</div>
@@ -109,26 +106,6 @@
 									</i> 收藏
 								</button>
 							</div>
-							<div class="PostShare">
-								<div class="Menu">
-									<button
-										class="Button Button Button--plain MenuButton MenuButton-listen-hover Button Button--plain"
-										type="button">
-										<i class="icon icon-ic_column_share"> <img
-											src="images/fen.png" style="height: 20px; width: 18px;">
-										</i> 分享
-									</button>
-									<div class="Menu-dropdown"></div>
-								</div>
-							</div>
-							<div class="Report">
-								<button class="Button Button Button--plain ReportButton"
-									type="button">
-									<i class="icon icon-ic_column_report"> <img
-										src="images/ju.png" style="height: 20px; width: 18px;">
-									</i> 举报
-								</button>
-							</div>
 						</div>
 					</div>
 
@@ -155,8 +132,7 @@
 										</div>
 									</div>
 									<div class="CommentEditor-actions" style="padding-left: 400px;">
-										<button type="button" class="Button Button--plain" onclick="document.getElementById('rcontent').val(null)">取消</button>
-										<button type="button" class="Button Button--blue"  onclick="addmyReply()">评论</button>
+										<button type="button" class="Button Button--blue"  onclick="addmyReply()">搜索</button>
 									</div>
 								</form>
 							</div>
