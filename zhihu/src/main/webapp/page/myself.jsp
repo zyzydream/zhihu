@@ -29,16 +29,15 @@
 			data-za-module="TopNavBar"
 			style="width: 1349px; top: 0px; left: 0px;">
 		<div class="AppHeader-inner">
-			<a href="/zhihu/page/homepage.jsp" aria-label="知乎">知乎</a>
+
 			<nav class="AppHeader-nav" role="navigation"> <a
-				class="AppHeader-navItem" href="/zhihu/page/homepage.jsp">首页</a> <a
-				class="AppHeader-navItem" href="/explore"
-				href="/zhihu/page/explore.jsp">发现</a> <a class="AppHeader-navItem"
-				href="/topic">话题</a> </nav>
+				class="AppHeader-navItem" href="page/homepage.jsp">首页</a> <a
+				class="AppHeader-navItem" href="page/explore.jsp">发现</a> <a
+				class="AppHeader-navItem" href="page/talk.jsp">话题</a> </nav>
 			<div class="SearchBar" role="search">
 				<div class="SearchBar-toolWrapper">
 					<form class="SearchBar-tool">
-						<div>
+						
 							<div class="Popover">
 								<div class="SearchBar-input Input-wrapper Input-wrapper--grey">
 									<input id="Popover-21490-83503-toggle" class="Input"
@@ -47,17 +46,18 @@
 										aria-activedescendant="AutoComplete-21488-96386--1"
 										aria-haspopup="true" aria-owns="Popover-21490-83503-content"
 										placeholder="搜索你感兴趣的内容…">
+									<button type="submit" class="zu-top-search-button">
+										<span class="sprite-global-icon-magnifier-dark"></span>
+									</button>
 								</div>
 							</div>
-						</div>
-						<button class="Button SearchBar-searchIcon Button--plain"
-							aria-label="搜索" type="button"></button>
-						<div class="SearchBar-iconDecorator"></div>
+						
+
 					</form>
 				</div>
-				<button
-					class="Button SearchBar-askButton Button--primary Button--blue"
-					type="button">提问</button>
+				<a href="page/introducteQuestion.jsp"><button
+						class="Button SearchBar-askButton Button--primary Button--blue"
+						type="button">提问</button></a>
 			</div>
 			<div class="AppHeader-userInfo">
 				<div class="Popover PushNotifications AppHeader-notifications">
@@ -224,40 +224,37 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div id="rightmyself">
-			<div class="totalinfos">
-				<table class="table table-striped"
-					style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">
-					<tr>
-						<td class="info">关注的话题</td>
-						<td class="info"><%=request.getSession().getAttribute("myattentop")%></td>
-					</tr>
-					<tr>
-						<td class="info">关注的专题</td>
-						<td class="info"><%=request.getSession().getAttribute("myattenzhuanti")%></td>
-					</tr>
-					<tr>
-						<td class="info">关注的收藏夹</td>
-						<td class="info"><%=request.getSession().getAttribute("myattenfav")%></td>
-					</tr>
-				</table>
-			</div>
-			<div class="panel panel-default"
-				style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
-				<div class="panel-body">
-					<ul class="list-inline">
-						<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
-						<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
-					</ul>
-					<ul class="list-inline">
-						<li
-							style="padding-left: 40px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("myatten")%></li>
-						<li
-							style="padding-left: 120px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("attenme")%></li>
-					</ul>
+				<div class="totalinfos">
+					<table class="table table-striped"
+						style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">
+						<tr>
+							<td class="info">关注的话题</td>
+							<td class="info"><%=request.getSession().getAttribute("myattentop")%></td>
+						</tr>
+						
+						<tr>
+							<td class="info">关注的收藏夹</td>
+							<td class="info"><%=request.getSession().getAttribute("myattenfav")%></td>
+						</tr>
+					</table>
 				</div>
-			</div>
+				<div class="panel panel-default"
+					style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
+					<div class="panel-body">
+						<ul class="list-inline">
+							<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
+							<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
+						</ul>
+						<ul class="list-inline">
+							<li
+								style="padding-left: 40px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("myatten")%></li>
+							<li
+								style="padding-left: 120px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("attenme")%></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 

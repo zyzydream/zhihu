@@ -70,10 +70,7 @@ $.get("dynstate/right",function(data){
 			+'		<td class="info">关注的话题</td>'
 			+'		<td class="info">'+data.myattentop+'</td>'
 			+'	</tr>'
-			+'	<tr>'
-			+'		<td class="info">关注的专题</td>'
-			+'		<td class="info">'+data.myattenzhuanlan+'</td>'
-			+'	</tr>'
+			
 			+'	<tr>'
 			+'		<td class="info">关注的收藏夹</td>'
 			+'		<td class="info">'+data.myattenfav+'</td>'

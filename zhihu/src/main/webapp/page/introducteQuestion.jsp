@@ -65,10 +65,7 @@
 					</div>
 				</div>
 				<div class="zm-command">
-					<label class="zm-question-form-hide-in-about-question-el zg-left">
-						<input class="zg-addq-isanon" type="checkbox" value="1">
-						匿名
-					</label> <a class="zm-command-cancel" id="cancel" href="page/homepage.jsp">取消</a>
+					<a class="zm-command-cancel" id="cancel" href="page/homepage.jsp">取消</a>
 					<a class="zg-r5px zu-question-form-add zg-btn-blue" id="addq"
 						onclick="add()">发布</a>
 				</div>
