@@ -256,7 +256,7 @@ function test(){
 	var contents="";
 	for(var i=0;i<length;i++){
 		var uname=document.getElementsByName("showUsers")[i].innerHTML;
-		alert(uname);
+		//alert(uname);
 		$.get("user/showUser?uname="+uname+"&&num="+i,function(data){
 			titles+=''+data.num+'====<div class="media" style="400px;"> <div class="media-left"><a href="#"><img class="media-object" src= "images/1.jpg" alt="..." style="width:60px"> </a></div><div class="media-body"><h4 class="media-heading"><a href="page/himself.jsp?uids='+data.uids+'">'+data.uname+'</a></h4>'+data.nsign+'<span>';
 			contents+=''+data.num+'====<table style="width: 230px; text-align: center;"><tr><td style="border-right-style: solid;">文章</td><td style="border-right-style: solid;">回复</td><td>关注者</td>';

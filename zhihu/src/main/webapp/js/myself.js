@@ -116,6 +116,9 @@ $.get("dynstate/right",function(data){
 	document.getElementById("bianji").innerHTML = des;
 	
 	
+	des+='<a class="Button Button--blue" type="button"'
+		+' href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a>';
+	document.getElementById("bianji").innerHTML = des;
 	for(var i=0;i<data.length;i++){
 		right2+='<div class="totalinfos" style="margin-top:20px">'
 			+'<table class="table table-striped"'
@@ -360,7 +363,7 @@ function My(){
 		var my="";
 		if(data.length>0){
 			for(var i=0;i<data.length;i++){
-				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="ContentItem-title">'
+				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px;"><div class="col-md-7"><h2 class="ContentItem-title">'
 					+'<a href="/zhihu/page/article.jsp?eid='+data[i].tid+'">'+data[i].title+'</a></h2><br/>'
 					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
