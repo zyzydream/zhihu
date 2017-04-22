@@ -149,7 +149,7 @@
 										<span class="RichText ProfileHeader-headline"><%=request.getSession().getAttribute("usign")%></span>
 									</h1>
 								</div>
-								<span class="ProfileHeader-tips">暂无个人资料</span>
+								
 								<div class="ProfileHeader-contentFooter">
 									<div class="ProfileButtonGroup ProfileHeader-buttons" id="bianji">
 										<!-- <a class="Button Button--blue" type="button"
@@ -183,76 +183,12 @@
 						</span>
 
 						</span>
-						<!-- <span>
-							<div style="width: 70px; float: left; height: 20px">
-								<a style="font-size: 13px; font-weight: 40; border-style: none;"
-									class="btn btn-default dropdown-toggle" type="button"
-									id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">收藏
-									42</a>
-								<ul class="dropdown-menu" role="menu"
-									aria-labelledby="dropdownMenu1" id="dropdown-menu">
-									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#">Regular link</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#">Disabled link</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#">Another link</a></li>
-								</ul>
-							</div>
-							<div style="width: 70px; float: left; height: 20px"
-								class="btn-group" role="group" aria-label="...">
-								<button
-									style="font-size: 13px; font-weight: 40; border-style: none;"
-									type="button" class="btn btn-default">
-									<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>点赞
-									42
-								</button>
-							</div>
-							<div style="width: 70px; float: left; height: 20px"
-								class="btn-group" role="group" aria-label="...">
-								<button
-									style="font-size: 13px; font-weight: 40; border-style: none;"
-									type="button" class="btn btn-default">
-									<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览
-									42
-								</button>
-							</div>
-						</span> -->
-
 					</div>
 				</div>
 			</div>
 
-			<div id="rightmyself">
-				<div class="totalinfos">
-					<table class="table table-striped"
-						style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">
-						<tr>
-							<td class="info">关注的话题</td>
-							<td class="info"><%=request.getSession().getAttribute("myattentop")%></td>
-						</tr>
-						
-						<tr>
-							<td class="info">关注的收藏夹</td>
-							<td class="info"><%=request.getSession().getAttribute("myattenfav")%></td>
-						</tr>
-					</table>
-				</div>
-				<div class="panel panel-default"
-					style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">
-					<div class="panel-body">
-						<ul class="list-inline">
-							<li style="padding-left: 40px; padding-top: 10px;">关注了</li>
-							<li style="padding-left: 80px; padding-top: 10px;">关注者</li>
-						</ul>
-						<ul class="list-inline">
-							<li
-								style="padding-left: 40px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("myatten")%></li>
-							<li
-								style="padding-left: 120px; padding-top: 10px; text-align: center"><%=request.getSession().getAttribute("attenme")%></li>
-						</ul>
-					</div>
-				</div>
+			<div id="rightmyself" style="margin-top:-2800px; position: absolute;">
+				
 			</div>
 		</div>
 
