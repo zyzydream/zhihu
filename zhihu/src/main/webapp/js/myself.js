@@ -62,6 +62,7 @@ $.get("dynstate/upic",function(data){
 
 $.get("dynstate/right",function(data){
 	var right='';
+	var right2='';
 	right+='<div class="totalinfos" style="margin-top:20px">'
 		+'<table class="table table-striped"'
 		+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
@@ -99,18 +100,33 @@ $.get("dynstate/right",function(data){
 
 	var des='';
 	alert("编辑个人资料")
+	des+='<div class="ProfileHeader-contentHead">'
+		+'<h1 class="ProfileHeader-title">'
+		+'<span class="ProfileHeader-name">'+data.uname+'</span>'
+		+'<span class="RichText ProfileHeader-headline">'+data.usign+'</span>'
+		+'</h1>'
+		+'</div>'
+		+'<span class="ProfileHeader-tips"></span>'
+		+'<div class="ProfileHeader-contentFooter">'
+		+'<div class="ProfileButtonGroup ProfileHeader-buttons" id="bianji">'
+		+'<a class="Button Button--blue" type="button"'
+		+'href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a> '
+		+'</div>'
+		+'</div>';
+	document.getElementById("bianji").innerHTML = des;
+	
+	
 	des+='<a class="Button Button--blue" type="button"'
 		+' href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a>';
 	document.getElementById("bianji").innerHTML = des;
 	for(var i=0;i<data.length;i++){
-		right+='<div class="totalinfos" style="margin-top:20px">'
+		right2+='<div class="totalinfos" style="margin-top:20px">'
 			+'<table class="table table-striped"'
 			+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
 			+'	<tr>'
 			+'		<td class="info">关注的话题</td>'
 			+'		<td class="info">'+data.myattentop+'</td>'
 			+'	</tr>'
-			
 			+'	<tr>'
 			+'		<td class="info">关注的收藏夹</td>'
 			+'		<td class="info">'+data.myattenfav+'</td>'
@@ -132,7 +148,7 @@ $.get("dynstate/right",function(data){
 			+'	</ul>'
 			+'</div>'
 			+'</div>';
-		document.getElementById("rightmyself").innerHTML = right;
+		document.getElementById("rightmyself").innerHTML = right2;
 	}
 },'json');
 
@@ -347,7 +363,7 @@ function My(){
 		var my="";
 		if(data.length>0){
 			for(var i=0;i<data.length;i++){
-				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="ContentItem-title">'
+				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px;"><div class="col-md-7"><h2 class="ContentItem-title">'
 					+'<a href="/zhihu/page/article.jsp?eid='+data[i].tid+'">'+data[i].title+'</a></h2><br/>'
 					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'

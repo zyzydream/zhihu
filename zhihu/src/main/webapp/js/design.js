@@ -32,4 +32,3 @@ function modify(){
 	div.style.display="none";
 	div.nextSibling.nextSibling.style.display="block";
 }
-

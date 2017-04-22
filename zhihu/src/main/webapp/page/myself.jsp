@@ -142,7 +142,7 @@
 								<iframe name="uploadFrame2" id="uploadFrame2"
 											style="display: none;"></iframe> -->
 							</div>
-							<div class="ProfileHeader-content">
+							<div class="ProfileHeader-content" id="bianji">
 								<div class="ProfileHeader-contentHead">
 									<h1 class="ProfileHeader-title">
 										<span class="ProfileHeader-name"><%=request.getSession().getAttribute("username")%></span>

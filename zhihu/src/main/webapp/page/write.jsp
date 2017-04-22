@@ -31,10 +31,7 @@
 				</div>
 
 
-				<div class="navbar-menu-container ui-menu-button ng-scope close">
-					<a class="menu-button ng-scope" href="javascript:void(0);"
-						aria-label="更多选项">更多</a>
-				</div>
+				
 				<div class="navbar-content"></div>
 			</header>
 		</div>
