@@ -79,7 +79,7 @@
 							class="Button AppHeader-profileEntry Button--plain" type="button"
 							aria-haspopup="true" aria-expanded="false"
 							aria-owns="Popover-21677-9959-content">
-							<img class="Avatar" src="/zhihu/images/touxiang.jpg"
+							<img class="Avatar" src="<%=request.getSession().getAttribute("upic") %>>"
 								style="width: 30px; height: 30px;">
 						</button>
 					</div>
@@ -151,9 +151,9 @@
 								</div>
 								<span class="ProfileHeader-tips">暂无个人资料</span>
 								<div class="ProfileHeader-contentFooter">
-									<div class="ProfileButtonGroup ProfileHeader-buttons">
-										<a class="Button Button--blue" type="button"
-											href="/zhihu/page/design.jsp">编辑个人资料</a>
+									<div class="ProfileButtonGroup ProfileHeader-buttons" id="bianji">
+										<!-- <a class="Button Button--blue" type="button"
+											href="/zhihu/page/design.jsp">编辑个人资料</a> -->
 									</div>
 								</div>
 							</div>

@@ -18,7 +18,7 @@ function myansrer33(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 他的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -26,7 +26,7 @@ function myansrer33(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
-				+'<h2 style="padding-left: 10px; padding-top: 10px">他的动态</h2>'
+				+'<h2 style="padding-left: 10px; padding-top: 10px">我的动态</h2>'
 				+'</div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
@@ -35,65 +35,74 @@ function myansrer33(){
 
 $.get("dynstate/upic",function(data){
 	var upic='';
-		upic+='<form enctype="multipart/form-data" target="uploadFrame"'
-			+'action="dynstate/upload2" method="post" name="form"'
-			+'	id="uploadupic">'
-			+'	<div class="UserAvatar">'
-			+'		<div id="hhh">'
-			+'		<img id="img_icon"'
-			+'			class="Avatar Avatar--large UserAvatar-inner"'
-			+'			src="'+data.upic+'"'
-			+'			style="width: 160px; height: 160px;"'
-			+'			onclick="updateimg(this)"> </div>'
-			+'	</div>'
-			+'	<input id="img_icon_file" type="file"'
-			+'		accept="image/png,image/jpeg" style="display: none;"'
-			+'		onchange="previewMultipleImage_icon()" name="picData"/>'
-			+'</form>'
-			+'<iframe name="uploadFrame2" id="uploadFrame2"'
-			+'			style="display: none;"></iframe>';
-	
-	document.getElementById("userava").innerHTML = upic;
-},'json');
+	upic+='<form enctype="multipart/form-data" target="uploadFrame"'
+		+'action="dynstate/upload2" method="post" name="form"'
+		+'	id="uploadupic">'
+		+'	<div class="UserAvatar">'
+		+'		<div id="hhh">'
+		+'		<img id="img_icon"'
+		+'			class="Avatar Avatar--large UserAvatar-inner"'
+		+'			src="'+data.upic+'"'
+		+'			style="width: 160px; height: 160px;"'
+		+'			onclick="updateimg(this)"> </div>'
+		+'	</div>'
+		+'	<input id="img_icon_file" type="file"'
+		+'		accept="image/png,image/jpeg" style="display: none;"'
+		+'		onchange="previewMultipleImage_icon()" name="picData"/>'
+		+'</form>'
+		+'<iframe name="uploadFrame2" id="uploadFrame2"'
+		+'			style="display: none;"></iframe>';
 
+	document.getElementById("userava").innerHTML = upic;
+
+	var topupic='';
+	topupic+='<img class="Avatar" src="'+data.upic+'" style="width: 30px; height: 30px;">';
+	document.getElementById("Popover-21677-9959-toggle").innerHTML = topupic;
+},'json');
 
 $.get("dynstate/right",function(data){
 	var right='';
-	for(var i=0;i<data.length;i++){
-		right+='<div class="totalinfos" style="margin-top:20px">'
-			+'<table class="table table-striped"'
-			+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
-			+'	<tr>'
-			+'		<td class="info">关注的话题</td>'
-			+'		<td class="info">'+data.myattentop+'</td>'
-			+'	</tr>'
-			+'	<tr>'
-			+'		<td class="info">关注的专题</td>'
-			+'		<td class="info">'+data.myattenzhuanlan+'</td>'
-			+'	</tr>'
-			+'	<tr>'
-			+'		<td class="info">关注的收藏夹</td>'
-			+'		<td class="info">'+data.myattenfav+'</td>'
-			+'	</tr>'
-			+'</table>'
-			+'</div>'
-			+'<div class="panel panel-default"'
-			+'style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
-			+'<div class="panel-body" style="margin-top:20px">'
-			+'	<ul class="list-inline">'
-			+'		<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
-			+'		<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
-			+'	</ul>'
-			+'	<ul class="list-inline">'
-			+'		<li'
-			+'			style="padding-left: 40px; padding-top: 10px; text-align: center">'+data.myatten+'</li>'
-			+'		<li'
-			+'			style="padding-left: 120px; padding-top: 10px; text-align: center">'+data.attenme+'</li>'
-			+'	</ul>'
-			+'</div>'
-			+'</div>';
-		document.getElementById("rightmyself").innerHTML = right;
-	}
+
+	right+='<div class="totalinfos" style="margin-top:20px">'
+		+'<table class="table table-striped"'
+		+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
+		+'	<tr>'
+		+'		<td class="info">关注的话题</td>'
+		+'		<td class="info">'+data.myattentop+'</td>'
+		+'	</tr>'
+		+'	<tr>'
+		+'		<td class="info">关注的专题</td>'
+		+'		<td class="info">'+data.myattenzhuanlan+'</td>'
+		+'	</tr>'
+		+'	<tr>'
+		+'		<td class="info">关注的收藏夹</td>'
+		+'		<td class="info">'+data.myattenfav+'</td>'
+		+'	</tr>'
+		+'</table>'
+		+'</div>'
+		+'<div class="panel panel-default"'
+		+'style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
+		+'<div class="panel-body" style="margin-top:20px">'
+		+'	<ul class="list-inline">'
+		+'		<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
+		+'		<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
+		+'	</ul>'
+		+'	<ul class="list-inline">'
+		+'		<li'
+		+'			style="padding-left: 40px; padding-top: 10px; text-align: center">'+data.myatten+'</li>'
+		+'		<li'
+		+'			style="padding-left: 120px; padding-top: 10px; text-align: center">'+data.attenme+'</li>'
+		+'	</ul>'
+		+'</div>'
+		+'</div>';
+	document.getElementById("rightmyself").innerHTML = right;
+
+
+	var des='';
+	alert("编辑个人资料")
+	des+='<a class="Button Button--blue" type="button"'
+		+' href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a>';
+	document.getElementById("bianji").innerHTML = des;
 },'json');
 
 $.get("dynstate/m1",function(data){
@@ -173,6 +182,7 @@ $.get("dynstate/m1",function(data){
 	}
 
 	document.getElementById("myself2").innerHTML = myanswers;
+
 },'json');
 
 //回答
@@ -186,7 +196,7 @@ function Myanswer3(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link is-active" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 他的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -194,7 +204,7 @@ function Myanswer3(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
-				+'<h2 style="padding-left: 10px; padding-top: 10px">他的回答</h2>'
+				+'<h2 style="padding-left: 10px; padding-top: 10px">我的回答</h2>'
 				+'</div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
@@ -287,7 +297,7 @@ function My(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link is-active" href="javascript:void(0)" onclick="My()"> 他的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link is-active" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -295,8 +305,8 @@ function My(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
-				+'<a class="SubTabs-item is-active" onclick="myessay()" href="javascript:void(0)" style="margin-top:20px">他的文章</a>'
-				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myscolumn()" style="margin-top:20px">他的专栏</a></div>'
+				+'<a class="SubTabs-item is-active" onclick="myessay()" href="javascript:void(0)" style="margin-top:20px">我的文章</a>'
+				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myscolumn()" style="margin-top:20px">我的专栏</a></div>'
 				+'</h4></div>';
 		}
 
@@ -346,7 +356,7 @@ function MyQuestion(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 他的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+'  class="Tabs-link is-active" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -354,7 +364,7 @@ function MyQuestion(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
-				+'<h2 style="padding-left: 10px; padding-top: 10px">他的提问</h2>'
+				+'<h2 style="padding-left: 10px; padding-top: 10px">我的提问</h2>'
 				+'</div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
@@ -390,7 +400,7 @@ function myfavorite(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 他的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link is-active"'
@@ -398,7 +408,7 @@ function myfavorite(){
 				+'</a></li><li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-following">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="page-header" style="margin: 0px; width: 640px;">'
-				+'<h2 style="padding-left: 10px; padding-top: 10px">他的收藏夹</h2>'
+				+'<h2 style="padding-left: 10px; padding-top: 10px">我的收藏夹</h2>'
 				+'</div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
@@ -424,7 +434,7 @@ function myfavorite(){
 
 }
 
-/*他的关注*/
+/*我的关注*/
 function MyAttention(){
 
 	$.get("dynstate/a1",function(data){
@@ -436,7 +446,7 @@ function MyAttention(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 他的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -445,7 +455,7 @@ function MyAttention(){
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
 				+'<a class="SubTabs-item is-active" href="javascript:void(0)" onclick="myatten()">我关注的人</a>'
-				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="attenme()">关注他的人</a><span class="SubTabs-item">'
+				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="attenme()">关注我的人</a><span class="SubTabs-item">'
 				+'<div class="Popover"></div></span></div></h4></div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
@@ -529,7 +539,7 @@ function attenme(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 他的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 我的 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -538,7 +548,7 @@ function attenme(){
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
 				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myatten()">我关注的人</a>'
-				+'<a class="SubTabs-item is-active" href="javascript:void(0)" onclick="attenme()">关注他的人</a><span class="SubTabs-item">'
+				+'<a class="SubTabs-item is-active" href="javascript:void(0)" onclick="attenme()">关注我的人</a><span class="SubTabs-item">'
 				+'<div class="Popover"></div></span></div></h4></div>';
 		}
 		document.getElementById("myself1").innerHTML = total;
@@ -617,10 +627,10 @@ $(".btn_submit").click(function(){
 });
 
 function yesfav(){
-	
+
 	var txt=document.getElementById("btn_submit").value;
 	alert(txt);
-	
+
 	if(btn_submit.value=="已关注"){
 		alert(2);
 		$("#guanzhu_name").html("+关注");
@@ -641,19 +651,7 @@ $('#changgeimage').hover(function() {
 	layer.closeAll('tips');
 });
 
-/*function updatePic(){
-	$.get("dynstate/upload",function(data){
-		alter(data);
-		var img="";
-		for(var i=0;i<data.length;i++){
-			img+='<img width="100" src="' + data[i].toppic + '"/>'
-			+'<input class="Button DynamicColorButton" type="file"'
-			+' id="changgeimage" name="toppic" onchange="chgPic(this)" onclick="updatePic()" />';
-		}
-		document.getElementById("UserCoverGuide-inner").innerHTML = img;
-	},'json');
 
-}*/
 
 function chgPic(obj){
 	$("#changgeimage").attr("src", window.URL.createObjectURL(obj.files[0]));
@@ -671,7 +669,7 @@ function previewMultipleImage() {
 	reader.onload = function(evt) {
 		$('#showImage_gr').html("<img src='"+evt.target.result+"' height='132px' width='966px' />");
 	};	
-	
+
 	document.myform.submit();
 }
 
@@ -682,7 +680,7 @@ function previewMultipleImage_icon() {
 	reader.onload = function(evt) {
 		$('#hhh').html("<img id='img_icon' class='Avatar Avatar--large UserAvatar-inner' src='"+evt.target.result+"' style='width: 160px; height: 160px;' onclick='updateimg(this)'/>");
 	};	
-	
+
 	document.form.submit();
 }
 
@@ -690,7 +688,7 @@ function previewMultipleImage_icon() {
 function updateimg(obj){
 	//var img=$(obj).attr("src");
 	document.getElementById("img_icon_file").click();
-	
+
 }
 
 

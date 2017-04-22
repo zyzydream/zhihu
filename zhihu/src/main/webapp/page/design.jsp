@@ -25,7 +25,8 @@
 			<div class="top-nav-profile">
 				<a id=":0" class="zu-top-nav-userinfo " href="page/myself.jsp"
 					role="button" aria-haspopup="true" aria-activedescendant=""> <span
-					class="name">xiaoxiao</span> <img class="Avatar" src="images/poto.jpg"
+					class="name"><%=request.getSession().getAttribute("username") %></span> 
+					<img class="Avatar" src="images/poto.jpg"
 					alt="dsvb"> <span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
@@ -195,8 +196,6 @@
 		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
 	<script type="text/javascript" src="js/myself.js"></script>
 	<script src='js/layer/layer.js' type="text/javascript"></script>
-	<!-- 	<script type="text/javascript" src="bootstrap-3.3.4/bootstrap-fileinput-master/js/fileinput.js"></script>
- -->
 	<script type="text/javascript" src="/bootstrap-3.3.4/js/popover.js"></script>
 	<script type="text/javascript" src="js/jquery-form.js"></script>
 </body>

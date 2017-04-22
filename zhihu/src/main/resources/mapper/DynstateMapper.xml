@@ -86,7 +86,9 @@
 		(select
 		usign from users where uids=#{uids}) usign,
 		(select
-		uname from users where uids=#{uids}) uname
+		uname from users where uids=#{uids}) uname,
+		(select
+		upic from users where uids=#{uids}) upic
 		from dual
 	</select>
 

@@ -66,6 +66,7 @@ public class DynstateHandler {
 		request.getSession().setAttribute("myattenzhuanlan", users.getMyattenzhuanlan());
 		request.getSession().setAttribute("myattenfav", users.getMyattenfav());
 		request.getSession().setAttribute("usign", users.getUsign());
+		request.getSession().setAttribute("upic", users.getUpic());
 		request.getSession().setAttribute(ServletUtil.LOGIN_UIDS,users.getUids());
 		
 		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
