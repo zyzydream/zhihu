@@ -143,7 +143,7 @@
 						</div>
 						<form class="form-basic panel hidden password-form" method="POST"
 							novalidate="novalidate">
-							<div class="group">
+							<div class="group" >
 								<input id="password" class="text" required=""
 									placeholder="输入新密码" name="password" type="password">
 							</div>

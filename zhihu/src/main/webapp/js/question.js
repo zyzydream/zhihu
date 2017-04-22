@@ -73,8 +73,9 @@ $.ajax({url:"question/title"+window.location.search,async:false,type:"POST",succ
 //显示回复内容
 $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:function(data){
 	$("#reply").empty;
+	$("#someReplys").empty;
 	if(data.length>0){
-		$("#reply").append("<div class='ContentItem AnswerItem' name='156837738'"
+		$("#reply").append("<div class='ContentItem AnswerItem' name='156837738' id='"+data[0].ids+"'"
 				+"data-za-module='AnswerItem' data-za-module-info='{'card':{'content':{'type':'Answer','token':'156837738','upvote_num':133,'comment_num':72,'publish_timestamp':null,'parent_token':'56314897','author_member_hash_id':'4fb8434a7c7c02f2055dde1e2e2e9769'}}}'>"
 				+"<div class='ContentItem-meta'><div class='AnswerItem-meta AnswerItem-meta--related'>"
 				+"<div class='AuthorInfo'><span class='UserLink AuthorInfo-avatarWrapper'>"
@@ -95,15 +96,25 @@ $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:
 				+"<div class='ContentItem-actions'><span><button class='Button VoteButton VoteButton--up' aria-label='赞同' type='button'>"
 				+"<img src='images/yes.png' style='height: 9px; width: 9px;'>133</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
 				+"<img src='images/no.png' style='height: 12px; width: 9px;'></button></span>"
-				+"<button class='Button ContentItem-action Button--plain'type='button'>72 条评论</button><div class='Popover ShareMenu ContentItem-action'>"
+				+"<button class='Button ContentItem-action Button--plain'type='button' onclick='addReply("+data[0].ids+")' id='button-"+data[0].ids+"'>"+data[0].count+" 条评论</button><div class='Popover ShareMenu ContentItem-action'>"
 				+"<div id='Popover-69776-64508-toggle' aria-haspopup='true' aria-expanded='false' aria-owns='Popover-69776-64508-content'>"
-				+"<button class='Button Button--plain' type='button'>"
-				+"分享</button></div></div>"
+				+"</div></div>"
 				+"<button class='Button ContentItem-action Button--plain' type='button'>收藏</button>"
-				+"<button class='Button ContentItem-action Button--plain' type='button'>感谢</button>"
 				+"<div class='Popover ContentItem-action'><button id='Popover-69785-24816-toggle' class='Button Button--plain' type='button' aria-haspopup='true' aria-expanded='false' aria-owns='Popover-69785-24816-content'></button></div>"
 				+"</div</div></div>")
-				$("#user").empty;
+
+				$("#someReplys").prepend("<div><div class='Card AnswerAuthor'><div class='Card-header AnswerAuthor-title'>"
+						+"<div class='Card-headerText'>关于作者</div></div>"
+						+"<div class='Card-section'><div class='AnswerAuthor-user' id='user'>"
+						+"<!-- 关于作者 --></div></div><div class='Card-section'><div class='AnswerAuthor-counts'>"
+						+"<div class='NumberBoard' id='alluser'><!-- 关注人数 --></div></div>"
+						+"<div class='MemberButtonGroup AnswerAuthor-buttons'>"
+						+"<button class='Button FollowButton Button--primary Button--blue' type='button'>"
+						+"<span> 关注 </span></button>"
+						+"<button class='Button' type='button'><span>发私信</span>"
+						+"</button></div></div></div></div>");
+
+		$("#user").empty;
 		$("#user").append("<div class='AnswerAuthor-user-avatar'><span class='UserLink'> <a class='UserLink-link'href='/people/yang-liu-54-49'> " 
 				+"<img class='Avatar Avatar--large UserLink-avatar' src='"+data[0].author+""
 				+"srcset='https://pic1.zhimg.com/63020cca4_xl.jpg 2x' alt='"+data[0].tname+"' style='width: 60px; height: 60px;'>"
@@ -112,7 +123,6 @@ $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:
 				+"<span class='UserLink'> <a class='UserLink-link' id='userName'>"+data[0].tname+"</a></span>"
 				+"</div><div class='AnswerAuthor-user-headline'><div class='RichText'>"+data[0].usign+"</div></div></div>");
 	}else{
-		
 	}
 },dataType:"json"});
 
@@ -143,14 +153,13 @@ $.post("reply/user?uname="+document.getElementById("userName").innerText,functio
 
 //显示更多回答
 function add(){
-
 	$.post("reply/list"+window.location.search,function(data){
 		if(data.length>1  &&!(document.getElementById("someReyle"))){
 			$("#moreReply").after("<div class='Card'><div class='QuestionMainDivider'><span class='QuestionMainDivider-inner'>更多回答</span></div>"
 					+"<div class='List'><div class='List-item' id='someReyle'></div></div>");
 			$("#someReyle").empty;
 			for(var i=1;i<data.length;i++){
-				$("#someReyle").append("<div class='ContentItem AnswerItem' name='156837738'"
+				$("#someReyle").append("<div class='ContentItem AnswerItem' name='156837738'id='"+data[i].ids+"'"
 						+"data-za-module='AnswerItem' data-za-module-info='{'card':{'content':{'type':'Answer','token':'156837738','upvote_num':133,'comment_num':72,'publish_timestamp':null,'parent_token':'56314897','author_member_hash_id':'4fb8434a7c7c02f2055dde1e2e2e9769'}}}'>"
 						+"<div class='ContentItem-meta'><div class='AnswerItem-meta AnswerItem-meta--related'>"
 						+"<div class='AuthorInfo'><span class='UserLink AuthorInfo-avatarWrapper'>"
@@ -171,12 +180,9 @@ function add(){
 						+"<div class='ContentItem-actions'><span><button class='Button VoteButton VoteButton--up' aria-label='赞同' type='button'>"
 						+"<img src='images/yes.png' style='height: 9px; width: 9px;'>133</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
 						+"<img src='images/no.png' style='height: 12px; width: 9px;'></button></span>"
-						+"<button class='Button ContentItem-action Button--plain'type='button'>72 条评论</button><div class='Popover ShareMenu ContentItem-action'>"
+						+"<button class='Button ContentItem-action Button--plain'type='button' onclick='addReply("+data[i].ids+")' id='button-"+data[i].ids+"'>"+data[i].count+" 条评论</button><div class='Popover ShareMenu ContentItem-action'>"
 						+"<div id='Popover-69776-64508-toggle' aria-haspopup='true' aria-expanded='false' aria-owns='Popover-69776-64508-content'>"
-						+"<button class='Button Button--plain' type='button'>"
-						+"分享</button></div></div>"
-						+"<button class='Button ContentItem-action Button--plain' type='button'>收藏</button>"
-						+"<button class='Button ContentItem-action Button--plain' type='button'>感谢</button>"
+						+"</div></div>"
 						+"<div class='Popover ContentItem-action'><button id='Popover-69785-24816-toggle' class='Button Button--plain' type='button' aria-haspopup='true' aria-expanded='false' aria-owns='Popover-69785-24816-content'></button></div>"
 						+"</div</div></div>")
 			}
@@ -185,8 +191,73 @@ function add(){
 
 }
 
-
+var i;
 
 //显示评论回复
+function addReply(ids){
+	if(!document.getElementById("ReplyReply")){
+		i= $("#button-"+ids+"").text();
+		$("#button-"+ids+"").html("收起评论")
+		$.post("reply/listReply?rrid="+ids,function(data){
+			$("#"+ids+"").after("<div id='ReplyReply'><div class='Comments-container' ><div class='Comments Comments--withEditor Comments-withPagination'>"
+					+"<div class='CommentTopbar'><div class='CommentTopbar-meta'><h2 class='CommentTopbar-title'>"+i+"</h2>"
+					+"</div></div></div></div><div>"
+					+"<div class='CommentItem' id='moreReplyReply'>")/////
+					for(var a=0;a<data.length;a++){
+						$("#moreReplyReply").append("<div><div class='CommentItem-meta'>"
+								+"<span class='UserLink CommentItem-avatar'><div class='Popover'><div id='Popover-57984-10234-toggle' aria-haspopup='true'"
+								+"aria-expanded='false' aria-owns='Popover-57984-10234-content'>"
+								+"<a class='UserLink-link' href='/people/gadot-fen'> " 
+								+"<img class='Avatar UserLink-avatar' width='24' height='24' src='"+data[a].author+"'>"
+								+"</a></div></div></span> <span class='UserLink'> <a class='UserLink-link'	href='/people/gadot-fen'>"+data[a].tname+"</a>"
+								+"</span> <span class='CommentItem-time'>"+data[a].times+"</span></div>"
+								+"<div class='RichText CommentItem-content'>"+data[a].content+"</div>"
+								+"</div></div></div>")
+					}			
+			$("#ReplyReply").append("<div class='Comments-footer Comments-footer-withPagination CommentEditor--normal CommentEditor--active'>"
+					+"<form id='addReplyfrom' method='post'>"
+					+"<div class='CommentEditor-input Input-wrapper Input-wrapper--spread Input-wrapper--large Input-wrapper--noPadding is-focus'>"
+					+"<input type='text' class='Input Editable Editable--focus' id='rcontent' name='rcontent' placeholder='写下你的评论' /></div>"
+					+"<button class='Button CommentEditor-singleButton Button--primary Button--blue' style='float:right;margin-top: -40px;' onclick='addReplyReply()' >评论</button>"
+					+"</div></form></div>");
+		},"json");
+
+	}else{
+		$("#button-"+ids+"").html(""+i+"");
+		$("#ReplyReply").remove();
+	}
+}
+
+function addReplyReply(){
+	$("#addReplyfrom").form({
+		url:'reply/addReply',
+		success: function(data){
+			if(data == "true"){
+				$.messager.show({
+					title:'添加回复',
+					msg:'添加成功！！！',
+					showType:'show',
+					style:{
+						top:document.body.scrollTop+document.documentElement.scrollTop,
+					}
+				});
+				window.location.reload(true);
+			}else{
+				$.messager.show({
+					title:'添加回复',
+					msg:'添加失败！！！',
+					showType:'show',
+					style:{
+						top:document.body.scrollTop+document.documentElement.scrollTop,
+					}
+				});
+			}
+		}
+	});
+
+}
+
+
+
 
 

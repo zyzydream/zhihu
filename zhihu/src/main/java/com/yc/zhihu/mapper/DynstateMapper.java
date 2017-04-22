@@ -80,4 +80,7 @@ public interface DynstateMapper {
 	
 	int updateinfo(Object obj);
 	
+	int deleteatten(Object obj);
+	int addatten(Object obj);
+	
 }

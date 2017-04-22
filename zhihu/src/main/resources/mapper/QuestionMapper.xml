@@ -8,7 +8,7 @@
 	<!-- 添加问题 -->
 	<insert id="insertQuestion" parameterType="Question">
 		insert into QUESTION(qid,qautid,qtitle,qdetail,qtid,qtime)
-		values (seq_question.nextval,#{qautid},#{qtitle},#{qdetail},#{qtid},to_char(sysdate,'yyyy-mm-dd'))
+		values (seq_question.nextval,#{qautid},#{qtitle},#{qdetail},#{qtid},to_char(sysdate,'yyyy-mm-dd HH24:MI:SS'))
 	</insert>
 	
 	

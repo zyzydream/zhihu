@@ -142,11 +142,11 @@ a {
     box-sizing: border-box;
     display: flex;
     font-size: 14px;
-    height: 34px;
+    height: 40px;
     padding: 4px 10px;
     position: relative;
     transition: background 0.2s ease 0s, border 0.2s ease 0s;
-    width: 330px;
+    width: 550px;
 }
 input.Input {
     height: 24px;
@@ -1182,4 +1182,13 @@ a {
 .CommentItem-hoverBtn {
     opacity: 0;
     transition: opacity 0.2s ease 0s;
+}
+
+
+
+
+
+
+.CommentEditor--normal .CommentEditor-input .Editable-unstyled {
+    margin: 0 !important;
 }

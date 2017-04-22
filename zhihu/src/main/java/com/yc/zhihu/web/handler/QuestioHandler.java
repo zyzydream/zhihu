@@ -29,7 +29,7 @@ public class QuestioHandler {
 	@ResponseBody
 	public String Add(Question question , HttpServletRequest request) throws UnsupportedEncodingException{
 		//System.out.println("取到question ==》" + question);
-		String qtid= question.getQtid().substring(0, 5);
+		String qtid= question.getQtid().substring(0, 4);
 		String qtitle = new String(question.getQtitle().getBytes("iso-8859-1"),"utf-8");
 		String qdetail = new String(question.getQdetail().getBytes("iso-8859-1"),"utf-8");
 		String qautid = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids();

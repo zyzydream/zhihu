@@ -14,4 +14,12 @@ public interface ReplyMapper {
 
 	int addReply(Reply reply);
 
+	String findAllReply(String rrid);
+
+	List<Explore> findReplyReply(Reply reply);
+
+	String findrreceid(String rid);
+
+	int insertReply(Reply reply);
+
 }

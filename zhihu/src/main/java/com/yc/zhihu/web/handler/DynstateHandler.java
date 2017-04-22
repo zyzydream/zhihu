@@ -289,4 +289,40 @@ public class DynstateHandler {
 			return "/page/design.jsp";
 		}
 	}
+	
+	@RequestMapping(value="/change",method=RequestMethod.GET)
+	@ResponseBody
+	public int  changeatten(HttpServletRequest request,String aimid,Dynstate dynstate){
+		dynstate.setAimid(aimid);
+		dynstate.setSelfid(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+		System.out.println("取消关注  dynstate==>"+dynstate);
+		return dynstateService.deteleatten(dynstate);
+	}
+	
+	@RequestMapping(value="/changehim",method=RequestMethod.GET)
+	@ResponseBody
+	public int  changeatten3(HttpServletRequest request,String aimid,Dynstate dynstate){
+		dynstate.setAimid(aimid);
+		dynstate.setSelfid(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+		System.out.println("取消关注  dynstate==>"+dynstate);
+		return dynstateService.deteleatten(dynstate);
+	}
+	
+	@RequestMapping(value="/changehim2",method=RequestMethod.GET)
+	@ResponseBody
+	public int  changeatten4(HttpServletRequest request,String aimid,Dynstate dynstate){
+		dynstate.setAimid(aimid);
+		dynstate.setSelfid(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+		System.out.println("加关注  dynstate==>"+dynstate);
+		return dynstateService.addatten(dynstate);
+	}
+	
+	@RequestMapping(value="/change2",method=RequestMethod.GET)
+	@ResponseBody
+	public int  changeatten2(HttpServletRequest request,String aimid,Dynstate dynstate){
+		dynstate.setAimid(aimid);
+		dynstate.setSelfid(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+		System.out.println("加关注  dynstate==>"+dynstate);
+		return dynstateService.addatten(dynstate);
+	}
 }

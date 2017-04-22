@@ -38,6 +38,30 @@ update users set tpic=trim(tpic2);
 alter table users drop column tpic2;
 alert table users modify column tpic varchar(200);
 
+
+select
+		(select count(r.rid)
+		from reply r where r.remitid='10202')
+		myattenaw,
+		(select count(e.eid)
+		from essay e where e.eautid='10202')
+		myatteness,
+		(select count(selfid)
+		from dynstate PARTITION(GR) where
+		aimid='10202') myattenpeos,
+		(select uname from users where
+		uids='10202') uname,
+		(select usign from users where uids='10202')
+		usign,
+		(select upic from users where uids='10202') upic,
+
+		from dual
+		10075
+		
+		
+		select * from 
+		delete from dynstate PARTITION(GR) where selfid='10202' and aimid='10075'
+
 alter table users rename column upic to upic2;
 alter table users add upic varchar2(200);
 update users set upic=trim(upic2);
@@ -1251,11 +1275,26 @@ select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u
 		from reply r ,users u
 		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'Q'		
 		
+
+
+		
+		
+		
+		
+ select e.eid ids,e.eautid uids,e.econtent content,e.etime times,e.etitle  title,e.etid tid,ud.uname author from essay e, 
+ (select * from users u,  
+ (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='2532582')d   
+ where u.uids=d.aimid)ud  
+ where e.eautid=ud.uids AND 24*1>=to_number(sysdate-to_date(e.etime,'yyyy-mm-dd'))*24
+		select
+		
+		
+=======
 		
 --基本信息中 用户六个10000、10001、10002、10003、10004、10005、10006
 --话题15个1000~1014，
 --文章和问题及回复若干 （每个编号10000~10020...）（至少保证每个话题都有相关的文章与问题）
-
+select * from infomation
 --点赞问题的基本数据
 insert into dynstate select '10000','','DW','10003','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10000','','DW','10004','2017-04-24 00:00:01','' from dual ;
@@ -1366,6 +1405,7 @@ insert into dynstate select '10005','','DW','10020','2017-04-24 00:00:01','' fro
 
 
 
+
 /*插入用户*/
  insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小花' ,'123','世界那么大，我想去看看','设计师','images/113.jpg','1@qq.com','images/113.jpg');
  insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'张三' ,'123','世界那么大，我想去看看','工程师','images/115.jpg','2@qq.com','images/115.jpg');
@@ -1374,4 +1414,46 @@ insert into dynstate select '10005','','DW','10020','2017-04-24 00:00:01','' fro
  insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小光' ,'123','世界那么大，我想去看看','工程师','images/112.jpg','5@qq.com','images/112.jpg');
  insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小红' ,'123','世界那么大，我想去看看','游戏玩家','images/111.jpg','6@qq.com','images/111.jpg');
  insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小号' ,'123','世界那么大，我想去看看','游戏玩家','images/112.jpg','7@qq.com','images/112.jpg');
+=======
+--用户关注的话题
+insert into dynstate select '10000','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10002','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10005','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10005','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10006','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10005','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10005','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10002','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10006','DR','','2017-04-24 00:00:01','' from dual ;
+
+insert into dynstate select '10005','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10002','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10006','DR','','2017-04-24 00:00:01','' from dual ;
+
+insert into dynstate select '10006','10004','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10002','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10003','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10001','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10000','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10005','DR','','2017-04-24 00:00:01','' from dual ;
+
+
 
