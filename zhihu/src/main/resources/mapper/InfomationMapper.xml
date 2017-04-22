@@ -5,8 +5,8 @@
 <!-- 映射文件的命名空间namespace的值是，与这对应的映射接口的全类名 -->
 <mapper namespace="com.yc.zhihu.mapper.InfomationMapper">
 	<insert id="send" parameterType="Infomation">
-		insert into infomation(selfname,aimname,info) values( #{selfname},
-		#{aimname} , #{info})
+		insert into infomation(selfname,aimname,info,times) values( #{selfname},
+		#{aimname} , #{info},to_char(sysdate,'yyyy-mm-dd HH24:MI:SS'))
 	</insert>
 
 	<select id="find" parameterType="Infomation" resultType="Infomation">

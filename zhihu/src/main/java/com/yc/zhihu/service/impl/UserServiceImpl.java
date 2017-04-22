@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService{
 				essay.setKind("FW");
 				all.add(essay);
 			}
-
+		    user.setNum(times.getTimes());
 			List<Explore> questions = userMapper.listquestion(user);
 			for(Explore question:questions){
 				question.setKind("DQ");

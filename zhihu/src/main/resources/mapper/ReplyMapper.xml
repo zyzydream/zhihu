@@ -33,7 +33,37 @@
 	
 	<!--添加回复-->
 	<insert id="addReply" parameterType="Reply">
-		insert into reply(rid,reqid,rkind,remitid,rcontent,rtime) values(seq_reply.nextval,#{reqid},'Q',#{remitid},#{rcontent},to_char(sysdate,'yyyy-mm-dd'))
+		insert into reply(rid,reqid,rkind,remitid,rcontent,rtime) values(seq_reply.nextval,#{reqid},'Q',#{remitid},#{rcontent},to_char(sysdate,'yyyy-mm-dd HH24:MI:SS'))
 	</insert>
 	
+	
+	<!-- 查询所有的回复评论 -->
+	
+	<select id="findAllReply" parameterType="string" resultType="string">
+			select count(*) from reply where rrid=#{rrid}
+	</select>
+	
+	
+	
+	<!-- 查找回复的回复 -->
+	
+	<select id="findReplyReply" parameterType="Reply" resultType="Explore">
+		select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u.usign usign ,u.upic author
+		from reply r ,users u
+		where  u.uids=r.remitid  and rid in (select rid from reply where rrid=#{rrid} )
+		
+	</select>
+	
+	
+	<!-- 查询发出人ID -->
+	<select id="findrreceid" parameterType="string" resultType="string">
+		select remitid from reply where rid=#{rid}
+	</select>
+	
+	
+	<!-- 添加回复评论 -->
+	<insert id="insertReply" parameterType="Reply" >
+		insert into reply(rid,rkind,rrid,remitid,rreceid,rcontent,rtime) 
+		values(seq_reply.nextval,'Q',#{rrid},#{remitid},#{rreceid},#{rcontent},to_char(sysdate,'yyyy-mm-dd HH24:MI:SS'))
+	</insert>
 </mapper>

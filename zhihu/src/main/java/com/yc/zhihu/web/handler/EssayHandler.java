@@ -37,7 +37,7 @@ public class EssayHandler {
 	public String add(Essay essay , HttpServletRequest request) throws UnsupportedEncodingException{
 		String eautid = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids();
 		essay.setEautid(eautid);
-		String etid = essay.getEtid().substring(0, 5);
+		String etid = essay.getEtid().substring(0, 4);
 		essay.setEtid(etid);
 		System.out.println("essay 进来了==》" + essay);
 		if(essayServie.add(essay)){

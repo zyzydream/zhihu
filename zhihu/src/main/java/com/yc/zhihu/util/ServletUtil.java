@@ -24,6 +24,7 @@ public class ServletUtil {
 	public static final String LOGIN_UIDS="uids";
 	public static final String[] favname={};
 	public static final String[] favsum={};
+	public static final String LOGIN_RRID = "rrid";
 	
 	public static File getUploadFile(String fileName){
 		File file=new File(LOGIN_UPLOAD_DIR,fileName);  //上传文件

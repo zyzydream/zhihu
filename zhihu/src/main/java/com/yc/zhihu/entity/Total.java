@@ -11,13 +11,16 @@ public class Total {
 	private String uname;
 	private String usign;
 	private String upic;
+	private String uids;
 	
 	public Total() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
 	public Total(Integer answer, Integer mine, Integer question, Integer fav, Integer myattenaw, Integer myatteness,
-			Integer myattenpeos, String uname, String usign, String upic) {
+			Integer myattenpeos, String uname, String usign, String upic, String uids) {
 		super();
 		this.answer = answer;
 		this.mine = mine;
@@ -29,8 +32,23 @@ public class Total {
 		this.uname = uname;
 		this.usign = usign;
 		this.upic = upic;
+		this.uids = uids;
 	}
-	
+
+
+
+	public String getUids() {
+		return uids;
+	}
+
+
+
+	public void setUids(String uids) {
+		this.uids = uids;
+	}
+
+
+
 	public String getUname() {
 		return uname;
 	}
@@ -123,12 +141,15 @@ public class Total {
 		this.fav = fav;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Total [answer=" + answer + ", mine=" + mine + ", question=" + question + ", fav=" + fav + ", myattenaw="
 				+ myattenaw + ", myatteness=" + myatteness + ", myattenpeos=" + myattenpeos + ", uname=" + uname
-				+ ", usign=" + usign + ", upic=" + upic + "]";
+				+ ", usign=" + usign + ", upic=" + upic + ", uids=" + uids + "]";
 	}
+
 	
 
 	

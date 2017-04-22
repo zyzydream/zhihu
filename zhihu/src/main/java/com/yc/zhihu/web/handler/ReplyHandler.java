@@ -42,7 +42,11 @@ public class ReplyHandler {
 		//System.out.println("进来了 reply==》" + reply);
 		List<Explore> replys=replyService.list(reply);
 		for(int i=0;i<replys.size();i++){
-			
+			String rrid=replys.get(i).getIds();
+			String count= replyService.listcount(rrid);
+			//System.out.println("count=====>"+count);
+			replys.get(i).setCount(count);
+			//System.out.println("进来了 replys["+i+"]==》" + replys.get(i));
 		}
 		return usersService.yPraiseAndCollect(replys, request);
 	}
@@ -88,4 +92,39 @@ public class ReplyHandler {
 		
 	}
 	
+	@RequestMapping(value="listReply" , method=RequestMethod.POST)
+	@ResponseBody
+	public List<Explore> replyReply(Reply reply ,HttpServletRequest request){
+		String rrid = reply.getRrid();
+		System.out.println("rrid=====>"+rrid);
+		request.getSession().setAttribute(ServletUtil.LOGIN_RRID, rrid);
+		String rsid= ((String) request.getSession().getAttribute(ServletUtil.LOGIN_RRID));
+		System.out.println("rsid=====>"+rsid);
+		//System.out.println("进来了 reply==》" + reply);
+		return replyService.listReply(reply);
+	}
+	
+	
+	
+	
+	@RequestMapping(value="addReply" , method=RequestMethod.POST)
+	@ResponseBody
+	public String addReply(Reply reply ,HttpServletRequest request) throws UnsupportedEncodingException{
+		String rcontent=new String(reply.getRcontent().getBytes("iso-8859-1"),"utf-8");
+		reply.setRcontent(rcontent); 
+		String rrid= ((String) request.getSession().getAttribute(ServletUtil.LOGIN_RRID));
+		reply.setRrid(rrid);
+		String remitid= ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids();
+		reply.setRemitid(remitid);
+		String rreceid = replyService.listUR(rrid);
+		reply.setRreceid(rreceid);
+		System.out.println("进来了 reply==》" + reply);
+		if(replyService.addReply(reply)>0){
+			return "true";
+		}else{
+			return "false";
+		}
+		
+		
+	}
 }

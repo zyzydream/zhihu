@@ -115,10 +115,6 @@ $.get("dynstate/right",function(data){
 		+'</div>';
 	document.getElementById("bianji").innerHTML = des;
 	
-	
-	des+='<a class="Button Button--blue" type="button"'
-		+' href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a>';
-	document.getElementById("bianji").innerHTML = des;
 	for(var i=0;i<data.length;i++){
 		right+='<div>'
 		right2+='<div class="totalinfos" style="margin-top:20px">'
@@ -540,9 +536,9 @@ function MyAttention(){
 							+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data.myattenaw+'回答</span>'
 							+'<span class="ContentItem-statusItem">'+data.myatteness+'文章</span>'
 							+'<span class="ContentItem-statusItem">'+data.myattenpeos+' 关注者</span>'
-							+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit" class="btn btn-primary"'
-							+' data-dismiss="modal" onclick="yesfav()" value="已关注">'
-							+'<span id="guanzhu_name" aria-hidden="false" >已关注</span>'
+							+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit'+y+'" class="btn btn-primary"'
+							+' data-dismiss="modal" onclick="yesfav('+y+')" value="已关注">'
+							+'<span id="guanzhu_name'+y+'" aria-hidden="false" >已关注</span>'
 							+'</button></div></div></div></div>'
 							+'</span></div></div>';
 
@@ -622,25 +618,29 @@ function attenme(){
 								+'<div class="UserItem-title"><span class="UserLink UserItem-name">'
 								+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
 								+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data.uname+'</a></div>'
-								+'</div></span><span class="FollowStatus" id="showattenyn">你没有关注他</span></div></h2>'
-
-
-								+'<div class="ContentItem-meta"><div><div class="RichText">'+data.usign+'</div>'
+								+'</div></span><span class="FollowStatus" id="showattenyn">你没有关注他</span></div></h2>';
+								
+								for(var j=0;j<b.length;j++){
+									if(x==b[j].selfid){
+										$('.showattenyn').val("互相关注");
+									}
+								}
+							info+='<div class="ContentItem-meta"><div><div class="RichText">'+data.usign+'</div>'
 								+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data.myattenaw+'回答</span>'
 								+'<span class="ContentItem-statusItem">'+data.myatteness+'文章</span>'
 								+'<span class="ContentItem-statusItem">'+data.myattenpeos+' 关注者</span>'
-								+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit" class="btn btn-primary"'
-								+' data-dismiss="modal" onclick="yesfav()" value="+关注">'
-								+'<span aria-hidden="true" ></span>+关注'
+								+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit2'+x+'" class="btn btn-primary"'
+								+' data-dismiss="modal" onclick="yesfav2('+x+')" value="+关注">'
+								+'<span aria-hidden="true" id="guanzhu_name2'+x+'">+关注</span>'
 								+'</button></div></div></div></div>'
 								+'</span></div></div>';
 
-							for(var j=0;j<b.length;j++){
+							/*for(var j=0;j<b.length;j++){
 								if(b[j]==x){
 									$('.showattenyn').val("相互关注");
 									$('.btn_submit').val("已关注")
 								}
-							}
+							}*/
 
 							if((i-1) == (all.length-1)){
 								document.getElementById("myself2").innerHTML = info;
@@ -661,33 +661,52 @@ function attenme(){
 	},'json');
 }
 
-$(".btn_submit").click(function(){
-	var txt=document.getElementById("btn_submit").value;
-	alert(JSON.stringify(txt)=="已关注");
-	if(JSON.stringify(txt)=="+关注"){
-		alert(1);
-		document.getElementById("btn_submit").innerHTML=="已关注";
-	}else if(JSON.stringify(txt)=="已关注"){
-		alert(2);
-		document.getElementById("btn_submit").innerHTML=="+关注";
-	}
-});
 
-function yesfav(){
-
-	var txt=document.getElementById("btn_submit").value;
+function yesfav(id){
+	alert(id);
+	var txt=document.getElementById("btn_submit"+id).value;
 	alert(txt);
-
-	if(btn_submit.value=="已关注"){
+	if(txt=="已关注"){
 		alert(2);
-		$("#guanzhu_name").html("+关注");
-		document.getElementById("btn_submit").value="+关注";
-	}else if(btn_submit.value=="+关注"){
+		$("#guanzhu_name"+id).html("+关注");
+		document.getElementById("btn_submit"+id).value="+关注";
+		$.get("dynstate/change?aimid="+id,function(date){
+			alert("取关")
+		});
+	}else if(txt=="+关注"){
 		alert(3);
-		$("#guanzhu_name").html("已关注");
-		document.getElementById("btn_submit").value="已关注";
+		$("#guanzhu_name"+id).html("已关注");
+		document.getElementById("btn_submit"+id).value="已关注";
+		$.get("dynstate/change2?aimid="+id,function(date){
+			alert("加关")
+		});
+		
 	}
 }
+
+function yesfav2(id){
+	alert(id);
+	var txt=document.getElementById("btn_submit2"+id).value;
+	alert(txt);
+	if(txt=="已关注"){
+		alert(2);
+		$("#guanzhu_name2"+id).html("+关注");
+		document.getElementById("btn_submit2"+id).value="+关注";
+		$.get("dynstate/changehim?aimid="+id,function(date){
+			alert("取关")
+		});
+	}else if(txt=="+关注"){
+		alert(3);
+		$("#guanzhu_name2"+id).html("已关注");
+		document.getElementById("btn_submit2"+id).value="已关注";
+		$.get("dynstate/changehim2?aimid="+id,function(date){
+			alert("加关")
+		});
+		
+	}
+}
+
+
 
 $('#changgeimage').hover(function() {
 	layer.tips("上传一张图片，展示在这里", '.DynamicColorButton', {

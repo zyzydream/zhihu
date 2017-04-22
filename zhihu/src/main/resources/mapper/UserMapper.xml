@@ -45,7 +45,7 @@
 		(select * from users u,
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
 		where u.uids=d.aimid)ud
-		where e.eautid=ud.uids AND 24*${num}>=to_number(to_date('2017-12-30 00:00:01','yyyy-mm-dd HH24:MI:SS')-
+		where e.eautid=ud.uids AND 24*${num}>=to_number(sysdate-
 		to_date(e.etime,'yyyy-mm-dd HH24:MI:SS'))*24
 	</select>
 
@@ -61,15 +61,17 @@
 		tid,ud.uname author from question q,
 		(select * from users u,
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid=#{uids})d
+
 		where u.uids=d.aimid)ud
-		where q.qautid=ud.uids AND 24*${num}>=to_number(to_date('2017-12-30 00:00:01','yyyy-mm-dd HH24:MI:SS')-
+		where q.qautid=ud.uids AND 24*${num}>=to_number(sysdate-
 		to_date(q.qtime,'yyyy-mm-dd HH24:MI:SS'))*24
 	</select>
 	<!-- 获得当前关注的所有对象24小时内的全部动态 -->
 	<select id="lists" parameterType="Users" resultType="Dynstate">
 		SELECT * from dynstate d,
+
 		(SELECT aimid from dynstate PARTITION(GR) WHERE selfid='${uids}')dd
-		WHERE d.selfid=dd.aimid AND 24*${num}>=to_number( to_date('2017-12-30 00:00:01','yyyy-mm-dd HH24:MI:SS')-
+		WHERE d.selfid=dd.aimid AND 24*${num}>=to_number( sysdate-
 		to_date(d.times,'yyyy-mm-dd HH24:MI:SS'))*24
 	</select>
 	<select id="listrelatedTopic" parameterType="Dynstate"

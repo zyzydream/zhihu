@@ -230,4 +230,14 @@ public class DynstateServiceImpl implements DynstateService {
 	public int updateinfo(Object obj) {
 		return dynstateMapper.updateinfo(obj);
 	}
+	
+	@Override
+	public int deteleatten(Object obj) {
+		return dynstateMapper.deleteatten(obj);
+	}
+	
+	@Override
+	public int addatten(Object obj) {
+		return dynstateMapper.addatten(obj);
+	}
 }
