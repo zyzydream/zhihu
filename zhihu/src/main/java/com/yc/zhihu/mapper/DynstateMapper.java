@@ -78,5 +78,6 @@ public interface DynstateMapper {
 	
 	Users listupic(Object obj);
 	
+	int updateinfo(Object obj);
 	
 }

@@ -273,4 +273,12 @@ public class DynstateHandler {
 		System.out.println("进来了 fav==>"+fav);
 		return dynstateService.favoriteinfo(fav);
 	}
+	
+	@RequestMapping(value="/updateinfo",method=RequestMethod.GET)
+	@ResponseBody
+	public Users updateinfo(HttpServletRequest request,Users user){
+		user.setUids(ServletUtil.LOGIN_UIDS);
+		
+		return dynstateService.total(user);
+	}
 }

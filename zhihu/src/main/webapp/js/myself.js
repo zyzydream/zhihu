@@ -62,8 +62,6 @@ $.get("dynstate/upic",function(data){
 
 $.get("dynstate/right",function(data){
 	var right='';
-<<<<<<< HEAD
-
 	right+='<div class="totalinfos" style="margin-top:20px">'
 		+'<table class="table table-striped"'
 		+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
@@ -104,7 +102,6 @@ $.get("dynstate/right",function(data){
 	des+='<a class="Button Button--blue" type="button"'
 		+' href="/zhihu/page/design.jsp?uids='+data.uids+'">编辑个人资料</a>';
 	document.getElementById("bianji").innerHTML = des;
-=======
 	for(var i=0;i<data.length;i++){
 		right+='<div class="totalinfos" style="margin-top:20px">'
 			+'<table class="table table-striped"'
@@ -137,7 +134,6 @@ $.get("dynstate/right",function(data){
 			+'</div>';
 		document.getElementById("rightmyself").innerHTML = right;
 	}
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu.git
 },'json');
 
 $.get("dynstate/m1",function(data){
@@ -725,6 +721,7 @@ function updateimg(obj){
 	document.getElementById("img_icon_file").click();
 
 }
+
 
 
 

@@ -26,8 +26,7 @@
 				<a id=":0" class="zu-top-nav-userinfo " href="page/myself.jsp"
 					role="button" aria-haspopup="true" aria-activedescendant=""> <span
 					class="name"><%=request.getSession().getAttribute("username") %></span> 
-					<img class="Avatar" src="images/poto.jpg"
-					alt="dsvb"> <span id="zh-top-nav-new-pm"
+					<img class="Avatar" src="images/poto.jpg"> <span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
 				</a>
@@ -95,26 +94,22 @@
 				</ul>
 			</div>
 			<div id="infomation-form">
-				<form class="zm-settings-account" action="/settings/profile"
-					method="POST" autocomplete="off">
-					<div class="settings-section">
-						<div class="settings-item clearfix">
-							<lable class="settings-item-title">头像</lable>
-							<div class="head photo" style="padding-left: 90px;">
-								<img alt="头像" src="images/115.jpg" style="width: 50px; height: 50px">
-							</div>
-						</div>
+				<form class="zm-settings-account" action="dynstate/updateinfo"
+					 autocomplete="off">
+					<div class="settings-section" id="myselfinfo">
 						<div class="settings-item clearfix">
 							<label class="settings-item-title" for="fullname">姓名</label>
-							<div id="rename-section" class="settings-item-content rename-section">
-								<span class="name">dsvb</span>
+							<div id="rename-section" class="settings-item-content rename-section" name="uname">
+							<input id="url_token" class="zg-form-text-input"
+									autocomplete="off" name="uname"  onkeydown="this.onkeyup();" 
+									 size="100" value="<%=request.getSession().getAttribute("username") %>" disabled="disabled">
 							</div>
 						</div>
 						<div class="settings-item clearfix">
 							<label class="settings-item-title with-input" for="url_token">个性签名</label>
 							<div class="settings-item-content">
 								<input id="url_token" class="zg-form-text-input"
-									autocomplete="off" name="url_token"  onkeydown="this.onkeyup();" 
+									autocomplete="off" name="usign"  onkeydown="this.onkeyup();" 
 									 size="100">
 							</div>
 						</div>
