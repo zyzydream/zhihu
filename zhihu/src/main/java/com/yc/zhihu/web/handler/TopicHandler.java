@@ -44,8 +44,14 @@ public class TopicHandler {
 	@RequestMapping(value="/allExplore",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Explore> allExplore(Topics t,HttpServletRequest request){
+		System.out.println(t);
 		int pagenum=Integer.valueOf(t.getTstid());
-		List<Explore> e= topicService.allExplore(t.getTid()).subList(0,pagenum*10);
+		List<Explore> e=new ArrayList<Explore>();
+		if(e.size()>pagenum*10){
+	        e= topicService.allExplore(t.getTid()).subList(0,pagenum*10);
+		}else{
+	        e= topicService.allExplore(t.getTid());
+		}
 	    return usersService.yPraiseAndCollect(e, request);
 	}
 	

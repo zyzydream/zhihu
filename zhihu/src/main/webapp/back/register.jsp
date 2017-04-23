@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -29,6 +29,10 @@
 			</div>
 
 			<form method="post" id="register" enctype="multipart/form-data">
+				<p>
+					<label style="color: red;height: 30px;">${errorMsg }&nbsp;</label>
+					<c:remove var="errorMsg" scope="session" />
+				</p>
 				<div class="login form">
 					<div class="group">
 						<div class="group-ipt user" id="User">
@@ -42,8 +46,8 @@
 						</div>
 						<div class="group-ipt password">
 							<input type="password" name="upassword" id="upassword"
-								class="ipt" placeholder="密码（不小于六位数）" required> <label
-								class="group-ipt error" id="emailError"></label>
+								class="ipt" placeholder="密码（不小于六位数）" required onBlur="check()"> <label
+								class="group-ipt error" id="passwordError" style="height: 100px;"></label>
 						</div>
 					</div>
 					<div class="button">
@@ -81,20 +85,19 @@
 					<h1>验证邮箱</h1>
 					<h2>请输入你收到的 6 位数邮箱验证码</h2>
 				</div>
-				<span class="mutiview-dialog-title-close z-ico-close"
-					onmouseup="close()"></span> <span
-					class="mutiview-dialog-title-back z-ico-left"></span>
+				<a onclick="close()" class="mutiview-dialog-title-close z-ico-close"></a> 
 			</div>
 			<div class="mutiview-dialog-content">
 				<div class="view verification">
-					<form method="post" id="code" action="user/code" >
+					<form method="post" id="code" action="user/code">
 						<div class="input-wrapper verification-code">
 							<input name="verification_code" aria-label="验证码"
-								placeholder="6 位数验证码" maxlength="6" required type="text" id="addCode">
+								placeholder="6 位数验证码" maxlength="6" required type="text"
+								id="addCode">
 							<button class="send-code" type="button">重发验证码</button>
 						</div>
 						<div class="submit-wrapper">
-							<button class="submit blue-button" id="goin" type="submit" >进入知乎</button>
+							<button class="submit blue-button" id="goin" type="submit">进入知乎</button>
 						</div>
 					</form>
 				</div>

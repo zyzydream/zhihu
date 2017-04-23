@@ -543,11 +543,9 @@ select r.* ,u.*
 		from reply r ,users u
 		where r.reqid='10116' and u.uids=r.remitid and rkind= 'Q'
 
-<<<<<<< HEAD
 
-=======
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+
 drop table reply
 select * from reply
 create sequence seq_reply start with 10000;
@@ -971,11 +969,10 @@ select * from question q,
 		
 		select * from essay where eautid='1001'
 		
-		
-select * from DYNSTATE where  selfid = '10000' and kind = 'GH'
- 
- select count(rid) from reply,
-
+select tre.rid ids, q.qtitle title,tre.rcontent content,tre.rtid tid,tre.ttopic tname,tre.uids uids,tre.usign usign ,tre.uname author,tre.rtime times,'Q' kind from QUESTION q, (SELECT * FROM Topics t, (SELECT * FROM USERS u, (SELECT r.* FROM reply r WHERE r.rtid='1001')r WHERE u.uids=r.remitid)ue WHERE ue.rtid=t.tid)tre where tre.reqid=q.qid 
+SELECT * from users
+select * from dynstate where kind='GR' and selfid='10000';
+delete from dynstate where kind='GR' and selfid='10000' and aimid='10000'
  select count(reqid) from reply where rkind='Q' and  reqid='3'
  
  insert into reply(rid,reqid,rkind,remitid,rreceid,rcontent,rtime)
@@ -1001,6 +998,16 @@ select * from users where uname='baurflda'
 drop table Explore
 18029506136@qq.com /zhihu/images/touxiang.jpg
 
+select e.eid ids,'W' kind,e.etitle title,e.econtent content,e.etid tid,t.ttopic tname,e.usign usign,e.uids uids,e.uname author,e.etime times,'n' checks  from topics t,
+	     (select * from users u,
+	       (select * from essay,
+           	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
+	        where counts>=4 and id=eid )e
+	      where u.uids=e.eautid)e
+	    where t.tid=e.etid
+select * from topics
+	    select * from reply
+	    delete from reply where rkind='W'
 select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks from QUESTION q, 
 (select * from topics t, 
 (select * from users u, 
@@ -1275,7 +1282,7 @@ select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u
 		from reply r ,users u
 		where r.reqid=#{reqid} and u.uids=r.remitid and rkind= 'Q'		
 		
-<<<<<<< HEAD
+
 
 		
 		
@@ -1291,7 +1298,7 @@ select r.rid ids, r.rcontent content,r.rtime times ,u.uids uids,u.uname tname ,u
 		
 =======
 		
---基本信息中 用户四个10000、10001、10002、10003、10004、10005、10006
+--基本信息中 用户六个10000、10001、10002、10003、10004、10005、10006
 --话题15个1000~1014，
 --文章和问题及回复若干 （每个编号10000~10020...）（至少保证每个话题都有相关的文章与问题）
 select * from infomation
@@ -1307,6 +1314,8 @@ insert into dynstate select '10000','','DW','10010','2017-04-24 00:00:01','' fro
 insert into dynstate select '10000','','DW','10011','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10000','','DW','10012','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10000','','DW','10017','2017-04-24 00:00:01','' from dual ;
+
+select * from dynstate;
 
 insert into dynstate select '10001','','DW','10000','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10001','','DW','10001','2017-04-24 00:00:01','' from dual ;
@@ -1402,48 +1411,58 @@ insert into dynstate select '10005','','DW','10018','2017-04-24 00:00:01','' fro
 insert into dynstate select '10005','','DW','10019','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10005','','DW','10020','2017-04-24 00:00:01','' from dual ;
 
+
+
+
+
+/*插入用户*/
+ insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小花' ,'123','世界那么大，我想去看看','设计师','images/113.jpg','1@qq.com','images/113.jpg');
+ insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'张三' ,'123','世界那么大，我想去看看','工程师','images/115.jpg','2@qq.com','images/115.jpg');
+ insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'李素' ,'123','世界那么大，我想去看看','游戏玩家','images/114.jpg','3@qq.com','images/114.jpg');
+ insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'李四' ,'123','世界那么大，我想去看看','设计师','images/110.jpg','4@qq.com','images/110.jpg');
+ insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小光' ,'123','世界那么大，我想去看看','工程师','images/112.jpg','5@qq.com','images/112.jpg');
+ insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小红' ,'123','世界那么大，我想去看看','游戏玩家','images/111.jpg','6@qq.com','images/111.jpg');
+ insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小号' ,'123','世界那么大，我想去看看','游戏玩家','images/112.jpg','7@qq.com','images/112.jpg');
+=======
 --用户关注的话题
-insert into dynstate select '10000','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10002','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10001','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10001','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10001','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10001','10005','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10005','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10006','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10003','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10003','10005','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10003','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10003','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10005','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10002','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10006','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10002','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10005','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10005','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10006','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10005','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10005','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10002','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10006','GR','','2017-04-24 00:00:01','' from dual ;
 
-insert into dynstate select '10005','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10005','10002','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10005','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10005','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10005','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10005','10006','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10002','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10006','GR','','2017-04-24 00:00:01','' from dual ;
 
-insert into dynstate select '10006','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10006','10002','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10006','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10006','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10006','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10006','10005','DR','','2017-04-24 00:00:01','' from dual ;
-
-
-
+insert into dynstate select '10006','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10002','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10005','GR','','2017-04-24 00:00:01','' from dual ;
+select * from dynstate where kind='GR'
 
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu

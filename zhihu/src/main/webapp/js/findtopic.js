@@ -9,7 +9,7 @@ if(url.indexOf("?")!=-1){
 	str=strs[0];
 	//alert(str);
 	//alert(strs[1].split("=")[1]);
-	document.getElementById("topicname").innerHTML = strs[1].split("=")[1];
+	document.getElementById("topicname").innerHTML = decodeURIComponent(strs[1].split("=")[1]);
 }
 showtopic();
 more(0);
@@ -206,3 +206,5 @@ function delattentiontopics(tid){
 		}
 	},"json")
 }
+
+

@@ -201,4 +201,10 @@
 	<delete id="delattentiontopics" parameterType="Dynstate">
 	   delete from dynstate PARTITION(GH) where selfid='${selfid}' and ids='${ids}'
 	</delete>
+	
+	
+	<delete id="deleteUser" parameterType="Users">
+		delete from users where uname=#{uname}
+	</delete>
+	
 </mapper>

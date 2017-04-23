@@ -26,6 +26,6 @@
 	
 	
 	<insert id="insertReply" parameterType="Reply">
-		insert into reply(rid,reqid,rkind,remitid,rcontent,rtime) values(seq_reply.nextval,#{reqid},'W',#{remitid},#{rcontent},to_char(sysdate,'yyyy-mm-dd'))
+		insert into reply(rid,reqid,rkind,remitid,rcontent,rtime) values(seq_reply.nextval,#{reqid},'W',#{remitid},#{rcontent},to_char(sysdate,'yyyy-mm-dd HH24:MI:SS'))
 	</insert>
 </mapper>
