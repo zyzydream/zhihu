@@ -1187,6 +1187,11 @@ a {
 
 
 
+.VoteButton.is-active {
+    background: #2d84cc none repeat scroll 0 0;
+    border-color: #2d84cc;
+    color: #eef3f7;
+}
 
 
 .CommentEditor--normal .CommentEditor-input .Editable-unstyled {

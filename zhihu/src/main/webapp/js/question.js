@@ -69,12 +69,13 @@ $.ajax({url:"question/title"+window.location.search,async:false,type:"POST",succ
 },dataType:"json"});
 
 
-
+var x;	//判断是否点赞
 //显示回复内容
 $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:function(data){
 	$("#reply").empty;
 	$("#someReplys").empty;
 	if(data.length>0){
+		x=data[0].ypraise;
 		$("#reply").append("<div class='ContentItem AnswerItem' name='156837738' id='"+data[0].ids+"'"
 				+"data-za-module='AnswerItem' data-za-module-info='{'card':{'content':{'type':'Answer','token':'156837738','upvote_num':133,'comment_num':72,'publish_timestamp':null,'parent_token':'56314897','author_member_hash_id':'4fb8434a7c7c02f2055dde1e2e2e9769'}}}'>"
 				+"<div class='ContentItem-meta'><div class='AnswerItem-meta AnswerItem-meta--related'>"
@@ -87,21 +88,29 @@ $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:
 				+"<span class='UserLink'><div class='Popover'><div id='Popover-69752-22834-toggle' aria-haspopup='true' aria-expanded='false'"
 				+"aria-owns='Popover-69752-22834-content'><a class='UserLink-link' >"+data[0].tname+"</a>"
 				+"</div></div></span></div></div><div class='RichText AuthorInfo-badge'>"+data[0].usign+"</div></div></div>"
-				+"<div class='AnswerItem-extraInfo'><span class='Voters'><button class='Button Button--plain' type='button'>133人赞同了该回答</button>"
+				+"<div class='AnswerItem-extraInfo'><span class='Voters'><button class='Button Button--plain' type='button'>"+data[0].praise+"人赞同了该回答</button>"
 				+"</span></div></div></div><div class='RichContent RichContent--unescapable'>"
 				+"<div class='RichContent-inner' style='word-wrap:break-word;'><span class='RichText CopyrightRichText-richText'>"+data[0].content+""
 				+"</span>"
 				+"</div><div class='ContentItem-time'><a href='/question/56314897/answer/156837738' target='_blank'>"
 				+"<span data-tooltip='发布于 "+data[0].times+"'>编辑于 "+data[0].times+"</span></a></div>"
-				+"<div class='ContentItem-actions'><span><button class='Button VoteButton VoteButton--up' aria-label='赞同' type='button'>"
-				+"<img src='images/yes.png' style='height: 9px; width: 9px;'>133</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
-				+"<img src='images/no.png' style='height: 12px; width: 9px;'></button></span>"
+				+"<div class='ContentItem-actions'><span id='VoteButton'></span>"
 				+"<button class='Button ContentItem-action Button--plain'type='button' onclick='addReply("+data[0].ids+")' id='button-"+data[0].ids+"'>"+data[0].count+" 条评论</button><div class='Popover ShareMenu ContentItem-action'>"
 				+"<div id='Popover-69776-64508-toggle' aria-haspopup='true' aria-expanded='false' aria-owns='Popover-69776-64508-content'>"
 				+"</div></div>"
-				+"<button class='Button ContentItem-action Button--plain' type='button'>收藏</button>"
+				+"<button class='Button ContentItem-action Button--plain' type='button'>收藏("+data[0].collect+")</button>"
 				+"<div class='Popover ContentItem-action'><button id='Popover-69785-24816-toggle' class='Button Button--plain' type='button' aria-haspopup='true' aria-expanded='false' aria-owns='Popover-69785-24816-content'></button></div>"
 				+"</div</div></div>")
+				
+				if(data[0].ypraise == 'n'){
+					$("#VoteButton").append("<button class='Button VoteButton VoteButton--up' aria-label='赞同' type='button' onclick='addpraise("+data[0].praise+","+data[0].ids+")' id='praise-"+data[0].ids+"'>"
+							+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[0].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
+							+"<img src='images/no.png' style='height: 12px; width: 9px;'></button>")
+				}else{
+					$("#VoteButton").append("<button class='Button VoteButton VoteButton--up is-active' aria-label='赞同' type='button' onclick='addpraise("+data[0].praise+")' id='praise-"+data[0].praise+"'>"
+							+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[i].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
+							+"<img src='images/no.png' style='height: 12px; width: 9px;'></button>")
+				}
 
 				$("#someReplys").prepend("<div><div class='Card AnswerAuthor'><div class='Card-header AnswerAuthor-title'>"
 						+"<div class='Card-headerText'>关于作者</div></div>"
@@ -159,6 +168,7 @@ function add(){
 					+"<div class='List'><div class='List-item' id='someReyle'></div></div>");
 			$("#someReyle").empty;
 			for(var i=1;i<data.length;i++){
+				x=data[i].ypraise;
 				$("#someReyle").append("<div class='ContentItem AnswerItem' name='156837738'id='"+data[i].ids+"'"
 						+"data-za-module='AnswerItem' data-za-module-info='{'card':{'content':{'type':'Answer','token':'156837738','upvote_num':133,'comment_num':72,'publish_timestamp':null,'parent_token':'56314897','author_member_hash_id':'4fb8434a7c7c02f2055dde1e2e2e9769'}}}'>"
 						+"<div class='ContentItem-meta'><div class='AnswerItem-meta AnswerItem-meta--related'>"
@@ -171,20 +181,29 @@ function add(){
 						+"<span class='UserLink'><div class='Popover'><div id='Popover-69752-22834-toggle' aria-haspopup='true' aria-expanded='false'"
 						+"aria-owns='Popover-69752-22834-content'><a class='UserLink-link'>"+data[i].tname+"</a>"
 						+"</div></div></span></div></div><div class='RichText AuthorInfo-badge'>"+data[i].usign+"</div></div></div>"
-						+"<div class='AnswerItem-extraInfo'><span class='Voters'><button class='Button Button--plain' type='button'>133人赞同了该回答</button>"
+						+"<div class='AnswerItem-extraInfo'><span class='Voters'><button class='Button Button--plain' type='button'>"+data[i].praise+"人赞同了该回答</button>"
 						+"</span></div></div></div><div class='RichContent RichContent--unescapable'>"
 						+"<div class='RichContent-inner' style='word-wrap:break-word;'><span class='RichText CopyrightRichText-richText'>"+data[i].content+""
 						+"</span>"
 						+"</div><div class='ContentItem-time'><a href='/question/56314897/answer/156837738' target='_blank'>"
 						+"<span data-tooltip='发布于 "+data[i].times+"'>编辑于 "+data[i].times+"</span></a></div>"
-						+"<div class='ContentItem-actions'><span><button class='Button VoteButton VoteButton--up' aria-label='赞同' type='button'>"
-						+"<img src='images/yes.png' style='height: 9px; width: 9px;'>133</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
-						+"<img src='images/no.png' style='height: 12px; width: 9px;'></button></span>"
+						+"<div class='ContentItem-actions'><span id='VoteButton'></span>"
 						+"<button class='Button ContentItem-action Button--plain'type='button' onclick='addReply("+data[i].ids+")' id='button-"+data[i].ids+"'>"+data[i].count+" 条评论</button><div class='Popover ShareMenu ContentItem-action'>"
 						+"<div id='Popover-69776-64508-toggle' aria-haspopup='true' aria-expanded='false' aria-owns='Popover-69776-64508-content'>"
 						+"</div></div>"
+						+"<button class='Button ContentItem-action Button--plain' type='button'>收藏("+data[i].collect+")</button>"
 						+"<div class='Popover ContentItem-action'><button id='Popover-69785-24816-toggle' class='Button Button--plain' type='button' aria-haspopup='true' aria-expanded='false' aria-owns='Popover-69785-24816-content'></button></div>"
 						+"</div</div></div>")
+				if(data[i].ypraise == 'n'){
+					$("#VoteButton").append("<button class='Button VoteButton VoteButton--up' aria-label='赞同' type='button' onclick='addpraise("+data[i].praise+")' id='praise-"+data[i].praise+"'>"
+							+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[i].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
+							+"<img src='images/no.png' style='height: 12px; width: 9px;'></button>")
+				}else{
+					$("#VoteButton").append("<button class='Button VoteButton VoteButton--up is-active' aria-label='赞同' type='button' onclick='addpraise("+data[i].praise+")' id='praise-"+data[i].praise+"'>"
+							+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[i].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
+							+"<img src='images/no.png' style='height: 12px; width: 9px;'></button>")
+				}
+						
 			}
 		}	
 	},"json");
@@ -258,6 +277,13 @@ function addReplyReply(){
 }
 
 
-
+function addpraise(praise,ids) {
+		var b= document.getElementById("praise-"+ids+"")
+		if(b.getAttribute("class")=='Button VoteButton VoteButton--up'){
+			b.className='Button VoteButton VoteButton--up is-active';
+			
+		}
+		
+}
 
 
