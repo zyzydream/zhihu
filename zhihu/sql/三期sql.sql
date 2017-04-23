@@ -11,7 +11,7 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
-select * from explore
+select * from users
 
 select * from explore,
 		(SELECT * from dynstate PARTITION(GH) WHERE selfid='10001')d

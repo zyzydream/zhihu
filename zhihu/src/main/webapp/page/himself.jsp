@@ -30,12 +30,12 @@
 					data-za-module="TopNavBar"
 					style="width: 1349px; top: 0px; left: 0px;">
 					<div class="AppHeader-inner">
-						<a href="/" aria-label="知乎"> <img src="images/zhihublue.png">
+						<a href="page/homepage.jsp" aria-label="知乎"> <img src="images/zhihublue.png">
 						</a>
 						<nav class="AppHeader-nav" role="navigation">
 							<a class="AppHeader-navItem" href="page/homepage.jsp">首页</a> <a
-								class="AppHeader-navItem" href="/explore">发现</a> <a
-								class="AppHeader-navItem" href="/topic">话题</a>
+								class="AppHeader-navItem" href="page/explore.jsp">发现</a> <a
+								class="AppHeader-navItem" href="page/talk.jsp">话题</a>
 						</nav>
 						<div class="SearchBar" role="search">
 							<div class="SearchBar-toolWrapper">
@@ -60,9 +60,9 @@
 									</div>
 								</form>
 							</div>
-							<button
+							<a href="page/introducteQuestion.jsp"><button
 								class="Button SearchBar-askButton Button--primary Button--blue"
-								type="button">提问</button>
+								type="button">提问</button></a>
 						</div>
 
 						<div class="AppHeader-userInfo">
@@ -100,7 +100,7 @@
 							</div>
 							<div class="ProfileHeader-content">
 								<div class="ProfileHeader-contentHead">
-									<h1 class="ProfileHeader-title">
+									<h1 class="ProfileHeader-title"  id="himinfo">
 										<span class="ProfileHeader-name"><%=request.getSession().getAttribute("username2") %></span> <span
 											class="RichText ProfileHeader-headline"><%=request.getSession().getAttribute("usign2") %></span>
 									</h1>
@@ -108,10 +108,11 @@
 
 								<div class="ProfileHeader-contentFooter">
 									<div
-										class="MemberButtonGroup ProfileButtonGroup ProfileHeader-buttons">
+										class="MemberButtonGroup ProfileButtonGroup ProfileHeader-buttons"  id="atten">
 										<button
 											class="Button FollowButton Button--primary Button--blue"
-											type="button">关注</button>
+											type="button" onclick="yesfav()" value="已关注" id="btn_submit">
+											<span id="guanzhu_name" aria-hidden="false" >已关注</span></button>
 										<button class="Button" type="button">
 											<span>发私信</span>
 										</button>
@@ -258,62 +259,37 @@
 						</div>
 					</div>
 				</div>
-				<div class="Profile-sideColumn" data-za-module="RightSideBar">
-					<div class="Card">
-						<div class="Card-header Profile-sideColumnTitle">
-							<div class="Card-headerText">个人成就</div>
-						</div>
-						<div class="Profile-sideColumnItems">
-							<div class="Profile-sideColumnItem">
-								<div class="IconGraf">
-									<div class="IconGraf-iconWrapper">
-										<img src="images/ok.png" style="height: 16px; width: 16px;">
-									</div>
-									获得1861次赞同
-								</div>
-								<div class="Profile-sideColumnItemValue">获得 267 次感谢，66 次收藏</div>
-							</div>
-						</div>
-					</div>
+				<div class="Profile-sideColumn" data-za-module="RightSideBar" id="right">
 					<div class="Card FollowshipCard">
 						<div class="NumberBoard FollowshipCard-counts">
 							<a class="Button NumberBoard-item Button--plain" type="button"
 								href="/people/pang-huang-zhi-ren-80/following">
 								<div class="NumberBoard-name">关注了</div>
-								<div class="NumberBoard-value">5</div>
+								<div class="NumberBoard-value"><%=request.getSession().getAttribute("myatten2")%></div>
 							</a>
 							<div class="NumberBoard-divider"></div>
 							<a class="Button NumberBoard-item Button--plain" type="button"
 								href="/people/pang-huang-zhi-ren-80/followers">
 								<div class="NumberBoard-name">关注者</div>
-								<div class="NumberBoard-value">62</div>
+								<div class="NumberBoard-value"><%=request.getSession().getAttribute("attenme2")%></div>
 							</a>
 						</div>
 					</div>
-					<div class="Profile-lightList">
+					<div class="Profile-lightList" >
 						<a class="Profile-lightItem"
 							href="/people/pang-huang-zhi-ren-80/following/topics"> <span
 							class="Profile-lightItemName">关注的话题</span> <span
-							class="Profile-lightItemValue">5</span>
-						</a> <a class="Profile-lightItem"
-							href="/people/pang-huang-zhi-ren-80/following/columns"> <span
-							class="Profile-lightItemName">关注的专栏</span> <span
-							class="Profile-lightItemValue">0</span>
-						</a> <a class="Profile-lightItem"
-							href="/people/pang-huang-zhi-ren-80/following/questions"> <span
-							class="Profile-lightItemName">关注的问题</span> <span
-							class="Profile-lightItemValue">3</span>
-						</a> <a class="Profile-lightItem"
+							class="Profile-lightItemValue"><%=request.getSession().getAttribute("myattentop2")%></span>
+						</a>  <a class="Profile-lightItem"
 							href="/people/pang-huang-zhi-ren-80/following/collections"> <span
 							class="Profile-lightItemName">关注的收藏夹</span> <span
-							class="Profile-lightItemValue">0</span>
+							class="Profile-lightItemValue"><%=request.getSession().getAttribute("myattenfav2")%></span>
 						</a>
 					</div>
 				</div>
 
 			</div>
 		</div>
-		</main>
 
 	</div>
 	

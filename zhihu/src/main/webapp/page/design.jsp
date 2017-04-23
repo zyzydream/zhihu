@@ -49,7 +49,7 @@
 					</a></li>
 				</ul>
 			</div>
-			<button id="zu-top-add-question" class="zu-top-add-question">提问</button>
+			<a href="page/introducteQuestion.jsp"><button id="zu-top-add-question" class="zu-top-add-question">提问</button></a>
 			<div id="zh-top-search" class="zu-top-search" role="search">
 				<form id="zh-top-search-form" class="zu-top-search-form"
 					method="GET" action="/search">

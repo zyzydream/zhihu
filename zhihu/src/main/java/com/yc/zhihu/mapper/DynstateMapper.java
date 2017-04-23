@@ -83,4 +83,5 @@ public interface DynstateMapper {
 	int deleteatten(Object obj);
 	int addatten(Object obj);
 	
+	Dynstate atten(Object obj);
 }

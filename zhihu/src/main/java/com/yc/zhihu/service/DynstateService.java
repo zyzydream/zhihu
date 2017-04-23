@@ -75,4 +75,6 @@ public interface DynstateService {
 	int deteleatten(Object obj);
 	int addatten(Object obj);
 	
+	Dynstate atten(Object obj);
+	
 }
