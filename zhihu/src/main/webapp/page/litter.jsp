@@ -137,7 +137,7 @@
 							<div class="zm-pm-selector-wrap">
 								<div class="zg-user-name"
 									style="display: none; padding: 4px 0 0 0"></div>
-								<input
+								<input id="aimname"
 									class="zg-form-text-input zm-pm-user-selector label-input-label"
 									placeholder="搜索用户" aria-label="搜索用户" role="combobox"
 									aria-autocomplete="list" type="text">
@@ -148,7 +148,7 @@
 						</dt>
 						<dd class="zm-form-table-field zm-form-table-field-last">
 							<div class="zg-editor-simple-wrap zg-form-text-input">
-								<textarea
+								<textarea id="info"
 									class="zg-editor-input zu-seamless-input-origin-element"
 									style="font-weight: normal; height: 39px;"></textarea>
 							</div>
@@ -157,7 +157,7 @@
 					<div class="zm-command zg-clear">
 						<a class="zm-command-cancel" name="cancel" href="javascript:;">取消</a>
 						<a id="zh-question-pm-send-button" class="zg-btn-blue zg-r3px"
-							name="send" href="javascript:;">发送</a>
+							name="send" href="javascript:;" onclick="send()">发送</a>
 					</div>
 				</div>
 			</div>
