@@ -99,7 +99,7 @@ $.get("dynstate/right",function(data){
 
 
 	var des='';
-	alert("编辑个人资料")
+	//alert("编辑个人资料")
 	des+='<div class="ProfileHeader-contentHead">'
 		+'<h1 class="ProfileHeader-title">'
 		+'<span class="ProfileHeader-name">'+data.uname+'</span>'
@@ -149,7 +149,7 @@ $.get("dynstate/right",function(data){
 },'json');
 
 $.get("dynstate/m1",function(data){
-	alert(data);
+	//alert(data);
 	myansrer33();
 	var myanswers="";
 	if(data.length>0){
@@ -663,24 +663,24 @@ function attenme(){
 
 
 function yesfav(id){
-	alert(id)
+	//alert(id)
 	id = id.replace("btn_submit","");
-	alert(id)
+	//alert(id)
 	var txt=document.getElementById("btn_submit"+id).value;
-	alert(txt);
+	//alert(txt);
 	if(txt=="已关注"){
-		alert(2);
+		//alert(2);
 		$("#guanzhu_name"+id).html("+关注");
 		document.getElementById("btn_submit"+id).value="+关注";
 		$.get("dynstate/change?aimid="+id,function(date){
-			alert("取关")
+			//alert("取关")
 		});
 	}else if(txt=="+关注"){
-		alert(3);
+		//alert(3);
 		$("#guanzhu_name"+id).html("已关注");
 		document.getElementById("btn_submit"+id).value="已关注";
 		$.get("dynstate/change2?aimid="+id,function(date){
-			alert("加关")
+			//alert("加关")
 		});
 
 	}
@@ -688,24 +688,24 @@ function yesfav(id){
 }
 
 function yesfav2(id){
-	alert(id);
-	alert(id)
+	//alert(id);
+	//alert(id)
 	id = id.replace("btn_submit","");
 	var txt=document.getElementById("btn_submit2"+id).value;
-	alert(txt);
+	//alert(txt);
 	if(txt=="已关注"){
-		alert(2);
+		//alert(2);
 		$("#guanzhu_name2"+id).html("+关注");
 		document.getElementById("btn_submit2"+id).value="+关注";
 		$.get("dynstate/changehim?aimid="+id,function(date){
-			alert("取关")
+			//alert("取关")
 		});
 	}else if(txt=="+关注"){
-		alert(3);
+		//alert(3);
 		$("#guanzhu_name2"+id).html("已关注");
 		document.getElementById("btn_submit2"+id).value="已关注";
 		$.get("dynstate/changehim2?aimid="+id,function(date){
-			alert("加关")
+			//alert("加关")
 		});
 
 	}

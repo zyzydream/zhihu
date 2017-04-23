@@ -101,8 +101,8 @@
 	<!-- 注册 -->
 	<insert id="AddUsers" parameterType="Users">
 		insert into
-		users(uids,uemail,uname,upassword,usign)
-		values(seq_users.nextval,#{uemail},#{uname},#{upassword},'无')
+		users(uids,uemail,uname,upassword,usign,upic)
+		values(seq_users.nextval,#{uemail},#{uname},#{upassword},'无','images/poto.jpg')
 	</insert>
 
 	<!-- 添加职业 -->
