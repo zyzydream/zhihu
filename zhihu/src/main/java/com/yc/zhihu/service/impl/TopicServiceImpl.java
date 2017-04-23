@@ -52,6 +52,7 @@ public class TopicServiceImpl implements TopicService{
 		}
 		List<Explore> eQ=topicsMapper.allExploreQ(topic);
 		for(Explore q:eQ){
+			System.out.println(q);
 			q.setKind("DQ");
 			q.setPraise(userMapper.statisticsPraise(q));
 			q.setKind("SQ");

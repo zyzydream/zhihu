@@ -103,6 +103,26 @@ public class HimselfHandler {
 		return dynstateService.listupic(users);
 	}
 	
+	@RequestMapping(value="/infos",method=RequestMethod.GET)
+	@ResponseBody
+	public Users imfo(String uids,Users user){
+		user.setUids(uids);
+		return dynstateService.total(user);
+	}
+	
+	@RequestMapping(value="/atten",method=RequestMethod.GET)
+	@ResponseBody
+	public int atten(HttpServletRequest request,String uids,Dynstate dynstate){
+		dynstate.setAimid(uids);
+		dynstate.setSelfid(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+		dynstate=dynstateService.atten(dynstate);
+		if(dynstate == null){
+			return 0;
+		}else{
+		    return 1;
+		}
+	}
+	
 	
 	@RequestMapping(value="/m3",method=RequestMethod.GET)
 	@ResponseBody
@@ -113,9 +133,9 @@ public class HimselfHandler {
 	
 	@RequestMapping(value="/m4",method=RequestMethod.GET)
 	@ResponseBody
-	public List<ListAllMy> DynstateMy(HttpServletRequest request){
-		System.out.println("进来了 ====>  users"+request.getSession().getAttribute(ServletUtil.LOGIN_USER).toString());
-		return dynstateService.showessays(request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+	public List<ListAllMy> DynstateMy(String uids,Users users){
+		users.setUids(uids);
+		return dynstateService.showessays(users);
 	}
 	
 	@RequestMapping(value="/m6",method=RequestMethod.GET)
@@ -269,5 +289,23 @@ public class HimselfHandler {
 		fav.setFcreid(users1.getUids());
 		System.out.println("进来了 fav==>"+fav);
 		return dynstateService.favoriteinfo(fav);
+	}
+	
+	@RequestMapping(value="/change",method=RequestMethod.GET)
+	@ResponseBody
+	public int  changeatten(HttpServletRequest request,String uids,Dynstate dynstate){
+		dynstate.setAimid(uids);
+		dynstate.setSelfid(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+		System.out.println("取消关注  dynstate==>"+dynstate);
+		return dynstateService.deteleatten(dynstate);
+	}
+	
+	@RequestMapping(value="/change2",method=RequestMethod.GET)
+	@ResponseBody
+	public int  changeatten2(HttpServletRequest request,String uids,Dynstate dynstate){
+		dynstate.setAimid(uids);
+		dynstate.setSelfid(request.getSession().getAttribute(ServletUtil.LOGIN_UIDS).toString());
+		System.out.println("加关注  dynstate==>"+dynstate);
+		return dynstateService.addatten(dynstate);
 	}
 }

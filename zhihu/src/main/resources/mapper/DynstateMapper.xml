@@ -228,7 +228,8 @@
 		uids=#{uids}) uname,
 		(select usign from users where uids=#{uids})
 		usign,
-		(select upic from users where uids=#{uids}) upic
+		(select upic from users where uids=#{uids}) upic,
+		(select uids from users where uids=#{uids}) uids
 		from dual
 	</select>
 
@@ -305,5 +306,10 @@
 		insert into dynstate (selfid,aimid,kind)
 		values(#{selfid},#{aimid},'GR')
 	</insert>
+	
+	
+	<select id="atten" parameterType="Dynstate" resultType="Dynstate">
+		select * from dynstate PARTITION(GR) where selfid=#{selfid} and aimid=#{aimid}
+	</select>
 
 </mapper>

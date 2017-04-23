@@ -11,7 +11,7 @@ CREATE TABLE users(
    uemail VARCHAR2(50),
    tpic varchar2(50)
 );
-select * from explore
+select * from users
 
 select * from explore,
 		(SELECT * from dynstate PARTITION(GH) WHERE selfid='10001')d
@@ -543,11 +543,9 @@ select r.* ,u.*
 		from reply r ,users u
 		where r.reqid='10116' and u.uids=r.remitid and rkind= 'Q'
 
-<<<<<<< HEAD
 
-=======
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+
 drop table reply
 select * from reply
 create sequence seq_reply start with 10000;
@@ -971,11 +969,10 @@ select * from question q,
 		
 		select * from essay where eautid='1001'
 		
-		
-select * from DYNSTATE where  selfid = '10000' and kind = 'GH'
- 
- select count(rid) from reply,
-
+select tre.rid ids, q.qtitle title,tre.rcontent content,tre.rtid tid,tre.ttopic tname,tre.uids uids,tre.usign usign ,tre.uname author,tre.rtime times,'Q' kind from QUESTION q, (SELECT * FROM Topics t, (SELECT * FROM USERS u, (SELECT r.* FROM reply r WHERE r.rtid='1001')r WHERE u.uids=r.remitid)ue WHERE ue.rtid=t.tid)tre where tre.reqid=q.qid 
+SELECT * from users
+select * from dynstate where kind='GR' and selfid='10000';
+delete from dynstate where kind='GR' and selfid='10000' and aimid='10000'
  select count(reqid) from reply where rkind='Q' and  reqid='3'
  
  insert into reply(rid,reqid,rkind,remitid,rreceid,rcontent,rtime)
@@ -1001,6 +998,16 @@ select * from users where uname='baurflda'
 drop table Explore
 18029506136@qq.com /zhihu/images/touxiang.jpg
 
+select e.eid ids,'W' kind,e.etitle title,e.econtent content,e.etid tid,t.ttopic tname,e.usign usign,e.uids uids,e.uname author,e.etime times,'n' checks  from topics t,
+	     (select * from users u,
+	       (select * from essay,
+           	 (select ids id,count(ids) counts from DYNSTATE PARTITION (DW) group by ids order by count(ids))
+	        where counts>=4 and id=eid )e
+	      where u.uids=e.eautid)e
+	    where t.tid=e.etid
+select * from topics
+	    select * from reply
+	    delete from reply where rkind='W'
 select rd.id ids,'Q' kind,q.qtitle title,rd.rcontent content,q.qtid tid,rd.ttopic tname,rd.usign usign,rd.uids uids,rd.uname author,rd.rtime times,'n' checks from QUESTION q, 
 (select * from topics t, 
 (select * from users u, 
@@ -1308,6 +1315,8 @@ insert into dynstate select '10000','','DW','10011','2017-04-24 00:00:01','' fro
 insert into dynstate select '10000','','DW','10012','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10000','','DW','10017','2017-04-24 00:00:01','' from dual ;
 
+select * from dynstate;
+
 insert into dynstate select '10001','','DW','10000','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10001','','DW','10001','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10001','','DW','10002','2017-04-24 00:00:01','' from dual ;
@@ -1416,44 +1425,68 @@ insert into dynstate select '10005','','DW','10020','2017-04-24 00:00:01','' fro
  insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小号' ,'123','世界那么大，我想去看看','游戏玩家','images/112.jpg','7@qq.com','images/112.jpg');
 =======
 --用户关注的话题
-insert into dynstate select '10000','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10002','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10001','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10001','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10001','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10001','10005','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10005','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10002','10006','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10003','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10003','10005','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10003','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10003','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10005','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10002','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10004','10006','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10002','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10001','10005','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10005','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10002','10006','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10005','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10003','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10005','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10002','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10004','10006','GR','','2017-04-24 00:00:01','' from dual ;
 
-insert into dynstate select '10005','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10005','10002','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10005','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10005','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10005','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10005','10006','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10002','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10005','10006','GR','','2017-04-24 00:00:01','' from dual ;
 
-insert into dynstate select '10006','10004','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10006','10002','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10006','10003','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10006','10001','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10006','10000','DR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10006','10005','DR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10002','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10003','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10001','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10000','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10006','10005','GR','','2017-04-24 00:00:01','' from dual ;
+select * from dynstate where kind='GR'
 
-
+ insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'WOW' ,' ','images/WOW.jpg');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'扑克' ,' ','images/poker.jpg');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'LOL' ,' ','images/lol.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'生活' ,' ','images/life.jpg');  
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'法律' ,' ','images/law.jpg');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'游戏' ,' ','images/game.jpg');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'教育' ,' ','images/education.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'经济学' ,' ','images/economics.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'商务' ,' ','images/business.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'汽车' ,' ','images/car.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'生活方式' ,' ','images/mode of life.jpg');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'自然科学' ,' ','images/natural science.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'阅读' ,' ','images/read.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'摄像' ,' ','images/shoot.png'); 
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'运动' ,' ','images/sports.png');
+      
+     
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小花' ,'123','世界那么大，我想去看看','设计师','images/113.jpg','1@qq.com','images/113.jpg');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'张三' ,'123','世界那么大，我想去看看','工程师','images/115.jpg','2@qq.com','images/115.jpg');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'李素' ,'123','世界那么大，我想去看看','游戏玩家','images/114.png','3@qq.com','images/114.png');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'李四' ,'123','世界那么大，我想去看看','设计师','images/110.png','4@qq.com','images/110.png');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小光' ,'123','世界那么大，我想去看看','工程师','images/112.png','5@qq.com','images/112.png');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小红' ,'123','世界那么大，我想去看看','游戏玩家','images/111.jpg','6@qq.com','images/111.jpg');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小号' ,'123','世界那么大，我想去看看','游戏玩家','images/112.png','7@qq.com','images/112.png');
 
