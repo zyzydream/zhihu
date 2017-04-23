@@ -18,9 +18,8 @@
 			<div class="top-nav-profile">
 				<a id=":0" class="zu-top-nav-userinfo " href="page/myself.jsp"
 					role="button" aria-haspopup="true" aria-activedescendant=""> <span
-					class="name">xiao</span> <img class="Avatar"
-					src="https://pic1.zhimg.com/da8e974dc_s.jpg"
-					srcset="https://pic1.zhimg.com/da8e974dc_xs.jpg 2x" alt="xiao">
+					class="name"><%= request.getSession().getAttribute("username") %></span> <img class="Avatar"
+					src="<%= request.getSession().getAttribute("upic") %>">
 					<span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden;" data-count="0"> </span>

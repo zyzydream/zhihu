@@ -157,7 +157,7 @@ $.get("dynstate/m1",function(data){
 			if(data[i].kind=="A"){
 				myanswers+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="featurette-heading" style="font-size: 20px;">'
 					+'<span class="text-muted" style="font-size: 13px">回答了问题</span><br />'+data[i].title+'</h2>'
-					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].upic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
+					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].tpic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
 					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
 					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p>'
@@ -349,7 +349,7 @@ function My(){
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
 				+'<a class="SubTabs-item is-active" onclick="myessay()" href="javascript:void(0)" style="margin-top:20px">我的文章</a>'
-				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myscolumn()" style="margin-top:20px">我的专栏</a></div>'
+				+'</div>'
 				+'</h4></div>';
 		}
 
@@ -361,7 +361,7 @@ function My(){
 			for(var i=0;i<data.length;i++){
 				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px;"><div class="col-md-7"><h2 class="ContentItem-title">'
 					+'<a href="/zhihu/page/article.jsp?eid='+data[i].tid+'">'+data[i].title+'</a></h2><br/>'
-					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
+					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].tpic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
 					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
 					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><br/>'
