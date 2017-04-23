@@ -208,7 +208,7 @@ select f.*,t.sum from FAVORITE f,
 		where fcreid='10001'
 
 insert into users(uids,uname,upassword,usign,uemail,tpic,upic)
-values('1001','gr','a','haha','123@qq.com','/zhihu/images/1.jpg','/zhihu/images/touxiang.jpg')
+values('10001','zy','a','haha','123@qq.com','/zhihu/images/1.jpg','/zhihu/images/touxiang.jpg')
 
 update USERS set tpic='images/car.png' where uids='1001'
 
