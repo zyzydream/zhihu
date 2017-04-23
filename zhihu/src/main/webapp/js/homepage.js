@@ -8,6 +8,7 @@ var aaaa="";
 var dynstate="";
 var times=1;
 show(0);
+litter();
 
 
 //请求最新动态
