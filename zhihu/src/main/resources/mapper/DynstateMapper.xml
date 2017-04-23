@@ -100,7 +100,7 @@
 	<insert id="insertGH" parameterType="String">
 		insert into
 		dynstate(selfid,kind,ids,times)
-		values(#{selfid},'GH',#{ids},to_char(sysdate,'yyyy-mm-dd'))
+		values(#{selfid},'GH',#{ids},to_char(sysdate,'yyyy-mm-dd HH24:MI:SS'))
 	</insert>
 
 	<select id="Sum" parameterType="Users" resultType="Total">

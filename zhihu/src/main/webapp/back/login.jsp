@@ -30,7 +30,7 @@
 			<div class="login form">
 				<form action="user/login" method="post" id="loginForm">
 					<p>
-						<label style="color: red;">${errorMsg }&nbsp;</label>
+						<label style="color: red;height: 30px;">${errorMsg }&nbsp;</label>
 						<c:remove var="errorMsg" scope="session" />
 					</p>
 					<div class="group">
