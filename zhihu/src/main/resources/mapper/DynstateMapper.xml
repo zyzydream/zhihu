@@ -228,7 +228,8 @@
 		uids=#{uids}) uname,
 		(select usign from users where uids=#{uids})
 		usign,
-		(select upic from users where uids=#{uids}) upic
+		(select upic from users where uids=#{uids}) upic,
+		(select uids from users where uids=#{uids}) uids
 		from dual
 	</select>
 

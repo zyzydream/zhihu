@@ -114,36 +114,36 @@ $.get("dynstate/right",function(data){
 		+'</div>'
 		+'</div>';
 	document.getElementById("bianji").innerHTML = des;
-	
+
 	for(var i=0;i<data.length;i++){
 		right+='<div>'
-		right2+='<div class="totalinfos" style="margin-top:20px">'
-			+'<table class="table table-striped"'
-			+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
-			+'	<tr>'
-			+'		<td class="info">关注的话题</td>'
-			+'		<td class="info">'+data.myattentop+'</td>'
-			+'	</tr>'
-			+'	<tr>'
-			+'		<td class="info">关注的收藏夹</td>'
-			+'		<td class="info">'+data.myattenfav+'</td>'
-			+'	</tr>'
-			+'</table>'
-			+'</div>'
-			+'<div>'
-			+'<div>'
-			+'	<ul class="list-inline">'
-			+'		<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
-			+'		<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
-			+'	</ul>'
-			+'	<ul class="list-inline">'
-			+'		<li'
-			+'			style="padding-left: 40px; padding-top: 10px; text-align: center">'+data.myatten+'</li>'
-			+'		<li'
-			+'			style="padding-left: 120px; padding-top: 10px; text-align: center">'+data.attenme+'</li>'
-			+'	</ul>'
-			+'</div>'
-			+'</div>';
+			right2+='<div class="totalinfos" style="margin-top:20px">'
+				+'<table class="table table-striped"'
+				+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
+				+'	<tr>'
+				+'		<td class="info">关注的话题</td>'
+				+'		<td class="info">'+data.myattentop+'</td>'
+				+'	</tr>'
+				+'	<tr>'
+				+'		<td class="info">关注的收藏夹</td>'
+				+'		<td class="info">'+data.myattenfav+'</td>'
+				+'	</tr>'
+				+'</table>'
+				+'</div>'
+				+'<div>'
+				+'<div>'
+				+'	<ul class="list-inline">'
+				+'		<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
+				+'		<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
+				+'	</ul>'
+				+'	<ul class="list-inline">'
+				+'		<li'
+				+'			style="padding-left: 40px; padding-top: 10px; text-align: center">'+data.myatten+'</li>'
+				+'		<li'
+				+'			style="padding-left: 120px; padding-top: 10px; text-align: center">'+data.attenme+'</li>'
+				+'	</ul>'
+				+'</div>'
+				+'</div>';
 		document.getElementById("rightmyself").innerHTML = right2;
 	}
 },'json');
@@ -506,6 +506,7 @@ function MyAttention(){
 
 	$.get("dynstate/m81",function(data){
 		var no='';
+		var y='';
 		if(data.length>0){
 			var alluids=data;
 			$.get("dynstate/m82",function(data){
@@ -513,9 +514,8 @@ function MyAttention(){
 				if(alluids.length>0){
 					var myattention='';
 					for(var i=0;i<alluids.length;i++){
-						var y=alluids[i].aimid;
+						y=alluids[i].aimid;
 						$.get("dynstate/m8?aimid="+alluids[i].aimid,function(data){
-
 							myattention+='<div class="List-item">'
 								+'<div class="ContentItem" ><div class="ContentItem-main"><div class="ContentItem-image">'
 								+'<span class="UserLink UserItem-avatar"><div class="Popover">'
@@ -536,9 +536,9 @@ function MyAttention(){
 							+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data.myattenaw+'回答</span>'
 							+'<span class="ContentItem-statusItem">'+data.myatteness+'文章</span>'
 							+'<span class="ContentItem-statusItem">'+data.myattenpeos+' 关注者</span>'
-							+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit'+y+'" class="btn btn-primary"'
-							+' data-dismiss="modal" onclick="yesfav('+y+')" value="已关注">'
-							+'<span id="guanzhu_name'+y+'" aria-hidden="false" >已关注</span>'
+							+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit'+data.uids+'" class="btn btn-primary"'
+							+' data-dismiss="modal" onclick="yesfav(this.id)" value="已关注">'
+							+'<span id="guanzhu_name'+data.uids+'" aria-hidden="false" >已关注</span>'
 							+'</button></div></div></div></div>'
 							+'</span></div></div>';
 
@@ -607,7 +607,7 @@ function attenme(){
 					var info='';
 					for(var i=0;i<all.length;i++){
 						var x=all[i].selfid;
-						$.get("dynstate/m822?selfid="+all[i].selfid,function(data){
+						$.get("dynstate/m822?selfid="+x,function(data){
 							info+='<div class="List-item">'
 								+'<div class="ContentItem" ><div class="ContentItem-main"><div class="ContentItem-image">'
 								+'<span class="UserLink UserItem-avatar"><div class="Popover">'
@@ -619,21 +619,21 @@ function attenme(){
 								+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
 								+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data.uname+'</a></div>'
 								+'</div></span><span class="FollowStatus" id="showattenyn">你没有关注他</span></div></h2>';
-								
-								for(var j=0;j<b.length;j++){
-									if(x==b[j].selfid){
-										$('.showattenyn').val("互相关注");
-									}
+
+							for(var j=0;j<b.length;j++){
+								if(x==b[j].selfid){
+									$('.showattenyn').val("互相关注");
 								}
+							}
 							info+='<div class="ContentItem-meta"><div><div class="RichText">'+data.usign+'</div>'
-								+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data.myattenaw+'回答</span>'
-								+'<span class="ContentItem-statusItem">'+data.myatteness+'文章</span>'
-								+'<span class="ContentItem-statusItem">'+data.myattenpeos+' 关注者</span>'
-								+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit2'+x+'" class="btn btn-primary"'
-								+' data-dismiss="modal" onclick="yesfav2('+x+')" value="+关注">'
-								+'<span aria-hidden="true" id="guanzhu_name2'+x+'">+关注</span>'
-								+'</button></div></div></div></div>'
-								+'</span></div></div>';
+							+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data.myattenaw+'回答</span>'
+							+'<span class="ContentItem-statusItem">'+data.myatteness+'文章</span>'
+							+'<span class="ContentItem-statusItem">'+data.myattenpeos+' 关注者</span>'
+							+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit'+data.uids+'" class="btn btn-primary"'
+							+' data-dismiss="modal" onclick="yesfav2(this.id)" value="+关注">'
+							+'<span aria-hidden="true" id="guanzhu_name2'+data.uids+'">+关注</span>'
+							+'</button></div></div></div></div>'
+							+'</span></div></div>';
 
 							/*for(var j=0;j<b.length;j++){
 								if(b[j]==x){
@@ -663,7 +663,9 @@ function attenme(){
 
 
 function yesfav(id){
-	alert(id);
+	alert(id)
+	id = id.replace("btn_submit","");
+	alert(id)
 	var txt=document.getElementById("btn_submit"+id).value;
 	alert(txt);
 	if(txt=="已关注"){
@@ -680,12 +682,15 @@ function yesfav(id){
 		$.get("dynstate/change2?aimid="+id,function(date){
 			alert("加关")
 		});
-		
+
 	}
+
 }
 
 function yesfav2(id){
 	alert(id);
+	alert(id)
+	id = id.replace("btn_submit","");
 	var txt=document.getElementById("btn_submit2"+id).value;
 	alert(txt);
 	if(txt=="已关注"){
@@ -702,7 +707,7 @@ function yesfav2(id){
 		$.get("dynstate/changehim2?aimid="+id,function(date){
 			alert("加关")
 		});
-		
+
 	}
 }
 
