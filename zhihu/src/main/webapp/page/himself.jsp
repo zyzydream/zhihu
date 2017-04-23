@@ -4,10 +4,23 @@
 <html>
 <head>
 <base href="/zhihu/">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>知乎</title>
+<!-- <link type="text/css" rel="stylesheet" href="bootstrap-3.3.4/bootstrap-fileinput-master/css/fileinput.css">
+ -->
+<link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
+	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
+	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
+<script
+	src="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"
+	tppabs="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"></script>
+<link type="text/css" rel="stylesheet" href="css/myself.css">
 <link rel="shortcut icon" href="images/logohead.png">
-<link type="text/css" rel="stylesheet" href="css/himself.css">
-<meta charset="UTF-8">
-<title>他人个人主页</title>
 </head>
 <body class="Entry-body" data-reactid="18">
 	<div id="root" data-reactid="19">
@@ -299,5 +312,18 @@
 		</main>
 
 	</div>
+	
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+	<script
+		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
+		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script type="text/javascript" src="js/himself.js"></script>
+	<script src='js/layer/layer.js' type="text/javascript"></script>
+	<!-- 	<script type="text/javascript" src="bootstrap-3.3.4/bootstrap-fileinput-master/js/fileinput.js"></script>
+ -->
+	<script type="text/javascript" src="/bootstrap-3.3.4/js/popover.js"></script>
+	<script type="text/javascript" src="js/jquery-form.js"></script>
 </body>
 </html>

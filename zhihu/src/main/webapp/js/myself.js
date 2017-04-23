@@ -528,8 +528,8 @@ function MyAttention(){
 								+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data.uname+'</a></div>'
 								+'</div></span><span class="FollowStatus" id="showattenyn">他没有关注你</span></div></h2>';
 							for(var j=0;j<x.length;j++){
-								if(y==x[j].selfid){
-									$('.showattenyn').val("互相关注");
+								if(data.uids==x[j].selfid){
+									$('#showattenyn').html("互相关注");
 								}
 							}
 							myattention+='<div class="ContentItem-meta"><div><div class="RichText">'+data.usign+'</div>'
