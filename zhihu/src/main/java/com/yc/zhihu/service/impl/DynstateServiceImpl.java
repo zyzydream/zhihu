@@ -240,4 +240,9 @@ public class DynstateServiceImpl implements DynstateService {
 	public int addatten(Object obj) {
 		return dynstateMapper.addatten(obj);
 	}
+	
+	@Override
+	public Dynstate atten(Object obj) {
+		return dynstateMapper.atten(obj);
+	}
 }

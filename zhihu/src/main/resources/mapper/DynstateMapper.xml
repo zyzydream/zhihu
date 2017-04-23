@@ -306,5 +306,10 @@
 		insert into dynstate (selfid,aimid,kind)
 		values(#{selfid},#{aimid},'GR')
 	</insert>
+	
+	
+	<select id="atten" parameterType="Dynstate" resultType="Dynstate">
+		select * from dynstate PARTITION(GR) where selfid=#{selfid} and aimid=#{aimid}
+	</select>
 
 </mapper>

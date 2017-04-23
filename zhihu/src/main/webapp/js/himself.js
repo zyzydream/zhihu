@@ -15,7 +15,7 @@ function myansrer33(){
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
 				+'<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a'
-				+' class="Tabs-link is-active" href="/zhihu/page/myself.jsp">动态</a></li>'
+				+' class="Tabs-link is-active" href="/zhihu/page/himself.jsp">动态</a></li>'
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
@@ -37,62 +37,30 @@ function myansrer33(){
 //显示头像
 $.get("him/upic"+window.location.search,function(data){
 	var upic='';
-		upic+='	<div class="UserAvatar">'
-			+'		<div id="hhh">'
-			+'		<img id="img_icon"'
-			+'			class="Avatar Avatar--large UserAvatar-inner"'
-			+'			src="'+data.upic+'"'
-			+'			style="width: 160px; height: 160px;"'
-			+'			onclick="updateimg(this)"> </div>'
-			+'	</div>';
-	
+	upic+='	<div class="UserAvatar">'
+		+'		<div id="hhh">'
+		+'		<img id="img_icon"'
+		+'			class="Avatar Avatar--large UserAvatar-inner"'
+		+'			src="'+data.upic+'"'
+		+'			style="width: 160px; height: 160px;"'
+		+'			onclick="updateimg(this)"> </div>'
+		+'	</div>';
+
 	document.getElementById("userava").innerHTML = upic;
-	
+
 	var topupic='';
 	topupic+='<img class="Avatar" src="'+data.upic+'" style="width: 30px; height: 30px;">';
 	document.getElementById("Popover-78248-82895-toggle").innerHTML = topupic;
 },'json');
 
 
-$.get("him/right"+window.location.search,function(data){
-	var right='';
-	for(var i=0;i<data.length;i++){
-		right+='<div class="totalinfos" style="margin-top:20px">'
-			+'<table class="table table-striped"'
-			+'	style="width: 300px; text-align: left; float: right; margin-right: -60px; margin-top: -170px">'
-			+'	<tr>'
-			+'		<td class="info">关注的话题</td>'
-			+'		<td class="info">'+data.myattentop+'</td>'
-			+'	</tr>'
-			+'	<tr>'
-			+'		<td class="info">关注的专题</td>'
-			+'		<td class="info">'+data.myattenzhuanlan+'</td>'
-			+'	</tr>'
-			+'	<tr>'
-			+'		<td class="info">关注的收藏夹</td>'
-			+'		<td class="info">'+data.myattenfav+'</td>'
-			+'	</tr>'
-			+'</table>'
-			+'</div>'
-			+'<div class="panel panel-default"'
-			+'style="width: 283px; height: 120px; margin-left: 700px; margin-top: -318px">'
-			+'<div class="panel-body" style="margin-top:20px">'
-			+'	<ul class="list-inline">'
-			+'		<li style="padding-left: 40px; padding-top: 10px;">关注了</li>'
-			+'		<li style="padding-left: 80px; padding-top: 10px;">关注者</li>'
-			+'	</ul>'
-			+'	<ul class="list-inline">'
-			+'		<li'
-			+'			style="padding-left: 40px; padding-top: 10px; text-align: center">'+data.myatten+'</li>'
-			+'		<li'
-			+'			style="padding-left: 120px; padding-top: 10px; text-align: center">'+data.attenme+'</li>'
-			+'	</ul>'
-			+'</div>'
-			+'</div>';
-		document.getElementById("rightmyself").innerHTML = right;
-	}
-},'json');
+$.get("him/infos"+window.location.search,function(data){
+	var info='';
+	info+='<span class="ProfileHeader-name">'+data.uname+'</span> <span'
+	+' class="RichText ProfileHeader-headline">'+data.usign+'</span>';
+	document.getElementById("himinfo").innerHTML = info;
 
+},'json');
 
 $.get("him/m1"+window.location.search,function(data){
 	myansrer33();
@@ -170,6 +138,36 @@ $.get("him/m1"+window.location.search,function(data){
 	}
 
 	document.getElementById("myself2").innerHTML = myanswers;
+	
+	$.get("him/right"+window.location.search,function(data){
+		var right='';
+		var right2='';
+		for(var i=0;i<data.length;i++){
+			right+='<div class="Card FollowshipCard"><div class="NumberBoard FollowshipCard-counts">'
+				+'<a class="Button NumberBoard-item Button--plain" type="button"'
+				+'	href="/people/pang-huang-zhi-ren-80/following">'
+				+'	<div class="NumberBoard-name">关注了</div>'
+				+'	<div class="NumberBoard-value">'+data.myatten+'</div>'
+				+'</a>'
+				+'<div class="NumberBoard-divider"></div>'
+				+'<a class="Button NumberBoard-item Button--plain" type="button"'
+				+'	href="/people/pang-huang-zhi-ren-80/followers">'
+				+'	<div class="NumberBoard-name">关注者</div>'
+				+'	<div class="NumberBoard-value">'+data.attenme+'</div>'
+				+'</a>'
+				+'</div></div>'
+				+'<div class="Profile-lightList" ><a class="Profile-lightItem"'
+				+' href="/people/pang-huang-zhi-ren-80/following/topics"> <span'
+				+' class="Profile-lightItemName">关注的话题</span> <span'
+				+'	class="Profile-lightItemValue">'+data.myattentop+'</span>'
+				+'	</a> <a class="Profile-lightItem"'
+				+'	href="/people/pang-huang-zhi-ren-80/following/collections"> <span'
+				+'	class="Profile-lightItemName">关注的收藏夹</span> <span'
+				+'	class="Profile-lightItemValue">'+data.myattenfav+'</span>'
+				+'	</a></div>';
+			document.getElementById("right").innerHTML = right;
+		}
+	},'json');
 },'json');
 
 //回答
@@ -179,7 +177,7 @@ function Myanswer3(){
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
 				+'<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a'
-				+' class="Tabs-link" href="/zhihu/page/myself.jsp">动态</a></li>'
+				+' class="Tabs-link" href="/zhihu/page/himself.jsp">动态</a></li>'
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link is-active" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
@@ -241,7 +239,7 @@ function My(){
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
 				+'<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a'
-				+' class="Tabs-link" href="/zhihu/page/myself.jsp">动态</a></li>'
+				+' class="Tabs-link" href="/zhihu/page/himself.jsp">动态</a></li>'
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
@@ -254,7 +252,7 @@ function My(){
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
 				+'<a class="SubTabs-item is-active" onclick="myessay()" href="javascript:void(0)" style="margin-top:20px">ta的文章</a>'
-				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myscolumn()" style="margin-top:20px">ta的专栏</a></div>'
+				+'</div>'
 				+'</h4></div>';
 		}
 
@@ -266,7 +264,7 @@ function My(){
 			for(var i=0;i<data.length;i++){
 				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="ContentItem-title">'
 					+'<a href="/zhihu/page/article.jsp?eid='+data[i].tid+'">'+data[i].title+'</a></h2><br/>'
-					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
+					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].tpic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
 					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
 					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><br/>'
@@ -294,7 +292,7 @@ function MyQuestion(){
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
 				+'<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a'
-				+' class="Tabs-link" href="/zhihu/page/myself.jsp">动态</a></li>'
+				+' class="Tabs-link" href="/zhihu/page/himself.jsp">动态</a></li>'
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
@@ -338,7 +336,7 @@ function myfavorite(){
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
 				+'<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a'
-				+' class="Tabs-link" href="/zhihu/page/myself.jsp">动态</a></li>'
+				+' class="Tabs-link" href="/zhihu/page/himself.jsp">动态</a></li>'
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
@@ -384,7 +382,7 @@ function MyAttention(){
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
 				+'<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a'
-				+' class="Tabs-link" href="/zhihu/page/myself.jsp">动态</a></li>'
+				+' class="Tabs-link" href="/zhihu/page/himself.jsp">动态</a></li>'
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
@@ -424,20 +422,16 @@ function MyAttention(){
 								+'</a></div></div></span></div><div class="ContentItem-head"><h2 class="ContentItem-title">'
 								+'<div class="UserItem-title"><span class="UserLink UserItem-name">'
 								+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
-								+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data.uname+'</a></div>'
-								+'</div></span><span class="FollowStatus" id="showattenyn">ta没有关注你</span></div></h2>';
-							for(var j=0;j<x.length;j++){
-								if(y==x[j].selfid){
-									$('.showattenyn').val("互相关注");
-								}
-							}
+								+'<a class="UserLink-link" target="_blank" href="/page/himself?uids='+data.uids+'">'+data.uname+'</a></div>'
+								+'</div></span></div></h2>';
+
 							myattention+='<div class="ContentItem-meta"><div><div class="RichText">'+data.usign+'</div>'
 							+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data.myattenaw+'回答</span>'
 							+'<span class="ContentItem-statusItem">'+data.myatteness+'文章</span>'
 							+'<span class="ContentItem-statusItem">'+data.myattenpeos+' 关注者</span>'
-							+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit" class="btn btn-primary"'
-							+' data-dismiss="modal" onclick="yesfav()" value="已关注">'
-							+'<span id="guanzhu_name" aria-hidden="false" >已关注</span>'
+							+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit'+data.uids+'" class="btn btn-primary"'
+							+' data-dismiss="modal" onclick="yesfav(this.id)" value="已关注">'
+							+'<span id="guanzhu_name'+data.uids+'" aria-hidden="false" >已关注</span>'
 							+'</button></div></div></div></div>'
 							+'</span></div></div>';
 
@@ -471,7 +465,7 @@ function attenme(){
 		for(var i=0;i<data.length;i++){
 			total+='<div class="header1"><ul class="Tabs ProfileMain-tabs" role="tablist">'
 				+'<li class="Tabs-item Tabs-item--noMeta" role="tab" aria-controls="Profile-activities"><a'
-				+' class="Tabs-link" href="/zhihu/page/myself.jsp">动态</a></li>'
+				+' class="Tabs-link" href="/zhihu/page/himself.jsp">动态</a></li>'
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
@@ -510,26 +504,21 @@ function attenme(){
 								+'</a></div></div></span></div><div class="ContentItem-head"><h2 class="ContentItem-title">'
 								+'<div class="UserItem-title"><span class="UserLink UserItem-name">'
 								+'<div class="Popover"><div id="Popover-81046-20668-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover-81046-20668-content">'
-								+'<a class="UserLink-link" target="_blank" href="/people/cheng-cheng-8-22">'+data.uname+'</a></div>'
-								+'</div></span><span class="FollowStatus" id="showattenyn">你没有关注ta</span></div></h2>'
+								+'<a class="UserLink-link" target="_blank" href="/page/himself.jsp?uids='+data.uids+'">'+data.uname+'</a></div>'
+								+'</div></span></div></h2>'
 
 
 								+'<div class="ContentItem-meta"><div><div class="RichText">'+data.usign+'</div>'
 								+'<div class="ContentItem-status"><span class="ContentItem-statusItem">'+data.myattenaw+'回答</span>'
 								+'<span class="ContentItem-statusItem">'+data.myatteness+'文章</span>'
 								+'<span class="ContentItem-statusItem">'+data.myattenpeos+' 关注者</span>'
-								+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit" class="btn btn-primary"'
-								+' data-dismiss="modal" onclick="yesfav()" value="+关注">'
-								+'<span aria-hidden="true" ></span>+关注'
+								+'</div></div></div></div><div class="ContentItem-extra"><button type="button" id="btn_submit'+data.uids+'" class="btn btn-primary"'
+								+' data-dismiss="modal" onclick="yesfav2(this.id)" value="+关注">'
+								+'<span aria-hidden="true" id="guanzhu_name2'+data.uids+'"></span>+关注'
 								+'</button></div></div></div></div>'
 								+'</span></div></div>';
 
-							for(var j=0;j<b.length;j++){
-								if(b[j]==x){
-									$('.showattenyn').val("相互关注");
-									$('.btn_submit').val("已关注")
-								}
-							}
+
 
 							if((i-1) == (all.length-1)){
 								document.getElementById("myself2").innerHTML = info;
@@ -553,4 +542,48 @@ function attenme(){
 
 function myatten(){
 	MyAttention();
+}
+
+$.get("him/atten"+window.location.search,function(data){
+	var atten='';
+	alert(data)
+	if(data == 1){
+		atten+='<button'
+			+' class="Button FollowButton Button--primary Button--blue"'
+			+'type="button" onclick="yesfav()" value="已关注" id="btn_submit">'
+			+'<span id="guanzhu_name" aria-hidden="false" >已关注</span></button>'
+			+'<button class="Button" type="button">'
+			+'<span>发私信</span>'
+			+'</button>';
+	}else{
+		atten+='<button'
+			+' class="Button FollowButton Button--primary Button--blue"'
+			+'type="button" onclick="yesfav()" value="+关注" id="btn_submit">'
+			+'<span id="guanzhu_name" aria-hidden="false" >+关注</span></button>'
+			+'<button class="Button" type="button">'
+			+'<span>发私信</span>'
+			+'</button>';
+	}
+
+	document.getElementById("atten").innerHTML = atten;
+},'json');
+
+function yesfav(){
+	var txt=document.getElementById("btn_submit").value;
+	alert(txt);
+	if(txt=="已关注"){
+		alert(2);
+		$("#guanzhu_name").html("+关注");
+		document.getElementById("btn_submit").value="+关注";
+		$.get("him/change"+window.location.search,function(date){
+			alert("取关")
+		});
+	}else if(txt=="+关注"){
+		alert(3);
+		$("#guanzhu_name").html("已关注");
+		document.getElementById("btn_submit").value="已关注";
+		$.get("him/change2"+window.location.search,function(date){
+			alert("加关")
+		});
+	}
 }
