@@ -11,8 +11,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>知乎首页</title>
-<link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
-	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.4/dist/css/bootstrap.css"
+	tppabs="bootstrap-3.3.4/dist/css/bootstrap.css" rel="stylesheet">
 <link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
 	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
 <script
