@@ -1465,4 +1465,28 @@ insert into dynstate select '10006','10000','GR','','2017-04-24 00:00:01','' fro
 insert into dynstate select '10006','10005','GR','','2017-04-24 00:00:01','' from dual ;
 select * from dynstate where kind='GR'
 
+ insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'WOW' ,' ','images/WOW.jpg');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'扑克' ,' ','images/poker.jpg');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'LOL' ,' ','images/lol.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'生活' ,' ','images/life.jpg');  
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'法律' ,' ','images/law.jpg');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'游戏' ,' ','images/game.jpg');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'教育' ,' ','images/education.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'经济学' ,' ','images/economics.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'商务' ,' ','images/business.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'汽车' ,' ','images/car.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'生活方式' ,' ','images/mode of life.jpg');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'自然科学' ,' ','images/natural science.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'阅读' ,' ','images/read.png');
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'摄像' ,' ','images/shoot.png'); 
+      insert into topics(tid,ttopic,tstId,tpic)values(seq_topics.nextval,'运动' ,' ','images/sports.png');
+      
+     
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小花' ,'123','世界那么大，我想去看看','设计师','images/113.jpg','1@qq.com','images/113.jpg');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'张三' ,'123','世界那么大，我想去看看','工程师','images/115.jpg','2@qq.com','images/115.jpg');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'李素' ,'123','世界那么大，我想去看看','游戏玩家','images/114.png','3@qq.com','images/114.png');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'李四' ,'123','世界那么大，我想去看看','设计师','images/110.png','4@qq.com','images/110.png');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小光' ,'123','世界那么大，我想去看看','工程师','images/112.png','5@qq.com','images/112.png');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小红' ,'123','世界那么大，我想去看看','游戏玩家','images/111.jpg','6@qq.com','images/111.jpg');
+       insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小号' ,'123','世界那么大，我想去看看','游戏玩家','images/112.png','7@qq.com','images/112.png');
 

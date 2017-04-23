@@ -400,20 +400,23 @@ function yesfav(self){
 
 function litter(){
 	var content="";
-	var changecontent="";
+	var t=null;
 	var id=window.setInterval(function(){
 		$.get("information/list",function(data){
-			window.clearInterval(id);
+			//window.clearInterval(id);
 			content+='<table style="width: 300px;">';
 			for(var i=0;i<data.length;i++){
 				content+='<tr><td colspan="2"> '+data[i].selfname+' 发送消息</td></tr><tr><td>'+data[i].info+'..</td><td>'+data[i].times+'</td></tr><tr><td colspan="2"><hr style="margin: 5px;"></td></tr>';
 			}
 			content+='</table>';
-			if(content!=changecontent){
-			   alert("新消息");
-			   document.getElementById("newinfo").innerHTML='新';
-			   changecontent=content;
+			if(t!=null){
+				if(t!=data){
+					alert("新消息");
+					alert("新消息");
+					document.getElementById("newinfo").innerHTML='新';
+				}
 			}
+			t=data;
 			document.getElementById("example").setAttribute("data-content",content);
 		},"json");
 		var ids=window.setInterval(function(){
