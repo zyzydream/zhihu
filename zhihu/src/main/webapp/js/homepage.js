@@ -411,8 +411,8 @@ function litter(){
 			content+='</table>';
 			if(t!=null){
 				if(t!=data){
-					alert("新消息");
-					alert("新消息");
+					//alert("新消息");
+					//alert("新消息");
 					document.getElementById("newinfo").innerHTML='新';
 				}
 			}
