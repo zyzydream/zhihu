@@ -64,5 +64,11 @@ function close(){
 */
 
 
-
+function check() {
+	if($("#upassword").val().length<6){
+		$("#passwordError").html("密码有误！");
+	}else{
+		$("#passwordError").html("");
+	}
+}
 

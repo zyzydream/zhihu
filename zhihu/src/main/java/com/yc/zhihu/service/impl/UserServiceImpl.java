@@ -288,4 +288,9 @@ public class UserServiceImpl implements UserService{
 	public int delattentiontopics(Dynstate dynstate) {
 		return userMapper.delattentiontopics(dynstate);
 	}
+
+	@Override
+	public int del(Users user) {
+		return userMapper.deleteUser(user);
+	}
 }

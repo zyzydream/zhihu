@@ -74,4 +74,6 @@ public interface UserMapper {
 
 	int delattentiontopics(Dynstate dynstate);
 
+	int deleteUser(Users user);
+
 }

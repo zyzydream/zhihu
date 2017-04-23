@@ -91,6 +91,10 @@ public class UserHandler {
 
 	}
 
+	
+	
+	
+
 	//列出最新动态
 	@RequestMapping(value="dynstate",method=RequestMethod.GET)
 	@ResponseBody
@@ -152,8 +156,18 @@ public class UserHandler {
 
 
 	@RequestMapping(value="/code",method=RequestMethod.POST)
-	public String listCode(String ucode){
-		return "redirect:/page/work.jsp";
+	public String listCode(String verification_code,HttpServletRequest request){
+		System.out.println(CODE);
+		System.out.println(verification_code);
+		if(CODE.intern() == verification_code.intern()){
+			return "redirect:/page/work.jsp";
+		}else{
+			request.setAttribute(ServletUtil.ERROR_MASSAGE, "验证码错误！！！");
+			Users user = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER));
+			usersService.del(user);
+			return "/back/register.jsp";
+		}
+		
 	}
 
 

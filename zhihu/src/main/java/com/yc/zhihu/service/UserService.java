@@ -58,4 +58,6 @@ public interface UserService {
 
 	int delattentiontopics(Dynstate dynstate);
 
+	int del(Users user);
+
 }
