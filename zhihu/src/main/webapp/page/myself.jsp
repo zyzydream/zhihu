@@ -187,7 +187,7 @@
 				</div>
 			</div>
 
-			<div id="rightmyself" style="margin-top:-2800px; position: absolute;">
+			<div id="rightmyself" style="margin-top: 170px;" >
 				
 			</div>
 		</div>

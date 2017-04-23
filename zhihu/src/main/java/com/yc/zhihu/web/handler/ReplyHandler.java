@@ -54,7 +54,9 @@ public class ReplyHandler {
 	
 	@RequestMapping(value="user" , method=RequestMethod.POST)
 	@ResponseBody
-	public ShowUser user(Users user ,HttpServletRequest request){
+	public ShowUser user(Users user ,HttpServletRequest request) throws UnsupportedEncodingException{
+		String uname=new String(user.getUname().getBytes("iso-8859-1"),"utf-8");
+		user.setUname(uname);
 		System.out.println("进来了 user==》" + user);
 		ShowUser users=userService.showUser(user);
 		Dynstate dynstate=new Dynstate();
