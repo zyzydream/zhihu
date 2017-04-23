@@ -33,7 +33,7 @@
 						<a href="/" aria-label="知乎"> <img src="images/zhihublue.png">
 						</a>
 						<nav class="AppHeader-nav" role="navigation">
-							<a class="AppHeader-navItem" href="/">首页</a> <a
+							<a class="AppHeader-navItem" href="page/homepage.jsp">首页</a> <a
 								class="AppHeader-navItem" href="/explore">发现</a> <a
 								class="AppHeader-navItem" href="/topic">话题</a>
 						</nav>
@@ -73,8 +73,7 @@
 										type="button" aria-haspopup="true" aria-expanded="false"
 										aria-owns="Popover-78248-82895-content">
 										<img class="Avatar"
-											src="https://pic1.zhimg.com/da8e974dc_is.jpg"
-											srcset="https://pic1.zhimg.com/da8e974dc_im.jpg 2x"
+											src="<%=request.getSession().getAttribute("upic") %>"
 											width="30" height="30">
 									</button>
 								</div>
@@ -88,21 +87,22 @@
 				data-za-module="Unknown" data-za-module-info="{"card":{"content":{"type":"User","token":"pang-huang-zhi-ren-80"}}}">
 				<div class="Card">
 					<div class="ProfileHeader-userCover">
-						<div class="UserCover UserCover--colorBlock"></div>
+						<div class="UserCover UserCover--colorBlock" id="showImage_gr">
+						
+						</div>
 					</div>
 					<div class="ProfileHeader-wrapper">
 						<div class="ProfileHeader-main">
-							<div class="UserAvatar ProfileHeader-avatar" style="top: -74px;">
+							<div class="UserAvatar ProfileHeader-avatar" style="top: -74px;" id="userava">
 								<img class="Avatar Avatar--large UserAvatar-inner"
 									src="https://pic1.zhimg.com/da8e974dc_xl.jpg"
-									srcset="https://pic1.zhimg.com/da8e974dc_xll.jpg 2x"
 									width="160" height="160">
 							</div>
 							<div class="ProfileHeader-content">
 								<div class="ProfileHeader-contentHead">
 									<h1 class="ProfileHeader-title">
-										<span class="ProfileHeader-name">彷徨之刃</span> <span
-											class="RichText ProfileHeader-headline">车手</span>
+										<span class="ProfileHeader-name"><%=request.getSession().getAttribute("username2") %></span> <span
+											class="RichText ProfileHeader-headline"><%=request.getSession().getAttribute("usign2") %></span>
 									</h1>
 								</div>
 
@@ -128,7 +128,9 @@
 					<div id="ProfileMain" class="Card ProfileMain">
 
 						<div class="ProfileMain-header">
-							<ul class="Tabs ProfileMain-tabs" role="tablist">
+							<div id="myself1"></div>
+							
+							<!-- <ul class="Tabs ProfileMain-tabs" role="tablist">
 								<li class="Tabs-item Tabs-item--noMeta" role="tab"
 									aria-controls="Profile-activities"><a class="Tabs-link"
 									href="/people/pang-huang-zhi-ren-80/activities">动态</a></li>
@@ -156,10 +158,12 @@
 								<li class="Tabs-item Tabs-item--noMeta" role="tab"
 									aria-controls="Profile-following"><a class="Tabs-link"
 									href="/people/pang-huang-zhi-ren-80/following">关注 </a></li>
-							</ul>
+							</ul> -->
 						</div>
 						<div id="Profile-answers" class="List Profile-answers">
-							<div class="List-header">
+							<div id="myself2"></div>
+							
+							<!--< div class="List-header">
 								<h4 class="List-headerText">
 									<span>他的回答</span>
 								</h4>
@@ -250,7 +254,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>

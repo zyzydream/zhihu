@@ -50,7 +50,7 @@ $.get("him/upic"+window.location.search,function(data){
 	
 	var topupic='';
 	topupic+='<img class="Avatar" src="'+data.upic+'" style="width: 30px; height: 30px;">';
-	document.getElementById("Popover-21677-9959-toggle").innerHTML = topupic;
+	document.getElementById("Popover-78248-82895-toggle").innerHTML = topupic;
 },'json');
 
 
