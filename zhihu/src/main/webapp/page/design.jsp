@@ -140,6 +140,7 @@
 						<div onclick="modify();" 
 							class="group group-text hidden-expanded">
 							<a href="#" onclick="return false">修改密码</a>
+
 						</div>
 						<form class="form-basic panel password-form" method="POST"
 							novalidate="novalidate" id="modifypass">

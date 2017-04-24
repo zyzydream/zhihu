@@ -30,5 +30,5 @@ function lick(id,num){
 function modify(){
 	var div = document.getElementById("modifypass");
 	div.style.display="block";
-	
+
 }
