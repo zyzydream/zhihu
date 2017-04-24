@@ -4,6 +4,14 @@
 <html>
 <head>
 <base href="/zhihu/">
+<link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
+	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
+	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
+<script
+	src="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"
+	tppabs="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
 <link rel="shortcut icon" href="images/logohead.png">
 <link rel="stylesheet" type="text/css"
 	href="easyui/themes/default/easyui.css">
@@ -250,5 +258,11 @@
 	src="ueditor/ueditor.all.min.js"></script>
 <script type="text/javascript" charset="utf-8"
 	src="ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+
+
+<script
+	src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
+	tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
 <script type="text/javascript" src="js/question.js"></script>
 </html>

@@ -30,6 +30,6 @@ function lick(id,num){
 function modify(){
 	var div = document.getElementById("modifypass");
 	div.style.display="none";
-	div.nextSibling.style.display="block";
-	div.nextSibling.nextSibling.style.display="block";
+	document.getElementById("Password1").style.display="block";
+	document.getElementById("Password2").style.display="block";
 }
