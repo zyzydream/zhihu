@@ -113,7 +113,7 @@ $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:
 				}
 
 		$("#someReplys").prepend("<div><div class='Card AnswerAuthor'><div class='Card-header AnswerAuthor-title'>"
-				+"<div class='Card-headerText'>关于作者</div></div>"
+				+"<div class='Card-headerText'>回答人的信息</div></div>"
 				+"<div class='Card-section'><div class='AnswerAuthor-user' id='user'>"
 				+"<!-- 关于作者 --></div></div><div class='Card-section'><div class='AnswerAuthor-counts'>"
 				+"<div class='NumberBoard' id='alluser'><!-- 关注人数 --></div></div>"
@@ -302,9 +302,7 @@ function addpraise(praise,ids) {
 }
 
 
-<<<<<<< HEAD
-//收藏
-=======
+
 //tangkuang
 function show(){
 	var tanchu = document.getElementById("tanchu");
@@ -318,4 +316,4 @@ function closeD(){
 	var tanchu = document.getElementById("tanchu");
 	tanchu.style.display = "none";
 }
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
+

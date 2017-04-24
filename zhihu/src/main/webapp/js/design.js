@@ -29,13 +29,11 @@ function lick(id,num){
 
 function modify(){
 	var div = document.getElementById("modifypass");
-<<<<<<< HEAD
+
 	div.style.display="block";
-=======
 
 	div.style.display="none";
 	
 	div.style.display="block";
 
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 }

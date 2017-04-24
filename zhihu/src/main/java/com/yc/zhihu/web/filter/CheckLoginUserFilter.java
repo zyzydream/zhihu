@@ -22,7 +22,7 @@ public class CheckLoginUserFilter extends AbstractFilter{
 		HttpServletResponse resp = (HttpServletResponse) response;
 		String reqUriStr = req.getRequestURI();
 		if(reqUriStr.endsWith("back.jsp")){
-			Object user = req.getSession().getAttribute(ServletUtil.LOGIN_USER);
+			Object user = req.getSession().getAttribute(ServletUtil.LOGIN_ADMINS);
 			if(user == null){
 				HttpSession session = req.getSession();
 				if(session.getAttribute("errorMsg") == null){

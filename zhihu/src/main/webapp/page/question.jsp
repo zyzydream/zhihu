@@ -254,10 +254,10 @@
 			</div>
 		</div>
 		<div>
-			<img src="1.jpg" height="50px" width="50px" class="image" /> <strong
+			<img src="images/1.jpg" height="70px" width="70px" class="image" /> <strong
 				class="tugou">兔狗</strong> <span class="style1 style5">可能对社会问题话题下的问题感兴趣</span>
 			<button class="style6">邀请回答</button>
-			<hr />
+			<hr/>
 		</div>
 	</div>
 
