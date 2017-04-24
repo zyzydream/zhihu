@@ -141,19 +141,13 @@
 							class="group group-text hidden-expanded">
 							<a href="#" onclick="return false">修改密码</a>
 						</div>
-<<<<<<< HEAD
-						<form class="form-basic panel hidden password-form" method="POST"
-							novalidate="novalidate">
-							<div class="group" id="Password1">
-=======
 						<form class="form-basic panel password-form" method="POST"
 							novalidate="novalidate" id="modifypass">
 							<div class="group" >
->>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 								<input id="password" class="text" required=""
 									placeholder="输入新密码" name="password" type="password">
 							</div>
-							<div class="group" id="Password2">
+							<div class="group" >
 								<input class="text" required="" placeholder="再次输入"
 									name="password_repeat" data-rule-equalto="#password"
 									type="password">
