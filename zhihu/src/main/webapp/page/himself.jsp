@@ -30,12 +30,12 @@
 					data-za-module="TopNavBar"
 					style="width: 1349px; top: 0px; left: 0px;">
 					<div class="AppHeader-inner">
-						<a href="/" aria-label="知乎"> <img src="images/zhihublue.png">
+						<a href="page/homepage.jsp" aria-label="知乎"> <img src="images/zhihublue.png">
 						</a>
 						<nav class="AppHeader-nav" role="navigation">
 							<a class="AppHeader-navItem" href="page/homepage.jsp">首页</a> <a
-								class="AppHeader-navItem" href="/explore">发现</a> <a
-								class="AppHeader-navItem" href="/topic">话题</a>
+								class="AppHeader-navItem" href="page/explore.jsp">发现</a> <a
+								class="AppHeader-navItem" href="page/talk.jsp">话题</a>
 						</nav>
 						<div class="SearchBar" role="search">
 							<div class="SearchBar-toolWrapper">
@@ -60,9 +60,9 @@
 									</div>
 								</form>
 							</div>
-							<button
+							<a href="page/introducteQuestion.jsp"><button
 								class="Button SearchBar-askButton Button--primary Button--blue"
-								type="button">提问</button>
+								type="button">提问</button></a>
 						</div>
 
 						<div class="AppHeader-userInfo">

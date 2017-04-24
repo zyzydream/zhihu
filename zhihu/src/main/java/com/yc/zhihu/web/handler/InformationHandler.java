@@ -37,6 +37,19 @@ public class InformationHandler {
 		return "redirect:/back/back.jsp";
 	}
 	
+	@RequestMapping(value="usersend",method=RequestMethod.GET)
+	@ResponseBody
+	public int usersend(Infomation info,HttpServletRequest request) throws UnsupportedEncodingException{
+		String aimname=new String(info.getAimname().getBytes("iso-8859-1"),"utf-8");
+		String infomation=new String(info.getInfo().getBytes("iso-8859-1"),"utf-8");
+		Infomation infos=new Infomation();
+		infos.setAimname(aimname);
+		infos.setInfo(infomation);
+		infos.setSelfname(((Users)(request.getSession().getAttribute(ServletUtil.LOGIN_USER))).getUname());
+		//request.getSession().setAttribute("aaaa", "成功！！！");
+		return infomationService.send(infos);
+	}
+	
 	@RequestMapping(value="list",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Infomation> list(HttpServletRequest request){

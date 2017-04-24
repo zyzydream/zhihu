@@ -28,17 +28,17 @@
 					data-za-module="TopNavBar"
 					style="width: 1440px; top: 0px; left: 0px;">
 					<div class="AppHeader-inner">
-						<a href="/" aria-label="知乎" class="zu-top-link-logo"> <svg
-								class="Icon Icon--logo" viewBox="0 0 200 91" width="64"
-								height="30" aria-hidden="true"
+						<a href="page/homepage.jsp" aria-label="知乎"
+							class="zu-top-link-logo"> <svg class="Icon Icon--logo"
+								viewBox="0 0 200 91" width="64" height="30" aria-hidden="true"
 								style="fill: rgb(15, 136, 235); height: 30px; width: 64px;">
 						  </svg>
 						</a>
 
 						<nav class="AppHeader-nav" role="navigation">
-							<a class="AppHeader-navItem" href="/">首页</a> <a
-								class="AppHeader-navItem" href="/explore">发现</a> <a
-								class="AppHeader-navItem" href="/topic">话题</a>
+							<a class="AppHeader-navItem" href="page/homepage.jsp">首页</a> <a
+								class="AppHeader-navItem" href="page/explore.jsp">发现</a> <a
+								class="AppHeader-navItem" href="page/talk.jsp">话题</a>
 						</nav>
 
 						<div class="SearchBar" role="search">
@@ -136,32 +136,23 @@
 
 						<div class="QuestionHeader-footer">
 							<div class="QuestionHeader-footer-inner">
-								<div class="QuestionHeader-main QuestionHeader-footer-main">
-									<div class="QuestionHeader-actions">
-										<div class="Popover ShareMenu">
-											<div id="Popover-66947-65137-toggle" aria-haspopup="true"
-												aria-expanded="false"
-												aria-owns="Popover-66947-65137-content">
-												<button class="Button Button--plain" type="button">
-													分享</button>
-											</div>
+								<div class="QuestionHeader-actions">
+									<!-- <button class="Button Button--plain" type="button">31
+										条评论</button>
+									<div class="Popover ShareMenu">
+										<div id="Popover-66947-65137-toggle" aria-haspopup="true"
+											aria-expanded="false" aria-owns="Popover-66947-65137-content">
+											<button class="Button Button--plain" type="button">
+												分享</button>
 										</div>
-										<button class="Button Button--plain" type="button">
-											邀请回答</button>
-										<button class="Button Button--plain" type="button">
-											举报</button>
-										<div class="Popover">
-											<button id="Popover-66954-68491-toggle"
-												class="Button Button--plain" type="button"
-												aria-haspopup="true" aria-expanded="false"
-												aria-owns="Popover-66954-68491-content"></button>
-										</div>
-									</div>
-									<div class="QuestionHeader-actions"></div>
+									</div> -->
+									<button class="Button Button--plain" type="button"
+										onclick="show()">邀请回答</button>
+									<!-- 弹出框 -->
 								</div>
-
 								<div class="QuestionHeader-side">
-									<a class="Button" type="button" onclick="write()">写回答</a>
+									<a href="#Card QuestionAnswers-answerAdd" class="Button"
+										type="button" onclick="write()">写回答</a>
 								</div>
 
 							</div>
@@ -191,8 +182,8 @@
 							<!--  查看全部 XXX 个回答  -->
 						</div>
 						<!-- 回答问题 -->
-						<!--<div class="Card QuestionAnswers-answerAdd" id="myReply">
-							 <div class="AnswerAdd">
+						<div class="Card QuestionAnswers-answerAdd" id="myReply">
+							<!--<div class="AnswerAdd">
 								<div class="AnswerAdd-header">
 									<div class="AuthorInfo AnswerAdd-info">
 										<span class="UserLink AuthorInfo-avatarWrapper"> <img
@@ -222,9 +213,12 @@
 										</div>
 									</div>
 								</form>
-							</div> 
-						</div>-->
+							</div> -->
+						</div>
 					</div>
+
+
+
 
 
 					<div class="Question-sideColumn" data-za-module="RightSideBar"
@@ -245,6 +239,25 @@
 					</div>
 				</div>
 			</main>
+		</div>
+	</div>
+
+	<!-- tanchu  -->
+	<div class="style" id="tanchu">
+		<span class="cl" onclick="closeD()"></span>
+		<div class="style4">
+			<span class="style1">你可以通过邀请其他用户来更快获得回答</span>
+			<div class="style3">
+				<input type="text" maxlength="100" placeholder="搜索你想邀请的人"
+					class="style2" />
+				<span class="search"></span>	
+			</div>
+		</div>
+		<div>
+			<img src="1.jpg" height="50px" width="50px" class="image" /> <strong
+				class="tugou">兔狗</strong> <span class="style1 style5">可能对社会问题话题下的问题感兴趣</span>
+			<button class="style6">邀请回答</button>
+			<hr />
 		</div>
 	</div>
 

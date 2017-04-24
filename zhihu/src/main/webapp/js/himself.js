@@ -181,7 +181,7 @@ function Myanswer3(){
 				+'<li class="Tabs-item" role="tab" aria-controls="Profile-answers">'
 				+'<a class="Tabs-link is-active" href="javascript:void(0)" onclick="Myanswer3()"> 回答 '
 				+'<span class="Tabs-meta">'+data[i].answer+'</span></a></li><li class="Tabs-item" role="tab" aria-controls="Profile-posts">'
-				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> ta的 <span class="Tabs-meta">'+data[i].mine+'</span>'
+				+'<a class="Tabs-link" href="javascript:void(0)" onclick="My()"> 文章 <span class="Tabs-meta">'+data[i].mine+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-asks"><a'
 				+' class="Tabs-link" href="javascript:void(0)" onclick="MyQuestion()"> 提问 <span class="Tabs-meta">'+data[i].question+'</span>'
 				+'</a></li><li class="Tabs-item" role="tab" aria-controls="Profile-collections"><a class="Tabs-link"'
@@ -546,7 +546,7 @@ function myatten(){
 
 $.get("him/atten"+window.location.search,function(data){
 	var atten='';
-	alert(data)
+	
 	if(data == 1){
 		atten+='<button'
 			+' class="Button FollowButton Button--primary Button--blue"'

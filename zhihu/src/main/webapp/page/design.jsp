@@ -49,7 +49,7 @@
 					</a></li>
 				</ul>
 			</div>
-			<button id="zu-top-add-question" class="zu-top-add-question">提问</button>
+			<a href="page/introducteQuestion.jsp"><button id="zu-top-add-question" class="zu-top-add-question">提问</button></a>
 			<div id="zh-top-search" class="zu-top-search" role="search">
 				<form id="zh-top-search-form" class="zu-top-search-form"
 					method="GET" action="/search">
@@ -137,13 +137,19 @@
 				<div class="settings-item clearfix" style="height: 300px">
 					<label class="settings-item-title">帐号密码</label>
 					<div class="settings-item-content form-container">
-						<div onclick="modify();" id="modifypass"
+						<div onclick="modify();" 
 							class="group group-text hidden-expanded">
 							<a href="#" onclick="return false">修改密码</a>
 						</div>
+<<<<<<< HEAD
 						<form class="form-basic panel hidden password-form" method="POST"
 							novalidate="novalidate">
 							<div class="group" id="Password1">
+=======
+						<form class="form-basic panel password-form" method="POST"
+							novalidate="novalidate" id="modifypass">
+							<div class="group" >
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
 								<input id="password" class="text" required=""
 									placeholder="输入新密码" name="password" type="password">
 							</div>

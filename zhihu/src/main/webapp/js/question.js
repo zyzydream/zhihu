@@ -302,4 +302,20 @@ function addpraise(praise,ids) {
 }
 
 
+<<<<<<< HEAD
 //收藏
+=======
+//tangkuang
+function show(){
+	var tanchu = document.getElementById("tanchu");
+	tanchu.style.display="block";
+	tanchu.style.zIndex = 99;
+	var root = document.getElementById("root");
+	root.style.zIndex = -1;
+}
+
+function closeD(){
+	var tanchu = document.getElementById("tanchu");
+	tanchu.style.display = "none";
+}
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu

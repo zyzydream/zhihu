@@ -29,7 +29,9 @@ function lick(id,num){
 
 function modify(){
 	var div = document.getElementById("modifypass");
+
 	div.style.display="none";
-	document.getElementById("Password1").style.display="block";
-	document.getElementById("Password2").style.display="block";
+	
+	div.style.display="block";
+
 }
