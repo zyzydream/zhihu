@@ -725,9 +725,7 @@ div[contentEditable], input, textarea, button, a:link {
 }
 div[contentEditable], input, textarea, button, a:link {
 }
-.hidden {
-    display: none;
-}
+
 .form-basic .group {
     margin-bottom: 1em;
     
@@ -786,4 +784,8 @@ input::-moz-placeholder, textarea::-moz-placeholder {
 
 .top-nav-profile:hover ul{
 	display: block;
+}
+
+#modifypass{
+	display:none;
 }
