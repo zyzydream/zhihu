@@ -60,4 +60,8 @@ public interface UserService {
 
 	int del(Users user);
 
+	Users listMy(Users users);
+
+	int updata(Users users);
+
 }
