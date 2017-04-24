@@ -537,9 +537,84 @@ function delnew(){
 //$(_this).popover("hide")
 //}
 //}, 100);
-//});
+//});230  45
 //console.log("结束");
 //}
 
+function findq(obj){
+	var val=$(obj).val();
+	$.get("dynstate/findq?val="+val,function(date){
+		var show=$("#showq");
+		show.css({"position":"absolute","left":"215px","top":"45px","width":"370px","z-index":"100","background":"white","display":"block"});
+		var info='<ul>';
+		for(var i in date){
+			for(var j in date[i]){
+				if(j=='Q' && date[i][j].length>0){
+					info+='<div class="zu-autocomplete-row-label ac-row">问题</div>';
+				}else if(j=='U' && date[i][j].length>0){
+					info+='<div class="zu-autocomplete-row-label ac-row">用户</div>';
+				}else if(j=='T' && date[i][j].length>0){
+					info+='<div class="zu-autocomplete-row-label ac-row">话题</div>'
+				}
+				for(var x in date[i][j]){
+					if(j=='Q'){
+						
+						info+='<li onmouseover="showa()"><a class="info" href="/zhihu/page/question.jsp?qid='+date[i][j][x].qid+'" onclick="return true">'
+							+''+date[i][j][x].qtitle+''
+							+'</a></li>';
+					}else if(j=='U'){
+						info+='<li><div id=":1t" class="ac-row" role="option" data-za-module="UserItem" data-za-index="" >'
+							+'<a class="zm-ac-link zm-ac-link-people" title="HAHA" href="/zhihu/page/himself.jsp?uids='+date[i][j][x].uids+'" onclick="return true">'
+							+'<img class="zm-item-img-avatar zg-left" src="'+date[i][j][x].upic+'" style="-moz-user-select: none;">'
+							+'<div class="zu-autocomplete-row-name" title="HAHA" style="-moz-user-select: none;">'
+							+'<b class="ac-highlighted" style="-moz-user-select: none;">'+date[i][j][x].uname+'</b>'
+							+'</div>'
+							+'<div class="zu-autocomplete-row-description" style="-moz-user-select: none;">'
+							+'<span class="badge-summary" style="-moz-user-select: none;"></span>'
+							+'<span class="zg-gray-normal bio" style="-moz-user-select: none;">'+date[i][j][x].usign+'</span>'
+							+'</div>'
+							+'</a>'
+							+'</div></li>';
 
+					}else if(j=='T'){
+						info+='<li>'
+							+'<a href="#"><span class="zm-item-tag" >'
+							+'<b class="ac-highlighted" style="-moz-user-select: none;">'+date[i][j][x].ttopic+'</b>'
+							+'-shock'
+							+'</span>'
+							+'<span></span></a></li>';
+					}else{
+						info+='<li>没有相关的搜索内容。。。</li>'
+					}
+
+				}
+			}
+		}
+		info+='</ul>';
+		show.html(info);
+	},'json');
+
+}
+
+function over(obj){
+	var show=$("#showq");
+	show.css({"display":"none"});
+}
+
+function showa(){
+	var show=$("#showq");
+	show.css({"display":"block"});
+}
+
+/*<a class="zm-ac-link zm-ac-link-people" title="DD Fang" href="/people/dd-fang-40" style="-moz-user-select: none;">
+<img class="zm-item-img-avatar zg-left" src="https://pic3.zhimg.com/c23600c62_s.jpg" style="-moz-user-select: none;">
+<div class="zu-autocomplete-row-name" title="DD Fang" style="-moz-user-select: none;">
+<b class="ac-highlighted" style="-moz-user-select: none;">DD</b>
+Fang
+</div>
+<div class="zu-autocomplete-row-description" style="-moz-user-select: none;">
+<span class="badge-summary" style="-moz-user-select: none;"></span>
+<span class="zg-gray-normal bio" style="-moz-user-select: none;"></span>
+</div>
+</a>*/
 

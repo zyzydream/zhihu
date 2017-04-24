@@ -77,4 +77,8 @@ public interface DynstateService {
 	
 	Dynstate atten(Object obj);
 	
+	List<Question> findq(String obj);
+	List<Users> findu(String obj);
+	List<Topics> findt(String obj);
+	
 }

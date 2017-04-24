@@ -207,4 +207,9 @@
 		delete from users where uname=#{uname}
 	</delete>
 	
+	<!-- 修改密码 -->
+	<update id="updataPassword" parameterType="Users">
+		update users set upassword=#{upassword} where uname = #{uname}
+	</update>
+	
 </mapper>

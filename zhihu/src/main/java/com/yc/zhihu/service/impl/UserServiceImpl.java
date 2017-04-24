@@ -293,4 +293,14 @@ public class UserServiceImpl implements UserService{
 	public int del(Users user) {
 		return userMapper.deleteUser(user);
 	}
+
+	@Override
+	public Users listMy(Users users) {
+		return userMapper.fUsers(users);
+	}
+
+	@Override
+	public int updata(Users users) {
+		return userMapper.updataPassword(users);
+	}
 }
