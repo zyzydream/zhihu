@@ -141,13 +141,15 @@
 							class="group group-text hidden-expanded">
 							<a href="#" onclick="return false">修改密码</a>
 						</div>
+
+
 						<form class="form-basic panel password-form" method="POST"
 							novalidate="novalidate" id="modifypass">
 							<div class="group" >
 								<input id="password" class="text" required=""
 									placeholder="输入新密码" name="password" type="password">
 							</div>
-							<div class="group">
+							<div class="group" id="Password2">
 								<input class="text" required="" placeholder="再次输入"
 									name="password_repeat" data-rule-equalto="#password"
 									type="password">
@@ -191,7 +193,7 @@
 	<script
 		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
 		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-	<script type="text/javascript" src="js/myself.js"></script>
+<!-- 	<script type="text/javascript" src="js/myself.js"></script> -->
 	<script src='js/layer/layer.js' type="text/javascript"></script>
 	<script type="text/javascript" src="/bootstrap-3.3.4/js/popover.js"></script>
 	<script type="text/javascript" src="js/jquery-form.js"></script>

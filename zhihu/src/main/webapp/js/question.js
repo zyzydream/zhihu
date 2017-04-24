@@ -101,27 +101,27 @@ $.ajax({url:"reply/list"+window.location.search,async:false,type:"POST",success:
 				+"<button class='Button ContentItem-action Button--plain' type='button'>收藏("+data[0].collect+")</button>"
 				+"<div class='Popover ContentItem-action'><button id='Popover-69785-24816-toggle' class='Button Button--plain' type='button' aria-haspopup='true' aria-expanded='false' aria-owns='Popover-69785-24816-content'></button></div>"
 				+"</div</div></div>")
-				
+
 				if(data[0].ypraise == 'n'){
 					$("#VoteButton").append("<button class='Button VoteButton VoteButton--up' aria-label='赞同' type='button' onclick='addpraise("+data[0].praise+","+data[0].ids+")' id='praise-"+data[0].ids+"'>"
 							+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[0].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
 							+"<img src='images/no.png' style='height: 12px; width: 9px;'></button>")
 				}else{
-					$("#VoteButton").append("<button class='Button VoteButton VoteButton--up is-active' aria-label='赞同' type='button' onclick='addpraise("+data[0].praise+")' id='praise-"+data[0].praise+"'>"
-							+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[i].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
+					$("#VoteButton").append("<button class='Button VoteButton VoteButton--up is-active' aria-label='赞同' type='button' onclick='addpraise("+data[0].praise+","+data[0].ids+")' id='praise-"+data[0].ids+"'>"
+							+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[0].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
 							+"<img src='images/no.png' style='height: 12px; width: 9px;'></button>")
 				}
 
-				$("#someReplys").prepend("<div><div class='Card AnswerAuthor'><div class='Card-header AnswerAuthor-title'>"
-						+"<div class='Card-headerText'>关于作者</div></div>"
-						+"<div class='Card-section'><div class='AnswerAuthor-user' id='user'>"
-						+"<!-- 关于作者 --></div></div><div class='Card-section'><div class='AnswerAuthor-counts'>"
-						+"<div class='NumberBoard' id='alluser'><!-- 关注人数 --></div></div>"
-						+"<div class='MemberButtonGroup AnswerAuthor-buttons'>"
-						+"<button class='Button FollowButton Button--primary Button--blue' type='button'>"
-						+"<span> 关注 </span></button>"
-						+"<button class='Button' type='button'><span>发私信</span>"
-						+"</button></div></div></div></div>");
+		$("#someReplys").prepend("<div><div class='Card AnswerAuthor'><div class='Card-header AnswerAuthor-title'>"
+				+"<div class='Card-headerText'>关于作者</div></div>"
+				+"<div class='Card-section'><div class='AnswerAuthor-user' id='user'>"
+				+"<!-- 关于作者 --></div></div><div class='Card-section'><div class='AnswerAuthor-counts'>"
+				+"<div class='NumberBoard' id='alluser'><!-- 关注人数 --></div></div>"
+				+"<div class='MemberButtonGroup AnswerAuthor-buttons'>"
+				+"<button class='Button FollowButton Button--primary Button--blue' type='button'>"
+				+"<span> 关注 </span></button>"
+				+"<button class='Button' type='button'><span>发私信</span>"
+				+"</button></div></div></div></div>");
 
 		$("#user").empty;
 		$("#user").append("<div class='AnswerAuthor-user-avatar'><span class='UserLink'> <a class='UserLink-link'href='/people/yang-liu-54-49'> " 
@@ -194,16 +194,15 @@ function add(){
 						+"<button class='Button ContentItem-action Button--plain' type='button'>收藏("+data[i].collect+")</button>"
 						+"<div class='Popover ContentItem-action'><button id='Popover-69785-24816-toggle' class='Button Button--plain' type='button' aria-haspopup='true' aria-expanded='false' aria-owns='Popover-69785-24816-content'></button></div>"
 						+"</div</div></div>")
-				if(data[i].ypraise == 'n'){
-					$("#VoteButton").append("<button class='Button VoteButton VoteButton--up' aria-label='赞同' type='button' onclick='addpraise("+data[i].praise+")' id='praise-"+data[i].praise+"'>"
-							+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[i].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
-							+"<img src='images/no.png' style='height: 12px; width: 9px;'></button>")
-				}else{
-					$("#VoteButton").append("<button class='Button VoteButton VoteButton--up is-active' aria-label='赞同' type='button' onclick='addpraise("+data[i].praise+")' id='praise-"+data[i].praise+"'>"
-							+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[i].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
-							+"<img src='images/no.png' style='height: 12px; width: 9px;'></button>")
-				}
-						
+						if(data[i].ypraise == 'n'){
+							$("#VoteButton").append("<button class='Button VoteButton VoteButton--up' aria-label='赞同' type='button' onclick='addpraise("+data[i].praise+","+data[i].ids+")' id='praise-"+data[i].ids+"'>"
+									+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[i].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
+									+"<img src='images/no.png' style='height: 12px; width: 9px;'></button>")
+						}else{
+							$("#VoteButton").append("<button class='Button VoteButton VoteButton--up is-active' aria-label='赞同' type='button' onclick='addpraise("+data[i].praise+","+data[i].ids+")' id='praise-"+data[i].ids+"'>"
+									+"<img src='images/yes.png' style='height: 9px; width: 9px;'>"+data[i].praise+"</button><button class='Button VoteButton VoteButton--down' aria-label='反对' type='button'>"
+									+"<img src='images/no.png' style='height: 12px; width: 9px;'></button>")
+						}
 			}
 		}	
 	},"json");
@@ -278,15 +277,34 @@ function addReplyReply(){
 
 
 function addpraise(praise,ids) {
-		var b= document.getElementById("praise-"+ids+"")
-		if(b.getAttribute("class")=='Button VoteButton VoteButton--up'){
-			b.className='Button VoteButton VoteButton--up is-active';
-			
-		}
-		
+	var b= document.getElementById("praise-"+ids+"");
+	if(b.getAttribute("class")=='Button VoteButton VoteButton--up'){
+		b.className='Button VoteButton VoteButton--up is-active';
+		$.get("dynstate/praise?ids="+ids+"&&kind=Q",function(data){
+			if(data>0){
+				alert("点赞成功");
+				window.location.reload(true);
+			}else{
+				alert("点赞失败");
+			}
+		},"json")
+	}else{
+		b.className='Button VoteButton VoteButton--up';
+		$.get("dynstate/delpraise?ids="+ids+"&&kind=Q",function(data){
+			if(data>0){
+				alert("取消成功");
+				window.location.reload(true);
+			}else{
+				alert("取消失败");
+			}
+		},"json");
+	}	
 }
 
 
+<<<<<<< HEAD
+//收藏
+=======
 //tangkuang
 function show(){
 	var tanchu = document.getElementById("tanchu");
@@ -300,3 +318,4 @@ function closeD(){
 	var tanchu = document.getElementById("tanchu");
 	tanchu.style.display = "none";
 }
+>>>>>>> branch 'master' of ssh://git@github.com/zyzydream/zhihu
