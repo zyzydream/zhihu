@@ -76,4 +76,6 @@ public interface UserMapper {
 
 	int deleteUser(Users user);
 
+	int updataPassword(Users users);
+
 }

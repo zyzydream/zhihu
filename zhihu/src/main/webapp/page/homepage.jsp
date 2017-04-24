@@ -18,6 +18,8 @@ li {
  </style>
 <link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
 	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.4/dist/css/bootstrap.css"
+	tppabs="bootstrap-3.3.4/dist/css/bootstrap.css" rel="stylesheet">
 <link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
 	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
 <script
@@ -38,7 +40,7 @@ li {
 			<div class="top-nav-profile">
 				<a href="/zhihu/page/myself.jsp" class="zu-top-nav-userinfo "> <span
 					class="name" id="name"><%=request.getSession().getAttribute("username")%></span>
-					<img class="Avatar" src="" alt="" /> <span id="zh-top-nav-new-pm"
+					<img class="Avatar" src="<%=request.getSession().getAttribute("upic")%>" alt="" /> <span id="zh-top-nav-new-pm"
 					class="zg-noti-number zu-top-nav-pm-count"
 					style="visibility: hidden" data-count="0"> </span>
 				</a>
@@ -173,7 +175,7 @@ li {
 				<span id="omissible">
 					<div class="HomeEntry" data-za-module="HomeEntry">
 						<div class="HomeEntry-avatar">
-							<img class="Avatar Avatar--xs" src="images/1.jpg" alt="xxx" />
+							<img class="Avatar Avatar--xs" src="<%=request.getSession().getAttribute("upic")%>" alt="xxx" />
 						</div>
 						<div class="HomeEntry-box">
 							<span class="HomeEntry-boxArrow"></span>

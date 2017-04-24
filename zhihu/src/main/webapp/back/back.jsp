@@ -43,13 +43,13 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<ul class="nav navbar-nav navbar-right" style="margin: 0px;">
-						<li><a href="#"
+						<li><a href="back/backlogin.jsp"
 							style="padding-top: 15px; padding-bottom: 15px; padding-right: 5px; padding-left: 5px;">[切换用户]</a></li>
-						<li><a href="#"
+						<li><a href="back/backlogin.jsp"
 							style="padding-top: 15px; padding-bottom: 15px; padding-right: 5px; padding-left: 5px">[退出]</a></li>
 					</ul>
 					<label
-						style="color: white; font-size: 20px; font-weight: lighter; margin: 10px 0px 10px 0px;">欢迎管理员zy登录</label>
+						style="color: white; font-size: 20px; font-weight: lighter; margin: 10px 0px 10px 0px;">欢迎管理员<%=request.getSession().getAttribute("adminname") %>登录</label>
 				</ul>
 				>
 

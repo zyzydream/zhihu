@@ -99,7 +99,7 @@ $.get("dynstate/right",function(data){
 
 
 	var des='';
-	alert("编辑个人资料")
+	//alert("编辑个人资料")
 	des+='<div class="ProfileHeader-contentHead">'
 		+'<h1 class="ProfileHeader-title">'
 		+'<span class="ProfileHeader-name">'+data.uname+'</span>'
@@ -149,7 +149,7 @@ $.get("dynstate/right",function(data){
 },'json');
 
 $.get("dynstate/m1",function(data){
-	alert(data);
+	//alert(data);
 	myansrer33();
 	var myanswers="";
 	if(data.length>0){
@@ -157,7 +157,7 @@ $.get("dynstate/m1",function(data){
 			if(data[i].kind=="A"){
 				myanswers+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px"><div class="col-md-7"><h2 class="featurette-heading" style="font-size: 20px;">'
 					+'<span class="text-muted" style="font-size: 13px">回答了问题</span><br />'+data[i].title+'</h2>'
-					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].upic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
+					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].tpic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
 					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
 					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p>'
@@ -349,7 +349,7 @@ function My(){
 				+'<a class="Tabs-link" href="javascript:void(0)" onclick="MyAttention()">关注</a></li></ul>'
 				+'</div><div class="List-header"><h4 class="List-headerText"><div class="SubTabs">'
 				+'<a class="SubTabs-item is-active" onclick="myessay()" href="javascript:void(0)" style="margin-top:20px">我的文章</a>'
-				+'<a class="SubTabs-item" href="javascript:void(0)" onclick="myscolumn()" style="margin-top:20px">我的专栏</a></div>'
+				+'</div>'
 				+'</h4></div>';
 		}
 
@@ -361,7 +361,7 @@ function My(){
 			for(var i=0;i<data.length;i++){
 				my+='<div class="row featurette" style="padding-left: 10px;padding-top: 10px;"><div class="col-md-7"><h2 class="ContentItem-title">'
 					+'<a href="/zhihu/page/article.jsp?eid='+data[i].tid+'">'+data[i].title+'</a></h2><br/>'
-					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="/zhihu/images/touxiang.jpg" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
+					+'<h2 class="featurette-heading" style="font-size: 13px;"> <img  src="'+data[i].tpic+'" style="width:50px;height:50px">&nbsp;&nbsp;&nbsp;'
 					+data[i].uname+' &nbsp;&nbsp;&nbsp; <span class="text-muted"'
 					+'style="font-size: 12px; font-weight: 300;">'+data[i].sign+'</span></h2>'
 					+'<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><br/>'
@@ -663,24 +663,24 @@ function attenme(){
 
 
 function yesfav(id){
-	alert(id)
+	//alert(id)
 	id = id.replace("btn_submit","");
-	alert(id)
+	//alert(id)
 	var txt=document.getElementById("btn_submit"+id).value;
-	alert(txt);
+	//alert(txt);
 	if(txt=="已关注"){
-		alert(2);
+		//alert(2);
 		$("#guanzhu_name"+id).html("+关注");
 		document.getElementById("btn_submit"+id).value="+关注";
 		$.get("dynstate/change?aimid="+id,function(date){
-			alert("取关")
+			//alert("取关")
 		});
 	}else if(txt=="+关注"){
-		alert(3);
+		//alert(3);
 		$("#guanzhu_name"+id).html("已关注");
 		document.getElementById("btn_submit"+id).value="已关注";
 		$.get("dynstate/change2?aimid="+id,function(date){
-			alert("加关")
+			//alert("加关")
 		});
 
 	}
@@ -688,24 +688,24 @@ function yesfav(id){
 }
 
 function yesfav2(id){
-	alert(id);
-	alert(id)
+	//alert(id);
+	//alert(id)
 	id = id.replace("btn_submit","");
 	var txt=document.getElementById("btn_submit2"+id).value;
-	alert(txt);
+	//alert(txt);
 	if(txt=="已关注"){
-		alert(2);
+		//alert(2);
 		$("#guanzhu_name2"+id).html("+关注");
 		document.getElementById("btn_submit2"+id).value="+关注";
 		$.get("dynstate/changehim?aimid="+id,function(date){
-			alert("取关")
+			//alert("取关")
 		});
 	}else if(txt=="+关注"){
-		alert(3);
+		//alert(3);
 		$("#guanzhu_name2"+id).html("已关注");
 		document.getElementById("btn_submit2"+id).value="已关注";
 		$.get("dynstate/changehim2?aimid="+id,function(date){
-			alert("加关")
+			//alert("加关")
 		});
 
 	}

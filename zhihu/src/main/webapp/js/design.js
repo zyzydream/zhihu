@@ -29,7 +29,27 @@ function lick(id,num){
 
 function modify(){
 	var div = document.getElementById("modifypass");
-	div.style.display="none";
-	div.nextSibling.style.display="block";
-	div.nextSibling.nextSibling.style.display="block";
+	div.style.display="block";
+
+}
+
+$.post("user/list",function(data){
+	$("#Uemail").append("<span class='text email'>"+data[0].uemail+"</span")
+},"json")
+
+
+function make(){
+	if($("#password").val() == $("#passwore1").val()){
+		$.ajax({url:"user/updataPS?upassword="+$("#password").val(),success:function(data){
+			if(data  == "true"){
+				alert("修改成功！！！")
+				window.location.reload(true);
+			}else{
+				alert("修改失败！！！")
+				window.location.reload(true);
+			}
+		},dataType:"json"})
+	}else{
+		alert("两次密码不一致！！！！")
+	}
 }

@@ -132,7 +132,7 @@
 										</div>
 									</div>
 									<div class="CommentEditor-actions" style="padding-left: 400px;">
-										<button type="button" class="Button Button--blue"  onclick="addmyReply()">搜索</button>
+										<button type="button" class="Button Button--blue"  onclick="addmyReply()">发布</button>
 									</div>
 								</form>
 							</div>

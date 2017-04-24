@@ -404,54 +404,88 @@ function litter(){
 	var id=window.setInterval(function(){
 		$.get("information/list",function(data){
 			//window.clearInterval(id);
-			content+='<table style="width: 300px;">';
-			for(var i=0;i<data.length;i++){
-				content+='<tr><td colspan="2"> '+data[i].selfname+' 发送消息</td></tr><tr><td>'+data[i].info+'..</td><td>'+data[i].times+'</td></tr><tr><td colspan="2"><hr style="margin: 5px;"></td></tr>';
+			content="";
+			content+='<table style="width: 350px;">';
+			if(data.length>5){
+				for(var i=0;i<5;i++){
+					content+='<tr><td colspan="2"> '+data[i].selfname+' 发送消息</td></tr><tr><td style="width: 300px;">'+data[i].info+'..</td><td>'+data[i].times+'</td></tr><tr><td colspan="2"><hr style="margin: 5px;"></td></tr>';
+				}
+			}else{
+				for(var i=0;i<data.length;i++){
+					content+='<tr><td colspan="2"> '+data[i].selfname+' 发送消息</td></tr><tr><td style="width: 300px;">'+data[i].info+'..</td><td>'+data[i].times+'</td></tr><tr><td colspan="2"><hr style="margin: 5px;"></td></tr>';
+				}
 			}
 			content+='</table>';
 			if(t!=null){
-				if(t!=data){
-					//alert("新消息");
+				if(t.length!=data.length){
+					//alert(JSON.stringify(t));
+					//alert(JSON.stringify(data));
 					//alert("新消息");
 					document.getElementById("newinfo").innerHTML='新';
+					document.getElementById("example").setAttribute("data-content",content);
+					if(content.length>30){
+						$(function(){
+							$("[rel=drevil]").popover({
+								trigger:'manual',
+								placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+								//title : '', //this is the top title bar of the popover. add some basic css
+								html: 'true', //needed to show html of course
+								animation: false
+							}).on("mouseenter", function () {
+								var _this = this;
+								$(this).popover("show");
+								console.log($("[rel=drevil]"));
+								$(this).siblings(".popover").on("mouseleave", function () {
+									$(_this).popover('hide');
+								});
+							}).on("mouseleave", function () {
+								var _this = this;
+								setTimeout(function () {
+									if (!$(".popover:hover").length) {
+										$(_this).popover("hide")
+									}
+								}, 100);
+							});
+						});
+					}
+				}
+			}else{
+				document.getElementById("example").setAttribute("data-content",content);
+				if(content.length>30){
+					$(function(){
+						$("[rel=drevil]").popover({
+							trigger:'manual',
+							placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+							//title : '', //this is the top title bar of the popover. add some basic css
+							html: 'true', //needed to show html of course
+							animation: false
+						}).on("mouseenter", function () {
+							var _this = this;
+							$(this).popover("show");
+							//console.log($("[rel=drevil]"));
+							document.getElementById("newinfo").innerHTML='';
+							$(this).siblings(".popover").on("mouseleave", function () {
+								$(_this).popover('hide');
+							});
+						}).on("mouseleave", function () {
+							var _this = this;
+							setTimeout(function () {
+								if (!$(".popover:hover").length) {
+									$(_this).popover("hide")
+								}
+							}, 100);
+						});
+					});
 				}
 			}
 			t=data;
 			document.getElementById("example").setAttribute("data-content",content);
 		},"json");
-		var ids=window.setInterval(function(){
-			if(content.length>30){
-				window.clearInterval(ids);
-				$(function(){
-					$("[rel=drevil]").popover({
-						trigger:'manual',
-						placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
-						//title : '', //this is the top title bar of the popover. add some basic css
-						html: 'true', //needed to show html of course
-						animation: false
-					}).on("mouseenter", function () {
-						var _this = this;
-						$(this).popover("show");
-						console.log($("[rel=drevil]"));
-						$(this).siblings(".popover").on("mouseleave", function () {
-							$(_this).popover('hide');
-						});
-					}).on("mouseleave", function () {
-						var _this = this;
-						setTimeout(function () {
-							if (!$(".popover:hover").length) {
-								$(_this).popover("hide")
-							}
-						}, 100);
-					});
-				});
-			}
-		},500);
 	}, 3000);
 }
 
 function delnew(){
-	document.getElementById("newinfo").innerHTML='';
+	//document.getElementById("newinfo").innerHTML='';
 }
 //function test(){
 

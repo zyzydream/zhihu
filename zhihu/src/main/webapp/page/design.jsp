@@ -49,7 +49,7 @@
 					</a></li>
 				</ul>
 			</div>
-			<button id="zu-top-add-question" class="zu-top-add-question">提问</button>
+			<a href="page/introducteQuestion.jsp"><button id="zu-top-add-question" class="zu-top-add-question">提问</button></a>
 			<div id="zh-top-search" class="zu-top-search" role="search">
 				<form id="zh-top-search-form" class="zu-top-search-form"
 					method="GET" action="/search">
@@ -127,8 +127,8 @@
 					<div class="settings-section">
 						<label class="settings-item-title">邮箱</label>
 						<div class="settings-item-content form-container">
-							<div class="group group-text hidden-expanded">
-								<span class="text email">邮箱号</span>
+							<div class="group group-text hidden-expanded" id="Uemail">
+								<!-- <span class="text email"></span> -->
 							</div>
 						</div>
 					</div>
@@ -137,23 +137,24 @@
 				<div class="settings-item clearfix" style="height: 300px">
 					<label class="settings-item-title">帐号密码</label>
 					<div class="settings-item-content form-container">
-						<div onclick="modify();" id="modifypass"
+						<div onclick="modify();" 
 							class="group group-text hidden-expanded">
 							<a href="#" onclick="return false">修改密码</a>
+
 						</div>
-						<form class="form-basic panel hidden password-form" method="POST"
-							novalidate="novalidate">
+						<div  class="form-basic panel password-form" 
+							 id="modifypass" >
 							<div class="group" >
 								<input id="password" class="text" required=""
 									placeholder="输入新密码" name="password" type="password">
 							</div>
-							<div class="group">
+							<div class="group" >
 								<input class="text" required="" placeholder="再次输入"
 									name="password_repeat" data-rule-equalto="#password"
-									type="password">
+									type="password" id="passwore1">
 							</div>
-							<button class="next zg-btn-blue">确定</button>
-						</form>
+							<button class="next zg-btn-blue" onclick="make()">确定</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -191,7 +192,7 @@
 	<script
 		src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
 		tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-	<script type="text/javascript" src="js/myself.js"></script>
+<!-- 	<script type="text/javascript" src="js/myself.js"></script> -->
 	<script src='js/layer/layer.js' type="text/javascript"></script>
 	<script type="text/javascript" src="/bootstrap-3.3.4/js/popover.js"></script>
 	<script type="text/javascript" src="js/jquery-form.js"></script>
