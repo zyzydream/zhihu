@@ -311,5 +311,17 @@
 	<select id="atten" parameterType="Dynstate" resultType="Dynstate">
 		select * from dynstate PARTITION(GR) where selfid=#{selfid} and aimid=#{aimid}
 	</select>
+	
+	<select id="findq" parameterType="string" resultType="Question">
+		select * from question where qtitle like #{val}
+	</select>
+	
+	<select id="findu" parameterType="string" resultType="Users">
+		select * from users where uname like #{val}
+	</select>
+	
+	<select id="findt" parameterType="string" resultType="Topics">
+		select * from topics where ttopic like #{val}
+	</select>
 
 </mapper>

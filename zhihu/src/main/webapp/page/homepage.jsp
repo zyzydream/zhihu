@@ -11,6 +11,11 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>知乎首页</title>
+<style type="text/css">
+li {
+	list-style-type: none;
+}
+ </style>
 <link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
 	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
@@ -23,6 +28,7 @@
 <link rel="shortcut icon" href="images/logohead.png">
 </head>
 <body class="zhi ">
+	<div id="showq" ></div>
 	<div role="navigation" class="zu-top" data-za-module="TopNavBar">
 		<div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
 			<a href="/" class="zu-top-link-logo" id="zh-top-link-logo"
@@ -63,11 +69,12 @@
 					<input type="hidden" name="type" value="content"> <label
 						for="q" class="hide-text">知乎搜索</label><input type="text"
 						class="zu-top-search-input" id="q" name="q" autocomplete="off"
-						value="" maxlength="100" placeholder="搜索你感兴趣的内容...">
+						value="" maxlength="100" placeholder="搜索你感兴趣的内容..."  onmousedown="over(this)" onkeyup="findq(this)">
 					<button type="submit" class="zu-top-search-button">
 						<span class="hide-text">搜索</span><span
 							class="sprite-global-icon-magnifier-dark"></span>
 					</button>
+					
 				</form>
 			</div>
 

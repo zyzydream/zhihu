@@ -3,7 +3,10 @@ package com.yc.zhihu.web.handler;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,6 +26,7 @@ import com.yc.zhihu.entity.ListAllMy;
 import com.yc.zhihu.entity.PaginationBean;
 import com.yc.zhihu.entity.Question;
 import com.yc.zhihu.entity.Reply;
+import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Total;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.DynstateService;
@@ -325,4 +329,51 @@ public class DynstateHandler {
 		System.out.println("加关注  dynstate==>"+dynstate);
 		return dynstateService.addatten(dynstate);
 	}
+	
+	@RequestMapping(value="/findq",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Map<String,Object>> Dynstatefindq(HttpServletRequest request,String val){
+		System.out.println("进来了   val==》"+val);
+		val="%"+val+"%";
+		List<Question> q= dynstateService.findq(val);
+		List<Users> u= dynstateService.findu(val);
+		List<Topics> t= dynstateService.findt(val);
+		Map<String,Object> maps=new LinkedHashMap<String, Object>();
+		int qt=q.size();
+		int ut=u.size();
+		int tt=t.size();
+		int[] str=new int[3];
+		if(qt>=5){
+			str[0]=5;
+		}else{
+			str[0]=qt;
+		}
+		
+		if(ut>=3){
+			str[1]=3;
+		}else{
+			str[1]=ut;
+		}
+		
+		if(tt>=2){
+			str[2]=2;
+		}else{
+			str[2]=tt;
+		}
+		
+		q=q.subList(0, str[0]);
+		u=u.subList(0, str[1]);
+		t=t.subList(0, str[2]);
+		//maps.put("Qt", str);
+		maps.put("Q", q);
+		maps.put("U", u);
+		maps.put("T", t);
+		List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
+		list.add(maps);
+		int[]  i=(int[]) list.get(0).get("Qt");
+		System.out.println(list);
+		return list;
+	}
+	
+	
 }
