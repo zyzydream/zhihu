@@ -71,7 +71,7 @@ li {
 					<input type="hidden" name="type" value="content"> <label
 						for="q" class="hide-text">知乎搜索</label><input type="text"
 						class="zu-top-search-input" id="q" name="q" autocomplete="off"
-						value="" maxlength="100" placeholder="搜索你感兴趣的内容..."  onmousedown="over(this)" onkeyup="findq(this)">
+						value="" maxlength="100" placeholder="搜索你感兴趣的内容..."  onmouseover="over(this)" onmousedown="over(this)" onkeyup="findq(this)">
 					<button type="submit" class="zu-top-search-button">
 						<span class="hide-text">搜索</span><span
 							class="sprite-global-icon-magnifier-dark"></span>

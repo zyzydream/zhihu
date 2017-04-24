@@ -22,7 +22,7 @@ function showtopic(){
 			//alert(JSON.stringify(data[0]));
 			document.getElementById("attention").innerHTML='<button style="font-size: 13px; font-weight: 40;float: left;" type="button" class="btn btn-default" onclick="delattentiontopics('+str.split("=")[1]+')"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>取消关注</button>'
 		}else{
-			alert("未关注");
+			//alert("未关注");
 			document.getElementById("attention").innerHTML='<button style="font-size: 13px; font-weight: 40;float: left;" type="button" class="btn btn-default" onclick="attentiontopics('+str.split("=")[1]+')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关注</button>'
 		}
 	},"json");

@@ -36,7 +36,7 @@ function show(num){
 					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：<a href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].tname+'">'+data[i].tname+'</a></span><br/><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;"><a href="javascript:void(0)" id="'+i+'" name="showUsers" >'+data[i].author+'</a> &nbsp;&nbsp;&nbsp;';
 					dynstate+='<span class="text-muted" style="font-size: 12px;font-weight: 300;">'+data[i].usign+'</span></h2>';
-					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
+					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content.substr(0,200)+'...</p><span>';
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 					}else if(data[i].ycollent=='y'){
@@ -58,7 +58,7 @@ function show(num){
 					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：<a href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].tname+'">'+data[i].tname+'</a></span><br/><a href="javascript:void(0)">'+data[i].title+'</a></h2>';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;"><a href="javascript:void(0)" id="'+i+'" name="showUsers" >'+data[i].author+'</a> &nbsp;&nbsp;&nbsp;';
 					dynstate+='<span class="text-muted" style="font-size: 12px;font-weight: 300;">'+data[i].usign+'</span></h2>';
-					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
+					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content.substr(0,200)+'</p><span>';
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 					}else if(data[i].ycollent=='y'){
@@ -77,7 +77,7 @@ function show(num){
 				}else if(data[i].kind=="FW"){
 					dynstate+='<div class="row featurette" id="a'+i+'"><div class="col-md-7">';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px"><a id="'+i+'" name="showUsers">'+data[i].author+'</a>:发表文章：</span><br /><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
-					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
+					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content.substr(0,200)+'...</p><span>';
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 					}else if(data[i].ycollent=='y'){
@@ -327,6 +327,7 @@ function attentionUser(uids,uname,num){
 					}, 100);
 				});
 			}
+			show(0);
 		}else{
 			alert("失败");
 		}
@@ -369,6 +370,7 @@ function delattentionUser(uids,uname,num){
 					}, 100);
 				});
 			}
+			show(0);
 		}else{
 			alert("查找不到数据，请刷新");
 		}
@@ -578,7 +580,7 @@ function findq(obj){
 
 					}else if(j=='T'){
 						info+='<li>'
-							+'<a href="#"><span class="zm-item-tag" >'
+							+'<a href="/zhihu/page/findtopic.jsp?tid='+date[i][j][x].tid+'&&tname='+encodeURIComponent(date[i][j][x].ttopic)+'"><span class="zm-item-tag" >'
 							+'<b class="ac-highlighted" style="-moz-user-select: none;">'+date[i][j][x].ttopic+'</b>'
 							+'-shock'
 							+'</span>'

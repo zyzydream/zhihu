@@ -332,8 +332,9 @@ public class DynstateHandler {
 	
 	@RequestMapping(value="/findq",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Map<String,Object>> Dynstatefindq(HttpServletRequest request,String val){
+	public List<Map<String,Object>> Dynstatefindq(HttpServletRequest request,String val) throws UnsupportedEncodingException{
 		System.out.println("进来了   val==》"+val);
+		val=new String(val.getBytes("iso-8859-1"),"utf-8");
 		val="%"+val+"%";
 		List<Question> q= dynstateService.findq(val);
 		List<Users> u= dynstateService.findu(val);

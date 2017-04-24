@@ -1450,9 +1450,20 @@ insert into favorite values('222','11731','wode','','2017-4-23 14:31:22')
 =======
 --用户关注的话题
 insert into dynstate select '10000','10001','GR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10002','GR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10003','GR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10007','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10008','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10009','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10010','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10011','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10020','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10021','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10014','GR','','2017-04-24 00:00:01','' from dual ;
+
+
+
+select * from users
+
+
 insert into dynstate select '10001','10000','GR','','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10001','10003','GR','','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10001','10004','GR','','2017-04-24 00:00:01','' from dual ;
