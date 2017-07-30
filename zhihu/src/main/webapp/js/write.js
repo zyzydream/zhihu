@@ -5,8 +5,7 @@ $("#addEssay").form({
 	success: function(data){
 		if(data == "true"){
 			alert("发布成功!!!!");
-			$("#etitle").val(null);
-			$("#econtent").val(null);
+			window.location.reload(true);
 		}else{
 			$.messager.show({
     			title:'添加文章',

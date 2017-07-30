@@ -40,6 +40,8 @@ public class AdminHandler {
 			return "/back/backlogin.jsp";
 			
 		}else{
+			request.getSession().setAttribute("adminname",admins.getAdname());
+			request.getSession().setAttribute(ServletUtil.LOGIN_ADMINS, admins);
 			return "redirect:/back/back.jsp";
 		}
 		

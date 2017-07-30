@@ -91,9 +91,9 @@ public class UserHandler {
 
 	}
 
-	
-	
-	
+
+
+
 
 	//列出最新动态
 	@RequestMapping(value="dynstate",method=RequestMethod.GET)
@@ -167,7 +167,7 @@ public class UserHandler {
 			usersService.del(user);
 			return "/back/register.jsp";
 		}
-		
+
 	}
 
 
@@ -227,12 +227,12 @@ public class UserHandler {
 	public int newFav(Favorite favorite,HttpServletRequest request) throws UnsupportedEncodingException{
 		String selfname=new String(favorite.getFname().getBytes("iso-8859-1"),"utf-8");
 		favorite.setFname(selfname);
-        favorite.setFcreid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
+		favorite.setFcreid(((Users)request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUids());
 		return usersService.newFav(favorite);
 	}
 
-	
-	
+
+
 	//关注用户
 	@RequestMapping(value="/listuser",method=RequestMethod.POST)
 	@ResponseBody
@@ -243,7 +243,7 @@ public class UserHandler {
 		a.add(usersService.list(user));
 		return a;
 	}
-	
+
 
 	//关注话题
 	@RequestMapping(value="/attentiontopics",method=RequestMethod.GET)
@@ -256,17 +256,44 @@ public class UserHandler {
 		dynstate.setKind("GH");
 		return usersService.attentiontopics(dynstate);
 	}
-	
+
 	//关注话题
-		@RequestMapping(value="/delattentiontopics",method=RequestMethod.GET)
-		@ResponseBody
-		public int delattentiontopics(Topics topics,HttpServletRequest request){
-			Users user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
-			Dynstate dynstate =new Dynstate();
-			dynstate.setSelfid(user.getUids());
-			dynstate.setIds(topics.getTid());
-			dynstate.setKind("GH");
-			return usersService.delattentiontopics(dynstate);
+	@RequestMapping(value="/delattentiontopics",method=RequestMethod.GET)
+	@ResponseBody
+	public int delattentiontopics(Topics topics,HttpServletRequest request){
+		Users user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		Dynstate dynstate =new Dynstate();
+		dynstate.setSelfid(user.getUids());
+		dynstate.setIds(topics.getTid());
+		dynstate.setKind("GH");
+		return usersService.delattentiontopics(dynstate);
+	}
+
+	//查询当前登录用户
+	@RequestMapping(value="/list" , method= RequestMethod.POST)
+	@ResponseBody
+	public List<Users> list(Users users , HttpServletRequest request) {
+		Users user = (Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER);
+		List<Users> us=new ArrayList<Users>();
+		us.add(user);
+		return us;	
+	}
+
+
+	//查询当前登录用户
+	@RequestMapping(value="/updataPS" , method= RequestMethod.GET)
+	@ResponseBody
+	public String updataPS(Users users , HttpServletRequest request) {
+		
+		System.out.println("users====>"+users);
+		String uname = ((Users) request.getSession().getAttribute(ServletUtil.LOGIN_USER)).getUname();
+		users.setUname(uname);
+		if(usersService.updata(users)>0){
+			return "true";	
+		}else{
+			return "false";
 		}
+		
+	}
 	
 }

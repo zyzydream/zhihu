@@ -36,7 +36,7 @@ function show(num){
 					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：<a href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].tname+'">'+data[i].tname+'</a></span><br/><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;"><a href="javascript:void(0)" id="'+i+'" name="showUsers" >'+data[i].author+'</a> &nbsp;&nbsp;&nbsp;';
 					dynstate+='<span class="text-muted" style="font-size: 12px;font-weight: 300;">'+data[i].usign+'</span></h2>';
-					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
+					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content.substr(0,200)+'...</p><span>';
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 					}else if(data[i].ycollent=='y'){
@@ -49,7 +49,6 @@ function show(num){
 					}else{
 						dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="delpraise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
 					}
-					dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>';
 					dynstate+='</span></div><div class="col-md-5"><img class="featurette-image img-responsive center-block" src="" data-src="holder.js/500x500/auto"';
 					dynstate+='tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto" alt=""></div></div>';
 					dynstate+='<hr class="featurette-divider" style="margin-top:10px;">';
@@ -59,7 +58,7 @@ function show(num){
 					dynstate+='<span class="text-muted" style="font-size: 13px">来自话题：<a href="/zhihu/page/findtopic.jsp?tid='+data[i].tid+'&&tname='+data[i].tname+'">'+data[i].tname+'</a></span><br/><a href="javascript:void(0)">'+data[i].title+'</a></h2>';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 13px;"><a href="javascript:void(0)" id="'+i+'" name="showUsers" >'+data[i].author+'</a> &nbsp;&nbsp;&nbsp;';
 					dynstate+='<span class="text-muted" style="font-size: 12px;font-weight: 300;">'+data[i].usign+'</span></h2>';
-					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
+					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content.substr(0,200)+'</p><span>';
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 					}else if(data[i].ycollent=='y'){
@@ -72,14 +71,13 @@ function show(num){
 					}else{
 						dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="delpraise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
 					}
-					dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>';
 					dynstate+='</span></div><div class="col-md-5"><img class="featurette-image img-responsive center-block" src="" data-src="holder.js/500x500/auto"';
 					dynstate+='tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto" alt=""></div></div>';
 					dynstate+='<hr class="featurette-divider" style="margin-top:10px;">';
 				}else if(data[i].kind=="FW"){
 					dynstate+='<div class="row featurette" id="a'+i+'"><div class="col-md-7">';
 					dynstate+='<h2 class="featurette-heading" style="font-size: 25px;"><span class="text-muted" style="font-size: 15px"><a id="'+i+'" name="showUsers">'+data[i].author+'</a>:发表文章：</span><br /><a href="page/article.jsp?eid='+data[i].ids+'">'+data[i].title+'</a></h2>';
-					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content+'</p><span>';
+					dynstate+='<p class="lead" style="font-size: 14px;">'+data[i].content.substr(0,200)+'...</p><span>';
 					if(data[i].ycollent=='n'){
 						dynstate+='<div style="width: 70px;float: left;height: 25px"><a style="font-size: 13px;font-weight: 40;border-style: none;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 收藏  '+data[i].collect+'</a>'+aaaa+'</div>';
 					}else if(data[i].ycollent=='y'){
@@ -92,7 +90,6 @@ function show(num){
 					}else{
 						dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="delpraise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
 					}
-					dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>';
 					dynstate+='</span></div><div class="col-md-5"><label style="float: right;font-size: 15px; font-weight: lighter;">'+data[i].times+'</label>';
 					dynstate+='<img class="featurette-image img-responsive center-block" src="" data-src="holder.js/500x500/auto" tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto"alt="">';
 					dynstate+='</div></div><hr class="featurette-divider">';
@@ -111,7 +108,6 @@ function show(num){
 					}else{
 						dynstate+='<div style="width: 100px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"  onclick="delpraise(\''+data[i].ids+'\',\''+data[i].kind+'\')"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>取消点赞  '+data[i].praise+'</button></div>';
 					}
-					dynstate+='<div style="width: 70px;float: left;height: 25px" class="btn-group" role="group" aria-label="..."><button  style="font-size: 13px;font-weight: 40;border-style: none;" type="button" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>阅览  42</button></div>';
 					dynstate+='</span></div><div class="col-md-5"><label style="float: right;font-size: 15px; font-weight: lighter;">'+data[i].times+'</label>';
 					dynstate+='<img class="featurette-image img-responsive center-block"data-src="holder.js/500x500/auto" tppabs="http://v3.bootcss.com/examples/carousel/holder.js/500x500/auto" alt=""></div></div>';
 					dynstate+='<hr class="featurette-divider">';
@@ -331,6 +327,7 @@ function attentionUser(uids,uname,num){
 					}, 100);
 				});
 			}
+			show(0);
 		}else{
 			alert("失败");
 		}
@@ -373,6 +370,7 @@ function delattentionUser(uids,uname,num){
 					}, 100);
 				});
 			}
+			show(0);
 		}else{
 			alert("查找不到数据，请刷新");
 		}
@@ -541,9 +539,84 @@ function delnew(){
 //$(_this).popover("hide")
 //}
 //}, 100);
-//});
+//});230  45
 //console.log("结束");
 //}
 
+function findq(obj){
+	var val=$(obj).val();
+	$.get("dynstate/findq?val="+val,function(date){
+		var show=$("#showq");
+		show.css({"position":"absolute","left":"215px","top":"45px","width":"370px","z-index":"100","background":"white","display":"block"});
+		var info='<ul>';
+		for(var i in date){
+			for(var j in date[i]){
+				if(j=='Q' && date[i][j].length>0){
+					info+='<div class="zu-autocomplete-row-label ac-row">问题</div>';
+				}else if(j=='U' && date[i][j].length>0){
+					info+='<div class="zu-autocomplete-row-label ac-row">用户</div>';
+				}else if(j=='T' && date[i][j].length>0){
+					info+='<div class="zu-autocomplete-row-label ac-row">话题</div>'
+				}
+				for(var x in date[i][j]){
+					if(j=='Q'){
+						
+						info+='<li onmouseover="showa()"><a class="info" href="/zhihu/page/question.jsp?qid='+date[i][j][x].qid+'" onclick="return true">'
+							+''+date[i][j][x].qtitle+''
+							+'</a></li>';
+					}else if(j=='U'){
+						info+='<li><div id=":1t" class="ac-row" role="option" data-za-module="UserItem" data-za-index="" >'
+							+'<a class="zm-ac-link zm-ac-link-people" title="HAHA" href="/zhihu/page/himself.jsp?uids='+date[i][j][x].uids+'" onclick="return true">'
+							+'<img class="zm-item-img-avatar zg-left" src="'+date[i][j][x].upic+'" style="-moz-user-select: none;">'
+							+'<div class="zu-autocomplete-row-name" title="HAHA" style="-moz-user-select: none;">'
+							+'<b class="ac-highlighted" style="-moz-user-select: none;">'+date[i][j][x].uname+'</b>'
+							+'</div>'
+							+'<div class="zu-autocomplete-row-description" style="-moz-user-select: none;">'
+							+'<span class="badge-summary" style="-moz-user-select: none;"></span>'
+							+'<span class="zg-gray-normal bio" style="-moz-user-select: none;">'+date[i][j][x].usign+'</span>'
+							+'</div>'
+							+'</a>'
+							+'</div></li>';
 
+					}else if(j=='T'){
+						info+='<li>'
+							+'<a href="/zhihu/page/findtopic.jsp?tid='+date[i][j][x].tid+'&&tname='+encodeURIComponent(date[i][j][x].ttopic)+'"><span class="zm-item-tag" >'
+							+'<b class="ac-highlighted" style="-moz-user-select: none;">'+date[i][j][x].ttopic+'</b>'
+							+'-shock'
+							+'</span>'
+							+'<span></span></a></li>';
+					}else{
+						info+='<li>没有相关的搜索内容。。。</li>'
+					}
+
+				}
+			}
+		}
+		info+='</ul>';
+		show.html(info);
+	},'json');
+
+}
+
+function over(obj){
+	var show=$("#showq");
+	show.css({"display":"none"});
+}
+
+function showa(){
+	var show=$("#showq");
+	show.css({"display":"block"});
+}
+
+/*<a class="zm-ac-link zm-ac-link-people" title="DD Fang" href="/people/dd-fang-40" style="-moz-user-select: none;">
+<img class="zm-item-img-avatar zg-left" src="https://pic3.zhimg.com/c23600c62_s.jpg" style="-moz-user-select: none;">
+<div class="zu-autocomplete-row-name" title="DD Fang" style="-moz-user-select: none;">
+<b class="ac-highlighted" style="-moz-user-select: none;">DD</b>
+Fang
+</div>
+<div class="zu-autocomplete-row-description" style="-moz-user-select: none;">
+<span class="badge-summary" style="-moz-user-select: none;"></span>
+<span class="zg-gray-normal bio" style="-moz-user-select: none;"></span>
+</div>
+</a>*/
 

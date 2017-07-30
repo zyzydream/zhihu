@@ -14,6 +14,13 @@ CREATE TABLE users(
 );
 select * from users
 
+
+ 11731 twbiptyx   a         aruwncghgolqcxagntzcigmnfmnxexwjld       翻译员         zzz.jpg 18070852301@qq.com
+ INSERT INTO favorite(fid,fcreid,fname,ftime)
+ values('14383','11731','')
+
+ select * 
+
 select * from explore,
 		(SELECT * from dynstate PARTITION(GH) WHERE selfid='10001')d
 		where tid=d.ids and checks='y'
@@ -80,10 +87,6 @@ SELECT t.tid tid,t.ttopic tname,ue.uids uids,ue.uname author,ue.eid   ids,ue.eti
 
 select * from users where uname='xiakhwqimf'
 select * from users where uids='10009';
-18037560013@qq.com /zhihu/images/touxiang.jpg
-18087787759@qq.com /zhihu/images/touxiang.jpg
-18035528789@qq.com /zhihu/images/touxiang.jpg
-18057091262@qq.com /zhihu/images/touxiang.jpg
 
 select * from dynstate where selfid='10771' and kind='GH'
 
@@ -94,16 +97,12 @@ SELECT * from dynstate d,
 		WHERE d.selfid=dd.aimid AND 24*1>=to_number( to_date('2017-12-30','yyyy-mm-dd')-
 		to_date(d.times,'yyyy-mm-dd'))*24
 
-18037560013@qq.com /zhihu/images/touxiang.jpg
 
 select * from explore;
  select q.qid ids,q.qautid uids,q.qtime times,q.qtitle title,q.qtid tid,ud.uname author from question q,            (select * from users u,           (SELECT aimid from dynstate PARTITION(GR) WHERE selfid='10197')d         where u.uids=d.aimid)ud         where q.qautid=ud.uids AND 24*100>=to_number( SYSDATE- to_date(q.qtime,'yyyy-mm-dd'))*24
 select * from reply
-18084250564@qq.com /zhihu/images/touxiang.jpg
 
 
- 18039696056@qq.com
-  10202 vnuivskij  a         ezjvzpfxofoiifpvyzijejhtfhcdkqvidqzkn    程序员         zzz.jpg 7 /zhihu/images/touxiang.jpg
 
 
 select r.*,u.*
@@ -236,6 +235,9 @@ decode(ceil(dbms_random.value(0, 6)), 1, '程序员', 2, '测试员', 3, '分析
 '/zhihu/images/touxiang.jpg' from dual connect by level <= 1000;
 select * from users where uids='10999'
 
+ 11732 qqnhvtqx   a         ajvhsbejigehtsacqsrehuortup              翻译员         zzz.jpg 18075531458@qq.com /zhihu/images/touxiang.jpg
+
+
 select * from USERS where uemail='123' and upassword='a' 
 insert into users(uemail,uname,upassword) values('123','zy','a');
 
@@ -337,10 +339,12 @@ insert into essay
 select seq_essay.nextval||'', 
 ''||ceil(dbms_random.value(10000,11000)),
 dbms_random.string('l',dbms_random.value(100, 200)),
-'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30))
+|| ceil(dbms_random.value(0,24)) ||':'||ceil(dbms_random.value(0,60))||':'||ceil(dbms_random.value(0,60)),
 dbms_random.string('l',dbms_random.value(10, 20)),
 '123',
 ''||ceil(dbms_random.value(1000,1015)) from dual connect by level <= 3000;
+
 select * from essay
 
 drop table essay;
@@ -437,7 +441,10 @@ insert into favorite
 select seq_favorite.nextval||'', 
 ''||ceil(dbms_random.value(10000,11000)),
 dbms_random.string('l',dbms_random.value(10, 20)),
-'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 4000;
+'',
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30))
+|| ceil(dbms_random.value(0,24)) ||':'||ceil(dbms_random.value(0,60))||':'||ceil(dbms_random.value(0,60))
+from dual connect by level <= 4000;
 
 drop table favorite;
 drop sequence seq_favorite;
@@ -496,6 +503,14 @@ CREATE TABLE question(
    qtid  VARCHAR2(30), --话题id
    qtime VARCHAR2(30)
 );
+select * from topics 
+select qtitle from question where qtitle like '%s%' 
+select uname from users where uname like '%s%'
+select ttopic from topics where ttopic like '%W%'
+
+ 13259 10396  10584 oygyswexrlhlksa      pkofqlkssjhasgyqtzqmqrmavibk                       1013 2017-12-253:28:18
+
+
 drop sequence seq_question
 drop table question
 create sequence seq_question start with 10000;
@@ -516,7 +531,9 @@ select seq_question.nextval,
 dbms_random.string('l',dbms_random.value(10, 20)),
 dbms_random.string('l',dbms_random.value(20, 50)),
 ''||ceil(dbms_random.value(1000,1015)),
-'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 3000;
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30))
+|| ceil(dbms_random.value(0,24)) ||':'||ceil(dbms_random.value(0,60))||':'||ceil(dbms_random.value(0,60))
+from dual connect by level <= 3000;
 select * from question
 
 select * from QUESTION;
@@ -567,7 +584,9 @@ decode(ceil(dbms_random.value(0, 2)), 1, 'W', 'Q'),
 ''||ceil(dbms_random.value(10000,11000)),
 dbms_random.string('l',dbms_random.value(55, 200)),
 ''||ceil(dbms_random.value(1000,1015)),
-'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)) from dual connect by level <= 3000;
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30))
+|| ceil(dbms_random.value(0,24)) ||':'||ceil(dbms_random.value(0,60))||':'||ceil(dbms_random.value(0,60))
+from dual connect by level <= 3000;
 select * from reply
 
 drop table dynstate;
@@ -860,7 +879,8 @@ select ''||ceil(dbms_random.value(10000,11000)),
 ''||ceil(dbms_random.value(10000,11000)),
 'GR',
 '',
-'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30))
+|| ceil(dbms_random.value(0,24)) ||':'||ceil(dbms_random.value(0,60))||':'||ceil(dbms_random.value(0,60)),
 '' from dual connect by level <= 4000;
 --关注话题
 insert into dynstate
@@ -868,7 +888,8 @@ select ''||ceil(dbms_random.value(10000,11000)),
 '',
 'GH',
 ''||ceil(dbms_random.value(1000,1015)),
-'2017-'||'12'||'-'||ceil(dbms_random.value(10,30)),
+'2017-'||'12'||'-'||ceil(dbms_random.value(10,30))
+|| ceil(dbms_random.value(0,24)) ||':'||ceil(dbms_random.value(0,60))||':'||ceil(dbms_random.value(0,60)),
 '' from dual connect by level <= 4000;
 --点赞文章
 insert into dynstate
@@ -1121,6 +1142,8 @@ INSERT INTO dynstate(selfid,kind,ids,times)VALUES('1002','GH','10004','2017-09-1
 INSERT INTO dynstate(selfid,kind,ids)VALUES('1002','B','1006');
 INSERT INTO dynstate(selfid,kind,ids)VALUES('1002','B','1006');
 select * from dynstate
+
+select * from users
 
 DROP TABLE dynstate
 INSERT INTO collents(cid,ckind,cwid,cfid)VALUES('1001','e','1001','10101');
@@ -1420,8 +1443,9 @@ insert into dynstate select '10005','','DW','10019','2017-04-24 00:00:01','' fro
 insert into dynstate select '10005','','DW','10020','2017-04-24 00:00:01','' from dual ;
 
 
-
-
+select * from users
+ 11731 twbiptyx   a         aruwncghgolqcxagntzcigmnfmnxexwjld       翻译员         zzz.jpg 18070852301@qq.com /zhihu/images/touxiang.jpg
+insert into favorite values('222','11731','wode','','2017-4-23 14:31:22')
 
 /*插入用户*/
  insert into users(uids,uname,upassword,usign,uprofession,upic,uemail,tpic)values(seq_users.nextval,'小花' ,'123','世界那么大，我想去看看','设计师','images/113.jpg','1@qq.com','images/113.jpg');
@@ -1434,9 +1458,20 @@ insert into dynstate select '10005','','DW','10020','2017-04-24 00:00:01','' fro
 =======
 --用户关注的话题
 insert into dynstate select '10000','10001','GR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10002','GR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10003','GR','','2017-04-24 00:00:01','' from dual ;
-insert into dynstate select '10000','10004','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10007','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10008','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10009','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10010','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10011','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10020','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10021','GR','','2017-04-24 00:00:01','' from dual ;
+insert into dynstate select '10000','10014','GR','','2017-04-24 00:00:01','' from dual ;
+
+
+
+select * from users
+
+
 insert into dynstate select '10001','10000','GR','','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10001','10003','GR','','2017-04-24 00:00:01','' from dual ;
 insert into dynstate select '10001','10004','GR','','2017-04-24 00:00:01','' from dual ;

@@ -871,6 +871,7 @@ a.QuestionMainAction {
 /*关于作者*/
 .Question-sideColumn {
     width: 296px;
+    margin-left: 10px;
 }
 .Card {
     background: #fff none repeat scroll 0 0;
@@ -1196,4 +1197,127 @@ a {
 
 .CommentEditor--normal .CommentEditor-input .Editable-unstyled {
     margin: 0 !important;
+}
+
+
+/*tankuang*/
+.style{
+	border: 2px solid #e7eaf1;
+	box-shadow: 0 1px 3px 0 rgba(0, 34, 77, 0.10);
+	top:100px;
+	left:400px;
+	background-color:#F8F8F8; 
+	display:none;
+	position:absolute;
+	font-size:12px;
+	width:500px;
+	height:400px;
+}
+
+.style1{
+	display:inline-block;
+	color:#8590a6;
+	font-size:14px;
+	margin-top:10px;
+	
+}
+.style2{
+	background-color:#FFFFFF;
+	border-style:none;
+	margin:2.5px 0px;
+	width: 180px;
+	height: 23px;
+}
+.style3{
+	position:relative;
+	width:185px;
+	border: 1px solid #e7eaf1;
+	border-radius: 3px;
+	height:30px;
+	left:310px;
+	top:-25px;
+}
+
+.style4{
+	height:50px;
+	width:100%;
+	border-style:none;
+	border-bottom:2px solid rgba(30, 35, 42, 0.06);
+	margin-bottom:10px;
+}
+
+.style5{
+	position:relative;
+	bottom: 40px;
+    left: 70px;
+    margin-left: 10px;
+}
+
+.style6{
+	position:relative;
+	padding:3px 13px;
+	border-radius:3px;
+	border: 1px solid #009933;
+	color: #009933;
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	text-align: center;
+	top:-50px;
+	left:155px;
+}
+
+.h{
+	position:relative;
+	margin:10px 0px;
+	color:rgba(30, 35, 42, 0.06);
+}
+
+.image{
+	border-radius: 3px;
+	padding-left: 10px;
+}
+
+.tugou{
+	position:relative;
+	font-size:14px;
+	top:-19px;	
+	margin:10px;
+}
+
+
+.cl{
+	background-image: url("../images/design2.png");
+	display:inline-block;
+	position:relative;
+	left:470px;
+	width:23px;
+	height:23px;
+	background-position: -100px -196px;
+	
+}
+
+.search{
+	position:relative;
+	display:inline-block;
+	background-image: url("../images/function.png");
+	width:15px;
+	height:15px;
+	float:right;
+	top:-20px;
+	right:2px;
+	background-position: 15px -17px;
+}
+hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #eee currentcolor currentcolor;
+    border-image: none;
+    border-style: solid none none;
+    border-width: 1px 0 0;
+    margin-top: -20px;
+}
+hr {
+    box-sizing: content-box;
+    height: 0;
 }

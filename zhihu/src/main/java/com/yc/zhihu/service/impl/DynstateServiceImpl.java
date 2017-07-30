@@ -245,4 +245,19 @@ public class DynstateServiceImpl implements DynstateService {
 	public Dynstate atten(Object obj) {
 		return dynstateMapper.atten(obj);
 	}
+	
+	@Override
+	public List<Question> findq(String obj) {
+		return dynstateMapper.findq(obj);
+	}
+	
+	@Override
+	public List<Users> findu(String obj) {
+		return dynstateMapper.findu(obj);
+	}
+	
+	@Override
+	public List<Topics> findt(String obj) {
+		return dynstateMapper.findt(obj);
+	}
 }

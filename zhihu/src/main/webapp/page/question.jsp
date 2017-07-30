@@ -4,6 +4,14 @@
 <html>
 <head>
 <base href="/zhihu/">
+<link href="bootstrap-3.3.4/dist/css/bootstrap.min.css"
+	tppabs="bootstrap-3.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.4/docs/examples/blog/blog.css"
+	tppabs="bootstrap-3.3.4/docs/examples/blog/blog.css" rel="stylesheet">
+<script
+	src="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"
+	tppabs="bootstrap-3.3.4/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
 <link rel="shortcut icon" href="images/logohead.png">
 <link rel="stylesheet" type="text/css"
 	href="easyui/themes/default/easyui.css">
@@ -20,9 +28,9 @@
 					data-za-module="TopNavBar"
 					style="width: 1440px; top: 0px; left: 0px;">
 					<div class="AppHeader-inner">
-						<a href="page/homepage.jsp" aria-label="知乎" class="zu-top-link-logo"> <svg
-								class="Icon Icon--logo" viewBox="0 0 200 91" width="64"
-								height="30" aria-hidden="true"
+						<a href="page/homepage.jsp" aria-label="知乎"
+							class="zu-top-link-logo"> <svg class="Icon Icon--logo"
+								viewBox="0 0 200 91" width="64" height="30" aria-hidden="true"
 								style="fill: rgb(15, 136, 235); height: 30px; width: 64px;">
 						  </svg>
 						</a>
@@ -128,10 +136,23 @@
 
 						<div class="QuestionHeader-footer">
 							<div class="QuestionHeader-footer-inner">
-							
-
+								<div class="QuestionHeader-actions">
+									<!-- <button class="Button Button--plain" type="button">31
+										条评论</button>
+									<div class="Popover ShareMenu">
+										<div id="Popover-66947-65137-toggle" aria-haspopup="true"
+											aria-expanded="false" aria-owns="Popover-66947-65137-content">
+											<button class="Button Button--plain" type="button">
+												分享</button>
+										</div>
+									</div> -->
+									<button class="Button Button--plain" type="button"
+										onclick="show()">邀请回答</button>
+									<!-- 弹出框 -->
+								</div>
 								<div class="QuestionHeader-side">
-									<a href="#Card QuestionAnswers-answerAdd"  class="Button" type="button" onclick="write()">写回答</a>
+									<a href="#Card QuestionAnswers-answerAdd" class="Button"
+										type="button" onclick="write()">写回答</a>
 								</div>
 
 							</div>
@@ -162,7 +183,7 @@
 						</div>
 						<!-- 回答问题 -->
 						<div class="Card QuestionAnswers-answerAdd" id="myReply">
-							 <!--<div class="AnswerAdd">
+							<!--<div class="AnswerAdd">
 								<div class="AnswerAdd-header">
 									<div class="AuthorInfo AnswerAdd-info">
 										<span class="UserLink AuthorInfo-avatarWrapper"> <img
@@ -197,6 +218,9 @@
 					</div>
 
 
+
+
+
 					<div class="Question-sideColumn" data-za-module="RightSideBar"
 						id="someReplys">
 						<!-- 作者 -->
@@ -218,6 +242,25 @@
 		</div>
 	</div>
 
+	<!-- tanchu  -->
+	<div class="style" id="tanchu">
+		<span class="cl" onclick="closeD()"></span>
+		<div class="style4">
+			<span class="style1">你可以通过邀请其他用户来更快获得回答</span>
+			<div class="style3">
+				<input type="text" maxlength="100" placeholder="搜索你想邀请的人"
+					class="style2" />
+				<span class="search"></span>	
+			</div>
+		</div>
+		<div>
+			<img src="images/1.jpg" height="70px" width="70px" class="image" /> <strong
+				class="tugou">兔狗</strong> <span class="style1 style5">可能对社会问题话题下的问题感兴趣</span>
+			<button class="style6">邀请回答</button>
+			<hr/>
+		</div>
+	</div>
+
 </body>
 <script type="text/javascript" src="easyui/jquery.min.js"></script>
 <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
@@ -228,5 +271,11 @@
 	src="ueditor/ueditor.all.min.js"></script>
 <script type="text/javascript" charset="utf-8"
 	src="ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+
+
+<script
+	src="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"
+	tppabs="bootstrap-3.3.4/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
 <script type="text/javascript" src="js/question.js"></script>
 </html>

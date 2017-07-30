@@ -101,8 +101,8 @@
 	<!-- 注册 -->
 	<insert id="AddUsers" parameterType="Users">
 		insert into
-		users(uids,uemail,uname,upassword,usign)
-		values(seq_users.nextval,#{uemail},#{uname},#{upassword},'无')
+		users(uids,uemail,uname,upassword,usign,upic)
+		values(seq_users.nextval,#{uemail},#{uname},#{upassword},'无','images/poto.jpg')
 	</insert>
 
 	<!-- 添加职业 -->
@@ -206,5 +206,10 @@
 	<delete id="deleteUser" parameterType="Users">
 		delete from users where uname=#{uname}
 	</delete>
+	
+	<!-- 修改密码 -->
+	<update id="updataPassword" parameterType="Users">
+		update users set upassword=#{upassword} where uname = #{uname}
+	</update>
 	
 </mapper>
