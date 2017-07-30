@@ -3,6 +3,7 @@ package com.yc.zhihu.mapper;
 import java.util.List;
 
 import com.yc.zhihu.entity.Question;
+import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Topics;
 
 public interface QuestionMapper {
@@ -12,6 +13,8 @@ public interface QuestionMapper {
 	List<Question> findQuestion(Question question);
 
 	List<Topics> findTopics(String qtid);
+
+	List<ShowUser> invite(Topics topics);
 
 	
 }

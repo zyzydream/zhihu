@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.zhihu.entity.Question;
+import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.mapper.QuestionMapper;
 import com.yc.zhihu.service.QuestionService;
@@ -30,6 +31,8 @@ public class QuestionServiceImpl implements QuestionService {
 		return questionMapper.findTopics(qtid);
 	}
 
-
-
+	@Override
+	public List<ShowUser> invite(Topics topics) {
+		return questionMapper.invite(topics);
+	}
 }

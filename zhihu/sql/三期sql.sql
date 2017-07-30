@@ -9,6 +9,7 @@ CREATE TABLE users(
    uprofession VARCHAR2(20),
    upic VARCHAR2(50),
    uemail VARCHAR2(50),
+   integral VARCHAR2(50),
    tpic varchar2(50)
 );
 select * from users
@@ -37,7 +38,14 @@ alter table users add tpic varchar2(200);
 update users set tpic=trim(tpic2);
 alter table users drop column tpic2;
 alert table users modify column tpic varchar(200);
-
+ 
+select * from users u,
+(select * from essay ee,
+(select count(ids),d.ids eid from dynstate PARTITION(DW) d,
+(select * from essay where etid='1000')e
+where d.ids=e.eid group by d.ids)de
+where ee.eid=de.eid)dee
+where u.uids=dee.eautid
 
 select
 		(select count(r.rid)

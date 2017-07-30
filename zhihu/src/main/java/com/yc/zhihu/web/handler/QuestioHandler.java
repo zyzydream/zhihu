@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.zhihu.entity.Question;
+import com.yc.zhihu.entity.ShowUser;
 import com.yc.zhihu.entity.Topics;
 import com.yc.zhihu.entity.Users;
 import com.yc.zhihu.service.QuestionService;
@@ -63,6 +64,10 @@ public class QuestioHandler {
 		//String qid = request.getParameter("qid");
 		return  questionService.list(question);
 
+	}
+	
+	public List<ShowUser> invite(Topics topics){
+		return questionService.invite(topics);
 	}
 	
 	

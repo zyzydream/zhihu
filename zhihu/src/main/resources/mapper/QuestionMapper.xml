@@ -23,5 +23,9 @@
 		select * from topics where tid=#{tid}
 	</select>
 	
+	<select id="invite" parameterType="Topics" resultType="ShowUser">
+	    select * from dynstate where 
+	</select>
+	
 	
 </mapper>
